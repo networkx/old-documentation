@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>density &mdash; NetworkX 1.8.dev20120805105026 documentation</title>
+    <title>density &mdash; NetworkX 1.8.dev20130102173740 documentation</title>
     
     <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.8.dev20120805105026',
+        VERSION:     '1.8.dev20130102173740',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -26,9 +26,9 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.8.dev20120805105026 documentation"
+          title="Search within NetworkX 1.8.dev20130102173740 documentation"
           href="../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.8.dev20120805105026 documentation" href="../../index.html" />
+    <link rel="top" title="NetworkX 1.8.dev20130102173740 documentation" href="../../index.html" />
     <link rel="up" title="Functions" href="../functions.html" />
     <link rel="next" title="info" href="networkx.classes.function.info.html" />
     <link rel="prev" title="degree_histogram" href="networkx.classes.function.degree_histogram.html" /> 
@@ -56,7 +56,7 @@ NetworkX
         <li><a href="http://networkx.github.com/">NetworkX Home </a> |&nbsp;</li>
         <li><a href="http://networkx.github.com/documentation.html">Documentation </a>|&nbsp;</li>
         <li><a href="http://networkx.github.com/download.html">Download </a> |&nbsp;</li>
-        <li><a href="http://networkx.github.com/download.html">Developer (Github)</a></li>
+        <li><a href="http://github.com/networkx">Developer (Github)</a></li>
 
 
 
@@ -65,7 +65,7 @@ NetworkX
       </ul>
     </div>
 
-<br/><p>This documentation is for version <b>1.8.dev_20120805105026</b>, which is
+<br/><p>This documentation is for version <b>1.8.dev_20130102173740</b>, which is
   not released yet.</p>
 
 
@@ -112,8 +112,10 @@ NetworkX
 <p><img src="../../_images/math/ddcdd822c935e6808af06a31cd93bddebf79fe20.png" alt="d = \frac{m}{n(n-1)},"/></p>
 </div><p>where <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: 0px"/> is the number of nodes and <img class="math" src="../../_images/math/f5047d1e0cbb50ec208923a22cd517c55100fa7b.png" alt="m" style="vertical-align: 0px"/>  is the number of edges in <img class="math" src="../../_images/math/6e28ce12d49d39f160d5a0ef54077fc98e4b9d2b.png" alt="G" style="vertical-align: 0px"/>.</p>
 <p class="rubric">Notes</p>
-<p>The density is 0 for an graph without edges and 1.0 for a complete graph.</p>
-<p>The density of multigraphs can be higher than 1.</p>
+<p>The density is 0 for a graph without edges and 1 for a complete graph.
+The density of multigraphs can be higher than 1.</p>
+<p>Self loops are counted in the total number of edges so graphs with self
+loops can have density higher than 1.</p>
 </dd></dl>
 
 </div>
@@ -142,7 +144,7 @@ NetworkX
         <li><a href="http://networkx.github.com/">NetworkX Home </a> |&nbsp;</li>
         <li><a href="http://networkx.github.com/documentation.html">Documentation </a>|&nbsp;</li>
         <li><a href="http://networkx.github.com/download.html">Download </a> |&nbsp;</li>
-        <li><a href="http://networkx.github.com/download.html">Developer (Github)</a></li>
+        <li><a href="http://github.com/networkx">Developer (Github)</a></li>
 
 
 
