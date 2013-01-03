@@ -3,7 +3,7 @@ NetworkX sphinx doc hosting
 ===========================
 
 This repository contains builds of the NetworkX docs as processed by the Sphinx documentation systems. The documentation source code
-is in the `main networkx source code repository  <http://github.com/networkx/networkx/doc>`_.
+is in the `main networkx source code repository  <http://github.com/networkx/networkx/>`_.
 
 How to build the NetworkX documentation
 ---------------------------------------
