@@ -155,9 +155,9 @@ NetworkX
             <span class="n">g</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
             <span class="n">attributes</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="n">flddata</span><span class="p">))</span>
             <span class="n">attributes</span><span class="p">[</span><span class="s">&quot;ShpName&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lyr</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">g</span><span class="o">.</span><span class="n">GetGeometryType</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="c">#point</span>
+            <span class="k">if</span> <span class="n">g</span><span class="o">.</span><span class="n">GetGeometryType</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c"># point</span>
                 <span class="n">net</span><span class="o">.</span><span class="n">add_node</span><span class="p">((</span><span class="n">g</span><span class="o">.</span><span class="n">GetPoint_2D</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span> <span class="n">attributes</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">g</span><span class="o">.</span><span class="n">GetGeometryType</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span> <span class="c">#linestring</span>
+            <span class="k">if</span> <span class="n">g</span><span class="o">.</span><span class="n">GetGeometryType</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>  <span class="c"># linestring</span>
                 <span class="n">attributes</span><span class="p">[</span><span class="s">&quot;Wkb&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ExportToWkb</span><span class="p">()</span>
                 <span class="n">attributes</span><span class="p">[</span><span class="s">&quot;Wkt&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ExportToWkt</span><span class="p">()</span>
                 <span class="n">attributes</span><span class="p">[</span><span class="s">&quot;Json&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ExportToJson</span><span class="p">()</span>
@@ -166,12 +166,13 @@ NetworkX
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
         <span class="n">shp</span> <span class="o">=</span> <span class="n">ogr</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-        <span class="n">lyrcount</span> <span class="o">=</span> <span class="n">shp</span><span class="o">.</span><span class="n">GetLayerCount</span><span class="p">()</span> <span class="c">#multiple layers indicate a directory</span>
+        <span class="n">lyrcount</span> <span class="o">=</span> <span class="n">shp</span><span class="o">.</span><span class="n">GetLayerCount</span><span class="p">()</span>  <span class="c"># multiple layers indicate a directory</span>
         <span class="k">for</span> <span class="n">lyrindex</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">lyrcount</span><span class="p">):</span>
             <span class="n">lyr</span> <span class="o">=</span> <span class="n">shp</span><span class="o">.</span><span class="n">GetLayerByIndex</span><span class="p">(</span><span class="n">lyrindex</span><span class="p">)</span>
             <span class="n">flds</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lyr</span><span class="o">.</span><span class="n">schema</span><span class="p">]</span>
             <span class="n">addlyr</span><span class="p">(</span><span class="n">lyr</span><span class="p">,</span> <span class="n">flds</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">net</span>
+
 </div>
 <div class="viewcode-block" id="write_shp"><a class="viewcode-back" href="../../../reference/generated/networkx.readwrite.nx_shp.write_shp.html#networkx.readwrite.nx_shp.write_shp">[docs]</a><span class="k">def</span> <span class="nf">write_shp</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">outdir</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Writes a networkx.DiGraph to two shapefiles, edges and nodes.</span>
@@ -207,11 +208,11 @@ NetworkX
     <span class="n">ogr</span><span class="o">.</span><span class="n">UseExceptions</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">netgeometry</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s">&#39;Wkb&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s">&#39;Wkb&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
             <span class="n">geom</span> <span class="o">=</span> <span class="n">ogr</span><span class="o">.</span><span class="n">CreateGeometryFromWkb</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;Wkb&#39;</span><span class="p">])</span>
-        <span class="k">elif</span> <span class="n">data</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s">&#39;Wkt&#39;</span><span class="p">):</span>
+        <span class="k">elif</span> <span class="s">&#39;Wkt&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
             <span class="n">geom</span> <span class="o">=</span> <span class="n">ogr</span><span class="o">.</span><span class="n">CreateGeometryFromWkt</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;Wkt&#39;</span><span class="p">])</span>
-        <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">key</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;tuple&#39;</span><span class="p">:</span> <span class="c"># edge keys are packed tuples</span>
+        <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">key</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;tuple&#39;</span><span class="p">:</span>  <span class="c"># edge keys are packed tuples</span>
             <span class="n">geom</span> <span class="o">=</span> <span class="n">ogr</span><span class="o">.</span><span class="n">Geometry</span><span class="p">(</span><span class="n">ogr</span><span class="o">.</span><span class="n">wkbLineString</span><span class="p">)</span>
             <span class="n">_from</span><span class="p">,</span> <span class="n">_to</span> <span class="o">=</span> <span class="n">key</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">key</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
             <span class="k">try</span><span class="p">:</span>
@@ -233,38 +234,43 @@ NetworkX
                 <span class="n">geom</span><span class="o">.</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">fkey</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">geom</span>
+
     <span class="c"># Create_feature with new optional attributes arg (should be dict type)</span>
     <span class="k">def</span> <span class="nf">create_feature</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">lyr</span><span class="p">,</span> <span class="n">attributes</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="n">feature</span> <span class="o">=</span> <span class="n">ogr</span><span class="o">.</span><span class="n">Feature</span><span class="p">(</span><span class="n">lyr</span><span class="o">.</span><span class="n">GetLayerDefn</span><span class="p">())</span>
         <span class="n">feature</span><span class="o">.</span><span class="n">SetGeometry</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">attributes</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
             <span class="c"># Loop through attributes, assigning data to each field</span>
-            <span class="k">for</span> <span class="n">field</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">attributes</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span> 
-               <span class="n">feature</span><span class="o">.</span><span class="n">SetField</span><span class="p">(</span><span class="n">field</span><span class="p">,</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">field</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">attributes</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+                <span class="n">feature</span><span class="o">.</span><span class="n">SetField</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
         <span class="n">lyr</span><span class="o">.</span><span class="n">CreateFeature</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
         <span class="n">feature</span><span class="o">.</span><span class="n">Destroy</span><span class="p">()</span>
 
     <span class="n">drv</span> <span class="o">=</span> <span class="n">ogr</span><span class="o">.</span><span class="n">GetDriverByName</span><span class="p">(</span><span class="s">&quot;ESRI Shapefile&quot;</span><span class="p">)</span>
     <span class="n">shpdir</span> <span class="o">=</span> <span class="n">drv</span><span class="o">.</span><span class="n">CreateDataSource</span><span class="p">(</span><span class="n">outdir</span><span class="p">)</span>
     <span class="c"># delete pre-existing output first otherwise ogr chokes</span>
-    <span class="k">try</span><span class="p">:</span> <span class="n">shpdir</span><span class="o">.</span><span class="n">DeleteLayer</span><span class="p">(</span><span class="s">&quot;nodes&quot;</span><span class="p">)</span>
-    <span class="k">except</span><span class="p">:</span> <span class="k">pass</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">shpdir</span><span class="o">.</span><span class="n">DeleteLayer</span><span class="p">(</span><span class="s">&quot;nodes&quot;</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span>
     <span class="n">nodes</span> <span class="o">=</span> <span class="n">shpdir</span><span class="o">.</span><span class="n">CreateLayer</span><span class="p">(</span><span class="s">&quot;nodes&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">ogr</span><span class="o">.</span><span class="n">wkbPoint</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="ow">or</span> <span class="p">{}</span>
         <span class="n">g</span> <span class="o">=</span> <span class="n">netgeometry</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
         <span class="n">create_feature</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span>
-    <span class="k">try</span><span class="p">:</span> <span class="n">shpdir</span><span class="o">.</span><span class="n">DeleteLayer</span><span class="p">(</span><span class="s">&quot;edges&quot;</span><span class="p">)</span>
-    <span class="k">except</span><span class="p">:</span> <span class="k">pass</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">shpdir</span><span class="o">.</span><span class="n">DeleteLayer</span><span class="p">(</span><span class="s">&quot;edges&quot;</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span>
     <span class="n">edges</span> <span class="o">=</span> <span class="n">shpdir</span><span class="o">.</span><span class="n">CreateLayer</span><span class="p">(</span><span class="s">&quot;edges&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">ogr</span><span class="o">.</span><span class="n">wkbLineString</span><span class="p">)</span>
-    
+
     <span class="c"># New edge attribute write support merged into edge loop</span>
     <span class="n">fields</span> <span class="o">=</span> <span class="p">{}</span>      <span class="c"># storage for field names and their data types</span>
     <span class="n">attributes</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c"># storage for attribute data (indexed by field names)</span>
 
     <span class="c"># Conversion dict between python and ogr types</span>
-    <span class="n">OGRTypes</span> <span class="o">=</span> <span class="p">{</span><span class="nb">int</span><span class="p">:</span><span class="n">ogr</span><span class="o">.</span><span class="n">OFTInteger</span><span class="p">,</span> <span class="nb">str</span><span class="p">:</span><span class="n">ogr</span><span class="o">.</span><span class="n">OFTString</span><span class="p">,</span> <span class="nb">float</span><span class="p">:</span><span class="n">ogr</span><span class="o">.</span><span class="n">OFTReal</span><span class="p">}</span>
-    
+    <span class="n">OGRTypes</span> <span class="o">=</span> <span class="p">{</span><span class="nb">int</span><span class="p">:</span> <span class="n">ogr</span><span class="o">.</span><span class="n">OFTInteger</span><span class="p">,</span> <span class="nb">str</span><span class="p">:</span> <span class="n">ogr</span><span class="o">.</span><span class="n">OFTString</span><span class="p">,</span> <span class="nb">float</span><span class="p">:</span> <span class="n">ogr</span><span class="o">.</span><span class="n">OFTReal</span><span class="p">}</span>
+
     <span class="c"># Edge loop</span>
     <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">get_edge_data</span><span class="p">(</span><span class="o">*</span><span class="n">e</span><span class="p">)</span>
@@ -272,28 +278,29 @@ NetworkX
         <span class="c"># Loop through attribute data in edges</span>
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">e</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
             <span class="c"># Reject spatial data not required for attribute table</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">!=</span> <span class="s">&#39;Json&#39;</span> <span class="ow">and</span> <span class="n">key</span> <span class="o">!=</span> <span class="s">&#39;Wkt&#39;</span> <span class="ow">and</span> <span class="n">key</span> <span class="o">!=</span> <span class="s">&#39;Wkb&#39;</span> 
+            <span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">!=</span> <span class="s">&#39;Json&#39;</span> <span class="ow">and</span> <span class="n">key</span> <span class="o">!=</span> <span class="s">&#39;Wkt&#39;</span> <span class="ow">and</span> <span class="n">key</span> <span class="o">!=</span> <span class="s">&#39;Wkb&#39;</span>
                 <span class="ow">and</span> <span class="n">key</span> <span class="o">!=</span> <span class="s">&#39;ShpName&#39;</span><span class="p">):</span>
                   <span class="c"># For all edges check/add field and data type to fields dict</span>
-                  <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
                   <span class="c"># Field not in previous edges so add to dict</span>
-                     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="ow">in</span> <span class="n">OGRTypes</span><span class="p">:</span>
-                         <span class="n">fields</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">OGRTypes</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)]</span>
-                     <span class="k">else</span><span class="p">:</span>
-                         <span class="c"># Data type not supported, default to string (char 80)</span>
-                         <span class="n">fields</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">ogr</span><span class="o">.</span><span class="n">OFTString</span>
-                     <span class="c"># Create the new field</span>
-                     <span class="n">newfield</span> <span class="o">=</span> <span class="n">ogr</span><span class="o">.</span><span class="n">FieldDefn</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">fields</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
-                     <span class="n">edges</span><span class="o">.</span><span class="n">CreateField</span><span class="p">(</span><span class="n">newfield</span><span class="p">)</span>
-                     <span class="c"># Store the data from new field to dict for CreateLayer()</span>
-                     <span class="n">attributes</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
-                  <span class="k">else</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="ow">in</span> <span class="n">OGRTypes</span><span class="p">:</span>
+                            <span class="n">fields</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">OGRTypes</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)]</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="c"># Data type not supported, default to string (char 80)</span>
+                            <span class="n">fields</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">ogr</span><span class="o">.</span><span class="n">OFTString</span>
+                        <span class="c"># Create the new field</span>
+                        <span class="n">newfield</span> <span class="o">=</span> <span class="n">ogr</span><span class="o">.</span><span class="n">FieldDefn</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">fields</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+                        <span class="n">edges</span><span class="o">.</span><span class="n">CreateField</span><span class="p">(</span><span class="n">newfield</span><span class="p">)</span>
+                        <span class="c"># Store the data from new field to dict for CreateLayer()</span>
+                        <span class="n">attributes</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+                    <span class="k">else</span><span class="p">:</span>
                      <span class="c"># Field already exists, add data to dict for CreateLayer()</span>
-                     <span class="n">attributes</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+                        <span class="n">attributes</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
         <span class="c"># Create the feature with, passing new attribute data</span>
         <span class="n">create_feature</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
 
     <span class="n">nodes</span><span class="p">,</span> <span class="n">edges</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span>
+
 
 <span class="c"># fixture for nose tests</span></div>
 <span class="k">def</span> <span class="nf">setup_module</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
@@ -331,7 +338,7 @@ NetworkX
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jan 02, 2013.
+      Last updated on Jan 04, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
