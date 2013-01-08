@@ -98,11 +98,49 @@ NetworkX
 <span class="n">__author__</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span><span class="se">\n</span><span class="s">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">&#39;Aric Hagberg &lt;aric.hagberg@gmail.com&gt;&#39;</span><span class="p">,</span>
                             <span class="s">&#39;Dan Schult (dschult@colgate.edu)&#39;</span><span class="p">,</span>
                             <span class="s">&#39;Ben Edwards (bedwards@cs.unm.edu)&#39;</span><span class="p">])</span>
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;topological_sort&#39;</span><span class="p">,</span> 
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;descendants&#39;</span><span class="p">,</span>
+           <span class="s">&#39;ancestors&#39;</span><span class="p">,</span>
+           <span class="s">&#39;topological_sort&#39;</span><span class="p">,</span> 
            <span class="s">&#39;topological_sort_recursive&#39;</span><span class="p">,</span>
            <span class="s">&#39;is_directed_acyclic_graph&#39;</span><span class="p">,</span>
            <span class="s">&#39;is_aperiodic&#39;</span><span class="p">]</span>
 
+<div class="viewcode-block" id="descendants"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.dag.descendants.html#networkx.algorithms.dag.descendants">[docs]</a><span class="k">def</span> <span class="nf">descendants</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return all nodes reachable from `source` in G.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : NetworkX DiGraph</span>
+<span class="sd">    source : node in G</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    des : set()</span>
+<span class="sd">       The descendants of source in G</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">G</span><span class="o">.</span><span class="n">has_node</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s">&quot;The node </span><span class="si">%s</span><span class="s"> is not in the graph.&quot;</span> <span class="o">%</span> <span class="n">source</span><span class="p">)</span>
+    <span class="n">des</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">shortest_path_length</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="n">source</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">des</span>
+</div>
+<div class="viewcode-block" id="ancestors"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.dag.ancestors.html#networkx.algorithms.dag.ancestors">[docs]</a><span class="k">def</span> <span class="nf">ancestors</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return all nodes having a path to `source` in G.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : NetworkX DiGraph</span>
+<span class="sd">    source : node in G</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ancestors : set()</span>
+<span class="sd">       The ancestors of source in G</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">G</span><span class="o">.</span><span class="n">has_node</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s">&quot;The node </span><span class="si">%s</span><span class="s"> is not in the graph.&quot;</span> <span class="o">%</span> <span class="n">source</span><span class="p">)</span>
+    <span class="n">anc</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">shortest_path_length</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">source</span><span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="n">source</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">anc</span>
+</div>
 <div class="viewcode-block" id="is_directed_acyclic_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.dag.is_directed_acyclic_graph.html#networkx.algorithms.dag.is_directed_acyclic_graph">[docs]</a><span class="k">def</span> <span class="nf">is_directed_acyclic_graph</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return True if the graph G is a directed acyclic graph (DAG) or </span>
 <span class="sd">    False if not.</span>
@@ -349,7 +387,7 @@ NetworkX
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jan 04, 2013.
+      Last updated on Jan 08, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>

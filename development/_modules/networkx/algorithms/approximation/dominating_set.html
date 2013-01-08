@@ -115,7 +115,7 @@ NetworkX
 
 
 <div class="viewcode-block" id="min_weighted_dominating_set"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.approximation.dominating_set.min_weighted_dominating_set.html#networkx.algorithms.approximation.dominating_set.min_weighted_dominating_set">[docs]</a><span class="k">def</span> <span class="nf">min_weighted_dominating_set</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return minimum weight vertex dominating set.</span>
+    <span class="sd">r&quot;&quot;&quot;Return minimum weight vertex dominating set.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -135,8 +135,8 @@ NetworkX
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    This algorithm computes an approximate minimum weighted dominating set</span>
-<span class="sd">    for the graph G. The upper-bound on the size of the solution is log w(V) * OPT.</span>
-<span class="sd">    Runtime of the algorithm is O(|E|).</span>
+<span class="sd">    for the graph G. The upper-bound on the size of the solution is</span>
+<span class="sd">    log w(V) * OPT.  Runtime of the algorithm is `O(|E|)`.</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
@@ -178,7 +178,7 @@ NetworkX
 
 </div>
 <div class="viewcode-block" id="min_edge_dominating_set"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.approximation.dominating_set.min_edge_dominating_set.html#networkx.algorithms.approximation.dominating_set.min_edge_dominating_set">[docs]</a><span class="k">def</span> <span class="nf">min_edge_dominating_set</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return minimum cardinality edge dominating set.</span>
+    <span class="sd">r&quot;&quot;&quot;Return minimum cardinality edge dominating set.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -194,7 +194,7 @@ NetworkX
 <span class="sd">    -----</span>
 <span class="sd">    The algorithm computes an approximate solution to the edge dominating set</span>
 <span class="sd">    problem. The result is no more than 2 * OPT in terms of size of the set.</span>
-<span class="sd">    Runtime of the algorithm is O(|E|).</span>
+<span class="sd">    Runtime of the algorithm is `O(|E|)`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">G</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Expected non-empty NetworkX graph!&quot;</span><span class="p">)</span>
@@ -228,7 +228,7 @@ NetworkX
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jan 04, 2013.
+      Last updated on Jan 08, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>

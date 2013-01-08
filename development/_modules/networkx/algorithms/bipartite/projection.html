@@ -494,8 +494,8 @@ NetworkX
 <span class="sd">        Nodes to project onto (the &quot;bottom&quot; nodes).</span>
 
 <span class="sd">    weight_function: function</span>
-<span class="sd">        This function must accept as a parameters two sets,</span>
-<span class="sd">        the neighborhoods of two nodes, and return an integer or a float.</span>
+<span class="sd">        This function must accept as parameters the same input graph </span>
+<span class="sd">        that this function, and two nodes; and return an integer or a float.</span>
 <span class="sd">        The default function computes the number of shared neighbors.</span>
 
 <span class="sd">    Returns</span>
@@ -506,23 +506,42 @@ NetworkX
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; from networkx.algorithms import bipartite</span>
-<span class="sd">    &gt;&gt;&gt; def jaccard(unbrs, vnbrs):</span>
+<span class="sd">    &gt;&gt;&gt; # Define some custom weight functions</span>
+<span class="sd">    &gt;&gt;&gt; def jaccard(G, u, v):</span>
+<span class="sd">    ...     unbrs = set(G[u])</span>
+<span class="sd">    ...     vnbrs = set(G[v])</span>
 <span class="sd">    ...     return float(len(unbrs &amp; vnbrs)) / len(unbrs | vnbrs)</span>
 <span class="sd">    ... </span>
-<span class="sd">    &gt;&gt;&gt; def shared(unbrs, vnbrs):</span>
-<span class="sd">    ...     return len(unbrs &amp; vnbrs)</span>
+<span class="sd">    &gt;&gt;&gt; def my_weight(G, u, v, weight=&#39;weight&#39;):</span>
+<span class="sd">    ...     w = 0</span>
+<span class="sd">    ...     for nbr in set(G[u]) &amp; set(G[v]):</span>
+<span class="sd">    ...         w += G.edge[u][nbr].get(weight, 1) + G.edge[v][nbr].get(weight, 1)</span>
+<span class="sd">    ...     return w</span>
 <span class="sd">    ... </span>
-<span class="sd">    &gt;&gt;&gt; B = nx.path_graph(5)</span>
-<span class="sd">    &gt;&gt;&gt; G = bipartite.generic_weighted_projected_graph(B, [0, 2, 4], weight_function=jaccard)</span>
-<span class="sd">    &gt;&gt;&gt; print(G.nodes())</span>
-<span class="sd">    [0, 2, 4]</span>
+<span class="sd">    &gt;&gt;&gt; # A complete bipartite graph with 4 nodes and 4 edges</span>
+<span class="sd">    &gt;&gt;&gt; B = nx.complete_bipartite_graph(2,2)</span>
+<span class="sd">    &gt;&gt;&gt; # Add some arbitrary weight to the edges</span>
+<span class="sd">    &gt;&gt;&gt; for i,(u,v) in enumerate(B.edges()):</span>
+<span class="sd">    ...     B.edge[u][v][&#39;weight&#39;] = i + 1</span>
+<span class="sd">    ... </span>
+<span class="sd">    &gt;&gt;&gt; for edge in B.edges(data=True):</span>
+<span class="sd">    ...     print(edge)</span>
+<span class="sd">    ... </span>
+<span class="sd">    (0, 2, {&#39;weight&#39;: 1})</span>
+<span class="sd">    (0, 3, {&#39;weight&#39;: 2})</span>
+<span class="sd">    (1, 2, {&#39;weight&#39;: 3})</span>
+<span class="sd">    (1, 3, {&#39;weight&#39;: 4})</span>
+<span class="sd">    &gt;&gt;&gt; # Without specifying a function, the weight is equal to # shared partners</span>
+<span class="sd">    &gt;&gt;&gt; G = bipartite.generic_weighted_projected_graph(B, [0, 1])</span>
 <span class="sd">    &gt;&gt;&gt; print(G.edges(data=True))</span>
-<span class="sd">    [(0, 2, {&#39;weight&#39;: 0.5}), (2, 4, {&#39;weight&#39;: 0.5})]</span>
-<span class="sd">    &gt;&gt;&gt; G = bipartite.generic_weighted_projected_graph(B, [0, 2, 4], weight_function=shared)</span>
-<span class="sd">    &gt;&gt;&gt; print(G.nodes())</span>
-<span class="sd">    [0, 2, 4]</span>
+<span class="sd">    [(0, 1, {&#39;weight&#39;: 2})]</span>
+<span class="sd">    &gt;&gt;&gt; # To specify a custom weight function use the weight_function parameter</span>
+<span class="sd">    &gt;&gt;&gt; G = bipartite.generic_weighted_projected_graph(B, [0, 1], weight_function=jaccard)</span>
 <span class="sd">    &gt;&gt;&gt; print(G.edges(data=True))</span>
-<span class="sd">    [(0, 2, {&#39;weight&#39;: 1}), (2, 4, {&#39;weight&#39;: 1})]</span>
+<span class="sd">    [(0, 1, {&#39;weight&#39;: 1.0})]</span>
+<span class="sd">    &gt;&gt;&gt; G = bipartite.generic_weighted_projected_graph(B, [0, 1], weight_function=my_weight)</span>
+<span class="sd">    &gt;&gt;&gt; print(G.edges(data=True))</span>
+<span class="sd">    [(0, 1, {&#39;weight&#39;: 10})]</span>
 <span class="sd">    </span>
 <span class="sd">    Notes</span>
 <span class="sd">    ------</span>
@@ -542,22 +561,22 @@ NetworkX
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">B</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
         <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s">&quot;not defined for multigraphs&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">weight_function</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">weight_function</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">unbrs</span><span class="p">,</span><span class="n">vnbrs</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">unbrs</span> <span class="o">&amp;</span> <span class="n">vnbrs</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">B</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
         <span class="n">pred</span><span class="o">=</span><span class="n">B</span><span class="o">.</span><span class="n">pred</span>
         <span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">pred</span><span class="o">=</span><span class="n">B</span><span class="o">.</span><span class="n">adj</span>
         <span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">weight_function</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">weight_function</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+            <span class="c"># Notice that we use set(pred[v]) for handling the directed case.</span>
+            <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">])</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="n">v</span><span class="p">]))</span>
     <span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">B</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
     <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="n">B</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
-        <span class="n">unbrs</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">u</span><span class="p">])</span>
-        <span class="n">nbrs2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">((</span><span class="n">n</span> <span class="k">for</span> <span class="n">nbr</span> <span class="ow">in</span> <span class="n">unbrs</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">B</span><span class="p">[</span><span class="n">nbr</span><span class="p">]))</span> <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="n">u</span><span class="p">])</span>
+        <span class="n">nbrs2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">((</span><span class="n">n</span> <span class="k">for</span> <span class="n">nbr</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">u</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">B</span><span class="p">[</span><span class="n">nbr</span><span class="p">]))</span> <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="n">u</span><span class="p">])</span>
         <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">nbrs2</span><span class="p">:</span>
-            <span class="n">vnbrs</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="n">v</span><span class="p">])</span>
-            <span class="n">weight</span> <span class="o">=</span> <span class="n">weight_function</span><span class="p">(</span><span class="n">unbrs</span><span class="p">,</span> <span class="n">vnbrs</span><span class="p">)</span>
+            <span class="n">weight</span> <span class="o">=</span> <span class="n">weight_function</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
             <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">G</span>
 </div>
@@ -592,7 +611,7 @@ NetworkX
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jan 04, 2013.
+      Last updated on Jan 08, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
