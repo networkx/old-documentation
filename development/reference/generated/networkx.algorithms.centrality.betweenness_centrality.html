@@ -67,8 +67,8 @@ NetworkX
       </ul>
     </div>
 
-<br/><p>This documentation is for version <b>1.8.dev_20130108070258</b>, which is
-  not released yet.</p>
+<p>This documentation is for the development version <b>1.8.dev_20130108070258</b></p>
+
 
 
       <div class="sphinxsidebar">
@@ -114,7 +114,7 @@ fraction of all-pairs shortest paths that pass through <img class="math" src="..
 shortest <img class="math" src="../../_images/math/f98b5f1f3cf9331a3f398911e2a8cd223839672e.png" alt="(s, t)" style="vertical-align: -4px"/>-paths,  and <img class="math" src="../../_images/math/5ce80a9c67b490475155380e57bc5180e30f7398.png" alt="\sigma(s, t|v)" style="vertical-align: -5px"/> is the number of those 
 paths  passing through some  node <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: 0px"/> other than <img class="math" src="../../_images/math/040329525e8a86be6cfe414a1742bc8becf09d6c.png" alt="s, t" style="vertical-align: -4px"/>. 
 If <img class="math" src="../../_images/math/869b85bce01c8599686b7b0fb3684cd6500cca2a.png" alt="s = t" style="vertical-align: 0px"/>, <img class="math" src="../../_images/math/906e879a39f6b1d50039fe4851b6ae9248d7cefc.png" alt="\sigma(s, t) = 1" style="vertical-align: -4px"/>, and if <img class="math" src="../../_images/math/29f3c574ef9935673431b18934c873cf6744f95f.png" alt="v \in {s, t}" style="vertical-align: -4px"/>,  
-<img class="math" src="../../_images/math/b95138df863625160e1f0e0a6160a60a927adff9.png" alt="\sigma(s, t|v) = 0" style="vertical-align: -5px"/> <a class="reference internal" href="#r135" id="id1">[R135]</a>.</p>
+<img class="math" src="../../_images/math/b95138df863625160e1f0e0a6160a60a927adff9.png" alt="\sigma(s, t|v) = 0" style="vertical-align: -5px"/> <a class="reference internal" href="#r146" id="id1">[R146]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -159,37 +159,37 @@ Otherwise holds the name of the edge attribute used as weight.</p>
 <p class="last"><a class="reference internal" href="networkx.algorithms.centrality.edge_betweenness_centrality.html#networkx.algorithms.centrality.edge_betweenness_centrality" title="networkx.algorithms.centrality.edge_betweenness_centrality"><tt class="xref py py-obj docutils literal"><span class="pre">edge_betweenness_centrality</span></tt></a>, <a class="reference internal" href="networkx.algorithms.centrality.load_centrality.html#networkx.algorithms.centrality.load_centrality" title="networkx.algorithms.centrality.load_centrality"><tt class="xref py py-obj docutils literal"><span class="pre">load_centrality</span></tt></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>The algorithm is from Ulrik Brandes <a class="reference internal" href="#r134" id="id2">[R134]</a>.
-See <a class="reference internal" href="#r135" id="id3">[R135]</a> for details on algorithms for variations and related metrics.</p>
+<p>The algorithm is from Ulrik Brandes <a class="reference internal" href="#r145" id="id2">[R145]</a>.
+See <a class="reference internal" href="#r146" id="id3">[R146]</a> for details on algorithms for variations and related metrics.</p>
 <p>For approximate betweenness calculations set k=#samples to use 
 k nodes (&#8220;pivots&#8221;) to estimate the betweenness values. For an estimate
-of the number of pivots needed see <a class="reference internal" href="#r136" id="id4">[R136]</a>.</p>
+of the number of pivots needed see <a class="reference internal" href="#r147" id="id4">[R147]</a>.</p>
 <p>For weighted graphs the edge weights must be greater than zero.
 Zero edge weights can produce an infinite number of equal length 
 paths between pairs of nodes.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r134" rules="none">
+<table class="docutils citation" frame="void" id="r145" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R134]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> A Faster Algorithm for Betweenness Centrality.
+<tr><td class="label">[R145]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> A Faster Algorithm for Betweenness Centrality.
 Ulrik Brandes, 
 Journal of Mathematical Sociology 25(2):163-177, 2001.
 <a class="reference external" href="http://www.inf.uni-konstanz.de/algo/publications/b-fabc-01.pdf">http://www.inf.uni-konstanz.de/algo/publications/b-fabc-01.pdf</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r135" rules="none">
+<table class="docutils citation" frame="void" id="r146" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R135]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>, <a class="fn-backref" href="#id6">3</a>)</em> Ulrik Brandes: On Variants of Shortest-Path Betweenness 
+<tr><td class="label">[R146]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>, <a class="fn-backref" href="#id6">3</a>)</em> Ulrik Brandes: On Variants of Shortest-Path Betweenness 
 Centrality and their Generic Computation. 
 Social Networks 30(2):136-145, 2008.
 <a class="reference external" href="http://www.inf.uni-konstanz.de/algo/publications/b-vspbc-08.pdf">http://www.inf.uni-konstanz.de/algo/publications/b-vspbc-08.pdf</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r136" rules="none">
+<table class="docutils citation" frame="void" id="r147" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R136]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id7">2</a>)</em> Ulrik Brandes and Christian Pich: 
+<tr><td class="label">[R147]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id7">2</a>)</em> Ulrik Brandes and Christian Pich: 
 Centrality Estimation in Large Networks. 
 International Journal of Bifurcation and Chaos 17(7):2303-2318, 2007.
 <a class="reference external" href="http://www.inf.uni-konstanz.de/algo/publications/bp-celn-06.pdf">http://www.inf.uni-konstanz.de/algo/publications/bp-celn-06.pdf</a></td></tr>
@@ -235,7 +235,7 @@ International Journal of Bifurcation and Chaos 17(7):2303-2318, 2007.
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jan 08, 2013.
+      Last updated on Jan 26, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
