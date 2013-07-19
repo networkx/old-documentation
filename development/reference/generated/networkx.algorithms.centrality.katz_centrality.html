@@ -123,7 +123,7 @@ parameter <img class="math" src="../../_images/math/fdb63b9e51abe6bbb16acfb5d7b7
 are, however, penalized by an attenuation factor <img class="math" src="../../_images/math/10f32377ac67d94f764f12a15ea987e88c85d3e1.png" alt="\alpha" style="vertical-align: 0px"/> which
 should be strictly less than the inverse largest eigenvalue of the
 adjacency matrix in order for the Katz centrality to be computed
-correctly. More information is provided in <a class="reference internal" href="#r1" id="id1">[R1]</a> .</p>
+correctly. More information is provided in <a class="reference internal" href="#r175" id="id1">[R175]</a> .</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -181,10 +181,10 @@ number_of_nodes(G)*tol has been reached.</p>
 <p>When <img class="math" src="../../_images/math/aa5b9e424dd3f305811e6c57bc3e901399c524db.png" alt="\alpha = 1/\lambda_{max}" style="vertical-align: -5px"/> and <img class="math" src="../../_images/math/bd0841c3936bc875fefe9192ca5209033f156466.png" alt="\beta=1" style="vertical-align: -4px"/> Katz centrality is the same as
 eigenvector centrality.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r1" rules="none">
+<table class="docutils citation" frame="void" id="r175" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> M. Newman, Networks: An Introduction. Oxford University Press,
+<tr><td class="label">[R175]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> M. Newman, Networks: An Introduction. Oxford University Press,
 USA, 2010, p. 720.</td></tr>
 </tbody>
 </table>
@@ -194,7 +194,7 @@ USA, 2010, p. 720.</td></tr>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">phi</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span><span class="o">/</span><span class="mf">2.0</span> <span class="c"># largest eigenvalue of adj matrix</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">centrality</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">katz_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="n">phi</span><span class="o">-</span><span class="mf">0.01</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">centrality</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
-<span class="gp">... </span>   <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">&quot;</span><span class="si">%0.2f</span><span class="s">&quot;</span><span class="o">%</span><span class="n">c</span><span class="p">)</span>
+<span class="gp">... </span>   <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s"> </span><span class="si">%0.2f</span><span class="s">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">c</span><span class="p">))</span>
 <span class="go">0 0.37</span>
 <span class="go">1 0.60</span>
 <span class="go">2 0.60</span>
@@ -241,7 +241,7 @@ USA, 2010, p. 720.</td></tr>
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jan 26, 2013.
+      Last updated on Jul 18, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>

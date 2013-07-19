@@ -31,7 +31,7 @@
     <link rel="top" title="NetworkX 1.8.dev20130108070258 documentation" href="../../index.html" />
     <link rel="up" title="Graphical degree sequence" href="../algorithms.graphical.html" />
     <link rel="next" title="is_valid_degree_sequence_erdos_gallai" href="networkx.algorithms.graphical.is_valid_degree_sequence_erdos_gallai.html" />
-    <link rel="prev" title="is_valid_degree_sequence" href="networkx.algorithms.graphical.is_valid_degree_sequence.html" /> 
+    <link rel="prev" title="is_pseudographical" href="networkx.algorithms.graphical.is_pseudographical.html" /> 
   </head>
   <body>
 <div style="color: black;background-color: white; font-size: 3.2em; text-align: left; padding: 15px 10px 10px 15px">
@@ -51,7 +51,7 @@ NetworkX
           <a href="networkx.algorithms.graphical.is_valid_degree_sequence_erdos_gallai.html" title="is_valid_degree_sequence_erdos_gallai"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="networkx.algorithms.graphical.is_valid_degree_sequence.html" title="is_valid_degree_sequence"
+          <a href="networkx.algorithms.graphical.is_pseudographical.html" title="is_pseudographical"
              accesskey="P">previous</a> |</li>
         <li><a href="http://networkx.github.com/">NetworkX Home </a> |&nbsp;</li>
         <li><a href="http://networkx.github.com/documentation.html">Documentation </a>|&nbsp;</li>
@@ -74,8 +74,8 @@ NetworkX
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="networkx.algorithms.graphical.is_valid_degree_sequence.html"
-                        title="previous chapter">is_valid_degree_sequence</a></p>
+  <p class="topless"><a href="networkx.algorithms.graphical.is_pseudographical.html"
+                        title="previous chapter">is_pseudographical</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="networkx.algorithms.graphical.is_valid_degree_sequence_erdos_gallai.html"
                         title="next chapter">is_valid_degree_sequence_erdos_gallai</a></p>
@@ -104,31 +104,43 @@ NetworkX
 <h1>is_valid_degree_sequence_havel_hakimi<a class="headerlink" href="#is-valid-degree-sequence-havel-hakimi" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.algorithms.graphical.is_valid_degree_sequence_havel_hakimi">
-<tt class="descname">is_valid_degree_sequence_havel_hakimi</tt><big>(</big><em>sequence</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/graphical.html#is_valid_degree_sequence_havel_hakimi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.graphical.is_valid_degree_sequence_havel_hakimi" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns True if the sequence is a valid degree sequence.</p>
-<p>A degree sequence is valid if some graph can realize it.
-Validation proceeds via the Havel-Hakimi algorithm.</p>
-<p>Worst-case run time is: <img class="math" src="../../_images/math/86266d108ec4e2fa74f2ff75ecf3ae7a92e4762c.png" alt="O(n^(log n))" style="vertical-align: -4px"/></p>
+<tt class="descname">is_valid_degree_sequence_havel_hakimi</tt><big>(</big><em>deg_sequence</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/graphical.html#is_valid_degree_sequence_havel_hakimi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.graphical.is_valid_degree_sequence_havel_hakimi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if deg_sequence can be realized by a simple graph.</p>
+<p>The validation proceeds using the Havel-Hakimi theorem.
+Worst-case run time is: O(s) where s is the sum of the sequence.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>sequence</strong> : list or iterable container</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deg_sequence</strong> : list</p>
 <blockquote>
-<div><p>A sequence of integer node degrees</p>
+<div><p>A list of integers where each element specifies the degree of a node
+in a graph.</p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>valid</strong> : bool</p>
 <blockquote class="last">
-<div><p>True if the sequence is a valid degree sequence and False if not.</p>
+<div><p>True if deg_sequence is graphical and False if not.</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>The ZZ condition says that for the sequence d if</p>
+<div class="math">
+<p><img src="../../_images/math/50368355823ecda486a2157d390e3fc7a0713e70.png" alt="|d| &gt;= \frac{(\max(d) + \min(d) + 1)^2}{4*\min(d)}"/></p>
+</div><p>then d is graphical.  This was shown in Theorem 6 in <a class="reference internal" href="#r227" id="id1">[R227]</a>.</p>
 <p class="rubric">References</p>
-<p><a class="reference internal" href="../../bibliography.html#havel1955" id="id1">[havel1955]</a>, <a class="reference internal" href="../../bibliography.html#hakimi1962" id="id2">[hakimi1962]</a>, <a class="reference internal" href="../../bibliography.html#cl1996" id="id3">[CL1996]</a></p>
+<table class="docutils citation" frame="void" id="r227" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[R227]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> I.E. Zverovich and V.E. Zverovich. &#8220;Contributions to the theory
+of graphic sequences&#8221;, Discrete Mathematics, 105, pp. 292-303 (1992).</td></tr>
+</tbody>
+</table>
+<p><a class="reference internal" href="../../bibliography.html#havel1955" id="id2">[havel1955]</a>, <a class="reference internal" href="../../bibliography.html#hakimi1962" id="id3">[hakimi1962]</a>, <a class="reference internal" href="../../bibliography.html#cl1996" id="id4">[CL1996]</a></p>
 </dd></dl>
 
 </div>
@@ -152,7 +164,7 @@ Validation proceeds via the Havel-Hakimi algorithm.</p>
           <a href="networkx.algorithms.graphical.is_valid_degree_sequence_erdos_gallai.html" title="is_valid_degree_sequence_erdos_gallai"
              >next</a> |</li>
         <li class="right" >
-          <a href="networkx.algorithms.graphical.is_valid_degree_sequence.html" title="is_valid_degree_sequence"
+          <a href="networkx.algorithms.graphical.is_pseudographical.html" title="is_pseudographical"
              >previous</a> |</li>
         <li><a href="http://networkx.github.com/">NetworkX Home </a> |&nbsp;</li>
         <li><a href="http://networkx.github.com/documentation.html">Documentation </a>|&nbsp;</li>
@@ -169,7 +181,7 @@ Validation proceeds via the Havel-Hakimi algorithm.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jan 26, 2013.
+      Last updated on Jul 18, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>

@@ -30,7 +30,7 @@
           href="../../_static/opensearch.xml"/>
     <link rel="top" title="NetworkX 1.8.dev20130108070258 documentation" href="../../index.html" />
     <link rel="up" title="Graph generators" href="../generators.html" />
-    <link rel="next" title="degree_sequence_tree" href="networkx.generators.degree_seq.degree_sequence_tree.html" />
+    <link rel="next" title="directed_havel_hakimi_graph" href="networkx.generators.degree_seq.directed_havel_hakimi_graph.html" />
     <link rel="prev" title="expected_degree_graph" href="networkx.generators.degree_seq.expected_degree_graph.html" /> 
   </head>
   <body>
@@ -48,7 +48,7 @@ NetworkX
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="networkx.generators.degree_seq.degree_sequence_tree.html" title="degree_sequence_tree"
+          <a href="networkx.generators.degree_seq.directed_havel_hakimi_graph.html" title="directed_havel_hakimi_graph"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="networkx.generators.degree_seq.expected_degree_graph.html" title="expected_degree_graph"
@@ -76,8 +76,8 @@ NetworkX
   <p class="topless"><a href="networkx.generators.degree_seq.expected_degree_graph.html"
                         title="previous chapter">expected_degree_graph</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="networkx.generators.degree_seq.degree_sequence_tree.html"
-                        title="next chapter">degree_sequence_tree</a></p>
+  <p class="topless"><a href="networkx.generators.degree_seq.directed_havel_hakimi_graph.html"
+                        title="next chapter">directed_havel_hakimi_graph</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
@@ -117,7 +117,7 @@ using the Havel-Hakimi algorithm.</p>
 <p><strong>create_using</strong> : graph, optional (default Graph)</p>
 <blockquote>
 <div><p>Return graph of this type. The instance will be cleared.
-Multigraphs and directed graphs are not allowed.</p>
+Directed graphs are not allowed.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -137,14 +137,23 @@ of highest degree, resorting remaining nodes by degree, and
 repeating the process. The resulting graph has a high
 degree-associativity.  Nodes are labeled 1,.., len(deg_sequence),
 corresponding to their position in deg_sequence.</p>
-<p>See Theorem 1.4 in <a class="reference internal" href="#r237" id="id1">[R237]</a>.
-This algorithm is also used in the function is_valid_degree_sequence.</p>
+<p>The basic algorithm is from Hakimi <a class="reference internal" href="#r256" id="id1">[R256]</a> and was generalized by
+Kleitman and Wang <a class="reference internal" href="#r257" id="id2">[R257]</a>.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r237" rules="none">
+<table class="docutils citation" frame="void" id="r256" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R237]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> G. Chartrand and L. Lesniak, &#8220;Graphs and Digraphs&#8221;,
-Chapman and Hall/CRC, 1996.</td></tr>
+<tr><td class="label">[R256]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> Hakimi S., On Realizability of a Set of Integers as 
+Degrees of the Vertices of a Linear Graph. I,
+Journal of SIAM, 10(3), pp. 496-506 (1962)</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r257" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[R257]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> Kleitman D.J. and Wang D.L.
+Algorithms for Constructing Graphs and Digraphs with Given Valences
+and Factors  Discrete Mathematics, 6(1), pp. 79-88 (1973)</td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -167,7 +176,7 @@ Chapman and Hall/CRC, 1996.</td></tr>
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="networkx.generators.degree_seq.degree_sequence_tree.html" title="degree_sequence_tree"
+          <a href="networkx.generators.degree_seq.directed_havel_hakimi_graph.html" title="directed_havel_hakimi_graph"
              >next</a> |</li>
         <li class="right" >
           <a href="networkx.generators.degree_seq.expected_degree_graph.html" title="expected_degree_graph"
@@ -186,7 +195,7 @@ Chapman and Hall/CRC, 1996.</td></tr>
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jan 26, 2013.
+      Last updated on Jul 18, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>

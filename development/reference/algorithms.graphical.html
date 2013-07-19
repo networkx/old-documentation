@@ -30,7 +30,7 @@
           href="../_static/opensearch.xml"/>
     <link rel="top" title="NetworkX 1.8.dev20130108070258 documentation" href="../index.html" />
     <link rel="up" title="Algorithms" href="algorithms.html" />
-    <link rel="next" title="is_valid_degree_sequence" href="generated/networkx.algorithms.graphical.is_valid_degree_sequence.html" />
+    <link rel="next" title="is_graphical" href="generated/networkx.algorithms.graphical.is_graphical.html" />
     <link rel="prev" title="max_flow_min_cost" href="generated/networkx.algorithms.flow.max_flow_min_cost.html" /> 
   </head>
   <body>
@@ -48,7 +48,7 @@ NetworkX
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="generated/networkx.algorithms.graphical.is_valid_degree_sequence.html" title="is_valid_degree_sequence"
+          <a href="generated/networkx.algorithms.graphical.is_graphical.html" title="is_graphical"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="generated/networkx.algorithms.flow.max_flow_min_cost.html" title="max_flow_min_cost"
@@ -76,8 +76,8 @@ NetworkX
   <p class="topless"><a href="generated/networkx.algorithms.flow.max_flow_min_cost.html"
                         title="previous chapter">max_flow_min_cost</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="generated/networkx.algorithms.graphical.is_valid_degree_sequence.html"
-                        title="next chapter">is_valid_degree_sequence</a></p>
+  <p class="topless"><a href="generated/networkx.algorithms.graphical.is_graphical.html"
+                        title="next chapter">is_graphical</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
@@ -101,21 +101,30 @@ NetworkX
             
   <div class="section" id="module-networkx.algorithms.graphical">
 <span id="graphical-degree-sequence"></span><h1>Graphical degree sequence<a class="headerlink" href="#module-networkx.algorithms.graphical" title="Permalink to this headline">¶</a></h1>
-<p>Generate graphs with a given degree sequence or expected degree sequence.</p>
+<p>Test sequences for graphiness.</p>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.graphical.is_valid_degree_sequence.html#networkx.algorithms.graphical.is_valid_degree_sequence" title="networkx.algorithms.graphical.is_valid_degree_sequence"><tt class="xref py py-obj docutils literal"><span class="pre">is_valid_degree_sequence</span></tt></a>(sequence[,&nbsp;method])</td>
-<td>Returns True if the sequence is a valid degree sequence.</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.graphical.is_graphical.html#networkx.algorithms.graphical.is_graphical" title="networkx.algorithms.graphical.is_graphical"><tt class="xref py py-obj docutils literal"><span class="pre">is_graphical</span></tt></a>(sequence[,&nbsp;method])</td>
+<td>Returns True if sequence is a valid degree sequence.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.graphical.is_valid_degree_sequence_havel_hakimi.html#networkx.algorithms.graphical.is_valid_degree_sequence_havel_hakimi" title="networkx.algorithms.graphical.is_valid_degree_sequence_havel_hakimi"><tt class="xref py py-obj docutils literal"><span class="pre">is_valid_degree_sequence_havel_hakimi</span></tt></a>(sequence)</td>
-<td>Returns True if the sequence is a valid degree sequence.</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.graphical.is_digraphical.html#networkx.algorithms.graphical.is_digraphical" title="networkx.algorithms.graphical.is_digraphical"><tt class="xref py py-obj docutils literal"><span class="pre">is_digraphical</span></tt></a>(in_sequence,&nbsp;out_sequence)</td>
+<td>Returns True if some directed graph can realize the in- and out-degree</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.graphical.is_valid_degree_sequence_erdos_gallai.html#networkx.algorithms.graphical.is_valid_degree_sequence_erdos_gallai" title="networkx.algorithms.graphical.is_valid_degree_sequence_erdos_gallai"><tt class="xref py py-obj docutils literal"><span class="pre">is_valid_degree_sequence_erdos_gallai</span></tt></a>(sequence)</td>
-<td>Returns True if the sequence is a valid degree sequence.</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.graphical.is_multigraphical.html#networkx.algorithms.graphical.is_multigraphical" title="networkx.algorithms.graphical.is_multigraphical"><tt class="xref py py-obj docutils literal"><span class="pre">is_multigraphical</span></tt></a>(sequence)</td>
+<td>Returns True if some multigraph can realize the sequence.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.graphical.is_pseudographical.html#networkx.algorithms.graphical.is_pseudographical" title="networkx.algorithms.graphical.is_pseudographical"><tt class="xref py py-obj docutils literal"><span class="pre">is_pseudographical</span></tt></a>(sequence)</td>
+<td>Returns True if some pseudograph can realize the sequence.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.graphical.is_valid_degree_sequence_havel_hakimi.html#networkx.algorithms.graphical.is_valid_degree_sequence_havel_hakimi" title="networkx.algorithms.graphical.is_valid_degree_sequence_havel_hakimi"><tt class="xref py py-obj docutils literal"><span class="pre">is_valid_degree_sequence_havel_hakimi</span></tt></a>(...)</td>
+<td>Returns True if deg_sequence can be realized by a simple graph.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.graphical.is_valid_degree_sequence_erdos_gallai.html#networkx.algorithms.graphical.is_valid_degree_sequence_erdos_gallai" title="networkx.algorithms.graphical.is_valid_degree_sequence_erdos_gallai"><tt class="xref py py-obj docutils literal"><span class="pre">is_valid_degree_sequence_erdos_gallai</span></tt></a>(...)</td>
+<td>Returns True if deg_sequence can be realized by a simple graph.</td>
 </tr>
 </tbody>
 </table>
@@ -137,7 +146,7 @@ NetworkX
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="generated/networkx.algorithms.graphical.is_valid_degree_sequence.html" title="is_valid_degree_sequence"
+          <a href="generated/networkx.algorithms.graphical.is_graphical.html" title="is_graphical"
              >next</a> |</li>
         <li class="right" >
           <a href="generated/networkx.algorithms.flow.max_flow_min_cost.html" title="max_flow_min_cost"
@@ -156,7 +165,7 @@ NetworkX
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jan 26, 2013.
+      Last updated on Jul 18, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>

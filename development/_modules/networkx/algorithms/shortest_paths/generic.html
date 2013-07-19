@@ -467,7 +467,7 @@ NetworkX
     <span class="k">while</span> <span class="n">top</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">node</span><span class="p">,</span><span class="n">i</span> <span class="o">=</span> <span class="n">stack</span><span class="p">[</span><span class="n">top</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">node</span> <span class="o">==</span> <span class="n">source</span><span class="p">:</span>
-          <span class="k">yield</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span><span class="n">n</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">stack</span><span class="p">[:</span><span class="n">top</span><span class="o">+</span><span class="mi">1</span><span class="p">])]</span>
+            <span class="k">yield</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span><span class="n">n</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">stack</span><span class="p">[:</span><span class="n">top</span><span class="o">+</span><span class="mi">1</span><span class="p">])]</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="n">node</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">i</span><span class="p">:</span>
             <span class="n">top</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="k">if</span> <span class="n">top</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">):</span>
@@ -506,7 +506,7 @@ NetworkX
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jan 26, 2013.
+      Last updated on Jul 18, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>

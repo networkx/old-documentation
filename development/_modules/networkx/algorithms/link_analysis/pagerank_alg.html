@@ -226,8 +226,8 @@ NetworkX
         <span class="k">if</span> <span class="n">err</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
             <span class="k">break</span>
         <span class="k">if</span> <span class="n">i</span><span class="o">&gt;</span><span class="n">max_iter</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s">&#39;pagerank: power iteration failed to converge&#39;</span>
-                                <span class="s">&#39;in </span><span class="si">%d</span><span class="s"> iterations.&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s">&#39;pagerank: power iteration failed to converge &#39;</span>
+                                <span class="s">&#39;in </span><span class="si">%d</span><span class="s"> iterations.&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
         <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
     <span class="k">return</span> <span class="n">x</span>
 
@@ -513,7 +513,7 @@ NetworkX
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jan 26, 2013.
+      Last updated on Jul 18, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>

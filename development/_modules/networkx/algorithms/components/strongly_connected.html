@@ -123,9 +123,13 @@ NetworkX
 <span class="sd">       A list of nodes for each component of G.</span>
 <span class="sd">       The list is ordered from largest connected component to smallest.</span>
 
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    NetworkXError: If G is undirected.</span>
+
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
-<span class="sd">    connected_components</span>
+<span class="sd">    connected_components, weakly_connected_components</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
@@ -141,6 +145,9 @@ NetworkX
 <span class="sd">       E. Nuutila and E. Soisalon-Soinen</span>
 <span class="sd">       Information Processing Letters 49(1): 9-14, (1994)..</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s">&quot;&quot;&quot;Not allowed for undirected graph G. </span>
+<span class="s">              Use connected_components() &quot;&quot;&quot;</span><span class="p">)</span>
     <span class="n">preorder</span><span class="o">=</span><span class="p">{}</span>
     <span class="n">lowlink</span><span class="o">=</span><span class="p">{}</span>
     <span class="n">scc_found</span><span class="o">=</span><span class="p">{}</span>
@@ -199,6 +206,10 @@ NetworkX
 <span class="sd">       A list of nodes for each component of G.</span>
 <span class="sd">       The list is ordered from largest connected component to smallest.</span>
 
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    NetworkXError: If G is undirected</span>
+
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
 <span class="sd">    connected_components</span>
@@ -207,6 +218,9 @@ NetworkX
 <span class="sd">    -----</span>
 <span class="sd">    Uses Kosaraju&#39;s algorithm.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s">&quot;&quot;&quot;Not allowed for undirected graph G. </span>
+<span class="s">              Use connected_components() &quot;&quot;&quot;</span><span class="p">)</span>
     <span class="n">components</span><span class="o">=</span><span class="p">[]</span>
     <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">reverse</span><span class="p">(</span><span class="n">copy</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
     <span class="n">post</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">dfs_postorder_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">))</span>
@@ -239,6 +253,10 @@ NetworkX
 <span class="sd">    comp : list of lists</span>
 <span class="sd">       A list of nodes for each component of G.</span>
 <span class="sd">       The list is ordered from largest connected component to smallest.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    NetworkXError : If G is undirected</span>
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
@@ -275,6 +293,11 @@ NetworkX
                 <span class="n">tmpc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
             <span class="n">stack</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
             <span class="n">scc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmpc</span><span class="p">)</span> <span class="c"># add to scc list</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s">&quot;&quot;&quot;Not allowed for undirected graph G. </span>
+<span class="s">              Use connected_components() &quot;&quot;&quot;</span><span class="p">)</span>
+    
     <span class="n">scc</span><span class="o">=</span><span class="p">[]</span>
     <span class="n">visited</span><span class="o">=</span><span class="p">{}</span>
     <span class="n">component</span><span class="o">=</span><span class="p">{}</span>
@@ -397,11 +420,18 @@ NetworkX
 <span class="sd">       to the index of the component in the list of strongly connected</span>
 <span class="sd">       components.</span>
 
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    NetworkXError: If G is not directed</span>
+
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    After contracting all strongly connected components to a single node,</span>
 <span class="sd">    the resulting graph is a directed acyclic graph.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s">&quot;&quot;&quot;Not allowed for undirected graph G.</span>
+<span class="s">              See is_connected() for connectivity test.&quot;&quot;&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">scc</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="n">scc</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">strongly_connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
     <span class="n">mapping</span> <span class="o">=</span> <span class="p">{}</span>
@@ -443,7 +473,7 @@ NetworkX
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jan 26, 2013.
+      Last updated on Jul 18, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>

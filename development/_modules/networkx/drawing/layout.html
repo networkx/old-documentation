@@ -246,12 +246,12 @@ NetworkX
     <span class="k">return</span> <span class="n">npos</span>
 
 </div>
-<span class="k">def</span> <span class="nf">fruchterman_reingold_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="k">def</span> <span class="nf">fruchterman_reingold_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                                 <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                                 <span class="n">fixed</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                                 <span class="n">iterations</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
                                 <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">,</span>
-                                <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+                                <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Position nodes using Fruchterman-Reingold force-directed algorithm. </span>
 
 <span class="sd">    Parameters</span>
@@ -260,6 +260,12 @@ NetworkX
 
 <span class="sd">    dim : int</span>
 <span class="sd">       Dimension of layout</span>
+
+<span class="sd">    k : float (default=None)</span>
+<span class="sd">       Optimal distance between nodes.  If None the distance is set to</span>
+<span class="sd">       1/sqrt(n) where n is the number of nodes.  Increase this value</span>
+<span class="sd">       to move nodes farther apart.</span>
+
 
 <span class="sd">    pos : dict or None  optional (default=None)</span>
 <span class="sd">       Initial positions for nodes as a dictionary with node as keys</span>
@@ -276,8 +282,10 @@ NetworkX
 <span class="sd">        The edge attribute that holds the numerical value used for</span>
 <span class="sd">        the edge weight.  If None, then all edge weights are 1.</span>
 
-<span class="sd">    scale : float</span>
-<span class="sd">        Scale factor for positions</span>
+<span class="sd">    scale : float (default=1.0)</span>
+<span class="sd">        Scale factor for positions. The nodes are positioned </span>
+<span class="sd">        in a box of size [0,scale] x [0,scale].  </span>
+
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -318,17 +326,18 @@ NetworkX
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">500</span><span class="p">:</span>  <span class="c"># sparse solver for large graphs</span>
             <span class="k">raise</span> <span class="ne">ValueError</span>
         <span class="n">A</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="s">&#39;f&#39;</span><span class="p">)</span>
-        <span class="n">pos</span><span class="o">=</span><span class="n">_sparse_fruchterman_reingold</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">dim</span><span class="p">,</span><span class="n">pos_arr</span><span class="p">,</span><span class="n">fixed</span><span class="p">,</span><span class="n">iterations</span><span class="p">)</span>
+        <span class="n">pos</span><span class="o">=</span><span class="n">_sparse_fruchterman_reingold</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">dim</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">pos_arr</span><span class="p">,</span><span class="n">fixed</span><span class="p">,</span><span class="n">iterations</span><span class="p">)</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="n">A</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
-        <span class="n">pos</span><span class="o">=</span><span class="n">_fruchterman_reingold</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">dim</span><span class="p">,</span><span class="n">pos_arr</span><span class="p">,</span><span class="n">fixed</span><span class="p">,</span><span class="n">iterations</span><span class="p">)</span>
+        <span class="n">pos</span><span class="o">=</span><span class="n">_fruchterman_reingold</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">dim</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">pos_arr</span><span class="p">,</span><span class="n">fixed</span><span class="p">,</span><span class="n">iterations</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">fixed</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="n">pos</span><span class="o">=</span><span class="n">_rescale_layout</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">pos</span><span class="p">))</span>
 
 <span class="n">spring_layout</span><span class="o">=</span><span class="n">fruchterman_reingold_layout</span>
 
-<span class="k">def</span> <span class="nf">_fruchterman_reingold</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_fruchterman_reingold</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> 
+                          <span class="n">iterations</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
     <span class="c"># Position nodes in adjacency matrix A using Fruchterman-Reingold</span>
     <span class="c"># Entry point for NetworkX graph is fruchterman_reingold_layout()</span>
     <span class="k">try</span><span class="p">:</span>
@@ -352,7 +361,8 @@ NetworkX
         <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
 
     <span class="c"># optimal distance between nodes</span>
-    <span class="n">k</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">nnodes</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">k</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">nnodes</span><span class="p">)</span>
     <span class="c"># the initial &quot;temperature&quot;  is about .1 of domain area (=1x1)</span>
     <span class="c"># this is the largest step allowed in the dynamics.</span>
     <span class="n">t</span><span class="o">=</span><span class="mf">0.1</span>
@@ -385,11 +395,12 @@ NetworkX
         <span class="n">pos</span><span class="o">+=</span><span class="n">delta_pos</span>
         <span class="c"># cool temperature</span>
         <span class="n">t</span><span class="o">-=</span><span class="n">dt</span>
-
+        <span class="n">pos</span><span class="o">=</span><span class="n">_rescale_layout</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">pos</span>
 
 
-<span class="k">def</span> <span class="nf">_sparse_fruchterman_reingold</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_sparse_fruchterman_reingold</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> 
+                                 <span class="n">iterations</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
     <span class="c"># Position nodes in adjacency matrix A using Fruchterman-Reingold  </span>
     <span class="c"># Entry point for NetworkX graph is fruchterman_reingold_layout()</span>
     <span class="c"># Sparse version</span>
@@ -424,7 +435,8 @@ NetworkX
         <span class="n">fixed</span><span class="o">=</span><span class="p">[]</span>
 
     <span class="c"># optimal distance between nodes</span>
-    <span class="n">k</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">nnodes</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">k</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">nnodes</span><span class="p">)</span>
     <span class="c"># the initial &quot;temperature&quot;  is about .1 of domain area (=1x1)</span>
     <span class="c"># this is the largest step allowed in the dynamics.</span>
     <span class="n">t</span><span class="o">=</span><span class="mf">0.1</span>
@@ -456,7 +468,7 @@ NetworkX
         <span class="n">pos</span><span class="o">+=</span><span class="p">(</span><span class="n">displacement</span><span class="o">*</span><span class="n">t</span><span class="o">/</span><span class="n">length</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
         <span class="c"># cool temperature</span>
         <span class="n">t</span><span class="o">-=</span><span class="n">dt</span>
-
+        <span class="n">pos</span><span class="o">=</span><span class="n">_rescale_layout</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">pos</span>
 
 
@@ -642,7 +654,7 @@ NetworkX
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jan 26, 2013.
+      Last updated on Jul 18, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>

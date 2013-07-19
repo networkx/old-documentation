@@ -127,8 +127,9 @@ and use in Javascript documents.</p>
 <p class="last"><a class="reference internal" href="networkx.readwrite.json_graph.adjacency_graph.html#networkx.readwrite.json_graph.adjacency_graph" title="networkx.readwrite.json_graph.adjacency_graph"><tt class="xref py py-obj docutils literal"><span class="pre">adjacency_graph</span></tt></a>, <a class="reference internal" href="networkx.readwrite.json_graph.node_link_data.html#networkx.readwrite.json_graph.node_link_data" title="networkx.readwrite.json_graph.node_link_data"><tt class="xref py py-obj docutils literal"><span class="pre">node_link_data</span></tt></a>, <a class="reference internal" href="networkx.readwrite.json_graph.tree_data.html#networkx.readwrite.json_graph.tree_data" title="networkx.readwrite.json_graph.tree_data"><tt class="xref py py-obj docutils literal"><span class="pre">tree_data</span></tt></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>Graph, node, and link attributes are stored in this format but keys 
-for attributes must be strings if you want to serialize with JSON.</p>
+<p>Graph, node, and link attributes will be written when using this format
+but attribute keys must be strings if you want to serialize the resulting
+data with JSON.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.readwrite</span> <span class="kn">import</span> <span class="n">json_graph</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)])</span>
@@ -180,7 +181,7 @@ for attributes must be strings if you want to serialize with JSON.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jan 26, 2013.
+      Last updated on Jul 18, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>

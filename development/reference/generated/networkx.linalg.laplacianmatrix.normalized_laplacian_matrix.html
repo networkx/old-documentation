@@ -130,9 +130,9 @@ If None, then each edge has weight 1.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>L</strong> : NumPy array</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>L</strong> : NumPy matrix</p>
 <blockquote class="last">
-<div><p>Normalized Laplacian of G.</p>
+<div><p>The normalized Laplacian matrix of G.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -146,19 +146,19 @@ If None, then each edge has weight 1.</p>
 <p>For MultiGraph/MultiDiGraph, the edges weights are summed.
 See to_numpy_matrix for other options.</p>
 <p>If the Graph contains selfloops, D is defined as diag(sum(A,1)), where A is
-the adjencency matrix <a class="reference internal" href="#r275" id="id1">[R275]</a>.</p>
+the adjencency matrix <a class="reference internal" href="#r295" id="id1">[R295]</a>.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r274" rules="none">
+<table class="docutils citation" frame="void" id="r294" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R274]</a></td><td>Fan Chung-Graham, Spectral Graph Theory,
+<tr><td class="label"><a class="fn-backref" href="#id2">[R294]</a></td><td>Fan Chung-Graham, Spectral Graph Theory,
 CBMS Regional Conference Series in Mathematics, Number 92, 1997.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r275" rules="none">
+<table class="docutils citation" frame="void" id="r295" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R275]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> Steve Butler, Interlacing For Weighted Graphs Using The Normalized
+<tr><td class="label">[R295]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> Steve Butler, Interlacing For Weighted Graphs Using The Normalized
 Laplacian, Electronic Journal of Linear Algebra, Volume 16, pp. 90-98,
 March 2007.</td></tr>
 </tbody>
@@ -202,7 +202,7 @@ March 2007.</td></tr>
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jan 26, 2013.
+      Last updated on Jul 18, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>

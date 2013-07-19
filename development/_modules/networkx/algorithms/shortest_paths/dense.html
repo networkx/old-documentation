@@ -178,6 +178,8 @@ NetworkX
     <span class="c"># use some defaultdict magick here</span>
     <span class="c"># for dist the default is the floating point inf value</span>
     <span class="n">dist</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span> <span class="p">:</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="s">&#39;inf&#39;</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
+        <span class="n">dist</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">pred</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
     <span class="c"># initialize path distance dictionary to be the adjacency matrix</span>
     <span class="c"># also set the distance to self to 0 (zero diagonal)</span>
@@ -186,7 +188,6 @@ NetworkX
         <span class="n">e_weight</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
         <span class="n">dist</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">e_weight</span><span class="p">,</span> <span class="n">dist</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">])</span>
         <span class="n">pred</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span>
-        <span class="n">dist</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">if</span> <span class="n">undirected</span><span class="p">:</span>
             <span class="n">dist</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">e_weight</span><span class="p">,</span> <span class="n">dist</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">u</span><span class="p">])</span>
             <span class="n">pred</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
@@ -269,7 +270,7 @@ NetworkX
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jan 26, 2013.
+      Last updated on Jul 18, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>

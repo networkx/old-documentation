@@ -102,8 +102,8 @@ NetworkX
 <h1>convert_node_labels_to_integers<a class="headerlink" href="#convert-node-labels-to-integers" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.relabel.convert_node_labels_to_integers">
-<tt class="descname">convert_node_labels_to_integers</tt><big>(</big><em>G</em>, <em>first_label=0</em>, <em>ordering='default'</em>, <em>discard_old_labels=True</em><big>)</big><a class="reference internal" href="../../_modules/networkx/relabel.html#convert_node_labels_to_integers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.relabel.convert_node_labels_to_integers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a copy of G node labels replaced with integers.</p>
+<tt class="descname">convert_node_labels_to_integers</tt><big>(</big><em>G</em>, <em>first_label=0</em>, <em>ordering='default'</em>, <em>label_attribute=None</em><big>)</big><a class="reference internal" href="../../_modules/networkx/relabel.html#convert_node_labels_to_integers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.relabel.convert_node_labels_to_integers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a copy of the graph G with the nodes relabeled with integers.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -119,20 +119,26 @@ The n new integer labels are numbered first_label, ..., n-1+first_label.</p>
 </div></blockquote>
 <p><strong>ordering</strong> : string</p>
 <blockquote>
-<div><p>&#8220;default&#8221; : inherit node ordering from G.nodes() 
+<div><p>&#8220;default&#8221; : inherit node ordering from G.nodes()
 &#8220;sorted&#8221;  : inherit node ordering from sorted(G.nodes())
 &#8220;increasing degree&#8221; : nodes are sorted by increasing degree
 &#8220;decreasing degree&#8221; : nodes are sorted by decreasing degree</p>
 </div></blockquote>
-<p><strong>discard_old_labels</strong> : bool, optional (default=True)</p>
+<p><strong>label_attribute</strong> : string, optional (default=None)</p>
 <blockquote class="last">
-<div><p>If True discard old labels. If False, create a node attribute 
-&#8216;old_label&#8217; to hold the old labels.</p>
+<div><p>Name of node attribute to store old label.  If None no attribute
+is created.</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="networkx.relabel.relabel_nodes.html#networkx.relabel.relabel_nodes" title="networkx.relabel.relabel_nodes"><tt class="xref py py-obj docutils literal"><span class="pre">relabel_nodes</span></tt></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>Node and edge attribute data are copied to the new (relabeled) graph.</p>
 </dd></dl>
 
 </div>
@@ -171,7 +177,7 @@ The n new integer labels are numbered first_label, ..., n-1+first_label.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jan 26, 2013.
+      Last updated on Jul 18, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>

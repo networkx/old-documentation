@@ -103,7 +103,7 @@ NetworkX
 <h1>spring_layout<a class="headerlink" href="#spring-layout" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.drawing.layout.spring_layout">
-<tt class="descname">spring_layout</tt><big>(</big><em>G</em>, <em>dim=2</em>, <em>pos=None</em>, <em>fixed=None</em>, <em>iterations=50</em>, <em>weight='weight'</em>, <em>scale=1</em><big>)</big><a class="headerlink" href="#networkx.drawing.layout.spring_layout" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">spring_layout</tt><big>(</big><em>G</em>, <em>dim=2</em>, <em>k=None</em>, <em>pos=None</em>, <em>fixed=None</em>, <em>iterations=50</em>, <em>weight='weight'</em>, <em>scale=1.0</em><big>)</big><a class="headerlink" href="#networkx.drawing.layout.spring_layout" title="Permalink to this definition">¶</a></dt>
 <dd><p>Position nodes using Fruchterman-Reingold force-directed algorithm.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -113,6 +113,12 @@ NetworkX
 <p><strong>dim</strong> : int</p>
 <blockquote>
 <div><p>Dimension of layout</p>
+</div></blockquote>
+<p><strong>k</strong> : float (default=None)</p>
+<blockquote>
+<div><p>Optimal distance between nodes.  If None the distance is set to
+1/sqrt(n) where n is the number of nodes.  Increase this value
+to move nodes farther apart.</p>
 </div></blockquote>
 <p><strong>pos</strong> : dict or None  optional (default=None)</p>
 <blockquote>
@@ -133,9 +139,10 @@ positions.</p>
 <div><p>The edge attribute that holds the numerical value used for
 the edge weight.  If None, then all edge weights are 1.</p>
 </div></blockquote>
-<p><strong>scale</strong> : float</p>
+<p><strong>scale</strong> : float (default=1.0)</p>
 <blockquote>
-<div><p>Scale factor for positions</p>
+<div><p>Scale factor for positions. The nodes are positioned 
+in a box of size [0,scale] x [0,scale].</p>
 </div></blockquote>
 </td>
 </tr>
@@ -193,7 +200,7 @@ the edge weight.  If None, then all edge weights are 1.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jan 26, 2013.
+      Last updated on Jul 18, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>

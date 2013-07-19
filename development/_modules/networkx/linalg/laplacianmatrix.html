@@ -104,9 +104,10 @@ NetworkX
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;laplacian_matrix&#39;</span><span class="p">,</span>
            <span class="s">&#39;normalized_laplacian_matrix&#39;</span><span class="p">,</span>
-           <span class="s">&#39;directed_laplacian_matrix&#39;</span><span class="p">,</span>
-           <span class="p">]</span>
+           <span class="s">&#39;directed_laplacian_matrix&#39;</span><span class="p">]</span>
 
+<span class="nd">@require</span><span class="p">(</span><span class="s">&#39;numpy&#39;</span><span class="p">)</span>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
 <div class="viewcode-block" id="laplacian_matrix"><a class="viewcode-back" href="../../../reference/generated/networkx.linalg.laplacianmatrix.laplacian_matrix.html#networkx.linalg.laplacianmatrix.laplacian_matrix">[docs]</a><span class="k">def</span> <span class="nf">laplacian_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return the Laplacian matrix of G.</span>
 
@@ -128,8 +129,8 @@ NetworkX
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    L : NumPy array</span>
-<span class="sd">      Laplacian of G.</span>
+<span class="sd">    L : NumPy matrix</span>
+<span class="sd">      The Laplacian matrix of G.</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
@@ -141,37 +142,35 @@ NetworkX
 <span class="sd">    to_numpy_matrix</span>
 <span class="sd">    normalized_laplacian_matrix</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
-          <span class="s">&quot;laplacian_matrix() requires numpy: http://scipy.org/ &quot;</span><span class="p">)</span>
-    <span class="c"># this isn&#39;t the most efficient way to do this...</span>
-    <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
-        <span class="n">A</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">))</span>
-        <span class="n">I</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="n">D</span><span class="o">=</span><span class="n">I</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">L</span><span class="o">=</span><span class="n">D</span><span class="o">-</span><span class="n">A</span>
-        <span class="k">return</span> <span class="n">L</span>
-    <span class="c"># Graph or DiGraph, this is faster than above</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
     <span class="k">if</span> <span class="n">nodelist</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">nodelist</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span>
-    <span class="n">n</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">nodelist</span><span class="p">)</span>
-    <span class="n">index</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">n</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nodelist</span><span class="p">)</span> <span class="p">)</span>
-    <span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">ui</span><span class="p">,</span><span class="n">u</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nodelist</span><span class="p">):</span>
-        <span class="n">totalwt</span><span class="o">=</span><span class="mf">0.0</span>
-        <span class="k">for</span> <span class="n">v</span><span class="p">,</span><span class="n">d</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">vi</span><span class="o">=</span><span class="n">index</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
-            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-                <span class="k">continue</span>
-            <span class="n">wt</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-            <span class="n">L</span><span class="p">[</span><span class="n">ui</span><span class="p">,</span><span class="n">vi</span><span class="p">]</span><span class="o">=</span> <span class="o">-</span><span class="n">wt</span>
-            <span class="n">totalwt</span><span class="o">+=</span><span class="n">wt</span>
-        <span class="n">L</span><span class="p">[</span><span class="n">ui</span><span class="p">,</span><span class="n">ui</span><span class="p">]</span><span class="o">=</span> <span class="n">totalwt</span>
-    <span class="k">return</span> <span class="n">L</span>
+        <span class="n">nodelist</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
+        <span class="c"># this isn&#39;t the fastest way to do this...</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">))</span>
+        <span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">D</span> <span class="o">=</span> <span class="n">I</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">L</span> <span class="o">=</span> <span class="n">D</span> <span class="o">-</span> <span class="n">A</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c"># Graph or DiGraph, this is faster than above</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nodelist</span><span class="p">)</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">n</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nodelist</span><span class="p">)</span> <span class="p">)</span>
+        <span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">ui</span><span class="p">,</span><span class="n">u</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nodelist</span><span class="p">):</span>
+            <span class="n">totalwt</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="k">for</span> <span class="n">v</span><span class="p">,</span><span class="n">d</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">vi</span> <span class="o">=</span> <span class="n">index</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
+                <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="n">wt</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">L</span><span class="p">[</span><span class="n">ui</span><span class="p">,</span><span class="n">vi</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">wt</span>
+                <span class="n">totalwt</span> <span class="o">+=</span> <span class="n">wt</span>
+            <span class="n">L</span><span class="p">[</span><span class="n">ui</span><span class="p">,</span><span class="n">ui</span><span class="p">]</span> <span class="o">=</span> <span class="n">totalwt</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asmatrix</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
 </div>
+<span class="nd">@require</span><span class="p">(</span><span class="s">&#39;numpy&#39;</span><span class="p">)</span>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
 <div class="viewcode-block" id="normalized_laplacian_matrix"><a class="viewcode-back" href="../../../reference/generated/networkx.linalg.laplacianmatrix.normalized_laplacian_matrix.html#networkx.linalg.laplacianmatrix.normalized_laplacian_matrix">[docs]</a><span class="k">def</span> <span class="nf">normalized_laplacian_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">):</span>
     <span class="sd">r&quot;&quot;&quot;Return the normalized Laplacian matrix of G.</span>
 
@@ -199,8 +198,8 @@ NetworkX
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    L : NumPy array</span>
-<span class="sd">      Normalized Laplacian of G.</span>
+<span class="sd">    L : NumPy matrix</span>
+<span class="sd">      The normalized Laplacian matrix of G.</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
@@ -222,14 +221,8 @@ NetworkX
 <span class="sd">       Laplacian, Electronic Journal of Linear Algebra, Volume 16, pp. 90-98,</span>
 <span class="sd">       March 2007.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c"># FIXME: this isn&#39;t the most efficient way to do this...</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
-          <span class="s">&quot;normalized_laplacian_matrix() requires numpy: http://scipy.org/ &quot;</span><span class="p">)</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
     <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
-
         <span class="n">L</span> <span class="o">=</span> <span class="n">laplacian_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
         <span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">G</span><span class="o">.</span><span class="n">number_of_selfloops</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -254,7 +247,8 @@ NetworkX
 <span class="nd">@require</span><span class="p">(</span><span class="s">&#39;numpy&#39;</span><span class="p">)</span>
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;undirected&#39;</span><span class="p">)</span>
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;multigraph&#39;</span><span class="p">)</span>
-<div class="viewcode-block" id="directed_laplacian_matrix"><a class="viewcode-back" href="../../../reference/generated/networkx.linalg.laplacianmatrix.directed_laplacian_matrix.html#networkx.linalg.laplacianmatrix.directed_laplacian_matrix">[docs]</a><span class="k">def</span> <span class="nf">directed_laplacian_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">,</span> <span class="n">walk_type</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">):</span>
+<div class="viewcode-block" id="directed_laplacian_matrix"><a class="viewcode-back" href="../../../reference/generated/networkx.linalg.laplacianmatrix.directed_laplacian_matrix.html#networkx.linalg.laplacianmatrix.directed_laplacian_matrix">[docs]</a><span class="k">def</span> <span class="nf">directed_laplacian_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">,</span>
+                              <span class="n">walk_type</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">):</span>
     <span class="sd">r&quot;&quot;&quot;Return the directed Laplacian matrix of G.</span>
 
 <span class="sd">    The graph directed Laplacian is the matrix</span>
@@ -318,12 +312,7 @@ NetworkX
 <span class="sd">       Laplacians and the Cheeger inequality for directed graphs.</span>
 <span class="sd">       Annals of Combinatorics, 9(1), 2005</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
-          <span class="s">&quot;directed_laplacian_matrix() requires numpy: http://scipy.org/ &quot;</span><span class="p">)</span>
-
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
     <span class="k">if</span> <span class="n">walk_type</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">nx</span><span class="o">.</span><span class="n">is_strongly_connected</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">nx</span><span class="o">.</span><span class="n">is_aperiodic</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
@@ -402,7 +391,7 @@ NetworkX
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jan 26, 2013.
+      Last updated on Jul 18, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
