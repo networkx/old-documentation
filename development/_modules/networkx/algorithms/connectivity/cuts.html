@@ -153,7 +153,7 @@ NetworkX
 <span class="sd">    &gt;&gt;&gt; G.add_edge(&#39;d&#39;,&#39;e&#39;, capacity = 2.0)</span>
 <span class="sd">    &gt;&gt;&gt; G.add_edge(&#39;c&#39;,&#39;y&#39;, capacity = 2.0)</span>
 <span class="sd">    &gt;&gt;&gt; G.add_edge(&#39;e&#39;,&#39;y&#39;, capacity = 3.0)</span>
-<span class="sd">    &gt;&gt;&gt; list(nx.minimum_edge_cut(G, &#39;x&#39;, &#39;y&#39;))</span>
+<span class="sd">    &gt;&gt;&gt; sorted(nx.minimum_edge_cut(G, &#39;x&#39;, &#39;y&#39;))</span>
 <span class="sd">    [(&#39;c&#39;, &#39;y&#39;), (&#39;x&#39;, &#39;b&#39;)]</span>
 <span class="sd">    &gt;&gt;&gt; nx.min_cut(G, &#39;x&#39;, &#39;y&#39;)</span>
 <span class="sd">    3.0</span>
@@ -496,7 +496,7 @@ NetworkX
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jul 18, 2013.
+      Last updated on Jul 21, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>

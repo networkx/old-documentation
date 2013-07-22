@@ -172,7 +172,8 @@ NetworkX
 <span class="sd">    If a graph attribute is present in multiple graphs, then the value</span>
 <span class="sd">    from the last graph in the list with that attribute is used.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">U</span> <span class="o">=</span> <span class="n">graphs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">graphs</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">graphs</span><span class="p">)</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">graphs</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">H</span> <span class="ow">in</span> <span class="n">graphs</span><span class="p">:</span>
         <span class="n">U</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">disjoint_union</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">U</span>
@@ -204,7 +205,8 @@ NetworkX
 <span class="sd">    If a graph attribute is present in multiple graphs, then the value</span>
 <span class="sd">    from the last graph in the list with that attribute is used.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">C</span> <span class="o">=</span> <span class="n">graphs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">graphs</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">graphs</span><span class="p">)</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">graphs</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">H</span> <span class="ow">in</span> <span class="n">graphs</span><span class="p">:</span>
         <span class="n">C</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">compose</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">C</span>
@@ -229,7 +231,8 @@ NetworkX
 <span class="sd">    Attributes from the graph, nodes, and edges are not copied to the new</span>
 <span class="sd">    graph.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">R</span> <span class="o">=</span> <span class="n">graphs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">graphs</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">graphs</span><span class="p">)</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">graphs</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">H</span> <span class="ow">in</span> <span class="n">graphs</span><span class="p">:</span>
         <span class="n">R</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">R</span></div>
@@ -262,7 +265,7 @@ NetworkX
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jul 18, 2013.
+      Last updated on Jul 21, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>

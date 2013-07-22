@@ -105,7 +105,7 @@ NetworkX
 <dt id="networkx.generators.stochastic.stochastic_graph">
 <tt class="descname">stochastic_graph</tt><big>(</big><em>G</em>, <em>copy=True</em>, <em>weight='weight'</em><big>)</big><a class="reference internal" href="../../_modules/networkx/generators/stochastic.html#stochastic_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.stochastic.stochastic_graph" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a right-stochastic representation of G.</p>
-<p>A right-stochastic graph is a weighted graph in which all of
+<p>A right-stochastic graph is a weighted digraph in which all of
 the node (out) neighbors edge weights sum to 1.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -113,15 +113,16 @@ the node (out) neighbors edge weights sum to 1.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
 <blockquote>
-<div><p>A NetworkX graph, must have valid edge weights</p>
+<div><p>A NetworkX graph</p>
 </div></blockquote>
 <p><strong>copy</strong> : boolean, optional</p>
 <blockquote>
-<div><p>If True make a copy of the graph, otherwise modify original graph</p>
+<div><p>If True make a copy of the graph, otherwise modify the original graph</p>
 </div></blockquote>
-<p><strong>weight</strong> : key (optional)</p>
+<p><strong>weight</strong> : edge attribute key (optional, default=&#8217;weight&#8217;)</p>
 <blockquote class="last">
-<div><p>Edge data key used for weight.  If None all weights are set to 1.</p>
+<div><p>Edge data key used for weight.  If no attribute is found for an edge
+the edge weight is set to 1.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -166,7 +167,7 @@ the node (out) neighbors edge weights sum to 1.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jul 18, 2013.
+      Last updated on Jul 21, 2013.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
