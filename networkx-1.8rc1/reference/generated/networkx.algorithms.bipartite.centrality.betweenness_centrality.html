@@ -104,20 +104,20 @@ NetworkX
 <dt id="networkx.algorithms.bipartite.centrality.betweenness_centrality">
 <tt class="descname">betweenness_centrality</tt><big>(</big><em>G</em>, <em>nodes</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/bipartite/centrality.html#betweenness_centrality"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.bipartite.centrality.betweenness_centrality" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute betweenness centrality for nodes in a bipartite network.</p>
-<p>Betweenness centrality of a node <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: -1px"/> is the sum of the
-fraction of all-pairs shortest paths that pass through <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: -1px"/>.</p>
+<p>Betweenness centrality of a node <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: 0px"/> is the sum of the
+fraction of all-pairs shortest paths that pass through <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: 0px"/>.</p>
 <p>Values of betweenness are normalized by the maximum possible
 value which for bipartite graphs is limited by the relative size 
-of the two node sets <a class="reference internal" href="#r140">[R140]</a>.</p>
-<p>Let <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: -1px"/> be the number of nodes in the node set <img class="math" src="../../_images/math/e2bbebb3bd73f1ae5c64098ab0244f739abf7ca4.png" alt="U" style="vertical-align: -1px"/> and
-<img class="math" src="../../_images/math/f5047d1e0cbb50ec208923a22cd517c55100fa7b.png" alt="m" style="vertical-align: -1px"/> be the number of nodes in the node set <img class="math" src="../../_images/math/12d58aa29201da09d8e620f8698e3a37547f6b4a.png" alt="V" style="vertical-align: -1px"/>, then
-nodes in <img class="math" src="../../_images/math/e2bbebb3bd73f1ae5c64098ab0244f739abf7ca4.png" alt="U" style="vertical-align: -1px"/> are normalized by dividing by</p>
+of the two node sets <a class="reference internal" href="#r140" id="id1">[R140]</a>.</p>
+<p>Let <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: 0px"/> be the number of nodes in the node set <img class="math" src="../../_images/math/e2bbebb3bd73f1ae5c64098ab0244f739abf7ca4.png" alt="U" style="vertical-align: 0px"/> and
+<img class="math" src="../../_images/math/f5047d1e0cbb50ec208923a22cd517c55100fa7b.png" alt="m" style="vertical-align: 0px"/> be the number of nodes in the node set <img class="math" src="../../_images/math/12d58aa29201da09d8e620f8698e3a37547f6b4a.png" alt="V" style="vertical-align: 0px"/>, then
+nodes in <img class="math" src="../../_images/math/e2bbebb3bd73f1ae5c64098ab0244f739abf7ca4.png" alt="U" style="vertical-align: 0px"/> are normalized by dividing by</p>
 <div class="math">
 <p><img src="../../_images/math/9690f7ee6f9572fe78cbdd57270c2aacf51dedd3.png" alt="\frac{1}{2} [m^2 (s + 1)^2 + m (s + 1)(2t - s - 1) - t (2s - t + 3)] ,"/></p>
 </div><p>where</p>
 <div class="math">
 <p><img src="../../_images/math/5fe52d7eb4f9125aef0aad9dcb6140fe53103164.png" alt="s = (n - 1) \div m , t = (n - 1) \mod m ,"/></p>
-</div><p>and nodes in <img class="math" src="../../_images/math/12d58aa29201da09d8e620f8698e3a37547f6b4a.png" alt="V" style="vertical-align: -1px"/> are normalized by dividing by</p>
+</div><p>and nodes in <img class="math" src="../../_images/math/12d58aa29201da09d8e620f8698e3a37547f6b4a.png" alt="V" style="vertical-align: 0px"/> are normalized by dividing by</p>
 <div class="math">
 <p><img src="../../_images/math/db1b96adda1614ea92c1b007150c9be8f93e0b10.png" alt="\frac{1}{2} [n^2 (p + 1)^2 + n (p + 1)(2r - p - 1) - r (2p - r + 3)] ,"/></p>
 </div><p>where,</p>
@@ -204,7 +204,7 @@ of Social Network Analysis. Sage Publications.
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
       Last updated on Jul 22, 2013.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

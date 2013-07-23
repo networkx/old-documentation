@@ -103,9 +103,9 @@ NetworkX
 <dt id="networkx.generators.degree_seq.expected_degree_graph">
 <tt class="descname">expected_degree_graph</tt><big>(</big><em>w</em>, <em>seed=None</em>, <em>selfloops=True</em><big>)</big><a class="reference internal" href="../../_modules/networkx/generators/degree_seq.html#expected_degree_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.degree_seq.expected_degree_graph" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a random graph with given expected degrees.</p>
-<p>Given a sequence of expected degrees <img class="math" src="../../_images/math/be0dfdbf740c726db08a4929820d793dc4dd15ef.png" alt="W=(w_0,w_1,\ldots,w_{n-1}" style="vertical-align: -5px"/>)
-of length <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: -1px"/> this algorithm assigns an edge between node <img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: -1px"/> and
-node <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: -1px"/> with probability</p>
+<p>Given a sequence of expected degrees <img class="math" src="../../_images/math/be0dfdbf740c726db08a4929820d793dc4dd15ef.png" alt="W=(w_0,w_1,\ldots,w_{n-1}" style="vertical-align: -4px"/>)
+of length <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: 0px"/> this algorithm assigns an edge between node <img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: 0px"/> and
+node <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: 0px"/> with probability</p>
 <div class="math">
 <p><img src="../../_images/math/6035f2aea933910aaab41ffb8402e1e01689971b.png" alt="p_{uv} = \frac{w_u w_v}{\sum_k w_k} ."/></p>
 </div><table class="docutils field-list" frame="void" rules="none">
@@ -134,9 +134,9 @@ node <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e6786
 <p class="rubric">Notes</p>
 <p>The nodes have integer labels corresponding to index of expected degrees
 input sequence.</p>
-<p>The complexity of this algorithm is <img class="math" src="../../_images/math/c967b0b21df5a5d3400231d021c6829ed10bd043.png" alt="\mathcal{O}(n+m)" style="vertical-align: -5px"/> where <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: -1px"/> is the
-number of nodes and <img class="math" src="../../_images/math/f5047d1e0cbb50ec208923a22cd517c55100fa7b.png" alt="m" style="vertical-align: -1px"/> is the expected number of edges.</p>
-<p>The model in <a class="reference internal" href="#r254">[R254]</a> includes the possibility of self-loop edges.
+<p>The complexity of this algorithm is <img class="math" src="../../_images/math/c967b0b21df5a5d3400231d021c6829ed10bd043.png" alt="\mathcal{O}(n+m)" style="vertical-align: -4px"/> where <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: 0px"/> is the
+number of nodes and <img class="math" src="../../_images/math/f5047d1e0cbb50ec208923a22cd517c55100fa7b.png" alt="m" style="vertical-align: 0px"/> is the expected number of edges.</p>
+<p>The model in <a class="reference internal" href="#r254" id="id1">[R254]</a> includes the possibility of self-loop edges.
 Set selfloops=False to produce a graph without self loops.</p>
 <p>For finite graphs this model doesn&#8217;t produce exactly the given
 expected degree sequence.  Instead the expected degrees are as
@@ -214,7 +214,7 @@ pp. 115-126, 2011.</td></tr>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
       Last updated on Jul 22, 2013.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

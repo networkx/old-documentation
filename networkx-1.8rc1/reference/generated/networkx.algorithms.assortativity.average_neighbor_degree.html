@@ -104,17 +104,17 @@ NetworkX
 <dt id="networkx.algorithms.assortativity.average_neighbor_degree">
 <tt class="descname">average_neighbor_degree</tt><big>(</big><em>G</em>, <em>source='out'</em>, <em>target='out'</em>, <em>nodes=None</em>, <em>weight=None</em><big>)</big><a class="headerlink" href="#networkx.algorithms.assortativity.average_neighbor_degree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the average degree of the neighborhood of each node.</p>
-<p>The average degree of a node <img class="math" src="../../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i" style="vertical-align: -1px"/> is</p>
+<p>The average degree of a node <img class="math" src="../../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i" style="vertical-align: 0px"/> is</p>
 <div class="math">
 <p><img src="../../_images/math/76de73b2c46f5c666f6ead22a9d9f444c35a620b.png" alt="k_{nn,i} = \frac{1}{|N(i)|} \sum_{j \in N(i)} k_j"/></p>
-</div><p>where <img class="math" src="../../_images/math/41e3aa206426596e31d5bf7b6c5e2c5a9a30579c.png" alt="N(i)" style="vertical-align: -5px"/> are the neighbors of node <img class="math" src="../../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i" style="vertical-align: -1px"/> and <img class="math" src="../../_images/math/882ef4a1084c46822bec7ae0ae8fefda0ae35657.png" alt="k_j" style="vertical-align: -6px"/> is
-the degree of node <img class="math" src="../../_images/math/8122aa89ea6e80784c6513d22787ad86e36ad0cc.png" alt="j" style="vertical-align: -4px"/> which belongs to <img class="math" src="../../_images/math/41e3aa206426596e31d5bf7b6c5e2c5a9a30579c.png" alt="N(i)" style="vertical-align: -5px"/>. For weighted 
-graphs, an analogous measure can be defined <a class="reference internal" href="#r133">[R133]</a>,</p>
+</div><p>where <img class="math" src="../../_images/math/41e3aa206426596e31d5bf7b6c5e2c5a9a30579c.png" alt="N(i)" style="vertical-align: -4px"/> are the neighbors of node <img class="math" src="../../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i" style="vertical-align: 0px"/> and <img class="math" src="../../_images/math/882ef4a1084c46822bec7ae0ae8fefda0ae35657.png" alt="k_j" style="vertical-align: -6px"/> is
+the degree of node <img class="math" src="../../_images/math/8122aa89ea6e80784c6513d22787ad86e36ad0cc.png" alt="j" style="vertical-align: -4px"/> which belongs to <img class="math" src="../../_images/math/41e3aa206426596e31d5bf7b6c5e2c5a9a30579c.png" alt="N(i)" style="vertical-align: -4px"/>. For weighted 
+graphs, an analogous measure can be defined <a class="reference internal" href="#r133" id="id1">[R133]</a>,</p>
 <div class="math">
 <p><img src="../../_images/math/7be966238ee06497e3192fd84740ad003cd98626.png" alt="k_{nn,i}^{w} = \frac{1}{s_i} \sum_{j \in N(i)} w_{ij} k_j"/></p>
-</div><p>where <img class="math" src="../../_images/math/d3b63c17213f84d730e0de1f8c08597f7a648e37.png" alt="s_i" style="vertical-align: -4px"/> is the weighted degree of node <img class="math" src="../../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i" style="vertical-align: -1px"/>, <img class="math" src="../../_images/math/1815c71b45e202f4044d4148157d376f614e3595.png" alt="w_{ij}" style="vertical-align: -6px"/>
-is the weight of the edge that links <img class="math" src="../../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i" style="vertical-align: -1px"/> and <img class="math" src="../../_images/math/8122aa89ea6e80784c6513d22787ad86e36ad0cc.png" alt="j" style="vertical-align: -4px"/> and
-<img class="math" src="../../_images/math/41e3aa206426596e31d5bf7b6c5e2c5a9a30579c.png" alt="N(i)" style="vertical-align: -5px"/> are the neighbors of node <img class="math" src="../../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i" style="vertical-align: -1px"/>.</p>
+</div><p>where <img class="math" src="../../_images/math/d3b63c17213f84d730e0de1f8c08597f7a648e37.png" alt="s_i" style="vertical-align: -3px"/> is the weighted degree of node <img class="math" src="../../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i" style="vertical-align: 0px"/>, <img class="math" src="../../_images/math/1815c71b45e202f4044d4148157d376f614e3595.png" alt="w_{ij}" style="vertical-align: -6px"/>
+is the weight of the edge that links <img class="math" src="../../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i" style="vertical-align: 0px"/> and <img class="math" src="../../_images/math/8122aa89ea6e80784c6513d22787ad86e36ad0cc.png" alt="j" style="vertical-align: -4px"/> and
+<img class="math" src="../../_images/math/41e3aa206426596e31d5bf7b6c5e2c5a9a30579c.png" alt="N(i)" style="vertical-align: -4px"/> are the neighbors of node <img class="math" src="../../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i" style="vertical-align: 0px"/>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -229,7 +229,7 @@ PNAS 101 (11): 3747–3752 (2004).</td></tr>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
       Last updated on Jul 22, 2013.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

@@ -104,15 +104,15 @@ NetworkX
 <dt id="networkx.algorithms.centrality.closeness_centrality">
 <tt class="descname">closeness_centrality</tt><big>(</big><em>G</em>, <em>u=None</em>, <em>distance=None</em>, <em>normalized=True</em><big>)</big><a class="headerlink" href="#networkx.algorithms.centrality.closeness_centrality" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute closeness centrality for nodes.</p>
-<p>Closeness centrality <a class="reference internal" href="#r157">[R157]</a> of a node <img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: -1px"/> is the reciprocal of the
-sum of the shortest path distances from <img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: -1px"/> to all <img class="math" src="../../_images/math/4bdca93962a2beaffc172ca394e04fe05bd74ffd.png" alt="n-1" style="vertical-align: -1px"/> other nodes.
+<p>Closeness centrality <a class="reference internal" href="#r157" id="id1">[R157]</a> of a node <img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: 0px"/> is the reciprocal of the
+sum of the shortest path distances from <img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: 0px"/> to all <img class="math" src="../../_images/math/4bdca93962a2beaffc172ca394e04fe05bd74ffd.png" alt="n-1" style="vertical-align: -1px"/> other nodes.
 Since the sum of distances depends on the number of nodes in the
 graph, closeness is normalized by the sum of minimum possible
 distances <img class="math" src="../../_images/math/4bdca93962a2beaffc172ca394e04fe05bd74ffd.png" alt="n-1" style="vertical-align: -1px"/>.</p>
 <div class="math">
 <p><img src="../../_images/math/d227cc43f8dcbdfc83dac1f17e06ee81b71c2893.png" alt="C(u) = \frac{n - 1}{\sum_{v=1}^{n} d(v, u)},"/></p>
-</div><p>where <img class="math" src="../../_images/math/c828df01a827bec444704b51eb253009c96d4526.png" alt="d(v, u)" style="vertical-align: -5px"/> is the shortest-path distance between <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: -1px"/> and <img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: -1px"/>,
-and <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: -1px"/> is the number of nodes in the graph.</p>
+</div><p>where <img class="math" src="../../_images/math/c828df01a827bec444704b51eb253009c96d4526.png" alt="d(v, u)" style="vertical-align: -4px"/> is the shortest-path distance between <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: 0px"/> and <img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: 0px"/>,
+and <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: 0px"/> is the number of nodes in the graph.</p>
 <p>Notice that higher values of closeness indicate higher centrality.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -152,7 +152,7 @@ part of the graph.</p>
 </div>
 <p class="rubric">Notes</p>
 <p>The closeness centrality is normalized to <img class="math" src="../../_images/math/93dfaa9f94ca0b67b970883612085f9840ff9f06.png" alt="(n-1)/(|G|-1)" style="vertical-align: -5px"/> where
-<img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: -1px"/> is the number of nodes in the connected part of graph
+<img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: 0px"/> is the number of nodes in the connected part of graph
 containing the node.  If the graph is not completely connected,
 this algorithm computes the closeness centrality for each
 connected part separately.</p>
@@ -209,7 +209,7 @@ Conceptual clarification.  Social Networks 1, 215&#8211;239.
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
       Last updated on Jul 22, 2013.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

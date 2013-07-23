@@ -105,10 +105,10 @@ NetworkX
 <tt class="descname">katz_centrality_numpy</tt><big>(</big><em>G</em>, <em>alpha=0.1</em>, <em>beta=1.0</em>, <em>normalized=True</em><big>)</big><a class="headerlink" href="#networkx.algorithms.centrality.katz_centrality_numpy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the Katz centrality for the graph G.</p>
 <p>Katz centrality is related to eigenvalue centrality and PageRank.
-The Katz centrality for node <img class="math" src="../../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i" style="vertical-align: -1px"/> is</p>
+The Katz centrality for node <img class="math" src="../../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i" style="vertical-align: 0px"/> is</p>
 <div class="math">
 <p><img src="../../_images/math/867f654d13181eb68df627ef55f77210fdc87392.png" alt="x_i = \alpha \sum_{j} A_{ij} x_j + \beta,"/></p>
-</div><p>where <img class="math" src="../../_images/math/019e9892786e493964e145e7c5cf7b700314e53b.png" alt="A" style="vertical-align: 0px"/> is the adjacency matrix of the graph G with eigenvalues <img class="math" src="../../_images/math/ce4588fd900d02afcbd260bc07f54cce49a7dc4a.png" alt="\lambda" style="vertical-align: -1px"/>.</p>
+</div><p>where <img class="math" src="../../_images/math/019e9892786e493964e145e7c5cf7b700314e53b.png" alt="A" style="vertical-align: 0px"/> is the adjacency matrix of the graph G with eigenvalues <img class="math" src="../../_images/math/ce4588fd900d02afcbd260bc07f54cce49a7dc4a.png" alt="\lambda" style="vertical-align: 0px"/>.</p>
 <p>The parameter <img class="math" src="../../_images/math/fdb63b9e51abe6bbb16acfb5d7b773ddbb5bf4a8.png" alt="\beta" style="vertical-align: -4px"/> controls the initial centrality and</p>
 <div class="math">
 <p><img src="../../_images/math/bdf923bf89bc2cb6a3a221abf08448d827feb68a.png" alt="\alpha &lt; \frac{1}{\lambda_{max}}."/></p>
@@ -118,10 +118,10 @@ degree nodes) and also all other nodes in the network that connect
 to the node under consideration through these immediate neighbors.</p>
 <p>Extra weight can be provided to immediate neighbors through the
 parameter <img class="math" src="../../_images/math/fdb63b9e51abe6bbb16acfb5d7b773ddbb5bf4a8.png" alt="\beta" style="vertical-align: -4px"/>.  Connections made with distant neighbors
-are, however, penalized by an attenuation factor <img class="math" src="../../_images/math/10f32377ac67d94f764f12a15ea987e88c85d3e1.png" alt="\alpha" style="vertical-align: -1px"/> which
+are, however, penalized by an attenuation factor <img class="math" src="../../_images/math/10f32377ac67d94f764f12a15ea987e88c85d3e1.png" alt="\alpha" style="vertical-align: 0px"/> which
 should be strictly less than the inverse largest eigenvalue of the
 adjacency matrix in order for the Katz centrality to be computed
-correctly. More information is provided in <a class="reference internal" href="#r176">[R176]</a> .</p>
+correctly. More information is provided in <a class="reference internal" href="#r176" id="id1">[R176]</a> .</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -225,7 +225,7 @@ USA, 2010, p. 720.</td></tr>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
       Last updated on Jul 22, 2013.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

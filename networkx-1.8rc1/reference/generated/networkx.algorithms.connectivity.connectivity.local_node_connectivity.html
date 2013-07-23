@@ -111,7 +111,7 @@ edges) to disconnect them.</p>
 maximum flow on an auxiliary digraph build from the original input
 graph (see below for details). This is equal to the local node 
 connectivity because the value of a maximum s-t-flow is equal to the 
-capacity of a minimum s-t-cut (Ford and Fulkerson theorem) <a class="reference internal" href="#r201">[R201]</a> .</p>
+capacity of a minimum s-t-cut (Ford and Fulkerson theorem) <a class="reference internal" href="#r201" id="id1">[R201]</a> .</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -155,17 +155,17 @@ the auxiliary digraph is build.</p>
 <p>This is a flow based implementation of node connectivity. We compute the
 maximum flow using the Ford and Fulkerson algorithm on an auxiliary digraph 
 build from the original input graph:</p>
-<p>For an undirected graph G having <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: -1px"/> nodes and <img class="math" src="../../_images/math/f5047d1e0cbb50ec208923a22cd517c55100fa7b.png" alt="m" style="vertical-align: -1px"/> edges we derive a 
+<p>For an undirected graph G having <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: 0px"/> nodes and <img class="math" src="../../_images/math/f5047d1e0cbb50ec208923a22cd517c55100fa7b.png" alt="m" style="vertical-align: 0px"/> edges we derive a 
 directed graph D with 2n nodes and 2m+n arcs by replacing each 
-original node <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: -1px"/> with two nodes <img class="math" src="../../_images/math/10db40cc18d7471c355651971b33d25580f36e42.png" alt="v_A" style="vertical-align: -3px"/>, <img class="math" src="../../_images/math/8abdc09b48c2598712ceb4ce892b6c50cdb84632.png" alt="v_B" style="vertical-align: -3px"/> linked by an (internal) 
-arc in <img class="math" src="../../_images/math/9ffb448918db29f2a72f8f87f421b3b3cad18f95.png" alt="D" style="vertical-align: 0px"/>. Then for each edge (<img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: -1px"/>, <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: -1px"/>) in G we add two arcs 
+original node <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: 0px"/> with two nodes <img class="math" src="../../_images/math/10db40cc18d7471c355651971b33d25580f36e42.png" alt="v_A" style="vertical-align: -3px"/>, <img class="math" src="../../_images/math/8abdc09b48c2598712ceb4ce892b6c50cdb84632.png" alt="v_B" style="vertical-align: -3px"/> linked by an (internal) 
+arc in <img class="math" src="../../_images/math/9ffb448918db29f2a72f8f87f421b3b3cad18f95.png" alt="D" style="vertical-align: 0px"/>. Then for each edge (<img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: 0px"/>, <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: 0px"/>) in G we add two arcs 
 (<img class="math" src="../../_images/math/05e2b903240040f19c15f17348b26b38133626a3.png" alt="u_B" style="vertical-align: -3px"/>, <img class="math" src="../../_images/math/10db40cc18d7471c355651971b33d25580f36e42.png" alt="v_A" style="vertical-align: -3px"/>) and (<img class="math" src="../../_images/math/8abdc09b48c2598712ceb4ce892b6c50cdb84632.png" alt="v_B" style="vertical-align: -3px"/>, <img class="math" src="../../_images/math/fa7a529f337117b2a7d1ab6efed22bbd940b08f5.png" alt="u_A" style="vertical-align: -3px"/>) in <img class="math" src="../../_images/math/9ffb448918db29f2a72f8f87f421b3b3cad18f95.png" alt="D" style="vertical-align: 0px"/>. Finally we set the attribute 
-capacity = 1 for each arc in <img class="math" src="../../_images/math/9ffb448918db29f2a72f8f87f421b3b3cad18f95.png" alt="D" style="vertical-align: 0px"/> <a class="reference internal" href="#r201">[R201]</a> .</p>
-<p>For a directed graph G having <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: -1px"/> nodes and <img class="math" src="../../_images/math/f5047d1e0cbb50ec208923a22cd517c55100fa7b.png" alt="m" style="vertical-align: -1px"/> arcs we derive a 
-directed graph <img class="math" src="../../_images/math/9ffb448918db29f2a72f8f87f421b3b3cad18f95.png" alt="D" style="vertical-align: 0px"/> with <img class="math" src="../../_images/math/f93f5c51ea4b04b4992b003b39479f29018f6bda.png" alt="2n" style="vertical-align: -1px"/> nodes and <img class="math" src="../../_images/math/02dbab3601fa6cce490d54263017048f69e1a35d.png" alt="m+n" style="vertical-align: -2px"/> arcs by replacing each 
-original node <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: -1px"/> with two nodes <img class="math" src="../../_images/math/10db40cc18d7471c355651971b33d25580f36e42.png" alt="v_A" style="vertical-align: -3px"/>, <img class="math" src="../../_images/math/8abdc09b48c2598712ceb4ce892b6c50cdb84632.png" alt="v_B" style="vertical-align: -3px"/> linked by an (internal) 
-arc <img class="math" src="../../_images/math/2f741ac072efff73e5c39831b93bda20ab62135e.png" alt="(v_A, v_B)" style="vertical-align: -5px"/> in D. Then for each arc <img class="math" src="../../_images/math/0d7cc0aaa3c34fd4a50a506fb22de40dfff3ed09.png" alt="(u,v)" style="vertical-align: -5px"/> in G we add one arc 
-<img class="math" src="../../_images/math/d1ef40b5d9d7c1ddcf79efd0d6ebe523d0f500a2.png" alt="(u_B,v_A)" style="vertical-align: -5px"/> in <img class="math" src="../../_images/math/9ffb448918db29f2a72f8f87f421b3b3cad18f95.png" alt="D" style="vertical-align: 0px"/>. Finally we set the attribute capacity = 1 for 
+capacity = 1 for each arc in <img class="math" src="../../_images/math/9ffb448918db29f2a72f8f87f421b3b3cad18f95.png" alt="D" style="vertical-align: 0px"/> <a class="reference internal" href="#r201" id="id2">[R201]</a> .</p>
+<p>For a directed graph G having <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: 0px"/> nodes and <img class="math" src="../../_images/math/f5047d1e0cbb50ec208923a22cd517c55100fa7b.png" alt="m" style="vertical-align: 0px"/> arcs we derive a 
+directed graph <img class="math" src="../../_images/math/9ffb448918db29f2a72f8f87f421b3b3cad18f95.png" alt="D" style="vertical-align: 0px"/> with <img class="math" src="../../_images/math/f93f5c51ea4b04b4992b003b39479f29018f6bda.png" alt="2n" style="vertical-align: 0px"/> nodes and <img class="math" src="../../_images/math/02dbab3601fa6cce490d54263017048f69e1a35d.png" alt="m+n" style="vertical-align: -1px"/> arcs by replacing each 
+original node <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: 0px"/> with two nodes <img class="math" src="../../_images/math/10db40cc18d7471c355651971b33d25580f36e42.png" alt="v_A" style="vertical-align: -3px"/>, <img class="math" src="../../_images/math/8abdc09b48c2598712ceb4ce892b6c50cdb84632.png" alt="v_B" style="vertical-align: -3px"/> linked by an (internal) 
+arc <img class="math" src="../../_images/math/2f741ac072efff73e5c39831b93bda20ab62135e.png" alt="(v_A, v_B)" style="vertical-align: -4px"/> in D. Then for each arc <img class="math" src="../../_images/math/0d7cc0aaa3c34fd4a50a506fb22de40dfff3ed09.png" alt="(u,v)" style="vertical-align: -4px"/> in G we add one arc 
+<img class="math" src="../../_images/math/d1ef40b5d9d7c1ddcf79efd0d6ebe523d0f500a2.png" alt="(u_B,v_A)" style="vertical-align: -4px"/> in <img class="math" src="../../_images/math/9ffb448918db29f2a72f8f87f421b3b3cad18f95.png" alt="D" style="vertical-align: 0px"/>. Finally we set the attribute capacity = 1 for 
 each arc in <img class="math" src="../../_images/math/9ffb448918db29f2a72f8f87f421b3b3cad18f95.png" alt="D" style="vertical-align: 0px"/>.</p>
 <p>This is equal to the local node connectivity because the value of 
 a maximum s-t-flow is equal to the capacity of a minimum s-t-cut (Ford 
@@ -229,7 +229,7 @@ Notes in Computer Science, Volume 3418, Springer-Verlag, 2005.
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
       Last updated on Jul 22, 2013.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

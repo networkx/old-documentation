@@ -104,16 +104,16 @@ NetworkX
 <tt class="descname">navigable_small_world_graph</tt><big>(</big><em>n</em>, <em>p=1</em>, <em>q=1</em>, <em>r=2</em>, <em>dim=2</em>, <em>seed=None</em><big>)</big><a class="reference internal" href="../../_modules/networkx/generators/geometric.html#navigable_small_world_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.geometric.navigable_small_world_graph" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a navigable small-world graph.</p>
 <p>A navigable small-world graph is a directed grid with additional
-long-range connections that are chosen randomly.  From <a class="reference internal" href="#r265">[R265]</a>:</p>
+long-range connections that are chosen randomly.  From <a class="reference internal" href="#r265" id="id1">[R265]</a>:</p>
 <p>Begin with a set of nodes that are identified with the set of lattice
-points in an <img class="math" src="../../_images/math/c3d38f82f48ef9e81c04d49354293305b0067afc.png" alt="n \times n" style="vertical-align: -1px"/> square, <img class="math" src="../../_images/math/0b5a6678a6accc225b64e4e890df587260877f35.png" alt="{(i,j): i\in {1,2,\ldots,n}, j\in {1,2,\ldots,n}}" style="vertical-align: -5px"/>
-and define the lattice distance between two nodes <img class="math" src="../../_images/math/887919dfbc86eebc29e0373f98f97dbf23a0ae23.png" alt="(i,j)" style="vertical-align: -5px"/> and <img class="math" src="../../_images/math/1a8bb9561cd83e9ea6cc86869a85e06ba59aa76c.png" alt="(k,l)" style="vertical-align: -5px"/> 
+points in an <img class="math" src="../../_images/math/c3d38f82f48ef9e81c04d49354293305b0067afc.png" alt="n \times n" style="vertical-align: 0px"/> square, <img class="math" src="../../_images/math/0b5a6678a6accc225b64e4e890df587260877f35.png" alt="{(i,j): i\in {1,2,\ldots,n}, j\in {1,2,\ldots,n}}" style="vertical-align: -4px"/>
+and define the lattice distance between two nodes <img class="math" src="../../_images/math/887919dfbc86eebc29e0373f98f97dbf23a0ae23.png" alt="(i,j)" style="vertical-align: -4px"/> and <img class="math" src="../../_images/math/1a8bb9561cd83e9ea6cc86869a85e06ba59aa76c.png" alt="(k,l)" style="vertical-align: -4px"/> 
 to be the number of &#8220;lattice steps&#8221; separating them: <img class="math" src="../../_images/math/4d75caca82694f2babc9e64b260f3c707b82e75e.png" alt="d((i,j),(k,l)) = |k-i|+|l-j|" style="vertical-align: -5px"/>.</p>
-<p>For a universal constant <img class="math" src="../../_images/math/36f73fc1312ee0349b3f3a0f3bd9eb5504339011.png" alt="p" style="vertical-align: -4px"/>, the node <img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: -1px"/> has a directed edge to every other 
+<p>For a universal constant <img class="math" src="../../_images/math/36f73fc1312ee0349b3f3a0f3bd9eb5504339011.png" alt="p" style="vertical-align: -4px"/>, the node <img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: 0px"/> has a directed edge to every other 
 node within lattice distance <img class="math" src="../../_images/math/36f73fc1312ee0349b3f3a0f3bd9eb5504339011.png" alt="p" style="vertical-align: -4px"/> (local contacts) .</p>
-<p>For universal constants <img class="math" src="../../_images/math/1232b96eabbd4883ccaf0e7453b6afd6d1cdd840.png" alt="q\ge 0" style="vertical-align: -4px"/> and <img class="math" src="../../_images/math/2b33021cb80a66e218fab8077f932363734b88fe.png" alt="r\ge 0" style="vertical-align: -3px"/> construct directed edges from <img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: -1px"/> to <img class="math" src="../../_images/math/0615acc3725de21025457e7d6f7694dab8e2f758.png" alt="q" style="vertical-align: -4px"/>
+<p>For universal constants <img class="math" src="../../_images/math/1232b96eabbd4883ccaf0e7453b6afd6d1cdd840.png" alt="q\ge 0" style="vertical-align: -4px"/> and <img class="math" src="../../_images/math/2b33021cb80a66e218fab8077f932363734b88fe.png" alt="r\ge 0" style="vertical-align: -3px"/> construct directed edges from <img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: 0px"/> to <img class="math" src="../../_images/math/0615acc3725de21025457e7d6f7694dab8e2f758.png" alt="q" style="vertical-align: -4px"/>
 other nodes (long-range contacts) using independent random trials;  the i&#8217;th 
-directed edge from <img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: -1px"/> has endpoint <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: -1px"/> with probability proportional to <img class="math" src="../../_images/math/3cb5dd14849997f0eb4dbc74b35d0cca517ddc75.png" alt="d(u,v)^{-r}" style="vertical-align: -5px"/>.</p>
+directed edge from <img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: 0px"/> has endpoint <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: 0px"/> with probability proportional to <img class="math" src="../../_images/math/3cb5dd14849997f0eb4dbc74b35d0cca517ddc75.png" alt="d(u,v)^{-r}" style="vertical-align: -4px"/>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -196,7 +196,7 @@ perspective. Proc. 32nd ACM Symposium on Theory of Computing, 2000.</td></tr>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
       Last updated on Jul 22, 2013.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

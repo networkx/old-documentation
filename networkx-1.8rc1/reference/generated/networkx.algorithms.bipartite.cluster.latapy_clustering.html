@@ -105,20 +105,20 @@ NetworkX
 <tt class="descname">latapy_clustering</tt><big>(</big><em>G</em>, <em>nodes=None</em>, <em>mode='dot'</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/bipartite/cluster.html#latapy_clustering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.bipartite.cluster.latapy_clustering" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute a bipartite clustering coefficient for nodes.</p>
 <p>The bipartie clustering coefficient is a measure of local density
-of connections defined as <a class="reference internal" href="#r145">[R145]</a>:</p>
+of connections defined as <a class="reference internal" href="#r145" id="id1">[R145]</a>:</p>
 <div class="math">
 <p><img src="../../_images/math/c1f253313312674494796b4d0e0484edc22995d8.png" alt="c_u = \frac{\sum_{v \in N(N(v))} c_{uv} }{|N(N(u))|}"/></p>
-</div><p>where <img class="math" src="../../_images/math/69ba47b0f7799d2ebf52f23f0048fb413e331d9e.png" alt="N(N(u))" style="vertical-align: -5px"/> are the second order neighbors of <img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: -1px"/> in <img class="math" src="../../_images/math/6e28ce12d49d39f160d5a0ef54077fc98e4b9d2b.png" alt="G" style="vertical-align: -1px"/> excluding <img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: -1px"/>, 
+</div><p>where <img class="math" src="../../_images/math/69ba47b0f7799d2ebf52f23f0048fb413e331d9e.png" alt="N(N(u))" style="vertical-align: -4px"/> are the second order neighbors of <img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: 0px"/> in <img class="math" src="../../_images/math/6e28ce12d49d39f160d5a0ef54077fc98e4b9d2b.png" alt="G" style="vertical-align: 0px"/> excluding <img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: 0px"/>, 
 and <img class="math" src="../../_images/math/bfd2d679339b7a68606f567971cc537c4eb742fa.png" alt="c_{uv}" style="vertical-align: -3px"/> is the pairwise clustering coefficient between nodes 
-<img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: -1px"/> and <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: -1px"/>.</p>
+<img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: 0px"/> and <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: 0px"/>.</p>
 <p>The mode selects the function for <img class="math" src="../../_images/math/bfd2d679339b7a68606f567971cc537c4eb742fa.png" alt="c_{uv}" style="vertical-align: -3px"/> which can be:</p>
-<p><img class="math" src="../../_images/math/cf85a2bf1b40954779272bce8729ce1bfdfad48a.png" alt="dot" style="vertical-align: -1px"/>:</p>
+<p><img class="math" src="../../_images/math/cf85a2bf1b40954779272bce8729ce1bfdfad48a.png" alt="dot" style="vertical-align: 0px"/>:</p>
 <div class="math">
 <p><img src="../../_images/math/185146cb5825c472cd7857f9c098d897c56e0d92.png" alt="c_{uv}=\frac{|N(u)\cap N(v)|}{|N(u) \cup N(v)|}"/></p>
-</div><p><img class="math" src="../../_images/math/958563059042b1cc80498ccde6f26d9d07bf6c02.png" alt="min" style="vertical-align: -1px"/>:</p>
+</div><p><img class="math" src="../../_images/math/958563059042b1cc80498ccde6f26d9d07bf6c02.png" alt="min" style="vertical-align: 0px"/>:</p>
 <div class="math">
 <p><img src="../../_images/math/12f42e9d827a6d039bdf1a9ee4cc7eb74b9fee9a.png" alt="c_{uv}=\frac{|N(u)\cap N(v)|}{min(|N(u)|,|N(v)|)}"/></p>
-</div><p><img class="math" src="../../_images/math/1bea903b827fedcdb4ef688ce9aa2ba330f6da15.png" alt="max" style="vertical-align: -1px"/>:</p>
+</div><p><img class="math" src="../../_images/math/1bea903b827fedcdb4ef688ce9aa2ba330f6da15.png" alt="max" style="vertical-align: 0px"/>:</p>
 <div class="math">
 <p><img src="../../_images/math/f8fd7ae56d65d39ba329cbe64dc8ab59b4abe63f.png" alt="c_{uv}=\frac{|N(u)\cap N(v)|}{max(|N(u)|,|N(v)|)}"/></p>
 </div><table class="docutils field-list" frame="void" rules="none">
@@ -214,7 +214,7 @@ Social Networks 30(1), 31&#8211;48.</td></tr>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
       Last updated on Jul 22, 2013.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

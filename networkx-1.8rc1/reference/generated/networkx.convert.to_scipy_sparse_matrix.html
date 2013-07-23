@@ -113,8 +113,8 @@ NetworkX
 </div></blockquote>
 <p><strong>nodelist</strong> : list, optional</p>
 <blockquote>
-<div><p>The rows and columns are ordered according to the nodes in <img class="math" src="../../_images/math/bcdf94436f9d65a9adc47386da84b8f39ce9c50a.png" alt="nodelist" style="vertical-align: -1px"/>.
-If <img class="math" src="../../_images/math/bcdf94436f9d65a9adc47386da84b8f39ce9c50a.png" alt="nodelist" style="vertical-align: -1px"/> is None, then the ordering is produced by G.nodes().</p>
+<div><p>The rows and columns are ordered according to the nodes in <img class="math" src="../../_images/math/bcdf94436f9d65a9adc47386da84b8f39ce9c50a.png" alt="nodelist" style="vertical-align: 0px"/>.
+If <img class="math" src="../../_images/math/bcdf94436f9d65a9adc47386da84b8f39ce9c50a.png" alt="nodelist" style="vertical-align: 0px"/> is None, then the ordering is produced by G.nodes().</p>
 </div></blockquote>
 <p><strong>dtype</strong> : NumPy data-type, optional</p>
 <blockquote>
@@ -130,7 +130,7 @@ the edge weight.  If None then all edge weights are 1.</p>
 <blockquote>
 <div><p>The type of the matrix to be returned (default &#8216;csr&#8217;).  For
 some algorithms different implementations of sparse matrices
-can perform better.  See <a class="reference internal" href="#r248">[R248]</a> for details.</p>
+can perform better.  See <a class="reference internal" href="#r248" id="id1">[R248]</a> for details.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -147,8 +147,8 @@ can perform better.  See <a class="reference internal" href="#r248">[R248]</a> f
 parameter weight. When an edge does not have that attribute, the
 value of the entry is 1.</p>
 <p>For multiple edges the matrix values are the sums of the edge weights.</p>
-<p>When <img class="math" src="../../_images/math/bcdf94436f9d65a9adc47386da84b8f39ce9c50a.png" alt="nodelist" style="vertical-align: -1px"/> does not contain every node in <img class="math" src="../../_images/math/6e28ce12d49d39f160d5a0ef54077fc98e4b9d2b.png" alt="G" style="vertical-align: -1px"/>, the matrix is built
-from the subgraph of <img class="math" src="../../_images/math/6e28ce12d49d39f160d5a0ef54077fc98e4b9d2b.png" alt="G" style="vertical-align: -1px"/> that is induced by the nodes in <img class="math" src="../../_images/math/bcdf94436f9d65a9adc47386da84b8f39ce9c50a.png" alt="nodelist" style="vertical-align: -1px"/>.</p>
+<p>When <img class="math" src="../../_images/math/bcdf94436f9d65a9adc47386da84b8f39ce9c50a.png" alt="nodelist" style="vertical-align: 0px"/> does not contain every node in <img class="math" src="../../_images/math/6e28ce12d49d39f160d5a0ef54077fc98e4b9d2b.png" alt="G" style="vertical-align: 0px"/>, the matrix is built
+from the subgraph of <img class="math" src="../../_images/math/6e28ce12d49d39f160d5a0ef54077fc98e4b9d2b.png" alt="G" style="vertical-align: 0px"/> that is induced by the nodes in <img class="math" src="../../_images/math/bcdf94436f9d65a9adc47386da84b8f39ce9c50a.png" alt="nodelist" style="vertical-align: 0px"/>.</p>
 <p>Uses coo_matrix format. To convert to other formats specify the
 format= keyword.</p>
 <p class="rubric">References</p>
@@ -212,7 +212,7 @@ format= keyword.</p>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
       Last updated on Jul 22, 2013.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

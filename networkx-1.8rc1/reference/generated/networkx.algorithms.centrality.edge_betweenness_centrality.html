@@ -104,13 +104,13 @@ NetworkX
 <dt id="networkx.algorithms.centrality.edge_betweenness_centrality">
 <tt class="descname">edge_betweenness_centrality</tt><big>(</big><em>G</em>, <em>normalized=True</em>, <em>weight=None</em><big>)</big><a class="headerlink" href="#networkx.algorithms.centrality.edge_betweenness_centrality" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute betweenness centrality for edges.</p>
-<p>Betweenness centrality of an edge <img class="math" src="../../_images/math/a3a59bb1293ee3f6dec19de4019a7178874219ae.png" alt="e" style="vertical-align: -1px"/> is the sum of the
-fraction of all-pairs shortest paths that pass through <img class="math" src="../../_images/math/a3a59bb1293ee3f6dec19de4019a7178874219ae.png" alt="e" style="vertical-align: -1px"/>:</p>
+<p>Betweenness centrality of an edge <img class="math" src="../../_images/math/a3a59bb1293ee3f6dec19de4019a7178874219ae.png" alt="e" style="vertical-align: 0px"/> is the sum of the
+fraction of all-pairs shortest paths that pass through <img class="math" src="../../_images/math/a3a59bb1293ee3f6dec19de4019a7178874219ae.png" alt="e" style="vertical-align: 0px"/>:</p>
 <div class="math">
 <p><img src="../../_images/math/350d27a400931c7bdd4b3f45de5b5a822a0c3de6.png" alt="c_B(v) =\sum_{s,t \in V} \frac{\sigma(s, t|e)}{\sigma(s, t)}"/></p>
-</div><p>where <img class="math" src="../../_images/math/12d58aa29201da09d8e620f8698e3a37547f6b4a.png" alt="V" style="vertical-align: -1px"/> is the set of nodes,`sigma(s, t)` is the number of 
-shortest <img class="math" src="../../_images/math/f98b5f1f3cf9331a3f398911e2a8cd223839672e.png" alt="(s, t)" style="vertical-align: -5px"/>-paths, and <img class="math" src="../../_images/math/5edcb1e6d01f3e37b34de85f9ef4b78506e80d87.png" alt="\sigma(s, t|e)" style="vertical-align: -5px"/> is the number of 
-those paths passing through edge <img class="math" src="../../_images/math/a3a59bb1293ee3f6dec19de4019a7178874219ae.png" alt="e" style="vertical-align: -1px"/> <a class="reference internal" href="#r171">[R171]</a>.</p>
+</div><p>where <img class="math" src="../../_images/math/12d58aa29201da09d8e620f8698e3a37547f6b4a.png" alt="V" style="vertical-align: 0px"/> is the set of nodes,`sigma(s, t)` is the number of 
+shortest <img class="math" src="../../_images/math/f98b5f1f3cf9331a3f398911e2a8cd223839672e.png" alt="(s, t)" style="vertical-align: -4px"/>-paths, and <img class="math" src="../../_images/math/5edcb1e6d01f3e37b34de85f9ef4b78506e80d87.png" alt="\sigma(s, t|e)" style="vertical-align: -5px"/> is the number of 
+those paths passing through edge <img class="math" src="../../_images/math/a3a59bb1293ee3f6dec19de4019a7178874219ae.png" alt="e" style="vertical-align: 0px"/> <a class="reference internal" href="#r171" id="id1">[R171]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -122,7 +122,7 @@ those paths passing through edge <img class="math" src="../../_images/math/a3a59
 <p><strong>normalized</strong> : bool, optional</p>
 <blockquote>
 <div><p>If True the betweenness values are normalized by <img class="math" src="../../_images/math/f7a220a291feb4bf7d4eeb68d720bb9439ded6b8.png" alt="2/(n(n-1))" style="vertical-align: -5px"/> 
-for graphs, and <img class="math" src="../../_images/math/868315cf24b0df4e791241e9fd80c9885600b622.png" alt="1/(n(n-1))" style="vertical-align: -5px"/> for directed graphs where <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: -1px"/> 
+for graphs, and <img class="math" src="../../_images/math/868315cf24b0df4e791241e9fd80c9885600b622.png" alt="1/(n(n-1))" style="vertical-align: -5px"/> for directed graphs where <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: 0px"/> 
 is the number of nodes in G.</p>
 </div></blockquote>
 <p><strong>weight</strong> : None or string, optional</p>
@@ -145,7 +145,7 @@ Otherwise holds the name of the edge attribute used as weight.</p>
 <p class="last"><a class="reference internal" href="networkx.algorithms.centrality.betweenness_centrality.html#networkx.algorithms.centrality.betweenness_centrality" title="networkx.algorithms.centrality.betweenness_centrality"><tt class="xref py py-obj docutils literal"><span class="pre">betweenness_centrality</span></tt></a>, <a class="reference internal" href="networkx.algorithms.centrality.edge_load.html#networkx.algorithms.centrality.edge_load" title="networkx.algorithms.centrality.edge_load"><tt class="xref py py-obj docutils literal"><span class="pre">edge_load</span></tt></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>The algorithm is from Ulrik Brandes <a class="reference internal" href="#r170">[R170]</a>.</p>
+<p>The algorithm is from Ulrik Brandes <a class="reference internal" href="#r170" id="id2">[R170]</a>.</p>
 <p>For weighted graphs the edge weights must be greater than zero.
 Zero edge weights can produce an infinite number of equal length 
 paths between pairs of nodes.</p>
@@ -208,7 +208,7 @@ Social Networks 30(2):136-145, 2008.
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
       Last updated on Jul 22, 2013.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

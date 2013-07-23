@@ -144,10 +144,10 @@ components of the graph.</p>
 <p>The algorithm to find articulation points and biconnected
 components is implemented using a non-recursive depth-first-search
 (DFS) that keeps track of the highest level that back edges reach
-in the DFS tree. A node <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: -1px"/> is an articulation point if, and only
-if, there exists a subtree rooted at <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: -1px"/> such that there is no
-back edge from any successor of <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: -1px"/> that links to a predecessor of
-<img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: -1px"/> in the DFS tree. By keeping track of all the edges traversed
+in the DFS tree. A node <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: 0px"/> is an articulation point if, and only
+if, there exists a subtree rooted at <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: 0px"/> such that there is no
+back edge from any successor of <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: 0px"/> that links to a predecessor of
+<img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: 0px"/> in the DFS tree. By keeping track of all the edges traversed
 by the DFS we can obtain the biconnected components because all
 edges of a bicomponent will be traversed consecutively between
 articulation points.</p>
@@ -212,7 +212,7 @@ Communications of the ACM 16: 372–378. doi:10.1145/362248.362272</td></tr>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
       Last updated on Jul 22, 2013.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

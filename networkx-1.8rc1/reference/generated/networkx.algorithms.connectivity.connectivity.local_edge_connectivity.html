@@ -110,7 +110,7 @@ of edges that must be removed to disconnect them.</p>
 maximum flow on an auxiliary digraph build from the original
 network (see below for details). This is equal to the local edge 
 connectivity because the value of a maximum s-t-flow is equal to the 
-capacity of a minimum s-t-cut (Ford and Fulkerson theorem) <a class="reference internal" href="#r199">[R199]</a> .</p>
+capacity of a minimum s-t-cut (Ford and Fulkerson theorem) <a class="reference internal" href="#r199" id="id1">[R199]</a> .</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -151,10 +151,10 @@ the auxiliary digraph is build.</p>
 maximum flow using the Ford and Fulkerson algorithm on an auxiliary digraph 
 build from the original graph:</p>
 <p>If the input graph is undirected, we replace each edge (u,v) with
-two reciprocal arcs <img class="math" src="../../_images/math/0d7cc0aaa3c34fd4a50a506fb22de40dfff3ed09.png" alt="(u,v)" style="vertical-align: -5px"/> and <img class="math" src="../../_images/math/24f7c2d99a230b2dc7997d153d766acafb532408.png" alt="(v,u)" style="vertical-align: -5px"/> and then we set the attribute 
+two reciprocal arcs <img class="math" src="../../_images/math/0d7cc0aaa3c34fd4a50a506fb22de40dfff3ed09.png" alt="(u,v)" style="vertical-align: -4px"/> and <img class="math" src="../../_images/math/24f7c2d99a230b2dc7997d153d766acafb532408.png" alt="(v,u)" style="vertical-align: -4px"/> and then we set the attribute 
 &#8216;capacity&#8217; for each arc to 1. If the input graph is directed we simply
 add the &#8216;capacity&#8217; attribute. This is an implementation of algorithm 1 
-in <a class="reference internal" href="#r199">[R199]</a>.</p>
+in <a class="reference internal" href="#r199" id="id2">[R199]</a>.</p>
 <p>The maximum flow in the auxiliary network is equal to the local edge 
 connectivity because the value of a maximum s-t-flow is equal to the 
 capacity of a minimum s-t-cut (Ford and Fulkerson theorem).</p>
@@ -215,7 +215,7 @@ capacity of a minimum s-t-cut (Ford and Fulkerson theorem).</p>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
       Last updated on Jul 22, 2013.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

@@ -105,7 +105,7 @@ NetworkX
 <tt class="descname">flow_hierarchy</tt><big>(</big><em>G</em>, <em>weight=None</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/hierarchy.html#flow_hierarchy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.hierarchy.flow_hierarchy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the flow hierarchy of a directed network.</p>
 <p>Flow hierarchy is defined as the fraction of edges not participating
-in cycles in a directed graph <a class="reference internal" href="#r228">[R228]</a>.</p>
+in cycles in a directed graph <a class="reference internal" href="#r228" id="id1">[R228]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -129,11 +129,11 @@ in cycles in a directed graph <a class="reference internal" href="#r228">[R228]<
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>The algorithm described in <a class="reference internal" href="#r228">[R228]</a> computes the flow hierarchy through
+<p>The algorithm described in <a class="reference internal" href="#r228" id="id2">[R228]</a> computes the flow hierarchy through
 exponentiation of the adjacency matrix.  This function implements an
 alternative approach that finds strongly connected components.
 An edge is in a cycle if and only if it is in a strongly connected
-component, which can be found in <img class="math" src="../../_images/math/dd7e38e934efd5ef6aaa537385baa398d09e1b9e.png" alt="O(m)" style="vertical-align: -5px"/> time using Tarjan&#8217;s algorithm.</p>
+component, which can be found in <img class="math" src="../../_images/math/dd7e38e934efd5ef6aaa537385baa398d09e1b9e.png" alt="O(m)" style="vertical-align: -4px"/> time using Tarjan&#8217;s algorithm.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r228" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -186,7 +186,7 @@ DOI: 10.1002/cplx.20368
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
       Last updated on Jul 22, 2013.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>

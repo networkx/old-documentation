@@ -105,15 +105,15 @@ NetworkX
 <tt class="descname">square_clustering</tt><big>(</big><em>G</em>, <em>nodes=None</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/cluster.html#square_clustering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.cluster.square_clustering" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the squares clustering coefficient for nodes.</p>
 <p>For each node return the fraction of possible squares that exist at
-the node <a class="reference internal" href="#r186">[R186]</a></p>
+the node <a class="reference internal" href="#r186" id="id1">[R186]</a></p>
 <div class="math">
 <p><img src="../../_images/math/348128ff19e9b120c128e89bebf3362b182639b3.png" alt="C_4(v) = \frac{ \sum_{u=1}^{k_v} 
 \sum_{w=u+1}^{k_v} q_v(u,w) }{ \sum_{u=1}^{k_v} 
 \sum_{w=u+1}^{k_v} [a_v(u,w) + q_v(u,w)]},"/></p>
-</div><p>where <img class="math" src="../../_images/math/f11154c9d9a4272b90732d641d103b50ccd98f0c.png" alt="q_v(u,w)" style="vertical-align: -5px"/> are the number of common neighbors of <img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: -1px"/> and <img class="math" src="../../_images/math/9ee4b825a2e36ae093ed7be5e4851ef453b34914.png" alt="w" style="vertical-align: -1px"/> 
-other than <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: -1px"/> (ie squares), and 
-<img class="math" src="../../_images/math/380d804339894ad260183a3fe9c998982fa9357c.png" alt="a_v(u,w) = (k_u - (1+q_v(u,w)+\theta_{uv}))(k_w - (1+q_v(u,w)+\theta_{uw}))" style="vertical-align: -5px"/>,
-where <img class="math" src="../../_images/math/54d80aa16f5fb81416cc9c023fa1ac35b08f97b8.png" alt="\theta_{uw} = 1" style="vertical-align: -3px"/> if <img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: -1px"/> and <img class="math" src="../../_images/math/9ee4b825a2e36ae093ed7be5e4851ef453b34914.png" alt="w" style="vertical-align: -1px"/> are connected and 0 otherwise.</p>
+</div><p>where <img class="math" src="../../_images/math/f11154c9d9a4272b90732d641d103b50ccd98f0c.png" alt="q_v(u,w)" style="vertical-align: -4px"/> are the number of common neighbors of <img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: 0px"/> and <img class="math" src="../../_images/math/9ee4b825a2e36ae093ed7be5e4851ef453b34914.png" alt="w" style="vertical-align: 0px"/> 
+other than <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: 0px"/> (ie squares), and 
+<img class="math" src="../../_images/math/380d804339894ad260183a3fe9c998982fa9357c.png" alt="a_v(u,w) = (k_u - (1+q_v(u,w)+\theta_{uv}))(k_w - (1+q_v(u,w)+\theta_{uw}))" style="vertical-align: -4px"/>,
+where <img class="math" src="../../_images/math/54d80aa16f5fb81416cc9c023fa1ac35b08f97b8.png" alt="\theta_{uw} = 1" style="vertical-align: -3px"/> if <img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: 0px"/> and <img class="math" src="../../_images/math/9ee4b825a2e36ae093ed7be5e4851ef453b34914.png" alt="w" style="vertical-align: 0px"/> are connected and 0 otherwise.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -134,8 +134,8 @@ where <img class="math" src="../../_images/math/54d80aa16f5fb81416cc9c023fa1ac35
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>While <img class="math" src="../../_images/math/fd5b83ccab71e94fac653d83671517062661de08.png" alt="C_3(v)" style="vertical-align: -5px"/> (triangle clustering) gives the probability that
-two neighbors of node v are connected with each other, <img class="math" src="../../_images/math/d95b385c46889a94347868ad485f229d70d0eca8.png" alt="C_4(v)" style="vertical-align: -5px"/> is
+<p>While <img class="math" src="../../_images/math/fd5b83ccab71e94fac653d83671517062661de08.png" alt="C_3(v)" style="vertical-align: -4px"/> (triangle clustering) gives the probability that
+two neighbors of node v are connected with each other, <img class="math" src="../../_images/math/d95b385c46889a94347868ad485f229d70d0eca8.png" alt="C_4(v)" style="vertical-align: -4px"/> is
 the probability that two neighbors of node v share a common
 neighbor different from v. This algorithm can be applied to both
 bipartite and unipartite networks.</p>
@@ -197,7 +197,7 @@ Physical Review E (72) 056127.</td></tr>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
       Last updated on Jul 22, 2013.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2pre.
     </div>
   </body>
 </html>
