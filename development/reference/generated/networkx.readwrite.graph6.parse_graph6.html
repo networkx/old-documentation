@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>read_sparse6_list &mdash; NetworkX 1.8.dev20131031104627 documentation</title>
+    <title>parse_graph6 &mdash; NetworkX 1.9.dev20140408102823 documentation</title>
     
     <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.8.dev20131031104627',
+        VERSION:     '1.9.dev20140408102823',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -26,11 +26,12 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.8.dev20131031104627 documentation"
+          title="Search within NetworkX 1.9.dev20140408102823 documentation"
           href="../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.8.dev20131031104627 documentation" href="../../index.html" />
+    <link rel="top" title="NetworkX 1.9.dev20140408102823 documentation" href="../../index.html" />
     <link rel="up" title="SparseGraph6" href="../readwrite.sparsegraph6.html" />
-    <link rel="prev" title="read_sparse6" href="networkx.readwrite.sparsegraph6.read_sparse6.html" /> 
+    <link rel="next" title="read_graph6" href="networkx.readwrite.graph6.read_graph6.html" />
+    <link rel="prev" title="write_sparse6" href="networkx.readwrite.sparse6.write_sparse6.html" /> 
   </head>
   <body>
 <div style="color: black;background-color: white; font-size: 3.2em; text-align: left; padding: 15px 10px 10px 15px">
@@ -47,7 +48,10 @@ NetworkX
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="networkx.readwrite.sparsegraph6.read_sparse6.html" title="read_sparse6"
+          <a href="networkx.readwrite.graph6.read_graph6.html" title="read_graph6"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="networkx.readwrite.sparse6.write_sparse6.html" title="write_sparse6"
              accesskey="P">previous</a> |</li>
         <li><a href="http://networkx.github.com/">NetworkX Home </a> |&nbsp;</li>
         <li><a href="http://networkx.github.com/documentation.html">Documentation </a>|&nbsp;</li>
@@ -63,15 +67,18 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.8.dev_20131031104627</b></p>
+<p>This documentation is for the development version <b>1.9.dev_20140408102823</b></p>
 
 
 
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="networkx.readwrite.sparsegraph6.read_sparse6.html"
-                        title="previous chapter">read_sparse6</a></p>
+  <p class="topless"><a href="networkx.readwrite.sparse6.write_sparse6.html"
+                        title="previous chapter">write_sparse6</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="networkx.readwrite.graph6.read_graph6.html"
+                        title="next chapter">read_graph6</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
@@ -93,13 +100,46 @@ NetworkX
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="read-sparse6-list">
-<h1>read_sparse6_list<a class="headerlink" href="#read-sparse6-list" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="parse-graph6">
+<h1>parse_graph6<a class="headerlink" href="#parse-graph6" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
-<dt id="networkx.readwrite.sparsegraph6.read_sparse6_list">
-<tt class="descname">read_sparse6_list</tt><big>(</big><em>path</em><big>)</big><a class="reference internal" href="../../_modules/networkx/readwrite/sparsegraph6.html#read_sparse6_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.readwrite.sparsegraph6.read_sparse6_list" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read undirected graphs in sparse6 format from path.</p>
-<p>Returns a list of MultiGraphs, one for each line in file.</p>
+<dt id="networkx.readwrite.graph6.parse_graph6">
+<tt class="descname">parse_graph6</tt><big>(</big><em>string</em><big>)</big><a class="reference internal" href="../../_modules/networkx/readwrite/graph6.html#parse_graph6"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.readwrite.graph6.parse_graph6" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a simple undirected graph in graph6 format from string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>string</strong> : string</p>
+<blockquote>
+<div><p>Data in graph6 format</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>G</strong> : Graph</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>NetworkXError</strong> :</p>
+<blockquote class="last">
+<div><p>If the string is unable to be parsed in graph6 format</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="networkx.readwrite.graph6.generate_graph6.html#networkx.readwrite.graph6.generate_graph6" title="networkx.readwrite.graph6.generate_graph6"><tt class="xref py py-obj docutils literal"><span class="pre">generate_graph6</span></tt></a>, <a class="reference internal" href="networkx.readwrite.graph6.read_graph6.html#networkx.readwrite.graph6.read_graph6" title="networkx.readwrite.graph6.read_graph6"><tt class="xref py py-obj docutils literal"><span class="pre">read_graph6</span></tt></a>, <a class="reference internal" href="networkx.readwrite.graph6.write_graph6.html#networkx.readwrite.graph6.write_graph6" title="networkx.readwrite.graph6.write_graph6"><tt class="xref py py-obj docutils literal"><span class="pre">write_graph6</span></tt></a></p>
+</div>
+<p class="rubric">References</p>
+<p>Graph6 specification:
+<a class="reference external" href="http://cs.anu.edu.au/~bdm/data/formats.txt">http://cs.anu.edu.au/~bdm/data/formats.txt</a> for details.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">parse_graph6</span><span class="p">(</span><span class="s">&#39;A_&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span>
+<span class="go">[(0, 1)]</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -120,7 +160,10 @@ NetworkX
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="networkx.readwrite.sparsegraph6.read_sparse6.html" title="read_sparse6"
+          <a href="networkx.readwrite.graph6.read_graph6.html" title="read_graph6"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="networkx.readwrite.sparse6.write_sparse6.html" title="write_sparse6"
              >previous</a> |</li>
         <li><a href="http://networkx.github.com/">NetworkX Home </a> |&nbsp;</li>
         <li><a href="http://networkx.github.com/documentation.html">Documentation </a>|&nbsp;</li>

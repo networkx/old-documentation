@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>closeness_centrality &mdash; NetworkX 1.8.dev20131031104627 documentation</title>
+    <title>closeness_centrality &mdash; NetworkX 1.9.dev20140408102823 documentation</title>
     
     <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.8.dev20131031104627',
+        VERSION:     '1.9.dev20140408102823',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -26,9 +26,9 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.8.dev20131031104627 documentation"
+          title="Search within NetworkX 1.9.dev20140408102823 documentation"
           href="../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.8.dev20131031104627 documentation" href="../../index.html" />
+    <link rel="top" title="NetworkX 1.9.dev20140408102823 documentation" href="../../index.html" />
     <link rel="up" title="Bipartite" href="../algorithms.bipartite.html" />
     <link rel="next" title="degree_centrality" href="networkx.algorithms.bipartite.centrality.degree_centrality.html" />
     <link rel="prev" title="node_redundancy" href="networkx.algorithms.bipartite.redundancy.node_redundancy.html" /> 
@@ -67,7 +67,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.8.dev_20131031104627</b></p>
+<p>This documentation is for the development version <b>1.9.dev_20140408102823</b></p>
 
 
 
@@ -146,7 +146,7 @@ but the dictionary returned contains all nodes from both node sets.</p>
 <p>Closeness centrality is normalized by the minimum distance possible. 
 In the bipartite case the minimum distance for a node in one bipartite 
 node set is 1 from all nodes in the other node set and 2 from all 
-other nodes in its own set <a class="reference internal" href="#r143">[R143]</a>. Thus the closeness centrality
+other nodes in its own set <a class="reference internal" href="#r144">[R144]</a>. Thus the closeness centrality
 for node <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: 0px"/>  in the two bipartite sets <img class="math" src="../../_images/math/e2bbebb3bd73f1ae5c64098ab0244f739abf7ca4.png" alt="U" style="vertical-align: 0px"/> with 
 <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: 0px"/> nodes and <img class="math" src="../../_images/math/12d58aa29201da09d8e620f8698e3a37547f6b4a.png" alt="V" style="vertical-align: 0px"/> with <img class="math" src="../../_images/math/f5047d1e0cbb50ec208923a22cd517c55100fa7b.png" alt="m" style="vertical-align: 0px"/> nodes is</p>
 <div class="math">
@@ -163,10 +163,10 @@ node.  If the graph is not completely connected, this algorithm
 computes the closeness centrality for each connected part
 separately.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r143" rules="none">
+<table class="docutils citation" frame="void" id="r144" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R143]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Borgatti, S.P. and Halgin, D. In press. &#8220;Analyzing Affiliation 
+<tr><td class="label">[R144]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Borgatti, S.P. and Halgin, D. In press. &#8220;Analyzing Affiliation 
 Networks&#8221;. In Carrington, P. and Scott, J. (eds) The Sage Handbook 
 of Social Network Analysis. Sage Publications.
 <a class="reference external" href="http://www.steveborgatti.com/papers/bhaffiliations.pdf">http://www.steveborgatti.com/papers/bhaffiliations.pdf</a></td></tr>

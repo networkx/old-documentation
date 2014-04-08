@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>overlap_weighted_projected_graph &mdash; NetworkX 1.8.dev20131031104627 documentation</title>
+    <title>overlap_weighted_projected_graph &mdash; NetworkX 1.9.dev20140408102823 documentation</title>
     
     <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.8.dev20131031104627',
+        VERSION:     '1.9.dev20140408102823',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -26,9 +26,9 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.8.dev20131031104627 documentation"
+          title="Search within NetworkX 1.9.dev20140408102823 documentation"
           href="../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.8.dev20131031104627 documentation" href="../../index.html" />
+    <link rel="top" title="NetworkX 1.9.dev20140408102823 documentation" href="../../index.html" />
     <link rel="up" title="Bipartite" href="../algorithms.bipartite.html" />
     <link rel="next" title="generic_weighted_projected_graph" href="networkx.algorithms.bipartite.projection.generic_weighted_projected_graph.html" />
     <link rel="prev" title="collaboration_weighted_projected_graph" href="networkx.algorithms.bipartite.projection.collaboration_weighted_projected_graph.html" /> 
@@ -67,7 +67,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.8.dev_20131031104627</b></p>
+<p>This documentation is for the development version <b>1.9.dev_20140408102823</b></p>
 
 
 
@@ -109,12 +109,12 @@ NetworkX
 <p>The overlap weighted projection is the projection of the bipartite 
 network B onto the specified nodes with weights representing 
 the Jaccard index between the neighborhoods of the two nodes in the
-original bipartite network <a class="reference internal" href="#r150">[R150]</a>:</p>
+original bipartite network <a class="reference internal" href="#r151">[R151]</a>:</p>
 <div class="math">
 <p><img src="../../_images/math/04dee447460c07c3d5faac421705d3eab9e9ea88.png" alt="w_{v,u} = \frac{|N(u) \cap N(v)|}{|N(u) \cup N(v)|}"/></p>
 </div><p>or if the parameter &#8216;jaccard&#8217; is False, the fraction of common 
 neighbors by minimum of both nodes degree in the original 
-bipartite graph <a class="reference internal" href="#r150">[R150]</a>:</p>
+bipartite graph <a class="reference internal" href="#r151">[R151]</a>:</p>
 <div class="math">
 <p><img src="../../_images/math/a8fe0be5e5e83aa526d006dc2d6538d263bf9eb4.png" alt="w_{v,u} = \frac{|N(u) \cap N(v)|}{min(|N(u)|,|N(v)|)}"/></p>
 </div><p>The nodes retain their attributes and are connected in the resulting
@@ -150,10 +150,10 @@ graph if have an edge to a common node in the original bipartite graph.</p>
 <p>No attempt is made to verify that the input graph B is bipartite.
 The graph and node properties are (shallow) copied to the projected graph.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r150" rules="none">
+<table class="docutils citation" frame="void" id="r151" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R150]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id3">3</a>)</em> Borgatti, S.P. and Halgin, D. In press. Analyzing Affiliation 
+<tr><td class="label">[R151]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id3">3</a>)</em> Borgatti, S.P. and Halgin, D. In press. Analyzing Affiliation 
 Networks. In Carrington, P. and Scott, J. (eds) The Sage Handbook 
 of Social Network Analysis. Sage Publications.</td></tr>
 </tbody>

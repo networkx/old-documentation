@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>rich_club_coefficient &mdash; NetworkX 1.8.dev20131031104627 documentation</title>
+    <title>rich_club_coefficient &mdash; NetworkX 1.9.dev20140408102823 documentation</title>
     
     <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.8.dev20131031104627',
+        VERSION:     '1.9.dev20140408102823',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -26,9 +26,9 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.8.dev20131031104627 documentation"
+          title="Search within NetworkX 1.9.dev20140408102823 documentation"
           href="../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.8.dev20131031104627 documentation" href="../../index.html" />
+    <link rel="top" title="NetworkX 1.9.dev20140408102823 documentation" href="../../index.html" />
     <link rel="up" title="Rich Club" href="../algorithms.rich_club.html" />
     <link rel="next" title="Shortest Paths" href="../algorithms.shortest_paths.html" />
     <link rel="prev" title="rich_club_coefficient" href="" /> 
@@ -67,7 +67,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.8.dev_20131031104627</b></p>
+<p>This documentation is for the development version <b>1.9.dev_20140408102823</b></p>
 
 
 
@@ -120,7 +120,7 @@ be the number of edges among those nodes.</p>
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
 <p><strong>normalized</strong> : bool (optional)</p>
 <blockquote>
-<div><p>Normalize using randomized network (see <a class="reference internal" href="#r246">[R246]</a>)</p>
+<div><p>Normalize using randomized network (see <a class="reference internal" href="#r247">[R247]</a>)</p>
 </div></blockquote>
 <p><strong>Q</strong> : float (optional, default=100)</p>
 <blockquote>
@@ -139,24 +139,24 @@ to use as a null-model for normalization.</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>The rich club definition and algorithm are found in <a class="reference internal" href="#r246">[R246]</a>.  This
+<p>The rich club definition and algorithm are found in <a class="reference internal" href="#r247">[R247]</a>.  This
 algorithm ignores any edge weights and is not defined for directed
 graphs or graphs with parallel edges or self loops.</p>
-<p>Estimates for appropriate values of Q are found in <a class="reference internal" href="#r247">[R247]</a>.</p>
+<p>Estimates for appropriate values of Q are found in <a class="reference internal" href="#r248">[R248]</a>.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r246" rules="none">
+<table class="docutils citation" frame="void" id="r247" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R246]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id4">3</a>)</em> Julian J. McAuley, Luciano da Fontoura Costa, and Tibério S. Caetano,
+<tr><td class="label">[R247]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id4">3</a>)</em> Julian J. McAuley, Luciano da Fontoura Costa, and Tibério S. Caetano,
 &#8220;The rich-club phenomenon across complex network hierarchies&#8221;,
 Applied Physics Letters Vol 91 Issue 8, August 2007.
 <a class="reference external" href="http://arxiv.org/abs/physics/0701290">http://arxiv.org/abs/physics/0701290</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r247" rules="none">
+<table class="docutils citation" frame="void" id="r248" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R247]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> R. Milo, N. Kashtan, S. Itzkovitz, M. E. J. Newman, U. Alon,
+<tr><td class="label">[R248]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> R. Milo, N. Kashtan, S. Itzkovitz, M. E. J. Newman, U. Alon,
 &#8220;Uniform generation of random graphs with arbitrary degree 
 sequences&#8221;, 2006. <a class="reference external" href="http://arxiv.org/abs/cond-mat/0312028">http://arxiv.org/abs/cond-mat/0312028</a></td></tr>
 </tbody>

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>simple_cycles &mdash; NetworkX 1.8.dev20131031104627 documentation</title>
+    <title>simple_cycles &mdash; NetworkX 1.9.dev20140408102823 documentation</title>
     
     <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.8.dev20131031104627',
+        VERSION:     '1.9.dev20140408102823',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -26,9 +26,9 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.8.dev20131031104627 documentation"
+          title="Search within NetworkX 1.9.dev20140408102823 documentation"
           href="../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.8.dev20131031104627 documentation" href="../../index.html" />
+    <link rel="top" title="NetworkX 1.9.dev20140408102823 documentation" href="../../index.html" />
     <link rel="up" title="Cycles" href="../algorithms.cycles.html" />
     <link rel="next" title="Directed Acyclic Graphs" href="../algorithms.dag.html" />
     <link rel="prev" title="cycle_basis" href="networkx.algorithms.cycles.cycle_basis.html" /> 
@@ -67,7 +67,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.8.dev_20131031104627</b></p>
+<p>This documentation is for the development version <b>1.9.dev_20140408102823</b></p>
 
 
 
@@ -111,7 +111,7 @@ node appears twice, except that the first and last node are the same.
 Two elementary circuits are distinct if they are not cyclic permutations
 of each other.</p>
 <p>This is a nonrecursive, iterator/generator version of Johnson&#8217;s
-algorithm <a class="reference internal" href="#r214">[R214]</a>.  There may be better algorithms for some cases <a class="reference internal" href="#r215">[R215]</a> <a class="reference internal" href="#r216">[R216]</a>.</p>
+algorithm <a class="reference internal" href="#r215">[R215]</a>.  There may be better algorithms for some cases <a class="reference internal" href="#r216">[R216]</a> <a class="reference internal" href="#r217">[R217]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -136,7 +136,7 @@ a list of nodes with the first and last nodes being the same.</p>
 <p class="last"><a class="reference internal" href="networkx.algorithms.cycles.cycle_basis.html#networkx.algorithms.cycles.cycle_basis" title="networkx.algorithms.cycles.cycle_basis"><tt class="xref py py-obj docutils literal"><span class="pre">cycle_basis</span></tt></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>The implementation follows pp. 79-80 in <a class="reference internal" href="#r214">[R214]</a>.</p>
+<p>The implementation follows pp. 79-80 in <a class="reference internal" href="#r215">[R215]</a>.</p>
 <p>The time complexity is O((n+e)(c+1)) for n nodes, e edges and c
 elementary circuits.</p>
 <p>To filter the cycles so that they don&#8217;t include certain nodes or edges,
@@ -147,25 +147,25 @@ copy your graph and eliminate those nodes or edges before calling.
 &gt;&gt;&gt; list(nx.simple_cycles(copyG))
 [[2], [2, 0], [0]]</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r214" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R214]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id4">2</a>, <a class="fn-backref" href="#id5">3</a>)</em> Finding all the elementary circuits of a directed graph.
-D. B. Johnson, SIAM Journal on Computing 4, no. 1, 77-84, 1975.
-<a class="reference external" href="http://dx.doi.org/10.1137/0204007">http://dx.doi.org/10.1137/0204007</a></td></tr>
-</tbody>
-</table>
 <table class="docutils citation" frame="void" id="r215" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R215]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id6">2</a>)</em> Enumerating the cycles of a digraph: a new preprocessing strategy.
-G. Loizou and P. Thanish, Information Sciences, v. 27, 163-182, 1982.</td></tr>
+<tr><td class="label">[R215]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id4">2</a>, <a class="fn-backref" href="#id5">3</a>)</em> Finding all the elementary circuits of a directed graph.
+D. B. Johnson, SIAM Journal on Computing 4, no. 1, 77-84, 1975.
+<a class="reference external" href="http://dx.doi.org/10.1137/0204007">http://dx.doi.org/10.1137/0204007</a></td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="r216" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R216]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id7">2</a>)</em> A search strategy for the elementary cycles of a directed graph.
+<tr><td class="label">[R216]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id6">2</a>)</em> Enumerating the cycles of a digraph: a new preprocessing strategy.
+G. Loizou and P. Thanish, Information Sciences, v. 27, 163-182, 1982.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r217" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[R217]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id7">2</a>)</em> A search strategy for the elementary cycles of a directed graph.
 J.L. Szwarcfiter and P.E. Lauer, BIT NUMERICAL MATHEMATICS,
 v. 16, no. 2, 192-204, 1976.</td></tr>
 </tbody>

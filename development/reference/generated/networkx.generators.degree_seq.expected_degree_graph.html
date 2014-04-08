@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>expected_degree_graph &mdash; NetworkX 1.8.dev20131031104627 documentation</title>
+    <title>expected_degree_graph &mdash; NetworkX 1.9.dev20140408102823 documentation</title>
     
     <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.8.dev20131031104627',
+        VERSION:     '1.9.dev20140408102823',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -26,9 +26,9 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.8.dev20131031104627 documentation"
+          title="Search within NetworkX 1.9.dev20140408102823 documentation"
           href="../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.8.dev20131031104627 documentation" href="../../index.html" />
+    <link rel="top" title="NetworkX 1.9.dev20140408102823 documentation" href="../../index.html" />
     <link rel="up" title="Graph generators" href="../generators.html" />
     <link rel="next" title="havel_hakimi_graph" href="networkx.generators.degree_seq.havel_hakimi_graph.html" />
     <link rel="prev" title="directed_configuration_model" href="networkx.generators.degree_seq.directed_configuration_model.html" /> 
@@ -66,7 +66,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.8.dev_20131031104627</b></p>
+<p>This documentation is for the development version <b>1.9.dev_20140408102823</b></p>
 
 
 
@@ -138,7 +138,7 @@ node <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e6786
 input sequence.</p>
 <p>The complexity of this algorithm is <img class="math" src="../../_images/math/c967b0b21df5a5d3400231d021c6829ed10bd043.png" alt="\mathcal{O}(n+m)" style="vertical-align: -4px"/> where <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: 0px"/> is the
 number of nodes and <img class="math" src="../../_images/math/f5047d1e0cbb50ec208923a22cd517c55100fa7b.png" alt="m" style="vertical-align: 0px"/> is the expected number of edges.</p>
-<p>The model in <a class="reference internal" href="#r256">[R256]</a> includes the possibility of self-loop edges.
+<p>The model in <a class="reference internal" href="#r258">[R258]</a> includes the possibility of self-loop edges.
 Set selfloops=False to produce a graph without self loops.</p>
 <p>For finite graphs this model doesn&#8217;t produce exactly the given
 expected degree sequence.  Instead the expected degrees are as
@@ -153,18 +153,18 @@ in the degree of a node, so with self loops (selfloops=True),</p>
 <p><img src="../../_images/math/62c5e29d0b86629855a6f880ca3f11051e988cc2.png" alt="E[deg(u)] =  \sum_{v \ne u} p_{uv}  + 2 p_{uu}
          = w_u \left( 1 + \frac{w_u}{\sum_k w_k} \right) ."/></p>
 </div><p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r256" rules="none">
+<table class="docutils citation" frame="void" id="r258" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R256]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Fan Chung and L. Lu, Connected components in random graphs with
+<tr><td class="label">[R258]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Fan Chung and L. Lu, Connected components in random graphs with
 given expected degree sequences, Ann. Combinatorics, 6,
 pp. 125-145, 2002.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r257" rules="none">
+<table class="docutils citation" frame="void" id="r259" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[R257]</a></td><td>Joel Miller and Aric Hagberg,
+<tr><td class="label"><a class="fn-backref" href="#id3">[R259]</a></td><td>Joel Miller and Aric Hagberg,
 Efficient generation of networks with given expected degrees,
 in Algorithms and Models for the Web-Graph (WAW 2011),
 Alan Frieze, Paul Horn, and Paweł Prałat (Eds), LNCS 6732,

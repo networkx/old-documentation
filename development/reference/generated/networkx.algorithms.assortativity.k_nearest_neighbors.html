@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>k_nearest_neighbors &mdash; NetworkX 1.8.dev20131031104627 documentation</title>
+    <title>k_nearest_neighbors &mdash; NetworkX 1.9.dev20140408102823 documentation</title>
     
     <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.8.dev20131031104627',
+        VERSION:     '1.9.dev20140408102823',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -26,9 +26,9 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.8.dev20131031104627 documentation"
+          title="Search within NetworkX 1.9.dev20140408102823 documentation"
           href="../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.8.dev20131031104627 documentation" href="../../index.html" />
+    <link rel="top" title="NetworkX 1.9.dev20140408102823 documentation" href="../../index.html" />
     <link rel="up" title="Assortativity" href="../algorithms.assortativity.html" />
     <link rel="next" title="attribute_mixing_matrix" href="networkx.algorithms.assortativity.attribute_mixing_matrix.html" />
     <link rel="prev" title="average_degree_connectivity" href="networkx.algorithms.assortativity.average_degree_connectivity.html" /> 
@@ -67,7 +67,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.8.dev_20131031104627</b></p>
+<p>This documentation is for the development version <b>1.9.dev_20140408102823</b></p>
 
 
 
@@ -109,7 +109,7 @@ NetworkX
 <p>The average degree connectivity is the average nearest neighbor degree of
 nodes with degree k. For weighted graphs, an analogous measure can
 be computed using the weighted average neighbors degree defined in
-<a class="reference internal" href="#r140">[R140]</a>, for a node <img class="math" src="../../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i" style="vertical-align: 0px"/>, as:</p>
+<a class="reference internal" href="#r141">[R141]</a>, for a node <img class="math" src="../../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i" style="vertical-align: 0px"/>, as:</p>
 <div class="math">
 <p><img src="../../_images/math/7be966238ee06497e3192fd84740ad003cd98626.png" alt="k_{nn,i}^{w} = \frac{1}{s_i} \sum_{j \in N(i)} w_{ij} k_j"/></p>
 </div><p>where <img class="math" src="../../_images/math/d3b63c17213f84d730e0de1f8c08597f7a648e37.png" alt="s_i" style="vertical-align: -3px"/> is the weighted degree of node <img class="math" src="../../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i" style="vertical-align: 0px"/>,
@@ -155,10 +155,10 @@ If None, then each edge has weight 1.</p>
 <p>This algorithm is sometimes called &#8220;k nearest neighbors&#8217; and is also
 available as <img class="math" src="../../_images/math/189e5e6f82381e913944f80e5af3e8430ef73b3a.png" alt="k_nearest_neighbors" style="vertical-align: -4px"/>.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r140" rules="none">
+<table class="docutils citation" frame="void" id="r141" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R140]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> A. Barrat, M. Barthélemy, R. Pastor-Satorras, and A. Vespignani,
+<tr><td class="label">[R141]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> A. Barrat, M. Barthélemy, R. Pastor-Satorras, and A. Vespignani,
 &#8220;The architecture of complex weighted networks&#8221;.
 PNAS 101 (11): 3747–3752 (2004).</td></tr>
 </tbody>

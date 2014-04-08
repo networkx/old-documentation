@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Converting to and from other data formats &mdash; NetworkX 1.8.dev20131031104627 documentation</title>
+    <title>Converting to and from other data formats &mdash; NetworkX 1.9.dev20140408102823 documentation</title>
     
     <link rel="stylesheet" href="../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.8.dev20131031104627',
+        VERSION:     '1.9.dev20140408102823',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -26,9 +26,9 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.8.dev20131031104627 documentation"
+          title="Search within NetworkX 1.9.dev20140408102823 documentation"
           href="../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.8.dev20131031104627 documentation" href="../index.html" />
+    <link rel="top" title="NetworkX 1.9.dev20140408102823 documentation" href="../index.html" />
     <link rel="up" title="Reference" href="pdf_reference.html" />
     <link rel="next" title="to_networkx_graph" href="generated/networkx.convert.to_networkx_graph.html" />
     <link rel="prev" title="attr_sparse_matrix" href="generated/networkx.linalg.attrmatrix.attr_sparse_matrix.html" /> 
@@ -65,7 +65,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.8.dev_20131031104627</b></p>
+<p>This documentation is for the development version <b>1.9.dev_20140408102823</b></p>
 
 
 
@@ -85,7 +85,8 @@ NetworkX
 <li><a class="reference internal" href="#lists">Lists</a><ul>
 </ul>
 </li>
-<li><a class="reference internal" href="#numpy">Numpy</a><ul>
+<li><a class="reference internal" href="#module-networkx.convert_matrix">Numpy</a><ul>
+<li><a class="reference internal" href="#id1">See Also</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#scipy">Scipy</a><ul>
@@ -194,22 +195,41 @@ which attempts to guess the input type and convert it automatically.</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="numpy">
-<h2>Numpy<a class="headerlink" href="#numpy" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-networkx.convert_matrix">
+<span id="numpy"></span><h2>Numpy<a class="headerlink" href="#module-networkx.convert_matrix" title="Permalink to this headline">¶</a></h2>
+<p>Functions to convert NetworkX graphs to and from other formats.</p>
+<p>The preferred way of converting data to a NetworkX graph is through the
+graph constuctor.  The constructor calls the to_networkx_graph() function
+which attempts to guess the input type and convert it automatically.</p>
+<p>Examples</p>
+<p>Create a 10 node random graph from a numpy matrix</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">),(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or equivalently</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">to_networkx_graph</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h3>See Also<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>nx_pygraphviz, nx_pydot</p>
+</div>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">to_numpy_matrix</span></tt></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.convert_matrix.to_numpy_matrix.html#networkx.convert_matrix.to_numpy_matrix" title="networkx.convert_matrix.to_numpy_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">to_numpy_matrix</span></tt></a>(G[,&nbsp;nodelist,&nbsp;dtype,&nbsp;order,&nbsp;...])</td>
+<td>Return the graph adjacency matrix as a NumPy matrix.</td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">to_numpy_recarray</span></tt></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.convert_matrix.to_numpy_recarray.html#networkx.convert_matrix.to_numpy_recarray" title="networkx.convert_matrix.to_numpy_recarray"><tt class="xref py py-obj docutils literal"><span class="pre">to_numpy_recarray</span></tt></a>(G[,&nbsp;nodelist,&nbsp;dtype,&nbsp;order])</td>
+<td>Return the graph adjacency matrix as a NumPy recarray.</td>
 </tr>
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">from_numpy_matrix</span></tt></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.convert_matrix.from_numpy_matrix.html#networkx.convert_matrix.from_numpy_matrix" title="networkx.convert_matrix.from_numpy_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">from_numpy_matrix</span></tt></a>(A[,&nbsp;create_using])</td>
+<td>Return a graph from numpy matrix.</td>
 </tr>
 </tbody>
 </table>
@@ -222,11 +242,11 @@ which attempts to guess the input type and convert it automatically.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">to_scipy_sparse_matrix</span></tt></td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.convert_matrix.to_scipy_sparse_matrix.html#networkx.convert_matrix.to_scipy_sparse_matrix" title="networkx.convert_matrix.to_scipy_sparse_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">to_scipy_sparse_matrix</span></tt></a>(G[,&nbsp;nodelist,&nbsp;dtype,&nbsp;...])</td>
+<td>Return the graph adjacency matrix as a SciPy sparse matrix.</td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">from_scipy_sparse_matrix</span></tt></td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.convert_matrix.from_scipy_sparse_matrix.html#networkx.convert_matrix.from_scipy_sparse_matrix" title="networkx.convert_matrix.from_scipy_sparse_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">from_scipy_sparse_matrix</span></tt></a>(A[,&nbsp;create_using,&nbsp;...])</td>
+<td>Return a graph from scipy sparse matrix adjacency list.</td>
 </tr>
 </tbody>
 </table>
