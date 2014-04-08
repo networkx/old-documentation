@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>strongly_connected_components &mdash; NetworkX 1.9.dev20130728171020 documentation</title>
+    <title>strongly_connected_components &mdash; NetworkX 1.8.dev20131031104627 documentation</title>
     
     <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.9.dev20130728171020',
+        VERSION:     '1.8.dev20131031104627',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -24,9 +26,9 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20130728171020 documentation"
+          title="Search within NetworkX 1.8.dev20131031104627 documentation"
           href="../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20130728171020 documentation" href="../../index.html" />
+    <link rel="top" title="NetworkX 1.8.dev20131031104627 documentation" href="../../index.html" />
     <link rel="up" title="Components" href="../algorithms.component.html" />
     <link rel="next" title="strongly_connected_component_subgraphs" href="networkx.algorithms.components.strongly_connected.strongly_connected_component_subgraphs.html" />
     <link rel="prev" title="number_strongly_connected_components" href="networkx.algorithms.components.strongly_connected.number_strongly_connected_components.html" /> 
@@ -65,7 +67,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20130728171020</b></p>
+<p>This documentation is for the development version <b>1.8.dev_20131031104627</b></p>
 
 
 
@@ -103,7 +105,7 @@ NetworkX
 <dl class="function">
 <dt id="networkx.algorithms.components.strongly_connected.strongly_connected_components">
 <tt class="descname">strongly_connected_components</tt><big>(</big><em>G</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/components/strongly_connected.html#strongly_connected_components"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.components.strongly_connected.strongly_connected_components" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return nodes in strongly connected components of graph.</p>
+<dd><p>Generate nodes in strongly connected components of graph.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -114,19 +116,18 @@ NetworkX
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>comp</strong> : list of lists</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>comp</strong> : generator of lists</p>
 <blockquote>
-<div><p>A list of nodes for each component of G.
-The list is ordered from largest connected component to smallest.</p>
+<div><p>A list of nodes for each strongly connected component of G.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><strong>NetworkXError: If G is undirected.</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><strong>NetworkXNotImplemented: If G is undirected.</strong> :</p>
 </td>
 </tr>
 </tbody>
 </table>
-<div class="admonition seealso">
+<div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last"><tt class="xref py py-obj docutils literal"><span class="pre">connected_components</span></tt>, <tt class="xref py py-obj docutils literal"><span class="pre">weakly_connected_components</span></tt></p>
 </div>
@@ -134,17 +135,17 @@ The list is ordered from largest connected component to smallest.</p>
 <p>Uses Tarjan&#8217;s algorithm with Nuutila&#8217;s modifications.
 Nonrecursive version of algorithm.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r193" rules="none">
+<table class="docutils citation" frame="void" id="r196" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R193]</a></td><td>Depth-first search and linear graph algorithms, R. Tarjan
+<tr><td class="label"><a class="fn-backref" href="#id1">[R196]</a></td><td>Depth-first search and linear graph algorithms, R. Tarjan
 SIAM Journal of Computing 1(2):146-160, (1972).</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r194" rules="none">
+<table class="docutils citation" frame="void" id="r197" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R194]</a></td><td>On finding the strongly connected components in a directed graph.
+<tr><td class="label"><a class="fn-backref" href="#id2">[R197]</a></td><td>On finding the strongly connected components in a directed graph.
 E. Nuutila and E. Soisalon-Soinen
 Information Processing Letters 49(1): 9-14, (1994)..</td></tr>
 </tbody>
@@ -189,8 +190,8 @@ Information Processing Letters 49(1): 9-14, (1994)..</td></tr>
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Aug 03, 2013.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Last updated on Apr 08, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

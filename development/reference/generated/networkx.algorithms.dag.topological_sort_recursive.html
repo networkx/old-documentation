@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>topological_sort_recursive &mdash; NetworkX 1.9.dev20130728171020 documentation</title>
+    <title>topological_sort_recursive &mdash; NetworkX 1.8.dev20131031104627 documentation</title>
     
     <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.9.dev20130728171020',
+        VERSION:     '1.8.dev20131031104627',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -24,9 +26,9 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20130728171020 documentation"
+          title="Search within NetworkX 1.8.dev20131031104627 documentation"
           href="../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20130728171020 documentation" href="../../index.html" />
+    <link rel="top" title="NetworkX 1.8.dev20131031104627 documentation" href="../../index.html" />
     <link rel="up" title="Directed Acyclic Graphs" href="../algorithms.dag.html" />
     <link rel="next" title="is_directed_acyclic_graph" href="networkx.algorithms.dag.is_directed_acyclic_graph.html" />
     <link rel="prev" title="topological_sort" href="networkx.algorithms.dag.topological_sort.html" /> 
@@ -65,7 +67,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20130728171020</b></p>
+<p>This documentation is for the development version <b>1.8.dev_20131031104627</b></p>
 
 
 
@@ -102,7 +104,7 @@ NetworkX
 <h1>topological_sort_recursive<a class="headerlink" href="#topological-sort-recursive" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.algorithms.dag.topological_sort_recursive">
-<tt class="descname">topological_sort_recursive</tt><big>(</big><em>G</em>, <em>nbunch=None</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/dag.html#topological_sort_recursive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.dag.topological_sort_recursive" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">topological_sort_recursive</tt><big>(</big><em>G</em>, <em>nbunch=None</em>, <em>reverse=False</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/dag.html#topological_sort_recursive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.dag.topological_sort_recursive" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of nodes in topological sort order.</p>
 <p>A topological sort is a nonunique permutation of the nodes such
 that an edge from u to v implies that u appears before v in the
@@ -115,6 +117,11 @@ topological sort order.</p>
 <p><strong>nbunch</strong> : container of nodes (optional)</p>
 <blockquote>
 <div><p>Explore graph in specified order given in nbunch</p>
+</div></blockquote>
+<p><strong>reverse</strong> : bool, optional</p>
+<blockquote>
+<div><p>Return postorder instead of preorder if True.
+Reverse mode is a bit more efficient.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -132,7 +139,7 @@ exists and a NetworkXUnfeasible exception is raised.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition seealso">
+<div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="networkx.algorithms.dag.topological_sort.html#networkx.algorithms.dag.topological_sort" title="networkx.algorithms.dag.topological_sort"><tt class="xref py py-obj docutils literal"><span class="pre">topological_sort</span></tt></a>, <a class="reference internal" href="networkx.algorithms.dag.is_directed_acyclic_graph.html#networkx.algorithms.dag.is_directed_acyclic_graph" title="networkx.algorithms.dag.is_directed_acyclic_graph"><tt class="xref py py-obj docutils literal"><span class="pre">is_directed_acyclic_graph</span></tt></a></p>
 </div>
@@ -178,8 +185,8 @@ exists and a NetworkXUnfeasible exception is raised.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Aug 03, 2013.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Last updated on Apr 08, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

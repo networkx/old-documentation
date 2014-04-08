@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>find_cliques &mdash; NetworkX 1.9.dev20130728171020 documentation</title>
+    <title>find_cliques &mdash; NetworkX 1.8.dev20131031104627 documentation</title>
     
     <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.9.dev20130728171020',
+        VERSION:     '1.8.dev20131031104627',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -24,9 +26,9 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20130728171020 documentation"
+          title="Search within NetworkX 1.8.dev20131031104627 documentation"
           href="../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20130728171020 documentation" href="../../index.html" />
+    <link rel="top" title="NetworkX 1.8.dev20131031104627 documentation" href="../../index.html" />
     <link rel="up" title="Clique" href="../algorithms.clique.html" />
     <link rel="next" title="make_max_clique_graph" href="networkx.algorithms.clique.make_max_clique_graph.html" />
     <link rel="prev" title="cliques_containing_node" href="networkx.algorithms.clique.cliques_containing_node.html" /> 
@@ -65,7 +67,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20130728171020</b></p>
+<p>This documentation is for the development version <b>1.8.dev_20131031104627</b></p>
 
 
 
@@ -115,15 +117,15 @@ the maximum clique.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition seealso">
+<div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last"><tt class="xref py py-obj docutils literal"><span class="pre">find_cliques_recursive</span></tt>, <tt class="xref py py-obj docutils literal"><span class="pre">A</span></tt></p>
 </div>
 <p class="rubric">Notes</p>
 <p>To obtain a list of cliques, use list(find_cliques(G)).</p>
-<p>Based on the algorithm published by Bron &amp; Kerbosch (1973) <a class="reference internal" href="#r180" id="id1">[R180]</a>
-as adapated by Tomita, Tanaka and Takahashi (2006) <a class="reference internal" href="#r181" id="id2">[R181]</a>
-and discussed in Cazals and Karande (2008) <a class="reference internal" href="#r182" id="id3">[R182]</a>.
+<p>Based on the algorithm published by Bron &amp; Kerbosch (1973) <a class="reference internal" href="#r183">[R183]</a>
+as adapated by Tomita, Tanaka and Takahashi (2006) <a class="reference internal" href="#r184">[R184]</a>
+and discussed in Cazals and Karande (2008) <a class="reference internal" href="#r185">[R185]</a>.
 The method essentially unrolls the recursion used in
 the references to avoid issues of recursion stack depth.</p>
 <p>This algorithm is not suitable for directed graphs.</p>
@@ -132,19 +134,19 @@ clique is not conventionally defined with such edges.</p>
 <p>There are often many cliques in graphs.  This algorithm can
 run out of memory for large graphs.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r180" rules="none">
+<table class="docutils citation" frame="void" id="r183" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R180]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> Bron, C. and Kerbosch, J. 1973.
+<tr><td class="label">[R183]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> Bron, C. and Kerbosch, J. 1973.
 Algorithm 457: finding all cliques of an undirected graph.
 Commun. ACM 16, 9 (Sep. 1973), 575-577.
 <a class="reference external" href="http://portal.acm.org/citation.cfm?doid=362342.362367">http://portal.acm.org/citation.cfm?doid=362342.362367</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r181" rules="none">
+<table class="docutils citation" frame="void" id="r184" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R181]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> Etsuji Tomita, Akira Tanaka, Haruhisa Takahashi,
+<tr><td class="label">[R184]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> Etsuji Tomita, Akira Tanaka, Haruhisa Takahashi,
 The worst-case time complexity for generating all maximal
 cliques and computational experiments,
 Theoretical Computer Science, Volume 363, Issue 1,
@@ -154,10 +156,10 @@ Computing and Combinatorics (COCOON 2004), 25 October 2006, Pages 28-42
 <a class="reference external" href="http://dx.doi.org/10.1016/j.tcs.2006.06.015">http://dx.doi.org/10.1016/j.tcs.2006.06.015</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r182" rules="none">
+<table class="docutils citation" frame="void" id="r185" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R182]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id6">2</a>)</em> F. Cazals, C. Karande,
+<tr><td class="label">[R185]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id6">2</a>)</em> F. Cazals, C. Karande,
 A note on the problem of reporting maximal cliques,
 Theoretical Computer Science,
 Volume 407, Issues 1-3, 6 November 2008, Pages 564-568,
@@ -204,8 +206,8 @@ Volume 407, Issues 1-3, 6 November 2008, Pages 564-568,
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Aug 03, 2013.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Last updated on Apr 08, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

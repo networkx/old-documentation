@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Graph generators &mdash; NetworkX 1.9.dev20130728171020 documentation</title>
+    <title>Graph generators &mdash; NetworkX 1.8.dev20131031104627 documentation</title>
     
     <link rel="stylesheet" href="../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.9.dev20130728171020',
+        VERSION:     '1.8.dev20131031104627',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -24,9 +26,9 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20130728171020 documentation"
+          title="Search within NetworkX 1.8.dev20131031104627 documentation"
           href="../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20130728171020 documentation" href="../index.html" />
+    <link rel="top" title="NetworkX 1.8.dev20131031104627 documentation" href="../index.html" />
     <link rel="up" title="Reference" href="pdf_reference.html" />
     <link rel="next" title="graph_atlas_g" href="generated/networkx.generators.atlas.graph_atlas_g.html" />
     <link rel="prev" title="is_frozen" href="generated/networkx.classes.function.is_frozen.html" /> 
@@ -63,7 +65,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20130728171020</b></p>
+<p>This documentation is for the development version <b>1.8.dev_20131031104627</b></p>
 
 
 
@@ -103,6 +105,9 @@ NetworkX
 </ul>
 </li>
 <li><a class="reference internal" href="#module-networkx.generators.line">Line Graph</a><ul>
+<li><a class="reference internal" href="#undirected-graphs">Undirected Graphs</a></li>
+<li><a class="reference internal" href="#directed-graphs">Directed Graphs</a></li>
+<li><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#module-networkx.generators.ego">Ego Graph</a><ul>
@@ -536,14 +541,57 @@ scale_free_graph: scale free directed graph</p>
 </div>
 <div class="section" id="module-networkx.generators.line">
 <span id="line-graph"></span><h2>Line Graph<a class="headerlink" href="#module-networkx.generators.line" title="Permalink to this headline">¶</a></h2>
-<p>Line graphs.</p>
+<p>Line graph algorithms.</p>
+<div class="section" id="undirected-graphs">
+<h3>Undirected Graphs<a class="headerlink" href="#undirected-graphs" title="Permalink to this headline">¶</a></h3>
+<p>For an undirected graph G without multiple edges, each edge can be written as
+a set {u,v}.  Its line graph L has the edges of G as its nodes. If x and y
+are two nodes in L, then {x,y} is an edge in L if and only if the intersection
+of x and y is nonempty.  Thus, the set of all edges is determined by the
+set of all pair-wise intersections of edges in G.</p>
+<p>Trivially, every edge x={u,v} in G would have a nonzero intersection with
+itself, and so every node in L should have a self-loop. This is not so
+interesting, and the original context of line graphs was with simple graphs,
+which had no self-loops or multiple edges. The line graph was also meant
+to be simple graph and thus, self-loops in L are not part of the standard
+definition of a line graph. In a pair-wise intersection matrix, this is
+analogous to not including the diagonal as part of the line graph definition.</p>
+<p>Self-loops and multiple edges in G add nodes to L in a natural way, and do not
+require any fundamental changes to the definition.  It might be argued that
+the self-loops we excluded before should now be included.  However, the
+self-loops are still &#8220;trivial&#8221; in some sense and thus, are usually excluded.</p>
+</div>
+<div class="section" id="directed-graphs">
+<h3>Directed Graphs<a class="headerlink" href="#directed-graphs" title="Permalink to this headline">¶</a></h3>
+<p>For a directed graph G without multiple edges, each edge can be written as a
+tuple (u,v).  Its line graph L has the edges of G as its nodes. If x=(a,b) and
+y=(c,d) are two nodes in L, then (x,y) is an edge in L if and only if the
+tail of x matches the head of y&#8212;e.g., b=c.</p>
+<p>Due to the directed nature of the edges, it is no longer the case that
+every edge x=(u,v) should be connected to itself with a self-loop in L. Now,
+the only time self-loops arise is if G itself has a self-loop.  So such
+self-loops are no longer &#8220;trivial&#8221; but instead, represent essential features
+of the topology of G. For this reason, the historical development of line
+digraphs is such that self-loops are included. When the graph G has multiple
+edges, once again only superficial changes are required to the definition.</p>
+</div>
+<div class="section" id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Harary, Frank, and Norman, Robert Z., &#8220;Some properties of line digraphs&#8221;,</dt>
+<dd>Rend. Circ. Mat. Palermo, II. Ser. 9 (1960), 161&#8211;168.</dd>
+<dt>Hemminger, R. L.; Beineke, L. W. (1978), &#8220;Line graphs and line digraphs&#8221;,</dt>
+<dd>in Beineke, L. W.; Wilson, R. J., Selected Topics in Graph Theory, Academic
+Press Inc., pp. 271&#8211;305.</dd>
+</dl>
+</div>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.generators.line.line_graph.html#networkx.generators.line.line_graph" title="networkx.generators.line.line_graph"><tt class="xref py py-obj docutils literal"><span class="pre">line_graph</span></tt></a>(G)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.generators.line.line_graph.html#networkx.generators.line.line_graph" title="networkx.generators.line.line_graph"><tt class="xref py py-obj docutils literal"><span class="pre">line_graph</span></tt></a>(G[,&nbsp;create_using])</td>
 <td>Return the line graph of the graph or digraph G.</td>
 </tr>
 </tbody>
@@ -657,8 +705,8 @@ scale_free_graph: scale free directed graph</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Aug 03, 2013.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Last updated on Apr 08, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

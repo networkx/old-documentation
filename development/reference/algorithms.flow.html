@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Flows &mdash; NetworkX 1.9.dev20130728171020 documentation</title>
+    <title>Flows &mdash; NetworkX 1.8.dev20131031104627 documentation</title>
     
     <link rel="stylesheet" href="../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.9.dev20130728171020',
+        VERSION:     '1.8.dev20131031104627',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -24,9 +26,9 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20130728171020 documentation"
+          title="Search within NetworkX 1.8.dev20131031104627 documentation"
           href="../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20130728171020 documentation" href="../index.html" />
+    <link rel="top" title="NetworkX 1.8.dev20131031104627 documentation" href="../index.html" />
     <link rel="up" title="Algorithms" href="algorithms.html" />
     <link rel="next" title="max_flow" href="generated/networkx.algorithms.flow.max_flow.html" />
     <link rel="prev" title="eulerian_circuit" href="generated/networkx.algorithms.euler.eulerian_circuit.html" /> 
@@ -64,7 +66,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20130728171020</b></p>
+<p>This documentation is for the development version <b>1.8.dev_20131031104627</b></p>
 
 
 
@@ -74,6 +76,9 @@ NetworkX
   <ul>
 <li><a class="reference internal" href="#">Flows</a><ul>
 <li><a class="reference internal" href="#ford-fulkerson">Ford-Fulkerson</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#preflow-push">Preflow-push</a><ul>
 </ul>
 </li>
 <li><a class="reference internal" href="#network-simplex">Network Simplex</a><ul>
@@ -134,6 +139,26 @@ NetworkX
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.flow.ford_fulkerson_flow_and_auxiliary.html#networkx.algorithms.flow.ford_fulkerson_flow_and_auxiliary" title="networkx.algorithms.flow.ford_fulkerson_flow_and_auxiliary"><tt class="xref py py-obj docutils literal"><span class="pre">ford_fulkerson_flow_and_auxiliary</span></tt></a>(G,&nbsp;s,&nbsp;t[,&nbsp;...])</td>
 <td>Find a maximum single-commodity flow using the Ford-Fulkerson</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="preflow-push">
+<h2>Preflow-push<a class="headerlink" href="#preflow-push" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.flow.preflow_push.html#networkx.algorithms.flow.preflow_push" title="networkx.algorithms.flow.preflow_push"><tt class="xref py py-obj docutils literal"><span class="pre">preflow_push</span></tt></a>(G,&nbsp;s,&nbsp;t[,&nbsp;capacity,&nbsp;...])</td>
+<td>Find a maximum single-commodity flow using the highest-label preflow-push algorithm.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.flow.preflow_push_value.html#networkx.algorithms.flow.preflow_push_value" title="networkx.algorithms.flow.preflow_push_value"><tt class="xref py py-obj docutils literal"><span class="pre">preflow_push_value</span></tt></a>(G,&nbsp;s,&nbsp;t[,&nbsp;capacity,&nbsp;...])</td>
+<td>Find a maximum single-commodity flow using the highest-label preflow- push algorithm.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.flow.preflow_push_flow.html#networkx.algorithms.flow.preflow_push_flow" title="networkx.algorithms.flow.preflow_push_flow"><tt class="xref py py-obj docutils literal"><span class="pre">preflow_push_flow</span></tt></a>(G,&nbsp;s,&nbsp;t[,&nbsp;capacity,&nbsp;...])</td>
+<td>Find a maximum single-commodity flow using the highest-label preflow- push algorithm.</td>
 </tr>
 </tbody>
 </table>
@@ -201,8 +226,8 @@ NetworkX
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Aug 03, 2013.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Last updated on Apr 08, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>networkx.algorithms.link_analysis.pagerank_alg &mdash; NetworkX 1.9.dev20130728171020 documentation</title>
+    <title>networkx.algorithms.link_analysis.pagerank_alg &mdash; NetworkX 1.8.dev20131031104627 documentation</title>
     
     <link rel="stylesheet" href="../../../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -14,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../../',
-        VERSION:     '1.9.dev20130728171020',
+        VERSION:     '1.8.dev20131031104627',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -24,9 +26,9 @@
     <script type="text/javascript" src="../../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../../_static/doctools.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20130728171020 documentation"
+          title="Search within NetworkX 1.8.dev20131031104627 documentation"
           href="../../../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20130728171020 documentation" href="../../../../index.html" />
+    <link rel="top" title="NetworkX 1.8.dev20131031104627 documentation" href="../../../../index.html" />
     <link rel="up" title="networkx" href="../../../networkx.html" /> 
   </head>
   <body>
@@ -55,7 +57,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20130728171020</b></p>
+<p>This documentation is for the development version <b>1.8.dev_20131031104627</b></p>
 
 
 
@@ -84,7 +86,7 @@ NetworkX
             
   <h1>Source code for networkx.algorithms.link_analysis.pagerank_alg</h1><div class="highlight"><pre>
 <span class="sd">&quot;&quot;&quot;PageRank analysis of graph structure. &quot;&quot;&quot;</span>
-<span class="c">#    Copyright (C) 2004-2011 by</span>
+<span class="c">#    Copyright (C) 2004-2013 by</span>
 <span class="c">#    Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
 <span class="c">#    Dan Schult &lt;dschult@colgate.edu&gt;</span>
 <span class="c">#    Pieter Swart &lt;swart@lanl.gov&gt;</span>
@@ -93,11 +95,16 @@ NetworkX
 <span class="c">#    NetworkX:http://networkx.lanl.gov/</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
 <span class="kn">from</span> <span class="nn">networkx.exception</span> <span class="kn">import</span> <span class="n">NetworkXError</span>
-<span class="n">__author__</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;Aric Hagberg (hagberg@lanl.gov)&quot;&quot;&quot;</span>
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;pagerank&#39;</span><span class="p">,</span><span class="s">&#39;pagerank_numpy&#39;</span><span class="p">,</span><span class="s">&#39;pagerank_scipy&#39;</span><span class="p">,</span><span class="s">&#39;google_matrix&#39;</span><span class="p">]</span>
+<span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="kn">import</span> <span class="n">not_implemented_for</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span><span class="se">\n</span><span class="s">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">&quot;Aric Hagberg &lt;aric.hagberg@gmail.com&gt;&quot;</span><span class="p">,</span>
+                            <span class="s">&quot;Brandon Liu &lt;brandon.k.liu@gmail.com&quot;</span><span class="p">])</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;pagerank&#39;</span><span class="p">,</span> <span class="s">&#39;pagerank_numpy&#39;</span><span class="p">,</span> <span class="s">&#39;pagerank_scipy&#39;</span><span class="p">,</span> <span class="s">&#39;google_matrix&#39;</span><span class="p">]</span>
 
-<div class="viewcode-block" id="pagerank"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.link_analysis.pagerank_alg.pagerank.html#networkx.algorithms.link_analysis.pagerank_alg.pagerank">[docs]</a><span class="k">def</span> <span class="nf">pagerank</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span><span class="n">personalization</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-             <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">tol</span><span class="o">=</span><span class="mf">1.0e-8</span><span class="p">,</span><span class="n">nstart</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">):</span>
+
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;multigraph&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="pagerank"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.link_analysis.pagerank_alg.pagerank.html#networkx.algorithms.link_analysis.pagerank_alg.pagerank">[docs]</a><span class="k">def</span> <span class="nf">pagerank</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">personalization</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+             <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1.0e-6</span><span class="p">,</span> <span class="n">nstart</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">,</span>
+             <span class="n">dangling</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return the PageRank of the nodes in the graph.</span>
 
 <span class="sd">    PageRank computes a ranking of the nodes in the graph G based on</span>
@@ -107,14 +114,16 @@ NetworkX
 <span class="sd">    Parameters</span>
 <span class="sd">    -----------</span>
 <span class="sd">    G : graph</span>
-<span class="sd">      A NetworkX graph</span>
+<span class="sd">      A NetworkX graph.  Undirected graphs will be converted to a directed</span>
+<span class="sd">      graph with two directed edges for each undirected edge.</span>
 
 <span class="sd">    alpha : float, optional</span>
-<span class="sd">      Damping parameter for PageRank, default=0.85</span>
+<span class="sd">      Damping parameter for PageRank, default=0.85.</span>
 
 <span class="sd">    personalization: dict, optional</span>
-<span class="sd">       The &quot;personalization vector&quot; consisting of a dictionary with a</span>
-<span class="sd">       key for every graph node and nonzero personalization value for each node.</span>
+<span class="sd">      The &quot;personalization vector&quot; consisting of a dictionary with a</span>
+<span class="sd">      key for every graph node and nonzero personalization value for each node.</span>
+<span class="sd">      By default, a uniform distribution is used.</span>
 
 <span class="sd">    max_iter : integer, optional</span>
 <span class="sd">      Maximum number of iterations in power method eigenvalue solver.</span>
@@ -128,6 +137,15 @@ NetworkX
 <span class="sd">    weight : key, optional</span>
 <span class="sd">      Edge data key to use as weight.  If None weights are set to 1.</span>
 
+<span class="sd">    dangling: dict, optional</span>
+<span class="sd">      The outedges to be assigned to any &quot;dangling&quot; nodes, i.e., nodes without</span>
+<span class="sd">      any outedges. The dict key is the node the outedge points to and the dict</span>
+<span class="sd">      value is the weight of that outedge. By default, dangling nodes are given</span>
+<span class="sd">      outedges according to the personalization vector (uniform if not</span>
+<span class="sd">      specified). This must be selected to result in an irreducible transition</span>
+<span class="sd">      matrix (see notes under google_matrix). It may be common to have the</span>
+<span class="sd">      dangling dict to be the same as the personalization dict.</span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    pagerank : dictionary</span>
@@ -135,8 +153,8 @@ NetworkX
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; G=nx.DiGraph(nx.path_graph(4))</span>
-<span class="sd">    &gt;&gt;&gt; pr=nx.pagerank(G,alpha=0.9)</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.DiGraph(nx.path_graph(4))</span>
+<span class="sd">    &gt;&gt;&gt; pr = nx.pagerank(G, alpha=0.9)</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
@@ -147,7 +165,7 @@ NetworkX
 
 <span class="sd">    The PageRank algorithm was designed for directed graphs but this</span>
 <span class="sd">    algorithm does not check if the input graph is directed and will</span>
-<span class="sd">    execute on undirected graphs by converting each oriented edge in the</span>
+<span class="sd">    execute on undirected graphs by converting each edge in the</span>
 <span class="sd">    directed graph to two edges.</span>
 
 <span class="sd">    See Also</span>
@@ -163,88 +181,87 @@ NetworkX
 <span class="sd">       The PageRank citation ranking: Bringing order to the Web. 1999</span>
 <span class="sd">       http://dbpubs.stanford.edu:8090/pub/showDoc.Fulltext?lang=en&amp;doc=1999-66&amp;format=pdf</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">==</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiGraph</span> <span class="ow">or</span> <span class="nb">type</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">==</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiDiGraph</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&quot;pagerank() not defined for graphs with multiedges.&quot;</span><span class="p">)</span>
-
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">{}</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
-        <span class="n">D</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">to_directed</span><span class="p">()</span>
+        <span class="n">D</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">to_directed</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">D</span><span class="o">=</span><span class="n">G</span>
+        <span class="n">D</span> <span class="o">=</span> <span class="n">G</span>
 
-    <span class="c"># create a copy in (right) stochastic form</span>
-    <span class="n">W</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">stochastic_graph</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
-    <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="o">/</span><span class="n">W</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">()</span>
+    <span class="c"># Create a copy in (right) stochastic form</span>
+    <span class="n">W</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">stochastic_graph</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">W</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">()</span>
 
-    <span class="c"># choose fixed starting vector if not given</span>
+    <span class="c"># Choose fixed starting vector if not given</span>
     <span class="k">if</span> <span class="n">nstart</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">x</span><span class="o">=</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="n">scale</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">x</span><span class="o">=</span><span class="n">nstart</span>
-        <span class="c"># normalize starting vector to 1</span>
-        <span class="n">s</span><span class="o">=</span><span class="mf">1.0</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">*=</span><span class="n">s</span>
+        <span class="c"># Normalized nstart vector</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">nstart</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="o">/</span> <span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">nstart</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
 
-    <span class="c"># assign uniform personalization/teleportation vector if not given</span>
     <span class="k">if</span> <span class="n">personalization</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">p</span><span class="o">=</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="n">scale</span><span class="p">)</span>
+        <span class="c"># Assign uniform personalization vector if not given</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">p</span><span class="o">=</span><span class="n">personalization</span>
-        <span class="c"># normalize starting vector to 1</span>
-        <span class="n">s</span><span class="o">=</span><span class="mf">1.0</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">p</span><span class="p">:</span>
-            <span class="n">p</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">*=</span><span class="n">s</span>
-        <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">!=</span><span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s">&#39;Personalization vector &#39;</span>
-                                <span class="s">&#39;must have a value for every node&#39;</span><span class="p">)</span>
+        <span class="n">missing</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">personalization</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">missing</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s">&#39;Personalization dictionary &#39;</span>
+                                <span class="s">&#39;must have a value for every node. &#39;</span>
+                                <span class="s">&#39;Missing nodes </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">missing</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">personalization</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="o">/</span> <span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">personalization</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
 
+    <span class="k">if</span> <span class="n">dangling</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="c"># Use personalization vector if dangling vector not specified</span>
+        <span class="n">dangling_weights</span> <span class="o">=</span> <span class="n">p</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">missing</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">dangling</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">missing</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s">&#39;Dangling node dictionary &#39;</span>
+                                <span class="s">&#39;must have a value for every node. &#39;</span>
+                                <span class="s">&#39;Missing nodes </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">missing</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">dangling</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+        <span class="n">dangling_weights</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="o">/</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">dangling</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+    <span class="n">dangling_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">W</span> <span class="k">if</span> <span class="n">W</span><span class="o">.</span><span class="n">out_degree</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">]</span>
 
-    <span class="c"># &quot;dangling&quot; nodes, no links out from them</span>
-    <span class="n">out_degree</span><span class="o">=</span><span class="n">W</span><span class="o">.</span><span class="n">out_degree</span><span class="p">()</span>
-    <span class="n">dangle</span><span class="o">=</span><span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">W</span> <span class="k">if</span> <span class="n">out_degree</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">==</span><span class="mf">0.0</span><span class="p">]</span>
-    <span class="n">i</span><span class="o">=</span><span class="mi">0</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span> <span class="c"># power iteration: make up to max_iter iterations</span>
-        <span class="n">xlast</span><span class="o">=</span><span class="n">x</span>
-        <span class="n">x</span><span class="o">=</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">xlast</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span><span class="mi">0</span><span class="p">)</span>
-        <span class="n">danglesum</span><span class="o">=</span><span class="n">alpha</span><span class="o">*</span><span class="n">scale</span><span class="o">*</span><span class="nb">sum</span><span class="p">(</span><span class="n">xlast</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">dangle</span><span class="p">)</span>
+    <span class="c"># power iteration: make up to max_iter iterations</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+        <span class="n">xlast</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">xlast</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">danglesum</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="nb">sum</span><span class="p">(</span><span class="n">xlast</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">dangling_nodes</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
             <span class="c"># this matrix multiply looks odd because it is</span>
             <span class="c"># doing a left multiply x^T=xlast^T*W</span>
             <span class="k">for</span> <span class="n">nbr</span> <span class="ow">in</span> <span class="n">W</span><span class="p">[</span><span class="n">n</span><span class="p">]:</span>
-                <span class="n">x</span><span class="p">[</span><span class="n">nbr</span><span class="p">]</span><span class="o">+=</span><span class="n">alpha</span><span class="o">*</span><span class="n">xlast</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">*</span><span class="n">W</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">nbr</span><span class="p">][</span><span class="n">weight</span><span class="p">]</span>
-            <span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">+=</span><span class="n">danglesum</span><span class="o">+</span><span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
-        <span class="c"># normalize vector</span>
-        <span class="n">s</span><span class="o">=</span><span class="mf">1.0</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
-            <span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">*=</span><span class="n">s</span>
+                <span class="n">x</span><span class="p">[</span><span class="n">nbr</span><span class="p">]</span> <span class="o">+=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">xlast</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">*</span> <span class="n">W</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">nbr</span><span class="p">][</span><span class="n">weight</span><span class="p">]</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+=</span> <span class="n">danglesum</span> <span class="o">*</span> <span class="n">dangling_weights</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
         <span class="c"># check convergence, l1 norm</span>
-        <span class="n">err</span><span class="o">=</span><span class="nb">sum</span><span class="p">([</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">-</span><span class="n">xlast</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span>
-        <span class="k">if</span> <span class="n">err</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
-            <span class="k">break</span>
-        <span class="k">if</span> <span class="n">i</span><span class="o">&gt;</span><span class="n">max_iter</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s">&#39;pagerank: power iteration failed to converge &#39;</span>
-                                <span class="s">&#39;in </span><span class="si">%d</span><span class="s"> iterations.&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-        <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
-    <span class="k">return</span> <span class="n">x</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">xlast</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">err</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">*</span><span class="n">tol</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">x</span>
+    <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s">&#39;pagerank: power iteration failed to converge &#39;</span>
+                        <span class="s">&#39;in </span><span class="si">%d</span><span class="s"> iterations.&#39;</span> <span class="o">%</span> <span class="n">max_iter</span><span class="p">)</span>
 
 </div>
 <div class="viewcode-block" id="google_matrix"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.link_analysis.pagerank_alg.google_matrix.html#networkx.algorithms.link_analysis.pagerank_alg.google_matrix">[docs]</a><span class="k">def</span> <span class="nf">google_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">personalization</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                  <span class="n">nodelist</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">):</span>
+                  <span class="n">nodelist</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">,</span> <span class="n">dangling</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return the Google matrix of the graph.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    -----------</span>
 <span class="sd">    G : graph</span>
-<span class="sd">      A NetworkX graph</span>
+<span class="sd">      A NetworkX graph.  Undirected graphs will be converted to a directed</span>
+<span class="sd">      graph with two directed edges for each undirected edge.</span>
 
 <span class="sd">    alpha : float</span>
-<span class="sd">      The damping factor</span>
+<span class="sd">      The damping factor.</span>
 
 <span class="sd">    personalization: dict, optional</span>
-<span class="sd">       The &quot;personalization vector&quot; consisting of a dictionary with a</span>
-<span class="sd">       key for every graph node and nonzero personalization value for each node.</span>
+<span class="sd">      The &quot;personalization vector&quot; consisting of a dictionary with a</span>
+<span class="sd">      key for every graph node and nonzero personalization value for each node.</span>
+<span class="sd">      By default, a uniform distribution is used.</span>
 
 <span class="sd">    nodelist : list, optional</span>
 <span class="sd">      The rows and columns are ordered according to the nodes in nodelist.</span>
@@ -253,50 +270,85 @@ NetworkX
 <span class="sd">    weight : key, optional</span>
 <span class="sd">      Edge data key to use as weight.  If None weights are set to 1.</span>
 
+<span class="sd">    dangling: dict, optional</span>
+<span class="sd">      The outedges to be assigned to any &quot;dangling&quot; nodes, i.e., nodes without</span>
+<span class="sd">      any outedges. The dict key is the node the outedge points to and the dict</span>
+<span class="sd">      value is the weight of that outedge. By default, dangling nodes are given</span>
+<span class="sd">      outedges according to the personalization vector (uniform if not</span>
+<span class="sd">      specified) This must be selected to result in an irreducible transition</span>
+<span class="sd">      matrix (see notes below). It may be common to have the dangling dict to</span>
+<span class="sd">      be the same as the personalization dict.</span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    A : NumPy matrix</span>
 <span class="sd">       Google matrix of the graph</span>
 
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The matrix returned represents the transition matrix that describes the</span>
+<span class="sd">    Markov chain used in PageRank. For PageRank to converge to a unique</span>
+<span class="sd">    solution (i.e., a unique stationary distribution in a Markov chain), the</span>
+<span class="sd">    transition matrix must be irreducible. In other words, it must be that</span>
+<span class="sd">    there exists a path between every pair of nodes in the graph, or else there</span>
+<span class="sd">    is the potential of &quot;rank sinks.&quot;</span>
+
+<span class="sd">    This implementation works with Multi(Di)Graphs. For multigraphs the</span>
+<span class="sd">    weight between two nodes is set to be the sum of all edge weights</span>
+<span class="sd">    between those nodes.</span>
+
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
 <span class="sd">    pagerank, pagerank_numpy, pagerank_scipy</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>\
-            <span class="s">&quot;google_matrix() requires NumPy: http://scipy.org/&quot;</span><span class="p">)</span>
-    <span class="c"># choose ordering in matrix</span>
-    <span class="k">if</span> <span class="n">personalization</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span> <span class="c"># use G.nodes() ordering</span>
-        <span class="n">nodelist</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span>
-    <span class="k">else</span><span class="p">:</span>  <span class="c"># use personalization &quot;vector&quot; ordering</span>
-        <span class="n">nodelist</span><span class="o">=</span><span class="n">personalization</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-        <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">nodelist</span><span class="p">)</span><span class="o">!=</span><span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s">&#39;Personalization vector dictionary&#39;</span>
-                                <span class="s">&#39;must have a value for every node&#39;</span><span class="p">)</span>
-    <span class="n">M</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
-    <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">)</span><span class="o">=</span><span class="n">M</span><span class="o">.</span><span class="n">shape</span> <span class="c"># should be square</span>
-    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+    <span class="k">if</span> <span class="n">nodelist</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">nodelist</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span>
+
+    <span class="n">M</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">N</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">M</span>
-    <span class="c"># add constant to dangling nodes&#39; row</span>
-    <span class="n">dangling</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dangling</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-        <span class="n">M</span><span class="p">[</span><span class="n">d</span><span class="p">]</span><span class="o">=</span><span class="mf">1.0</span><span class="o">/</span><span class="n">n</span>
-    <span class="c"># normalize</span>
-    <span class="n">M</span><span class="o">=</span><span class="n">M</span><span class="o">/</span><span class="n">M</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="c"># add &quot;teleportation&quot;/personalization</span>
-    <span class="n">e</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">n</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">personalization</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">v</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">personalization</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="c"># Personalization vector</span>
+    <span class="k">if</span> <span class="n">personalization</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">v</span><span class="o">=</span><span class="n">e</span>
-    <span class="n">v</span><span class="o">=</span><span class="n">v</span><span class="o">/</span><span class="n">v</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-    <span class="n">P</span><span class="o">=</span><span class="n">alpha</span><span class="o">*</span><span class="n">M</span><span class="o">+</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">P</span>
+        <span class="n">missing</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nodelist</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">personalization</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">missing</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s">&#39;Personalization vector dictionary &#39;</span>
+                                <span class="s">&#39;must have a value for every node. &#39;</span>
+                                <span class="s">&#39;Missing nodes </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">missing</span><span class="p">)</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">personalization</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nodelist</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="n">p</span> <span class="o">/=</span> <span class="n">p</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+    <span class="c"># Dangling nodes</span>
+    <span class="k">if</span> <span class="n">dangling</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">dangling_weights</span> <span class="o">=</span> <span class="n">p</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">missing</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nodelist</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">dangling</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">missing</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s">&#39;Dangling node dictionary &#39;</span>
+                                <span class="s">&#39;must have a value for every node. &#39;</span>
+                                <span class="s">&#39;Missing nodes </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">missing</span><span class="p">)</span>
+        <span class="c"># Convert the dangling dictionary into an array in nodelist order</span>
+        <span class="n">dangling_weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dangling</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nodelist</span><span class="p">],</span>
+                                    <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="n">dangling_weights</span> <span class="o">/=</span> <span class="n">dangling_weights</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">dangling_nodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c"># Assign dangling_weights to any dangling nodes (nodes with no out links)</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">dangling_nodes</span><span class="p">:</span>
+        <span class="n">M</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="n">dangling_weights</span>
+
+    <span class="n">M</span> <span class="o">/=</span> <span class="n">M</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c"># Normalize rows to sum to 1</span>
+
+    <span class="k">return</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">M</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">),</span> <span class="n">p</span><span class="p">)</span>
 
 </div>
-<div class="viewcode-block" id="pagerank_numpy"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.link_analysis.pagerank_alg.pagerank_numpy.html#networkx.algorithms.link_analysis.pagerank_alg.pagerank_numpy">[docs]</a><span class="k">def</span> <span class="nf">pagerank_numpy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">personalization</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="pagerank_numpy"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.link_analysis.pagerank_alg.pagerank_numpy.html#networkx.algorithms.link_analysis.pagerank_alg.pagerank_numpy">[docs]</a><span class="k">def</span> <span class="nf">pagerank_numpy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">personalization</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">,</span>
+                   <span class="n">dangling</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return the PageRank of the nodes in the graph.</span>
 
 <span class="sd">    PageRank computes a ranking of the nodes in the graph G based on</span>
@@ -306,27 +358,38 @@ NetworkX
 <span class="sd">    Parameters</span>
 <span class="sd">    -----------</span>
 <span class="sd">    G : graph</span>
-<span class="sd">      A NetworkX graph</span>
+<span class="sd">      A NetworkX graph.  Undirected graphs will be converted to a directed</span>
+<span class="sd">      graph with two directed edges for each undirected edge.</span>
 
 <span class="sd">    alpha : float, optional</span>
-<span class="sd">      Damping parameter for PageRank, default=0.85</span>
+<span class="sd">      Damping parameter for PageRank, default=0.85.</span>
 
 <span class="sd">    personalization: dict, optional</span>
 <span class="sd">       The &quot;personalization vector&quot; consisting of a dictionary with a</span>
-<span class="sd">       key for every graph node and nonzero personalization value for each node.</span>
+<span class="sd">       key for every graph node and nonzero personalization value for each</span>
+<span class="sd">       node. By default, a uniform distribution is used.</span>
 
 <span class="sd">    weight : key, optional</span>
 <span class="sd">      Edge data key to use as weight.  If None weights are set to 1.</span>
 
+<span class="sd">    dangling: dict, optional</span>
+<span class="sd">      The outedges to be assigned to any &quot;dangling&quot; nodes, i.e., nodes without</span>
+<span class="sd">      any outedges. The dict key is the node the outedge points to and the dict</span>
+<span class="sd">      value is the weight of that outedge. By default, dangling nodes are given</span>
+<span class="sd">      outedges according to the personalization vector (uniform if not</span>
+<span class="sd">      specified) This must be selected to result in an irreducible transition</span>
+<span class="sd">      matrix (see notes under google_matrix). It may be common to have the</span>
+<span class="sd">      dangling dict to be the same as the personalization dict.</span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    pagerank : dictionary</span>
-<span class="sd">       Dictionary of nodes with PageRank as value</span>
+<span class="sd">       Dictionary of nodes with PageRank as value.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; G=nx.DiGraph(nx.path_graph(4))</span>
-<span class="sd">    &gt;&gt;&gt; pr=nx.pagerank_numpy(G,alpha=0.9)</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.DiGraph(nx.path_graph(4))</span>
+<span class="sd">    &gt;&gt;&gt; pr = nx.pagerank_numpy(G, alpha=0.9)</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
@@ -334,7 +397,9 @@ NetworkX
 <span class="sd">    eigenvalue solvers.  This will be the fastest and most accurate</span>
 <span class="sd">    for small graphs.</span>
 
-<span class="sd">    This implementation works with Multi(Di)Graphs.</span>
+<span class="sd">    This implementation works with Multi(Di)Graphs. For multigraphs the</span>
+<span class="sd">    weight between two nodes is set to be the sum of all edge weights</span>
+<span class="sd">    between those nodes.</span>
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
@@ -349,31 +414,23 @@ NetworkX
 <span class="sd">       The PageRank citation ranking: Bringing order to the Web. 1999</span>
 <span class="sd">       http://dbpubs.stanford.edu:8090/pub/showDoc.Fulltext?lang=en&amp;doc=1999-66&amp;format=pdf</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s">&quot;pagerank_numpy() requires NumPy: http://scipy.org/&quot;</span><span class="p">)</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">{}</span>
-    <span class="c"># choose ordering in matrix</span>
-    <span class="k">if</span> <span class="n">personalization</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span> <span class="c"># use G.nodes() ordering</span>
-        <span class="n">nodelist</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span>
-    <span class="k">else</span><span class="p">:</span>  <span class="c"># use personalization &quot;vector&quot; ordering</span>
-        <span class="n">nodelist</span><span class="o">=</span><span class="n">personalization</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-    <span class="n">M</span><span class="o">=</span><span class="n">google_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">personalization</span><span class="o">=</span><span class="n">personalization</span><span class="p">,</span>
-                    <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">google_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">personalization</span><span class="o">=</span><span class="n">personalization</span><span class="p">,</span>
+                      <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span> <span class="n">dangling</span><span class="o">=</span><span class="n">dangling</span><span class="p">)</span>
     <span class="c"># use numpy LAPACK solver</span>
-    <span class="n">eigenvalues</span><span class="p">,</span><span class="n">eigenvectors</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
-    <span class="n">ind</span><span class="o">=</span><span class="n">eigenvalues</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span>
+    <span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">eigenvalues</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span>
     <span class="c"># eigenvector of largest eigenvalue at ind[-1], normalized</span>
-    <span class="n">largest</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">eigenvectors</span><span class="p">[:,</span><span class="n">ind</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">real</span>
-    <span class="n">norm</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">largest</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
-    <span class="n">centrality</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">nodelist</span><span class="p">,</span><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span><span class="n">largest</span><span class="o">/</span><span class="n">norm</span><span class="p">)))</span>
-    <span class="k">return</span> <span class="n">centrality</span>
+    <span class="n">largest</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">eigenvectors</span><span class="p">[:,</span> <span class="n">ind</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">real</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">largest</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">largest</span> <span class="o">/</span> <span class="n">norm</span><span class="p">)))</span>
 
 </div>
 <div class="viewcode-block" id="pagerank_scipy"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.link_analysis.pagerank_alg.pagerank_scipy.html#networkx.algorithms.link_analysis.pagerank_alg.pagerank_scipy">[docs]</a><span class="k">def</span> <span class="nf">pagerank_scipy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">personalization</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                   <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1.0e-6</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">):</span>
+                   <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1.0e-6</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">,</span>
+                   <span class="n">dangling</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return the PageRank of the nodes in the graph.</span>
 
 <span class="sd">    PageRank computes a ranking of the nodes in the graph G based on</span>
@@ -383,14 +440,16 @@ NetworkX
 <span class="sd">    Parameters</span>
 <span class="sd">    -----------</span>
 <span class="sd">    G : graph</span>
-<span class="sd">      A NetworkX graph</span>
+<span class="sd">      A NetworkX graph.  Undirected graphs will be converted to a directed</span>
+<span class="sd">      graph with two directed edges for each undirected edge.</span>
 
 <span class="sd">    alpha : float, optional</span>
-<span class="sd">      Damping parameter for PageRank, default=0.85</span>
+<span class="sd">      Damping parameter for PageRank, default=0.85.</span>
 
 <span class="sd">    personalization: dict, optional</span>
 <span class="sd">       The &quot;personalization vector&quot; consisting of a dictionary with a</span>
-<span class="sd">       key for every graph node and nonzero personalization value for each node.</span>
+<span class="sd">       key for every graph node and nonzero personalization value for each</span>
+<span class="sd">       node. By default, a uniform distribution is used.</span>
 
 <span class="sd">    max_iter : integer, optional</span>
 <span class="sd">      Maximum number of iterations in power method eigenvalue solver.</span>
@@ -401,6 +460,15 @@ NetworkX
 <span class="sd">    weight : key, optional</span>
 <span class="sd">      Edge data key to use as weight.  If None weights are set to 1.</span>
 
+<span class="sd">    dangling: dict, optional</span>
+<span class="sd">      The outedges to be assigned to any &quot;dangling&quot; nodes, i.e., nodes without</span>
+<span class="sd">      any outedges. The dict key is the node the outedge points to and the dict</span>
+<span class="sd">      value is the weight of that outedge. By default, dangling nodes are given</span>
+<span class="sd">      outedges according to the personalization vector (uniform if not</span>
+<span class="sd">      specified) This must be selected to result in an irreducible transition</span>
+<span class="sd">      matrix (see notes under google_matrix). It may be common to have the</span>
+<span class="sd">      dangling dict to be the same as the personalization dict.</span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    pagerank : dictionary</span>
@@ -408,13 +476,17 @@ NetworkX
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; G=nx.DiGraph(nx.path_graph(4))</span>
-<span class="sd">    &gt;&gt;&gt; pr=nx.pagerank_scipy(G,alpha=0.9)</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.DiGraph(nx.path_graph(4))</span>
+<span class="sd">    &gt;&gt;&gt; pr = nx.pagerank_scipy(G, alpha=0.9)</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    The eigenvector calculation uses power iteration with a SciPy</span>
 <span class="sd">    sparse matrix representation.</span>
+
+<span class="sd">    This implementation works with Multi(Di)Graphs. For multigraphs the</span>
+<span class="sd">    weight between two nodes is set to be the sum of all edge weights</span>
+<span class="sd">    between those nodes.</span>
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
@@ -429,46 +501,62 @@ NetworkX
 <span class="sd">       The PageRank citation ranking: Bringing order to the Web. 1999</span>
 <span class="sd">       http://dbpubs.stanford.edu:8090/pub/showDoc.Fulltext?lang=en&amp;doc=1999-66&amp;format=pdf</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">scipy.sparse</span>
-    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s">&quot;pagerank_scipy() requires SciPy: http://scipy.org/&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">scipy.sparse</span>
+
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">N</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">{}</span>
-    <span class="c"># choose ordering in matrix</span>
-    <span class="k">if</span> <span class="n">personalization</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span> <span class="c"># use G.nodes() ordering</span>
-        <span class="n">nodelist</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span>
-    <span class="k">else</span><span class="p">:</span>  <span class="c"># use personalization &quot;vector&quot; ordering</span>
-        <span class="n">nodelist</span><span class="o">=</span><span class="n">personalization</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-    <span class="n">M</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="s">&#39;f&#39;</span><span class="p">)</span>
-    <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">)</span><span class="o">=</span><span class="n">M</span><span class="o">.</span><span class="n">shape</span> <span class="c"># should be square</span>
-    <span class="n">S</span><span class="o">=</span><span class="n">scipy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-<span class="c">#    for i, j, v in zip( *scipy.sparse.find(M) ):</span>
-<span class="c">#        M[i,j] = v / S[i]</span>
-    <span class="n">S</span><span class="p">[</span><span class="n">S</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">S</span><span class="p">[</span><span class="n">S</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">nodelist</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span>
+                                  <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">S</span><span class="p">[</span><span class="n">S</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">S</span><span class="p">[</span><span class="n">S</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
     <span class="n">Q</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">spdiags</span><span class="p">(</span><span class="n">S</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s">&#39;csr&#39;</span><span class="p">)</span>
     <span class="n">M</span> <span class="o">=</span> <span class="n">Q</span> <span class="o">*</span> <span class="n">M</span>
-    <span class="n">x</span><span class="o">=</span><span class="n">scipy</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">n</span><span class="p">))</span><span class="o">/</span><span class="n">n</span>  <span class="c"># initial guess</span>
-    <span class="n">dangle</span><span class="o">=</span><span class="n">scipy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.0</span><span class="o">/</span><span class="n">n</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-    <span class="c"># add &quot;teleportation&quot;/personalization</span>
-    <span class="k">if</span> <span class="n">personalization</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">v</span><span class="o">=</span><span class="n">scipy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">personalization</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-        <span class="n">v</span><span class="o">=</span><span class="n">v</span><span class="o">/</span><span class="n">v</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+    <span class="c"># initial vector</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+
+    <span class="c"># Personalization vector</span>
+    <span class="k">if</span> <span class="n">personalization</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">v</span><span class="o">=</span><span class="n">x</span>
-    <span class="n">i</span><span class="o">=</span><span class="mi">0</span>
-    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">max_iter</span><span class="p">:</span>
-        <span class="c"># power iteration: make up to max_iter iterations</span>
-        <span class="n">xlast</span><span class="o">=</span><span class="n">x</span>
-        <span class="n">x</span><span class="o">=</span><span class="n">alpha</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">M</span><span class="o">+</span><span class="n">scipy</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">dangle</span><span class="p">,</span><span class="n">xlast</span><span class="p">))</span><span class="o">+</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="n">v</span>
-        <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="o">/</span><span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">missing</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nodelist</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">personalization</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">missing</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s">&#39;Personalization vector dictionary &#39;</span>
+                                <span class="s">&#39;must have a value for every node. &#39;</span>
+                                <span class="s">&#39;Missing nodes </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">missing</span><span class="p">)</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">personalization</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nodelist</span><span class="p">],</span>
+                        <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">/</span> <span class="n">p</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+    <span class="c"># Dangling nodes</span>
+    <span class="k">if</span> <span class="n">dangling</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">dangling_weights</span> <span class="o">=</span> <span class="n">p</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">missing</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nodelist</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">dangling</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">missing</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s">&#39;Dangling node dictionary &#39;</span>
+                                <span class="s">&#39;must have a value for every node. &#39;</span>
+                                <span class="s">&#39;Missing nodes </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">missing</span><span class="p">)</span>
+        <span class="c"># Convert the dangling dictionary into an array in nodelist order</span>
+        <span class="n">dangling_weights</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dangling</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nodelist</span><span class="p">],</span>
+                                       <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="n">dangling_weights</span> <span class="o">/=</span> <span class="n">dangling_weights</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">is_dangling</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c"># power iteration: make up to max_iter iterations</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+        <span class="n">xlast</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">M</span> <span class="o">+</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">is_dangling</span><span class="p">])</span> <span class="o">*</span> <span class="n">dangling_weights</span><span class="p">)</span> <span class="o">+</span> \
+            <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span>
         <span class="c"># check convergence, l1 norm</span>
-        <span class="n">err</span><span class="o">=</span><span class="n">scipy</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">xlast</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">err</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">*</span><span class="n">tol</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">nodelist</span><span class="p">,</span><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span><span class="n">x</span><span class="p">)))</span>
-        <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
-    <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s">&#39;pagerank_scipy: power iteration failed to converge&#39;</span>
-                        <span class="s">&#39;in </span><span class="si">%d</span><span class="s"> iterations.&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">xlast</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">err</span> <span class="o">&lt;</span> <span class="n">N</span> <span class="o">*</span> <span class="n">tol</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">nodelist</span><span class="p">,</span> <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">x</span><span class="p">)))</span>
+    <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s">&#39;pagerank_scipy: power iteration failed to converge &#39;</span>
+                        <span class="s">&#39;in </span><span class="si">%d</span><span class="s"> iterations.&#39;</span> <span class="o">%</span> <span class="n">max_iter</span><span class="p">)</span>
 
 
 <span class="c"># fixture for nose tests</span></div>
@@ -511,8 +599,8 @@ NetworkX
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Aug 03, 2013.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Last updated on Apr 08, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

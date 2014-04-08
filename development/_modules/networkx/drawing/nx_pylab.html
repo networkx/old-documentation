@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>networkx.drawing.nx_pylab &mdash; NetworkX 1.9.dev20130728171020 documentation</title>
+    <title>networkx.drawing.nx_pylab &mdash; NetworkX 1.8.dev20131031104627 documentation</title>
     
     <link rel="stylesheet" href="../../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '1.9.dev20130728171020',
+        VERSION:     '1.8.dev20131031104627',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -24,9 +26,9 @@
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20130728171020 documentation"
+          title="Search within NetworkX 1.8.dev20131031104627 documentation"
           href="../../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20130728171020 documentation" href="../../../index.html" />
+    <link rel="top" title="NetworkX 1.8.dev20131031104627 documentation" href="../../../index.html" />
     <link rel="up" title="networkx" href="../../networkx.html" /> 
   </head>
   <body>
@@ -55,7 +57,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20130728171020</b></p>
+<p>This documentation is for the development version <b>1.8.dev_20131031104627</b></p>
 
 
 
@@ -121,6 +123,7 @@ NetworkX
            <span class="s">&#39;draw_shell&#39;</span><span class="p">,</span>
            <span class="s">&#39;draw_graphviz&#39;</span><span class="p">]</span>
 
+
 <div class="viewcode-block" id="draw"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pylab.draw.html#networkx.drawing.nx_pylab.draw">[docs]</a><span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">hold</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Draw the graph G with Matplotlib.</span>
 
@@ -148,6 +151,7 @@ NetworkX
 
 <span class="sd">    **kwds : optional keywords</span>
 <span class="sd">       See networkx.draw_networkx() for a description of optional keywords.</span>
+
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -198,17 +202,20 @@ NetworkX
     <span class="n">cf</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s">&#39;w&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">cf</span><span class="o">.</span><span class="n">_axstack</span><span class="p">()</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">ax</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">add_axes</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+            <span class="n">ax</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">add_axes</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">ax</span><span class="o">=</span><span class="n">cf</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+            <span class="n">ax</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
 
  <span class="c"># allow callers to override the hold state by passing hold=True|False</span>
+
+    <span class="k">if</span> <span class="s">&#39;with_labels&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwds</span><span class="p">:</span>
+        <span class="n">kwds</span><span class="p">[</span><span class="s">&#39;with_labels&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">ishold</span><span class="p">()</span>
     <span class="n">h</span> <span class="o">=</span> <span class="n">kwds</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;hold&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">h</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">hold</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">draw_networkx</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+        <span class="n">draw_networkx</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">draw_if_interactive</span><span class="p">()</span>
     <span class="k">except</span><span class="p">:</span>
@@ -339,13 +346,14 @@ NetworkX
         <span class="k">raise</span>
 
     <span class="k">if</span> <span class="n">pos</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">pos</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">drawing</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="c"># default to spring layout</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">drawing</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>  <span class="c"># default to spring layout</span>
 
-    <span class="n">node_collection</span><span class="o">=</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-    <span class="n">edge_collection</span><span class="o">=</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+    <span class="n">node_collection</span> <span class="o">=</span> <span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+    <span class="n">edge_collection</span> <span class="o">=</span> <span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">with_labels</span><span class="p">:</span>
         <span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">draw_if_interactive</span><span class="p">()</span>
+
 </div>
 <div class="viewcode-block" id="draw_networkx_nodes"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pylab.draw_networkx_nodes.html#networkx.drawing.nx_pylab.draw_networkx_nodes">[docs]</a><span class="k">def</span> <span class="nf">draw_networkx_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span>
                         <span class="n">nodelist</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
@@ -358,7 +366,7 @@ NetworkX
                         <span class="n">vmax</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                         <span class="n">ax</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                         <span class="n">linewidths</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                        <span class="n">label</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span>
+                        <span class="n">label</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                         <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Draw the nodes of the graph G.</span>
 
@@ -371,8 +379,7 @@ NetworkX
 
 <span class="sd">    pos : dictionary</span>
 <span class="sd">       A dictionary with nodes as keys and positions as values.</span>
-<span class="sd">       If not specified a spring layout positioning will be computed.</span>
-<span class="sd">       See networkx.layout for functions that compute node positions.</span>
+<span class="sd">       Positions should be sequences of length 2.</span>
 
 <span class="sd">    ax : Matplotlib Axes object, optional</span>
 <span class="sd">       Draw the graph in the specified Matplotlib axes.</span>
@@ -410,6 +417,11 @@ NetworkX
 <span class="sd">    label : [None| string]</span>
 <span class="sd">       Label for legend</span>
 
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    matplotlib.collections.PathCollection</span>
+<span class="sd">        `PathCollection` of the nodes.</span>
+
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; G=nx.dodecahedral_graph()</span>
@@ -435,35 +447,32 @@ NetworkX
         <span class="k">print</span><span class="p">(</span><span class="s">&quot;Matplotlib unable to open display&quot;</span><span class="p">)</span>
         <span class="k">raise</span>
 
-
     <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="n">nodelist</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">nodelist</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span>
+        <span class="n">nodelist</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span>
 
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">nodelist</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">nodelist</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>  <span class="c"># empty nodelist, no drawing</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">nodelist</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">nodelist</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c"># empty nodelist, no drawing</span>
         <span class="k">return</span> <span class="bp">None</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">xy</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">pos</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">nodelist</span><span class="p">])</span>
+        <span class="n">xy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">pos</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">nodelist</span><span class="p">])</span>
     <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s">&#39;Node </span><span class="si">%s</span><span class="s"> has no position.&#39;</span><span class="o">%</span><span class="n">e</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s">&#39;Bad value in node positions.&#39;</span><span class="p">)</span>
 
-
-
-    <span class="n">node_collection</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xy</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">xy</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span>
-                               <span class="n">s</span><span class="o">=</span><span class="n">node_size</span><span class="p">,</span>
-                               <span class="n">c</span><span class="o">=</span><span class="n">node_color</span><span class="p">,</span>
-                               <span class="n">marker</span><span class="o">=</span><span class="n">node_shape</span><span class="p">,</span>
-                               <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
-                               <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span>
-                               <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span>
-                               <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span>
-                               <span class="n">linewidths</span><span class="o">=</span><span class="n">linewidths</span><span class="p">,</span>
-                               <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+    <span class="n">node_collection</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xy</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">xy</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+                                 <span class="n">s</span><span class="o">=</span><span class="n">node_size</span><span class="p">,</span>
+                                 <span class="n">c</span><span class="o">=</span><span class="n">node_color</span><span class="p">,</span>
+                                 <span class="n">marker</span><span class="o">=</span><span class="n">node_shape</span><span class="p">,</span>
+                                 <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
+                                 <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span>
+                                 <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span>
+                                 <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span>
+                                 <span class="n">linewidths</span><span class="o">=</span><span class="n">linewidths</span><span class="p">,</span>
+                                 <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
 
     <span class="n">node_collection</span><span class="o">.</span><span class="n">set_zorder</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">node_collection</span>
@@ -493,8 +502,7 @@ NetworkX
 
 <span class="sd">    pos : dictionary</span>
 <span class="sd">       A dictionary with nodes as keys and positions as values.</span>
-<span class="sd">       If not specified a spring layout positioning will be computed.</span>
-<span class="sd">       See networkx.layout for functions that compute node positions.</span>
+<span class="sd">       Positions should be sequences of length 2.</span>
 
 <span class="sd">    edgelist : collection of edge tuples</span>
 <span class="sd">       Draw only specified edges(default=G.edges())</span>
@@ -529,6 +537,11 @@ NetworkX
 <span class="sd">    label : [None| string]</span>
 <span class="sd">       Label for legend</span>
 
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    matplotlib.collection.LineCollection</span>
+<span class="sd">        `LineCollection` of the edges</span>
+
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    For directed graphs, &quot;arrows&quot; (actually just thicker stubs) are drawn</span>
@@ -556,7 +569,7 @@ NetworkX
         <span class="kn">import</span> <span class="nn">matplotlib</span>
         <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
         <span class="kn">import</span> <span class="nn">matplotlib.cbook</span> <span class="kn">as</span> <span class="nn">cb</span>
-        <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">colorConverter</span><span class="p">,</span><span class="n">Colormap</span>
+        <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">colorConverter</span><span class="p">,</span> <span class="n">Colormap</span>
         <span class="kn">from</span> <span class="nn">matplotlib.collections</span> <span class="kn">import</span> <span class="n">LineCollection</span>
         <span class="kn">import</span> <span class="nn">numpy</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
@@ -566,16 +579,16 @@ NetworkX
         <span class="k">raise</span>
 
     <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="n">edgelist</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">edgelist</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span>
+        <span class="n">edgelist</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span>
 
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">edgelist</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">edgelist</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> <span class="c"># no edges!</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">edgelist</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">edgelist</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c"># no edges!</span>
         <span class="k">return</span> <span class="bp">None</span>
 
     <span class="c"># set edge positions</span>
-    <span class="n">edge_pos</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">asarray</span><span class="p">([(</span><span class="n">pos</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">pos</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">edgelist</span><span class="p">])</span>
+    <span class="n">edge_pos</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">asarray</span><span class="p">([(</span><span class="n">pos</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">pos</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">edgelist</span><span class="p">])</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">cb</span><span class="o">.</span><span class="n">iterable</span><span class="p">(</span><span class="n">width</span><span class="p">):</span>
         <span class="n">lw</span> <span class="o">=</span> <span class="p">(</span><span class="n">width</span><span class="p">,)</span>
@@ -584,17 +597,17 @@ NetworkX
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">cb</span><span class="o">.</span><span class="n">is_string_like</span><span class="p">(</span><span class="n">edge_color</span><span class="p">)</span> \
            <span class="ow">and</span> <span class="n">cb</span><span class="o">.</span><span class="n">iterable</span><span class="p">(</span><span class="n">edge_color</span><span class="p">)</span> \
-           <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">edge_color</span><span class="p">)</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="n">edge_pos</span><span class="p">):</span>
+           <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">edge_color</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">edge_pos</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">alltrue</span><span class="p">([</span><span class="n">cb</span><span class="o">.</span><span class="n">is_string_like</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
                          <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">edge_color</span><span class="p">]):</span>
             <span class="c"># (should check ALL elements)</span>
             <span class="c"># list of color letters such as [&#39;k&#39;,&#39;r&#39;,&#39;k&#39;,...]</span>
-            <span class="n">edge_colors</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">colorConverter</span><span class="o">.</span><span class="n">to_rgba</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">alpha</span><span class="p">)</span>
+            <span class="n">edge_colors</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">colorConverter</span><span class="o">.</span><span class="n">to_rgba</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
                                  <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">edge_color</span><span class="p">])</span>
         <span class="k">elif</span> <span class="n">numpy</span><span class="o">.</span><span class="n">alltrue</span><span class="p">([</span><span class="ow">not</span> <span class="n">cb</span><span class="o">.</span><span class="n">is_string_like</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
                            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">edge_color</span><span class="p">]):</span>
             <span class="c"># If color specs are given as (rgb) or (rgba) tuples, we&#39;re OK</span>
-            <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">alltrue</span><span class="p">([</span><span class="n">cb</span><span class="o">.</span><span class="n">iterable</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">alltrue</span><span class="p">([</span><span class="n">cb</span><span class="o">.</span><span class="n">iterable</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
                              <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">edge_color</span><span class="p">]):</span>
                 <span class="n">edge_colors</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">edge_color</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
@@ -603,21 +616,20 @@ NetworkX
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;edge_color must consist of either color names or numbers&#39;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">cb</span><span class="o">.</span><span class="n">is_string_like</span><span class="p">(</span><span class="n">edge_color</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">edge_color</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
-            <span class="n">edge_colors</span> <span class="o">=</span> <span class="p">(</span> <span class="n">colorConverter</span><span class="o">.</span><span class="n">to_rgba</span><span class="p">(</span><span class="n">edge_color</span><span class="p">,</span> <span class="n">alpha</span><span class="p">),</span> <span class="p">)</span>
+        <span class="k">if</span> <span class="n">cb</span><span class="o">.</span><span class="n">is_string_like</span><span class="p">(</span><span class="n">edge_color</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">edge_color</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">edge_colors</span> <span class="o">=</span> <span class="p">(</span><span class="n">colorConverter</span><span class="o">.</span><span class="n">to_rgba</span><span class="p">(</span><span class="n">edge_color</span><span class="p">,</span> <span class="n">alpha</span><span class="p">),</span> <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;edge_color must be a single color or list of exactly m colors where m is the number or edges&#39;</span><span class="p">)</span>
 
     <span class="n">edge_collection</span> <span class="o">=</span> <span class="n">LineCollection</span><span class="p">(</span><span class="n">edge_pos</span><span class="p">,</span>
-                                     <span class="n">colors</span>       <span class="o">=</span> <span class="n">edge_colors</span><span class="p">,</span>
-                                     <span class="n">linewidths</span>   <span class="o">=</span> <span class="n">lw</span><span class="p">,</span>
-                                     <span class="n">antialiaseds</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,),</span>
-                                     <span class="n">linestyle</span>    <span class="o">=</span> <span class="n">style</span><span class="p">,</span>
+                                     <span class="n">colors</span><span class="o">=</span><span class="n">edge_colors</span><span class="p">,</span>
+                                     <span class="n">linewidths</span><span class="o">=</span><span class="n">lw</span><span class="p">,</span>
+                                     <span class="n">antialiaseds</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span>
+                                     <span class="n">linestyle</span><span class="o">=</span><span class="n">style</span><span class="p">,</span>
                                      <span class="n">transOffset</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">transData</span><span class="p">,</span>
                                      <span class="p">)</span>
 
-
-    <span class="n">edge_collection</span><span class="o">.</span><span class="n">set_zorder</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c"># edges go behind nodes</span>
+    <span class="n">edge_collection</span><span class="o">.</span><span class="n">set_zorder</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c"># edges go behind nodes</span>
     <span class="n">edge_collection</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">edge_collection</span><span class="p">)</span>
 
@@ -639,7 +651,7 @@ NetworkX
         <span class="k">else</span><span class="p">:</span>
             <span class="n">edge_collection</span><span class="o">.</span><span class="n">autoscale</span><span class="p">()</span>
 
-    <span class="n">arrow_collection</span><span class="o">=</span><span class="bp">None</span>
+    <span class="n">arrow_collection</span> <span class="o">=</span> <span class="bp">None</span>
 
     <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">()</span> <span class="ow">and</span> <span class="n">arrows</span><span class="p">:</span>
 
@@ -647,52 +659,51 @@ NetworkX
         <span class="c"># draw thick line segments at head end of edge</span>
         <span class="c"># waiting for someone else to implement arrows that will work</span>
         <span class="n">arrow_colors</span> <span class="o">=</span> <span class="n">edge_colors</span>
-        <span class="n">a_pos</span><span class="o">=</span><span class="p">[]</span>
-        <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="o">-</span><span class="mf">0.25</span> <span class="c"># make head segment 25 percent of edge length</span>
-        <span class="k">for</span> <span class="n">src</span><span class="p">,</span><span class="n">dst</span> <span class="ow">in</span> <span class="n">edge_pos</span><span class="p">:</span>
-            <span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="o">=</span><span class="n">src</span>
-            <span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="o">=</span><span class="n">dst</span>
-            <span class="n">dx</span><span class="o">=</span><span class="n">x2</span><span class="o">-</span><span class="n">x1</span> <span class="c"># x offset</span>
-            <span class="n">dy</span><span class="o">=</span><span class="n">y2</span><span class="o">-</span><span class="n">y1</span> <span class="c"># y offset</span>
-            <span class="n">d</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">dy</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="c"># length of edge</span>
-            <span class="k">if</span> <span class="n">d</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> <span class="c"># source and target at same position</span>
+        <span class="n">a_pos</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">-</span><span class="mf">0.25</span>  <span class="c"># make head segment 25 percent of edge length</span>
+        <span class="k">for</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span> <span class="ow">in</span> <span class="n">edge_pos</span><span class="p">:</span>
+            <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">src</span>
+            <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">dst</span>
+            <span class="n">dx</span> <span class="o">=</span> <span class="n">x2</span><span class="o">-</span><span class="n">x1</span>   <span class="c"># x offset</span>
+            <span class="n">dy</span> <span class="o">=</span> <span class="n">y2</span><span class="o">-</span><span class="n">y1</span>   <span class="c"># y offset</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">dy</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>  <span class="c"># length of edge</span>
+            <span class="k">if</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>   <span class="c"># source and target at same position</span>
                 <span class="k">continue</span>
-            <span class="k">if</span> <span class="n">dx</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> <span class="c"># vertical edge</span>
-                <span class="n">xa</span><span class="o">=</span><span class="n">x2</span>
-                <span class="n">ya</span><span class="o">=</span><span class="n">dy</span><span class="o">*</span><span class="n">p</span><span class="o">+</span><span class="n">y1</span>
-            <span class="k">if</span> <span class="n">dy</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> <span class="c"># horizontal edge</span>
-                <span class="n">ya</span><span class="o">=</span><span class="n">y2</span>
-                <span class="n">xa</span><span class="o">=</span><span class="n">dx</span><span class="o">*</span><span class="n">p</span><span class="o">+</span><span class="n">x1</span>
+            <span class="k">if</span> <span class="n">dx</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c"># vertical edge</span>
+                <span class="n">xa</span> <span class="o">=</span> <span class="n">x2</span>
+                <span class="n">ya</span> <span class="o">=</span> <span class="n">dy</span><span class="o">*</span><span class="n">p</span><span class="o">+</span><span class="n">y1</span>
+            <span class="k">if</span> <span class="n">dy</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c"># horizontal edge</span>
+                <span class="n">ya</span> <span class="o">=</span> <span class="n">y2</span>
+                <span class="n">xa</span> <span class="o">=</span> <span class="n">dx</span><span class="o">*</span><span class="n">p</span><span class="o">+</span><span class="n">x1</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">theta</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">dy</span><span class="p">,</span><span class="n">dx</span><span class="p">)</span>
-                <span class="n">xa</span><span class="o">=</span><span class="n">p</span><span class="o">*</span><span class="n">d</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">+</span><span class="n">x1</span>
-                <span class="n">ya</span><span class="o">=</span><span class="n">p</span><span class="o">*</span><span class="n">d</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">+</span><span class="n">y1</span>
+                <span class="n">theta</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">dy</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
+                <span class="n">xa</span> <span class="o">=</span> <span class="n">p</span><span class="o">*</span><span class="n">d</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">+</span><span class="n">x1</span>
+                <span class="n">ya</span> <span class="o">=</span> <span class="n">p</span><span class="o">*</span><span class="n">d</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">+</span><span class="n">y1</span>
 
-            <span class="n">a_pos</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">xa</span><span class="p">,</span><span class="n">ya</span><span class="p">),(</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">)))</span>
+            <span class="n">a_pos</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">xa</span><span class="p">,</span> <span class="n">ya</span><span class="p">),</span> <span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">)))</span>
 
         <span class="n">arrow_collection</span> <span class="o">=</span> <span class="n">LineCollection</span><span class="p">(</span><span class="n">a_pos</span><span class="p">,</span>
-                                <span class="n">colors</span>       <span class="o">=</span> <span class="n">arrow_colors</span><span class="p">,</span>
-                                <span class="n">linewidths</span>   <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="o">*</span><span class="n">ww</span> <span class="k">for</span> <span class="n">ww</span> <span class="ow">in</span> <span class="n">lw</span><span class="p">],</span>
-                                <span class="n">antialiaseds</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,),</span>
+                                <span class="n">colors</span><span class="o">=</span><span class="n">arrow_colors</span><span class="p">,</span>
+                                <span class="n">linewidths</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="o">*</span><span class="n">ww</span> <span class="k">for</span> <span class="n">ww</span> <span class="ow">in</span> <span class="n">lw</span><span class="p">],</span>
+                                <span class="n">antialiaseds</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span>
                                 <span class="n">transOffset</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">transData</span><span class="p">,</span>
                                 <span class="p">)</span>
 
-        <span class="n">arrow_collection</span><span class="o">.</span><span class="n">set_zorder</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c"># edges go behind nodes</span>
+        <span class="n">arrow_collection</span><span class="o">.</span><span class="n">set_zorder</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c"># edges go behind nodes</span>
         <span class="n">arrow_collection</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">arrow_collection</span><span class="p">)</span>
 
-
     <span class="c"># update view</span>
-    <span class="n">minx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">edge_pos</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]))</span>
-    <span class="n">maxx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">edge_pos</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]))</span>
-    <span class="n">miny</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">edge_pos</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">]))</span>
-    <span class="n">maxy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">edge_pos</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="n">minx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">edge_pos</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]))</span>
+    <span class="n">maxx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">edge_pos</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]))</span>
+    <span class="n">miny</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">edge_pos</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]))</span>
+    <span class="n">maxy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">edge_pos</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]))</span>
 
     <span class="n">w</span> <span class="o">=</span> <span class="n">maxx</span><span class="o">-</span><span class="n">minx</span>
     <span class="n">h</span> <span class="o">=</span> <span class="n">maxy</span><span class="o">-</span><span class="n">miny</span>
-    <span class="n">padx</span><span class="p">,</span> <span class="n">pady</span> <span class="o">=</span> <span class="mf">0.05</span><span class="o">*</span><span class="n">w</span><span class="p">,</span> <span class="mf">0.05</span><span class="o">*</span><span class="n">h</span>
+    <span class="n">padx</span><span class="p">,</span>  <span class="n">pady</span> <span class="o">=</span> <span class="mf">0.05</span><span class="o">*</span><span class="n">w</span><span class="p">,</span> <span class="mf">0.05</span><span class="o">*</span><span class="n">h</span>
     <span class="n">corners</span> <span class="o">=</span> <span class="p">(</span><span class="n">minx</span><span class="o">-</span><span class="n">padx</span><span class="p">,</span> <span class="n">miny</span><span class="o">-</span><span class="n">pady</span><span class="p">),</span> <span class="p">(</span><span class="n">maxx</span><span class="o">+</span><span class="n">padx</span><span class="p">,</span> <span class="n">maxy</span><span class="o">+</span><span class="n">pady</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">update_datalim</span><span class="p">(</span> <span class="n">corners</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">update_datalim</span><span class="p">(</span><span class="n">corners</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">autoscale_view</span><span class="p">()</span>
 
 <span class="c">#    if arrow_collection:</span>
@@ -716,10 +727,9 @@ NetworkX
 <span class="sd">    G : graph</span>
 <span class="sd">       A networkx graph</span>
 
-<span class="sd">    pos : dictionary, optional</span>
+<span class="sd">    pos : dictionary</span>
 <span class="sd">       A dictionary with nodes as keys and positions as values.</span>
-<span class="sd">       If not specified a spring layout positioning will be computed.</span>
-<span class="sd">       See networkx.layout for functions that compute node positions.</span>
+<span class="sd">       Positions should be sequences of length 2.</span>
 
 <span class="sd">    labels : dictionary, optional (default=None)</span>
 <span class="sd">       Node labels in a dictionary keyed by node of text labels</span>
@@ -742,6 +752,10 @@ NetworkX
 <span class="sd">    ax : Matplotlib Axes object, optional</span>
 <span class="sd">       Draw the graph in the specified Matplotlib axes.</span>
 
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        `dict` of labels keyed on the nodes</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -770,21 +784,21 @@ NetworkX
         <span class="k">raise</span>
 
     <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="n">labels</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">labels</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
 
     <span class="c"># set optional alignment</span>
-    <span class="n">horizontalalignment</span><span class="o">=</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;horizontalalignment&#39;</span><span class="p">,</span><span class="s">&#39;center&#39;</span><span class="p">)</span>
-    <span class="n">verticalalignment</span><span class="o">=</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;verticalalignment&#39;</span><span class="p">,</span><span class="s">&#39;center&#39;</span><span class="p">)</span>
+    <span class="n">horizontalalignment</span> <span class="o">=</span> <span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;horizontalalignment&#39;</span><span class="p">,</span> <span class="s">&#39;center&#39;</span><span class="p">)</span>
+    <span class="n">verticalalignment</span> <span class="o">=</span> <span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;verticalalignment&#39;</span><span class="p">,</span> <span class="s">&#39;center&#39;</span><span class="p">)</span>
 
-    <span class="n">text_items</span><span class="o">=</span><span class="p">{}</span>  <span class="c"># there is no text collection so we&#39;ll fake one</span>
+    <span class="n">text_items</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c"># there is no text collection so we&#39;ll fake one</span>
     <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">=</span><span class="n">pos</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+        <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">cb</span><span class="o">.</span><span class="n">is_string_like</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
-            <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">label</span><span class="p">)</span> <span class="c"># this will cause &quot;1&quot; and 1 to be labeled the same</span>
-        <span class="n">t</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>  <span class="c"># this will cause &quot;1&quot; and 1 to be labeled the same</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
                   <span class="n">label</span><span class="p">,</span>
                   <span class="n">size</span><span class="o">=</span><span class="n">font_size</span><span class="p">,</span>
                   <span class="n">color</span><span class="o">=</span><span class="n">font_color</span><span class="p">,</span>
@@ -792,12 +806,13 @@ NetworkX
                   <span class="n">weight</span><span class="o">=</span><span class="n">font_weight</span><span class="p">,</span>
                   <span class="n">horizontalalignment</span><span class="o">=</span><span class="n">horizontalalignment</span><span class="p">,</span>
                   <span class="n">verticalalignment</span><span class="o">=</span><span class="n">verticalalignment</span><span class="p">,</span>
-                  <span class="n">transform</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">transData</span><span class="p">,</span>
+                  <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transData</span><span class="p">,</span>
                   <span class="n">clip_on</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
                   <span class="p">)</span>
-        <span class="n">text_items</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="n">t</span>
+        <span class="n">text_items</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span>
 
     <span class="k">return</span> <span class="n">text_items</span>
+
 </div>
 <div class="viewcode-block" id="draw_networkx_edge_labels"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pylab.draw_networkx_edge_labels.html#networkx.drawing.nx_pylab.draw_networkx_edge_labels">[docs]</a><span class="k">def</span> <span class="nf">draw_networkx_edge_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span>
                               <span class="n">edge_labels</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
@@ -818,10 +833,9 @@ NetworkX
 <span class="sd">    G : graph</span>
 <span class="sd">       A networkx graph</span>
 
-<span class="sd">    pos : dictionary, optional</span>
+<span class="sd">    pos : dictionary</span>
 <span class="sd">       A dictionary with nodes as keys and positions as values.</span>
-<span class="sd">       If not specified a spring layout positioning will be computed.</span>
-<span class="sd">       See networkx.layout for functions that compute node positions.</span>
+<span class="sd">       Positions should be sequences of length 2.</span>
 
 <span class="sd">    ax : Matplotlib Axes object, optional</span>
 <span class="sd">       Draw the graph in the specified Matplotlib axes.</span>
@@ -855,6 +869,11 @@ NetworkX
 <span class="sd">    clip_on : bool</span>
 <span class="sd">       Turn on clipping at axis boundaries (default=True)</span>
 
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        `dict` of labels keyed on the edges</span>
+
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; G=nx.dodecahedral_graph()</span>
@@ -882,31 +901,31 @@ NetworkX
         <span class="k">raise</span>
 
     <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">edge_labels</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">labels</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span> <span class="p">((</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">),</span> <span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">d</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="p">)</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">),</span> <span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">labels</span> <span class="o">=</span> <span class="n">edge_labels</span>
-    <span class="n">text_items</span><span class="o">=</span><span class="p">{}</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">n1</span><span class="p">,</span><span class="n">n2</span><span class="p">),</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">)</span><span class="o">=</span><span class="n">pos</span><span class="p">[</span><span class="n">n1</span><span class="p">]</span>
-        <span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span><span class="o">=</span><span class="n">pos</span><span class="p">[</span><span class="n">n2</span><span class="p">]</span>
-        <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">x1</span> <span class="o">*</span> <span class="n">label_pos</span> <span class="o">+</span> <span class="n">x2</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">label_pos</span><span class="p">),</span>
-                 <span class="n">y1</span> <span class="o">*</span> <span class="n">label_pos</span> <span class="o">+</span> <span class="n">y2</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">label_pos</span><span class="p">))</span>
+    <span class="n">text_items</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">),</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="n">n1</span><span class="p">]</span>
+        <span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="n">n2</span><span class="p">]</span>
+        <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">x1</span> <span class="o">*</span> <span class="n">label_pos</span> <span class="o">+</span> <span class="n">x2</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">label_pos</span><span class="p">),</span>
+                  <span class="n">y1</span> <span class="o">*</span> <span class="n">label_pos</span> <span class="o">+</span> <span class="n">y2</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">label_pos</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="n">rotate</span><span class="p">:</span>
-            <span class="n">angle</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">y2</span><span class="o">-</span><span class="n">y1</span><span class="p">,</span><span class="n">x2</span><span class="o">-</span><span class="n">x1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">*</span><span class="mi">360</span> <span class="c"># degrees</span>
+            <span class="n">angle</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">y2</span><span class="o">-</span><span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="o">-</span><span class="n">x1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">*</span><span class="mi">360</span>  <span class="c"># degrees</span>
             <span class="c"># make label orientation &quot;right-side-up&quot;</span>
             <span class="k">if</span> <span class="n">angle</span> <span class="o">&gt;</span> <span class="mi">90</span><span class="p">:</span>
-                <span class="n">angle</span><span class="o">-=</span><span class="mi">180</span>
+                <span class="n">angle</span> <span class="o">-=</span> <span class="mi">180</span>
             <span class="k">if</span> <span class="n">angle</span> <span class="o">&lt;</span> <span class="o">-</span> <span class="mi">90</span><span class="p">:</span>
-                <span class="n">angle</span><span class="o">+=</span><span class="mi">180</span>
+                <span class="n">angle</span> <span class="o">+=</span> <span class="mi">180</span>
             <span class="c"># transform data coordinate angle to screen coordinate angle</span>
-            <span class="n">xy</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
-            <span class="n">trans_angle</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transData</span><span class="o">.</span><span class="n">transform_angles</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">angle</span><span class="p">,)),</span>
-                                                      <span class="n">xy</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)))[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">xy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+            <span class="n">trans_angle</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">transData</span><span class="o">.</span><span class="n">transform_angles</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">angle</span><span class="p">,)),</span>
+                                                        <span class="n">xy</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">trans_angle</span><span class="o">=</span><span class="mf">0.0</span>
+            <span class="n">trans_angle</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="c"># use default box of white with white border</span>
         <span class="k">if</span> <span class="n">bbox</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">bbox</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s">&#39;round&#39;</span><span class="p">,</span>
@@ -914,68 +933,76 @@ NetworkX
                         <span class="n">fc</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
                         <span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">cb</span><span class="o">.</span><span class="n">is_string_like</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
-            <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">label</span><span class="p">)</span> <span class="c"># this will cause &quot;1&quot; and 1 to be labeled the same</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>  <span class="c"># this will cause &quot;1&quot; and 1 to be labeled the same</span>
 
         <span class="c"># set optional alignment</span>
-        <span class="n">horizontalalignment</span><span class="o">=</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;horizontalalignment&#39;</span><span class="p">,</span><span class="s">&#39;center&#39;</span><span class="p">)</span>
-        <span class="n">verticalalignment</span><span class="o">=</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;verticalalignment&#39;</span><span class="p">,</span><span class="s">&#39;center&#39;</span><span class="p">)</span>
+        <span class="n">horizontalalignment</span> <span class="o">=</span> <span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;horizontalalignment&#39;</span><span class="p">,</span> <span class="s">&#39;center&#39;</span><span class="p">)</span>
+        <span class="n">verticalalignment</span> <span class="o">=</span> <span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;verticalalignment&#39;</span><span class="p">,</span> <span class="s">&#39;center&#39;</span><span class="p">)</span>
 
-        <span class="n">t</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
-                  <span class="n">label</span><span class="p">,</span>
-                  <span class="n">size</span><span class="o">=</span><span class="n">font_size</span><span class="p">,</span>
-                  <span class="n">color</span><span class="o">=</span><span class="n">font_color</span><span class="p">,</span>
-                  <span class="n">family</span><span class="o">=</span><span class="n">font_family</span><span class="p">,</span>
-                  <span class="n">weight</span><span class="o">=</span><span class="n">font_weight</span><span class="p">,</span>
-                  <span class="n">horizontalalignment</span><span class="o">=</span><span class="n">horizontalalignment</span><span class="p">,</span>
-                  <span class="n">verticalalignment</span><span class="o">=</span><span class="n">verticalalignment</span><span class="p">,</span>
-                  <span class="n">rotation</span><span class="o">=</span><span class="n">trans_angle</span><span class="p">,</span>
-                  <span class="n">transform</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">transData</span><span class="p">,</span>
-                  <span class="n">bbox</span> <span class="o">=</span> <span class="n">bbox</span><span class="p">,</span>
-                  <span class="n">zorder</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-                  <span class="n">clip_on</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-                  <span class="p">)</span>
-        <span class="n">text_items</span><span class="p">[(</span><span class="n">n1</span><span class="p">,</span><span class="n">n2</span><span class="p">)]</span><span class="o">=</span><span class="n">t</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
+                    <span class="n">label</span><span class="p">,</span>
+                    <span class="n">size</span><span class="o">=</span><span class="n">font_size</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">font_color</span><span class="p">,</span>
+                    <span class="n">family</span><span class="o">=</span><span class="n">font_family</span><span class="p">,</span>
+                    <span class="n">weight</span><span class="o">=</span><span class="n">font_weight</span><span class="p">,</span>
+                    <span class="n">horizontalalignment</span><span class="o">=</span><span class="n">horizontalalignment</span><span class="p">,</span>
+                    <span class="n">verticalalignment</span><span class="o">=</span><span class="n">verticalalignment</span><span class="p">,</span>
+                    <span class="n">rotation</span><span class="o">=</span><span class="n">trans_angle</span><span class="p">,</span>
+                    <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transData</span><span class="p">,</span>
+                    <span class="n">bbox</span><span class="o">=</span><span class="n">bbox</span><span class="p">,</span>
+                    <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="n">clip_on</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                    <span class="p">)</span>
+        <span class="n">text_items</span><span class="p">[(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">)]</span> <span class="o">=</span> <span class="n">t</span>
 
     <span class="k">return</span> <span class="n">text_items</span>
+
 </div>
 <div class="viewcode-block" id="draw_circular"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pylab.draw_circular.html#networkx.drawing.nx_pylab.draw_circular">[docs]</a><span class="k">def</span> <span class="nf">draw_circular</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Draw the graph G with a circular layout.&quot;&quot;&quot;</span>
-    <span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">circular_layout</span><span class="p">(</span><span class="n">G</span><span class="p">),</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">circular_layout</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
 </div>
 <div class="viewcode-block" id="draw_random"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pylab.draw_random.html#networkx.drawing.nx_pylab.draw_random">[docs]</a><span class="k">def</span> <span class="nf">draw_random</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Draw the graph G with a random layout.&quot;&quot;&quot;</span>
-    <span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">random_layout</span><span class="p">(</span><span class="n">G</span><span class="p">),</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">random_layout</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
 </div>
 <div class="viewcode-block" id="draw_spectral"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pylab.draw_spectral.html#networkx.drawing.nx_pylab.draw_spectral">[docs]</a><span class="k">def</span> <span class="nf">draw_spectral</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Draw the graph G with a spectral layout.&quot;&quot;&quot;</span>
-    <span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">spectral_layout</span><span class="p">(</span><span class="n">G</span><span class="p">),</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">spectral_layout</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
 </div>
 <div class="viewcode-block" id="draw_spring"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pylab.draw_spring.html#networkx.drawing.nx_pylab.draw_spring">[docs]</a><span class="k">def</span> <span class="nf">draw_spring</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Draw the graph G with a spring layout.&quot;&quot;&quot;</span>
-    <span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">),</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
 </div>
 <div class="viewcode-block" id="draw_shell"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pylab.draw_shell.html#networkx.drawing.nx_pylab.draw_shell">[docs]</a><span class="k">def</span> <span class="nf">draw_shell</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Draw networkx graph with shell layout.&quot;&quot;&quot;</span>
     <span class="n">nlist</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;nlist&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">nlist</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">nlist</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">del</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s">&#39;nlist&#39;</span><span class="p">])</span>
-    <span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">shell_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">nlist</span><span class="o">=</span><span class="n">nlist</span><span class="p">),</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">shell_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nlist</span><span class="o">=</span><span class="n">nlist</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
 </div>
 <div class="viewcode-block" id="draw_graphviz"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pylab.draw_graphviz.html#networkx.drawing.nx_pylab.draw_graphviz">[docs]</a><span class="k">def</span> <span class="nf">draw_graphviz</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">prog</span><span class="o">=</span><span class="s">&quot;neato&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Draw networkx graph with graphviz layout.&quot;&quot;&quot;</span>
-    <span class="n">pos</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">drawing</span><span class="o">.</span><span class="n">graphviz_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">prog</span><span class="p">)</span>
-    <span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">pos</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">drawing</span><span class="o">.</span><span class="n">graphviz_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">prog</span><span class="p">)</span>
+    <span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
 </div>
-<span class="k">def</span> <span class="nf">draw_nx</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">pos</span><span class="p">,</span><span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">draw_nx</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;For backward compatibility; use draw or draw_networkx.&quot;&quot;&quot;</span>
-    <span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">pos</span><span class="p">,</span><span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+    <span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+
 
 <span class="c"># fixture for nose tests</span>
 <span class="k">def</span> <span class="nf">setup_module</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
     <span class="kn">from</span> <span class="nn">nose</span> <span class="kn">import</span> <span class="n">SkipTest</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="kn">as</span> <span class="nn">mpl</span>
-        <span class="n">mpl</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">&#39;PS&#39;</span><span class="p">,</span><span class="n">warn</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="n">mpl</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">&#39;PS&#39;</span><span class="p">,</span> <span class="n">warn</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
         <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">SkipTest</span><span class="p">(</span><span class="s">&quot;matplotlib not available&quot;</span><span class="p">)</span>
@@ -1008,8 +1035,8 @@ NetworkX
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Aug 03, 2013.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Last updated on Apr 08, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

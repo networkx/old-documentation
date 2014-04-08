@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>networkx.algorithms.connectivity.cuts &mdash; NetworkX 1.9.dev20130728171020 documentation</title>
+    <title>networkx.algorithms.connectivity.cuts &mdash; NetworkX 1.8.dev20131031104627 documentation</title>
     
     <link rel="stylesheet" href="../../../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -14,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../../',
-        VERSION:     '1.9.dev20130728171020',
+        VERSION:     '1.8.dev20131031104627',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -24,9 +26,9 @@
     <script type="text/javascript" src="../../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../../_static/doctools.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20130728171020 documentation"
+          title="Search within NetworkX 1.8.dev20131031104627 documentation"
           href="../../../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20130728171020 documentation" href="../../../../index.html" />
+    <link rel="top" title="NetworkX 1.8.dev20131031104627 documentation" href="../../../../index.html" />
     <link rel="up" title="networkx" href="../../../networkx.html" /> 
   </head>
   <body>
@@ -55,7 +57,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20130728171020</b></p>
+<p>This documentation is for the development version <b>1.8.dev_20131031104627</b></p>
 
 
 
@@ -94,7 +96,7 @@ NetworkX
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
 <span class="kn">from</span> <span class="nn">networkx.algorithms.connectivity.connectivity</span> <span class="kn">import</span> \
     <span class="n">_aux_digraph_node_connectivity</span><span class="p">,</span> <span class="n">_aux_digraph_edge_connectivity</span><span class="p">,</span> \
-    <span class="n">dominating_set</span><span class="p">,</span> <span class="n">node_connectivity</span>
+    <span class="n">node_connectivity</span>
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">&#39;Jordi Torrents &lt;jtorrents@milnou.net&gt;&#39;</span><span class="p">])</span>
 
@@ -133,13 +135,13 @@ NetworkX
 <span class="sd">    -------</span>
 <span class="sd">    cutset : set</span>
 <span class="sd">        Set of edges that, if removed from the graph, will disconnect it</span>
-<span class="sd">    </span>
+
 <span class="sd">    Raises</span>
 <span class="sd">    ------</span>
 <span class="sd">    NetworkXUnbounded</span>
 <span class="sd">        If the graph has a path of infinite capacity, all cuts have</span>
 <span class="sd">        infinite capacity and the function raises a NetworkXError.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; G = nx.DiGraph()</span>
@@ -160,7 +162,7 @@ NetworkX
         <span class="n">flow</span><span class="p">,</span> <span class="n">H</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">ford_fulkerson_flow_and_auxiliary</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="n">capacity</span><span class="p">)</span>
         <span class="n">cutset</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="c"># Compute reachable nodes from source in the residual network</span>
-        <span class="n">reachable</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">single_source_shortest_path</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">s</span><span class="p">))</span> 
+        <span class="n">reachable</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">single_source_shortest_path</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">s</span><span class="p">))</span>
         <span class="c"># And unreachable nodes</span>
         <span class="n">others</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">H</span><span class="p">)</span> <span class="o">-</span> <span class="n">reachable</span> <span class="c"># - set([s])</span>
         <span class="c"># Any edge in the original network linking these two partitions</span>
@@ -169,7 +171,7 @@ NetworkX
             <span class="n">cutset</span><span class="o">.</span><span class="n">update</span><span class="p">((</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">nbrs</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">others</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">cutset</span>
     <span class="k">except</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXUnbounded</span><span class="p">:</span>
-        <span class="c"># Should we raise any other exception or just let ford_fulkerson </span>
+        <span class="c"># Should we raise any other exception or just let ford_fulkerson</span>
         <span class="c"># propagate nx.NetworkXUnbounded ?</span>
         <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXUnbounded</span><span class="p">(</span><span class="s">&quot;Infinite capacity path, no minimum cut.&quot;</span><span class="p">)</span>
 </div>
@@ -177,9 +179,9 @@ NetworkX
     <span class="sd">r&quot;&quot;&quot;Returns a set of nodes of minimum cardinality that disconnect source</span>
 <span class="sd">    from target in G.</span>
 
-<span class="sd">    This function returns the set of nodes of minimum cardinality that, </span>
-<span class="sd">    if removed, would destroy all paths among source and target in G. </span>
-<span class="sd">    </span>
+<span class="sd">    This function returns the set of nodes of minimum cardinality that,</span>
+<span class="sd">    if removed, would destroy all paths among source and target in G.</span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    G : NetworkX graph</span>
@@ -193,26 +195,26 @@ NetworkX
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    cutset : set</span>
-<span class="sd">        Set of nodes that, if removed, would destroy all paths between </span>
+<span class="sd">        Set of nodes that, if removed, would destroy all paths between</span>
 <span class="sd">        source and target in G.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; # Platonic icosahedral graph has node connectivity 5 </span>
+<span class="sd">    &gt;&gt;&gt; # Platonic icosahedral graph has node connectivity 5</span>
 <span class="sd">    &gt;&gt;&gt; G = nx.icosahedral_graph()</span>
 <span class="sd">    &gt;&gt;&gt; len(nx.minimum_node_cut(G, 0, 6))</span>
 <span class="sd">    5</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    This is a flow based implementation of minimum node cut. The algorithm </span>
+<span class="sd">    This is a flow based implementation of minimum node cut. The algorithm</span>
 <span class="sd">    is based in solving a number of max-flow problems (ie local st-node</span>
-<span class="sd">    connectivity, see local_node_connectivity) to determine the capacity </span>
-<span class="sd">    of the minimum cut on an auxiliary directed network that corresponds </span>
-<span class="sd">    to the minimum node cut of G. It handles both directed and undirected </span>
+<span class="sd">    connectivity, see local_node_connectivity) to determine the capacity</span>
+<span class="sd">    of the minimum cut on an auxiliary directed network that corresponds</span>
+<span class="sd">    to the minimum node cut of G. It handles both directed and undirected</span>
 <span class="sd">    graphs.</span>
 
-<span class="sd">    This implementation is based on algorithm 11 in [1]_. We use the Ford </span>
+<span class="sd">    This implementation is based on algorithm 11 in [1]_. We use the Ford</span>
 <span class="sd">    and Fulkerson algorithm to compute max flow (see ford_fulkerson).</span>
 
 <span class="sd">    See also</span>
@@ -221,11 +223,11 @@ NetworkX
 <span class="sd">    edge_connectivity</span>
 <span class="sd">    minimum_edge_cut</span>
 <span class="sd">    max_flow</span>
-<span class="sd">    ford_fulkerson </span>
+<span class="sd">    ford_fulkerson</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] Abdol-Hossein Esfahanian. Connectivity Algorithms. </span>
+<span class="sd">    .. [1] Abdol-Hossein Esfahanian. Connectivity Algorithms.</span>
 <span class="sd">        http://www.cse.msu.edu/~cse835/Papers/Graph_connectivity_revised.pdf</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -241,11 +243,11 @@ NetworkX
 <div class="viewcode-block" id="minimum_node_cut"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.connectivity.cuts.minimum_node_cut.html#networkx.algorithms.connectivity.cuts.minimum_node_cut">[docs]</a><span class="k">def</span> <span class="nf">minimum_node_cut</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="sd">r&quot;&quot;&quot;Returns a set of nodes of minimum cardinality that disconnects G.</span>
 
-<span class="sd">    If source and target nodes are provided, this function returns the </span>
-<span class="sd">    set of nodes of minimum cardinality that, if removed, would destroy </span>
-<span class="sd">    all paths among source and target in G. If not, it returns a set </span>
+<span class="sd">    If source and target nodes are provided, this function returns the</span>
+<span class="sd">    set of nodes of minimum cardinality that, if removed, would destroy</span>
+<span class="sd">    all paths among source and target in G. If not, it returns a set</span>
 <span class="sd">    of nodes of minimum cardinality that disconnects G.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    G : NetworkX graph</span>
@@ -259,13 +261,13 @@ NetworkX
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    cutset : set</span>
-<span class="sd">        Set of nodes that, if removed, would disconnect G. If source </span>
+<span class="sd">        Set of nodes that, if removed, would disconnect G. If source</span>
 <span class="sd">        and target nodes are provided, the set contians the nodes that</span>
 <span class="sd">        if removed, would destroy all paths between source and target.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; # Platonic icosahedral graph has node connectivity 5 </span>
+<span class="sd">    &gt;&gt;&gt; # Platonic icosahedral graph has node connectivity 5</span>
 <span class="sd">    &gt;&gt;&gt; G = nx.icosahedral_graph()</span>
 <span class="sd">    &gt;&gt;&gt; len(nx.minimum_node_cut(G))</span>
 <span class="sd">    5</span>
@@ -274,18 +276,18 @@ NetworkX
 <span class="sd">    &gt;&gt;&gt; for u,v in combinations(G, 2):</span>
 <span class="sd">    ...     if v not in G[u]:</span>
 <span class="sd">    ...         assert(len(nx.minimum_node_cut(G,u,v)) == 5)</span>
-<span class="sd">    ... </span>
+<span class="sd">    ...</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    This is a flow based implementation of minimum node cut. The algorithm </span>
+<span class="sd">    This is a flow based implementation of minimum node cut. The algorithm</span>
 <span class="sd">    is based in solving a number of max-flow problems (ie local st-node</span>
-<span class="sd">    connectivity, see local_node_connectivity) to determine the capacity </span>
-<span class="sd">    of the minimum cut on an auxiliary directed network that corresponds </span>
-<span class="sd">    to the minimum node cut of G. It handles both directed and undirected </span>
+<span class="sd">    connectivity, see local_node_connectivity) to determine the capacity</span>
+<span class="sd">    of the minimum cut on an auxiliary directed network that corresponds</span>
+<span class="sd">    to the minimum node cut of G. It handles both directed and undirected</span>
 <span class="sd">    graphs.</span>
 
-<span class="sd">    This implementation is based on algorithm 11 in [1]_. We use the Ford </span>
+<span class="sd">    This implementation is based on algorithm 11 in [1]_. We use the Ford</span>
 <span class="sd">    and Fulkerson algorithm to compute max flow (see ford_fulkerson).</span>
 
 <span class="sd">    See also</span>
@@ -294,11 +296,11 @@ NetworkX
 <span class="sd">    edge_connectivity</span>
 <span class="sd">    minimum_edge_cut</span>
 <span class="sd">    max_flow</span>
-<span class="sd">    ford_fulkerson </span>
+<span class="sd">    ford_fulkerson</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] Abdol-Hossein Esfahanian. Connectivity Algorithms. </span>
+<span class="sd">    .. [1] Abdol-Hossein Esfahanian. Connectivity Algorithms.</span>
 <span class="sd">        http://www.cse.msu.edu/~cse835/Papers/Graph_connectivity_revised.pdf</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -348,11 +350,11 @@ NetworkX
 <div class="viewcode-block" id="minimum_edge_cut"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.connectivity.cuts.minimum_edge_cut.html#networkx.algorithms.connectivity.cuts.minimum_edge_cut">[docs]</a><span class="k">def</span> <span class="nf">minimum_edge_cut</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="sd">r&quot;&quot;&quot;Returns a set of edges of minimum cardinality that disconnects G.</span>
 
-<span class="sd">    If source and target nodes are provided, this function returns the </span>
-<span class="sd">    set of edges of minimum cardinality that, if removed, would break </span>
-<span class="sd">    all paths among source and target in G. If not, it returns a set of </span>
+<span class="sd">    If source and target nodes are provided, this function returns the</span>
+<span class="sd">    set of edges of minimum cardinality that, if removed, would break</span>
+<span class="sd">    all paths among source and target in G. If not, it returns a set of</span>
 <span class="sd">    edges of minimum cardinality that disconnects G.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    G : NetworkX graph</span>
@@ -366,7 +368,7 @@ NetworkX
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    cutset : set</span>
-<span class="sd">        Set of edges that, if removed, would disconnect G. If source </span>
+<span class="sd">        Set of edges that, if removed, would disconnect G. If source</span>
 <span class="sd">        and target nodes are provided, the set contians the edges that</span>
 <span class="sd">        if removed, would destroy all paths between source and target.</span>
 
@@ -380,7 +382,7 @@ NetworkX
 <span class="sd">    &gt;&gt;&gt; from itertools import combinations</span>
 <span class="sd">    &gt;&gt;&gt; for u,v in combinations(G, 2):</span>
 <span class="sd">    ...     assert(len(nx.minimum_edge_cut(G,u,v)) == 5)</span>
-<span class="sd">    ... </span>
+<span class="sd">    ...</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
@@ -452,7 +454,7 @@ NetworkX
         <span class="c"># A dominating set is \lambda-covering</span>
         <span class="c"># We need a dominating set with at least two nodes</span>
         <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-            <span class="n">D</span> <span class="o">=</span> <span class="n">dominating_set</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">start_with</span><span class="o">=</span><span class="n">node</span><span class="p">)</span>
+            <span class="n">D</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">dominating_set</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">start_with</span><span class="o">=</span><span class="n">node</span><span class="p">)</span>
             <span class="n">v</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">D</span><span class="p">:</span> <span class="k">break</span>
         <span class="k">else</span><span class="p">:</span>
@@ -494,8 +496,8 @@ NetworkX
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Aug 03, 2013.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Last updated on Apr 08, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

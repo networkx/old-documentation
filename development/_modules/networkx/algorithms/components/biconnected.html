@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>networkx.algorithms.components.biconnected &mdash; NetworkX 1.9.dev20130728171020 documentation</title>
+    <title>networkx.algorithms.components.biconnected &mdash; NetworkX 1.8.dev20131031104627 documentation</title>
     
     <link rel="stylesheet" href="../../../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -14,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../../',
-        VERSION:     '1.9.dev20130728171020',
+        VERSION:     '1.8.dev20131031104627',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -24,9 +26,9 @@
     <script type="text/javascript" src="../../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../../_static/doctools.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20130728171020 documentation"
+          title="Search within NetworkX 1.8.dev20131031104627 documentation"
           href="../../../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20130728171020 documentation" href="../../../../index.html" />
+    <link rel="top" title="NetworkX 1.8.dev20131031104627 documentation" href="../../../../index.html" />
     <link rel="up" title="networkx" href="../../../networkx.html" /> 
   </head>
   <body>
@@ -55,7 +57,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20130728171020</b></p>
+<p>This documentation is for the development version <b>1.8.dev_20131031104627</b></p>
 
 
 
@@ -87,7 +89,7 @@ NetworkX
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Biconnected components and articulation points.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="c">#    Copyright (C) 2011 by </span>
+<span class="c">#    Copyright (C) 2011-2013 by</span>
 <span class="c">#    Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
 <span class="c">#    Dan Schult &lt;dschult@colgate.edu&gt;</span>
 <span class="c">#    Pieter Swart &lt;swart@lanl.gov&gt;</span>
@@ -95,6 +97,7 @@ NetworkX
 <span class="c">#    BSD license.</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
+<span class="kn">from</span> <span class="nn">networkx.utils.decorators</span> <span class="kn">import</span> <span class="n">not_implemented_for</span>
 <span class="n">__author__</span> <span class="o">=</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">&#39;Jordi Torrents &lt;jtorrents@milnou.net&gt;&#39;</span><span class="p">,</span>
                         <span class="s">&#39;Dan Schult &lt;dschult@colgate.edu&gt;&#39;</span><span class="p">,</span>
                         <span class="s">&#39;Aric Hagberg &lt;aric.hagberg@gmail.com&gt;&#39;</span><span class="p">])</span>
@@ -105,6 +108,7 @@ NetworkX
            <span class="s">&#39;articulation_points&#39;</span><span class="p">,</span>
            <span class="p">]</span>
 
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
 <div class="viewcode-block" id="is_biconnected"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.components.biconnected.is_biconnected.html#networkx.algorithms.components.biconnected.is_biconnected">[docs]</a><span class="k">def</span> <span class="nf">is_biconnected</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return True if the graph is biconnected, False otherwise.</span>
 
@@ -126,7 +130,7 @@ NetworkX
 
 <span class="sd">    Raises</span>
 <span class="sd">    ------</span>
-<span class="sd">    NetworkXError :</span>
+<span class="sd">    NetworkXNotImplemented :</span>
 <span class="sd">        If the input graph is not undirected.</span>
 
 <span class="sd">    Examples</span>
@@ -160,8 +164,8 @@ NetworkX
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] Hopcroft, J.; Tarjan, R. (1973). </span>
-<span class="sd">       &quot;Efficient algorithms for graph manipulation&quot;. </span>
+<span class="sd">    .. [1] Hopcroft, J.; Tarjan, R. (1973).</span>
+<span class="sd">       &quot;Efficient algorithms for graph manipulation&quot;.</span>
 <span class="sd">       Communications of the ACM 16: 372–378. doi:10.1145/362248.362272</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">bcc</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">biconnected_components</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
@@ -169,6 +173,7 @@ NetworkX
         <span class="k">return</span> <span class="bp">False</span>
     <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">bcc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 </div>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
 <div class="viewcode-block" id="biconnected_component_edges"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.components.biconnected.biconnected_component_edges.html#networkx.algorithms.components.biconnected.biconnected_component_edges">[docs]</a><span class="k">def</span> <span class="nf">biconnected_component_edges</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a generator of lists of edges, one list for each biconnected</span>
 <span class="sd">    component of the input graph.</span>
@@ -176,7 +181,7 @@ NetworkX
 <span class="sd">    Biconnected components are maximal subgraphs such that the removal of a</span>
 <span class="sd">    node (and all edges incident on that node) will not disconnect the</span>
 <span class="sd">    subgraph. Note that nodes may be part of more than one biconnected</span>
-<span class="sd">    component. Those nodes are articulation points, or cut vertices. However, </span>
+<span class="sd">    component. Those nodes are articulation points, or cut vertices. However,</span>
 <span class="sd">    each edge belongs to one, and only one, biconnected component.</span>
 
 <span class="sd">    Notice that by convention a dyad is considered a biconnected component.</span>
@@ -188,12 +193,12 @@ NetworkX
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    edges : generator</span>
+<span class="sd">    edges : generator of lists</span>
 <span class="sd">        Generator of lists of edges, one list for each bicomponent.</span>
 
 <span class="sd">    Raises</span>
 <span class="sd">    ------</span>
-<span class="sd">    NetworkXError :</span>
+<span class="sd">    NetworkXNotImplemented :</span>
 <span class="sd">        If the input graph is not undirected.</span>
 
 <span class="sd">    Examples</span>
@@ -226,15 +231,17 @@ NetworkX
 <span class="sd">    by the DFS we can obtain the biconnected components because all</span>
 <span class="sd">    edges of a bicomponent will be traversed consecutively between</span>
 <span class="sd">    articulation points.</span>
-<span class="sd"> </span>
+
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] Hopcroft, J.; Tarjan, R. (1973). </span>
-<span class="sd">       &quot;Efficient algorithms for graph manipulation&quot;. </span>
+<span class="sd">    .. [1] Hopcroft, J.; Tarjan, R. (1973).</span>
+<span class="sd">       &quot;Efficient algorithms for graph manipulation&quot;.</span>
 <span class="sd">       Communications of the ACM 16: 372–378. doi:10.1145/362248.362272</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">_biconnected_dfs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">components</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">comp</span> <span class="ow">in</span> <span class="n">_biconnected_dfs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">components</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">comp</span>
 </div>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
 <div class="viewcode-block" id="biconnected_components"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.components.biconnected.biconnected_components.html#networkx.algorithms.components.biconnected.biconnected_components">[docs]</a><span class="k">def</span> <span class="nf">biconnected_components</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a generator of sets of nodes, one set for each biconnected</span>
 <span class="sd">    component of the graph</span>
@@ -242,8 +249,8 @@ NetworkX
 <span class="sd">    Biconnected components are maximal subgraphs such that the removal of a</span>
 <span class="sd">    node (and all edges incident on that node) will not disconnect the</span>
 <span class="sd">    subgraph. Note that nodes may be part of more than one biconnected</span>
-<span class="sd">    component. Those nodes are articulation points, or cut vertices. The </span>
-<span class="sd">    removal of articulation points will increase the number of connected </span>
+<span class="sd">    component. Those nodes are articulation points, or cut vertices. The</span>
+<span class="sd">    removal of articulation points will increase the number of connected</span>
 <span class="sd">    components of the graph.</span>
 
 <span class="sd">    Notice that by convention a dyad is considered a biconnected component.</span>
@@ -260,7 +267,7 @@ NetworkX
 
 <span class="sd">    Raises</span>
 <span class="sd">    ------</span>
-<span class="sd">    NetworkXError :</span>
+<span class="sd">    NetworkXNotImplemented :</span>
 <span class="sd">        If the input graph is not undirected.</span>
 
 <span class="sd">    Examples</span>
@@ -296,23 +303,23 @@ NetworkX
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] Hopcroft, J.; Tarjan, R. (1973). </span>
-<span class="sd">       &quot;Efficient algorithms for graph manipulation&quot;. </span>
+<span class="sd">    .. [1] Hopcroft, J.; Tarjan, R. (1973).</span>
+<span class="sd">       &quot;Efficient algorithms for graph manipulation&quot;.</span>
 <span class="sd">       Communications of the ACM 16: 372–378. doi:10.1145/362248.362272</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">bicomponents</span> <span class="o">=</span> <span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">comp</span><span class="p">))</span>
-                        <span class="k">for</span> <span class="n">comp</span> <span class="ow">in</span> <span class="n">_biconnected_dfs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">components</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
-    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">bicomponents</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">comp</span> <span class="ow">in</span> <span class="n">_biconnected_dfs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">components</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="nb">set</span><span class="p">(</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">comp</span><span class="p">))</span>
 </div>
-<div class="viewcode-block" id="biconnected_component_subgraphs"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.components.biconnected.biconnected_component_subgraphs.html#networkx.algorithms.components.biconnected.biconnected_component_subgraphs">[docs]</a><span class="k">def</span> <span class="nf">biconnected_component_subgraphs</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="biconnected_component_subgraphs"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.components.biconnected.biconnected_component_subgraphs.html#networkx.algorithms.components.biconnected.biconnected_component_subgraphs">[docs]</a><span class="k">def</span> <span class="nf">biconnected_component_subgraphs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a generator of graphs, one graph for each biconnected component</span>
 <span class="sd">    of the input graph.</span>
 
 <span class="sd">    Biconnected components are maximal subgraphs such that the removal of a</span>
 <span class="sd">    node (and all edges incident on that node) will not disconnect the</span>
 <span class="sd">    subgraph. Note that nodes may be part of more than one biconnected</span>
-<span class="sd">    component. Those nodes are articulation points, or cut vertices. The </span>
-<span class="sd">    removal of articulation points will increase the number of connected </span>
+<span class="sd">    component. Those nodes are articulation points, or cut vertices. The</span>
+<span class="sd">    removal of articulation points will increase the number of connected</span>
 <span class="sd">    components of the graph.</span>
 
 <span class="sd">    Notice that by convention a dyad is considered a biconnected component.</span>
@@ -329,7 +336,7 @@ NetworkX
 
 <span class="sd">    Raises</span>
 <span class="sd">    ------</span>
-<span class="sd">    NetworkXError :</span>
+<span class="sd">    NetworkXNotImplemented :</span>
 <span class="sd">        If the input graph is not undirected.</span>
 
 <span class="sd">    Examples</span>
@@ -337,7 +344,7 @@ NetworkX
 <span class="sd">    &gt;&gt;&gt; G = nx.barbell_graph(4,2)</span>
 <span class="sd">    &gt;&gt;&gt; print(nx.is_biconnected(G))</span>
 <span class="sd">    False</span>
-<span class="sd">    &gt;&gt;&gt; subgraphs = nx.biconnected_component_subgraphs(G)</span>
+<span class="sd">    &gt;&gt;&gt; subgraphs = list(nx.biconnected_component_subgraphs(G))</span>
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
@@ -363,27 +370,22 @@ NetworkX
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] Hopcroft, J.; Tarjan, R. (1973). </span>
-<span class="sd">       &quot;Efficient algorithms for graph manipulation&quot;. </span>
+<span class="sd">    .. [1] Hopcroft, J.; Tarjan, R. (1973).</span>
+<span class="sd">       &quot;Efficient algorithms for graph manipulation&quot;.</span>
 <span class="sd">       Communications of the ACM 16: 372–378. doi:10.1145/362248.362272</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">edge_subgraph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">edges</span><span class="p">):</span>
-        <span class="c"># create new graph and copy subgraph into it</span>
-        <span class="n">H</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">__class__</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">u</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>
-            <span class="n">H</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">attr_dict</span><span class="o">=</span><span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">])</span>
-        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">H</span><span class="p">:</span>
-            <span class="n">H</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="n">H</span><span class="o">.</span><span class="n">graph</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">H</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">edge_subgraph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">edges</span><span class="p">)</span> <span class="k">for</span> <span class="n">edges</span> <span class="ow">in</span> 
-            <span class="nb">sorted</span><span class="p">(</span><span class="n">_biconnected_dfs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">components</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">comp_nodes</span> <span class="ow">in</span> <span class="n">biconnected_components</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">copy</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">comp_nodes</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">comp_nodes</span><span class="p">)</span>
 </div>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
 <div class="viewcode-block" id="articulation_points"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.components.biconnected.articulation_points.html#networkx.algorithms.components.biconnected.articulation_points">[docs]</a><span class="k">def</span> <span class="nf">articulation_points</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a generator of articulation points, or cut vertices, of a graph.</span>
 
 <span class="sd">    An articulation point or cut vertex is any node whose removal (along with</span>
-<span class="sd">    all its incident edges) increases the number of connected components of </span>
+<span class="sd">    all its incident edges) increases the number of connected components of</span>
 <span class="sd">    a graph. An undirected connected graph without articulation points is</span>
 <span class="sd">    biconnected. Articulation points belong to more than one biconnected</span>
 <span class="sd">    component of a graph.</span>
@@ -402,7 +404,7 @@ NetworkX
 
 <span class="sd">    Raises</span>
 <span class="sd">    ------</span>
-<span class="sd">    NetworkXError :</span>
+<span class="sd">    NetworkXNotImplemented :</span>
 <span class="sd">        If the input graph is not undirected.</span>
 
 <span class="sd">    Examples</span>
@@ -440,19 +442,16 @@ NetworkX
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] Hopcroft, J.; Tarjan, R. (1973). </span>
-<span class="sd">       &quot;Efficient algorithms for graph manipulation&quot;. </span>
+<span class="sd">    .. [1] Hopcroft, J.; Tarjan, R. (1973).</span>
+<span class="sd">       &quot;Efficient algorithms for graph manipulation&quot;.</span>
 <span class="sd">       Communications of the ACM 16: 372–378. doi:10.1145/362248.362272</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">_biconnected_dfs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">components</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 </div>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">_biconnected_dfs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
-    <span class="c"># depth-first search algorithm to generate articulation points </span>
+    <span class="c"># depth-first search algorithm to generate articulation points</span>
     <span class="c"># and biconnected components</span>
-    <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
-        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s">&#39;Not allowed for directed graph G. &#39;</span>
-                               <span class="s">&#39;Use UG=G.to_undirected() to create an &#39;</span>
-                               <span class="s">&#39;undirected graph.&#39;</span><span class="p">)</span>
     <span class="n">visited</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">start</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">start</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
@@ -529,8 +528,8 @@ NetworkX
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Aug 03, 2013.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Last updated on Apr 08, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

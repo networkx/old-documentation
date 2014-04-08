@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>edge_current_flow_betweenness_centrality &mdash; NetworkX 1.9.dev20130728171020 documentation</title>
+    <title>edge_current_flow_betweenness_centrality &mdash; NetworkX 1.8.dev20131031104627 documentation</title>
     
     <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.9.dev20130728171020',
+        VERSION:     '1.8.dev20131031104627',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -24,9 +26,9 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20130728171020 documentation"
+          title="Search within NetworkX 1.8.dev20131031104627 documentation"
           href="../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20130728171020 documentation" href="../../index.html" />
+    <link rel="top" title="NetworkX 1.8.dev20131031104627 documentation" href="../../index.html" />
     <link rel="up" title="Centrality" href="../algorithms.centrality.html" />
     <link rel="next" title="approximate_current_flow_betweenness_centrality" href="networkx.algorithms.centrality.approximate_current_flow_betweenness_centrality.html" />
     <link rel="prev" title="current_flow_betweenness_centrality" href="networkx.algorithms.centrality.current_flow_betweenness_centrality.html" /> 
@@ -65,7 +67,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20130728171020</b></p>
+<p>This documentation is for the development version <b>1.8.dev_20131031104627</b></p>
 
 
 
@@ -108,7 +110,7 @@ NetworkX
 model for information spreading in contrast to betweenness
 centrality which uses shortest paths.</p>
 <p>Current-flow betweenness centrality is also known as
-random-walk betweenness centrality <a class="reference internal" href="#r173" id="id1">[R173]</a>.</p>
+random-walk betweenness centrality <a class="reference internal" href="#r176">[R176]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -148,13 +150,13 @@ Options are &#8220;full&#8221; (uses most memory), &#8220;lu&#8221; (recommended
 </tr>
 </tbody>
 </table>
-<div class="admonition seealso">
+<div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="networkx.algorithms.centrality.betweenness_centrality.html#networkx.algorithms.centrality.betweenness_centrality" title="networkx.algorithms.centrality.betweenness_centrality"><tt class="xref py py-obj docutils literal"><span class="pre">betweenness_centrality</span></tt></a>, <a class="reference internal" href="networkx.algorithms.centrality.edge_betweenness_centrality.html#networkx.algorithms.centrality.edge_betweenness_centrality" title="networkx.algorithms.centrality.edge_betweenness_centrality"><tt class="xref py py-obj docutils literal"><span class="pre">edge_betweenness_centrality</span></tt></a>, <a class="reference internal" href="networkx.algorithms.centrality.current_flow_betweenness_centrality.html#networkx.algorithms.centrality.current_flow_betweenness_centrality" title="networkx.algorithms.centrality.current_flow_betweenness_centrality"><tt class="xref py py-obj docutils literal"><span class="pre">current_flow_betweenness_centrality</span></tt></a></p>
 </div>
 <p class="rubric">Notes</p>
 <p>Current-flow betweenness can be computed in <img class="math" src="../../_images/math/ffff9e0794cc162b621e5c0c984547ddaec6642f.png" alt="O(I(n-1)+mn \log n)" style="vertical-align: -4px"/>
-time <a class="reference internal" href="#r172" id="id2">[R172]</a>, where <img class="math" src="../../_images/math/31d5703e7c8ca9cf0de46c3b2249a05595de9442.png" alt="I(n-1)" style="vertical-align: -4px"/> is the time needed to compute the
+time <a class="reference internal" href="#r175">[R175]</a>, where <img class="math" src="../../_images/math/31d5703e7c8ca9cf0de46c3b2249a05595de9442.png" alt="I(n-1)" style="vertical-align: -4px"/> is the time needed to compute the
 inverse Laplacian.  For a full matrix this is <img class="math" src="../../_images/math/6a7df1c177e66e088fe3cffef1df712645f32ce3.png" alt="O(n^3)" style="vertical-align: -4px"/> but using
 sparse methods you can achieve <img class="math" src="../../_images/math/4ab32cac7bd498a1dc648c96df57b790b0cdbc7d.png" alt="O(nm{\sqrt k})" style="vertical-align: -4px"/> where <img class="math" src="../../_images/math/8c325612684d41304b9751c175df7bcc0f61f64f.png" alt="k" style="vertical-align: 0px"/> is the
 Laplacian matrix condition number.</p>
@@ -163,20 +165,20 @@ Laplacian matrix.  Worse case is <img class="math" src="../../_images/math/30835
 <p>If the edges have a &#8216;weight&#8217; attribute they will be used as
 weights in this algorithm.  Unspecified weights are set to 1.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r172" rules="none">
+<table class="docutils citation" frame="void" id="r175" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R172]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> Centrality Measures Based on Current Flow.
+<tr><td class="label">[R175]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> Centrality Measures Based on Current Flow.
 Ulrik Brandes and Daniel Fleischer,
 Proc. 22nd Symp. Theoretical Aspects of Computer Science (STACS &#8216;05).
 LNCS 3404, pp. 533-544. Springer-Verlag, 2005.
 <a class="reference external" href="http://www.inf.uni-konstanz.de/algo/publications/bf-cmbcf-05.pdf">http://www.inf.uni-konstanz.de/algo/publications/bf-cmbcf-05.pdf</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r173" rules="none">
+<table class="docutils citation" frame="void" id="r176" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R173]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> A measure of betweenness centrality based on random walks,
+<tr><td class="label">[R176]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> A measure of betweenness centrality based on random walks,
 M. E. J. Newman, Social Networks 27, 39-54 (2005).</td></tr>
 </tbody>
 </table>
@@ -220,8 +222,8 @@ M. E. J. Newman, Social Networks 27, 39-54 (2005).</td></tr>
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Aug 03, 2013.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Last updated on Apr 08, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

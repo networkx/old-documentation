@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>read_gml &mdash; NetworkX 1.9.dev20130728171020 documentation</title>
+    <title>read_gml &mdash; NetworkX 1.8.dev20131031104627 documentation</title>
     
     <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.9.dev20130728171020',
+        VERSION:     '1.8.dev20131031104627',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -24,9 +26,9 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20130728171020 documentation"
+          title="Search within NetworkX 1.8.dev20131031104627 documentation"
           href="../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20130728171020 documentation" href="../../index.html" />
+    <link rel="top" title="NetworkX 1.8.dev20131031104627 documentation" href="../../index.html" />
     <link rel="up" title="GML" href="../readwrite.gml.html" />
     <link rel="next" title="write_gml" href="networkx.readwrite.gml.write_gml.html" />
     <link rel="prev" title="generate_gml" href="networkx.readwrite.gml.generate_gml.html" /> 
@@ -65,7 +67,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20130728171020</b></p>
+<p>This documentation is for the development version <b>1.8.dev_20131031104627</b></p>
 
 
 
@@ -102,7 +104,7 @@ NetworkX
 <h1>read_gml<a class="headerlink" href="#read-gml" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.readwrite.gml.read_gml">
-<tt class="descname">read_gml</tt><big>(</big><em>path</em>, <em>encoding='UTF-8'</em>, <em>relabel=False</em><big>)</big><a class="reference internal" href="../../_modules/networkx/readwrite/gml.html#read_gml"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.readwrite.gml.read_gml" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">read_gml</tt><big>(</big><em>path</em>, <em>relabel=False</em><big>)</big><a class="reference internal" href="../../_modules/networkx/readwrite/gml.html#read_gml"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.readwrite.gml.read_gml" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read graph in GML format from path.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -111,10 +113,6 @@ NetworkX
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>path</strong> : filename or filehandle</p>
 <blockquote>
 <div><p>The filename or filehandle to read from.</p>
-</div></blockquote>
-<p><strong>encoding</strong> : string, optional</p>
-<blockquote>
-<div><p>Text encoding.</p>
 </div></blockquote>
 <p><strong>relabel</strong> : bool, optional</p>
 <blockquote>
@@ -134,12 +132,14 @@ the node id.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition seealso">
+<div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="networkx.readwrite.gml.write_gml.html#networkx.readwrite.gml.write_gml" title="networkx.readwrite.gml.write_gml"><tt class="xref py py-obj docutils literal"><span class="pre">write_gml</span></tt></a>, <a class="reference internal" href="networkx.readwrite.gml.parse_gml.html#networkx.readwrite.gml.parse_gml" title="networkx.readwrite.gml.parse_gml"><tt class="xref py py-obj docutils literal"><span class="pre">parse_gml</span></tt></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>Requires pyparsing: <a class="reference external" href="http://pyparsing.wikispaces.com/">http://pyparsing.wikispaces.com/</a></p>
+<p>Requires pyparsing: <a class="reference external" href="http://pyparsing.wikispaces.com/">http://pyparsing.wikispaces.com/</a>
+The GML specification says that files should be ASCII encoded, with any
+extended ASCII characters (iso8859-1) appearing as HTML character entities.</p>
 <p class="rubric">References</p>
 <p>GML specification:
 <a class="reference external" href="http://www.infosun.fim.uni-passau.de/Graphlet/GML/gml-tr.html">http://www.infosun.fim.uni-passau.de/Graphlet/GML/gml-tr.html</a></p>
@@ -189,8 +189,8 @@ the node id.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Aug 03, 2013.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Last updated on Apr 08, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

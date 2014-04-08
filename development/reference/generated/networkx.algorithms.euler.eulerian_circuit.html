@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>eulerian_circuit &mdash; NetworkX 1.9.dev20130728171020 documentation</title>
+    <title>eulerian_circuit &mdash; NetworkX 1.8.dev20131031104627 documentation</title>
     
     <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.9.dev20130728171020',
+        VERSION:     '1.8.dev20131031104627',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -24,9 +26,9 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20130728171020 documentation"
+          title="Search within NetworkX 1.8.dev20131031104627 documentation"
           href="../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20130728171020 documentation" href="../../index.html" />
+    <link rel="top" title="NetworkX 1.8.dev20131031104627 documentation" href="../../index.html" />
     <link rel="up" title="Eulerian" href="../algorithms.euler.html" />
     <link rel="next" title="Flows" href="../algorithms.flow.html" />
     <link rel="prev" title="is_eulerian" href="networkx.algorithms.euler.is_eulerian.html" /> 
@@ -65,7 +67,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20130728171020</b></p>
+<p>This documentation is for the development version <b>1.8.dev_20131031104627</b></p>
 
 
 
@@ -110,9 +112,9 @@ and finishes at the starting node.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX Graph or DiGraph</p>
 <blockquote>
-<div><p>A NetworkX Graph</p>
+<div><p>A directed or undirected graph</p>
 </div></blockquote>
 <p><strong>source</strong> : node, optional</p>
 <blockquote>
@@ -134,34 +136,36 @@ and finishes at the starting node.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition seealso">
+<div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="networkx.algorithms.euler.is_eulerian.html#networkx.algorithms.euler.is_eulerian" title="networkx.algorithms.euler.is_eulerian"><tt class="xref py py-obj docutils literal"><span class="pre">is_eulerian</span></tt></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>Uses Fleury&#8217;s algorithm <a class="reference internal" href="#r220" id="id1">[R220]</a>,[R221]_</p>
+<p>Linear time algorithm, adapted from <a class="reference internal" href="#r223">[R223]</a>.
+General information about Euler tours <a class="reference internal" href="#r224">[R224]</a>.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r220" rules="none">
+<table class="docutils citation" frame="void" id="r223" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R220]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Fleury, &#8220;Deux problemes de geometrie de situation&#8221;, 
-Journal de mathematiques elementaires (1883), 257-261.</td></tr>
+<tr><td class="label">[R223]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> J. Edmonds, E. L. Johnson.
+Matching, Euler tours and the Chinese postman.
+Mathematical programming, Volume 5, Issue 1 (1973), 111-114.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r221" rules="none">
+<table class="docutils citation" frame="void" id="r224" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[R221]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Eulerian_path">http://en.wikipedia.org/wiki/Eulerian_path</a></td></tr>
+<tr><td class="label">[R224]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/Eulerian_path">http://en.wikipedia.org/wiki/Eulerian_path</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">complete_graph</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">eulerian_circuit</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
-<span class="go">[(0, 1), (1, 2), (2, 0)]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">eulerian_circuit</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">source</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> 
-<span class="go">[(1, 0), (0, 2), (2, 1)]</span>
+<span class="go">[(0, 2), (2, 1), (1, 0)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">eulerian_circuit</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">source</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="go">[(1, 2), (2, 0), (0, 1)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">u</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">eulerian_circuit</span><span class="p">(</span><span class="n">G</span><span class="p">)]</span>  <span class="c"># nodes in circuit</span>
-<span class="go">[0, 1, 2]</span>
+<span class="go">[0, 2, 1]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -204,8 +208,8 @@ Journal de mathematiques elementaires (1883), 257-261.</td></tr>
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Aug 03, 2013.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Last updated on Apr 08, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

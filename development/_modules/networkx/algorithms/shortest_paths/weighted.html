@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>networkx.algorithms.shortest_paths.weighted &mdash; NetworkX 1.9.dev20130728171020 documentation</title>
+    <title>networkx.algorithms.shortest_paths.weighted &mdash; NetworkX 1.8.dev20131031104627 documentation</title>
     
     <link rel="stylesheet" href="../../../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -14,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../../',
-        VERSION:     '1.9.dev20130728171020',
+        VERSION:     '1.8.dev20131031104627',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -24,9 +26,9 @@
     <script type="text/javascript" src="../../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../../_static/doctools.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20130728171020 documentation"
+          title="Search within NetworkX 1.8.dev20131031104627 documentation"
           href="../../../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20130728171020 documentation" href="../../../../index.html" />
+    <link rel="top" title="NetworkX 1.8.dev20131031104627 documentation" href="../../../../index.html" />
     <link rel="up" title="networkx" href="../../../networkx.html" /> 
   </head>
   <body>
@@ -55,7 +57,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20130728171020</b></p>
+<p>This documentation is for the development version <b>1.8.dev_20131031104627</b></p>
 
 
 
@@ -108,6 +110,7 @@ NetworkX
            <span class="s">&#39;dijkstra_predecessor_and_distance&#39;</span><span class="p">,</span>
            <span class="s">&#39;bellman_ford&#39;</span><span class="p">,</span><span class="s">&#39;negative_edge_cycle&#39;</span><span class="p">]</span>
 
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
 <span class="kn">import</span> <span class="nn">heapq</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
 <span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="kn">import</span> <span class="n">generate_unique_node</span>
@@ -573,8 +576,9 @@ NetworkX
         <span class="n">paths</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="n">single_source_dijkstra_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="n">cutoff</span><span class="p">,</span>
                                              <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">paths</span>
+
 </div>
-<div class="viewcode-block" id="bellman_ford"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.shortest_paths.weighted.bellman_ford.html#networkx.algorithms.shortest_paths.weighted.bellman_ford">[docs]</a><span class="k">def</span> <span class="nf">bellman_ford</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="s">&#39;weight&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="bellman_ford"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.shortest_paths.weighted.bellman_ford.html#networkx.algorithms.shortest_paths.weighted.bellman_ford">[docs]</a><span class="k">def</span> <span class="nf">bellman_ford</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compute shortest path lengths and predecessors on shortest paths</span>
 <span class="sd">    in weighted graphs.</span>
 
@@ -637,7 +641,7 @@ NetworkX
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">source</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s">&quot;Node </span><span class="si">%s</span><span class="s"> is not found in the graph&quot;</span><span class="o">%</span><span class="n">source</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s">&quot;Node </span><span class="si">%s</span><span class="s"> is not found in the graph&quot;</span> <span class="o">%</span> <span class="n">source</span><span class="p">)</span>
     <span class="n">numb_nodes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 
     <span class="n">dist</span> <span class="o">=</span> <span class="p">{</span><span class="n">source</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
@@ -648,28 +652,42 @@ NetworkX
 
     <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
         <span class="k">def</span> <span class="nf">get_weight</span><span class="p">(</span><span class="n">edge_dict</span><span class="p">):</span>
-            <span class="k">return</span> <span class="nb">min</span><span class="p">([</span><span class="n">eattr</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">eattr</span> <span class="ow">in</span> <span class="n">edge_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+            <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">eattr</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">eattr</span> <span class="ow">in</span> <span class="n">edge_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">def</span> <span class="nf">get_weight</span><span class="p">(</span><span class="n">edge_dict</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">edge_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numb_nodes</span><span class="p">):</span>
-        <span class="n">no_changes</span><span class="o">=</span><span class="bp">True</span>
-        <span class="c"># Only need edges from nodes in dist b/c all others have dist==inf</span>
-        <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">dist_u</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">dist</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span> <span class="c"># get all edges from nodes in dist</span>
-            <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">edict</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>  <span class="c"># double loop handles undirected too</span>
-                <span class="n">dist_v</span> <span class="o">=</span> <span class="n">dist_u</span> <span class="o">+</span> <span class="n">get_weight</span><span class="p">(</span><span class="n">edict</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dist</span> <span class="ow">or</span> <span class="n">dist</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">dist_v</span><span class="p">:</span>
+    <span class="n">inf</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s">&#39;inf&#39;</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+    <span class="n">count</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([</span><span class="n">source</span><span class="p">])</span>
+    <span class="n">in_q</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">source</span><span class="p">])</span>
+
+    <span class="k">while</span> <span class="n">q</span><span class="p">:</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+        <span class="n">in_q</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="c"># Skip relaxations if the predecessor of u is in the queue.</span>
+        <span class="k">if</span> <span class="n">pred</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">in_q</span><span class="p">:</span>
+            <span class="n">dist_u</span> <span class="o">=</span> <span class="n">dist</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">dist_v</span> <span class="o">=</span> <span class="n">dist_u</span> <span class="o">+</span> <span class="n">get_weight</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">dist_v</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">inf</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">in_q</span><span class="p">:</span>
+                        <span class="n">q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+                        <span class="n">in_q</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+                        <span class="n">count_v</span> <span class="o">=</span> <span class="n">count</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+                        <span class="k">if</span> <span class="n">count_v</span> <span class="o">==</span> <span class="n">n</span><span class="p">:</span>
+                            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXUnbounded</span><span class="p">(</span>
+                                <span class="s">&quot;Negative cost cycle detected.&quot;</span><span class="p">)</span>
+                        <span class="n">count</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">count_v</span>
                     <span class="n">dist</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">dist_v</span>
                     <span class="n">pred</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span>
-                    <span class="n">no_changes</span> <span class="o">=</span> <span class="bp">False</span>
-        <span class="k">if</span> <span class="n">no_changes</span><span class="p">:</span>
-            <span class="k">break</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXUnbounded</span><span class="p">(</span><span class="s">&quot;Negative cost cycle detected.&quot;</span><span class="p">)</span>
+
     <span class="k">return</span> <span class="n">pred</span><span class="p">,</span> <span class="n">dist</span>
+
 </div>
-<div class="viewcode-block" id="negative_edge_cycle"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.shortest_paths.weighted.negative_edge_cycle.html#networkx.algorithms.shortest_paths.weighted.negative_edge_cycle">[docs]</a><span class="k">def</span> <span class="nf">negative_edge_cycle</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="s">&#39;weight&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="negative_edge_cycle"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.shortest_paths.weighted.negative_edge_cycle.html#networkx.algorithms.shortest_paths.weighted.negative_edge_cycle">[docs]</a><span class="k">def</span> <span class="nf">negative_edge_cycle</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return True if there exists a negative edge cycle anywhere in G.</span>
 
 <span class="sd">    Parameters</span>
@@ -705,14 +723,14 @@ NetworkX
 <span class="sd">    removes that extra node.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">newnode</span> <span class="o">=</span> <span class="n">generate_unique_node</span><span class="p">()</span>
-    <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([</span> <span class="p">(</span><span class="n">newnode</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span><span class="p">])</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="n">newnode</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span><span class="p">])</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">bellman_ford</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">newnode</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXUnbounded</span><span class="p">:</span>
-        <span class="n">G</span><span class="o">.</span><span class="n">remove_node</span><span class="p">(</span><span class="n">newnode</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">True</span>
-    <span class="n">G</span><span class="o">.</span><span class="n">remove_node</span><span class="p">(</span><span class="n">newnode</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">remove_node</span><span class="p">(</span><span class="n">newnode</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">False</span>
 
 </div>
@@ -876,8 +894,8 @@ NetworkX
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Aug 03, 2013.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Last updated on Apr 08, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>

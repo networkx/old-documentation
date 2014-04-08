@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>eigenvector_centrality &mdash; NetworkX 1.9.dev20130728171020 documentation</title>
+    <title>eigenvector_centrality &mdash; NetworkX 1.8.dev20131031104627 documentation</title>
     
     <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.9.dev20130728171020',
+        VERSION:     '1.8.dev20131031104627',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -24,9 +26,9 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20130728171020 documentation"
+          title="Search within NetworkX 1.8.dev20131031104627 documentation"
           href="../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20130728171020 documentation" href="../../index.html" />
+    <link rel="top" title="NetworkX 1.8.dev20131031104627 documentation" href="../../index.html" />
     <link rel="up" title="Centrality" href="../algorithms.centrality.html" />
     <link rel="next" title="eigenvector_centrality_numpy" href="networkx.algorithms.centrality.eigenvector_centrality_numpy.html" />
     <link rel="prev" title="approximate_current_flow_betweenness_centrality" href="networkx.algorithms.centrality.approximate_current_flow_betweenness_centrality.html" /> 
@@ -65,7 +67,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20130728171020</b></p>
+<p>This documentation is for the development version <b>1.8.dev_20131031104627</b></p>
 
 
 
@@ -102,9 +104,9 @@ NetworkX
 <h1>eigenvector_centrality<a class="headerlink" href="#eigenvector-centrality" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.algorithms.centrality.eigenvector_centrality">
-<tt class="descname">eigenvector_centrality</tt><big>(</big><em>G</em>, <em>max_iter=100</em>, <em>tol=1e-06</em>, <em>nstart=None</em><big>)</big><a class="headerlink" href="#networkx.algorithms.centrality.eigenvector_centrality" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">eigenvector_centrality</tt><big>(</big><em>G</em>, <em>max_iter=100</em>, <em>tol=1e-06</em>, <em>nstart=None</em>, <em>weight='weight'</em><big>)</big><a class="headerlink" href="#networkx.algorithms.centrality.eigenvector_centrality" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the eigenvector centrality for the graph G.</p>
-<p>Uses the power method to find the eigenvector for the 
+<p>Uses the power method to find the eigenvector for the
 largest eigenvalue of the adjacency matrix of G.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -126,6 +128,11 @@ largest eigenvalue of the adjacency matrix of G.</p>
 <blockquote>
 <div><p>Starting value of eigenvector iteration for each node.</p>
 </div></blockquote>
+<p><strong>weight</strong> : None or string, optional</p>
+<blockquote>
+<div><p>If None, all edge weights are considered equal.
+Otherwise holds the name of the edge attribute used as weight.</p>
+</div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>nodes</strong> : dictionary</p>
@@ -136,7 +143,7 @@ largest eigenvalue of the adjacency matrix of G.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition seealso">
+<div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="networkx.algorithms.centrality.eigenvector_centrality_numpy.html#networkx.algorithms.centrality.eigenvector_centrality_numpy" title="networkx.algorithms.centrality.eigenvector_centrality_numpy"><tt class="xref py py-obj docutils literal"><span class="pre">eigenvector_centrality_numpy</span></tt></a>, <tt class="xref py py-obj docutils literal"><span class="pre">pagerank</span></tt>, <tt class="xref py py-obj docutils literal"><span class="pre">hits</span></tt></p>
 </div>
@@ -145,12 +152,12 @@ largest eigenvalue of the adjacency matrix of G.</p>
 and has no guarantee of convergence.  The iteration will stop
 after max_iter iterations or an error tolerance of
 number_of_nodes(G)*tol has been reached.</p>
-<p>For directed graphs this is &#8220;right&#8221; eigevector centrality.  For
-&#8220;left&#8221; eigenvector centrality, first reverse the graph with
-G.reverse().</p>
+<p>For directed graphs this is &#8220;left&#8221; eigevector centrality which corresponds
+to the in-edges in the graph.  For out-edges eigenvector centrality
+first reverse the graph with G.reverse().</p>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">centrality</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">eigenvector_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">centrality</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">eigenvector_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">([</span><span class="s">&#39;</span><span class="si">%s</span><span class="s"> </span><span class="si">%0.2f</span><span class="s">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="n">centrality</span><span class="p">[</span><span class="n">node</span><span class="p">])</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">centrality</span><span class="p">])</span>
 <span class="go">[&#39;0 0.37&#39;, &#39;1 0.60&#39;, &#39;2 0.60&#39;, &#39;3 0.37&#39;]</span>
 </pre></div>
@@ -195,8 +202,8 @@ G.reverse().</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Aug 03, 2013.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+      Last updated on Apr 08, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>
