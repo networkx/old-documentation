@@ -1,0 +1,243 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>stoer_wagner &mdash; NetworkX 1.9.dev20140410000008 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.9.dev20140410000008',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 1.9.dev20140410000008 documentation"
+          href="../../_static/opensearch.xml"/>
+    <link rel="top" title="NetworkX 1.9.dev20140410000008 documentation" href="../../index.html" />
+    <link rel="up" title="Connectivity" href="../algorithms.connectivity.html" />
+    <link rel="next" title="Cores" href="../algorithms.core.html" />
+    <link rel="prev" title="minimum_edge_cut" href="networkx.algorithms.connectivity.cuts.minimum_edge_cut.html" /> 
+  </head>
+  <body>
+<div style="color: black;background-color: white; font-size: 3.2em; text-align: left; padding: 15px 10px 10px 15px">
+NetworkX
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../algorithms.core.html" title="Cores"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="networkx.algorithms.connectivity.cuts.minimum_edge_cut.html" title="minimum_edge_cut"
+             accesskey="P">previous</a> |</li>
+        <li><a href="http://networkx.github.com/">NetworkX Home </a> |&nbsp;</li>
+        <li><a href="http://networkx.github.com/documentation.html">Documentation </a>|&nbsp;</li>
+        <li><a href="http://networkx.github.com/download.html">Download </a> |&nbsp;</li>
+        <li><a href="http://github.com/networkx">Developer (Github)</a></li>
+
+
+
+          <li><a href="../index.html" >Reference</a> &raquo;</li>
+          <li><a href="../pdf_reference.html" >Reference</a> &raquo;</li>
+          <li><a href="../algorithms.html" >Algorithms</a> &raquo;</li>
+          <li><a href="../algorithms.connectivity.html" accesskey="U">Connectivity</a> &raquo;</li> 
+      </ul>
+    </div>
+
+<p>This documentation is for the development version <b>1.9.dev_20140410000008</b></p>
+
+
+
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="networkx.algorithms.connectivity.cuts.minimum_edge_cut.html"
+                        title="previous chapter">minimum_edge_cut</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../algorithms.core.html"
+                        title="next chapter">Cores</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="stoer-wagner">
+<h1>stoer_wagner<a class="headerlink" href="#stoer-wagner" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="networkx.algorithms.connectivity.stoer_wagner.stoer_wagner">
+<tt class="descname">stoer_wagner</tt><big>(</big><em>G</em>, <em>weight='weight'</em>, <em>heap=&lt;class 'networkx.utils.heaps.BinaryHeap'&gt;</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/connectivity/stoer_wagner.html#stoer_wagner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.connectivity.stoer_wagner.stoer_wagner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine the minimum edge cut of a connected graph using the
+Stoer-Wagner algorithm. In weighted cases, all weights must be nonnegative.</p>
+<p>The running time of the algorithm depends on the type of heaps used:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type of heap</th>
+<th class="head">Running time</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Binary heap</td>
+<td><img class="math" src="../../_images/math/5ba1c1b68f92a47d455ad0f22820ba77f403ac5f.png" alt="O(n (m + n) \log n)" style="vertical-align: -4px"/></td>
+</tr>
+<tr class="row-odd"><td>Fibonacci heap</td>
+<td><img class="math" src="../../_images/math/08055a2fb1e1cd9757ee3b1f9c2b6a62ea9d9e3a.png" alt="O(nm + n^2 \log n)" style="vertical-align: -4px"/></td>
+</tr>
+<tr class="row-even"><td>Pairing heap</td>
+<td><img class="math" src="../../_images/math/8c56bf9fab757951bfcb88075eaf08bb996d80b0.png" alt="O(2^{2 \sqrt{\log \log n}} nm + n^2 \log n)" style="vertical-align: -4px"/></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
+<blockquote>
+<div><p>Edges of the graph are expected to have an attribute named by the
+weight parameter below. If this attribute is not present, the edge is
+considered to have unit weight.</p>
+</div></blockquote>
+<p><strong>weight</strong> : string</p>
+<blockquote>
+<div><p>Name of the weight attribute of the edges. If the attribute is not
+present, unit weight is assumed. Default value: &#8216;weight&#8217;.</p>
+</div></blockquote>
+<p><strong>heap</strong> : class</p>
+<blockquote>
+<div><p>Type of heap to be used in the algorithm. It should be a subclass of
+<tt class="xref py py-class docutils literal"><span class="pre">MinHeap</span></tt> or implement a compatible interface.</p>
+<p>If a stock heap implementation is to be used, <tt class="xref py py-class docutils literal"><span class="pre">BinaryHeap</span></tt> is
+recommeded over <tt class="xref py py-class docutils literal"><span class="pre">PairingHeap</span></tt> for Python implementations without
+optimized attribute accesses (e.g., CPython) despite a slower
+asymptotic running time. For Python implementations with optimized
+attribute accesses (e.g., PyPy), <tt class="xref py py-class docutils literal"><span class="pre">PairingHeap</span></tt> provides better
+performance. Default value: <tt class="xref py py-class docutils literal"><span class="pre">BinaryHeap</span></tt>.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>cut_value</strong> : integer or float</p>
+<blockquote>
+<div><p>The sum of weights of edges in a minimum cut.</p>
+</div></blockquote>
+<p><strong>partition</strong> : pair of node lists</p>
+<blockquote>
+<div><p>A partitioning of the nodes that defines a minimum cut.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>NetworkXNotImplemented</strong> :</p>
+<blockquote>
+<div><p>If the graph is directed or a multigraph.</p>
+</div></blockquote>
+<p><strong>NetworkXError</strong> :</p>
+<blockquote class="last">
+<div><p>If the graph has less than two nodes, is not connected or has a
+negative-weighted edge.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;d&#39;</span><span class="p">,</span><span class="s">&#39;e&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;c&#39;</span><span class="p">,</span><span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;e&#39;</span><span class="p">,</span><span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cut_value</span><span class="p">,</span> <span class="n">partition</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">stoer_wagner</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cut_value</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../algorithms.core.html" title="Cores"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="networkx.algorithms.connectivity.cuts.minimum_edge_cut.html" title="minimum_edge_cut"
+             >previous</a> |</li>
+        <li><a href="http://networkx.github.com/">NetworkX Home </a> |&nbsp;</li>
+        <li><a href="http://networkx.github.com/documentation.html">Documentation </a>|&nbsp;</li>
+        <li><a href="http://networkx.github.com/download.html">Download </a> |&nbsp;</li>
+        <li><a href="http://github.com/networkx">Developer (Github)</a></li>
+
+
+
+          <li><a href="../index.html" >Reference</a> &raquo;</li>
+          <li><a href="../pdf_reference.html" >Reference</a> &raquo;</li>
+          <li><a href="../algorithms.html" >Algorithms</a> &raquo;</li>
+          <li><a href="../algorithms.connectivity.html" >Connectivity</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, NetworkX Developers.
+      Last updated on Apr 10, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
