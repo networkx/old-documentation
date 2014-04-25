@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>attr_sparse_matrix &mdash; NetworkX 1.9.dev20140424000007 documentation</title>
+    <title>attr_sparse_matrix &mdash; NetworkX 1.9.dev20140425000008 documentation</title>
     
     <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.9.dev20140424000007',
+        VERSION:     '1.9.dev20140425000008',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -25,10 +25,11 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20140424000007 documentation"
+          title="Search within NetworkX 1.9.dev20140425000008 documentation"
           href="../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20140424000007 documentation" href="../../index.html" />
+    <link rel="top" title="NetworkX 1.9.dev20140425000008 documentation" href="../../index.html" />
     <link rel="up" title="Linear algebra" href="../linalg.html" />
     <link rel="next" title="Converting to and from other data formats" href="../convert.html" />
     <link rel="prev" title="attr_matrix" href="networkx.linalg.attrmatrix.attr_matrix.html" /> 
@@ -66,7 +67,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20140424000007</b></p>
+<p>This documentation is for the development version <b>1.9.dev_20140425000008</b></p>
 
 
 
@@ -105,12 +106,12 @@ NetworkX
 <dt id="networkx.linalg.attrmatrix.attr_sparse_matrix">
 <tt class="descname">attr_sparse_matrix</tt><big>(</big><em>G</em>, <em>edge_attr=None</em>, <em>node_attr=None</em>, <em>normalized=False</em>, <em>rc_order=None</em>, <em>dtype=None</em><big>)</big><a class="reference internal" href="../../_modules/networkx/linalg/attrmatrix.html#attr_sparse_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.linalg.attrmatrix.attr_sparse_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a SciPy sparse matrix using attributes from G.</p>
-<p>If only <img class="math" src="../../_images/math/6e28ce12d49d39f160d5a0ef54077fc98e4b9d2b.png" alt="G" style="vertical-align: 0px"/> is passed in, then the adjacency matrix is constructed.</p>
-<p>Let A be a discrete set of values for the node attribute <img class="math" src="../../_images/math/b70d1c1d8e75b916e47d13ab73572ed2369a8678.png" alt="node_attr" style="vertical-align: -3px"/>. Then
+<p>If only <span class="math">\(G\)</span> is passed in, then the adjacency matrix is constructed.</p>
+<p>Let A be a discrete set of values for the node attribute <span class="math">\(node_attr\)</span>. Then
 the elements of A represent the rows and columns of the constructed matrix.
-Now, iterate through every edge e=(u,v) in <img class="math" src="../../_images/math/6e28ce12d49d39f160d5a0ef54077fc98e4b9d2b.png" alt="G" style="vertical-align: 0px"/> and consider the value
-of the edge attribute <img class="math" src="../../_images/math/7b4b2a5d57052f049519829be4c246f011790d72.png" alt="edge_attr" style="vertical-align: -4px"/>.  If ua and va are the values of the 
-node attribute <img class="math" src="../../_images/math/b70d1c1d8e75b916e47d13ab73572ed2369a8678.png" alt="node_attr" style="vertical-align: -3px"/> for u and v, respectively, then the value of
+Now, iterate through every edge e=(u,v) in <span class="math">\(G\)</span> and consider the value
+of the edge attribute <span class="math">\(edge_attr\)</span>.  If ua and va are the values of the 
+node attribute <span class="math">\(node_attr\)</span> for u and v, respectively, then the value of
 the edge attribute is added to the matrix element at (ua, va).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -155,8 +156,8 @@ the ordering will be random (and also, a return value).</p>
 </div></blockquote>
 <p><strong>ordering</strong> : list</p>
 <blockquote>
-<div><p>If <img class="math" src="../../_images/math/8415088259ea39b1dc1f4ba55aa3ed4d4b0cc65b.png" alt="rc_order" style="vertical-align: -3px"/> was specified, then only the matrix is returned.
-However, if <img class="math" src="../../_images/math/8415088259ea39b1dc1f4ba55aa3ed4d4b0cc65b.png" alt="rc_order" style="vertical-align: -3px"/> was None, then the ordering used to construct 
+<div><p>If <span class="math">\(rc_order\)</span> was specified, then only the matrix is returned.
+However, if <span class="math">\(rc_order\)</span> was None, then the ordering used to construct 
 the matrix is returned as well.</p>
 </div></blockquote>
 </td>
@@ -267,7 +268,7 @@ Pr( v is blue | u is blue) = 0</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Apr 24, 2014.
+      Last updated on Apr 25, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

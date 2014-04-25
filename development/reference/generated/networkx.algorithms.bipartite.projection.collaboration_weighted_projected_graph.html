@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>collaboration_weighted_projected_graph &mdash; NetworkX 1.9.dev20140424000007 documentation</title>
+    <title>collaboration_weighted_projected_graph &mdash; NetworkX 1.9.dev20140425000008 documentation</title>
     
     <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.9.dev20140424000007',
+        VERSION:     '1.9.dev20140425000008',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -25,10 +25,11 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20140424000007 documentation"
+          title="Search within NetworkX 1.9.dev20140425000008 documentation"
           href="../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20140424000007 documentation" href="../../index.html" />
+    <link rel="top" title="NetworkX 1.9.dev20140425000008 documentation" href="../../index.html" />
     <link rel="up" title="Bipartite" href="../algorithms.bipartite.html" />
     <link rel="next" title="overlap_weighted_projected_graph" href="networkx.algorithms.bipartite.projection.overlap_weighted_projected_graph.html" />
     <link rel="prev" title="weighted_projected_graph" href="networkx.algorithms.bipartite.projection.weighted_projected_graph.html" /> 
@@ -67,7 +68,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20140424000007</b></p>
+<p>This documentation is for the development version <b>1.9.dev_20140425000008</b></p>
 
 
 
@@ -110,12 +111,12 @@ NetworkX
 bipartite network B onto the specified nodes with weights assigned
 using Newman&#8217;s collaboration model <a class="reference internal" href="#r150">[R150]</a>:</p>
 <div class="math">
-<p><img src="../../_images/math/bd0645906ccd6932fa4e12bf25b6444ab951b18e.png" alt="w_{v,u} = \sum_k \frac{\delta_{v}^{w} \delta_{w}^{k}}{k_w - 1}"/></p>
-</div><p>where <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: 0px"/> and <img class="math" src="../../_images/math/9ad99798ec4c38e165cf517cb9e02b1c9e824103.png" alt="u" style="vertical-align: 0px"/> are nodes from the same bipartite node set,
-and <img class="math" src="../../_images/math/9ee4b825a2e36ae093ed7be5e4851ef453b34914.png" alt="w" style="vertical-align: 0px"/> is a node of the opposite node set. 
-The value <img class="math" src="../../_images/math/361d2d77244040c47e657acc98a380f2fe34f556.png" alt="k_w" style="vertical-align: -3px"/> is the degree of node <img class="math" src="../../_images/math/9ee4b825a2e36ae093ed7be5e4851ef453b34914.png" alt="w" style="vertical-align: 0px"/> in the bipartite
-network and <img class="math" src="../../_images/math/60b6e385d1dda11c733e3e34db1575eb5121ab0a.png" alt="\delta_{v}^{w}" style="vertical-align: -5px"/> is 1 if node <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: 0px"/> is
-linked to node <img class="math" src="../../_images/math/9ee4b825a2e36ae093ed7be5e4851ef453b34914.png" alt="w" style="vertical-align: 0px"/> in the original bipartite graph or 0 otherwise.</p>
+\[w_{v,u} = \sum_k \frac{\delta_{v}^{w} \delta_{w}^{k}}{k_w - 1}\]</div>
+<p>where <span class="math">\(v\)</span> and <span class="math">\(u\)</span> are nodes from the same bipartite node set,
+and <span class="math">\(w\)</span> is a node of the opposite node set. 
+The value <span class="math">\(k_w\)</span> is the degree of node <span class="math">\(w\)</span> in the bipartite
+network and <span class="math">\(\delta_{v}^{w}\)</span> is 1 if node <span class="math">\(v\)</span> is
+linked to node <span class="math">\(w\)</span> in the original bipartite graph or 0 otherwise.</p>
 <p>The nodes retain their attributes and are connected in the resulting
 graph if have an edge to a common node in the original bipartite
 graph.</p>
@@ -212,7 +213,7 @@ M. E. J. Newman, Phys. Rev. E 64, 016132 (2001).</td></tr>
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Apr 24, 2014.
+      Last updated on Apr 25, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

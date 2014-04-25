@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>communicability_betweenness_centrality &mdash; NetworkX 1.9.dev20140424000007 documentation</title>
+    <title>communicability_betweenness_centrality &mdash; NetworkX 1.9.dev20140425000008 documentation</title>
     
     <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.9.dev20140424000007',
+        VERSION:     '1.9.dev20140425000008',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -25,10 +25,11 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20140424000007 documentation"
+          title="Search within NetworkX 1.9.dev20140425000008 documentation"
           href="../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20140424000007 documentation" href="../../index.html" />
+    <link rel="top" title="NetworkX 1.9.dev20140425000008 documentation" href="../../index.html" />
     <link rel="up" title="Centrality" href="../algorithms.centrality.html" />
     <link rel="next" title="estrada_index" href="networkx.algorithms.centrality.estrada_index.html" />
     <link rel="prev" title="communicability_centrality_exp" href="networkx.algorithms.centrality.communicability_centrality_exp.html" /> 
@@ -67,7 +68,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20140424000007</b></p>
+<p>This documentation is for the development version <b>1.9.dev_20140425000008</b></p>
 
 
 
@@ -142,24 +143,24 @@ measure.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>Let <img class="math" src="../../_images/math/b70ec1f605bd05af0f0f71e2631ec6f09d63890d.png" alt="G=(V,E)" style="vertical-align: -4px"/> be a simple undirected graph with <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: 0px"/> nodes and <img class="math" src="../../_images/math/f5047d1e0cbb50ec208923a22cd517c55100fa7b.png" alt="m" style="vertical-align: 0px"/> edges,
-and <img class="math" src="../../_images/math/019e9892786e493964e145e7c5cf7b700314e53b.png" alt="A" style="vertical-align: 0px"/> denote the adjacency matrix of <img class="math" src="../../_images/math/6e28ce12d49d39f160d5a0ef54077fc98e4b9d2b.png" alt="G" style="vertical-align: 0px"/>.</p>
-<p>Let <img class="math" src="../../_images/math/8b2ab36f085e70846eab77837e48fdf4ba07ae79.png" alt="G(r)=(V,E(r))" style="vertical-align: -4px"/> be the graph resulting from
-removing all edges connected to node <img class="math" src="../../_images/math/b55ca7a0aa88ab7d58f4fc035317fdac39b17861.png" alt="r" style="vertical-align: 0px"/> but not the node itself.</p>
-<p>The adjacency matrix for <img class="math" src="../../_images/math/d1e0ab2a2b9eda39402ed817f15b08a0ca61703c.png" alt="G(r)" style="vertical-align: -4px"/> is <img class="math" src="../../_images/math/5692d0ffd1cdf546f255c273a0c73eb1f1510bfb.png" alt="A+E(r)" style="vertical-align: -4px"/>,  where <img class="math" src="../../_images/math/4b2d722519315d3db2eba4cd5b0948943cb6e499.png" alt="E(r)" style="vertical-align: -4px"/> has nonzeros
-only in row and column <img class="math" src="../../_images/math/b55ca7a0aa88ab7d58f4fc035317fdac39b17861.png" alt="r" style="vertical-align: 0px"/>.</p>
-<p>The communicability betweenness of a node <img class="math" src="../../_images/math/b55ca7a0aa88ab7d58f4fc035317fdac39b17861.png" alt="r" style="vertical-align: 0px"/>  is <a class="reference internal" href="#r163">[R163]</a></p>
+<p>Let <span class="math">\(G=(V,E)\)</span> be a simple undirected graph with <span class="math">\(n\)</span> nodes and <span class="math">\(m\)</span> edges,
+and <span class="math">\(A\)</span> denote the adjacency matrix of <span class="math">\(G\)</span>.</p>
+<p>Let <span class="math">\(G(r)=(V,E(r))\)</span> be the graph resulting from
+removing all edges connected to node <span class="math">\(r\)</span> but not the node itself.</p>
+<p>The adjacency matrix for <span class="math">\(G(r)\)</span> is <span class="math">\(A+E(r)\)</span>,  where <span class="math">\(E(r)\)</span> has nonzeros
+only in row and column <span class="math">\(r\)</span>.</p>
+<p>The communicability betweenness of a node <span class="math">\(r\)</span>  is <a class="reference internal" href="#r163">[R163]</a></p>
 <div class="math">
-<p><img src="../../_images/math/363f3d076d87bb2590cf260ba0d6e0d8066e3198.png" alt="\omega_{r} = \frac{1}{C}\sum_{p}\sum_{q}\frac{G_{prq}}{G_{pq}},
-p\neq q, q\neq r,"/></p>
-</div><p>where
-<img class="math" src="../../_images/math/6c95a2c304fc4cafc15f133064db14cf5f490804.png" alt="G_{prq}=(e^{A}_{pq} - (e^{A+E(r)})_{pq}" style="vertical-align: -8px"/>  is the number of walks
+\[\omega_{r} = \frac{1}{C}\sum_{p}\sum_{q}\frac{G_{prq}}{G_{pq}},
+p\neq q, q\neq r,\]</div>
+<p>where
+<span class="math">\(G_{prq}=(e^{A}_{pq} - (e^{A+E(r)})_{pq}\)</span>  is the number of walks
 involving node r,
-<img class="math" src="../../_images/math/d0903a69b9b1f4b186667542882c14d16fd6a2e2.png" alt="G_{pq}=(e^{A})_{pq}" style="vertical-align: -6px"/> is the number of closed walks starting
-at node <img class="math" src="../../_images/math/36f73fc1312ee0349b3f3a0f3bd9eb5504339011.png" alt="p" style="vertical-align: -4px"/> and ending at node <img class="math" src="../../_images/math/0615acc3725de21025457e7d6f7694dab8e2f758.png" alt="q" style="vertical-align: -4px"/>,
-and <img class="math" src="../../_images/math/d51f4826be1cd2e7fdb9e25ac7ba8a2f2b99c577.png" alt="C=(n-1)^{2}-(n-1)" style="vertical-align: -4px"/> is a normalization factor equal to the
+<span class="math">\(G_{pq}=(e^{A})_{pq}\)</span> is the number of closed walks starting
+at node <span class="math">\(p\)</span> and ending at node <span class="math">\(q\)</span>,
+and <span class="math">\(C=(n-1)^{2}-(n-1)\)</span> is a normalization factor equal to the
 number of terms in the sum.</p>
-<p>The resulting <img class="math" src="../../_images/math/79e6cf079fdb083db2f15d0d123a9fa5cfd6f2e1.png" alt="\omega_{r}" style="vertical-align: -3px"/> takes values between zero and one.
+<p>The resulting <span class="math">\(\omega_{r}\)</span> takes values between zero and one.
 The lower bound cannot be attained for a connected
 graph, and the upper bound is attained in the star graph.</p>
 <p class="rubric">References</p>
@@ -217,7 +218,7 @@ Physica A 388 (2009) 764-774.
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Apr 24, 2014.
+      Last updated on Apr 25, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

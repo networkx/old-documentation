@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>betweenness_centrality &mdash; NetworkX 1.9.dev20140424000007 documentation</title>
+    <title>betweenness_centrality &mdash; NetworkX 1.9.dev20140425000008 documentation</title>
     
     <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.9.dev20140424000007',
+        VERSION:     '1.9.dev20140425000008',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -25,10 +25,11 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20140424000007 documentation"
+          title="Search within NetworkX 1.9.dev20140425000008 documentation"
           href="../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20140424000007 documentation" href="../../index.html" />
+    <link rel="top" title="NetworkX 1.9.dev20140425000008 documentation" href="../../index.html" />
     <link rel="up" title="Centrality" href="../algorithms.centrality.html" />
     <link rel="next" title="edge_betweenness_centrality" href="networkx.algorithms.centrality.edge_betweenness_centrality.html" />
     <link rel="prev" title="closeness_centrality" href="networkx.algorithms.centrality.closeness_centrality.html" /> 
@@ -67,7 +68,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20140424000007</b></p>
+<p>This documentation is for the development version <b>1.9.dev_20140425000008</b></p>
 
 
 
@@ -106,15 +107,15 @@ NetworkX
 <dt id="networkx.algorithms.centrality.betweenness_centrality">
 <tt class="descname">betweenness_centrality</tt><big>(</big><em>G</em>, <em>k=None</em>, <em>normalized=True</em>, <em>weight=None</em>, <em>endpoints=False</em>, <em>seed=None</em><big>)</big><a class="headerlink" href="#networkx.algorithms.centrality.betweenness_centrality" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the shortest-path betweenness centrality for nodes.</p>
-<p>Betweenness centrality of a node <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: 0px"/> is the sum of the
-fraction of all-pairs shortest paths that pass through <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: 0px"/>:</p>
+<p>Betweenness centrality of a node <span class="math">\(v\)</span> is the sum of the
+fraction of all-pairs shortest paths that pass through <span class="math">\(v\)</span>:</p>
 <div class="math">
-<p><img src="../../_images/math/24c08972978a9cecf4e7d72bc790dab4e5e9391d.png" alt="c_B(v) =\sum_{s,t \in V} \frac{\sigma(s, t|v)}{\sigma(s, t)}"/></p>
-</div><p>where <img class="math" src="../../_images/math/12d58aa29201da09d8e620f8698e3a37547f6b4a.png" alt="V" style="vertical-align: 0px"/> is the set of nodes, <img class="math" src="../../_images/math/035282fdebc740199526fcb9906940056736cb11.png" alt="\sigma(s, t)" style="vertical-align: -4px"/> is the number of 
-shortest <img class="math" src="../../_images/math/f98b5f1f3cf9331a3f398911e2a8cd223839672e.png" alt="(s, t)" style="vertical-align: -4px"/>-paths,  and <img class="math" src="../../_images/math/5ce80a9c67b490475155380e57bc5180e30f7398.png" alt="\sigma(s, t|v)" style="vertical-align: -5px"/> is the number of those 
-paths  passing through some  node <img class="math" src="../../_images/math/a9f23bf124b6b2b2a993eb313c72e678664ac74a.png" alt="v" style="vertical-align: 0px"/> other than <img class="math" src="../../_images/math/040329525e8a86be6cfe414a1742bc8becf09d6c.png" alt="s, t" style="vertical-align: -4px"/>. 
-If <img class="math" src="../../_images/math/869b85bce01c8599686b7b0fb3684cd6500cca2a.png" alt="s = t" style="vertical-align: 0px"/>, <img class="math" src="../../_images/math/906e879a39f6b1d50039fe4851b6ae9248d7cefc.png" alt="\sigma(s, t) = 1" style="vertical-align: -4px"/>, and if <img class="math" src="../../_images/math/29f3c574ef9935673431b18934c873cf6744f95f.png" alt="v \in {s, t}" style="vertical-align: -4px"/>,  
-<img class="math" src="../../_images/math/b95138df863625160e1f0e0a6160a60a927adff9.png" alt="\sigma(s, t|v) = 0" style="vertical-align: -5px"/> <a class="reference internal" href="#r158">[R158]</a>.</p>
+\[c_B(v) =\sum_{s,t \in V} \frac{\sigma(s, t|v)}{\sigma(s, t)}\]</div>
+<p>where <span class="math">\(V\)</span> is the set of nodes, <span class="math">\(\sigma(s, t)\)</span> is the number of 
+shortest <span class="math">\((s, t)\)</span>-paths,  and <span class="math">\(\sigma(s, t|v)\)</span> is the number of those 
+paths  passing through some  node <span class="math">\(v\)</span> other than <span class="math">\(s, t\)</span>. 
+If <span class="math">\(s = t\)</span>, <span class="math">\(\sigma(s, t) = 1\)</span>, and if <span class="math">\(v \in {s, t}\)</span>,  
+<span class="math">\(\sigma(s, t|v) = 0\)</span> <a class="reference internal" href="#r158">[R158]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -131,8 +132,8 @@ Higher values give better approximation.</p>
 </div></blockquote>
 <p><strong>normalized</strong> : bool, optional</p>
 <blockquote>
-<div><p>If True the betweenness values are normalized by <img class="math" src="../../_images/math/862ced97bc9822769db1d9796010f9ef7bcb90ec.png" alt="2/((n-1)(n-2))" style="vertical-align: -5px"/> 
-for graphs, and <img class="math" src="../../_images/math/052a437b029cc22d396f71ff5555706506f83a7e.png" alt="1/((n-1)(n-2))" style="vertical-align: -5px"/> for directed graphs where <img class="math" src="../../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n" style="vertical-align: 0px"/> 
+<div><p>If True the betweenness values are normalized by <span class="math">\(2/((n-1)(n-2))\)</span> 
+for graphs, and <span class="math">\(1/((n-1)(n-2))\)</span> for directed graphs where <span class="math">\(n\)</span> 
 is the number of nodes in G.</p>
 </div></blockquote>
 <p><strong>weight</strong> : None or string, optional</p>
@@ -235,7 +236,7 @@ International Journal of Bifurcation and Chaos 17(7):2303-2318, 2007.
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Apr 24, 2014.
+      Last updated on Apr 25, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

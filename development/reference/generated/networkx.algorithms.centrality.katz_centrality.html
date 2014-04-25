@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>katz_centrality &mdash; NetworkX 1.9.dev20140424000007 documentation</title>
+    <title>katz_centrality &mdash; NetworkX 1.9.dev20140425000008 documentation</title>
     
     <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.9.dev20140424000007',
+        VERSION:     '1.9.dev20140425000008',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -25,10 +25,11 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20140424000007 documentation"
+          title="Search within NetworkX 1.9.dev20140425000008 documentation"
           href="../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20140424000007 documentation" href="../../index.html" />
+    <link rel="top" title="NetworkX 1.9.dev20140425000008 documentation" href="../../index.html" />
     <link rel="up" title="Centrality" href="../algorithms.centrality.html" />
     <link rel="next" title="katz_centrality_numpy" href="networkx.algorithms.centrality.katz_centrality_numpy.html" />
     <link rel="prev" title="eigenvector_centrality_numpy" href="networkx.algorithms.centrality.eigenvector_centrality_numpy.html" /> 
@@ -67,7 +68,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20140424000007</b></p>
+<p>This documentation is for the development version <b>1.9.dev_20140425000008</b></p>
 
 
 
@@ -107,20 +108,20 @@ NetworkX
 <tt class="descname">katz_centrality</tt><big>(</big><em>G</em>, <em>alpha=0.1</em>, <em>beta=1.0</em>, <em>max_iter=1000</em>, <em>tol=1e-06</em>, <em>nstart=None</em>, <em>normalized=True</em>, <em>weight='weight'</em><big>)</big><a class="headerlink" href="#networkx.algorithms.centrality.katz_centrality" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the Katz centrality for the nodes of the graph G.</p>
 <p>Katz centrality is related to eigenvalue centrality and PageRank.
-The Katz centrality for node <img class="math" src="../../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i" style="vertical-align: 0px"/> is</p>
+The Katz centrality for node <span class="math">\(i\)</span> is</p>
 <div class="math">
-<p><img src="../../_images/math/867f654d13181eb68df627ef55f77210fdc87392.png" alt="x_i = \alpha \sum_{j} A_{ij} x_j + \beta,"/></p>
-</div><p>where <img class="math" src="../../_images/math/019e9892786e493964e145e7c5cf7b700314e53b.png" alt="A" style="vertical-align: 0px"/> is the adjacency matrix of the graph G with eigenvalues <img class="math" src="../../_images/math/ce4588fd900d02afcbd260bc07f54cce49a7dc4a.png" alt="\lambda" style="vertical-align: 0px"/>.</p>
-<p>The parameter <img class="math" src="../../_images/math/fdb63b9e51abe6bbb16acfb5d7b773ddbb5bf4a8.png" alt="\beta" style="vertical-align: -4px"/> controls the initial centrality and</p>
+\[x_i = \alpha \sum_{j} A_{ij} x_j + \beta,\]</div>
+<p>where <span class="math">\(A\)</span> is the adjacency matrix of the graph G with eigenvalues <span class="math">\(\lambda\)</span>.</p>
+<p>The parameter <span class="math">\(\beta\)</span> controls the initial centrality and</p>
 <div class="math">
-<p><img src="../../_images/math/bdf923bf89bc2cb6a3a221abf08448d827feb68a.png" alt="\alpha &lt; \frac{1}{\lambda_{max}}."/></p>
-</div><p>Katz centrality computes the relative influence of a node within a
+\[\begin{split}\alpha &lt; \frac{1}{\lambda_{max}}.\end{split}\]</div>
+<p>Katz centrality computes the relative influence of a node within a
 network by measuring the number of the immediate neighbors (first
 degree nodes) and also all other nodes in the network that connect
 to the node under consideration through these immediate neighbors.</p>
 <p>Extra weight can be provided to immediate neighbors through the
-parameter <img class="math" src="../../_images/math/fdb63b9e51abe6bbb16acfb5d7b773ddbb5bf4a8.png" alt="\beta" style="vertical-align: -4px"/>.  Connections made with distant neighbors
-are, however, penalized by an attenuation factor <img class="math" src="../../_images/math/10f32377ac67d94f764f12a15ea987e88c85d3e1.png" alt="\alpha" style="vertical-align: 0px"/> which
+parameter <span class="math">\(\beta\)</span>.  Connections made with distant neighbors
+are, however, penalized by an attenuation factor <span class="math">\(\alpha\)</span> which
 should be strictly less than the inverse largest eigenvalue of the
 adjacency matrix in order for the Katz centrality to be computed
 correctly. More information is provided in <a class="reference internal" href="#r179">[R179]</a> .</p>
@@ -183,7 +184,7 @@ The constant alpha should be strictly less than the inverse of largest
 eigenvalue of the adjacency matrix for the algorithm to converge.
 The iteration will stop after max_iter iterations or an error tolerance of
 number_of_nodes(G)*tol has been reached.</p>
-<p>When <img class="math" src="../../_images/math/aa5b9e424dd3f305811e6c57bc3e901399c524db.png" alt="\alpha = 1/\lambda_{max}" style="vertical-align: -5px"/> and <img class="math" src="../../_images/math/bd0841c3936bc875fefe9192ca5209033f156466.png" alt="\beta=1" style="vertical-align: -4px"/> Katz centrality is the same as
+<p>When <span class="math">\(\alpha = 1/\lambda_{max}\)</span> and <span class="math">\(\beta=1\)</span> Katz centrality is the same as
 eigenvector centrality.</p>
 <p>For directed graphs this finds &#8220;left&#8221; eigenvectors which corresponds
 to the in-edges in the graph.  For out-edges Katz centrality
@@ -249,7 +250,7 @@ USA, 2010, p. 720.</td></tr>
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Apr 24, 2014.
+      Last updated on Apr 25, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

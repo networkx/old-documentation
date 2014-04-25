@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>biadjacency_matrix &mdash; NetworkX 1.9.dev20140424000007 documentation</title>
+    <title>biadjacency_matrix &mdash; NetworkX 1.9.dev20140425000008 documentation</title>
     
     <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.9.dev20140424000007',
+        VERSION:     '1.9.dev20140425000008',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -25,10 +25,11 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20140424000007 documentation"
+          title="Search within NetworkX 1.9.dev20140425000008 documentation"
           href="../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20140424000007 documentation" href="../../index.html" />
+    <link rel="top" title="NetworkX 1.9.dev20140425000008 documentation" href="../../index.html" />
     <link rel="up" title="Bipartite" href="../algorithms.bipartite.html" />
     <link rel="next" title="projected_graph" href="networkx.algorithms.bipartite.projection.projected_graph.html" />
     <link rel="prev" title="degrees" href="networkx.algorithms.bipartite.basic.degrees.html" /> 
@@ -67,7 +68,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20140424000007</b></p>
+<p>This documentation is for the development version <b>1.9.dev_20140425000008</b></p>
 
 
 
@@ -106,11 +107,11 @@ NetworkX
 <dt id="networkx.algorithms.bipartite.basic.biadjacency_matrix">
 <tt class="descname">biadjacency_matrix</tt><big>(</big><em>G</em>, <em>row_order</em>, <em>column_order=None</em>, <em>weight='weight'</em>, <em>dtype=None</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/bipartite/basic.html#biadjacency_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.bipartite.basic.biadjacency_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the biadjacency matrix of the bipartite graph G.</p>
-<p>Let <img class="math" src="../../_images/math/76294034b7d13d387c82d79ba308a6b4ab242ef8.png" alt="G = (U, V, E)" style="vertical-align: -4px"/> be a bipartite graph with node sets
-<img class="math" src="../../_images/math/7900ea3d9182c713da4d0901747d9a33fefbcc61.png" alt="U = u_{1},...,u_{r}" style="vertical-align: -4px"/> and <img class="math" src="../../_images/math/903dc0756d2b73b6b780f622cc92180109c222de.png" alt="V = v_{1},...,v_{s}" style="vertical-align: -4px"/>. The biadjacency
-matrix [1] is the <img class="math" src="../../_images/math/b55ca7a0aa88ab7d58f4fc035317fdac39b17861.png" alt="r" style="vertical-align: 0px"/> x <img class="math" src="../../_images/math/f37bba504894945c07a32f5496d74299a37aa51c.png" alt="s" style="vertical-align: 0px"/> matrix <img class="math" src="../../_images/math/ff5fb3d775862e2123b007eb4373ff6cc1a34d4e.png" alt="B" style="vertical-align: 0px"/> in which <img class="math" src="../../_images/math/d17a9cd20b607dee6fff471915a5d578a59a4e85.png" alt="b_{i,j} = 1" style="vertical-align: -6px"/>
-if, and only if, <img class="math" src="../../_images/math/4b34c4e2c269578c2d48fd2ce907c49a5eb7c125.png" alt="(u_i, v_j) \in E" style="vertical-align: -6px"/>. If the parameter <img class="math" src="../../_images/math/2524085206914911723fb92cf5d0be2c92ca98f9.png" alt="weight" style="vertical-align: -4px"/> is
-not <img class="math" src="../../_images/math/4c9affe3afb56379a2ba6b92d46caf31dce5eaca.png" alt="None" style="vertical-align: 0px"/> and matches the name of an edge attribute, its value is
+<p>Let <span class="math">\(G = (U, V, E)\)</span> be a bipartite graph with node sets
+<span class="math">\(U = u_{1},...,u_{r}\)</span> and <span class="math">\(V = v_{1},...,v_{s}\)</span>. The biadjacency
+matrix [1] is the <span class="math">\(r\)</span> x <span class="math">\(s\)</span> matrix <span class="math">\(B\)</span> in which <span class="math">\(b_{i,j} = 1\)</span>
+if, and only if, <span class="math">\((u_i, v_j) \in E\)</span>. If the parameter <span class="math">\(weight\)</span> is
+not <span class="math">\(None\)</span> and matches the name of an edge attribute, its value is
 used instead of 1.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -204,7 +205,7 @@ one to the transpose of the other.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Apr 24, 2014.
+      Last updated on Apr 25, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
