@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Flows &mdash; NetworkX 1.9.dev20140428000007 documentation</title>
+    <title>Flows &mdash; NetworkX 1.9.dev20140429000008 documentation</title>
     
     <link rel="stylesheet" href="../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.9.dev20140428000007',
+        VERSION:     '1.9.dev20140429000008',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -27,11 +27,11 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20140428000007 documentation"
+          title="Search within NetworkX 1.9.dev20140429000008 documentation"
           href="../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20140428000007 documentation" href="../index.html" />
+    <link rel="top" title="NetworkX 1.9.dev20140429000008 documentation" href="../index.html" />
     <link rel="up" title="Algorithms" href="algorithms.html" />
-    <link rel="next" title="max_flow" href="generated/networkx.algorithms.flow.max_flow.html" />
+    <link rel="next" title="maximum_flow" href="generated/networkx.algorithms.flow.maximum_flow.html" />
     <link rel="prev" title="eulerian_circuit" href="generated/networkx.algorithms.euler.eulerian_circuit.html" /> 
   </head>
   <body>
@@ -49,7 +49,7 @@ NetworkX
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="generated/networkx.algorithms.flow.max_flow.html" title="max_flow"
+          <a href="generated/networkx.algorithms.flow.maximum_flow.html" title="maximum_flow"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="generated/networkx.algorithms.euler.eulerian_circuit.html" title="eulerian_circuit"
@@ -67,7 +67,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20140428000007</b></p>
+<p>This documentation is for the development version <b>1.9.dev_20140429000008</b></p>
 
 
 
@@ -76,7 +76,16 @@ NetworkX
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Flows</a><ul>
+<li><a class="reference internal" href="#maximum-flow">Maximum Flow</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#edmonds-karp">Edmonds-Karp</a><ul>
+</ul>
+</li>
 <li><a class="reference internal" href="#ford-fulkerson">Ford-Fulkerson</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#shortest-augmenting-path">Shortest Augmenting Path</a><ul>
 </ul>
 </li>
 <li><a class="reference internal" href="#preflow-push">Preflow-Push</a><ul>
@@ -96,8 +105,8 @@ NetworkX
   <p class="topless"><a href="generated/networkx.algorithms.euler.eulerian_circuit.html"
                         title="previous chapter">eulerian_circuit</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="generated/networkx.algorithms.flow.max_flow.html"
-                        title="next chapter">max_flow</a></p>
+  <p class="topless"><a href="generated/networkx.algorithms.flow.maximum_flow.html"
+                        title="next chapter">maximum_flow</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
@@ -121,6 +130,43 @@ NetworkX
             
   <div class="section" id="module-networkx.algorithms.flow">
 <span id="flows"></span><h1>Flows<a class="headerlink" href="#module-networkx.algorithms.flow" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="maximum-flow">
+<h2>Maximum Flow<a class="headerlink" href="#maximum-flow" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.flow.maximum_flow.html#networkx.algorithms.flow.maximum_flow" title="networkx.algorithms.flow.maximum_flow"><tt class="xref py py-obj docutils literal"><span class="pre">maximum_flow</span></tt></a>(G,&nbsp;s,&nbsp;t[,&nbsp;capacity,&nbsp;flow_func])</td>
+<td>Find a maximum single-commodity flow.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.flow.maximum_flow_value.html#networkx.algorithms.flow.maximum_flow_value" title="networkx.algorithms.flow.maximum_flow_value"><tt class="xref py py-obj docutils literal"><span class="pre">maximum_flow_value</span></tt></a>(G,&nbsp;s,&nbsp;t[,&nbsp;capacity,&nbsp;...])</td>
+<td>Find the value of maximum single-commodity flow.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.flow.minimum_cut.html#networkx.algorithms.flow.minimum_cut" title="networkx.algorithms.flow.minimum_cut"><tt class="xref py py-obj docutils literal"><span class="pre">minimum_cut</span></tt></a>(G,&nbsp;s,&nbsp;t[,&nbsp;capacity,&nbsp;flow_func])</td>
+<td>Compute the value and the node partition of a minimum (s, t)-cut.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.flow.minimum_cut_value.html#networkx.algorithms.flow.minimum_cut_value" title="networkx.algorithms.flow.minimum_cut_value"><tt class="xref py py-obj docutils literal"><span class="pre">minimum_cut_value</span></tt></a>(G,&nbsp;s,&nbsp;t[,&nbsp;capacity,&nbsp;flow_func])</td>
+<td>Compute the value of a minimum (s, t)-cut.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="edmonds-karp">
+<h2>Edmonds-Karp<a class="headerlink" href="#edmonds-karp" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.flow.edmonds_karp.html#networkx.algorithms.flow.edmonds_karp" title="networkx.algorithms.flow.edmonds_karp"><tt class="xref py py-obj docutils literal"><span class="pre">edmonds_karp</span></tt></a>(G,&nbsp;s,&nbsp;t[,&nbsp;capacity,&nbsp;residual,&nbsp;...])</td>
+<td>Find a maximum single-commodity flow using the Edmonds-Karp algorithm.</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="ford-fulkerson">
 <h2>Ford-Fulkerson<a class="headerlink" href="#ford-fulkerson" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="longtable docutils">
@@ -129,28 +175,21 @@ NetworkX
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.flow.max_flow.html#networkx.algorithms.flow.max_flow" title="networkx.algorithms.flow.max_flow"><tt class="xref py py-obj docutils literal"><span class="pre">max_flow</span></tt></a>(G,&nbsp;s,&nbsp;t[,&nbsp;capacity])</td>
-<td>Find the value of a maximum single-commodity flow.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.flow.min_cut.html#networkx.algorithms.flow.min_cut" title="networkx.algorithms.flow.min_cut"><tt class="xref py py-obj docutils literal"><span class="pre">min_cut</span></tt></a>(G,&nbsp;s,&nbsp;t[,&nbsp;capacity])</td>
-<td>Compute the value of a minimum (s, t)-cut.</td>
-</tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.flow.ford_fulkerson.html#networkx.algorithms.flow.ford_fulkerson" title="networkx.algorithms.flow.ford_fulkerson"><tt class="xref py py-obj docutils literal"><span class="pre">ford_fulkerson</span></tt></a>(G,&nbsp;s,&nbsp;t[,&nbsp;capacity])</td>
 <td>Find a maximum single-commodity flow using the Ford-Fulkerson</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.flow.ford_fulkerson_flow.html#networkx.algorithms.flow.ford_fulkerson_flow" title="networkx.algorithms.flow.ford_fulkerson_flow"><tt class="xref py py-obj docutils literal"><span class="pre">ford_fulkerson_flow</span></tt></a>(G,&nbsp;s,&nbsp;t[,&nbsp;capacity])</td>
-<td>Return a maximum flow for a single-commodity flow problem.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.flow.ford_fulkerson_flow_and_auxiliary.html#networkx.algorithms.flow.ford_fulkerson_flow_and_auxiliary" title="networkx.algorithms.flow.ford_fulkerson_flow_and_auxiliary"><tt class="xref py py-obj docutils literal"><span class="pre">ford_fulkerson_flow_and_auxiliary</span></tt></a>(G,&nbsp;s,&nbsp;t[,&nbsp;...])</td>
-<td>Find a maximum single-commodity flow using the Ford-Fulkerson</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.flow.shortest_augmenting_path.html#networkx.algorithms.flow.shortest_augmenting_path" title="networkx.algorithms.flow.shortest_augmenting_path"><tt class="xref py py-obj docutils literal"><span class="pre">shortest_augmenting_path</span></tt></a>(G,&nbsp;s,&nbsp;t[,&nbsp;...])</td>
-<td>Find a maximum single-commodity flow using the shortest augmenting path algorithm.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.flow.shortest_augmenting_path_value.html#networkx.algorithms.flow.shortest_augmenting_path_value" title="networkx.algorithms.flow.shortest_augmenting_path_value"><tt class="xref py py-obj docutils literal"><span class="pre">shortest_augmenting_path_value</span></tt></a>(G,&nbsp;s,&nbsp;t[,&nbsp;...])</td>
-<td>Find a maximum single-commodity flow using the shortest augmenting path algorithm.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.flow.shortest_augmenting_path_flow.html#networkx.algorithms.flow.shortest_augmenting_path_flow" title="networkx.algorithms.flow.shortest_augmenting_path_flow"><tt class="xref py py-obj docutils literal"><span class="pre">shortest_augmenting_path_flow</span></tt></a>(G,&nbsp;s,&nbsp;t[,&nbsp;...])</td>
+</tbody>
+</table>
+</div>
+<div class="section" id="shortest-augmenting-path">
+<h2>Shortest Augmenting Path<a class="headerlink" href="#shortest-augmenting-path" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.flow.shortest_augmenting_path.html#networkx.algorithms.flow.shortest_augmenting_path" title="networkx.algorithms.flow.shortest_augmenting_path"><tt class="xref py py-obj docutils literal"><span class="pre">shortest_augmenting_path</span></tt></a>(G,&nbsp;s,&nbsp;t[,&nbsp;...])</td>
 <td>Find a maximum single-commodity flow using the shortest augmenting path algorithm.</td>
 </tr>
 </tbody>
@@ -164,14 +203,8 @@ NetworkX
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.flow.preflow_push.html#networkx.algorithms.flow.preflow_push" title="networkx.algorithms.flow.preflow_push"><tt class="xref py py-obj docutils literal"><span class="pre">preflow_push</span></tt></a>(G,&nbsp;s,&nbsp;t[,&nbsp;capacity,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.flow.preflow_push.html#networkx.algorithms.flow.preflow_push" title="networkx.algorithms.flow.preflow_push"><tt class="xref py py-obj docutils literal"><span class="pre">preflow_push</span></tt></a>(G,&nbsp;s,&nbsp;t[,&nbsp;capacity,&nbsp;residual,&nbsp;...])</td>
 <td>Find a maximum single-commodity flow using the highest-label preflow-push algorithm.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.flow.preflow_push_value.html#networkx.algorithms.flow.preflow_push_value" title="networkx.algorithms.flow.preflow_push_value"><tt class="xref py py-obj docutils literal"><span class="pre">preflow_push_value</span></tt></a>(G,&nbsp;s,&nbsp;t[,&nbsp;capacity,&nbsp;...])</td>
-<td>Find a maximum single-commodity flow using the highest-label preflow- push algorithm.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.flow.preflow_push_flow.html#networkx.algorithms.flow.preflow_push_flow" title="networkx.algorithms.flow.preflow_push_flow"><tt class="xref py py-obj docutils literal"><span class="pre">preflow_push_flow</span></tt></a>(G,&nbsp;s,&nbsp;t[,&nbsp;capacity,&nbsp;...])</td>
-<td>Find a maximum single-commodity flow using the highest-label preflow- push algorithm.</td>
 </tr>
 </tbody>
 </table>
@@ -234,7 +267,7 @@ NetworkX
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="generated/networkx.algorithms.flow.max_flow.html" title="max_flow"
+          <a href="generated/networkx.algorithms.flow.maximum_flow.html" title="maximum_flow"
              >next</a> |</li>
         <li class="right" >
           <a href="generated/networkx.algorithms.euler.eulerian_circuit.html" title="eulerian_circuit"
@@ -253,7 +286,7 @@ NetworkX
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Apr 28, 2014.
+      Last updated on Apr 29, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
