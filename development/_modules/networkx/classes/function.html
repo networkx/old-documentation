@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>networkx.classes.function &mdash; NetworkX 1.9.dev20140429000008 documentation</title>
+    <title>networkx.classes.function &mdash; NetworkX 1.9.dev20140430000009 documentation</title>
     
     <link rel="stylesheet" href="../../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '1.9.dev20140429000008',
+        VERSION:     '1.9.dev20140430000009',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -27,9 +27,9 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20140429000008 documentation"
+          title="Search within NetworkX 1.9.dev20140430000009 documentation"
           href="../../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20140429000008 documentation" href="../../../index.html" />
+    <link rel="top" title="NetworkX 1.9.dev20140430000009 documentation" href="../../../index.html" />
     <link rel="up" title="networkx" href="../../networkx.html" /> 
   </head>
   <body>
@@ -58,7 +58,7 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20140429000008</b></p>
+<p>This documentation is for the development version <b>1.9.dev_20140430000009</b></p>
 
 
 
@@ -106,7 +106,7 @@ NetworkX
            <span class="s">&#39;freeze&#39;</span><span class="p">,</span><span class="s">&#39;is_frozen&#39;</span><span class="p">,</span><span class="s">&#39;subgraph&#39;</span><span class="p">,</span><span class="s">&#39;create_empty_copy&#39;</span><span class="p">,</span>
            <span class="s">&#39;set_node_attributes&#39;</span><span class="p">,</span><span class="s">&#39;get_node_attributes&#39;</span><span class="p">,</span>
            <span class="s">&#39;set_edge_attributes&#39;</span><span class="p">,</span><span class="s">&#39;get_edge_attributes&#39;</span><span class="p">,</span>
-           <span class="s">&#39;all_neighbors&#39;</span><span class="p">,</span><span class="s">&#39;non_neighbors&#39;</span><span class="p">]</span>
+           <span class="s">&#39;all_neighbors&#39;</span><span class="p">,</span><span class="s">&#39;non_neighbors&#39;</span><span class="p">,</span> <span class="s">&#39;non_edges&#39;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="nodes"><a class="viewcode-back" href="../../../reference/generated/networkx.classes.function.nodes.html#networkx.classes.function.nodes">[docs]</a><span class="k">def</span> <span class="nf">nodes</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a copy of the graph nodes in a list.&quot;&quot;&quot;</span>
@@ -512,7 +512,32 @@ NetworkX
 <span class="sd">        Iterator of nodes in the graph that are not neighbors of the node.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">nbors</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">neighbors</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">node</span><span class="p">))</span> <span class="o">|</span> <span class="nb">set</span><span class="p">([</span><span class="n">node</span><span class="p">])</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">nnode</span> <span class="k">for</span> <span class="n">nnode</span> <span class="ow">in</span> <span class="n">graph</span> <span class="k">if</span> <span class="n">nnode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nbors</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="p">(</span><span class="n">nnode</span> <span class="k">for</span> <span class="n">nnode</span> <span class="ow">in</span> <span class="n">graph</span> <span class="k">if</span> <span class="n">nnode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nbors</span><span class="p">)</span>
+</div>
+<span class="k">def</span> <span class="nf">non_edges</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the non-existent edges in the graph.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph : NetworkX graph.</span>
+<span class="sd">        Graph to find non-existent edges.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    non_edges : iterator</span>
+<span class="sd">        Iterator of edges that are not in the graph.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">graph</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">nodes_iter</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">non_neighbors</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">u</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">S</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">nodes_iter</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">non_neighbors</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">u</span><span class="p">):</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">S</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+                    <span class="n">S</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">))</span>
 </pre></div>
 
           </div>
@@ -542,7 +567,7 @@ NetworkX
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Apr 29, 2014.
+      Last updated on Apr 30, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
