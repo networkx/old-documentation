@@ -1,0 +1,364 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>networkx.algorithms.link_prediction &mdash; NetworkX 1.9.dev20140511000007 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/networkx.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.9.dev20140511000007',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 1.9.dev20140511000007 documentation"
+          href="../../../_static/opensearch.xml"/>
+    <link rel="top" title="NetworkX 1.9.dev20140511000007 documentation" href="../../../index.html" />
+    <link rel="up" title="networkx" href="../../networkx.html" /> 
+  </head>
+  <body>
+<div style="color: black;background-color: white; font-size: 3.2em; text-align: left; padding: 15px 10px 10px 15px">
+NetworkX
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="http://networkx.github.com/">NetworkX Home </a> |&nbsp;</li>
+        <li><a href="http://networkx.github.com/documentation.html">Documentation </a>|&nbsp;</li>
+        <li><a href="http://networkx.github.com/download.html">Download </a> |&nbsp;</li>
+        <li><a href="http://github.com/networkx">Developer (Github)</a></li>
+
+
+
+          <li><a href="../../index.html" >Module code</a> &raquo;</li>
+          <li><a href="../../networkx.html" accesskey="U">networkx</a> &raquo;</li> 
+      </ul>
+    </div>
+
+<p>This documentation is for the development version <b>1.9.dev_20140511000007</b></p>
+
+
+
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for networkx.algorithms.link_prediction</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Link prediction algorithms.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
+<span class="kn">from</span> <span class="nn">networkx.exception</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">networkx.utils.decorators</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;resource_allocation_index&#39;</span><span class="p">,</span>
+           <span class="s">&#39;cn_soundarajan_hopcroft&#39;</span><span class="p">,</span>
+           <span class="s">&#39;ra_index_soundarajan_hopcroft&#39;</span><span class="p">,</span>
+           <span class="s">&#39;within_inter_cluster&#39;</span><span class="p">]</span>
+
+
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;multigraph&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="resource_allocation_index"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.link_prediction.resource_allocation_index.html#networkx.algorithms.link_prediction.resource_allocation_index">[docs]</a><span class="k">def</span> <span class="nf">resource_allocation_index</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute the resource allocation index of u and v.</span>
+
+<span class="sd">    Resource allocation index of nodes u and v is defined as the sum of</span>
+<span class="sd">    reciprocals of the degree of all the common neighbors w of u and v.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : graph</span>
+<span class="sd">        A NetworkX undirected graph.</span>
+
+<span class="sd">    u, v : nodes</span>
+<span class="sd">        Nodes in the graph.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    value : float</span>
+<span class="sd">        The resource allocation index of u and v.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.complete_graph(5)</span>
+<span class="sd">    &gt;&gt;&gt; nx.resource_allocation_index(G, 0, 1)</span>
+<span class="sd">    0.75</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] T. Zhou, L. Lu, Y.-C. Zhang.</span>
+<span class="sd">       Predicting missing links via local information.</span>
+<span class="sd">       Eur. Phys. J. B 71 (2009) 623.</span>
+<span class="sd">       http://arxiv.org/pdf/0901.0553.pdf</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">common_neighbors</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+
+</div>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;multigraph&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="cn_soundarajan_hopcroft"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.link_prediction.cn_soundarajan_hopcroft.html#networkx.algorithms.link_prediction.cn_soundarajan_hopcroft">[docs]</a><span class="k">def</span> <span class="nf">cn_soundarajan_hopcroft</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Count the number of common neighbors using community information.</span>
+
+<span class="sd">    One is added to the count for each common neighbor that belongs</span>
+<span class="sd">    to the same community as u and v.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : graph</span>
+<span class="sd">        A NetworkX undirected graph.</span>
+
+<span class="sd">    u, v : nodes</span>
+<span class="sd">        Nodes in the graph.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    value : int</span>
+<span class="sd">        The number of common neighbors between u and v plus bonus for</span>
+<span class="sd">        each common neighbor belonging to the same community as u and v.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The community information is defined as the information of which</span>
+<span class="sd">    community each node belongs to. This information should be stored</span>
+<span class="sd">    as the nodes attribute with &#39;community&#39; as the name.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import networkx as nx</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.path_graph(3)</span>
+<span class="sd">    &gt;&gt;&gt; G.node[0][&#39;community&#39;] = 0</span>
+<span class="sd">    &gt;&gt;&gt; G.node[1][&#39;community&#39;] = 0</span>
+<span class="sd">    &gt;&gt;&gt; G.node[2][&#39;community&#39;] = 0</span>
+<span class="sd">    &gt;&gt;&gt; nx.cn_soundarajan_hopcroft(G, 0, 2)</span>
+<span class="sd">    2</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] Sucheta Soundarajan and John Hopcroft.</span>
+<span class="sd">       Using community information to improve the precision of link prediction methods.</span>
+<span class="sd">       In Proceedings of the 21st international conference companion on</span>
+<span class="sd">       World Wide Web (WWW &#39;12 Companion). ACM, New York, NY, USA, 607-608.</span>
+<span class="sd">       http://doi.acm.org/10.1145/2187980.2188150</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Cu</span> <span class="o">=</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+    <span class="n">Cv</span> <span class="o">=</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="n">cnbors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">common_neighbors</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">Cu</span> <span class="o">==</span> <span class="n">Cv</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">cnbors</span><span class="p">)</span> <span class="o">+</span> <span class="nb">sum</span><span class="p">(</span><span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="o">==</span> <span class="n">Cu</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">cnbors</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">cnbors</span><span class="p">)</span>
+
+</div>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;multigraph&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="ra_index_soundarajan_hopcroft"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.link_prediction.ra_index_soundarajan_hopcroft.html#networkx.algorithms.link_prediction.ra_index_soundarajan_hopcroft">[docs]</a><span class="k">def</span> <span class="nf">ra_index_soundarajan_hopcroft</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute the resource allocation index of u and v using community information.</span>
+
+<span class="sd">    Resource allocation index of two nodes is defined as the sum of</span>
+<span class="sd">    reciprocals of the degree of all their common neighbors. However,</span>
+<span class="sd">    this function only considers common neighbors belonging to the same</span>
+<span class="sd">    community as u and v.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : graph</span>
+<span class="sd">        A NetworkX undirected graph.</span>
+
+<span class="sd">    u, v : nodes</span>
+<span class="sd">        Nodes in the graph.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    value : float</span>
+<span class="sd">        The resource allocation index of u and v considering only</span>
+<span class="sd">        common neighbors that belong to the same community as u and v.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The community information is defined as the information of which</span>
+<span class="sd">    community each node belongs to. This information should be stored</span>
+<span class="sd">    as the nodes attribute with &#39;community&#39; as the name.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.Graph()</span>
+<span class="sd">    &gt;&gt;&gt; G.add_edges_from([(0, 1), (0, 2), (1, 3), (2, 3)])</span>
+<span class="sd">    &gt;&gt;&gt; G.node[0][&#39;community&#39;] = 0</span>
+<span class="sd">    &gt;&gt;&gt; G.node[1][&#39;community&#39;] = 0</span>
+<span class="sd">    &gt;&gt;&gt; G.node[2][&#39;community&#39;] = 1</span>
+<span class="sd">    &gt;&gt;&gt; G.node[3][&#39;community&#39;] = 0</span>
+<span class="sd">    &gt;&gt;&gt; nx.ra_index_soundarajan_hopcroft(G, 0, 3)</span>
+<span class="sd">    0.5</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] Sucheta Soundarajan and John Hopcroft.</span>
+<span class="sd">       Using community information to improve the precision of link prediction methods.</span>
+<span class="sd">       In Proceedings of the 21st international conference companion on</span>
+<span class="sd">       World Wide Web (WWW &#39;12 Companion). ACM, New York, NY, USA, 607-608.</span>
+<span class="sd">       http://doi.acm.org/10.1145/2187980.2188150</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Cu</span> <span class="o">=</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+    <span class="n">Cv</span> <span class="o">=</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">Cu</span> <span class="o">==</span> <span class="n">Cv</span><span class="p">:</span>
+        <span class="n">cnbors</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">common_neighbors</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">cnbors</span> <span class="k">if</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="o">==</span> <span class="n">Cu</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+</div>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;multigraph&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="within_inter_cluster"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.link_prediction.within_inter_cluster.html#networkx.algorithms.link_prediction.within_inter_cluster">[docs]</a><span class="k">def</span> <span class="nf">within_inter_cluster</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="mf">0.001</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute the ratio of within- and inter-cluster common neighbor.</span>
+
+<span class="sd">    If a common neighbor w belongs to the same community with u and v,</span>
+<span class="sd">    w is considered as within-cluster common neighbor of u and v.</span>
+<span class="sd">    Otherwise, it is considered as inter-cluster common neighbor of u</span>
+<span class="sd">    and v. The ratio between the size of the set of within- and</span>
+<span class="sd">    inter-cluster common neighbors is defined as the WIC measure. [1]_</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : graph</span>
+<span class="sd">        A NetworkX undirected graph.</span>
+
+<span class="sd">    u, v : nodes</span>
+<span class="sd">        Nodes in the graph.</span>
+
+<span class="sd">    delta : float, optional</span>
+<span class="sd">        Value to prevent division by zero in case there is no inter-cluster</span>
+<span class="sd">        common neighbor of u and v. See [1]_ for details.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    value : float</span>
+<span class="sd">        The WIC measure of u and v.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The community information is defined as the information of which</span>
+<span class="sd">    community each node belongs to. This information should be stored</span>
+<span class="sd">    as the nodes attribute with &#39;community&#39; as the name.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.Graph()</span>
+<span class="sd">    &gt;&gt;&gt; G.add_edges_from([(0, 1), (0, 2), (0, 3), (1, 4), (2, 4), (3, 4)])</span>
+<span class="sd">    &gt;&gt;&gt; G.node[0][&#39;community&#39;] = 0</span>
+<span class="sd">    &gt;&gt;&gt; G.node[1][&#39;community&#39;] = 1</span>
+<span class="sd">    &gt;&gt;&gt; G.node[2][&#39;community&#39;] = 0</span>
+<span class="sd">    &gt;&gt;&gt; G.node[3][&#39;community&#39;] = 0</span>
+<span class="sd">    &gt;&gt;&gt; G.node[4][&#39;community&#39;] = 0</span>
+<span class="sd">    &gt;&gt;&gt; nx.within_inter_cluster(G, 0, 4)</span>
+<span class="sd">    1.9980019980019983</span>
+<span class="sd">    &gt;&gt;&gt; nx.within_inter_cluster(G, 0, 4, delta=0.5)</span>
+<span class="sd">    1.3333333333333333</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] Jorge Carlos Valverde-Rebaza and Alneu de Andrade Lopes.</span>
+<span class="sd">       Link prediction in complex networks based on cluster information.</span>
+<span class="sd">       In Proceedings of the 21st Brazilian conference on Advances in</span>
+<span class="sd">       Artificial Intelligence (SBIA&#39;12)</span>
+<span class="sd">       http://dx.doi.org/10.1007/978-3-642-34459-6_10</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">delta</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">NetworkXAlgorithmError</span><span class="p">(</span><span class="s">&#39;Delta must be greater than zero&#39;</span><span class="p">)</span>
+
+    <span class="n">Cu</span> <span class="o">=</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+    <span class="n">Cv</span> <span class="o">=</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">Cu</span> <span class="o">==</span> <span class="n">Cv</span><span class="p">:</span>
+        <span class="n">cnbors</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">common_neighbors</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+        <span class="n">within</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">cnbors</span> <span class="k">if</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="o">==</span> <span class="n">Cu</span><span class="p">)</span>
+        <span class="n">inter</span> <span class="o">=</span> <span class="n">cnbors</span> <span class="o">-</span> <span class="n">within</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">within</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inter</span><span class="p">)</span> <span class="o">+</span> <span class="n">delta</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+</div>
+<span class="k">def</span> <span class="nf">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the community of the given node.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">G</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="s">&#39;community&#39;</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">NetworkXAlgorithmError</span><span class="p">(</span><span class="s">&#39;No community information&#39;</span><span class="p">)</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="http://networkx.github.com/">NetworkX Home </a> |&nbsp;</li>
+        <li><a href="http://networkx.github.com/documentation.html">Documentation </a>|&nbsp;</li>
+        <li><a href="http://networkx.github.com/download.html">Download </a> |&nbsp;</li>
+        <li><a href="http://github.com/networkx">Developer (Github)</a></li>
+
+
+
+          <li><a href="../../index.html" >Module code</a> &raquo;</li>
+          <li><a href="../../networkx.html" >networkx</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, NetworkX Developers.
+      Last updated on May 11, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
