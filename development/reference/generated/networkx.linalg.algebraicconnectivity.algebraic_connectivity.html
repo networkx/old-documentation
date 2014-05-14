@@ -1,0 +1,243 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>algebraic_connectivity &mdash; NetworkX 1.9.dev20140514000007 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.9.dev20140514000007',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 1.9.dev20140514000007 documentation"
+          href="../../_static/opensearch.xml"/>
+    <link rel="top" title="NetworkX 1.9.dev20140514000007 documentation" href="../../index.html" />
+    <link rel="up" title="Linear algebra" href="../linalg.html" />
+    <link rel="next" title="fiedler_vector" href="networkx.linalg.algebraicconnectivity.fiedler_vector.html" />
+    <link rel="prev" title="adjacency_spectrum" href="networkx.linalg.spectrum.adjacency_spectrum.html" /> 
+  </head>
+  <body>
+<div style="color: black;background-color: white; font-size: 3.2em; text-align: left; padding: 15px 10px 10px 15px">
+NetworkX
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="networkx.linalg.algebraicconnectivity.fiedler_vector.html" title="fiedler_vector"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="networkx.linalg.spectrum.adjacency_spectrum.html" title="adjacency_spectrum"
+             accesskey="P">previous</a> |</li>
+        <li><a href="http://networkx.github.com/">NetworkX Home </a> |&nbsp;</li>
+        <li><a href="http://networkx.github.com/documentation.html">Documentation </a>|&nbsp;</li>
+        <li><a href="http://networkx.github.com/download.html">Download </a> |&nbsp;</li>
+        <li><a href="http://github.com/networkx">Developer (Github)</a></li>
+
+
+
+          <li><a href="../index.html" >Reference</a> &raquo;</li>
+          <li><a href="../pdf_reference.html" >Reference</a> &raquo;</li>
+          <li><a href="../linalg.html" accesskey="U">Linear algebra</a> &raquo;</li> 
+      </ul>
+    </div>
+
+<p>This documentation is for the development version <b>1.9.dev_20140514000007</b></p>
+
+
+
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="networkx.linalg.spectrum.adjacency_spectrum.html"
+                        title="previous chapter">adjacency_spectrum</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="networkx.linalg.algebraicconnectivity.fiedler_vector.html"
+                        title="next chapter">fiedler_vector</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="algebraic-connectivity">
+<h1>algebraic_connectivity<a class="headerlink" href="#algebraic-connectivity" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="networkx.linalg.algebraicconnectivity.algebraic_connectivity">
+<tt class="descname">algebraic_connectivity</tt><big>(</big><em>G</em>, <em>weight='weight'</em>, <em>normalized=False</em>, <em>tol=1e-08</em>, <em>method='tracemin'</em><big>)</big><a class="reference internal" href="../../_modules/networkx/linalg/algebraicconnectivity.html#algebraic_connectivity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.linalg.algebraicconnectivity.algebraic_connectivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the algebraic connectivity of an undirected graph.</p>
+<p>The algebraic connectivity of a connected undirected graph is the second
+smallest eigenvalue of its Laplacian matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
+<blockquote>
+<div><p>An undirected graph.</p>
+</div></blockquote>
+<p><strong>weight</strong> : object, optional</p>
+<blockquote>
+<div><p>The data key used to determine the weight of each edge. If None, then
+each edge has unit weight. Default value: None.</p>
+</div></blockquote>
+<p><strong>normalized</strong> : bool, optional</p>
+<blockquote>
+<div><p>Whether the normalized Laplacian matrix is used. Default value: False.</p>
+</div></blockquote>
+<p><strong>tol</strong> : float, optional</p>
+<blockquote>
+<div><p>Tolerance of relative residual in eigenvalue computation. Default
+value: 1e-8.</p>
+</div></blockquote>
+<p><strong>method</strong> : string, optional</p>
+<blockquote>
+<div><p>Method of eigenvalue computation. It should be one of &#8216;tracemin&#8217;
+(TraceMIN), &#8216;lanczos&#8217; (Lanczos iteration) and &#8216;lobpcg&#8217; (LOBPCG).
+Default value: &#8216;tracemin&#8217;.</p>
+<p>The TraceMIN algorithm uses a linear system solver. The following
+values allow specifying the solver to be used.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><p class="first last">Value</p>
+</th>
+<th class="head"><p class="first last">Solver</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><p class="first last">&#8216;tracemin_pcg&#8217;</p>
+</td>
+<td><p class="first last">Preconditioned conjugate gradient method</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first last">&#8216;tracemin_chol&#8217;</p>
+</td>
+<td><p class="first last">Cholesky factorization</p>
+</td>
+</tr>
+<tr class="row-even"><td><p class="first last">&#8216;tracemin_lu&#8217;</p>
+</td>
+<td><p class="first last">LU factorization</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>algebraic_connectivity</strong> : float</p>
+<blockquote>
+<div><p>Algebraic connectivity.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>NetworkXNotImplemented</strong> :</p>
+<blockquote>
+<div><p>If G is directed.</p>
+</div></blockquote>
+<p><strong>NetworkXError</strong> :</p>
+<blockquote class="last">
+<div><p>If G has less than two nodes.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><tt class="xref py py-obj docutils literal"><span class="pre">laplacian_matrix</span></tt></p>
+</div>
+<p class="rubric">Notes</p>
+<p>Edge weights are interpreted by their absolute values. For MultiGraph&#8217;s,
+weights of parallel edges are summed. Zero-weighted edges are ignored.</p>
+<p>To use Cholesky factorization in the TraceMIN algorithm, the
+<tt class="samp docutils literal"><span class="pre">scikits.sparse</span></tt> package must be installed.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="networkx.linalg.algebraicconnectivity.fiedler_vector.html" title="fiedler_vector"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="networkx.linalg.spectrum.adjacency_spectrum.html" title="adjacency_spectrum"
+             >previous</a> |</li>
+        <li><a href="http://networkx.github.com/">NetworkX Home </a> |&nbsp;</li>
+        <li><a href="http://networkx.github.com/documentation.html">Documentation </a>|&nbsp;</li>
+        <li><a href="http://networkx.github.com/download.html">Download </a> |&nbsp;</li>
+        <li><a href="http://github.com/networkx">Developer (Github)</a></li>
+
+
+
+          <li><a href="../index.html" >Reference</a> &raquo;</li>
+          <li><a href="../pdf_reference.html" >Reference</a> &raquo;</li>
+          <li><a href="../linalg.html" >Linear algebra</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, NetworkX Developers.
+      Last updated on May 14, 2014.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
