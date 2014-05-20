@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>local_node_connectivity &mdash; NetworkX 1.9.dev20140519000008 documentation</title>
+    <title>local_node_connectivity &mdash; NetworkX 1.9.dev20140520000008 documentation</title>
     
     <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.9.dev20140519000008',
+        VERSION:     '1.9.dev20140520000008',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -27,12 +27,12 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20140519000008 documentation"
+          title="Search within NetworkX 1.9.dev20140520000008 documentation"
           href="../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20140519000008 documentation" href="../../index.html" />
+    <link rel="top" title="NetworkX 1.9.dev20140520000008 documentation" href="../../index.html" />
     <link rel="up" title="Connectivity" href="../algorithms.connectivity.html" />
     <link rel="next" title="node_connectivity" href="networkx.algorithms.connectivity.connectivity.node_connectivity.html" />
-    <link rel="prev" title="average_node_connectivity" href="networkx.algorithms.connectivity.connectivity.average_node_connectivity.html" /> 
+    <link rel="prev" title="local_edge_connectivity" href="networkx.algorithms.connectivity.connectivity.local_edge_connectivity.html" /> 
   </head>
   <body>
 <div style="color: black;background-color: white; font-size: 3.2em; text-align: left; padding: 15px 10px 10px 15px">
@@ -52,7 +52,7 @@ NetworkX
           <a href="networkx.algorithms.connectivity.connectivity.node_connectivity.html" title="node_connectivity"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="networkx.algorithms.connectivity.connectivity.average_node_connectivity.html" title="average_node_connectivity"
+          <a href="networkx.algorithms.connectivity.connectivity.local_edge_connectivity.html" title="local_edge_connectivity"
              accesskey="P">previous</a> |</li>
         <li><a href="http://networkx.github.com/">NetworkX Home </a> |&nbsp;</li>
         <li><a href="http://networkx.github.com/documentation.html">Documentation </a>|&nbsp;</li>
@@ -68,15 +68,15 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20140519000008</b></p>
+<p>This documentation is for the development version <b>1.9.dev_20140520000008</b></p>
 
 
 
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="networkx.algorithms.connectivity.connectivity.average_node_connectivity.html"
-                        title="previous chapter">average_node_connectivity</a></p>
+  <p class="topless"><a href="networkx.algorithms.connectivity.connectivity.local_edge_connectivity.html"
+                        title="previous chapter">local_edge_connectivity</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="networkx.algorithms.connectivity.connectivity.node_connectivity.html"
                         title="next chapter">node_connectivity</a></p>
@@ -105,16 +105,14 @@ NetworkX
 <h1>local_node_connectivity<a class="headerlink" href="#local-node-connectivity" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.algorithms.connectivity.connectivity.local_node_connectivity">
-<tt class="descname">local_node_connectivity</tt><big>(</big><em>G</em>, <em>s</em>, <em>t</em>, <em>aux_digraph=None</em>, <em>mapping=None</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/connectivity/connectivity.html#local_node_connectivity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.connectivity.connectivity.local_node_connectivity" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">local_node_connectivity</tt><big>(</big><em>G</em>, <em>s</em>, <em>t</em>, <em>flow_func=None</em>, <em>auxiliary=None</em>, <em>residual=None</em>, <em>cutoff=None</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/connectivity/connectivity.html#local_node_connectivity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.connectivity.connectivity.local_node_connectivity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes local node connectivity for nodes s and t.</p>
 <p>Local node connectivity for two non adjacent nodes s and t is the
 minimum number of nodes that must be removed (along with their incident
 edges) to disconnect them.</p>
 <p>This is a flow based implementation of node connectivity. We compute the
 maximum flow on an auxiliary digraph build from the original input
-graph (see below for details). This is equal to the local node
-connectivity because the value of a maximum s-t-flow is equal to the
-capacity of a minimum s-t-cut (Ford and Fulkerson theorem) <a class="reference internal" href="#r209">[R209]</a> .</p>
+graph (see below for details).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -131,14 +129,36 @@ capacity of a minimum s-t-cut (Ford and Fulkerson theorem) <a class="reference i
 <blockquote>
 <div><p>Target node</p>
 </div></blockquote>
-<p><strong>aux_digraph</strong> : NetworkX DiGraph (default=None)</p>
+<p><strong>flow_func</strong> : function</p>
 <blockquote>
-<div><p>Auxiliary digraph to compute flow based node connectivity. If None
-the auxiliary digraph is build.</p>
+<div><p>A function for computing the maximum flow among a pair of nodes.
+The function has to accept at least three parameters: a Digraph, 
+a source node, and a target node. And return a residual network 
+that follows NetworkX conventions (see <tt class="xref py py-meth docutils literal"><span class="pre">maximum_flow()</span></tt> for 
+details). If flow_func is None, the default maximum flow function 
+(<tt class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></tt>) is used. See below for details. The choice
+of the default function may change from version to version and 
+should not be relied on. Default value: None.</p>
 </div></blockquote>
-<p><strong>mapping</strong> : dict (default=None)</p>
+<p><strong>auxiliary</strong> : NetworkX DiGraph</p>
 <blockquote>
-<div><p>Dictionary with a mapping of node names in G and in the auxiliary digraph.</p>
+<div><p>Auxiliary digraph to compute flow based node connectivity. It has
+to have a graph attribute called mapping with a dictionary mapping
+node names in G and in the auxiliary digraph. If provided
+it will be reused instead of recreated. Default value: None.</p>
+</div></blockquote>
+<p><strong>residual</strong> : NetworkX DiGraph</p>
+<blockquote>
+<div><p>Residual network to compute maximum flow. If provided it will be
+reused instead of recreated. Default value: None.</p>
+</div></blockquote>
+<p><strong>cutoff</strong> : integer, float</p>
+<blockquote>
+<div><p>If specified, the maximum flow algorithm will terminate when the 
+flow value reaches or exceeds the cutoff. This is only for the
+algorithms that support the cutoff parameter: <tt class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></tt> 
+and <tt class="xref py py-meth docutils literal"><span class="pre">shortest_augmenting_path()</span></tt>. Other algorithms will ignore
+this parameter. Default value: None.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -152,42 +172,85 @@ the auxiliary digraph is build.</p>
 </table>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.connectivity.connectivity.node_connectivity.html#networkx.algorithms.connectivity.connectivity.node_connectivity" title="networkx.algorithms.connectivity.connectivity.node_connectivity"><tt class="xref py py-obj docutils literal"><span class="pre">node_connectivity</span></tt></a>, <a class="reference internal" href="networkx.algorithms.connectivity.connectivity.all_pairs_node_connectivity_matrix.html#networkx.algorithms.connectivity.connectivity.all_pairs_node_connectivity_matrix" title="networkx.algorithms.connectivity.connectivity.all_pairs_node_connectivity_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">all_pairs_node_connectivity_matrix</span></tt></a>, <a class="reference internal" href="networkx.algorithms.connectivity.connectivity.local_edge_connectivity.html#networkx.algorithms.connectivity.connectivity.local_edge_connectivity" title="networkx.algorithms.connectivity.connectivity.local_edge_connectivity"><tt class="xref py py-obj docutils literal"><span class="pre">local_edge_connectivity</span></tt></a>, <a class="reference internal" href="networkx.algorithms.connectivity.connectivity.edge_connectivity.html#networkx.algorithms.connectivity.connectivity.edge_connectivity" title="networkx.algorithms.connectivity.connectivity.edge_connectivity"><tt class="xref py py-obj docutils literal"><span class="pre">edge_connectivity</span></tt></a>, <tt class="xref py py-obj docutils literal"><span class="pre">max_flow</span></tt>, <tt class="xref py py-obj docutils literal"><span class="pre">ford_fulkerson</span></tt></p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.connectivity.connectivity.local_edge_connectivity.html#networkx.algorithms.connectivity.connectivity.local_edge_connectivity" title="networkx.algorithms.connectivity.connectivity.local_edge_connectivity"><tt class="xref py py-meth docutils literal"><span class="pre">local_edge_connectivity()</span></tt></a>, <a class="reference internal" href="networkx.algorithms.connectivity.connectivity.node_connectivity.html#networkx.algorithms.connectivity.connectivity.node_connectivity" title="networkx.algorithms.connectivity.connectivity.node_connectivity"><tt class="xref py py-meth docutils literal"><span class="pre">node_connectivity()</span></tt></a>, <tt class="xref py py-meth docutils literal"><span class="pre">minimum_node_cut()</span></tt>, <tt class="xref py py-meth docutils literal"><span class="pre">maximum_flow()</span></tt>, <tt class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></tt>, <tt class="xref py py-meth docutils literal"><span class="pre">preflow_push()</span></tt>, <tt class="xref py py-meth docutils literal"><span class="pre">shortest_augmenting_path()</span></tt></p>
 </div>
 <p class="rubric">Notes</p>
 <p>This is a flow based implementation of node connectivity. We compute the
-maximum flow using the Ford and Fulkerson algorithm on an auxiliary digraph
-build from the original input graph:</p>
+maximum flow using, by default, the <tt class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></tt> algorithm (see:
+<tt class="xref py py-meth docutils literal"><span class="pre">maximum_flow()</span></tt>) on an auxiliary digraph build from the original 
+input graph:</p>
 <p>For an undirected graph G having <span class="math">\(n\)</span> nodes and <span class="math">\(m\)</span> edges we derive a
-directed graph D with 2n nodes and 2m+n arcs by replacing each
+directed graph H with <span class="math">\(2n\)</span> nodes and <span class="math">\(2m+n\)</span> arcs by replacing each
 original node <span class="math">\(v\)</span> with two nodes <span class="math">\(v_A\)</span>, <span class="math">\(v_B\)</span> linked by an (internal)
-arc in <span class="math">\(D\)</span>. Then for each edge (<span class="math">\(u\)</span>, <span class="math">\(v\)</span>) in G we add two arcs
-(<span class="math">\(u_B\)</span>, <span class="math">\(v_A\)</span>) and (<span class="math">\(v_B\)</span>, <span class="math">\(u_A\)</span>) in <span class="math">\(D\)</span>. Finally we set the attribute
-capacity = 1 for each arc in <span class="math">\(D\)</span> <a class="reference internal" href="#r209">[R209]</a> .</p>
+arc in H. Then for each edge (<span class="math">\(u\)</span>, <span class="math">\(v\)</span>) in G we add two arcs
+(<span class="math">\(u_B\)</span>, <span class="math">\(v_A\)</span>) and (<span class="math">\(v_B\)</span>, <span class="math">\(u_A\)</span>) in H. Finally we set the attribute
+capacity = 1 for each arc in H <a class="reference internal" href="#r213">[R213]</a> .</p>
 <p>For a directed graph G having <span class="math">\(n\)</span> nodes and <span class="math">\(m\)</span> arcs we derive a
-directed graph <span class="math">\(D\)</span> with <span class="math">\(2n\)</span> nodes and <span class="math">\(m+n\)</span> arcs by replacing each
+directed graph H with <span class="math">\(2n\)</span> nodes and <span class="math">\(m+n\)</span> arcs by replacing each
 original node <span class="math">\(v\)</span> with two nodes <span class="math">\(v_A\)</span>, <span class="math">\(v_B\)</span> linked by an (internal)
-arc <span class="math">\((v_A, v_B)\)</span> in D. Then for each arc <span class="math">\((u,v)\)</span> in G we add one arc
-<span class="math">\((u_B,v_A)\)</span> in <span class="math">\(D\)</span>. Finally we set the attribute capacity = 1 for
-each arc in <span class="math">\(D\)</span>.</p>
+arc (<span class="math">\(v_A\)</span>, <span class="math">\(v_B\)</span>) in H. Then for each arc (<span class="math">\(u\)</span>, <span class="math">\(v\)</span>) in G we add one arc
+(<span class="math">\(u_B\)</span>, <span class="math">\(v_A\)</span>) in H. Finally we set the attribute capacity = 1 for
+each arc in H.</p>
 <p>This is equal to the local node connectivity because the value of
-a maximum s-t-flow is equal to the capacity of a minimum s-t-cut (Ford
-and Fulkerson theorem).</p>
+a maximum s-t-flow is equal to the capacity of a minimum s-t-cut.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r209" rules="none">
+<table class="docutils citation" frame="void" id="r213" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R209]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id3">3</a>)</em> Kammer, Frank and Hanjo Taubig. Graph Connectivity. in Brandes and
+<tr><td class="label">[R213]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Kammer, Frank and Hanjo Taubig. Graph Connectivity. in Brandes and
 Erlebach, &#8216;Network Analysis: Methodological Foundations&#8217;, Lecture
 Notes in Computer Science, Volume 3418, Springer-Verlag, 2005.
 <a class="reference external" href="http://www.informatik.uni-augsburg.de/thi/personen/kammer/Graph_Connectivity.pdf">http://www.informatik.uni-augsburg.de/thi/personen/kammer/Graph_Connectivity.pdf</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># Platonic icosahedral graph has node connectivity 5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c"># for each non adjacent node pair</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">icosahedral_graph</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">local_node_connectivity</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<p>This function is not imported in the base NetworkX namespace, so you
+have to explicitly import it from the connectivity package:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.algorithms.connectivity</span> <span class="kn">import</span> <span class="n">local_node_connectivity</span>
+</pre></div>
+</div>
+<p>We use in this example the platonic icosahedral graph, which has node
+connectivity 5.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">icosahedral_graph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">local_node_connectivity</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+<p>If you need to compute local connectivity on several pairs of
+nodes in the same graph, it is recommended that you reuse the
+data structures that NetworkX uses in the computation: the 
+auxiliary digraph for node connectivity, and the residual
+network for the underlying maximum flow computation.</p>
+<p>Example of how to compute local node connectivity among
+all pairs of nodes of the platonic icosahedral graph reusing
+the data structures.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">itertools</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># You also have to explicitly import the function for </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># building the auxiliary digraph from the connectivity package</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.algorithms.connectivity</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="gp">... </span>    <span class="n">build_auxiliary_node_connectivity</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">H</span> <span class="o">=</span> <span class="n">build_auxiliary_node_connectivity</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># And the function for building the residual network from the</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># flow package</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.algorithms.flow.utils</span> <span class="kn">import</span> <span class="n">build_residual_network</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Note that the auxiliary digraph has an edge attribute named capacity</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">R</span> <span class="o">=</span> <span class="n">build_residual_network</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="s">&#39;capacity&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Reuse the auxiliary digraph and the residual network by passing them</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># as parameters</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">k</span> <span class="o">=</span> <span class="n">local_node_connectivity</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">auxiliary</span><span class="o">=</span><span class="n">H</span><span class="p">,</span> <span class="n">residual</span><span class="o">=</span><span class="n">R</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">result</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">all</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="o">==</span> <span class="mi">5</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>You can also use alternative flow algorithms for computing node 
+connectivity. For instance, in dense networks the algorithm
+<tt class="xref py py-meth docutils literal"><span class="pre">shortest_augmenting_path()</span></tt> will usually perform better than
+the default <tt class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></tt> which is faster for sparse 
+networks with highly skewed degree distributions.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">local_node_connectivity</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">flow_func</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">shortest_augmenting_path</span><span class="p">)</span>
 <span class="go">5</span>
 </pre></div>
 </div>
@@ -214,7 +277,7 @@ Notes in Computer Science, Volume 3418, Springer-Verlag, 2005.
           <a href="networkx.algorithms.connectivity.connectivity.node_connectivity.html" title="node_connectivity"
              >next</a> |</li>
         <li class="right" >
-          <a href="networkx.algorithms.connectivity.connectivity.average_node_connectivity.html" title="average_node_connectivity"
+          <a href="networkx.algorithms.connectivity.connectivity.local_edge_connectivity.html" title="local_edge_connectivity"
              >previous</a> |</li>
         <li><a href="http://networkx.github.com/">NetworkX Home </a> |&nbsp;</li>
         <li><a href="http://networkx.github.com/documentation.html">Documentation </a>|&nbsp;</li>
@@ -231,7 +294,7 @@ Notes in Computer Science, Volume 3418, Springer-Verlag, 2005.
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on May 19, 2014.
+      Last updated on May 20, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

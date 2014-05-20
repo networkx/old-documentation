@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>average_node_connectivity &mdash; NetworkX 1.9.dev20140519000008 documentation</title>
+    <title>average_node_connectivity &mdash; NetworkX 1.9.dev20140520000008 documentation</title>
     
     <link rel="stylesheet" href="../../_static/networkx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.9.dev20140519000008',
+        VERSION:     '1.9.dev20140520000008',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  false
@@ -27,12 +27,12 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 1.9.dev20140519000008 documentation"
+          title="Search within NetworkX 1.9.dev20140520000008 documentation"
           href="../../_static/opensearch.xml"/>
-    <link rel="top" title="NetworkX 1.9.dev20140519000008 documentation" href="../../index.html" />
+    <link rel="top" title="NetworkX 1.9.dev20140520000008 documentation" href="../../index.html" />
     <link rel="up" title="Connectivity" href="../algorithms.connectivity.html" />
-    <link rel="next" title="local_node_connectivity" href="networkx.algorithms.connectivity.connectivity.local_node_connectivity.html" />
-    <link rel="prev" title="stoer_wagner" href="networkx.algorithms.connectivity.stoer_wagner.stoer_wagner.html" /> 
+    <link rel="next" title="all_pairs_node_connectivity" href="networkx.algorithms.connectivity.connectivity.all_pairs_node_connectivity.html" />
+    <link rel="prev" title="build_auxiliary_node_connectivity" href="networkx.algorithms.connectivity.utils.build_auxiliary_node_connectivity.html" /> 
   </head>
   <body>
 <div style="color: black;background-color: white; font-size: 3.2em; text-align: left; padding: 15px 10px 10px 15px">
@@ -49,10 +49,10 @@ NetworkX
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="networkx.algorithms.connectivity.connectivity.local_node_connectivity.html" title="local_node_connectivity"
+          <a href="networkx.algorithms.connectivity.connectivity.all_pairs_node_connectivity.html" title="all_pairs_node_connectivity"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="networkx.algorithms.connectivity.stoer_wagner.stoer_wagner.html" title="stoer_wagner"
+          <a href="networkx.algorithms.connectivity.utils.build_auxiliary_node_connectivity.html" title="build_auxiliary_node_connectivity"
              accesskey="P">previous</a> |</li>
         <li><a href="http://networkx.github.com/">NetworkX Home </a> |&nbsp;</li>
         <li><a href="http://networkx.github.com/documentation.html">Documentation </a>|&nbsp;</li>
@@ -68,18 +68,18 @@ NetworkX
       </ul>
     </div>
 
-<p>This documentation is for the development version <b>1.9.dev_20140519000008</b></p>
+<p>This documentation is for the development version <b>1.9.dev_20140520000008</b></p>
 
 
 
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="networkx.algorithms.connectivity.stoer_wagner.stoer_wagner.html"
-                        title="previous chapter">stoer_wagner</a></p>
+  <p class="topless"><a href="networkx.algorithms.connectivity.utils.build_auxiliary_node_connectivity.html"
+                        title="previous chapter">build_auxiliary_node_connectivity</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="networkx.algorithms.connectivity.connectivity.local_node_connectivity.html"
-                        title="next chapter">local_node_connectivity</a></p>
+  <p class="topless"><a href="networkx.algorithms.connectivity.connectivity.all_pairs_node_connectivity.html"
+                        title="next chapter">all_pairs_node_connectivity</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
@@ -105,10 +105,10 @@ NetworkX
 <h1>average_node_connectivity<a class="headerlink" href="#average-node-connectivity" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.algorithms.connectivity.connectivity.average_node_connectivity">
-<tt class="descname">average_node_connectivity</tt><big>(</big><em>G</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/connectivity/connectivity.html#average_node_connectivity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.connectivity.connectivity.average_node_connectivity" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">average_node_connectivity</tt><big>(</big><em>G</em>, <em>flow_func=None</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/connectivity/connectivity.html#average_node_connectivity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.connectivity.connectivity.average_node_connectivity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the average connectivity of a graph G.</p>
 <p>The average connectivity <span class="math">\(\bar{\kappa}\)</span> of a graph G is the average
-of local node connectivity over all pairs of nodes of G <a class="reference internal" href="#r205">[R205]</a> .</p>
+of local node connectivity over all pairs of nodes of G <a class="reference internal" href="#r209">[R209]</a> .</p>
 <div class="math">
 \[\bar{\kappa}(G) = \frac{\sum_{u,v} \kappa_{G}(u,v)}{{n \choose 2}}\]</div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -118,6 +118,17 @@ of local node connectivity over all pairs of nodes of G <a class="reference inte
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
 <blockquote>
 <div><p>Undirected graph</p>
+</div></blockquote>
+<p><strong>flow_func</strong> : function</p>
+<blockquote>
+<div><p>A function for computing the maximum flow among a pair of nodes.
+The function has to accept at least three parameters: a Digraph, 
+a source node, and a target node. And return a residual network 
+that follows NetworkX conventions (see <tt class="xref py py-meth docutils literal"><span class="pre">maximum_flow()</span></tt> for 
+details). If flow_func is None, the default maximum flow function 
+(<tt class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></tt>) is used. See <a class="reference internal" href="networkx.algorithms.connectivity.connectivity.local_node_connectivity.html#networkx.algorithms.connectivity.connectivity.local_node_connectivity" title="networkx.algorithms.connectivity.connectivity.local_node_connectivity"><tt class="xref py py-meth docutils literal"><span class="pre">local_node_connectivity()</span></tt></a>
+for details. The choice of the default function may change from 
+version to version and should not be relied on. Default value: None.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -131,13 +142,13 @@ of local node connectivity over all pairs of nodes of G <a class="reference inte
 </table>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.connectivity.connectivity.local_node_connectivity.html#networkx.algorithms.connectivity.connectivity.local_node_connectivity" title="networkx.algorithms.connectivity.connectivity.local_node_connectivity"><tt class="xref py py-obj docutils literal"><span class="pre">local_node_connectivity</span></tt></a>, <a class="reference internal" href="networkx.algorithms.connectivity.connectivity.node_connectivity.html#networkx.algorithms.connectivity.connectivity.node_connectivity" title="networkx.algorithms.connectivity.connectivity.node_connectivity"><tt class="xref py py-obj docutils literal"><span class="pre">node_connectivity</span></tt></a>, <a class="reference internal" href="networkx.algorithms.connectivity.connectivity.local_edge_connectivity.html#networkx.algorithms.connectivity.connectivity.local_edge_connectivity" title="networkx.algorithms.connectivity.connectivity.local_edge_connectivity"><tt class="xref py py-obj docutils literal"><span class="pre">local_edge_connectivity</span></tt></a>, <a class="reference internal" href="networkx.algorithms.connectivity.connectivity.edge_connectivity.html#networkx.algorithms.connectivity.connectivity.edge_connectivity" title="networkx.algorithms.connectivity.connectivity.edge_connectivity"><tt class="xref py py-obj docutils literal"><span class="pre">edge_connectivity</span></tt></a>, <tt class="xref py py-obj docutils literal"><span class="pre">max_flow</span></tt>, <tt class="xref py py-obj docutils literal"><span class="pre">ford_fulkerson</span></tt></p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.connectivity.connectivity.local_node_connectivity.html#networkx.algorithms.connectivity.connectivity.local_node_connectivity" title="networkx.algorithms.connectivity.connectivity.local_node_connectivity"><tt class="xref py py-meth docutils literal"><span class="pre">local_node_connectivity()</span></tt></a>, <a class="reference internal" href="networkx.algorithms.connectivity.connectivity.node_connectivity.html#networkx.algorithms.connectivity.connectivity.node_connectivity" title="networkx.algorithms.connectivity.connectivity.node_connectivity"><tt class="xref py py-meth docutils literal"><span class="pre">node_connectivity()</span></tt></a>, <a class="reference internal" href="networkx.algorithms.connectivity.connectivity.edge_connectivity.html#networkx.algorithms.connectivity.connectivity.edge_connectivity" title="networkx.algorithms.connectivity.connectivity.edge_connectivity"><tt class="xref py py-meth docutils literal"><span class="pre">edge_connectivity()</span></tt></a>, <tt class="xref py py-meth docutils literal"><span class="pre">maximum_flow()</span></tt>, <tt class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></tt>, <tt class="xref py py-meth docutils literal"><span class="pre">preflow_push()</span></tt>, <tt class="xref py py-meth docutils literal"><span class="pre">shortest_augmenting_path()</span></tt></p>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r205" rules="none">
+<table class="docutils citation" frame="void" id="r209" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R205]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Beineke, L., O. Oellermann, and R. Pippert (2002). The average
+<tr><td class="label">[R209]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Beineke, L., O. Oellermann, and R. Pippert (2002). The average
 connectivity of a graph. Discrete mathematics 252(1-3), 31-45.
 <a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0012365X01001807">http://www.sciencedirect.com/science/article/pii/S0012365X01001807</a></td></tr>
 </tbody>
@@ -162,10 +173,10 @@ connectivity of a graph. Discrete mathematics 252(1-3), 31-45.
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="networkx.algorithms.connectivity.connectivity.local_node_connectivity.html" title="local_node_connectivity"
+          <a href="networkx.algorithms.connectivity.connectivity.all_pairs_node_connectivity.html" title="all_pairs_node_connectivity"
              >next</a> |</li>
         <li class="right" >
-          <a href="networkx.algorithms.connectivity.stoer_wagner.stoer_wagner.html" title="stoer_wagner"
+          <a href="networkx.algorithms.connectivity.utils.build_auxiliary_node_connectivity.html" title="build_auxiliary_node_connectivity"
              >previous</a> |</li>
         <li><a href="http://networkx.github.com/">NetworkX Home </a> |&nbsp;</li>
         <li><a href="http://networkx.github.com/documentation.html">Documentation </a>|&nbsp;</li>
@@ -182,7 +193,7 @@ connectivity of a graph. Discrete mathematics 252(1-3), 31-45.
     </div>
     <div class="footer">
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on May 19, 2014.
+      Last updated on May 20, 2014.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
