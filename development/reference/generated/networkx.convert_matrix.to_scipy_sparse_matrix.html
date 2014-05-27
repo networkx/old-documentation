@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>to_scipy_sparse_matrix &mdash; NetworkX 1.9.dev20140526000008 documentation</title>
+  <title>to_scipy_sparse_matrix &mdash; NetworkX 1.9.dev20140527000009 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140526000008 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140527000009 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 1.9.dev20140526000008 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 1.9.dev20140527000009 documentation" href="../../index.html"/>
         <link rel="up" title="Converting to and from other data formats" href="../convert.html"/>
         <link rel="next" title="from_scipy_sparse_matrix" href="networkx.convert_matrix.from_scipy_sparse_matrix.html"/>
         <link rel="prev" title="from_numpy_matrix" href="networkx.convert_matrix.from_numpy_matrix.html"/> 
@@ -238,6 +238,21 @@ value of the entry is 1.</p>
 from the subgraph of <span class="math">\(G\)</span> that is induced by the nodes in <span class="math">\(nodelist\)</span>.</p>
 <p>Uses coo_matrix format. To convert to other formats specify the
 format= keyword.</p>
+<p>The convention used for self-loop edges in graphs is to assign the
+diagonal matrix entry value to the weight attribute of the edge
+(or the number 1 if the edge has no weight attribute).  If the
+alternate convention of doubling the edge weight is desired the
+resulting Scipy sparse matrix can be modified as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scipy</span> <span class="kn">as</span> <span class="nn">sp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span>
+<span class="go">[[1]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">.</span><span class="n">setdiag</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">diagonal</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span>
+<span class="go">[[2]]</span>
+</pre></div>
+</div>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r268" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -282,7 +297,7 @@ format= keyword.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on May 26, 2014.
+      Last updated on May 27, 2014.
     </p>
   </div>
 
@@ -302,7 +317,7 @@ format= keyword.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.9.dev20140526000008',
+            VERSION:'1.9.dev20140527000009',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

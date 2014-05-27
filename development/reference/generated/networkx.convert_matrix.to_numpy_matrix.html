@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>to_numpy_matrix &mdash; NetworkX 1.9.dev20140526000008 documentation</title>
+  <title>to_numpy_matrix &mdash; NetworkX 1.9.dev20140527000009 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140526000008 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140527000009 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 1.9.dev20140526000008 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 1.9.dev20140527000009 documentation" href="../../index.html"/>
         <link rel="up" title="Converting to and from other data formats" href="../convert.html"/>
         <link rel="next" title="to_numpy_recarray" href="networkx.convert_matrix.to_numpy_recarray.html"/>
         <link rel="prev" title="from_edgelist" href="networkx.convert.from_edgelist.html"/> 
@@ -238,7 +238,7 @@ one might prefer nonedges to have some other value, such as nan.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>M</strong> : NumPy matrix</p>
 <blockquote class="last">
-<div><p>Graph adjacency matrix.</p>
+<div><p>Graph adjacency matrix</p>
 </div></blockquote>
 </td>
 </tr>
@@ -249,12 +249,28 @@ one might prefer nonedges to have some other value, such as nan.</p>
 <p class="last"><a class="reference internal" href="networkx.convert_matrix.to_numpy_recarray.html#networkx.convert_matrix.to_numpy_recarray" title="networkx.convert_matrix.to_numpy_recarray"><tt class="xref py py-obj docutils literal"><span class="pre">to_numpy_recarray</span></tt></a>, <a class="reference internal" href="networkx.convert_matrix.from_numpy_matrix.html#networkx.convert_matrix.from_numpy_matrix" title="networkx.convert_matrix.from_numpy_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">from_numpy_matrix</span></tt></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>The matrix entries are assigned with weight edge attribute. When
-an edge does not have the weight attribute, the value of the entry is 1.
-For multiple edges, the values of the entries are the sums of the edge
-attributes for each edge.</p>
+<p>The matrix entries are assigned to the weight edge attribute. When
+an edge does not have a weight attribute, the value of the entry is set to
+the number 1.  For multiple (parallel) edges, the values of the entries
+are determined by the &#8216;multigraph_weight&#8217; paramter.  The default is to
+sum the weight attributes for each of the parallel edges.</p>
 <p>When <span class="math">\(nodelist\)</span> does not contain every node in <span class="math">\(G\)</span>, the matrix is built
 from the subgraph of <span class="math">\(G\)</span> that is induced by the nodes in <span class="math">\(nodelist\)</span>.</p>
+<p>The convention used for self-loop edges in graphs is to assign the
+diagonal matrix entry value to the weight attributr of the edge
+(or the number 1 if the edge has no weight attribute).  If the
+alternate convention of doubling the edge weight is desired the
+resulting Numpy matrix can be modified as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span>
+<span class="go">matrix([[ 1.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">.</span><span class="n">A</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">diag_indices_from</span><span class="p">(</span><span class="n">A</span><span class="p">)]</span> <span class="o">*=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span>
+<span class="go">matrix([[ 2.]])</span>
+</pre></div>
+</div>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiDiGraph</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -290,7 +306,7 @@ from the subgraph of <span class="math">\(G\)</span> that is induced by the node
   <div role="contentinfo">
     <p>
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on May 26, 2014.
+      Last updated on May 27, 2014.
     </p>
   </div>
 
@@ -310,7 +326,7 @@ from the subgraph of <span class="math">\(G\)</span> that is induced by the node
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.9.dev20140526000008',
+            VERSION:'1.9.dev20140527000009',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tree &mdash; NetworkX 1.9.dev20140526000008 documentation</title>
+  <title>Tree &mdash; NetworkX 1.9.dev20140527000009 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140526000008 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140527000009 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 1.9.dev20140526000008 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 1.9.dev20140527000009 documentation" href="../index.html"/>
         <link rel="up" title="Algorithms" href="algorithms.html"/>
         <link rel="next" title="is_tree" href="generated/networkx.algorithms.tree.recognition.is_tree.html"/>
         <link rel="prev" title="bfs_successors" href="generated/networkx.algorithms.traversal.breadth_first_search.bfs_successors.html"/> 
@@ -192,6 +192,59 @@
 </div>
 <div class="section" id="module-networkx.algorithms.tree.recognition">
 <span id="recognition"></span><h2>Recognition<a class="headerlink" href="#module-networkx.algorithms.tree.recognition" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="recognition-tests">
+<h3>Recognition Tests<a class="headerlink" href="#recognition-tests" title="Permalink to this headline">¶</a></h3>
+<p>A <em>forest</em> is an acyclic, undirected graph, and a <em>tree</em> is a connected forest.
+Depending on the subfield, there are various conventions for generalizing these
+definitions to directed graphs.</p>
+<p>In one convention, directed variants of forest and tree are defined in an
+identical manner, except that the direction of the edges is ignored. In effect,
+each directed edge is treated as a single undirected edge. Then, additional
+restrictions are imposed to define <em>branchings</em> and <em>arborescences</em>.</p>
+<p>In another convention, directed variants of forest and tree correspond to
+the previous convention&#8217;s branchings and arborescences, respectively. Then two
+new terms, <em>polyforest</em> and <em>polytree</em>, are defined to correspond to the other
+convention&#8217;s forest and tree.</p>
+<p>Summarizing:</p>
+<div class="highlight-python"><pre>+-----------------------------+
+| Convention 1 | Convention 2 |
++=============================+
+| forest       | polyforest   |
+| tree         | polytree     |
+| branching    | forest       |
+| arborescence | tree         |
++-----------------------------+</pre>
+</div>
+<p>Each convention has its reasons. The first convention emphasizes definitional
+similarity in that directed forests and trees are only concerned with
+acyclicity and do not have an in-degree constraint, just as their undirected
+counterparts do not. The second convention emphasizes functional similarity
+in the sense that the directed analog of a spanning tree is a spanning
+arborescence. That is, take any spanning tree and choose one node as the root.
+Then every edge is assigned a direction such there is a directed path from the
+root to every other node. The result is a spanning arborescence.</p>
+<p>NetworkX follows the first convention. Explicitly, these are:</p>
+<dl class="docutils">
+<dt>undirected forest</dt>
+<dd>An undirected graph with no undirected cycles.</dd>
+<dt>undirected tree</dt>
+<dd>A connected, undirected forest.</dd>
+<dt>directed forest</dt>
+<dd>A directed graph with no undirected cycles. Equivalently, the underlying
+graph structure (which ignores edge orientations) is an undirected forest.
+In another convention, this is known as a polyforest.</dd>
+<dt>directed tree</dt>
+<dd>A weakly connected, directed forest. Equivalently, the underlying graph
+structure (which ignores edge orientations) is an undirected tree. In
+another convention, this is known as a polytree.</dd>
+<dt>branching</dt>
+<dd>A directed forest with each node having, at most, one parent. So the maximum
+in-degree is equal to 1. In another convention, this is known as a forest.</dd>
+<dt>arborescence</dt>
+<dd>A directed tree with each node having, at most, one parent. So the maximum
+in-degree is equal to 1. In another convention, this is known as a tree.</dd>
+</dl>
+</div>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -199,10 +252,10 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.tree.recognition.is_tree.html#networkx.algorithms.tree.recognition.is_tree" title="networkx.algorithms.tree.recognition.is_tree"><tt class="xref py py-obj docutils literal"><span class="pre">is_tree</span></tt></a>(G)</td>
-<td>Return True if the input graph is a tree</td>
+<td>Returns <span class="math">\(True\)</span> if <span class="math">\(G\)</span> is a tree.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.tree.recognition.is_forest.html#networkx.algorithms.tree.recognition.is_forest" title="networkx.algorithms.tree.recognition.is_forest"><tt class="xref py py-obj docutils literal"><span class="pre">is_forest</span></tt></a>(G)</td>
-<td>Return True if the input graph is a forest</td>
+<td>Returns <span class="math">\(True\)</span> if G is a forest.</td>
 </tr>
 </tbody>
 </table>
@@ -228,7 +281,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on May 26, 2014.
+      Last updated on May 27, 2014.
     </p>
   </div>
 
@@ -248,7 +301,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'1.9.dev20140526000008',
+            VERSION:'1.9.dev20140527000009',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

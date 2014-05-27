@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.linalg.graphmatrix &mdash; NetworkX 1.9.dev20140526000008 documentation</title>
+  <title>networkx.linalg.graphmatrix &mdash; NetworkX 1.9.dev20140527000009 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140526000008 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140527000009 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 1.9.dev20140526000008 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 1.9.dev20140527000009 documentation" href="../../../index.html"/>
         <link rel="up" title="networkx" href="../../networkx.html"/> 
 
   
@@ -314,12 +314,28 @@
 <span class="sd">    dictionary-of-dictionaries format that can be addressed as a</span>
 <span class="sd">    sparse matrix.</span>
 
-<span class="sd">    For MultiGraph/MultiDiGraph, the edges weights are summed.</span>
+<span class="sd">    For MultiGraph/MultiDiGraph with parallel edges the weights are summed.</span>
 <span class="sd">    See to_numpy_matrix for other options.</span>
+
+<span class="sd">    The convention used for self-loop edges in graphs is to assign the</span>
+<span class="sd">    diagonal matrix entry value to the edge weight attribute</span>
+<span class="sd">    (or the number 1 if the edge has no weight attribute).  If the</span>
+<span class="sd">    alternate convention of doubling the edge weight is desired the</span>
+<span class="sd">    resulting Scipy sparse matrix can be modified as follows:</span>
+
+<span class="sd">    &gt;&gt;&gt; import scipy as sp</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.Graph([(1,1)])</span>
+<span class="sd">    &gt;&gt;&gt; A = nx.adjacency_matrix(G)</span>
+<span class="sd">    &gt;&gt;&gt; print(A.todense())</span>
+<span class="sd">    [[1]]</span>
+<span class="sd">    &gt;&gt;&gt; A.setdiag(A.diagonal()*2)</span>
+<span class="sd">    &gt;&gt;&gt; print(A.todense())</span>
+<span class="sd">    [[2]]</span>
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
 <span class="sd">    to_numpy_matrix</span>
+<span class="sd">    to_scipy_sparse_matrix</span>
 <span class="sd">    to_dict_of_dicts</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
@@ -330,9 +346,9 @@
 <span class="k">def</span> <span class="nf">setup_module</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
     <span class="kn">from</span> <span class="nn">nose</span> <span class="kn">import</span> <span class="n">SkipTest</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">numpy</span>
+        <span class="kn">import</span> <span class="nn">scipy</span>
     <span class="k">except</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">SkipTest</span><span class="p">(</span><span class="s">&quot;NumPy not available&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">SkipTest</span><span class="p">(</span><span class="s">&quot;SciPy not available&quot;</span><span class="p">)</span>
 </pre></div>
 
           </div>
@@ -344,7 +360,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on May 26, 2014.
+      Last updated on May 27, 2014.
     </p>
   </div>
 
@@ -364,7 +380,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'1.9.dev20140526000008',
+            VERSION:'1.9.dev20140527000009',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
