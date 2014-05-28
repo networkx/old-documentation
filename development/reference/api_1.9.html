@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Version 1.9 notes and API changes &mdash; NetworkX 1.9.dev20140527000009 documentation</title>
+  <title>Version 1.9 notes and API changes &mdash; NetworkX 1.9.dev20140528000008 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140527000009 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140528000008 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 1.9.dev20140527000009 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 1.9.dev20140528000008 documentation" href="../index.html"/>
         <link rel="up" title="API changes" href="api_changes.html"/>
         <link rel="next" title="Version 1.8 notes and API changes" href="api_1.8.html"/>
         <link rel="prev" title="API changes" href="api_changes.html"/> 
@@ -190,6 +190,58 @@
 <ul class="simple">
 <li>The functions in the components package algorithms/components/ such as, connected_components, connected_components_subgraph, and similar, now return generators instead of lists.  In order to recover the earlier behavior use e.g. list(connected_components(G)).</li>
 </ul>
+<div class="section" id="flow-package">
+<h2>Flow package<a class="headerlink" href="#flow-package" title="Permalink to this headline">¶</a></h2>
+<p>Complete rewrite of the flow package and new interface to flow algorithms, with backwards incompatible changes. If you had code that was using any of the flow related functions, it will not work unmodified in 1.9. But, trust us, it is worth it. The main changes are:</p>
+<ol class="arabic simple">
+<li>We added two new maximum flow algorithms (<tt class="samp docutils literal"><span class="pre">preflow_push</span></tt> and <tt class="samp docutils literal"><span class="pre">shortest_augmenting_path</span></tt>) and rewrote the Edmonds-Karp algorithm in <tt class="samp docutils literal"><span class="pre">flow_fulkerson</span></tt> which is now at <tt class="samp docutils literal"><span class="pre">edmonds_karp</span></tt>. &#64;ysitu contributed the very nice implementations of all new maximum flow algorithms [&#64;ysitu do you want your full/real name here?]. The legacy Edmonds-Karp algorithm implementation in <tt class="samp docutils literal"><span class="pre">ford_fulkerson</span></tt> is still available but will be removed in the next release.</li>
+<li>All maximum flow algorithm implementations (including the legacy <tt class="samp docutils literal"><span class="pre">ford_fulkerson</span></tt>) output now a residual network (ie a NetworkX DiGraph) after computing the maximum flow. See <tt class="samp docutils literal"><span class="pre">maximum_flow</span></tt> documentation for the details on the conventions that NetworkX uses for defining a residual network.</li>
+<li>We removed the old <tt class="samp docutils literal"><span class="pre">max_flow</span></tt> and <tt class="samp docutils literal"><span class="pre">min_cut</span></tt> functions. The main interface to flow algorithms are now the functions <tt class="samp docutils literal"><span class="pre">maximum_flow</span></tt>, <tt class="samp docutils literal"><span class="pre">maximum_flow_value</span></tt> and <tt class="samp docutils literal"><span class="pre">minimum_cut</span></tt> and <tt class="samp docutils literal"><span class="pre">minimum_cut_value</span></tt>, which have new parameters that define NetworkX interface to flow algorithms: <tt class="samp docutils literal"><span class="pre">flow_func</span></tt> for defining the algorithm that will do the actual computation (it accepts a function as argument that implements a maximum flow algorithm), <tt class="samp docutils literal"><span class="pre">cutoff</span></tt> for defining a maximum value after which the algorithm stops, <tt class="samp docutils literal"><span class="pre">value_only</span></tt> for stopping the computation as soon as we have the value of the flow, and <tt class="samp docutils literal"><span class="pre">residual</span></tt> that accepts as argument a residual network to be reused in maximum flow computations.</li>
+<li>All algorithms accept arguments for these parameters, but not all of them can actually act according to them. For instance, <tt class="samp docutils literal"><span class="pre">preflow_push</span></tt> algorithm can stop after the <tt class="samp docutils literal"><span class="pre">preflow</span></tt> phase if we only need the value of the flow, but both <tt class="samp docutils literal"><span class="pre">edmonds_karp</span></tt> and <tt class="samp docutils literal"><span class="pre">shortest_augmenting_path</span></tt> will need to finish for obtaining the flow value. Thus, parameters not applicable to one algorithm will be accepted but ignored.</li>
+<li>The new function <tt class="samp docutils literal"><span class="pre">minimum_cut</span></tt> returns the cut value and the actual node partition that defines the minimum cut. The function <tt class="samp docutils literal"><span class="pre">minimum_cut_value</span></tt> returns only the value of the cut, which is what the removed <tt class="samp docutils literal"><span class="pre">min_cut</span></tt> function used to return before 1.9.</li>
+<li>The functions that implement flow algorithms (ie <tt class="samp docutils literal"><span class="pre">preflow_push</span></tt>, <tt class="samp docutils literal"><span class="pre">edmonds_karp</span></tt>, <tt class="samp docutils literal"><span class="pre">shortest_augmenting_path</span></tt>, and <tt class="samp docutils literal"><span class="pre">ford_fulkerson</span></tt>) are not imported to the base NetworkX namespace. You have to explicitly import them from the flow package:</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.algorithms.flow</span> <span class="kn">import</span> <span class="p">(</span><span class="n">ford_fulkerson</span><span class="p">,</span> <span class="n">preflow_push</span><span class="p">,</span>
+<span class="gp">... </span>       <span class="n">edmonds_karp</span><span class="p">,</span> <span class="n">shortest_augmenting_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li>Also added a capacity scaling minimum cost flow algorithm: <tt class="samp docutils literal"><span class="pre">capacity_scaling</span></tt>. It supports <tt class="samp docutils literal"><span class="pre">MultiDiGraphs</span></tt> and disconnected networks.</li>
+<li>Small examples illustrating how to obtain the same output than in NetworkX 1.8.1 using the new interface to flow algorithms introduced in 1.9:</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">icosahedral_graph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">set_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s">&#39;capacity&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>With NetworkX 1.8.1:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">flow_value</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">max_flow</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cut_value</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">min_cut</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow_value</span> <span class="o">==</span> <span class="n">cut_value</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow_value</span><span class="p">,</span> <span class="n">flow_dict</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">ford_fulkerson</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>With NetworkX 1.9:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.algorithms.flow</span> <span class="kn">import</span> <span class="p">(</span><span class="n">ford_fulkerson</span><span class="p">,</span> <span class="n">preflow_push</span><span class="p">,</span>
+<span class="gp">... </span>       <span class="n">edmonds_karp</span><span class="p">,</span> <span class="n">shortest_augmenting_path</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow_value</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">maximum_flow_value</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cut_value</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">minimum_cut_value</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow_value</span> <span class="o">==</span> <span class="n">cut_value</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Legacy: this returns the exact same output than ford_fulkerson in 1.8.1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow_value</span><span class="p">,</span> <span class="n">flow_dict</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">maximum_flow</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">flow_func</span><span class="o">=</span><span class="n">ford_fulkerson</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># We strongly recommend to use the new algorithms:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow_value</span><span class="p">,</span> <span class="n">flow_dict</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">maximum_flow</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># If no flow_func is passed as argument, the default flow_func</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># (preflow-push) is used. Therefore this is the same than:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow_value</span><span class="p">,</span> <span class="n">flow_dict</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">maximum_flow</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">flow_func</span><span class="o">=</span><span class="n">preflow_push</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># You can also use alternative maximum flow algorithms:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow_value</span><span class="p">,</span> <span class="n">flow_dict</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">maximum_flow</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">flow_func</span><span class="o">=</span><span class="n">shortest_augmenting_path</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow_value</span><span class="p">,</span> <span class="n">flow_dict</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">maximum_flow</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">flow_func</span><span class="o">=</span><span class="n">edmonds_karp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -211,7 +263,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on May 27, 2014.
+      Last updated on May 28, 2014.
     </p>
   </div>
 
@@ -231,7 +283,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'1.9.dev20140527000009',
+            VERSION:'1.9.dev20140528000008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

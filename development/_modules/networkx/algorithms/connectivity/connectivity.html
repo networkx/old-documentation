@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.connectivity.connectivity &mdash; NetworkX 1.9.dev20140527000009 documentation</title>
+  <title>networkx.algorithms.connectivity.connectivity &mdash; NetworkX 1.9.dev20140528000008 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140527000009 documentation" href="../../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140528000008 documentation" href="../../../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 1.9.dev20140527000009 documentation" href="../../../../index.html"/>
+    <link rel="top" title="NetworkX 1.9.dev20140528000008 documentation" href="../../../../index.html"/>
         <link rel="up" title="networkx" href="../../../networkx.html"/> 
 
   
@@ -192,9 +192,8 @@
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
 <span class="c"># Define the default maximum flow function to use in all flow based</span>
 <span class="c"># connectivity algorithms. </span>
-<span class="kn">from</span> <span class="nn">networkx.algorithms.flow</span> <span class="kn">import</span> <span class="n">edmonds_karp</span>
-<span class="kn">from</span> <span class="nn">networkx.algorithms.flow</span> <span class="kn">import</span> <span class="n">shortest_augmenting_path</span>
-<span class="kn">from</span> <span class="nn">networkx.algorithms.flow.utils</span> <span class="kn">import</span> <span class="n">build_residual_network</span>
+<span class="kn">from</span> <span class="nn">networkx.algorithms.flow</span> <span class="kn">import</span> <span class="n">edmonds_karp</span><span class="p">,</span> <span class="n">shortest_augmenting_path</span>
+<span class="kn">from</span> <span class="nn">networkx.algorithms.flow</span> <span class="kn">import</span> <span class="n">build_residual_network</span>
 <span class="n">default_flow_func</span> <span class="o">=</span> <span class="n">edmonds_karp</span>
 
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="p">(</span><span class="n">build_auxiliary_node_connectivity</span><span class="p">,</span>
@@ -297,7 +296,7 @@
 <span class="sd">    &gt;&gt;&gt; H = build_auxiliary_node_connectivity(G)</span>
 <span class="sd">    &gt;&gt;&gt; # And the function for building the residual network from the</span>
 <span class="sd">    &gt;&gt;&gt; # flow package</span>
-<span class="sd">    &gt;&gt;&gt; from networkx.algorithms.flow.utils import build_residual_network</span>
+<span class="sd">    &gt;&gt;&gt; from networkx.algorithms.flow import build_residual_network</span>
 <span class="sd">    &gt;&gt;&gt; # Note that the auxiliary digraph has an edge attribute named capacity</span>
 <span class="sd">    &gt;&gt;&gt; R = build_residual_network(H, &#39;capacity&#39;)</span>
 <span class="sd">    &gt;&gt;&gt; result = dict.fromkeys(G, dict())</span>
@@ -313,9 +312,11 @@
 <span class="sd">    connectivity. For instance, in dense networks the algorithm</span>
 <span class="sd">    :meth:`shortest_augmenting_path` will usually perform better than</span>
 <span class="sd">    the default :meth:`edmonds_karp` which is faster for sparse </span>
-<span class="sd">    networks with highly skewed degree distributions.</span>
+<span class="sd">    networks with highly skewed degree distributions. Alternative flow</span>
+<span class="sd">    functions have to be explicitly imported from the flow package.</span>
 
-<span class="sd">    &gt;&gt;&gt; local_node_connectivity(G, 0, 6, flow_func=nx.shortest_augmenting_path)</span>
+<span class="sd">    &gt;&gt;&gt; from networkx.algorithms.flow import shortest_augmenting_path</span>
+<span class="sd">    &gt;&gt;&gt; local_node_connectivity(G, 0, 6, flow_func=shortest_augmenting_path)</span>
 <span class="sd">    5</span>
 
 <span class="sd">    Notes</span>
@@ -429,9 +430,11 @@
 <span class="sd">    flow computation. In dense networks the algorithm</span>
 <span class="sd">    :meth:`shortest_augmenting_path` will usually perform better</span>
 <span class="sd">    than the default :meth:`edmonds_karp`, which is faster for</span>
-<span class="sd">    sparse networks with highly skewed degree distributions.</span>
+<span class="sd">    sparse networks with highly skewed degree distributions. Alternative</span>
+<span class="sd">    flow functions have to be explicitly imported from the flow package.</span>
 
-<span class="sd">    &gt;&gt;&gt; nx.node_connectivity(G, flow_func=nx.shortest_augmenting_path)</span>
+<span class="sd">    &gt;&gt;&gt; from networkx.algorithms.flow import shortest_augmenting_path</span>
+<span class="sd">    &gt;&gt;&gt; nx.node_connectivity(G, flow_func=shortest_augmenting_path)</span>
 <span class="sd">    5</span>
 
 <span class="sd">    If you specify a pair of nodes (source and target) as parameters,</span>
@@ -740,7 +743,7 @@
 <span class="sd">    &gt;&gt;&gt; H = build_auxiliary_edge_connectivity(G)</span>
 <span class="sd">    &gt;&gt;&gt; # And the function for building the residual network from the</span>
 <span class="sd">    &gt;&gt;&gt; # flow package</span>
-<span class="sd">    &gt;&gt;&gt; from networkx.algorithms.flow.utils import build_residual_network</span>
+<span class="sd">    &gt;&gt;&gt; from networkx.algorithms.flow import build_residual_network</span>
 <span class="sd">    &gt;&gt;&gt; # Note that the auxiliary digraph has an edge attribute named capacity</span>
 <span class="sd">    &gt;&gt;&gt; R = build_residual_network(H, &#39;capacity&#39;)</span>
 <span class="sd">    &gt;&gt;&gt; result = dict.fromkeys(G, dict())</span>
@@ -756,9 +759,11 @@
 <span class="sd">    connectivity. For instance, in dense networks the algorithm</span>
 <span class="sd">    :meth:`shortest_augmenting_path` will usually perform better than</span>
 <span class="sd">    the default :meth:`edmonds_karp` which is faster for sparse</span>
-<span class="sd">    networks with highly skewed degree distributions.</span>
+<span class="sd">    networks with highly skewed degree distributions. Alternative flow</span>
+<span class="sd">    functions have to be explicitly imported from the flow package.</span>
 
-<span class="sd">    &gt;&gt;&gt; local_edge_connectivity(G, 0, 6, flow_func=nx.shortest_augmenting_path)</span>
+<span class="sd">    &gt;&gt;&gt; from networkx.algorithms.flow import shortest_augmenting_path</span>
+<span class="sd">    &gt;&gt;&gt; local_edge_connectivity(G, 0, 6, flow_func=shortest_augmenting_path)</span>
 <span class="sd">    5</span>
 
 <span class="sd">    Notes</span>
@@ -857,9 +862,12 @@
 <span class="sd">    maximum flow computation. In dense networks the algorithm </span>
 <span class="sd">    :meth:`shortest_augmenting_path` will usually perform better </span>
 <span class="sd">    than the default :meth:`edmonds_karp`, which is faster for </span>
-<span class="sd">    sparse networks with highly skewed degree distributions.</span>
+<span class="sd">    sparse networks with highly skewed degree distributions. </span>
+<span class="sd">    Alternative flow functions have to be explicitly imported</span>
+<span class="sd">    from the flow package.</span>
 
-<span class="sd">    &gt;&gt;&gt; nx.edge_connectivity(G, flow_func=nx.shortest_augmenting_path)</span>
+<span class="sd">    &gt;&gt;&gt; from networkx.algorithms.flow import shortest_augmenting_path</span>
+<span class="sd">    &gt;&gt;&gt; nx.edge_connectivity(G, flow_func=shortest_augmenting_path)</span>
 <span class="sd">    5</span>
 
 <span class="sd">    If you specify a pair of nodes (source and target) as parameters,</span>
@@ -970,7 +978,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on May 27, 2014.
+      Last updated on May 28, 2014.
     </p>
   </div>
 
@@ -990,7 +998,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../../',
-            VERSION:'1.9.dev20140527000009',
+            VERSION:'1.9.dev20140528000008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

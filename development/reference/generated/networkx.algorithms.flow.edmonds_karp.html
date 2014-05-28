@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>edmonds_karp &mdash; NetworkX 1.9.dev20140527000009 documentation</title>
+  <title>edmonds_karp &mdash; NetworkX 1.9.dev20140528000008 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140527000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140528000008 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 1.9.dev20140527000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 1.9.dev20140528000008 documentation" href="../../index.html"/>
         <link rel="up" title="Flows" href="../algorithms.flow.html"/>
         <link rel="next" title="ford_fulkerson" href="networkx.algorithms.flow.ford_fulkerson.html"/>
         <link rel="prev" title="minimum_cut_value" href="networkx.algorithms.flow.minimum_cut_value.html"/> 
@@ -287,7 +287,13 @@ that <tt class="samp docutils literal"><span class="pre">R[u][v]['flow']</span> 
 <tt class="samp docutils literal"><span class="pre">s</span></tt>-<tt class="samp docutils literal"><span class="pre">t</span></tt> cut.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.algorithms.flow</span> <span class="kn">import</span> <span class="n">edmonds_karp</span>
+</pre></div>
+</div>
+<p>The functions that implement flow algorithms and output a residual
+network, such as this one, are not imported to the base NetworkX
+namespace, so you have to explicitly import them from the flow package.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
@@ -296,7 +302,7 @@ that <tt class="samp docutils literal"><span class="pre">R[u][v]['flow']</span> 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;d&#39;</span><span class="p">,</span><span class="s">&#39;e&#39;</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;c&#39;</span><span class="p">,</span><span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;e&#39;</span><span class="p">,</span><span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">R</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">edmonds_karp</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">R</span> <span class="o">=</span> <span class="n">edmonds_karp</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">flow_value</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">maximum_flow_value</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">flow_value</span>
 <span class="go">3.0</span>
@@ -327,7 +333,7 @@ that <tt class="samp docutils literal"><span class="pre">R[u][v]['flow']</span> 
   <div role="contentinfo">
     <p>
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on May 27, 2014.
+      Last updated on May 28, 2014.
     </p>
   </div>
 
@@ -347,7 +353,7 @@ that <tt class="samp docutils literal"><span class="pre">R[u][v]['flow']</span> 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.9.dev20140527000009',
+            VERSION:'1.9.dev20140528000008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

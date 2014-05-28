@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>minimum_cut_value &mdash; NetworkX 1.9.dev20140527000009 documentation</title>
+  <title>minimum_cut_value &mdash; NetworkX 1.9.dev20140528000008 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140527000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140528000008 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 1.9.dev20140527000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 1.9.dev20140528000008 documentation" href="../../index.html"/>
         <link rel="up" title="Flows" href="../algorithms.flow.html"/>
         <link rel="next" title="edmonds_karp" href="networkx.algorithms.flow.edmonds_karp.html"/>
         <link rel="prev" title="minimum_cut" href="networkx.algorithms.flow.minimum_cut.html"/> 
@@ -303,8 +303,9 @@ minimum cut:</p>
 </div>
 <p>You can also use alternative algorithms for computing the
 minimum cut by using the flow_func parameter.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">cut_value</span> <span class="o">==</span> <span class="n">nx</span><span class="o">.</span><span class="n">minimum_cut_value</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span>
-<span class="gp">... </span>                                  <span class="n">flow_func</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">shortest_augmenting_path</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.algorithms.flow</span> <span class="kn">import</span> <span class="n">shortest_augmenting_path</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cut_value</span> <span class="o">==</span> <span class="n">nx</span><span class="o">.</span><span class="n">minimum_cut_value</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                                  <span class="n">flow_func</span><span class="o">=</span><span class="n">shortest_augmenting_path</span><span class="p">)</span>
 <span class="go">True</span>
 </pre></div>
 </div>
@@ -331,7 +332,7 @@ minimum cut by using the flow_func parameter.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on May 27, 2014.
+      Last updated on May 28, 2014.
     </p>
   </div>
 
@@ -351,7 +352,7 @@ minimum cut by using the flow_func parameter.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.9.dev20140527000009',
+            VERSION:'1.9.dev20140528000008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.drawing.nx_pylab &mdash; NetworkX 1.9.dev20140527000009 documentation</title>
+  <title>networkx.drawing.nx_pylab &mdash; NetworkX 1.9.dev20140528000008 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140527000009 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140528000008 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 1.9.dev20140527000009 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 1.9.dev20140528000008 documentation" href="../../../index.html"/>
         <link rel="up" title="networkx" href="../../networkx.html"/> 
 
   
@@ -386,7 +386,7 @@
 <span class="sd">       If numeric values are specified they will be mapped to</span>
 <span class="sd">       colors using the edge_cmap and edge_vmin,edge_vmax parameters.</span>
 
-<span class="sd">    edge_ cmap : Matplotlib colormap, optional (default=None)</span>
+<span class="sd">    edge_cmap : Matplotlib colormap, optional (default=None)</span>
 <span class="sd">       Colormap for mapping intensities of edges</span>
 
 <span class="sd">    edge_vmin,edge_vmax : floats, optional (default=None)</span>
@@ -1055,27 +1055,82 @@
 
 </div>
 <div class="viewcode-block" id="draw_circular"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pylab.draw_circular.html#networkx.drawing.nx_pylab.draw_circular">[docs]</a><span class="k">def</span> <span class="nf">draw_circular</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Draw the graph G with a circular layout.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Draw the graph G with a circular layout.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : graph</span>
+<span class="sd">       A networkx graph</span>
+<span class="sd">       </span>
+<span class="sd">    **kwargs : optional keywords</span>
+<span class="sd">       See networkx.draw_networkx() for a description of optional keywords,</span>
+<span class="sd">       with the exception of the pos parameter which is not used by this </span>
+<span class="sd">       function.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">circular_layout</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 </div>
 <div class="viewcode-block" id="draw_random"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pylab.draw_random.html#networkx.drawing.nx_pylab.draw_random">[docs]</a><span class="k">def</span> <span class="nf">draw_random</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Draw the graph G with a random layout.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Draw the graph G with a random layout.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : graph</span>
+<span class="sd">       A networkx graph</span>
+<span class="sd">       </span>
+<span class="sd">    **kwargs : optional keywords</span>
+<span class="sd">       See networkx.draw_networkx() for a description of optional keywords,</span>
+<span class="sd">       with the exception of the pos parameter which is not used by this </span>
+<span class="sd">       function.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">random_layout</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 </div>
 <div class="viewcode-block" id="draw_spectral"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pylab.draw_spectral.html#networkx.drawing.nx_pylab.draw_spectral">[docs]</a><span class="k">def</span> <span class="nf">draw_spectral</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Draw the graph G with a spectral layout.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Draw the graph G with a spectral layout.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : graph</span>
+<span class="sd">       A networkx graph</span>
+<span class="sd">       </span>
+<span class="sd">    **kwargs : optional keywords</span>
+<span class="sd">       See networkx.draw_networkx() for a description of optional keywords,</span>
+<span class="sd">       with the exception of the pos parameter which is not used by this </span>
+<span class="sd">       function.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">spectral_layout</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 </div>
 <div class="viewcode-block" id="draw_spring"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pylab.draw_spring.html#networkx.drawing.nx_pylab.draw_spring">[docs]</a><span class="k">def</span> <span class="nf">draw_spring</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Draw the graph G with a spring layout.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Draw the graph G with a spring layout.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : graph</span>
+<span class="sd">       A networkx graph</span>
+
+<span class="sd">    **kwargs : optional keywords</span>
+<span class="sd">       See networkx.draw_networkx() for a description of optional keywords,</span>
+<span class="sd">       with the exception of the pos parameter which is not used by this </span>
+<span class="sd">       function.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 </div>
 <div class="viewcode-block" id="draw_shell"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pylab.draw_shell.html#networkx.drawing.nx_pylab.draw_shell">[docs]</a><span class="k">def</span> <span class="nf">draw_shell</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Draw networkx graph with shell layout.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Draw networkx graph with shell layout.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : graph</span>
+<span class="sd">       A networkx graph</span>
+<span class="sd">       </span>
+<span class="sd">    **kwargs : optional keywords</span>
+<span class="sd">       See networkx.draw_networkx() for a description of optional keywords,</span>
+<span class="sd">       with the exception of the pos parameter which is not used by this </span>
+<span class="sd">       function.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">nlist</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;nlist&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">nlist</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">del</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s">&#39;nlist&#39;</span><span class="p">])</span>
@@ -1083,7 +1138,19 @@
 
 </div>
 <div class="viewcode-block" id="draw_graphviz"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pylab.draw_graphviz.html#networkx.drawing.nx_pylab.draw_graphviz">[docs]</a><span class="k">def</span> <span class="nf">draw_graphviz</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">prog</span><span class="o">=</span><span class="s">&quot;neato&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Draw networkx graph with graphviz layout.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Draw networkx graph with graphviz layout.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : graph</span>
+<span class="sd">       A networkx graph</span>
+
+<span class="sd">    prog : string, optional</span>
+<span class="sd">      Name of Graphviz layout program</span>
+
+<span class="sd">    **kwargs : optional keywords</span>
+<span class="sd">       See networkx.draw_networkx() for a description of optional keywords.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">drawing</span><span class="o">.</span><span class="n">graphviz_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">prog</span><span class="p">)</span>
     <span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
@@ -1113,7 +1180,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on May 27, 2014.
+      Last updated on May 28, 2014.
     </p>
   </div>
 
@@ -1133,7 +1200,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'1.9.dev20140527000009',
+            VERSION:'1.9.dev20140528000008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

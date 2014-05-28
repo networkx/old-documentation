@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ford_fulkerson &mdash; NetworkX 1.9.dev20140527000009 documentation</title>
+  <title>ford_fulkerson &mdash; NetworkX 1.9.dev20140528000008 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140527000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140528000008 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 1.9.dev20140527000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 1.9.dev20140528000008 documentation" href="../../index.html"/>
         <link rel="up" title="Flows" href="../algorithms.flow.html"/>
         <link rel="next" title="shortest_augmenting_path" href="networkx.algorithms.flow.shortest_augmenting_path.html"/>
         <link rel="prev" title="edmonds_karp" href="networkx.algorithms.flow.edmonds_karp.html"/> 
@@ -265,7 +265,13 @@ with infinite capacity edges can be found as an attribute of the
 residual network.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.algorithms.flow</span> <span class="kn">import</span> <span class="n">ford_fulkerson</span>
+</pre></div>
+</div>
+<p>The functions that implement flow algorithms and output a residual
+network, such as this one, are not imported to the base NetworkX
+namespace, so you have to explicitly import them from the flow package.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
@@ -280,7 +286,7 @@ residual network.</p>
 maximum flow. This network has graph attributes that contain: 
 a dictionary with edges with infinite capacity flows, the flow 
 value, and a dictionary of flows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">R</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">ford_fulkerson</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">R</span> <span class="o">=</span> <span class="n">ford_fulkerson</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># A dictionary with infinite capacity flows can be found as an</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># attribute of the residual network</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">inf_capacity_flows</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s">&#39;inf_capacity_flows&#39;</span><span class="p">]</span>
@@ -292,7 +298,7 @@ value, and a dictionary of flows:</p>
 <p>You can use the interface to flow algorithms introduced in 1.9 to get
 the output that the function ford_fulkerson used to produce:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">flow_value</span><span class="p">,</span> <span class="n">flow_dict</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">maximum_flow</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span>
-<span class="gp">... </span>                                        <span class="n">flow_func</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">ford_fulkerson</span><span class="p">)</span>
+<span class="gp">... </span>                                        <span class="n">flow_func</span><span class="o">=</span><span class="n">ford_fulkerson</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -318,7 +324,7 @@ the output that the function ford_fulkerson used to produce:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on May 27, 2014.
+      Last updated on May 28, 2014.
     </p>
   </div>
 
@@ -338,7 +344,7 @@ the output that the function ford_fulkerson used to produce:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.9.dev20140527000009',
+            VERSION:'1.9.dev20140528000008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

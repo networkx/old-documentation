@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>node_connectivity &mdash; NetworkX 1.9.dev20140527000009 documentation</title>
+  <title>node_connectivity &mdash; NetworkX 1.9.dev20140528000008 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140527000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140528000008 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 1.9.dev20140527000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 1.9.dev20140528000008 documentation" href="../../index.html"/>
         <link rel="up" title="Connectivity" href="../algorithms.connectivity.html"/>
         <link rel="next" title="minimum_edge_cut" href="networkx.algorithms.connectivity.cuts.minimum_edge_cut.html"/>
         <link rel="prev" title="local_node_connectivity" href="networkx.algorithms.connectivity.connectivity.local_node_connectivity.html"/> 
@@ -266,8 +266,10 @@ on algorithm 11 in <a class="reference internal" href="#r214">[R214]</a>.</p>
 flow computation. In dense networks the algorithm
 <tt class="xref py py-meth docutils literal"><span class="pre">shortest_augmenting_path()</span></tt> will usually perform better
 than the default <tt class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></tt>, which is faster for
-sparse networks with highly skewed degree distributions.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">node_connectivity</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">flow_func</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">shortest_augmenting_path</span><span class="p">)</span>
+sparse networks with highly skewed degree distributions. Alternative
+flow functions have to be explicitly imported from the flow package.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.algorithms.flow</span> <span class="kn">import</span> <span class="n">shortest_augmenting_path</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">node_connectivity</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">flow_func</span><span class="o">=</span><span class="n">shortest_augmenting_path</span><span class="p">)</span>
 <span class="go">5</span>
 </pre></div>
 </div>
@@ -304,7 +306,7 @@ the data structures used in the maximum flow computations. See
   <div role="contentinfo">
     <p>
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on May 27, 2014.
+      Last updated on May 28, 2014.
     </p>
   </div>
 
@@ -324,7 +326,7 @@ the data structures used in the maximum flow computations. See
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.9.dev20140527000009',
+            VERSION:'1.9.dev20140528000008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
