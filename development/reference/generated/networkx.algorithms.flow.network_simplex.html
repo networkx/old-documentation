@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>network_simplex &mdash; NetworkX 1.9.dev20140531000007 documentation</title>
+  <title>network_simplex &mdash; NetworkX 1.9.dev20140601080155 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140531000007 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140601080155 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 1.9.dev20140531000007 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 1.9.dev20140601080155 documentation" href="../../index.html"/>
         <link rel="up" title="Flows" href="../algorithms.flow.html"/>
         <link rel="next" title="min_cost_flow_cost" href="networkx.algorithms.flow.min_cost_flow_cost.html"/>
         <link rel="prev" title="build_residual_network" href="networkx.algorithms.flow.build_residual_network.html"/> 
@@ -209,7 +209,7 @@ is equal to the demand of that node.</p>
 <div><p>DiGraph on which a minimum cost flow satisfying all demands is
 to be found.</p>
 </div></blockquote>
-<p><strong>demand: string</strong> :</p>
+<p><strong>demand: string</strong></p>
 <blockquote>
 <div><p>Nodes of the graph G are expected to have an attribute demand
 that indicates how much flow a node wants to send (negative
@@ -218,14 +218,14 @@ demands should be 0 otherwise the problem in not feasible. If
 this attribute is not present, a node is considered to have 0
 demand. Default value: &#8216;demand&#8217;.</p>
 </div></blockquote>
-<p><strong>capacity: string</strong> :</p>
+<p><strong>capacity: string</strong></p>
 <blockquote>
 <div><p>Edges of the graph G are expected to have an attribute capacity
 that indicates how much flow the edge can support. If this
 attribute is not present, the edge is considered to have
 infinite capacity. Default value: &#8216;capacity&#8217;.</p>
 </div></blockquote>
-<p><strong>weight: string</strong> :</p>
+<p><strong>weight: string</strong></p>
 <blockquote>
 <div><p>Edges of the graph G are expected to have an attribute weight
 that indicates the cost incurred by sending one unit of flow on
@@ -234,23 +234,23 @@ Default value: &#8216;weight&#8217;.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>flowCost: integer, float</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">flowCost: integer, float</p>
 <blockquote>
 <div><p>Cost of a minimum cost flow satisfying all demands.</p>
 </div></blockquote>
-<p><strong>flowDict: dictionary</strong> :</p>
+<p>flowDict: dictionary</p>
 <blockquote>
 <div><p>Dictionary of dictionaries keyed by nodes such that
 flowDict[u][v] is the flow edge (u, v).</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>NetworkXError</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
 <blockquote>
 <div><p>This exception is raised if the input graph is not directed,
 not connected or is a multigraph.</p>
 </div></blockquote>
-<p><strong>NetworkXUnfeasible</strong> :</p>
+<p><strong>NetworkXUnfeasible</strong></p>
 <blockquote>
 <div><dl class="docutils">
 <dt>This exception is raised in the following situations:</dt>
@@ -262,7 +262,7 @@ flow satisfying all demands.</li>
 </dd>
 </dl>
 </div></blockquote>
-<p><strong>NetworkXUnbounded</strong> :</p>
+<p><strong>NetworkXUnbounded</strong></p>
 <blockquote class="last">
 <div><p>This exception is raised if the digraph G has a cycle of
 negative cost and infinite capacity. Then, the cost of a flow
@@ -371,7 +371,7 @@ algorithm.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on May 31, 2014.
+      Last updated on Jun 01, 2014.
     </p>
   </div>
 
@@ -391,7 +391,7 @@ algorithm.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.9.dev20140531000007',
+            VERSION:'1.9.dev20140601080155',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

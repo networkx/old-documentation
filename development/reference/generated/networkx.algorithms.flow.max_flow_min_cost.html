@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>max_flow_min_cost &mdash; NetworkX 1.9.dev20140531000007 documentation</title>
+  <title>max_flow_min_cost &mdash; NetworkX 1.9.dev20140601080155 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140531000007 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140601080155 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 1.9.dev20140531000007 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 1.9.dev20140601080155 documentation" href="../../index.html"/>
         <link rel="up" title="Flows" href="../algorithms.flow.html"/>
         <link rel="next" title="capacity_scaling" href="networkx.algorithms.flow.capacity_scaling.html"/>
         <link rel="prev" title="cost_of_flow" href="networkx.algorithms.flow.cost_of_flow.html"/> 
@@ -204,22 +204,22 @@ s to t whose total cost is minimized.</p>
 <div><p>DiGraph on which a minimum cost flow satisfying all demands is
 to be found.</p>
 </div></blockquote>
-<p><strong>s: node label</strong> :</p>
+<p><strong>s: node label</strong></p>
 <blockquote>
 <div><p>Source of the flow.</p>
 </div></blockquote>
-<p><strong>t: node label</strong> :</p>
+<p><strong>t: node label</strong></p>
 <blockquote>
 <div><p>Destination of the flow.</p>
 </div></blockquote>
-<p><strong>capacity: string</strong> :</p>
+<p><strong>capacity: string</strong></p>
 <blockquote>
 <div><p>Edges of the graph G are expected to have an attribute capacity
 that indicates how much flow the edge can support. If this
 attribute is not present, the edge is considered to have
 infinite capacity. Default value: &#8216;capacity&#8217;.</p>
 </div></blockquote>
-<p><strong>weight: string</strong> :</p>
+<p><strong>weight: string</strong></p>
 <blockquote>
 <div><p>Edges of the graph G are expected to have an attribute weight
 that indicates the cost incurred by sending one unit of flow on
@@ -228,19 +228,19 @@ Default value: &#8216;weight&#8217;.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>flowDict: dictionary</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">flowDict: dictionary</p>
 <blockquote>
 <div><p>Dictionary of dictionaries keyed by nodes such that
 flowDict[u][v] is the flow edge (u, v).</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>NetworkXError</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
 <blockquote>
 <div><p>This exception is raised if the input graph is not directed or
 not connected.</p>
 </div></blockquote>
-<p><strong>NetworkXUnbounded</strong> :</p>
+<p><strong>NetworkXUnbounded</strong></p>
 <blockquote class="last">
 <div><p>This exception is raised if there is an infinite capacity path
 from s to t in G. In this case there is no maximum flow. This
@@ -307,7 +307,7 @@ is unbounded below.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on May 31, 2014.
+      Last updated on Jun 01, 2014.
     </p>
   </div>
 
@@ -327,7 +327,7 @@ is unbounded below.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.9.dev20140531000007',
+            VERSION:'1.9.dev20140601080155',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

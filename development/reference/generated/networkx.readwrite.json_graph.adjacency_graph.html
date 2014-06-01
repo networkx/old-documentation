@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>adjacency_graph &mdash; NetworkX 1.9.dev20140531000007 documentation</title>
+  <title>adjacency_graph &mdash; NetworkX 1.9.dev20140601080155 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140531000007 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140601080155 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 1.9.dev20140531000007 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 1.9.dev20140601080155 documentation" href="../../index.html"/>
         <link rel="up" title="JSON" href="../readwrite.json_graph.html"/>
         <link rel="next" title="tree_data" href="networkx.readwrite.json_graph.tree_data.html"/>
         <link rel="prev" title="adjacency_data" href="networkx.readwrite.json_graph.adjacency_data.html"/> 
@@ -190,7 +190,7 @@
 <h1>adjacency_graph<a class="headerlink" href="#adjacency-graph" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.readwrite.json_graph.adjacency_graph">
-<tt class="descname">adjacency_graph</tt><big>(</big><em>data</em>, <em>directed=False</em>, <em>multigraph=True</em><big>)</big><a class="headerlink" href="#networkx.readwrite.json_graph.adjacency_graph" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">adjacency_graph</tt><big>(</big><em>data</em>, <em>directed=False</em>, <em>multigraph=True</em>, <em>attrs={'id': 'id'</em>, <em>'key': 'key'}</em><big>)</big><a class="headerlink" href="#networkx.readwrite.json_graph.adjacency_graph" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return graph from adjacency data format.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -211,8 +211,15 @@
 <div><p>If True, and direction not specified in data, return a directed graph.</p>
 </div></blockquote>
 <p><strong>multigraph</strong> : bool</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If True, and multigraph not specified in data, return a multigraph.</p>
+</div></blockquote>
+<p><strong>attrs</strong> : dict</p>
+<blockquote class="last">
+<div><p>A dictionary that contains two keys &#8216;id&#8217; and &#8216;key&#8217;. The corresponding
+values provide the attribute names for storing NetworkX-internal graph
+data. The values should be unique. Default value:
+<tt class="samp docutils literal"><span class="pre">dict(id='id',</span> <span class="pre">key='key')</span></tt>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -222,6 +229,8 @@
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="#networkx.readwrite.json_graph.adjacency_graph" title="networkx.readwrite.json_graph.adjacency_graph"><tt class="xref py py-obj docutils literal"><span class="pre">adjacency_graph</span></tt></a>, <a class="reference internal" href="networkx.readwrite.json_graph.node_link_data.html#networkx.readwrite.json_graph.node_link_data" title="networkx.readwrite.json_graph.node_link_data"><tt class="xref py py-obj docutils literal"><span class="pre">node_link_data</span></tt></a>, <a class="reference internal" href="networkx.readwrite.json_graph.tree_data.html#networkx.readwrite.json_graph.tree_data" title="networkx.readwrite.json_graph.tree_data"><tt class="xref py py-obj docutils literal"><span class="pre">tree_data</span></tt></a></p>
 </div>
+<p class="rubric">Notes</p>
+<p>The default value of attrs will be changed in a future release of NetworkX.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.readwrite</span> <span class="kn">import</span> <span class="n">json_graph</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)])</span>
@@ -252,7 +261,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on May 31, 2014.
+      Last updated on Jun 01, 2014.
     </p>
   </div>
 
@@ -272,7 +281,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.9.dev20140531000007',
+            VERSION:'1.9.dev20140601080155',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

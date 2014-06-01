@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>edge_betweenness_centrality &mdash; NetworkX 1.9.dev20140531000007 documentation</title>
+  <title>edge_betweenness_centrality &mdash; NetworkX 1.9.dev20140601080155 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140531000007 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140601080155 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 1.9.dev20140531000007 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 1.9.dev20140601080155 documentation" href="../../index.html"/>
         <link rel="up" title="Centrality" href="../algorithms.centrality.html"/>
         <link rel="next" title="current_flow_closeness_centrality" href="networkx.algorithms.centrality.current_flow_closeness_centrality.html"/>
         <link rel="prev" title="betweenness_centrality" href="networkx.algorithms.centrality.betweenness_centrality.html"/> 
@@ -196,8 +196,8 @@
 fraction of all-pairs shortest paths that pass through <span class="math">\(e\)</span>:</p>
 <div class="math">
 \[c_B(v) =\sum_{s,t \in V} \frac{\sigma(s, t|e)}{\sigma(s, t)}\]</div>
-<p>where <span class="math">\(V\)</span> is the set of nodes,`sigma(s, t)` is the number of 
-shortest <span class="math">\((s, t)\)</span>-paths, and <span class="math">\(\sigma(s, t|e)\)</span> is the number of 
+<p>where <span class="math">\(V\)</span> is the set of nodes,`sigma(s, t)` is the number of
+shortest <span class="math">\((s, t)\)</span>-paths, and <span class="math">\(\sigma(s, t|e)\)</span> is the number of
 those paths passing through edge <span class="math">\(e\)</span> <a class="reference internal" href="#r183">[R183]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -209,8 +209,8 @@ those paths passing through edge <span class="math">\(e\)</span> <a class="refer
 </div></blockquote>
 <p><strong>normalized</strong> : bool, optional</p>
 <blockquote>
-<div><p>If True the betweenness values are normalized by <span class="math">\(2/(n(n-1))\)</span> 
-for graphs, and <span class="math">\(1/(n(n-1))\)</span> for directed graphs where <span class="math">\(n\)</span> 
+<div><p>If True the betweenness values are normalized by <span class="math">\(2/(n(n-1))\)</span>
+for graphs, and <span class="math">\(1/(n(n-1))\)</span> for directed graphs where <span class="math">\(n\)</span>
 is the number of nodes in G.</p>
 </div></blockquote>
 <p><strong>weight</strong> : None or string, optional</p>
@@ -235,13 +235,13 @@ Otherwise holds the name of the edge attribute used as weight.</p>
 <p class="rubric">Notes</p>
 <p>The algorithm is from Ulrik Brandes <a class="reference internal" href="#r182">[R182]</a>.</p>
 <p>For weighted graphs the edge weights must be greater than zero.
-Zero edge weights can produce an infinite number of equal length 
+Zero edge weights can produce an infinite number of equal length
 paths between pairs of nodes.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r182" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R182]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> A Faster Algorithm for Betweenness Centrality. Ulrik Brandes, 
+<tr><td class="label">[R182]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> A Faster Algorithm for Betweenness Centrality. Ulrik Brandes,
 Journal of Mathematical Sociology 25(2):163-177, 2001.
 <a class="reference external" href="http://www.inf.uni-konstanz.de/algo/publications/b-fabc-01.pdf">http://www.inf.uni-konstanz.de/algo/publications/b-fabc-01.pdf</a></td></tr>
 </tbody>
@@ -249,8 +249,8 @@ Journal of Mathematical Sociology 25(2):163-177, 2001.
 <table class="docutils citation" frame="void" id="r183" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R183]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> Ulrik Brandes: On Variants of Shortest-Path Betweenness 
-Centrality and their Generic Computation. 
+<tr><td class="label">[R183]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> Ulrik Brandes: On Variants of Shortest-Path Betweenness
+Centrality and their Generic Computation.
 Social Networks 30(2):136-145, 2008.
 <a class="reference external" href="http://www.inf.uni-konstanz.de/algo/publications/b-vspbc-08.pdf">http://www.inf.uni-konstanz.de/algo/publications/b-vspbc-08.pdf</a></td></tr>
 </tbody>
@@ -278,7 +278,7 @@ Social Networks 30(2):136-145, 2008.
   <div role="contentinfo">
     <p>
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on May 31, 2014.
+      Last updated on Jun 01, 2014.
     </p>
   </div>
 
@@ -298,7 +298,7 @@ Social Networks 30(2):136-145, 2008.
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.9.dev20140531000007',
+            VERSION:'1.9.dev20140601080155',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
