@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.link_prediction &mdash; NetworkX 1.9.dev20140601080155 documentation</title>
+  <title>networkx.algorithms.link_prediction &mdash; NetworkX 1.9.dev20140602000008 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140601080155 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140602000008 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 1.9.dev20140601080155 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 1.9.dev20140602000008 documentation" href="../../../index.html"/>
         <link rel="up" title="networkx" href="../../networkx.html"/> 
 
   
@@ -187,11 +187,15 @@
 
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
 
+<span class="kn">import</span> <span class="nn">math</span>
+
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
-<span class="kn">from</span> <span class="nn">networkx.exception</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">networkx.utils.decorators</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;resource_allocation_index&#39;</span><span class="p">,</span>
+           <span class="s">&#39;jaccard_coefficient&#39;</span><span class="p">,</span>
+           <span class="s">&#39;adamic_adar_index&#39;</span><span class="p">,</span>
+           <span class="s">&#39;preferential_attachment&#39;</span><span class="p">,</span>
            <span class="s">&#39;cn_soundarajan_hopcroft&#39;</span><span class="p">,</span>
            <span class="s">&#39;ra_index_soundarajan_hopcroft&#39;</span><span class="p">,</span>
            <span class="s">&#39;within_inter_cluster&#39;</span><span class="p">]</span>
@@ -199,30 +203,45 @@
 
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;multigraph&#39;</span><span class="p">)</span>
-<div class="viewcode-block" id="resource_allocation_index"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.link_prediction.resource_allocation_index.html#networkx.algorithms.link_prediction.resource_allocation_index">[docs]</a><span class="k">def</span> <span class="nf">resource_allocation_index</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Compute the resource allocation index of u and v.</span>
+<div class="viewcode-block" id="resource_allocation_index"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.link_prediction.resource_allocation_index.html#networkx.algorithms.link_prediction.resource_allocation_index">[docs]</a><span class="k">def</span> <span class="nf">resource_allocation_index</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">ebunch</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">r&quot;&quot;&quot;Compute the resource allocation index of all node pairs in ebunch.</span>
 
-<span class="sd">    Resource allocation index of nodes u and v is defined as the sum of</span>
-<span class="sd">    reciprocals of the degree of all the common neighbors w of u and v.</span>
+<span class="sd">    Resource allocation index of `u` and `v` is defined as</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \sum_{w \in \Gamma(u) \cap \Gamma(v)} \frac{1}{|\Gamma(w)|}</span>
+
+<span class="sd">    where :math:`\Gamma(u)` denotes the set of neighbors of `u`.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    G : graph</span>
 <span class="sd">        A NetworkX undirected graph.</span>
 
-<span class="sd">    u, v : nodes</span>
-<span class="sd">        Nodes in the graph.</span>
+<span class="sd">    ebunch : iterable of node pairs, optional (default = None)</span>
+<span class="sd">        Resource allocation index will be computed for each pair of</span>
+<span class="sd">        nodes given in the iterable. The pairs must be given as</span>
+<span class="sd">        2-tuples (u, v) where u and v are nodes in the graph. If ebunch</span>
+<span class="sd">        is None then all non-existent edges in the graph will be used.</span>
+<span class="sd">        Default value: None.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    value : float</span>
-<span class="sd">        The resource allocation index of u and v.</span>
+<span class="sd">    piter : iterator</span>
+<span class="sd">        An iterator of 3-tuples in the form (u, v, p) where (u, v) is a</span>
+<span class="sd">        pair of nodes and p is their resource allocation index.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import networkx as nx</span>
 <span class="sd">    &gt;&gt;&gt; G = nx.complete_graph(5)</span>
-<span class="sd">    &gt;&gt;&gt; nx.resource_allocation_index(G, 0, 1)</span>
-<span class="sd">    0.75</span>
+<span class="sd">    &gt;&gt;&gt; preds = nx.resource_allocation_index(G, [(0, 1), (2, 3)])</span>
+<span class="sd">    &gt;&gt;&gt; for u, v, p in preds:</span>
+<span class="sd">    ...     &#39;(%d, %d) -&gt; %.8f&#39; % (u, v, p)</span>
+<span class="sd">    ...</span>
+<span class="sd">    &#39;(0, 1) -&gt; 0.75000000&#39;</span>
+<span class="sd">    &#39;(2, 3) -&gt; 0.75000000&#39;</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
@@ -231,36 +250,229 @@
 <span class="sd">       Eur. Phys. J. B 71 (2009) 623.</span>
 <span class="sd">       http://arxiv.org/pdf/0901.0553.pdf</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">common_neighbors</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">ebunch</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">ebunch</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">non_edges</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">common_neighbors</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">predict</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ebunch</span><span class="p">)</span>
 
 </div>
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;multigraph&#39;</span><span class="p">)</span>
-<div class="viewcode-block" id="cn_soundarajan_hopcroft"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.link_prediction.cn_soundarajan_hopcroft.html#networkx.algorithms.link_prediction.cn_soundarajan_hopcroft">[docs]</a><span class="k">def</span> <span class="nf">cn_soundarajan_hopcroft</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Count the number of common neighbors using community information.</span>
+<div class="viewcode-block" id="jaccard_coefficient"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.link_prediction.jaccard_coefficient.html#networkx.algorithms.link_prediction.jaccard_coefficient">[docs]</a><span class="k">def</span> <span class="nf">jaccard_coefficient</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">ebunch</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">r&quot;&quot;&quot;Compute the Jaccard coefficient of all node pairs in ebunch.</span>
 
-<span class="sd">    One is added to the count for each common neighbor that belongs</span>
-<span class="sd">    to the same community as u and v.</span>
+<span class="sd">    Jaccard coefficient of nodes `u` and `v` is defined as</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \frac{|\Gamma(u) \cap \Gamma(v)|}{|\Gamma(u) \cup \Gamma(v)|}</span>
+
+<span class="sd">    where :math:`\Gamma(u)` denotes the set of neighbors of `u`.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    G : graph</span>
 <span class="sd">        A NetworkX undirected graph.</span>
 
-<span class="sd">    u, v : nodes</span>
-<span class="sd">        Nodes in the graph.</span>
+<span class="sd">    ebunch : iterable of node pairs, optional (default = None)</span>
+<span class="sd">        Jaccard coefficient will be computed for each pair of nodes</span>
+<span class="sd">        given in the iterable. The pairs must be given as 2-tuples</span>
+<span class="sd">        (u, v) where u and v are nodes in the graph. If ebunch is None</span>
+<span class="sd">        then all non-existent edges in the graph will be used.</span>
+<span class="sd">        Default value: None.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    value : int</span>
-<span class="sd">        The number of common neighbors between u and v plus bonus for</span>
-<span class="sd">        each common neighbor belonging to the same community as u and v.</span>
+<span class="sd">    piter : iterator</span>
+<span class="sd">        An iterator of 3-tuples in the form (u, v, p) where (u, v) is a</span>
+<span class="sd">        pair of nodes and p is their Jaccard coefficient.</span>
 
-<span class="sd">    Notes</span>
-<span class="sd">    -----</span>
-<span class="sd">    The community information is defined as the information of which</span>
-<span class="sd">    community each node belongs to. This information should be stored</span>
-<span class="sd">    as the nodes attribute with &#39;community&#39; as the name.</span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import networkx as nx</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.complete_graph(5)</span>
+<span class="sd">    &gt;&gt;&gt; preds = nx.jaccard_coefficient(G, [(0, 1), (2, 3)])</span>
+<span class="sd">    &gt;&gt;&gt; for u, v, p in preds:</span>
+<span class="sd">    ...     &#39;(%d, %d) -&gt; %.8f&#39; % (u, v, p)</span>
+<span class="sd">    ...</span>
+<span class="sd">    &#39;(0, 1) -&gt; 0.60000000&#39;</span>
+<span class="sd">    &#39;(2, 3) -&gt; 0.60000000&#39;</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] D. Liben-Nowell, J. Kleinberg.</span>
+<span class="sd">           The Link Prediction Problem for Social Networks (2004).</span>
+<span class="sd">           http://www.cs.cornell.edu/home/kleinber/link-pred.pdf</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">ebunch</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">ebunch</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">non_edges</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="n">cnbors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">common_neighbors</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+        <span class="n">union_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">])</span> <span class="o">|</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">]))</span>
+        <span class="k">if</span> <span class="n">union_size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">cnbors</span><span class="p">)</span> <span class="o">/</span> <span class="n">union_size</span>
+
+    <span class="k">return</span> <span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">predict</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ebunch</span><span class="p">)</span>
+
+</div>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;multigraph&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="adamic_adar_index"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.link_prediction.adamic_adar_index.html#networkx.algorithms.link_prediction.adamic_adar_index">[docs]</a><span class="k">def</span> <span class="nf">adamic_adar_index</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">ebunch</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">r&quot;&quot;&quot;Compute the Adamic-Adar index of all node pairs in ebunch.</span>
+
+<span class="sd">    Adamic-Adar index of `u` and `v` is defined as</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \sum_{w \in \Gamma(u) \cap \Gamma(v)} \frac{1}{\log |\Gamma(w)|}</span>
+
+<span class="sd">    where :math:`\Gamma(u)` denotes the set of neighbors of `u`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : graph</span>
+<span class="sd">        NetworkX undirected graph.</span>
+
+<span class="sd">    ebunch : iterable of node pairs, optional (default = None)</span>
+<span class="sd">        Adamic-Adar index will be computed for each pair of nodes given</span>
+<span class="sd">        in the iterable. The pairs must be given as 2-tuples (u, v)</span>
+<span class="sd">        where u and v are nodes in the graph. If ebunch is None then all</span>
+<span class="sd">        non-existent edges in the graph will be used.</span>
+<span class="sd">        Default value: None.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    piter : iterator</span>
+<span class="sd">        An iterator of 3-tuples in the form (u, v, p) where (u, v) is a</span>
+<span class="sd">        pair of nodes and p is their Adamic-Adar index.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import networkx as nx</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.complete_graph(5)</span>
+<span class="sd">    &gt;&gt;&gt; preds = nx.adamic_adar_index(G, [(0, 1), (2, 3)])</span>
+<span class="sd">    &gt;&gt;&gt; for u, v, p in preds:</span>
+<span class="sd">    ...     &#39;(%d, %d) -&gt; %.8f&#39; % (u, v, p)</span>
+<span class="sd">    ...</span>
+<span class="sd">    &#39;(0, 1) -&gt; 2.16404256&#39;</span>
+<span class="sd">    &#39;(2, 3) -&gt; 2.16404256&#39;</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] D. Liben-Nowell, J. Kleinberg.</span>
+<span class="sd">           The Link Prediction Problem for Social Networks (2004).</span>
+<span class="sd">           http://www.cs.cornell.edu/home/kleinber/link-pred.pdf</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">ebunch</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">ebunch</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">non_edges</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
+                   <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">common_neighbors</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">predict</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ebunch</span><span class="p">)</span>
+
+</div>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;multigraph&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="preferential_attachment"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.link_prediction.preferential_attachment.html#networkx.algorithms.link_prediction.preferential_attachment">[docs]</a><span class="k">def</span> <span class="nf">preferential_attachment</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">ebunch</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">r&quot;&quot;&quot;Compute the preferential attachment score of all node pairs in ebunch.</span>
+
+<span class="sd">    Preferential attachment score of `u` and `v` is defined as</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        |\Gamma(u)| |\Gamma(v)|</span>
+
+<span class="sd">    where :math:`\Gamma(u)` denotes the set of neighbors of `u`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : graph</span>
+<span class="sd">        NetworkX undirected graph.</span>
+
+<span class="sd">    ebunch : iterable of node pairs, optional (default = None)</span>
+<span class="sd">        Preferential attachment score will be computed for each pair of</span>
+<span class="sd">        nodes given in the iterable. The pairs must be given as</span>
+<span class="sd">        2-tuples (u, v) where u and v are nodes in the graph. If ebunch</span>
+<span class="sd">        is None then all non-existent edges in the graph will be used.</span>
+<span class="sd">        Default value: None.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    piter : iterator</span>
+<span class="sd">        An iterator of 3-tuples in the form (u, v, p) where (u, v) is a</span>
+<span class="sd">        pair of nodes and p is their preferential attachment score.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import networkx as nx</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.complete_graph(5)</span>
+<span class="sd">    &gt;&gt;&gt; preds = nx.preferential_attachment(G, [(0, 1), (2, 3)])</span>
+<span class="sd">    &gt;&gt;&gt; for u, v, p in preds:</span>
+<span class="sd">    ...     &#39;(%d, %d) -&gt; %d&#39; % (u, v, p)</span>
+<span class="sd">    ...</span>
+<span class="sd">    &#39;(0, 1) -&gt; 16&#39;</span>
+<span class="sd">    &#39;(2, 3) -&gt; 16&#39;</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] D. Liben-Nowell, J. Kleinberg.</span>
+<span class="sd">           The Link Prediction Problem for Social Networks (2004).</span>
+<span class="sd">           http://www.cs.cornell.edu/home/kleinber/link-pred.pdf</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">ebunch</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">ebunch</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">non_edges</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">*</span> <span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ebunch</span><span class="p">)</span>
+
+</div>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;multigraph&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="cn_soundarajan_hopcroft"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.link_prediction.cn_soundarajan_hopcroft.html#networkx.algorithms.link_prediction.cn_soundarajan_hopcroft">[docs]</a><span class="k">def</span> <span class="nf">cn_soundarajan_hopcroft</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">ebunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">community</span><span class="o">=</span><span class="s">&#39;community&#39;</span><span class="p">):</span>
+    <span class="sd">r&quot;&quot;&quot;Count the number of common neighbors of all node pairs in ebunch</span>
+<span class="sd">        using community information.</span>
+
+<span class="sd">    For two nodes `u` and `v`, this function computes the number of</span>
+<span class="sd">    common neighbors and bonus one for each common neighbor belonging to</span>
+<span class="sd">    the same community as `u` and `v`. Mathematically,</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        |\Gamma(u) \cap \Gamma(v)| + \sum_{w \in \Gamma(u) \cap \Gamma(v)} f(w)</span>
+
+<span class="sd">    where `f(w)` equals 1 if `w` belongs to the same community as `u`</span>
+<span class="sd">    and `v` or 0 otherwise and :math:`\Gamma(u)` denotes the set of</span>
+<span class="sd">    neighbors of `u`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : graph</span>
+<span class="sd">        A NetworkX undirected graph.</span>
+
+<span class="sd">    ebunch : iterable of node pairs, optional (default = None)</span>
+<span class="sd">        The score will be computed for each pair of nodes given in the</span>
+<span class="sd">        iterable. The pairs must be given as 2-tuples (u, v) where u</span>
+<span class="sd">        and v are nodes in the graph. If ebunch is None then all</span>
+<span class="sd">        non-existent edges in the graph will be used.</span>
+<span class="sd">        Default value: None.</span>
+
+<span class="sd">    community : string, optional (default = &#39;community&#39;)</span>
+<span class="sd">        Nodes attribute name containing the community information.</span>
+<span class="sd">        G[u][community] identifies which community u belongs to. Each</span>
+<span class="sd">        node belongs to at most one community. Default value: &#39;community&#39;.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    piter : iterator</span>
+<span class="sd">        An iterator of 3-tuples in the form (u, v, p) where (u, v) is a</span>
+<span class="sd">        pair of nodes and p is their score.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -269,120 +481,162 @@
 <span class="sd">    &gt;&gt;&gt; G.node[0][&#39;community&#39;] = 0</span>
 <span class="sd">    &gt;&gt;&gt; G.node[1][&#39;community&#39;] = 0</span>
 <span class="sd">    &gt;&gt;&gt; G.node[2][&#39;community&#39;] = 0</span>
-<span class="sd">    &gt;&gt;&gt; nx.cn_soundarajan_hopcroft(G, 0, 2)</span>
-<span class="sd">    2</span>
+<span class="sd">    &gt;&gt;&gt; preds = nx.cn_soundarajan_hopcroft(G, [(0, 2)])</span>
+<span class="sd">    &gt;&gt;&gt; for u, v, p in preds:</span>
+<span class="sd">    ...     &#39;(%d, %d) -&gt; %d&#39; % (u, v, p)</span>
+<span class="sd">    ...</span>
+<span class="sd">    &#39;(0, 2) -&gt; 2&#39;</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
 <span class="sd">    .. [1] Sucheta Soundarajan and John Hopcroft.</span>
-<span class="sd">       Using community information to improve the precision of link prediction methods.</span>
+<span class="sd">       Using community information to improve the precision of link</span>
+<span class="sd">       prediction methods.</span>
 <span class="sd">       In Proceedings of the 21st international conference companion on</span>
 <span class="sd">       World Wide Web (WWW &#39;12 Companion). ACM, New York, NY, USA, 607-608.</span>
 <span class="sd">       http://doi.acm.org/10.1145/2187980.2188150</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">Cu</span> <span class="o">=</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
-    <span class="n">Cv</span> <span class="o">=</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-    <span class="n">cnbors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">common_neighbors</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">Cu</span> <span class="o">==</span> <span class="n">Cv</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">cnbors</span><span class="p">)</span> <span class="o">+</span> <span class="nb">sum</span><span class="p">(</span><span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="o">==</span> <span class="n">Cu</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">cnbors</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">cnbors</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ebunch</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">ebunch</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">non_edges</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="n">Cu</span> <span class="o">=</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">community</span><span class="p">)</span>
+        <span class="n">Cv</span> <span class="o">=</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">community</span><span class="p">)</span>
+        <span class="n">cnbors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">common_neighbors</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">Cu</span> <span class="o">==</span> <span class="n">Cv</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">cnbors</span><span class="p">)</span> <span class="o">+</span> <span class="nb">sum</span><span class="p">(</span><span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">community</span><span class="p">)</span> <span class="o">==</span> <span class="n">Cu</span>
+                                     <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">cnbors</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">cnbors</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">predict</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ebunch</span><span class="p">)</span>
 
 </div>
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;multigraph&#39;</span><span class="p">)</span>
-<div class="viewcode-block" id="ra_index_soundarajan_hopcroft"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.link_prediction.ra_index_soundarajan_hopcroft.html#networkx.algorithms.link_prediction.ra_index_soundarajan_hopcroft">[docs]</a><span class="k">def</span> <span class="nf">ra_index_soundarajan_hopcroft</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Compute the resource allocation index of u and v using community information.</span>
+<div class="viewcode-block" id="ra_index_soundarajan_hopcroft"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.link_prediction.ra_index_soundarajan_hopcroft.html#networkx.algorithms.link_prediction.ra_index_soundarajan_hopcroft">[docs]</a><span class="k">def</span> <span class="nf">ra_index_soundarajan_hopcroft</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">ebunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">community</span><span class="o">=</span><span class="s">&#39;community&#39;</span><span class="p">):</span>
+    <span class="sd">r&quot;&quot;&quot;Compute the resource allocation index of all node pairs in</span>
+<span class="sd">    ebunch using community information.</span>
 
-<span class="sd">    Resource allocation index of two nodes is defined as the sum of</span>
-<span class="sd">    reciprocals of the degree of all their common neighbors. However,</span>
-<span class="sd">    this function only considers common neighbors belonging to the same</span>
-<span class="sd">    community as u and v.</span>
+<span class="sd">    For two nodes `u` and `v`, this function computes the resource</span>
+<span class="sd">    allocation index considering only common neighbors belonging to the</span>
+<span class="sd">    same community as `u` and `v`. Mathematically,</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \sum_{w \in \Gamma(u) \cap \Gamma(v)} \frac{f(w)}{|\Gamma(w)|}</span>
+
+<span class="sd">    where `f(w)` equals 1 if `w` belongs to the same community as `u`</span>
+<span class="sd">    and `v` or 0 otherwise and :math:`\Gamma(u)` denotes the set of</span>
+<span class="sd">    neighbors of `u`.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    G : graph</span>
 <span class="sd">        A NetworkX undirected graph.</span>
 
-<span class="sd">    u, v : nodes</span>
-<span class="sd">        Nodes in the graph.</span>
+<span class="sd">    ebunch : iterable of node pairs, optional (default = None)</span>
+<span class="sd">        The score will be computed for each pair of nodes given in the</span>
+<span class="sd">        iterable. The pairs must be given as 2-tuples (u, v) where u</span>
+<span class="sd">        and v are nodes in the graph. If ebunch is None then all</span>
+<span class="sd">        non-existent edges in the graph will be used.</span>
+<span class="sd">        Default value: None.</span>
+
+<span class="sd">    community : string, optional (default = &#39;community&#39;)</span>
+<span class="sd">        Nodes attribute name containing the community information.</span>
+<span class="sd">        G[u][community] identifies which community u belongs to. Each</span>
+<span class="sd">        node belongs to at most one community. Default value: &#39;community&#39;.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    value : float</span>
-<span class="sd">        The resource allocation index of u and v considering only</span>
-<span class="sd">        common neighbors that belong to the same community as u and v.</span>
-
-<span class="sd">    Notes</span>
-<span class="sd">    -----</span>
-<span class="sd">    The community information is defined as the information of which</span>
-<span class="sd">    community each node belongs to. This information should be stored</span>
-<span class="sd">    as the nodes attribute with &#39;community&#39; as the name.</span>
+<span class="sd">    piter : iterator</span>
+<span class="sd">        An iterator of 3-tuples in the form (u, v, p) where (u, v) is a</span>
+<span class="sd">        pair of nodes and p is their score.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import networkx as nx</span>
 <span class="sd">    &gt;&gt;&gt; G = nx.Graph()</span>
 <span class="sd">    &gt;&gt;&gt; G.add_edges_from([(0, 1), (0, 2), (1, 3), (2, 3)])</span>
 <span class="sd">    &gt;&gt;&gt; G.node[0][&#39;community&#39;] = 0</span>
 <span class="sd">    &gt;&gt;&gt; G.node[1][&#39;community&#39;] = 0</span>
 <span class="sd">    &gt;&gt;&gt; G.node[2][&#39;community&#39;] = 1</span>
 <span class="sd">    &gt;&gt;&gt; G.node[3][&#39;community&#39;] = 0</span>
-<span class="sd">    &gt;&gt;&gt; nx.ra_index_soundarajan_hopcroft(G, 0, 3)</span>
-<span class="sd">    0.5</span>
+<span class="sd">    &gt;&gt;&gt; preds = nx.ra_index_soundarajan_hopcroft(G, [(0, 3)])</span>
+<span class="sd">    &gt;&gt;&gt; for u, v, p in preds:</span>
+<span class="sd">    ...     &#39;(%d, %d) -&gt; %.8f&#39; % (u, v, p)</span>
+<span class="sd">    ...</span>
+<span class="sd">    &#39;(0, 3) -&gt; 0.50000000&#39;</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
 <span class="sd">    .. [1] Sucheta Soundarajan and John Hopcroft.</span>
-<span class="sd">       Using community information to improve the precision of link prediction methods.</span>
+<span class="sd">       Using community information to improve the precision of link</span>
+<span class="sd">       prediction methods.</span>
 <span class="sd">       In Proceedings of the 21st international conference companion on</span>
 <span class="sd">       World Wide Web (WWW &#39;12 Companion). ACM, New York, NY, USA, 607-608.</span>
 <span class="sd">       http://doi.acm.org/10.1145/2187980.2188150</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">Cu</span> <span class="o">=</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
-    <span class="n">Cv</span> <span class="o">=</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">Cu</span> <span class="o">==</span> <span class="n">Cv</span><span class="p">:</span>
-        <span class="n">cnbors</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">common_neighbors</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">cnbors</span> <span class="k">if</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="o">==</span> <span class="n">Cu</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">ebunch</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">ebunch</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">non_edges</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="n">Cu</span> <span class="o">=</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">community</span><span class="p">)</span>
+        <span class="n">Cv</span> <span class="o">=</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">community</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">Cu</span> <span class="o">==</span> <span class="n">Cv</span><span class="p">:</span>
+            <span class="n">cnbors</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">common_neighbors</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">cnbors</span>
+                       <span class="k">if</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">community</span><span class="p">)</span> <span class="o">==</span> <span class="n">Cu</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="k">return</span> <span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">predict</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ebunch</span><span class="p">)</span>
 
 </div>
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;multigraph&#39;</span><span class="p">)</span>
-<div class="viewcode-block" id="within_inter_cluster"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.link_prediction.within_inter_cluster.html#networkx.algorithms.link_prediction.within_inter_cluster">[docs]</a><span class="k">def</span> <span class="nf">within_inter_cluster</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="mf">0.001</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Compute the ratio of within- and inter-cluster common neighbor.</span>
+<div class="viewcode-block" id="within_inter_cluster"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.link_prediction.within_inter_cluster.html#networkx.algorithms.link_prediction.within_inter_cluster">[docs]</a><span class="k">def</span> <span class="nf">within_inter_cluster</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">ebunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">community</span><span class="o">=</span><span class="s">&#39;community&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute the ratio of within- and inter-cluster common neighbors</span>
+<span class="sd">    of all node pairs in ebunch.</span>
 
-<span class="sd">    If a common neighbor w belongs to the same community with u and v,</span>
-<span class="sd">    w is considered as within-cluster common neighbor of u and v.</span>
-<span class="sd">    Otherwise, it is considered as inter-cluster common neighbor of u</span>
-<span class="sd">    and v. The ratio between the size of the set of within- and</span>
-<span class="sd">    inter-cluster common neighbors is defined as the WIC measure. [1]_</span>
+<span class="sd">    For two nodes `u` and `v`, if a common neighbor `w` belongs to the</span>
+<span class="sd">    same community as them, `w` is considered as within-cluster common</span>
+<span class="sd">    neighbor of `u` and `v`. Otherwise, it is considered as</span>
+<span class="sd">    inter-cluster common neighbor of `u` and `v`. The ratio between the</span>
+<span class="sd">    size of the set of within- and inter-cluster common neighbors is</span>
+<span class="sd">    defined as the WIC measure. [1]_</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    G : graph</span>
 <span class="sd">        A NetworkX undirected graph.</span>
 
-<span class="sd">    u, v : nodes</span>
-<span class="sd">        Nodes in the graph.</span>
+<span class="sd">    ebunch : iterable of node pairs, optional (default = None)</span>
+<span class="sd">        The WIC measure will be computed for each pair of nodes given in</span>
+<span class="sd">        the iterable. The pairs must be given as 2-tuples (u, v) where</span>
+<span class="sd">        u and v are nodes in the graph. If ebunch is None then all</span>
+<span class="sd">        non-existent edges in the graph will be used.</span>
+<span class="sd">        Default value: None.</span>
 
-<span class="sd">    delta : float, optional</span>
-<span class="sd">        Value to prevent division by zero in case there is no inter-cluster</span>
-<span class="sd">        common neighbor of u and v. See [1]_ for details.</span>
+<span class="sd">    delta : float, optional (default = 0.001)</span>
+<span class="sd">        Value to prevent division by zero in case there is no</span>
+<span class="sd">        inter-cluster common neighbor between two nodes. See [1]_ for</span>
+<span class="sd">        details. Default value: 0.001.</span>
+
+<span class="sd">    community : string, optional (default = &#39;community&#39;)</span>
+<span class="sd">        Nodes attribute name containing the community information.</span>
+<span class="sd">        G[u][community] identifies which community u belongs to. Each</span>
+<span class="sd">        node belongs to at most one community. Default value: &#39;community&#39;.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    value : float</span>
-<span class="sd">        The WIC measure of u and v.</span>
-
-<span class="sd">    Notes</span>
-<span class="sd">    -----</span>
-<span class="sd">    The community information is defined as the information of which</span>
-<span class="sd">    community each node belongs to. This information should be stored</span>
-<span class="sd">    as the nodes attribute with &#39;community&#39; as the name.</span>
+<span class="sd">    piter : iterator</span>
+<span class="sd">        An iterator of 3-tuples in the form (u, v, p) where (u, v) is a</span>
+<span class="sd">        pair of nodes and p is their WIC measure.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import networkx as nx</span>
 <span class="sd">    &gt;&gt;&gt; G = nx.Graph()</span>
 <span class="sd">    &gt;&gt;&gt; G.add_edges_from([(0, 1), (0, 2), (0, 3), (1, 4), (2, 4), (3, 4)])</span>
 <span class="sd">    &gt;&gt;&gt; G.node[0][&#39;community&#39;] = 0</span>
@@ -390,10 +644,16 @@
 <span class="sd">    &gt;&gt;&gt; G.node[2][&#39;community&#39;] = 0</span>
 <span class="sd">    &gt;&gt;&gt; G.node[3][&#39;community&#39;] = 0</span>
 <span class="sd">    &gt;&gt;&gt; G.node[4][&#39;community&#39;] = 0</span>
-<span class="sd">    &gt;&gt;&gt; nx.within_inter_cluster(G, 0, 4)</span>
-<span class="sd">    1.9980019980019983</span>
-<span class="sd">    &gt;&gt;&gt; nx.within_inter_cluster(G, 0, 4, delta=0.5)</span>
-<span class="sd">    1.3333333333333333</span>
+<span class="sd">    &gt;&gt;&gt; preds = nx.within_inter_cluster(G, [(0, 4)])</span>
+<span class="sd">    &gt;&gt;&gt; for u, v, p in preds:</span>
+<span class="sd">    ...     &#39;(%d, %d) -&gt; %.8f&#39; % (u, v, p)</span>
+<span class="sd">    ...</span>
+<span class="sd">    &#39;(0, 4) -&gt; 1.99800200&#39;</span>
+<span class="sd">    &gt;&gt;&gt; preds = nx.within_inter_cluster(G, [(0, 4)], delta=0.5)</span>
+<span class="sd">    &gt;&gt;&gt; for u, v, p in preds:</span>
+<span class="sd">    ...     &#39;(%d, %d) -&gt; %.8f&#39; % (u, v, p)</span>
+<span class="sd">    ...</span>
+<span class="sd">    &#39;(0, 4) -&gt; 1.33333333&#39;</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
@@ -404,25 +664,33 @@
 <span class="sd">       http://dx.doi.org/10.1007/978-3-642-34459-6_10</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">delta</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">NetworkXAlgorithmError</span><span class="p">(</span><span class="s">&#39;Delta must be greater than zero&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXAlgorithmError</span><span class="p">(</span><span class="s">&#39;Delta must be greater than zero&#39;</span><span class="p">)</span>
 
-    <span class="n">Cu</span> <span class="o">=</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
-    <span class="n">Cv</span> <span class="o">=</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">Cu</span> <span class="o">==</span> <span class="n">Cv</span><span class="p">:</span>
-        <span class="n">cnbors</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">common_neighbors</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
-        <span class="n">within</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">cnbors</span> <span class="k">if</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="o">==</span> <span class="n">Cu</span><span class="p">)</span>
-        <span class="n">inter</span> <span class="o">=</span> <span class="n">cnbors</span> <span class="o">-</span> <span class="n">within</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">within</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inter</span><span class="p">)</span> <span class="o">+</span> <span class="n">delta</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">ebunch</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">ebunch</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">non_edges</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="n">Cu</span> <span class="o">=</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">community</span><span class="p">)</span>
+        <span class="n">Cv</span> <span class="o">=</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">community</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">Cu</span> <span class="o">==</span> <span class="n">Cv</span><span class="p">:</span>
+            <span class="n">cnbors</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">common_neighbors</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+            <span class="n">within</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">cnbors</span>
+                         <span class="k">if</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">community</span><span class="p">)</span> <span class="o">==</span> <span class="n">Cu</span><span class="p">)</span>
+            <span class="n">inter</span> <span class="o">=</span> <span class="n">cnbors</span> <span class="o">-</span> <span class="n">within</span>
+            <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">within</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inter</span><span class="p">)</span> <span class="o">+</span> <span class="n">delta</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="k">return</span> <span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">predict</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ebunch</span><span class="p">)</span>
 
 </div>
-<span class="k">def</span> <span class="nf">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">community</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Get the community of the given node.&quot;&quot;&quot;</span>
+    <span class="n">node_u</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">G</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="s">&#39;community&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">node_u</span><span class="p">[</span><span class="n">community</span><span class="p">]</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">NetworkXAlgorithmError</span><span class="p">(</span><span class="s">&#39;No community information&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXAlgorithmError</span><span class="p">(</span><span class="s">&#39;No community information&#39;</span><span class="p">)</span>
 </pre></div>
 
           </div>
@@ -434,7 +702,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jun 01, 2014.
+      Last updated on Jun 02, 2014.
     </p>
   </div>
 
@@ -454,7 +722,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'1.9.dev20140601080155',
+            VERSION:'1.9.dev20140602000008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

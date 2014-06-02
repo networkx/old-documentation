@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>within_inter_cluster &mdash; NetworkX 1.9.dev20140601080155 documentation</title>
+  <title>within_inter_cluster &mdash; NetworkX 1.9.dev20140602000008 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140601080155 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140602000008 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 1.9.dev20140601080155 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 1.9.dev20140602000008 documentation" href="../../index.html"/>
         <link rel="up" title="Link Prediction" href="../algorithms.link_prediction.html"/>
         <link rel="next" title="Matching" href="../algorithms.matching.html"/>
         <link rel="prev" title="ra_index_soundarajan_hopcroft" href="networkx.algorithms.link_prediction.ra_index_soundarajan_hopcroft.html"/> 
@@ -190,13 +190,15 @@
 <h1>within_inter_cluster<a class="headerlink" href="#within-inter-cluster" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.algorithms.link_prediction.within_inter_cluster">
-<tt class="descname">within_inter_cluster</tt><big>(</big><em>G</em>, <em>u</em>, <em>v</em>, <em>delta=0.001</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/link_prediction.html#within_inter_cluster"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.link_prediction.within_inter_cluster" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute the ratio of within- and inter-cluster common neighbor.</p>
-<p>If a common neighbor w belongs to the same community with u and v,
-w is considered as within-cluster common neighbor of u and v.
-Otherwise, it is considered as inter-cluster common neighbor of u
-and v. The ratio between the size of the set of within- and
-inter-cluster common neighbors is defined as the WIC measure. <a class="reference internal" href="#r261">[R261]</a></p>
+<tt class="descname">within_inter_cluster</tt><big>(</big><em>G</em>, <em>ebunch=None</em>, <em>delta=0.001</em>, <em>community='community'</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/link_prediction.html#within_inter_cluster"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.link_prediction.within_inter_cluster" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the ratio of within- and inter-cluster common neighbors
+of all node pairs in ebunch.</p>
+<p>For two nodes <span class="math">\(u\)</span> and <span class="math">\(v\)</span>, if a common neighbor <span class="math">\(w\)</span> belongs to the
+same community as them, <span class="math">\(w\)</span> is considered as within-cluster common
+neighbor of <span class="math">\(u\)</span> and <span class="math">\(v\)</span>. Otherwise, it is considered as
+inter-cluster common neighbor of <span class="math">\(u\)</span> and <span class="math">\(v\)</span>. The ratio between the
+size of the set of within- and inter-cluster common neighbors is
+defined as the WIC measure. <a class="reference internal" href="#r267">[R267]</a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -205,34 +207,42 @@ inter-cluster common neighbors is defined as the WIC measure. <a class="referenc
 <blockquote>
 <div><p>A NetworkX undirected graph.</p>
 </div></blockquote>
-<p><strong>u, v</strong> : nodes</p>
+<p><strong>ebunch</strong> : iterable of node pairs, optional (default = None)</p>
 <blockquote>
-<div><p>Nodes in the graph.</p>
+<div><p>The WIC measure will be computed for each pair of nodes given in
+the iterable. The pairs must be given as 2-tuples (u, v) where
+u and v are nodes in the graph. If ebunch is None then all
+non-existent edges in the graph will be used.
+Default value: None.</p>
 </div></blockquote>
-<p><strong>delta</strong> : float, optional</p>
+<p><strong>delta</strong> : float, optional (default = 0.001)</p>
 <blockquote>
-<div><p>Value to prevent division by zero in case there is no inter-cluster
-common neighbor of u and v. See <a class="reference internal" href="#r261">[R261]</a> for details.</p>
+<div><p>Value to prevent division by zero in case there is no
+inter-cluster common neighbor between two nodes. See <a class="reference internal" href="#r267">[R267]</a> for
+details. Default value: 0.001.</p>
+</div></blockquote>
+<p><strong>community</strong> : string, optional (default = &#8216;community&#8217;)</p>
+<blockquote>
+<div><p>Nodes attribute name containing the community information.
+G[u][community] identifies which community u belongs to. Each
+node belongs to at most one community. Default value: &#8216;community&#8217;.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>value</strong> : float</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>piter</strong> : iterator</p>
 <blockquote class="last">
-<div><p>The WIC measure of u and v.</p>
+<div><p>An iterator of 3-tuples in the form (u, v, p) where (u, v) is a
+pair of nodes and p is their WIC measure.</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Notes</p>
-<p>The community information is defined as the information of which
-community each node belongs to. This information should be stored
-as the nodes attribute with &#8216;community&#8217; as the name.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r261" rules="none">
+<table class="docutils citation" frame="void" id="r267" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R261]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id3">3</a>)</em> Jorge Carlos Valverde-Rebaza and Alneu de Andrade Lopes.
+<tr><td class="label">[R267]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id3">3</a>)</em> Jorge Carlos Valverde-Rebaza and Alneu de Andrade Lopes.
 Link prediction in complex networks based on cluster information.
 In Proceedings of the 21st Brazilian conference on Advances in
 Artificial Intelligence (SBIA&#8216;12)
@@ -240,17 +250,24 @@ Artificial Intelligence (SBIA&#8216;12)
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;community&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">&#39;community&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s">&#39;community&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="s">&#39;community&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="s">&#39;community&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">within_inter_cluster</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="go">1.9980019980019983</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">within_inter_cluster</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="go">1.3333333333333333</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">preds</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">within_inter_cluster</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">preds</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="s">&#39;(</span><span class="si">%d</span><span class="s">, </span><span class="si">%d</span><span class="s">) -&gt; </span><span class="si">%.8f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">&#39;(0, 4) -&gt; 1.99800200&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">preds</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">within_inter_cluster</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)],</span> <span class="n">delta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">preds</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="s">&#39;(</span><span class="si">%d</span><span class="s">, </span><span class="si">%d</span><span class="s">) -&gt; </span><span class="si">%.8f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">&#39;(0, 4) -&gt; 1.33333333&#39;</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -276,7 +293,7 @@ Artificial Intelligence (SBIA&#8216;12)
   <div role="contentinfo">
     <p>
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jun 01, 2014.
+      Last updated on Jun 02, 2014.
     </p>
   </div>
 
@@ -296,7 +313,7 @@ Artificial Intelligence (SBIA&#8216;12)
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.9.dev20140601080155',
+            VERSION:'1.9.dev20140602000008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
