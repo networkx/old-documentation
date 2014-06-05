@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.readwrite.pajek &mdash; NetworkX 1.9.dev20140604000009 documentation</title>
+  <title>networkx.readwrite.pajek &mdash; NetworkX 1.9.dev20140605000009 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140604000009 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140605000009 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 1.9.dev20140604000009 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 1.9.dev20140605000009 documentation" href="../../../index.html"/>
         <link rel="up" title="networkx" href="../../networkx.html"/> 
 
   
@@ -195,7 +195,7 @@
 <span class="sd">See http://vlado.fmf.uni-lj.si/pub/networks/pajek/doc/draweps.htm</span>
 <span class="sd">for format information.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="c">#    Copyright (C) 2008-2011 by</span>
+<span class="c">#    Copyright (C) 2008-2014 by</span>
 <span class="c">#    Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
 <span class="c">#    Dan Schult &lt;dschult@colgate.edu&gt;</span>
 <span class="c">#    Pieter Swart &lt;swart@lanl.gov&gt;</span>
@@ -203,7 +203,7 @@
 <span class="c">#    BSD license.</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
 <span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="kn">import</span> <span class="n">is_string_like</span><span class="p">,</span> <span class="n">open_file</span><span class="p">,</span> <span class="n">make_str</span>
-<span class="n">__author__</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;Aric Hagberg (hagberg@lanl.gov)&quot;&quot;&quot;</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;Aric Hagberg &lt;aric.hagberg@gmail.com&gt;&quot;&quot;&quot;</span>
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;read_pajek&#39;</span><span class="p">,</span> <span class="s">&#39;parse_pajek&#39;</span><span class="p">,</span> <span class="s">&#39;generate_pajek&#39;</span><span class="p">,</span> <span class="s">&#39;write_pajek&#39;</span><span class="p">]</span>
 
 <span class="k">def</span> <span class="nf">generate_pajek</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
@@ -355,7 +355,12 @@
             <span class="n">nodelabels</span><span class="o">=</span><span class="p">{}</span>
             <span class="n">l</span><span class="p">,</span><span class="n">nnodes</span><span class="o">=</span><span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">nnodes</span><span class="p">)):</span>
-                <span class="n">splitline</span><span class="o">=</span><span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">lines</span><span class="p">)))</span>
+                <span class="n">l</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">splitline</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span>
+                           <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">make_str</span><span class="p">(</span><span class="n">l</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">))]</span>
+                <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                    <span class="n">splitline</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
                 <span class="nb">id</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">splitline</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
                 <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
                 <span class="n">nodelabels</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span><span class="o">=</span><span class="n">label</span>
@@ -377,7 +382,12 @@
                <span class="c"># switch to directed with multiple arcs for each existing edge</span>
                 <span class="n">G</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">to_directed</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
-                <span class="n">splitline</span><span class="o">=</span><span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">splitline</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span>
+                                 <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">make_str</span><span class="p">(</span><span class="n">l</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;utf-8&#39;</span><span class="p">))]</span>
+                <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                    <span class="n">splitline</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">splitline</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">:</span>
                     <span class="k">continue</span>
                 <span class="n">ui</span><span class="p">,</span><span class="n">vi</span><span class="o">=</span><span class="n">splitline</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
@@ -428,7 +438,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jun 04, 2014.
+      Last updated on Jun 05, 2014.
     </p>
   </div>
 
@@ -448,7 +458,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'1.9.dev20140604000009',
+            VERSION:'1.9.dev20140605000009',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
