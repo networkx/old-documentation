@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Version 1.9 notes and API changes &mdash; NetworkX 1.9.dev20140606000018 documentation</title>
+  <title>Version 1.9 notes and API changes &mdash; NetworkX 1.9.dev20140607000008 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140606000018 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140607000008 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 1.9.dev20140606000018 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 1.9.dev20140607000008 documentation" href="../index.html"/>
         <link rel="up" title="API changes" href="api_changes.html"/>
         <link rel="next" title="Version 1.8 notes and API changes" href="api_1.8.html"/>
         <link rel="prev" title="API changes" href="api_changes.html"/> 
@@ -184,37 +184,76 @@
             
   <div class="section" id="version-1-9-notes-and-api-changes">
 <h1>Version 1.9 notes and API changes<a class="headerlink" href="#version-1-9-notes-and-api-changes" title="Permalink to this headline">¶</a></h1>
-<p>This page reflects API changes from networkx-1.8 to networkx-1.9.</p>
+<p>This page reflects API changes from NetworkX 1.8 to NetworkX 1.9.</p>
 <p>Please send comments and questions to the networkx-discuss mailing list:
-<a class="reference external" href="http://groups.google.com/group/networkx-discuss">http://groups.google.com/group/networkx-discuss</a> .</p>
-<ul class="simple">
-<li>The functions in the components package algorithms/components/ such as, connected_components, connected_components_subgraph, and similar, now return generators instead of lists.  In order to recover the earlier behavior use e.g. list(connected_components(G)).</li>
-</ul>
+&lt;<a class="reference external" href="http://groups.google.com/group/networkx-discuss">http://groups.google.com/group/networkx-discuss</a>&gt;.</p>
 <div class="section" id="flow-package">
 <h2>Flow package<a class="headerlink" href="#flow-package" title="Permalink to this headline">¶</a></h2>
-<p>Complete rewrite of the flow package and new interface to flow algorithms, with backwards incompatible changes. If you had code that was using any of the flow related functions, it will not work unmodified in 1.9. But, trust us, it is worth it. The main changes are:</p>
+<p>The flow package (<tt class="samp docutils literal"><span class="pre">networkx.algorithms.flow</span></tt>) is completely rewritten
+with backward <em>incompatible</em> changes. It introduces a new interface to flow
+algorithms. Existing code that uses the flow package will not work unmodified
+with NetworkX 1.9.</p>
+<div class="section" id="main-changes">
+<h3>Main changes<a class="headerlink" href="#main-changes" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>We added two new maximum flow algorithms (<tt class="samp docutils literal"><span class="pre">preflow_push</span></tt> and <tt class="samp docutils literal"><span class="pre">shortest_augmenting_path</span></tt>) and rewrote the Edmonds-Karp algorithm in <tt class="samp docutils literal"><span class="pre">flow_fulkerson</span></tt> which is now at <tt class="samp docutils literal"><span class="pre">edmonds_karp</span></tt>. &#64;ysitu contributed the very nice implementations of all new maximum flow algorithms [&#64;ysitu do you want your full/real name here?]. The legacy Edmonds-Karp algorithm implementation in <tt class="samp docutils literal"><span class="pre">ford_fulkerson</span></tt> is still available but will be removed in the next release.</li>
-<li>All maximum flow algorithm implementations (including the legacy <tt class="samp docutils literal"><span class="pre">ford_fulkerson</span></tt>) output now a residual network (ie a NetworkX DiGraph) after computing the maximum flow. See <tt class="samp docutils literal"><span class="pre">maximum_flow</span></tt> documentation for the details on the conventions that NetworkX uses for defining a residual network.</li>
-<li>We removed the old <tt class="samp docutils literal"><span class="pre">max_flow</span></tt> and <tt class="samp docutils literal"><span class="pre">min_cut</span></tt> functions. The main interface to flow algorithms are now the functions <tt class="samp docutils literal"><span class="pre">maximum_flow</span></tt>, <tt class="samp docutils literal"><span class="pre">maximum_flow_value</span></tt> and <tt class="samp docutils literal"><span class="pre">minimum_cut</span></tt> and <tt class="samp docutils literal"><span class="pre">minimum_cut_value</span></tt>, which have new parameters that define NetworkX interface to flow algorithms: <tt class="samp docutils literal"><span class="pre">flow_func</span></tt> for defining the algorithm that will do the actual computation (it accepts a function as argument that implements a maximum flow algorithm), <tt class="samp docutils literal"><span class="pre">cutoff</span></tt> for defining a maximum value after which the algorithm stops, <tt class="samp docutils literal"><span class="pre">value_only</span></tt> for stopping the computation as soon as we have the value of the flow, and <tt class="samp docutils literal"><span class="pre">residual</span></tt> that accepts as argument a residual network to be reused in maximum flow computations.</li>
-<li>All algorithms accept arguments for these parameters, but not all of them can actually act according to them. For instance, <tt class="samp docutils literal"><span class="pre">preflow_push</span></tt> algorithm can stop after the <tt class="samp docutils literal"><span class="pre">preflow</span></tt> phase if we only need the value of the flow, but both <tt class="samp docutils literal"><span class="pre">edmonds_karp</span></tt> and <tt class="samp docutils literal"><span class="pre">shortest_augmenting_path</span></tt> will need to finish for obtaining the flow value. Thus, parameters not applicable to one algorithm will be accepted but ignored.</li>
-<li>The new function <tt class="samp docutils literal"><span class="pre">minimum_cut</span></tt> returns the cut value and the actual node partition that defines the minimum cut. The function <tt class="samp docutils literal"><span class="pre">minimum_cut_value</span></tt> returns only the value of the cut, which is what the removed <tt class="samp docutils literal"><span class="pre">min_cut</span></tt> function used to return before 1.9.</li>
-<li>The functions that implement flow algorithms (ie <tt class="samp docutils literal"><span class="pre">preflow_push</span></tt>, <tt class="samp docutils literal"><span class="pre">edmonds_karp</span></tt>, <tt class="samp docutils literal"><span class="pre">shortest_augmenting_path</span></tt>, and <tt class="samp docutils literal"><span class="pre">ford_fulkerson</span></tt>) are not imported to the base NetworkX namespace. You have to explicitly import them from the flow package:</li>
+<li>We added two new maximum flow algorithms (<tt class="samp docutils literal"><span class="pre">preflow_push</span></tt> and
+<tt class="samp docutils literal"><span class="pre">shortest_augmenting_path</span></tt>) and rewrote the Edmonds–Karp algorithm in
+<tt class="samp docutils literal"><span class="pre">flow_fulkerson</span></tt> which is now in <tt class="samp docutils literal"><span class="pre">edmonds_karp</span></tt>.
+<a class="reference external" href="https://github.com/ysitu">&#64;ysitu</a> contributed implementations of all new
+maximum flow algorithms. The legacy Edmonds–Karp algorithm implementation in
+<tt class="samp docutils literal"><span class="pre">ford_fulkerson</span></tt> is still available but will be removed in the next
+release.</li>
+<li>All maximum flow algorithm implementations (including the legacy
+<tt class="samp docutils literal"><span class="pre">ford_fulkerson</span></tt>) output now a residual network (i.e., a
+<tt class="samp docutils literal"><span class="pre">DiGraph</span></tt>) after computing the maximum flow. See <tt class="samp docutils literal"><span class="pre">maximum_flow</span></tt>
+documentation for the details on the conventions that NetworkX uses for
+defining a residual network.</li>
+<li>We removed the old <tt class="samp docutils literal"><span class="pre">max_flow</span></tt> and <tt class="samp docutils literal"><span class="pre">min_cut</span></tt> functions. The main
+entry points to flow algorithms are now the functions <tt class="samp docutils literal"><span class="pre">maximum_flow</span></tt>,
+<tt class="samp docutils literal"><span class="pre">maximum_flow_value</span></tt>, <tt class="samp docutils literal"><span class="pre">minimum_cut</span></tt> and
+<tt class="samp docutils literal"><span class="pre">minimum_cut_value</span></tt>, which have new parameters that control maximum
+flow computation: <tt class="samp docutils literal"><span class="pre">flow_func</span></tt> for specifying the algorithm that will
+do the actual computation (it accepts a function as argument that implements
+a maximum flow algorithm), <tt class="samp docutils literal"><span class="pre">cutoff</span></tt> for suggesting a maximum flow
+value at which the algorithm stops, <tt class="samp docutils literal"><span class="pre">value_only</span></tt> for stopping the
+computation as soon as we have the value of the flow, and <tt class="samp docutils literal"><span class="pre">residual</span></tt>
+that accepts as argument a residual network to be reused in repeated maximum
+flow computation.</li>
+<li>All flow algorithms are required to accept arguments for these parameters
+but may selectively ignored the inapplicable ones. For instance,
+<tt class="samp docutils literal"><span class="pre">preflow_push</span></tt> algorithm can stop after the preflow phase without
+computing a maximum flow if we only need the flow value, but both
+<tt class="samp docutils literal"><span class="pre">edmonds_karp</span></tt> and <tt class="samp docutils literal"><span class="pre">shortest_augmenting_path</span></tt> always compute a
+maximum flow to obtain the flow value.</li>
+<li>The new function <tt class="samp docutils literal"><span class="pre">minimum_cut</span></tt> returns the cut value and a node
+partition that defines the minimum cut. The function
+<tt class="samp docutils literal"><span class="pre">minimum_cut_value</span></tt> returns only the value of the cut, which is what
+the removed <tt class="samp docutils literal"><span class="pre">min_cut</span></tt> function used to return before 1.9.</li>
+<li>The functions that implement flow algorithms (i.e., <tt class="samp docutils literal"><span class="pre">preflow_push</span></tt>,
+<tt class="samp docutils literal"><span class="pre">edmonds_karp</span></tt>, <tt class="samp docutils literal"><span class="pre">shortest_augmenting_path</span></tt> and
+<tt class="samp docutils literal"><span class="pre">ford_fulkerson</span></tt>) are not imported to the base NetworkX namespace. You
+have to explicitly import them from the flow package:</li>
 </ol>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.algorithms.flow</span> <span class="kn">import</span> <span class="p">(</span><span class="n">ford_fulkerson</span><span class="p">,</span> <span class="n">preflow_push</span><span class="p">,</span>
 <span class="gp">... </span>       <span class="n">edmonds_karp</span><span class="p">,</span> <span class="n">shortest_augmenting_path</span><span class="p">)</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="7">
-<li>Also added a capacity scaling minimum cost flow algorithm: <tt class="samp docutils literal"><span class="pre">capacity_scaling</span></tt>. It supports <tt class="samp docutils literal"><span class="pre">MultiDiGraphs</span></tt> and disconnected networks.</li>
-<li>Small examples illustrating how to obtain the same output than in NetworkX 1.8.1 using the new interface to flow algorithms introduced in 1.9:</li>
+<li>We also added a capacity-scaling minimum cost flow algorithm:
+<tt class="samp docutils literal"><span class="pre">capacity_scaling</span></tt>. It supports <tt class="samp docutils literal"><span class="pre">MultiDiGraph</span></tt> and disconnected
+networks.</li>
 </ol>
+</div>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<p>Below are some small examples illustrating how to obtain the same output than in
+NetworkX 1.8.1 using the new interface to flow algorithms introduced in 1.9:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">icosahedral_graph</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">set_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s">&#39;capacity&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>With NetworkX 1.8.1:</p>
+<p>With NetworkX 1.8:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">flow_value</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">max_flow</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cut_value</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">min_cut</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">flow_value</span> <span class="o">==</span> <span class="n">cut_value</span>
@@ -243,6 +282,104 @@
 </div>
 </div>
 </div>
+<div class="section" id="connectivity-package">
+<h2>Connectivity package<a class="headerlink" href="#connectivity-package" title="Permalink to this headline">¶</a></h2>
+<p>The flow-based connecitivity and cut algorithms from the connectivity
+package (<tt class="samp docutils literal"><span class="pre">networkx.algorithms.connectivity</span></tt>) are adapted to take
+advantage of the new interface to flow algorithms. As a result, flow-based
+connectivity algorithms are up to 10x faster than in NetworkX 1.8 for some
+problems, such as sparse networks with highly skewed degree distributions.
+A few backwards <em>incompatible</em> changes were introduced.</p>
+<ul class="simple">
+<li>The functions for local connectivity and cuts accept now
+arguments for the new parameters defined for the flow interface:
+<tt class="samp docutils literal"><span class="pre">flow_func</span></tt> for defining the algorithm that will perform the
+underlying maximum flow computations, <tt class="samp docutils literal"><span class="pre">residual</span></tt> that accepts
+as argument a residual network to be reused in repeated maximum
+flow computations, and <tt class="samp docutils literal"><span class="pre">cutoff</span></tt> for defining a maximum flow
+value at which the underlying maximum flow algorithm stops. The big
+speed improvement with respect to 1.8 comes mainly from the reuse
+of the residual network and the use of <tt class="samp docutils literal"><span class="pre">cutoff</span></tt>.</li>
+<li>We removed the flow-based local connectivity and cut functions from
+the base namespace. Now they have to be explicitly imported from the
+connectivity package. The main entry point to flow-based connectivity
+and cut functions are the functions <tt class="samp docutils literal"><span class="pre">edge_connectivity</span></tt>,
+<tt class="samp docutils literal"><span class="pre">node_connectivity</span></tt>, <tt class="samp docutils literal"><span class="pre">minimum_edge_cut</span></tt>, and
+<tt class="samp docutils literal"><span class="pre">minimum_node_cut</span></tt>. All these functions accept a couple of nodes
+as optional arguments for computing local connectivity and cuts.</li>
+<li>We improved the auxiliary network for connectivity functions: The node
+mapping dict needed for node connectivity and minimum node cuts is now a
+graph attribute of the auxiliary network. Thus we removed the
+<tt class="samp docutils literal"><span class="pre">mapping</span></tt> parameter from the local versions of connectivity and cut
+functions. We also changed the parameter name for the auxuliary digraph
+from <tt class="samp docutils literal"><span class="pre">aux_digraph</span></tt> to <tt class="samp docutils literal"><span class="pre">auxiliary</span></tt>.</li>
+<li>We changed the name of the function <tt class="samp docutils literal"><span class="pre">all_pairs_node_connectiviy_matrix</span></tt>
+to <tt class="samp docutils literal"><span class="pre">all_pairs_node_connectivity</span></tt>. This function now returns a dictionary
+instead of a NumPy 2D array. We added a new parameter <tt class="samp docutils literal"><span class="pre">nbunch</span></tt> for
+computing node connectivity only among pairs of nodes in <tt class="samp docutils literal"><span class="pre">nbunch</span></tt>.</li>
+<li>A <tt class="samp docutils literal"><span class="pre">stoer_wagner</span></tt> function is added to the connectivity package
+for computing the weighted minimum cuts of undirected graphs using
+the Stoer–Wagner algorithm. This algorithm is not based on maximum flows.
+Several heap implementations are also added in the utility package
+(<tt class="samp docutils literal"><span class="pre">networkx.utils</span></tt>) for use in this function.
+<tt class="xref py py-class docutils literal"><span class="pre">BinaryHeap</span></tt> is recommeded over <tt class="xref py py-class docutils literal"><span class="pre">PairingHeap</span></tt> for Python
+implementations without optimized attribute accesses (e.g., CPython)
+despite a slower asymptotic running time. For Python implementations
+with optimized attribute accesses (e.g., PyPy), <tt class="xref py py-class docutils literal"><span class="pre">PairingHeap</span></tt>
+provides better performance.</li>
+</ul>
+</div>
+<div class="section" id="other-new-functionalities">
+<h2>Other new functionalities<a class="headerlink" href="#other-new-functionalities" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>A <tt class="samp docutils literal"><span class="pre">disperson</span></tt> function is added in the centrality package
+(<tt class="samp docutils literal"><span class="pre">networkx.algorithms.centrality</span></tt>) for computing the dispersion of
+graphs.</li>
+<li>A community package (<tt class="samp docutils literal"><span class="pre">networkx.generators.community</span></tt>) is added for
+generating community graphs.</li>
+<li>An <tt class="samp docutils literal"><span class="pre">is_semiconnected</span></tt> function is added in the connectivity package
+(<tt class="samp docutils literal"><span class="pre">networkx.algorithms.connectivity</span></tt>) for recognizing semiconnected
+graphs.</li>
+<li>The <tt class="samp docutils literal"><span class="pre">eulerian_circuit</span></tt> function in the Euler package
+(<tt class="samp docutils literal"><span class="pre">networkx.algorithm.euler</span></tt>) is changed to use a linear-time algorithm.</li>
+<li>A <tt class="samp docutils literal"><span class="pre">non_edges</span></tt> function in added in the function package
+(<tt class="samp docutils literal"><span class="pre">networkx.functions</span></tt>) for enumerating nonexistent edges between
+existing nodes of graphs.</li>
+<li>The linear algebra package (<tt class="samp docutils literal"><span class="pre">networkx.linalg</span></tt>) is changed to use SciPy
+sparse matrices.</li>
+<li>Functions <tt class="samp docutils literal"><span class="pre">algebraic_connectivity</span></tt>, <tt class="samp docutils literal"><span class="pre">fiedler_vector</span></tt> and
+<tt class="samp docutils literal"><span class="pre">spectral_ordering</span></tt> are added in the linear algebra package
+(<tt class="samp docutils literal"><span class="pre">networkx.linalg</span></tt>) for computing the algebraic connectivity, Fiedler
+vectors and spectral orderings of undirected graphs.</li>
+<li>A link prediction package (<tt class="samp docutils literal"><span class="pre">networkx.algorithms.link_prediction</span></tt>) is
+added to provide link prediction-related functionalities.</li>
+<li>Write Support for the graph6 and sparse6 formats is added in the read/write
+package (<tt class="samp docutils literal"><span class="pre">networx.readwrite</span></tt>).</li>
+<li>A <tt class="samp docutils literal"><span class="pre">goldberg_radzik</span></tt> function is added in the shortest path package
+(<tt class="samp docutils literal"><span class="pre">networkx.algorithms.shortest_paths</span></tt>) for computing shortest paths
+using the Goldberg–Radzik algorithm.</li>
+<li>A tree package (<tt class="samp docutils literal"><span class="pre">networkx.tree</span></tt>) is added to provide tree recognition
+functionalities.</li>
+<li>A context manager <tt class="samp docutils literal"><span class="pre">reversed</span></tt> is added in the utility package
+(<tt class="samp docutils literal"><span class="pre">networkx.utils</span></tt>) for temporary in-place reversal of graphs.</li>
+</ul>
+</div>
+<div class="section" id="miscellaneous-changes">
+<h2>Miscellaneous changes<a class="headerlink" href="#miscellaneous-changes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The functions in the components package
+(<tt class="samp docutils literal"><span class="pre">networkx.algorithms.components</span></tt>) such as <tt class="samp docutils literal"><span class="pre">connected_components</span></tt>,
+<tt class="samp docutils literal"><span class="pre">connected_components_subgraph</span></tt> now return generators instead of lists.
+To recover the earlier behavior, use <tt class="samp docutils literal"><span class="pre">list(connected_components(G))</span></tt>.</li>
+<li>JSON helpers in the JSON graph package (<tt class="samp docutils literal"><span class="pre">networkx.readwrite.json_graph</span></tt>)
+are removed. Use functions from the standard library (e.g.,
+<tt class="samp docutils literal"><span class="pre">json.dumps</span></tt>) instead.</li>
+<li>Support for Python 3.1 is dropped. Basic support is added for Jython 2.7 and
+IronPython 2.7, although they remain not officially supported.</li>
+<li>Numerous reported issues are fixed.</li>
+</ul>
+</div>
+</div>
 
 
           </div>
@@ -262,8 +399,8 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jun 06, 2014.
+        &copy; Copyright 2014, NetworkX Developers.
+      Last updated on Jun 07, 2014.
     </p>
   </div>
 
@@ -283,7 +420,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'1.9.dev20140606000018',
+            VERSION:'1.9.dev20140607000008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

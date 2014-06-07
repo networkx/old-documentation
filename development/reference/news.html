@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Release Log &mdash; NetworkX 1.9.dev20140606000018 documentation</title>
+  <title>Release Log &mdash; NetworkX 1.9.dev20140607000008 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140606000018 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140607000008 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 1.9.dev20140606000018 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 1.9.dev20140607000008 documentation" href="../index.html"/>
         <link rel="up" title="History" href="history.html"/>
         <link rel="next" title="Bibliography" href="../bibliography.html"/>
         <link rel="prev" title="Version 0.99 API changes" href="api_0.99.html"/> 
@@ -182,16 +182,40 @@
             
   <div class="section" id="release-log">
 <h1>Release Log<a class="headerlink" href="#release-log" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="networkx-1-9">
+<h2>NetworkX 1.9<a class="headerlink" href="#networkx-1-9" title="Permalink to this headline">¶</a></h2>
+<p>Release date: TBD</p>
+<p>Support for Python 3.1 is dropped in this release.</p>
+<div class="section" id="highlights">
+<h3>Highlights<a class="headerlink" href="#highlights" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Completely rewritten maximum flow and flow-based connectivity algorithms with
+backwards incompatible interfaces</li>
+<li>Community graph generators</li>
+<li>Stoer–Wagner minimum cut algorithm</li>
+<li>Linear-time Eulerian circuit algorithm</li>
+<li>Linear algebra package changed to use SciPy sparse matrices</li>
+<li>Algebraic connectivity, Fiedler vector, spectral ordering algorithms</li>
+<li>Link prediction algorithms</li>
+<li>Goldberg–Radzik shortest path algorithm</li>
+<li>Semiconnected graph and tree recognition algorithms</li>
+</ul>
+</div>
+<div class="section" id="api-changes">
+<h3>API changes<a class="headerlink" href="#api-changes" title="Permalink to this headline">¶</a></h3>
+<p>See <a class="reference internal" href="api_1.9.html"><em>Version 1.9 notes and API changes</em></a>.</p>
+</div>
+</div>
 <div class="section" id="networkx-1-8-1">
-<h2>Networkx-1.8.1<a class="headerlink" href="#networkx-1-8-1" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 1.8.1<a class="headerlink" href="#networkx-1-8-1" title="Permalink to this headline">¶</a></h2>
 <p>Release date:  4 August 2013</p>
 <p>Bugfix release for missing files in source packaging</p>
 </div>
 <div class="section" id="networkx-1-8">
-<h2>Networkx-1.8<a class="headerlink" href="#networkx-1-8" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 1.8<a class="headerlink" href="#networkx-1-8" title="Permalink to this headline">¶</a></h2>
 <p>Release date:  28 July 2013</p>
-<div class="section" id="highlights">
-<h3>Highlights<a class="headerlink" href="#highlights" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h3>Highlights<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Faster (linear-time) graphicality tests and Havel-Hakimi graph generators</li>
 <li>Directed Laplacian matrix generator</li>
@@ -203,24 +227,24 @@
 <li>Scaling parameter for force-directed layout</li>
 </ul>
 </div>
-</div>
 <div class="section" id="bug-fixes">
-<h2>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h2>
+<h3>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Error with average weighted connectivity for digraphs, correct normalized laplacian with self-loops, load betweenness for single node graphs, isolated nodes missing from dfs/bfs trees, normalize HITS using l1, handle density of graphs with self loops</li>
 <li>Cleaner handling of current figure status with Matplotlib, Pajek files now don&#8217;t write troublesome header line, default alpha value for GEXF files, read curved edges from yEd GraphML</li>
 </ul>
 <p>For full details of the issues closed for this release (added features and bug fixes) see: <a class="reference external" href="https://github.com/networkx/networkx/issues?milestone=1&amp;page=1&amp;state=closed">https://github.com/networkx/networkx/issues?milestone=1&amp;page=1&amp;state=closed</a></p>
-<div class="section" id="api-changes">
-<h3>API Changes<a class="headerlink" href="#api-changes" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id2">
+<h3>API changes<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>See <a class="reference internal" href="api_1.8.html"><em>Version 1.8 notes and API changes</em></a></p>
 </div>
 </div>
 <div class="section" id="networkx-1-7">
-<h2>Networkx-1.7<a class="headerlink" href="#networkx-1-7" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 1.7<a class="headerlink" href="#networkx-1-7" title="Permalink to this headline">¶</a></h2>
 <p>Release date:  4 July 2012</p>
-<div class="section" id="id1">
-<h3>Highlights<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>Highlights<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>New functions for k-clique community finding, flow hierarchy,
 union, disjoint union, compose, and intersection operators that work on
@@ -232,16 +256,16 @@ independent set, max clique, and min-weighted vertex cover.</li>
 <p>For full details of the tickets closed for this release (added features and bug fixes) see:
 <a class="reference external" href="https://networkx.lanl.gov/trac/query?status=closed&amp;group=milestone&amp;milestone=networkx-1.7">https://networkx.lanl.gov/trac/query?status=closed&amp;group=milestone&amp;milestone=networkx-1.7</a></p>
 </div>
-<div class="section" id="id2">
-<h3>API Changes<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3>API changes<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>See <a class="reference internal" href="api_1.7.html"><em>Version 1.7 notes and API changes</em></a></p>
 </div>
 </div>
 <div class="section" id="networkx-1-6">
-<h2>Networkx-1.6<a class="headerlink" href="#networkx-1-6" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 1.6<a class="headerlink" href="#networkx-1-6" title="Permalink to this headline">¶</a></h2>
 <p>Release date:  20 November 2011</p>
-<div class="section" id="id3">
-<h3>Highlights<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>Highlights<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>New functions for finding articulation points, generating random bipartite graphs, constructing adjacency matrix representations, forming graph products, computing assortativity coefficients, measuring subgraph centrality and communicability, finding k-clique communities, and writing JSON format output.</p>
 <p>New examples for drawing with D3 Javascript library, and ordering matrices with the Cuthill-McKee algorithm.</p>
 <p>More memory efficient implementation of current-flow betweenness and new approximation algorithms for current-flow betweenness and shortest-path betweenness.</p>
@@ -250,18 +274,18 @@ independent set, max clique, and min-weighted vertex cover.</li>
 <p>For full details of the tickets closed for this release (added features and bug fixes) see:
 <a class="reference external" href="https://networkx.lanl.gov/trac/query?status=closed&amp;group=milestone&amp;milestone=networkx-1.6">https://networkx.lanl.gov/trac/query?status=closed&amp;group=milestone&amp;milestone=networkx-1.6</a></p>
 </div>
-<div class="section" id="id4">
-<h3>API Changes<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3>API changes<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>See <a class="reference internal" href="api_1.6.html"><em>Version 1.6 notes and API changes</em></a></p>
 </div>
 </div>
 <div class="section" id="networkx-1-5">
-<h2>Networkx-1.5<a class="headerlink" href="#networkx-1-5" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 1.5<a class="headerlink" href="#networkx-1-5" title="Permalink to this headline">¶</a></h2>
 <p>Release date:  4 June 2011</p>
 <p>For full details of the tickets closed for this release see:
 <a class="reference external" href="https://networkx.lanl.gov/trac/query?status=closed&amp;group=milestone&amp;milestone=networkx-1.5">https://networkx.lanl.gov/trac/query?status=closed&amp;group=milestone&amp;milestone=networkx-1.5</a></p>
-<div class="section" id="id5">
-<h3>Highlights<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3>Highlights<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="new-features">
 <h3>New features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h3>
@@ -290,12 +314,12 @@ specified edge attribute (default=&#8217;weight&#8217;) (<tt class="docutils lit
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id6">
-<h3>API Changes<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3>API changes<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>See <a class="reference internal" href="api_1.5.html"><em>Version 1.5 notes and API changes</em></a></p>
 </div>
-<div class="section" id="id7">
-<h3>Bug fixes<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3>Bug fixes<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Fix edge handling for multigraphs in networkx/graphviz interface
@@ -318,10 +342,10 @@ specified edge attribute (default=&#8217;weight&#8217;) (<tt class="docutils lit
 </div>
 </div>
 <div class="section" id="networkx-1-4">
-<h2>Networkx-1.4<a class="headerlink" href="#networkx-1-4" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 1.4<a class="headerlink" href="#networkx-1-4" title="Permalink to this headline">¶</a></h2>
 <p>Release date:  23 January 2011</p>
-<div class="section" id="id8">
-<h3>New features<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>New features<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference internal" href="algorithms.core.html#module-networkx.algorithms.core" title="networkx.algorithms.core"><tt class="xref py py-mod docutils literal"><span class="pre">k-shell,k-crust,k-corona</span></tt></a></li>
@@ -340,8 +364,8 @@ specified edge attribute (default=&#8217;weight&#8217;) (<tt class="docutils lit
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id9">
-<h3>API Changes<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3>API changes<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference internal" href="generators.html#module-networkx.generators.random_graphs" title="networkx.generators.random_graphs"><tt class="xref py py-mod docutils literal"><span class="pre">gnp_random_graph()</span></tt></a> now takes a
@@ -351,8 +375,8 @@ directed=True|False keyword instead of create_using</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id10">
-<h3>Bug fixes<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h3>Bug fixes<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>see  <a class="reference external" href="https://networkx.lanl.gov/trac/query?status=closed&amp;group=milestone&amp;milestone=networkx-1.4">https://networkx.lanl.gov/trac/query?status=closed&amp;group=milestone&amp;milestone=networkx-1.4</a></li>
@@ -361,11 +385,11 @@ directed=True|False keyword instead of create_using</li>
 </div>
 </div>
 <div class="section" id="networkx-1-3">
-<h2>Networkx-1.3<a class="headerlink" href="#networkx-1-3" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 1.3<a class="headerlink" href="#networkx-1-3" title="Permalink to this headline">¶</a></h2>
 <p>Release date:  28 August 2010</p>
 <p>See: <a class="reference external" href="https://networkx.lanl.gov/trac/timeline">https://networkx.lanl.gov/trac/timeline</a></p>
-<div class="section" id="id11">
-<h3>New features<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id13">
+<h3>New features<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Works with Python versions 2.6, 2.7, 3.1, and 3.2 (but not 2.4 and 2.5).</li>
@@ -378,16 +402,16 @@ directed=True|False keyword instead of create_using</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id12">
-<h3>API Changes<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h3>API changes<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference internal" href="algorithms.mst.html#module-networkx.algorithms.mst" title="networkx.algorithms.mst"><tt class="xref py py-mod docutils literal"><span class="pre">minimum_spanning_tree()</span> <span class="pre">now</span> <span class="pre">returns</span> <span class="pre">a</span> <span class="pre">NetworkX</span> <span class="pre">Graph</span> <span class="pre">(a</span> <span class="pre">tree</span> <span class="pre">or</span> <span class="pre">forest)</span></tt></a></li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id13">
-<h3>Bug fixes<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id15">
+<h3>Bug fixes<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>see  <a class="reference external" href="https://networkx.lanl.gov/trac/query?status=closed&amp;group=milestone&amp;milestone=networkx-1.3">https://networkx.lanl.gov/trac/query?status=closed&amp;group=milestone&amp;milestone=networkx-1.3</a></li>
@@ -396,11 +420,11 @@ directed=True|False keyword instead of create_using</li>
 </div>
 </div>
 <div class="section" id="networkx-1-2">
-<h2>Networkx-1.2<a class="headerlink" href="#networkx-1-2" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 1.2<a class="headerlink" href="#networkx-1-2" title="Permalink to this headline">¶</a></h2>
 <p>Release date:  28 July 2010</p>
 <p>See: <a class="reference external" href="https://networkx.lanl.gov/trac/timeline">https://networkx.lanl.gov/trac/timeline</a></p>
-<div class="section" id="id14">
-<h3>New features<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id16">
+<h3>New features<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference internal" href="algorithms.flow.html#module-networkx.algorithms.flow" title="networkx.algorithms.flow"><tt class="xref py py-mod docutils literal"><span class="pre">Ford-Fulkerson</span> <span class="pre">max</span> <span class="pre">flow</span> <span class="pre">and</span> <span class="pre">min</span> <span class="pre">cut</span></tt></a></li>
@@ -418,11 +442,11 @@ entire package and skips tests with missing optional packages</li>
 </div>
 </div>
 <div class="section" id="networkx-1-1">
-<h2>Networkx-1.1<a class="headerlink" href="#networkx-1-1" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 1.1<a class="headerlink" href="#networkx-1-1" title="Permalink to this headline">¶</a></h2>
 <p>Release date:  21 April 2010</p>
 <p>See: <a class="reference external" href="https://networkx.lanl.gov/trac/timeline">https://networkx.lanl.gov/trac/timeline</a></p>
-<div class="section" id="id15">
-<h3>New features<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id17">
+<h3>New features<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference internal" href="algorithms.cycles.html#module-networkx.algorithms.cycles" title="networkx.algorithms.cycles"><tt class="xref py py-mod docutils literal"><span class="pre">Algorithm</span> <span class="pre">for</span> <span class="pre">finding</span> <span class="pre">a</span> <span class="pre">basis</span> <span class="pre">for</span> <span class="pre">graph</span> <span class="pre">cycles</span></tt></a></li>
@@ -448,8 +472,8 @@ and  <a class="reference internal" href="generators.html#module-networkx.generat
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id16">
-<h3>API Changes<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id18">
+<h3>API changes<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="returning-dictionaries">
 <h4>Returning dictionaries<a class="headerlink" href="#returning-dictionaries" title="Permalink to this headline">¶</a></h4>
 <p>Several of the algorithms and the degree() method now return dictionaries
@@ -514,8 +538,8 @@ and the with_labels keyword has been removed:</p>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id17">
-<h3>Bug fixes<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id19">
+<h3>Bug fixes<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Support graph attributes with union, intersection, and other graph operations</li>
@@ -531,17 +555,17 @@ connected_components_subgraphs())</li>
 </div>
 </div>
 <div class="section" id="networkx-1-0-1">
-<h2>Networkx-1.0.1<a class="headerlink" href="#networkx-1-0-1" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 1.0.1<a class="headerlink" href="#networkx-1-0-1" title="Permalink to this headline">¶</a></h2>
 <p>Release date:  11 Jan 2010</p>
 <p>See: <a class="reference external" href="https://networkx.lanl.gov/trac/timeline">https://networkx.lanl.gov/trac/timeline</a></p>
 <p>Bug fix release for missing setup.py in manifest.</p>
 </div>
 <div class="section" id="networkx-1-0">
-<h2>Networkx-1.0<a class="headerlink" href="#networkx-1-0" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 1.0<a class="headerlink" href="#networkx-1-0" title="Permalink to this headline">¶</a></h2>
 <p>Release date:  8 Jan 2010</p>
 <p>See: <a class="reference external" href="https://networkx.lanl.gov/trac/timeline">https://networkx.lanl.gov/trac/timeline</a></p>
-<div class="section" id="id18">
-<h3>New features<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id20">
+<h3>New features<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
 <p>This release has significant changes to parts of the graph API
 to allow graph, node, and edge attributes.
 See <a class="reference external" href="http://networkx.lanl.gov//reference/api_changes.html">http://networkx.lanl.gov//reference/api_changes.html</a></p>
@@ -565,8 +589,8 @@ See <a class="reference external" href="http://networkx.lanl.gov//reference/api_
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id19">
-<h3>Examples<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id21">
+<h3>Examples<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Update to work with networkx-1.0 API</li>
@@ -576,11 +600,11 @@ See <a class="reference external" href="http://networkx.lanl.gov//reference/api_
 </div>
 </div>
 <div class="section" id="networkx-0-99">
-<h2>Networkx-0.99<a class="headerlink" href="#networkx-0-99" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 0.99<a class="headerlink" href="#networkx-0-99" title="Permalink to this headline">¶</a></h2>
 <p>Release date:  18 November 2008</p>
 <p>See: <a class="reference external" href="https://networkx.lanl.gov/trac/timeline">https://networkx.lanl.gov/trac/timeline</a></p>
-<div class="section" id="id20">
-<h3>New features<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id22">
+<h3>New features<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
 <p>This release has significant changes to parts of the graph API.
 See <a class="reference external" href="http://networkx.lanl.gov//reference/api_changes.html">http://networkx.lanl.gov//reference/api_changes.html</a></p>
 <blockquote>
@@ -595,16 +619,16 @@ Change in API for performance and code simplicity.</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id21">
-<h3>Bug fixes<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id23">
+<h3>Bug fixes<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>handle root= option to draw_graphviz correctly</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id22">
-<h3>Examples<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id24">
+<h3>Examples<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Update to work with networkx-0.99 API</li>
@@ -616,12 +640,12 @@ Change in API for performance and code simplicity.</li>
 </div>
 </div>
 <div class="section" id="networkx-0-37">
-<h2>NetworkX-0.37<a class="headerlink" href="#networkx-0-37" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 0.37<a class="headerlink" href="#networkx-0-37" title="Permalink to this headline">¶</a></h2>
 <p>Release date: 17 August 2008</p>
 <p>See: <a class="reference external" href="https://networkx.lanl.gov/trac/timeline">https://networkx.lanl.gov/trac/timeline</a></p>
 <p>NetworkX now requires Python 2.4 or later for full functionality.</p>
-<div class="section" id="id23">
-<h3>New features<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id25">
+<h3>New features<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Edge coloring and node line widths with Matplotlib drawings</li>
@@ -634,8 +658,8 @@ Change in API for performance and code simplicity.</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id24">
-<h3>Bug fixes<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id26">
+<h3>Bug fixes<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Better edge data handling with GML writer</li>
@@ -651,8 +675,8 @@ and edges</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id25">
-<h3>Examples<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id27">
+<h3>Examples<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Ubigraph examples showing 3D drawing</li>
@@ -661,11 +685,11 @@ and edges</li>
 </div>
 </div>
 <div class="section" id="networkx-0-36">
-<h2>NetworkX-0.36<a class="headerlink" href="#networkx-0-36" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 0.36<a class="headerlink" href="#networkx-0-36" title="Permalink to this headline">¶</a></h2>
 <p>Release date: 13 January 2008</p>
 <p>See: <a class="reference external" href="https://networkx.lanl.gov/trac/timeline">https://networkx.lanl.gov/trac/timeline</a></p>
-<div class="section" id="id26">
-<h3>New features<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id28">
+<h3>New features<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>GML format graph reader, tests, and example (football.py)</li>
@@ -673,8 +697,8 @@ and edges</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id27">
-<h3>Bug fixes<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id29">
+<h3>Bug fixes<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>remove obsolete parts of pygraphviz interface</li>
@@ -689,18 +713,18 @@ and edges</li>
 </div>
 </div>
 <div class="section" id="networkx-0-35-1">
-<h2>NetworkX-0.35.1<a class="headerlink" href="#networkx-0-35-1" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 0.35.1<a class="headerlink" href="#networkx-0-35-1" title="Permalink to this headline">¶</a></h2>
 <p>Release date: 27 July 2007</p>
 <p>See: <a class="reference external" href="https://networkx.lanl.gov/trac/timeline">https://networkx.lanl.gov/trac/timeline</a></p>
 <p>Small update to fix import readwrite problem and maintain Python2.3
 compatibility.</p>
 </div>
 <div class="section" id="networkx-0-35">
-<h2>NetworkX-0.35<a class="headerlink" href="#networkx-0-35" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 0.35<a class="headerlink" href="#networkx-0-35" title="Permalink to this headline">¶</a></h2>
 <p>Release date: 22 July 2007</p>
 <p>See: <a class="reference external" href="https://networkx.lanl.gov/trac/timeline">https://networkx.lanl.gov/trac/timeline</a></p>
-<div class="section" id="id28">
-<h3>New features<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id30">
+<h3>New features<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>algorithms for strongly connected components.</li>
@@ -712,8 +736,8 @@ compatibility.</p>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id29">
-<h3>Bug fixes<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id31">
+<h3>Bug fixes<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>more detailed installation instructions</li>
@@ -727,11 +751,11 @@ compatibility.</p>
 </div>
 </div>
 <div class="section" id="networkx-0-34">
-<h2>NetworkX-0.34<a class="headerlink" href="#networkx-0-34" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 0.34<a class="headerlink" href="#networkx-0-34" title="Permalink to this headline">¶</a></h2>
 <p>Release date: 12 April 2007</p>
 <p>See: <a class="reference external" href="https://networkx.lanl.gov/trac/timeline">https://networkx.lanl.gov/trac/timeline</a></p>
-<div class="section" id="id30">
-<h3>New features<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id32">
+<h3>New features<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>benchmarks for graph classes</li>
@@ -745,8 +769,8 @@ else use python -c &#8220;import networkx; networkx.test()&#8221;</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id31">
-<h3>Bug fixes<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id33">
+<h3>Bug fixes<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>speedups of neighbors()</li>
@@ -769,11 +793,11 @@ in edges_* and degree_*</li>
 </div>
 </div>
 <div class="section" id="networkx-0-33">
-<h2>NetworkX-0.33<a class="headerlink" href="#networkx-0-33" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 0.33<a class="headerlink" href="#networkx-0-33" title="Permalink to this headline">¶</a></h2>
 <p>Release date: 27 November 2006</p>
 <p>See: <a class="reference external" href="https://networkx.lanl.gov/trac/timeline">https://networkx.lanl.gov/trac/timeline</a></p>
-<div class="section" id="id32">
-<h3>New features<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id34">
+<h3>New features<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul>
 <li><p class="first">draw edges with specified colormap</p>
@@ -798,8 +822,8 @@ in edges_* and degree_*</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id33">
-<h3>Bug fixes<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id35">
+<h3>Bug fixes<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>read_gpickle now works correctly with Windows</li>
@@ -811,8 +835,8 @@ in edges_* and degree_*</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id34">
-<h3>Examples<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id36">
+<h3>Examples<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Draw edges with colormap</li>
@@ -821,11 +845,11 @@ in edges_* and degree_*</li>
 </div>
 </div>
 <div class="section" id="networkx-0-32">
-<h2>NetworkX-0.32<a class="headerlink" href="#networkx-0-32" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 0.32<a class="headerlink" href="#networkx-0-32" title="Permalink to this headline">¶</a></h2>
 <p>Release date: 29 September 2006</p>
 <p>See: <a class="reference external" href="https://networkx.lanl.gov/trac/timeline">https://networkx.lanl.gov/trac/timeline</a></p>
-<div class="section" id="id35">
-<h3>New features<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id37">
+<h3>New features<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Update to work with numpy-1.0x</li>
@@ -837,8 +861,8 @@ in edges_* and degree_*</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id36">
-<h3>Bug fixes<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id38">
+<h3>Bug fixes<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Handle special cases correctly in triangles function</li>
@@ -849,8 +873,8 @@ allow cutoff parameter for maximum depth to search</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id37">
-<h3>Examples<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id39">
+<h3>Examples<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Expected degree sequence</li>
@@ -860,11 +884,11 @@ allow cutoff parameter for maximum depth to search</li>
 </div>
 </div>
 <div class="section" id="networkx-0-31">
-<h2>NetworkX-0.31<a class="headerlink" href="#networkx-0-31" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 0.31<a class="headerlink" href="#networkx-0-31" title="Permalink to this headline">¶</a></h2>
 <p>Release date: 20 July 2006</p>
 <p>See: <a class="reference external" href="https://networkx.lanl.gov/trac/timeline">https://networkx.lanl.gov/trac/timeline</a></p>
-<div class="section" id="id38">
-<h3>New features<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id40">
+<h3>New features<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>arbitrary node relabeling (use relabel_nodes)</li>
@@ -874,8 +898,8 @@ numpy matrix or array types, and scipy_sparse_matrix types</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id39">
-<h3>Bug fixes<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id41">
+<h3>Bug fixes<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Allow drawing graphs with no edges using pylab</li>
@@ -884,8 +908,8 @@ numpy matrix or array types, and scipy_sparse_matrix types</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id40">
-<h3>Examples<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id42">
+<h3>Examples<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>update drawing examples</li>
@@ -894,11 +918,11 @@ numpy matrix or array types, and scipy_sparse_matrix types</li>
 </div>
 </div>
 <div class="section" id="networkx-0-30">
-<h2>NetworkX-0.30<a class="headerlink" href="#networkx-0-30" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 0.30<a class="headerlink" href="#networkx-0-30" title="Permalink to this headline">¶</a></h2>
 <p>Release date: 23 June 2006</p>
 <p>See: <a class="reference external" href="https://networkx.lanl.gov/trac/timeline">https://networkx.lanl.gov/trac/timeline</a></p>
-<div class="section" id="id41">
-<h3>New features<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id43">
+<h3>New features<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>update to work with Python 2.5</li>
@@ -912,8 +936,8 @@ numpy matrix or array types, and scipy_sparse_matrix types</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id42">
-<h3>Bug fixes<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id44">
+<h3>Bug fixes<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>speed improvements (faster version of subgraph, is_connected)</li>
@@ -930,8 +954,8 @@ exception if an nbunch isn&#8217;t a node or iterable</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id43">
-<h3>Examples<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id45">
+<h3>Examples<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>unicode node labels</li>
@@ -940,11 +964,11 @@ exception if an nbunch isn&#8217;t a node or iterable</li>
 </div>
 </div>
 <div class="section" id="networkx-0-29">
-<h2>NetworkX-0.29<a class="headerlink" href="#networkx-0-29" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 0.29<a class="headerlink" href="#networkx-0-29" title="Permalink to this headline">¶</a></h2>
 <p>Release date: 28 April 2006</p>
 <p>See: <a class="reference external" href="https://networkx.lanl.gov/trac/timeline">https://networkx.lanl.gov/trac/timeline</a></p>
-<div class="section" id="id44">
-<h3>New features<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id46">
+<h3>New features<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Algorithms for betweenness, eigenvalues, eigenvectors, and
@@ -959,8 +983,8 @@ functions for manipulating labels.</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id45">
-<h3>Bug fixes<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id47">
+<h3>Bug fixes<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Betweenness centrality now correctly uses Brandes definition and
@@ -975,11 +999,11 @@ periodic=True</li>
 </div>
 </div>
 <div class="section" id="networkx-0-28">
-<h2>NetworkX-0.28<a class="headerlink" href="#networkx-0-28" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 0.28<a class="headerlink" href="#networkx-0-28" title="Permalink to this headline">¶</a></h2>
 <p>Release date: 13 March 2006</p>
 <p>See: <a class="reference external" href="https://networkx.lanl.gov/trac/timeline">https://networkx.lanl.gov/trac/timeline</a></p>
-<div class="section" id="id46">
-<h3>New features<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id48">
+<h3>New features<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Option to construct Laplacian with rows and columns in specified order</li>
@@ -991,8 +1015,8 @@ starting at node n.
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id47">
-<h3>Examples<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id49">
+<h3>Examples<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Formation of giant component in binomial_graph:</li>
@@ -1001,8 +1025,8 @@ starting at node n.
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id48">
-<h3>Bug fixes<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id50">
+<h3>Bug fixes<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul>
 <li><dl class="first docutils">
@@ -1035,11 +1059,11 @@ calling sequence</p>
 </div>
 </div>
 <div class="section" id="networkx-0-27">
-<h2>NetworkX-0.27<a class="headerlink" href="#networkx-0-27" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 0.27<a class="headerlink" href="#networkx-0-27" title="Permalink to this headline">¶</a></h2>
 <p>Release date: 5 February 2006</p>
 <p>See: <a class="reference external" href="https://networkx.lanl.gov/trac/timeline">https://networkx.lanl.gov/trac/timeline</a></p>
-<div class="section" id="id49">
-<h3>New features<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id51">
+<h3>New features<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>sparse_binomial_graph: faster graph generator for sparse random graphs</li>
@@ -1057,16 +1081,16 @@ and in_neighbors for digraphs.  For digraphs edges=out_edges.</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id50">
-<h3>Examples<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id52">
+<h3>Examples<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Minard&#8217;s data for Napoleon&#8217;s Russian campaign</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id51">
-<h3>Bug fixes<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id53">
+<h3>Bug fixes<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>XGraph(multiedges=True) returns a copy of the list of edges
@@ -1076,10 +1100,10 @@ for get_edge()</li>
 </div>
 </div>
 <div class="section" id="networkx-0-26">
-<h2>NetworkX-0.26<a class="headerlink" href="#networkx-0-26" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 0.26<a class="headerlink" href="#networkx-0-26" title="Permalink to this headline">¶</a></h2>
 <p>Release date: 6 January 2006</p>
-<div class="section" id="id52">
-<h3>New features<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id54">
+<h3>New features<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Simpler interface to drawing with pylab</li>
@@ -1092,8 +1116,8 @@ rows/columns in matrix</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id53">
-<h3>Examples<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id55">
+<h3>Examples<a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Several new examples showing how draw to graphs with various
@@ -1101,8 +1125,8 @@ properties of nodes, edges, and labels</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id54">
-<h3>Bug fixes<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id56">
+<h3>Bug fixes<a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Default data type for all graphs is now None (was the integer 1)</li>
@@ -1114,10 +1138,10 @@ properties of nodes, edges, and labels</li>
 </div>
 </div>
 <div class="section" id="networkx-0-25">
-<h2>NetworkX-0.25<a class="headerlink" href="#networkx-0-25" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 0.25<a class="headerlink" href="#networkx-0-25" title="Permalink to this headline">¶</a></h2>
 <p>Release date: 5 December 2005</p>
-<div class="section" id="id55">
-<h3>New features<a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id57">
+<h3>New features<a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Uses setuptools for installation <a class="reference external" href="http://peak.telecommunity.com/DevCenter/setuptools">http://peak.telecommunity.com/DevCenter/setuptools</a></li>
@@ -1128,8 +1152,8 @@ properties of nodes, edges, and labels</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id56">
-<h3>Examples<a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id58">
+<h3>Examples<a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Email example shows how to use XDiGraph with Python objects as
@@ -1145,8 +1169,8 @@ edge data</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id57">
-<h3>Bug fixes<a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id59">
+<h3>Bug fixes<a class="headerlink" href="#id59" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>use create_using= instead of result= keywords for graph types
@@ -1161,10 +1185,10 @@ degree sequence as input sequence</li>
 </div>
 </div>
 <div class="section" id="networkx-0-24">
-<h2>NetworkX-0.24<a class="headerlink" href="#networkx-0-24" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 0.24<a class="headerlink" href="#networkx-0-24" title="Permalink to this headline">¶</a></h2>
 <p>Release date: 20 August 2005</p>
-<div class="section" id="id58">
-<h3>Bug fixes<a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id60">
+<h3>Bug fixes<a class="headerlink" href="#id60" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Update of Dijkstra algorithm code</li>
@@ -1179,7 +1203,7 @@ allowed</li>
 </div>
 </div>
 <div class="section" id="networkx-0-23">
-<h2>NetworkX-0.23<a class="headerlink" href="#networkx-0-23" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 0.23<a class="headerlink" href="#networkx-0-23" title="Permalink to this headline">¶</a></h2>
 <p>Release date: 14 July 2005</p>
 <p>The NetworkX web locations have changed:</p>
 <p><a class="reference external" href="http://networkx.lanl.gov/">http://networkx.lanl.gov/</a>     - main documentation site
@@ -1198,8 +1222,8 @@ The package name &#8220;NX&#8221; is now &#8220;networkx&#8221;.</p>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id59">
-<h3>New features<a class="headerlink" href="#id59" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id61">
+<h3>New features<a class="headerlink" href="#id61" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul>
 <li><p class="first">DiGraph reverse</p>
@@ -1216,11 +1240,11 @@ The package name &#8220;NX&#8221; is now &#8220;networkx&#8221;.</p>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id60">
-<h3>Examples<a class="headerlink" href="#id60" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id62">
+<h3>Examples<a class="headerlink" href="#id62" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="id61">
-<h3>Documentation<a class="headerlink" href="#id61" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id63">
+<h3>Documentation<a class="headerlink" href="#id63" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Changed to reflect NX-networkx change</li>
@@ -1228,8 +1252,8 @@ The package name &#8220;NX&#8221; is now &#8220;networkx&#8221;.</p>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id62">
-<h3>Bug fixes<a class="headerlink" href="#id62" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id64">
+<h3>Bug fixes<a class="headerlink" href="#id64" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Fixed logic in io.py for reading DiGraphs.</li>
@@ -1242,10 +1266,10 @@ considered separately.</li>
 </div>
 </div>
 <div class="section" id="networkx-0-22">
-<h2>NetworkX-0.22<a class="headerlink" href="#networkx-0-22" title="Permalink to this headline">¶</a></h2>
+<h2>NetworkX 0.22<a class="headerlink" href="#networkx-0-22" title="Permalink to this headline">¶</a></h2>
 <p>Release date: 17 June 2005</p>
-<div class="section" id="id63">
-<h3>New features<a class="headerlink" href="#id63" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id65">
+<h3>New features<a class="headerlink" href="#id65" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul>
 <li><p class="first">Topological sort, testing for directed acyclic graphs (DAGs)</p>
@@ -1268,8 +1292,8 @@ considered separately.</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id64">
-<h3>Examples<a class="headerlink" href="#id64" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id66">
+<h3>Examples<a class="headerlink" href="#id66" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Kevin Bacon movie actor graph: Examples/kevin_bacon.py</li>
@@ -1278,8 +1302,8 @@ considered separately.</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id65">
-<h3>Documentation<a class="headerlink" href="#id65" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id67">
+<h3>Documentation<a class="headerlink" href="#id67" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Rewrite of setup scripts to install documentation and
@@ -1287,8 +1311,8 @@ tests in documentation directory specified</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id66">
-<h3>Bug fixes<a class="headerlink" href="#id66" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id68">
+<h3>Bug fixes<a class="headerlink" href="#id68" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Handle calls to edges() with non-node, non-iterable items.</li>
@@ -1324,8 +1348,8 @@ protect name-spaces</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2013, NetworkX Developers.
-      Last updated on Jun 06, 2014.
+        &copy; Copyright 2014, NetworkX Developers.
+      Last updated on Jun 07, 2014.
     </p>
   </div>
 
@@ -1345,7 +1369,7 @@ protect name-spaces</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'1.9.dev20140606000018',
+            VERSION:'1.9.dev20140607000008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
