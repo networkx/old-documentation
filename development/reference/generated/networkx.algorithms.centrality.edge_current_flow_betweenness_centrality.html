@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>edge_current_flow_betweenness_centrality &mdash; NetworkX 1.9.dev20140607000008 documentation</title>
+  <title>edge_current_flow_betweenness_centrality &mdash; NetworkX 2.0.dev20140608000008 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 1.9.dev20140607000008 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140608000008 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 1.9.dev20140607000008 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140608000008 documentation" href="../../index.html"/>
         <link rel="up" title="Centrality" href="../algorithms.centrality.html"/>
         <link rel="next" title="approximate_current_flow_betweenness_centrality" href="networkx.algorithms.centrality.approximate_current_flow_betweenness_centrality.html"/>
         <link rel="prev" title="current_flow_betweenness_centrality" href="networkx.algorithms.centrality.current_flow_betweenness_centrality.html"/> 
@@ -196,7 +196,7 @@
 model for information spreading in contrast to betweenness
 centrality which uses shortest paths.</p>
 <p>Current-flow betweenness centrality is also known as
-random-walk betweenness centrality <a class="reference internal" href="#r188">[R188]</a>.</p>
+random-walk betweenness centrality <a class="reference internal" href="#r190">[R190]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -242,7 +242,7 @@ Options are &#8220;full&#8221; (uses most memory), &#8220;lu&#8221; (recommended
 </div>
 <p class="rubric">Notes</p>
 <p>Current-flow betweenness can be computed in <span class="math">\(O(I(n-1)+mn \log n)\)</span>
-time <a class="reference internal" href="#r187">[R187]</a>, where <span class="math">\(I(n-1)\)</span> is the time needed to compute the
+time <a class="reference internal" href="#r189">[R189]</a>, where <span class="math">\(I(n-1)\)</span> is the time needed to compute the
 inverse Laplacian.  For a full matrix this is <span class="math">\(O(n^3)\)</span> but using
 sparse methods you can achieve <span class="math">\(O(nm{\sqrt k})\)</span> where <span class="math">\(k\)</span> is the
 Laplacian matrix condition number.</p>
@@ -251,20 +251,20 @@ Laplacian matrix.  Worse case is <span class="math">\(w=n\)</span> for <span cla
 <p>If the edges have a &#8216;weight&#8217; attribute they will be used as
 weights in this algorithm.  Unspecified weights are set to 1.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r187" rules="none">
+<table class="docutils citation" frame="void" id="r189" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R187]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> Centrality Measures Based on Current Flow.
+<tr><td class="label">[R189]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> Centrality Measures Based on Current Flow.
 Ulrik Brandes and Daniel Fleischer,
 Proc. 22nd Symp. Theoretical Aspects of Computer Science (STACS &#8216;05).
 LNCS 3404, pp. 533-544. Springer-Verlag, 2005.
 <a class="reference external" href="http://www.inf.uni-konstanz.de/algo/publications/bf-cmbcf-05.pdf">http://www.inf.uni-konstanz.de/algo/publications/bf-cmbcf-05.pdf</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r188" rules="none">
+<table class="docutils citation" frame="void" id="r190" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R188]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> A measure of betweenness centrality based on random walks,
+<tr><td class="label">[R190]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> A measure of betweenness centrality based on random walks,
 M. E. J. Newman, Social Networks 27, 39-54 (2005).</td></tr>
 </tbody>
 </table>
@@ -291,7 +291,7 @@ M. E. J. Newman, Social Networks 27, 39-54 (2005).</td></tr>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 07, 2014.
+      Last updated on Jun 08, 2014.
     </p>
   </div>
 
@@ -311,7 +311,7 @@ M. E. J. Newman, Social Networks 27, 39-54 (2005).</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'1.9.dev20140607000008',
+            VERSION:'2.0.dev20140608000008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
