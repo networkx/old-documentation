@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>simple_cycles &mdash; NetworkX 2.0.dev20140623000009 documentation</title>
+  <title>simple_cycles &mdash; NetworkX 2.0.dev20140624000009 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140623000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140624000009 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140623000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140624000009 documentation" href="../../index.html"/>
         <link rel="up" title="Cycles" href="../algorithms.cycles.html"/>
         <link rel="next" title="Directed Acyclic Graphs" href="../algorithms.dag.html"/>
         <link rel="prev" title="cycle_basis" href="networkx.algorithms.cycles.cycle_basis.html"/> 
@@ -223,15 +223,17 @@ a list of nodes with the first and last nodes being the same.</p>
 </div>
 <p class="rubric">Notes</p>
 <p>The implementation follows pp. 79-80 in <a class="reference internal" href="#r236">[R236]</a>.</p>
-<p>The time complexity is O((n+e)(c+1)) for n nodes, e edges and c
+<p>The time complexity is <span class="math">\(O((n+e)(c+1))\)</span> for <span class="math">\(n\)</span> nodes, <span class="math">\(e\)</span> edges and <span class="math">\(c\)</span>
 elementary circuits.</p>
 <p>To filter the cycles so that they don&#8217;t include certain nodes or edges,
-copy your graph and eliminate those nodes or edges before calling.
-&gt;&gt;&gt; copyG = G.copy()
-&gt;&gt;&gt; copyG.remove_nodes_from([1])
-&gt;&gt;&gt; copyG.remove_edges_from([(0,1)])
-&gt;&gt;&gt; list(nx.simple_cycles(copyG))
-[[2], [2, 0], [0]]</p>
+copy your graph and eliminate those nodes or edges before calling.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">copyG</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">copyG</span><span class="o">.</span><span class="n">remove_nodes_from</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">copyG</span><span class="o">.</span><span class="n">remove_edges_from</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">simple_cycles</span><span class="p">(</span><span class="n">copyG</span><span class="p">))</span>
+<span class="go">[[2], [2, 0], [0]]</span>
+</pre></div>
+</div>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r236" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -285,7 +287,7 @@ v. 16, no. 2, 192-204, 1976.</td></tr>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 23, 2014.
+      Last updated on Jun 24, 2014.
     </p>
   </div>
 
@@ -305,7 +307,7 @@ v. 16, no. 2, 192-204, 1976.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140623000009',
+            VERSION:'2.0.dev20140624000009',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
