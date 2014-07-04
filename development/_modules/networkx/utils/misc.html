@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.utils.misc &mdash; NetworkX 2.0.dev20140703000009 documentation</title>
+  <title>networkx.utils.misc &mdash; NetworkX 2.0.dev20140704000009 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140703000009 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140704000009 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140703000009 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140704000009 documentation" href="../../../index.html"/>
         <link rel="up" title="networkx" href="../../networkx.html"/> 
 
   
@@ -198,7 +198,6 @@
 <span class="c">#    All rights reserved.</span>
 <span class="c">#    BSD license.</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">subprocess</span>
 <span class="kn">import</span> <span class="nn">uuid</span>
 
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
@@ -293,11 +292,13 @@
 <span class="sd">        The path of the file to be opened.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">call</span>
+
     <span class="n">cmds</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;darwin&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;open&#39;</span><span class="p">],</span>
             <span class="s">&#39;linux2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;xdg-open&#39;</span><span class="p">],</span>
             <span class="s">&#39;win32&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;cmd.exe&#39;</span><span class="p">,</span> <span class="s">&#39;/C&#39;</span><span class="p">,</span> <span class="s">&#39;start&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">]}</span>
     <span class="n">cmd</span> <span class="o">=</span> <span class="n">cmds</span><span class="p">[</span><span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">filename</span><span class="p">]</span>
-    <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+    <span class="n">call</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
 
 </div>
 <span class="k">def</span> <span class="nf">dict_to_numpy_array</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">mapping</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
@@ -357,7 +358,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jul 03, 2014.
+      Last updated on Jul 04, 2014.
     </p>
   </div>
 
@@ -377,7 +378,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20140703000009',
+            VERSION:'2.0.dev20140704000009',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
