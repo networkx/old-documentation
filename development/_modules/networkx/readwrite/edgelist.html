@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.readwrite.edgelist &mdash; NetworkX 2.0.dev20140713000009 documentation</title>
+  <title>networkx.readwrite.edgelist &mdash; NetworkX 2.0.dev20140714000007 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140713000009 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140714000007 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140713000009 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140714000007 documentation" href="../../../index.html"/>
         <link rel="up" title="networkx" href="../../networkx.html"/> 
 
   
@@ -199,18 +199,18 @@
 
 <span class="sd">Node pairs with no data::</span>
 
-<span class="sd"> 1 2 </span>
+<span class="sd"> 1 2</span>
 
 <span class="sd">Python dictionary as data::</span>
 
-<span class="sd"> 1 2 {&#39;weight&#39;:7, &#39;color&#39;:&#39;green&#39;} </span>
+<span class="sd"> 1 2 {&#39;weight&#39;:7, &#39;color&#39;:&#39;green&#39;}</span>
 
 <span class="sd">Arbitrary data::</span>
 
 <span class="sd"> 1 2 7 green</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="n">__author__</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;Aric Hagberg (hagberg@lanl.gov)</span><span class="se">\n</span><span class="s">Dan Schult (dschult@colgate.edu)&quot;&quot;&quot;</span>
-<span class="c">#    Copyright (C) 2004-2011 by </span>
+<span class="c">#    Copyright (C) 2004-2011 by</span>
 <span class="c">#    Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
 <span class="c">#    Dan Schult &lt;dschult@colgate.edu&gt;</span>
 <span class="c">#    Pieter Swart &lt;swart@lanl.gov&gt;</span>
@@ -233,12 +233,12 @@
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    G : NetworkX graph</span>
-<span class="sd">    </span>
-<span class="sd">    delimiter : string, optional</span>
-<span class="sd">       Separator for node labels </span>
 
-<span class="sd">    data : bool or list of keys       </span>
-<span class="sd">       If False generate no edge data.  If True use a dictionary </span>
+<span class="sd">    delimiter : string, optional</span>
+<span class="sd">       Separator for node labels</span>
+
+<span class="sd">    data : bool or list of keys</span>
+<span class="sd">       If False generate no edge data.  If True use a dictionary</span>
 <span class="sd">       representation of edge data.  If a list of keys use a list of data</span>
 <span class="sd">       values corresponding to the keys.</span>
 
@@ -317,13 +317,13 @@
 <span class="sd">       File or filename to write. If a file is provided, it must be</span>
 <span class="sd">       opened in &#39;wb&#39; mode. Filenames ending in .gz or .bz2 will be compressed.</span>
 <span class="sd">    comments : string, optional</span>
-<span class="sd">       The character used to indicate the start of a comment </span>
+<span class="sd">       The character used to indicate the start of a comment</span>
 <span class="sd">    delimiter : string, optional</span>
 <span class="sd">       The string used to separate values.  The default is whitespace.</span>
 <span class="sd">    data : bool or list, optional</span>
 <span class="sd">       If False write no edge data.</span>
-<span class="sd">       If True write a string representation of the edge data dictionary..  </span>
-<span class="sd">       If a list (or other iterable) is provided, write the  keys specified </span>
+<span class="sd">       If True write a string representation of the edge data dictionary..</span>
+<span class="sd">       If a list (or other iterable) is provided, write the  keys specified</span>
 <span class="sd">       in the list.</span>
 <span class="sd">    encoding: string, optional</span>
 <span class="sd">       Specify which encoding to use when writing file.</span>
@@ -343,7 +343,7 @@
 <span class="sd">    &gt;&gt;&gt; nx.write_edgelist(G,&#39;test.edgelist&#39;,data=False)</span>
 <span class="sd">    &gt;&gt;&gt; nx.write_edgelist(G,&#39;test.edgelist&#39;,data=[&#39;color&#39;])</span>
 <span class="sd">    &gt;&gt;&gt; nx.write_edgelist(G,&#39;test.edgelist&#39;,data=[&#39;color&#39;,&#39;weight&#39;])</span>
-<span class="sd">    </span>
+
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
 <span class="sd">    write_edgelist()</span>
@@ -394,7 +394,7 @@
 <span class="sd">    [(1, 2), (2, 3), (3, 4)]</span>
 
 <span class="sd">    Edgelist with data in Python dictionary representation:</span>
-<span class="sd">    </span>
+
 <span class="sd">    &gt;&gt;&gt; lines = [&quot;1 2 {&#39;weight&#39;:3}&quot;,</span>
 <span class="sd">    ...          &quot;2 3 {&#39;weight&#39;:27}&quot;,</span>
 <span class="sd">    ...          &quot;3 4 {&#39;weight&#39;:3.0}&quot;]</span>
@@ -480,7 +480,7 @@
     <span class="k">return</span> <span class="n">G</span>
 </div>
 <span class="nd">@open_file</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s">&#39;rb&#39;</span><span class="p">)</span>
-<div class="viewcode-block" id="read_edgelist"><a class="viewcode-back" href="../../../reference/generated/networkx.readwrite.edgelist.read_edgelist.html#networkx.readwrite.edgelist.read_edgelist">[docs]</a><span class="k">def</span> <span class="nf">read_edgelist</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> 
+<div class="viewcode-block" id="read_edgelist"><a class="viewcode-back" href="../../../reference/generated/networkx.readwrite.edgelist.read_edgelist.html#networkx.readwrite.edgelist.read_edgelist">[docs]</a><span class="k">def</span> <span class="nf">read_edgelist</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                   <span class="n">nodetype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">edgetype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Read a graph from a list of edges.</span>
 
@@ -491,10 +491,10 @@
 <span class="sd">       opened in &#39;rb&#39; mode.</span>
 <span class="sd">       Filenames ending in .gz or .bz2 will be uncompressed.</span>
 <span class="sd">    comments : string, optional</span>
-<span class="sd">       The character used to indicate the start of a comment. </span>
+<span class="sd">       The character used to indicate the start of a comment.</span>
 <span class="sd">    delimiter : string, optional</span>
 <span class="sd">       The string used to separate values.  The default is whitespace.</span>
-<span class="sd">    create_using : Graph container, optional, </span>
+<span class="sd">    create_using : Graph container, optional,</span>
 <span class="sd">       Use specified container to build graph.  The default is networkx.Graph,</span>
 <span class="sd">       an undirected graph.</span>
 <span class="sd">    nodetype : int, float, str, Python type, optional</span>
@@ -544,7 +544,7 @@
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    Since nodes must be hashable, the function nodetype must return hashable</span>
-<span class="sd">    types (e.g. int, float, str, frozenset - or tuples of those, etc.) </span>
+<span class="sd">    types (e.g. int, float, str, frozenset - or tuples of those, etc.)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">lines</span> <span class="o">=</span> <span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">encoding</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">path</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">parse_edgelist</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="n">comments</span><span class="o">=</span><span class="n">comments</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span>
@@ -552,7 +552,7 @@
                           <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
 </div>
-<div class="viewcode-block" id="write_weighted_edgelist"><a class="viewcode-back" href="../../../reference/generated/networkx.readwrite.edgelist.write_weighted_edgelist.html#networkx.readwrite.edgelist.write_weighted_edgelist">[docs]</a><span class="k">def</span> <span class="nf">write_weighted_edgelist</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">,</span> 
+<div class="viewcode-block" id="write_weighted_edgelist"><a class="viewcode-back" href="../../../reference/generated/networkx.readwrite.edgelist.write_weighted_edgelist.html#networkx.readwrite.edgelist.write_weighted_edgelist">[docs]</a><span class="k">def</span> <span class="nf">write_weighted_edgelist</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">,</span>
                             <span class="n">delimiter</span><span class="o">=</span><span class="s">&#39; &#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Write graph G as a list of edges with numeric weights.</span>
 
@@ -565,7 +565,7 @@
 <span class="sd">       opened in &#39;wb&#39; mode.</span>
 <span class="sd">       Filenames ending in .gz or .bz2 will be compressed.</span>
 <span class="sd">    comments : string, optional</span>
-<span class="sd">       The character used to indicate the start of a comment </span>
+<span class="sd">       The character used to indicate the start of a comment</span>
 <span class="sd">    delimiter : string, optional</span>
 <span class="sd">       The string used to separate values.  The default is whitespace.</span>
 <span class="sd">    encoding: string, optional</span>
@@ -586,7 +586,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">write_edgelist</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">path</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="n">comments</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span>
                    <span class="n">data</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;weight&#39;</span><span class="p">,),</span> <span class="n">encoding</span> <span class="o">=</span> <span class="n">encoding</span><span class="p">)</span>
-    </div>
+</div>
 <div class="viewcode-block" id="read_weighted_edgelist"><a class="viewcode-back" href="../../../reference/generated/networkx.readwrite.edgelist.read_weighted_edgelist.html#networkx.readwrite.edgelist.read_weighted_edgelist">[docs]</a><span class="k">def</span> <span class="nf">read_weighted_edgelist</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                            <span class="n">create_using</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">nodetype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">):</span>
 
@@ -599,10 +599,10 @@
 <span class="sd">       opened in &#39;rb&#39; mode.</span>
 <span class="sd">       Filenames ending in .gz or .bz2 will be uncompressed.</span>
 <span class="sd">    comments : string, optional</span>
-<span class="sd">       The character used to indicate the start of a comment. </span>
+<span class="sd">       The character used to indicate the start of a comment.</span>
 <span class="sd">    delimiter : string, optional</span>
 <span class="sd">       The string used to separate values.  The default is whitespace.</span>
-<span class="sd">    create_using : Graph container, optional, </span>
+<span class="sd">    create_using : Graph container, optional,</span>
 <span class="sd">       Use specified container to build graph.  The default is networkx.Graph,</span>
 <span class="sd">       an undirected graph.</span>
 <span class="sd">    nodetype : int, float, str, Python type, optional</span>
@@ -618,15 +618,15 @@
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    Since nodes must be hashable, the function nodetype must return hashable</span>
-<span class="sd">    types (e.g. int, float, str, frozenset - or tuples of those, etc.) </span>
+<span class="sd">    types (e.g. int, float, str, frozenset - or tuples of those, etc.)</span>
 
 <span class="sd">    Example edgelist file format.</span>
 
-<span class="sd">    With numeric edge data:: </span>
+<span class="sd">    With numeric edge data::</span>
 
-<span class="sd">     # read with </span>
+<span class="sd">     # read with</span>
 <span class="sd">     # &gt;&gt;&gt; G=nx.read_weighted_edgelist(fh)</span>
-<span class="sd">     # source target data  </span>
+<span class="sd">     # source target data</span>
 <span class="sd">     a b 1</span>
 <span class="sd">     a c 3.14159</span>
 <span class="sd">     d e 42</span>
@@ -644,9 +644,10 @@
 <span class="c"># fixture for nose tests</span></div>
 <span class="k">def</span> <span class="nf">teardown_module</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
     <span class="kn">import</span> <span class="nn">os</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="s">&#39;test.edgelist&#39;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="s">&#39;test.edgelist.gz&#39;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="s">&#39;test.weighted.edgelist&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;test.edgelist&#39;</span><span class="p">,</span> <span class="s">&#39;test.edgelist.gz&#39;</span><span class="p">,</span>
+                  <span class="s">&#39;test.weighted.edgelist&#39;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
 </pre></div>
 
           </div>
@@ -658,7 +659,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jul 13, 2014.
+      Last updated on Jul 14, 2014.
     </p>
   </div>
 
@@ -678,7 +679,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20140713000009',
+            VERSION:'2.0.dev20140714000007',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

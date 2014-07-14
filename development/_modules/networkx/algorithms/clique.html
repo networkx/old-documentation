@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.clique &mdash; NetworkX 2.0.dev20140713000009 documentation</title>
+  <title>networkx.algorithms.clique &mdash; NetworkX 2.0.dev20140714000007 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140713000009 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140714000007 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140713000009 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140714000007 documentation" href="../../../index.html"/>
         <link rel="up" title="networkx" href="../../networkx.html"/> 
 
   
@@ -306,7 +306,7 @@
 <span class="sd">    To obtain a list of cliques, use list(find_cliques(G)).</span>
 
 <span class="sd">    Based on the algorithm published by Bron &amp; Kerbosch (1973) [1]_</span>
-<span class="sd">    as adapated by Tomita, Tanaka and Takahashi (2006) [2]_</span>
+<span class="sd">    as adapted by Tomita, Tanaka and Takahashi (2006) [2]_</span>
 <span class="sd">    and discussed in Cazals and Karande (2008) [3]_.</span>
 <span class="sd">    The method essentially unrolls the recursion used in</span>
 <span class="sd">    the references to avoid issues of recursion stack depth.</span>
@@ -341,89 +341,42 @@
 <span class="sd">       Volume 407, Issues 1-3, 6 November 2008, Pages 564-568,</span>
 <span class="sd">       http://dx.doi.org/10.1016/j.tcs.2008.05.010</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c"># Cache nbrs and find first pivot (highest degree)</span>
-    <span class="n">maxconn</span><span class="o">=-</span><span class="mi">1</span>
-    <span class="n">nnbrs</span><span class="o">=</span><span class="p">{}</span>
-    <span class="n">pivotnbrs</span><span class="o">=</span><span class="nb">set</span><span class="p">()</span> <span class="c"># handle empty graph</span>
-    <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">nbrs</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">adjacency_iter</span><span class="p">():</span>
-        <span class="n">nbrs</span><span class="o">=</span><span class="nb">set</span><span class="p">(</span><span class="n">nbrs</span><span class="p">)</span>
-        <span class="n">nbrs</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-        <span class="n">conn</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nbrs</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">conn</span> <span class="o">&gt;</span> <span class="n">maxconn</span><span class="p">:</span>
-            <span class="n">nnbrs</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">pivotnbrs</span> <span class="o">=</span> <span class="n">nbrs</span>
-            <span class="n">maxconn</span> <span class="o">=</span> <span class="n">conn</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">nnbrs</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">nbrs</span>
-    <span class="c"># Initial setup</span>
-    <span class="n">cand</span><span class="o">=</span><span class="nb">set</span><span class="p">(</span><span class="n">nnbrs</span><span class="p">)</span>
-    <span class="n">smallcand</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">cand</span> <span class="o">-</span> <span class="n">pivotnbrs</span><span class="p">)</span>
-    <span class="n">done</span><span class="o">=</span><span class="nb">set</span><span class="p">()</span>
-    <span class="n">stack</span><span class="o">=</span><span class="p">[]</span>
-    <span class="n">clique_so_far</span><span class="o">=</span><span class="p">[]</span>
-    <span class="c"># Start main loop</span>
-    <span class="k">while</span> <span class="n">smallcand</span> <span class="ow">or</span> <span class="n">stack</span><span class="p">:</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="c"># Any nodes left to check?</span>
-            <span class="n">n</span><span class="o">=</span><span class="n">smallcand</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-            <span class="c"># back out clique_so_far</span>
-            <span class="n">cand</span><span class="p">,</span><span class="n">done</span><span class="p">,</span><span class="n">smallcand</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-            <span class="n">clique_so_far</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-            <span class="k">continue</span>
-        <span class="c"># Add next node to clique</span>
-        <span class="n">clique_so_far</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-        <span class="n">cand</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-        <span class="n">done</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-        <span class="n">nn</span><span class="o">=</span><span class="n">nnbrs</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
-        <span class="n">new_cand</span> <span class="o">=</span> <span class="n">cand</span> <span class="o">&amp;</span> <span class="n">nn</span>
-        <span class="n">new_done</span> <span class="o">=</span> <span class="n">done</span> <span class="o">&amp;</span> <span class="n">nn</span>
-        <span class="c"># check if we have more to search</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">new_cand</span><span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">new_done</span><span class="p">:</span>
-                <span class="c"># Found a clique!</span>
-                <span class="k">yield</span> <span class="n">clique_so_far</span><span class="p">[:]</span>
-            <span class="n">clique_so_far</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-            <span class="k">continue</span>
-        <span class="c"># Shortcut--only one node left!</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">new_done</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_cand</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
-            <span class="k">yield</span> <span class="n">clique_so_far</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">new_cand</span><span class="p">)</span>
-            <span class="n">clique_so_far</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-            <span class="k">continue</span>
-        <span class="c"># find pivot node (max connected in cand)</span>
-        <span class="c"># look in done nodes first</span>
-        <span class="n">numb_cand</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">new_cand</span><span class="p">)</span>
-        <span class="n">maxconndone</span><span class="o">=-</span><span class="mi">1</span>
-        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">new_done</span><span class="p">:</span>
-            <span class="n">cn</span> <span class="o">=</span> <span class="n">new_cand</span> <span class="o">&amp;</span> <span class="n">nnbrs</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
-            <span class="n">conn</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">cn</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">conn</span> <span class="o">&gt;</span> <span class="n">maxconndone</span><span class="p">:</span>
-                <span class="n">pivotdonenbrs</span><span class="o">=</span><span class="n">cn</span>
-                <span class="n">maxconndone</span><span class="o">=</span><span class="n">conn</span>
-                <span class="k">if</span> <span class="n">maxconndone</span><span class="o">==</span><span class="n">numb_cand</span><span class="p">:</span>
-                    <span class="k">break</span>
-        <span class="c"># Shortcut--this part of tree already searched</span>
-        <span class="k">if</span> <span class="n">maxconndone</span> <span class="o">==</span> <span class="n">numb_cand</span><span class="p">:</span>
-            <span class="n">clique_so_far</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-            <span class="k">continue</span>
-        <span class="c"># still finding pivot node</span>
-        <span class="c"># look in cand nodes second</span>
-        <span class="n">maxconn</span><span class="o">=-</span><span class="mi">1</span>
-        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">new_cand</span><span class="p">:</span>
-            <span class="n">cn</span> <span class="o">=</span> <span class="n">new_cand</span> <span class="o">&amp;</span> <span class="n">nnbrs</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
-            <span class="n">conn</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">cn</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">conn</span> <span class="o">&gt;</span> <span class="n">maxconn</span><span class="p">:</span>
-                <span class="n">pivotnbrs</span><span class="o">=</span><span class="n">cn</span>
-                <span class="n">maxconn</span><span class="o">=</span><span class="n">conn</span>
-                <span class="k">if</span> <span class="n">maxconn</span> <span class="o">==</span> <span class="n">numb_cand</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-                    <span class="k">break</span>
-        <span class="c"># pivot node is max connected in cand from done or cand</span>
-        <span class="k">if</span> <span class="n">maxconndone</span> <span class="o">&gt;</span> <span class="n">maxconn</span><span class="p">:</span>
-            <span class="n">pivotnbrs</span> <span class="o">=</span> <span class="n">pivotdonenbrs</span>
-        <span class="c"># save search status for later backout</span>
-        <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="p">(</span><span class="n">cand</span><span class="p">,</span> <span class="n">done</span><span class="p">,</span> <span class="n">smallcand</span><span class="p">)</span> <span class="p">)</span>
-        <span class="n">cand</span><span class="o">=</span><span class="n">new_cand</span>
-        <span class="n">done</span><span class="o">=</span><span class="n">new_done</span>
-        <span class="n">smallcand</span> <span class="o">=</span> <span class="n">cand</span> <span class="o">-</span> <span class="n">pivotnbrs</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span>
+
+    <span class="n">adj</span> <span class="o">=</span> <span class="p">{</span><span class="n">u</span><span class="p">:</span> <span class="p">{</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="k">if</span> <span class="n">v</span> <span class="o">!=</span> <span class="n">u</span><span class="p">}</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">G</span><span class="p">}</span>
+    <span class="n">Q</span> <span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">]</span>
+
+    <span class="n">subg</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="n">cand</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">subg</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">u</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">cand</span> <span class="o">&amp;</span> <span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">]))</span>
+    <span class="n">ext_u</span> <span class="o">=</span> <span class="n">cand</span> <span class="o">-</span> <span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">ext_u</span><span class="p">:</span>
+                <span class="n">q</span> <span class="o">=</span> <span class="n">ext_u</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="n">cand</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+                <span class="n">Q</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">q</span>
+                <span class="n">adj_q</span> <span class="o">=</span> <span class="n">adj</span><span class="p">[</span><span class="n">q</span><span class="p">]</span>
+                <span class="n">subg_q</span> <span class="o">=</span> <span class="n">subg</span> <span class="o">&amp;</span> <span class="n">adj_q</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">subg_q</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">Q</span><span class="p">[:]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">cand_q</span> <span class="o">=</span> <span class="n">cand</span> <span class="o">&amp;</span> <span class="n">adj_q</span>
+                    <span class="k">if</span> <span class="n">cand_q</span><span class="p">:</span>
+                        <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">subg</span><span class="p">,</span> <span class="n">cand</span><span class="p">,</span> <span class="n">ext_u</span><span class="p">))</span>
+                        <span class="n">Q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+                        <span class="n">subg</span> <span class="o">=</span> <span class="n">subg_q</span>
+                        <span class="n">cand</span> <span class="o">=</span> <span class="n">cand_q</span>
+                        <span class="n">u</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">subg</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">u</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">cand</span> <span class="o">&amp;</span> <span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">]))</span>
+                        <span class="n">ext_u</span> <span class="o">=</span> <span class="n">cand</span> <span class="o">-</span> <span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">Q</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="n">subg</span><span class="p">,</span> <span class="n">cand</span><span class="p">,</span> <span class="n">ext_u</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+        <span class="k">pass</span>
 
 </div>
 <span class="k">def</span> <span class="nf">find_cliques_recursive</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
@@ -444,7 +397,7 @@
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    Based on the algorithm published by Bron &amp; Kerbosch (1973) [1]_</span>
-<span class="sd">    as adapated by Tomita, Tanaka and Takahashi (2006) [2]_</span>
+<span class="sd">    as adapted by Tomita, Tanaka and Takahashi (2006) [2]_</span>
 <span class="sd">    and discussed in Cazals and Karande (2008) [3]_.</span>
 
 <span class="sd">    This implementation returns a list of lists each of</span>
@@ -475,55 +428,29 @@
 <span class="sd">       Volume 407, Issues 1-3, 6 November 2008, Pages 564-568,</span>
 <span class="sd">       http://dx.doi.org/10.1016/j.tcs.2008.05.010</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">nnbrs</span><span class="o">=</span><span class="p">{}</span>
-    <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">nbrs</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">adjacency_iter</span><span class="p">():</span>
-        <span class="n">nbrs</span><span class="o">=</span><span class="nb">set</span><span class="p">(</span><span class="n">nbrs</span><span class="p">)</span>
-        <span class="n">nbrs</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-        <span class="n">nnbrs</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="n">nbrs</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">nnbrs</span><span class="p">:</span> <span class="k">return</span> <span class="p">[]</span> <span class="c"># empty graph</span>
-    <span class="n">cand</span><span class="o">=</span><span class="nb">set</span><span class="p">(</span><span class="n">nnbrs</span><span class="p">)</span>
-    <span class="n">done</span><span class="o">=</span><span class="nb">set</span><span class="p">()</span>
-    <span class="n">clique_so_far</span><span class="o">=</span><span class="p">[]</span>
-    <span class="n">cliques</span><span class="o">=</span><span class="p">[]</span>
-    <span class="n">_extend</span><span class="p">(</span><span class="n">nnbrs</span><span class="p">,</span><span class="n">cand</span><span class="p">,</span><span class="n">done</span><span class="p">,</span><span class="n">clique_so_far</span><span class="p">,</span><span class="n">cliques</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">cliques</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">([])</span>
 
-<span class="k">def</span> <span class="nf">_extend</span><span class="p">(</span><span class="n">nnbrs</span><span class="p">,</span><span class="n">cand</span><span class="p">,</span><span class="n">done</span><span class="p">,</span><span class="n">so_far</span><span class="p">,</span><span class="n">cliques</span><span class="p">):</span>
-    <span class="c"># find pivot node (max connections in cand)</span>
-    <span class="n">maxconn</span><span class="o">=-</span><span class="mi">1</span>
-    <span class="n">numb_cand</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">cand</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">done</span><span class="p">:</span>
-        <span class="n">cn</span> <span class="o">=</span> <span class="n">cand</span> <span class="o">&amp;</span> <span class="n">nnbrs</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
-        <span class="n">conn</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">cn</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">conn</span> <span class="o">&gt;</span> <span class="n">maxconn</span><span class="p">:</span>
-            <span class="n">pivotnbrs</span><span class="o">=</span><span class="n">cn</span>
-            <span class="n">maxconn</span><span class="o">=</span><span class="n">conn</span>
-            <span class="k">if</span> <span class="n">conn</span><span class="o">==</span><span class="n">numb_cand</span><span class="p">:</span>
-                <span class="c"># All possible cliques already found</span>
-                <span class="k">return</span>
-    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">cand</span><span class="p">:</span>
-        <span class="n">cn</span> <span class="o">=</span> <span class="n">cand</span> <span class="o">&amp;</span> <span class="n">nnbrs</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
-        <span class="n">conn</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">cn</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">conn</span> <span class="o">&gt;</span> <span class="n">maxconn</span><span class="p">:</span>
-            <span class="n">pivotnbrs</span><span class="o">=</span><span class="n">cn</span>
-            <span class="n">maxconn</span><span class="o">=</span><span class="n">conn</span>
-    <span class="c"># Use pivot to reduce number of nodes to examine</span>
-    <span class="n">smallercand</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">cand</span> <span class="o">-</span> <span class="n">pivotnbrs</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">smallercand</span><span class="p">:</span>
-        <span class="n">cand</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-        <span class="n">so_far</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-        <span class="n">nn</span><span class="o">=</span><span class="n">nnbrs</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
-        <span class="n">new_cand</span><span class="o">=</span><span class="n">cand</span> <span class="o">&amp;</span> <span class="n">nn</span>
-        <span class="n">new_done</span><span class="o">=</span><span class="n">done</span> <span class="o">&amp;</span> <span class="n">nn</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">new_cand</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">new_done</span><span class="p">:</span>
-            <span class="c"># Found the clique</span>
-            <span class="n">cliques</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">so_far</span><span class="p">[:])</span>
-        <span class="k">elif</span> <span class="ow">not</span> <span class="n">new_done</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_cand</span><span class="p">)</span> <span class="ow">is</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="c"># shortcut if only one node left</span>
-            <span class="n">cliques</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">so_far</span><span class="o">+</span><span class="nb">list</span><span class="p">(</span><span class="n">new_cand</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">_extend</span><span class="p">(</span><span class="n">nnbrs</span><span class="p">,</span> <span class="n">new_cand</span><span class="p">,</span> <span class="n">new_done</span><span class="p">,</span> <span class="n">so_far</span><span class="p">,</span> <span class="n">cliques</span><span class="p">)</span>
-        <span class="n">done</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">so_far</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+    <span class="n">adj</span> <span class="o">=</span> <span class="p">{</span><span class="n">u</span><span class="p">:</span> <span class="p">{</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="k">if</span> <span class="n">v</span> <span class="o">!=</span> <span class="n">u</span><span class="p">}</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">G</span><span class="p">}</span>
+    <span class="n">Q</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">expand</span><span class="p">(</span><span class="n">subg</span><span class="p">,</span> <span class="n">cand</span><span class="p">):</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">subg</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">u</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">cand</span> <span class="o">&amp;</span> <span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">]))</span>
+        <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">cand</span> <span class="o">-</span> <span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">]:</span>
+            <span class="n">cand</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+            <span class="n">Q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+            <span class="n">adj_q</span> <span class="o">=</span> <span class="n">adj</span><span class="p">[</span><span class="n">q</span><span class="p">]</span>
+            <span class="n">subg_q</span> <span class="o">=</span> <span class="n">subg</span> <span class="o">&amp;</span> <span class="n">adj_q</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">subg_q</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">Q</span><span class="p">[:]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">cand_q</span> <span class="o">=</span> <span class="n">cand</span> <span class="o">&amp;</span> <span class="n">adj_q</span>
+                <span class="k">if</span> <span class="n">cand_q</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">clique</span> <span class="ow">in</span> <span class="n">expand</span><span class="p">(</span><span class="n">subg_q</span><span class="p">,</span> <span class="n">cand_q</span><span class="p">):</span>
+                        <span class="k">yield</span> <span class="n">clique</span>
+            <span class="n">Q</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">expand</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
 
 
 <div class="viewcode-block" id="make_max_clique_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.clique.make_max_clique_graph.html#networkx.algorithms.clique.make_max_clique_graph">[docs]</a><span class="k">def</span> <span class="nf">make_max_clique_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">create_using</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
@@ -782,7 +709,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jul 13, 2014.
+      Last updated on Jul 14, 2014.
     </p>
   </div>
 
@@ -802,7 +729,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20140713000009',
+            VERSION:'2.0.dev20140714000007',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
