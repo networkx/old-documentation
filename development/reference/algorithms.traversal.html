@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Traversal &mdash; NetworkX 2.0.dev20140722000007 documentation</title>
+  <title>Traversal &mdash; NetworkX 2.0.dev20140723000007 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140722000007 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140723000007 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140722000007 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140723000007 documentation" href="../index.html"/>
         <link rel="up" title="Algorithms" href="algorithms.html"/>
         <link rel="next" title="dfs_edges" href="generated/networkx.algorithms.traversal.depth_first_search.dfs_edges.html"/>
         <link rel="prev" title="connected_double_edge_swap" href="generated/networkx.algorithms.swap.connected_double_edge_swap.html"/> 
@@ -192,7 +192,7 @@
 </div>
 <div class="section" id="module-networkx.algorithms.traversal.depth_first_search">
 <span id="depth-first-search"></span><h2>Depth First Search<a class="headerlink" href="#module-networkx.algorithms.traversal.depth_first_search" title="Permalink to this headline">¶</a></h2>
-<p>Basic algorithms for depth-first searching.</p>
+<p>Basic algorithms for depth-first searching the nodes of a graph.</p>
 <p>Based on <a class="reference external" href="http://www.ics.uci.edu/~eppstein/PADS/DFS.py">http://www.ics.uci.edu/~eppstein/PADS/DFS.py</a>
 by D. Eppstein, July 2004.</p>
 <table border="1" class="longtable docutils">
@@ -227,7 +227,7 @@ by D. Eppstein, July 2004.</p>
 </div>
 <div class="section" id="module-networkx.algorithms.traversal.breadth_first_search">
 <span id="breadth-first-search"></span><h2>Breadth First Search<a class="headerlink" href="#module-networkx.algorithms.traversal.breadth_first_search" title="Permalink to this headline">¶</a></h2>
-<p>Basic algorithms for breadth-first searching.</p>
+<p>Basic algorithms for breadth-first searching the nodes of a graph.</p>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -245,6 +245,21 @@ by D. Eppstein, July 2004.</p>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.traversal.breadth_first_search.bfs_successors.html#networkx.algorithms.traversal.breadth_first_search.bfs_successors" title="networkx.algorithms.traversal.breadth_first_search.bfs_successors"><tt class="xref py py-obj docutils literal"><span class="pre">bfs_successors</span></tt></a>(G,&nbsp;source)</td>
 <td>Return dictionary of successors in breadth-first-search from source.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-networkx.algorithms.traversal.edgedfs">
+<span id="depth-first-search-on-edges"></span><h2>Depth First Search on Edges<a class="headerlink" href="#module-networkx.algorithms.traversal.edgedfs" title="Permalink to this headline">¶</a></h2>
+<p>Algorithms for a depth-first traversal of edges in a graph.</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.traversal.edgedfs.edge_dfs.html#networkx.algorithms.traversal.edgedfs.edge_dfs" title="networkx.algorithms.traversal.edgedfs.edge_dfs"><tt class="xref py py-obj docutils literal"><span class="pre">edge_dfs</span></tt></a>(G[,&nbsp;source,&nbsp;orientation])</td>
+<td>A directed, depth-first traversal of edges in <tt class="docutils literal"><span class="pre">G</span></tt>, beginning at <tt class="docutils literal"><span class="pre">source</span></tt>.</td>
 </tr>
 </tbody>
 </table>
@@ -270,7 +285,7 @@ by D. Eppstein, July 2004.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jul 22, 2014.
+      Last updated on Jul 23, 2014.
     </p>
   </div>
 
@@ -290,7 +305,7 @@ by D. Eppstein, July 2004.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20140722000007',
+            VERSION:'2.0.dev20140723000007',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
