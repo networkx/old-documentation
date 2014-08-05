@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.convert_matrix &mdash; NetworkX 2.0.dev20140804000007 documentation</title>
+  <title>networkx.convert_matrix &mdash; NetworkX 2.0.dev20140805000014 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140804000007 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140805000014 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140804000007 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140805000014 documentation" href="../../index.html"/>
         <link rel="up" title="networkx" href="../networkx.html"/> 
 
   
@@ -666,7 +666,38 @@
         <span class="k">return</span> <span class="n">M</span><span class="o">.</span><span class="n">asformat</span><span class="p">(</span><span class="n">format</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s">&quot;Unknown sparse matrix format: </span><span class="si">%s</span><span class="s">&quot;</span><span class="o">%</span><span class="n">format</span><span class="p">)</span>
+
 </div>
+<span class="k">def</span> <span class="nf">_csr_gen_triples</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="c"># Helper function for conversion from csr formatted scipy.sparse matrix.</span>
+    <span class="n">nrows</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">indptr</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">indices</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">indptr</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">indptr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">indptr</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="k">yield</span> <span class="n">i</span><span class="p">,</span> <span class="n">indices</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">_csc_gen_triples</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="c"># Helper function for conversion from csc formatted scipy.sparse matrix.</span>
+    <span class="n">ncols</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">indptr</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">indices</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">indptr</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">indptr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">indptr</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="k">yield</span> <span class="n">indices</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">i</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">_coo_gen_triples</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="c"># Helper function for conversion from coo formatted scipy.sparse matrix.</span>
+    <span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">col</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">data</span>
+    <span class="k">return</span> <span class="nb">zip</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_dok_gen_triples</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="c"># Helper function for conversion from coo formatted scipy.sparse matrix.</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">),</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">A</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">yield</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">v</span>
+
+
 <div class="viewcode-block" id="from_scipy_sparse_matrix"><a class="viewcode-back" href="../../reference/generated/networkx.convert_matrix.from_scipy_sparse_matrix.html#networkx.convert_matrix.from_scipy_sparse_matrix">[docs]</a><span class="k">def</span> <span class="nf">from_scipy_sparse_matrix</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">edge_attribute</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a graph from scipy sparse matrix adjacency list.</span>
 
@@ -679,7 +710,7 @@
 <span class="sd">       Use specified graph for result.  The default is Graph()</span>
 
 <span class="sd">    edge_attribute: string</span>
-<span class="sd">       Name of edge attrbute to store matrix numeric value. The data will</span>
+<span class="sd">       Name of edge attribute to store matrix numeric value. The data will</span>
 <span class="sd">       have the same type as the matrix entry (int, float, (real,imag)).</span>
 
 <span class="sd">    Examples</span>
@@ -695,17 +726,17 @@
               <span class="s">&quot;Adjacency matrix is not square. nx,ny=</span><span class="si">%s</span><span class="s">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">,))</span>
     <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="c"># make sure we get isolated nodes</span>
 
-    <span class="k">if</span> <span class="n">A</span><span class="o">.</span><span class="n">format</span> <span class="o">==</span> <span class="s">&#39;coo&#39;</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">d</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">col</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">data</span><span class="p">):</span>
-            <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="o">**</span><span class="p">{</span><span class="n">edge_attribute</span><span class="p">:</span><span class="n">d</span><span class="p">})</span>
-    <span class="k">elif</span> <span class="n">A</span><span class="o">.</span><span class="n">format</span> <span class="o">==</span> <span class="s">&#39;dia&#39;</span><span class="p">:</span>
-        <span class="c"># make a copy - could be done more efficiently</span>
-        <span class="n">B</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">tocoo</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">d</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">B</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="n">B</span><span class="o">.</span><span class="n">col</span><span class="p">,</span> <span class="n">B</span><span class="o">.</span><span class="n">data</span><span class="p">):</span>
-            <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="o">**</span><span class="p">{</span><span class="n">edge_attribute</span><span class="p">:</span><span class="n">d</span><span class="p">})</span>
+    <span class="k">if</span> <span class="n">A</span><span class="o">.</span><span class="n">format</span> <span class="o">==</span> <span class="s">&#39;csr&#39;</span><span class="p">:</span>
+        <span class="n">triples</span> <span class="o">=</span> <span class="n">_csr_gen_triples</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">A</span><span class="o">.</span><span class="n">format</span> <span class="o">==</span> <span class="s">&#39;csc&#39;</span><span class="p">:</span>
+        <span class="n">triples</span> <span class="o">=</span> <span class="n">_csc_gen_triples</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">A</span><span class="o">.</span><span class="n">format</span> <span class="o">==</span> <span class="s">&#39;dok&#39;</span><span class="p">:</span>
+        <span class="n">triples</span> <span class="o">=</span> <span class="n">_dok_gen_triples</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">A</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()):</span>
-            <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="o">**</span><span class="p">{</span><span class="n">edge_attribute</span><span class="p">:</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]})</span>
+        <span class="k">if</span> <span class="n">A</span><span class="o">.</span><span class="n">format</span> <span class="o">!=</span> <span class="s">&#39;coo&#39;</span><span class="p">:</span>
+            <span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">tocoo</span><span class="p">()</span>
+        <span class="n">triples</span> <span class="o">=</span> <span class="n">_coo_gen_triples</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_weighted_edges_from</span><span class="p">(</span><span class="n">triples</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">edge_attribute</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">G</span>
 
 <span class="c"># fixture for nose tests</span></div>
@@ -730,7 +761,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Aug 04, 2014.
+      Last updated on Aug 05, 2014.
     </p>
   </div>
 
@@ -750,7 +781,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140804000007',
+            VERSION:'2.0.dev20140805000014',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

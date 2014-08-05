@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.readwrite.gml &mdash; NetworkX 2.0.dev20140804000007 documentation</title>
+  <title>networkx.readwrite.gml &mdash; NetworkX 2.0.dev20140805000014 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140804000007 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140805000014 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140804000007 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140805000014 documentation" href="../../../index.html"/>
         <link rel="up" title="networkx" href="../../networkx.html"/> 
 
   
@@ -451,9 +451,9 @@
     <span class="n">dblQuotedString</span><span class="o">.</span><span class="n">setParseAction</span><span class="p">(</span> <span class="n">removeQuotes</span> <span class="p">)</span>
     <span class="n">key</span> <span class="o">=</span> <span class="n">Word</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span><span class="n">alphanums</span><span class="o">+</span><span class="s">&#39;_&#39;</span><span class="p">)</span>
     <span class="n">value_atom</span> <span class="o">=</span> <span class="p">(</span><span class="n">real</span> <span class="o">|</span> <span class="n">integer</span> <span class="o">|</span> <span class="n">Word</span><span class="p">(</span><span class="n">alphanums</span><span class="p">)</span> <span class="o">|</span> <span class="n">dblQuotedString</span><span class="p">)</span>
-    <span class="n">value</span> <span class="o">=</span> <span class="n">Forward</span><span class="p">()</span>   <span class="c"># to be defined later with &lt;&lt; operator</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">Forward</span><span class="p">()</span>   <span class="c"># to be defined later with &lt;&lt;= operator</span>
     <span class="n">keyvalue</span> <span class="o">=</span> <span class="n">Group</span><span class="p">(</span><span class="n">key</span><span class="o">+</span><span class="n">value</span><span class="p">)</span>
-    <span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">value_atom</span> <span class="o">|</span> <span class="n">Group</span><span class="p">(</span> <span class="n">lbrack</span> <span class="o">+</span> <span class="n">ZeroOrMore</span><span class="p">(</span><span class="n">keyvalue</span><span class="p">)</span> <span class="o">+</span> <span class="n">rbrack</span> <span class="p">))</span>
+    <span class="n">value</span> <span class="o">&lt;&lt;=</span> <span class="p">(</span><span class="n">value_atom</span> <span class="o">|</span> <span class="n">Group</span><span class="p">(</span> <span class="n">lbrack</span> <span class="o">+</span> <span class="n">ZeroOrMore</span><span class="p">(</span><span class="n">keyvalue</span><span class="p">)</span> <span class="o">+</span> <span class="n">rbrack</span> <span class="p">))</span>
     <span class="n">node</span> <span class="o">=</span> <span class="n">Group</span><span class="p">(</span><span class="n">Literal</span><span class="p">(</span><span class="s">&quot;node&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">lbrack</span> <span class="o">+</span> <span class="n">Group</span><span class="p">(</span><span class="n">OneOrMore</span><span class="p">(</span><span class="n">keyvalue</span><span class="p">))</span> <span class="o">+</span> <span class="n">rbrack</span><span class="p">)</span>
     <span class="n">edge</span> <span class="o">=</span> <span class="n">Group</span><span class="p">(</span><span class="n">Literal</span><span class="p">(</span><span class="s">&quot;edge&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">lbrack</span> <span class="o">+</span> <span class="n">Group</span><span class="p">(</span><span class="n">OneOrMore</span><span class="p">(</span><span class="n">keyvalue</span><span class="p">))</span> <span class="o">+</span> <span class="n">rbrack</span><span class="p">)</span>
 
@@ -641,7 +641,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Aug 04, 2014.
+      Last updated on Aug 05, 2014.
     </p>
   </div>
 
@@ -661,7 +661,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20140804000007',
+            VERSION:'2.0.dev20140805000014',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
