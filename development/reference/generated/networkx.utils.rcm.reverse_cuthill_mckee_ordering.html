@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>reverse_cuthill_mckee_ordering &mdash; NetworkX 2.0.dev20140805000014 documentation</title>
+  <title>reverse_cuthill_mckee_ordering &mdash; NetworkX 2.0.dev20140806000008 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140805000014 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140806000008 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140805000014 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140806000008 documentation" href="../../index.html"/>
         <link rel="up" title="Utilities" href="../utils.html"/>
         <link rel="next" title="reversed" href="networkx.utils.contextmanagers.reversed.html"/>
         <link rel="prev" title="cuthill_mckee_ordering" href="networkx.utils.rcm.cuthill_mckee_ordering.html"/> 
@@ -249,7 +249,7 @@ Springer-Verlag New York, Inc., New York, NY, USA.</td></tr>
 </div>
 <p>Smallest degree node as heuristic function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">smallest_degree</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="n">node</span><span class="p">,</span><span class="n">deg</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="n">node</span><span class="p">,</span> <span class="n">deg</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="gp">... </span>    <span class="k">return</span> <span class="n">node</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rcm</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">reverse_cuthill_mckee_ordering</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">heuristic</span><span class="o">=</span><span class="n">smallest_degree</span><span class="p">))</span>
 </pre></div>
@@ -277,7 +277,7 @@ Springer-Verlag New York, Inc., New York, NY, USA.</td></tr>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Aug 05, 2014.
+      Last updated on Aug 06, 2014.
     </p>
   </div>
 
@@ -297,7 +297,7 @@ Springer-Verlag New York, Inc., New York, NY, USA.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140805000014',
+            VERSION:'2.0.dev20140806000008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

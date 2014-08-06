@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>max_flow_min_cost &mdash; NetworkX 2.0.dev20140805000014 documentation</title>
+  <title>max_flow_min_cost &mdash; NetworkX 2.0.dev20140806000008 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140805000014 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140806000008 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140805000014 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140806000008 documentation" href="../../index.html"/>
         <link rel="up" title="Flows" href="../algorithms.flow.html"/>
         <link rel="next" title="capacity_scaling" href="networkx.algorithms.flow.capacity_scaling.html"/>
         <link rel="prev" title="cost_of_flow" href="networkx.algorithms.flow.cost_of_flow.html"/> 
@@ -254,7 +254,7 @@ is unbounded below.</p>
 </table>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.flow.cost_of_flow.html#networkx.algorithms.flow.cost_of_flow" title="networkx.algorithms.flow.cost_of_flow"><tt class="xref py py-obj docutils literal"><span class="pre">cost_of_flow</span></tt></a>, <a class="reference internal" href="networkx.algorithms.flow.ford_fulkerson.html#networkx.algorithms.flow.ford_fulkerson" title="networkx.algorithms.flow.ford_fulkerson"><tt class="xref py py-obj docutils literal"><span class="pre">ford_fulkerson</span></tt></a>, <a class="reference internal" href="networkx.algorithms.flow.min_cost_flow.html#networkx.algorithms.flow.min_cost_flow" title="networkx.algorithms.flow.min_cost_flow"><tt class="xref py py-obj docutils literal"><span class="pre">min_cost_flow</span></tt></a>, <a class="reference internal" href="networkx.algorithms.flow.min_cost_flow_cost.html#networkx.algorithms.flow.min_cost_flow_cost" title="networkx.algorithms.flow.min_cost_flow_cost"><tt class="xref py py-obj docutils literal"><span class="pre">min_cost_flow_cost</span></tt></a>, <a class="reference internal" href="networkx.algorithms.flow.network_simplex.html#networkx.algorithms.flow.network_simplex" title="networkx.algorithms.flow.network_simplex"><tt class="xref py py-obj docutils literal"><span class="pre">network_simplex</span></tt></a></p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.flow.cost_of_flow.html#networkx.algorithms.flow.cost_of_flow" title="networkx.algorithms.flow.cost_of_flow"><tt class="xref py py-obj docutils literal"><span class="pre">cost_of_flow</span></tt></a>, <a class="reference internal" href="networkx.algorithms.flow.min_cost_flow.html#networkx.algorithms.flow.min_cost_flow" title="networkx.algorithms.flow.min_cost_flow"><tt class="xref py py-obj docutils literal"><span class="pre">min_cost_flow</span></tt></a>, <a class="reference internal" href="networkx.algorithms.flow.min_cost_flow_cost.html#networkx.algorithms.flow.min_cost_flow_cost" title="networkx.algorithms.flow.min_cost_flow_cost"><tt class="xref py py-obj docutils literal"><span class="pre">min_cost_flow_cost</span></tt></a>, <a class="reference internal" href="networkx.algorithms.flow.network_simplex.html#networkx.algorithms.flow.network_simplex" title="networkx.algorithms.flow.network_simplex"><tt class="xref py py-obj docutils literal"><span class="pre">network_simplex</span></tt></a></p>
 </div>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
@@ -271,13 +271,13 @@ is unbounded below.</p>
 <span class="gp">... </span>                  <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">}),</span>
 <span class="gp">... </span>                  <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;capacity&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">})])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mincostFlow</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">max_flow_min_cost</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">cost_of_flow</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">mincostFlow</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mincost</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">cost_of_flow</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">mincostFlow</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mincost</span>
 <span class="go">373</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.algorithms.flow</span> <span class="kn">import</span> <span class="n">ford_fulkerson</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">R</span> <span class="o">=</span> <span class="n">ford_fulkerson</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">maxFlow</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s">&#39;flow_dict&#39;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">cost_of_flow</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">maxFlow</span><span class="p">)</span>
-<span class="go">428</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.algorithms.flow</span> <span class="kn">import</span> <span class="n">maximum_flow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">maxFlow</span> <span class="o">=</span> <span class="n">maximum_flow</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">cost_of_flow</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">maxFlow</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">mincost</span>
+<span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mincostFlowValue</span> <span class="o">=</span> <span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="n">mincostFlow</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="mi">7</span><span class="p">]</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">predecessors</span><span class="p">(</span><span class="mi">7</span><span class="p">)))</span>
 <span class="gp">... </span>                    <span class="o">-</span> <span class="nb">sum</span><span class="p">((</span><span class="n">mincostFlow</span><span class="p">[</span><span class="mi">7</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">successors</span><span class="p">(</span><span class="mi">7</span><span class="p">))))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mincostFlowValue</span> <span class="o">==</span> <span class="n">nx</span><span class="o">.</span><span class="n">maximum_flow_value</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
@@ -307,7 +307,7 @@ is unbounded below.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Aug 05, 2014.
+      Last updated on Aug 06, 2014.
     </p>
   </div>
 
@@ -327,7 +327,7 @@ is unbounded below.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140805000014',
+            VERSION:'2.0.dev20140806000008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

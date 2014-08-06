@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>maximum_flow &mdash; NetworkX 2.0.dev20140805000014 documentation</title>
+  <title>maximum_flow &mdash; NetworkX 2.0.dev20140806000008 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140805000014 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140806000008 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140805000014 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140806000008 documentation" href="../../index.html"/>
         <link rel="up" title="Flows" href="../algorithms.flow.html"/>
         <link rel="next" title="maximum_flow_value" href="networkx.algorithms.flow.maximum_flow_value.html"/>
         <link rel="prev" title="capacity_scaling" href="networkx.algorithms.flow.capacity_scaling.html"/> 
@@ -264,7 +264,7 @@ raises a NetworkXUnbounded.</p>
 </table>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.flow.maximum_flow_value.html#networkx.algorithms.flow.maximum_flow_value" title="networkx.algorithms.flow.maximum_flow_value"><tt class="xref py py-meth docutils literal"><span class="pre">maximum_flow_value()</span></tt></a>, <a class="reference internal" href="networkx.algorithms.flow.minimum_cut.html#networkx.algorithms.flow.minimum_cut" title="networkx.algorithms.flow.minimum_cut"><tt class="xref py py-meth docutils literal"><span class="pre">minimum_cut()</span></tt></a>, <a class="reference internal" href="networkx.algorithms.flow.minimum_cut_value.html#networkx.algorithms.flow.minimum_cut_value" title="networkx.algorithms.flow.minimum_cut_value"><tt class="xref py py-meth docutils literal"><span class="pre">minimum_cut_value()</span></tt></a>, <a class="reference internal" href="networkx.algorithms.flow.edmonds_karp.html#networkx.algorithms.flow.edmonds_karp" title="networkx.algorithms.flow.edmonds_karp"><tt class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></tt></a>, <a class="reference internal" href="networkx.algorithms.flow.ford_fulkerson.html#networkx.algorithms.flow.ford_fulkerson" title="networkx.algorithms.flow.ford_fulkerson"><tt class="xref py py-meth docutils literal"><span class="pre">ford_fulkerson()</span></tt></a>, <a class="reference internal" href="networkx.algorithms.flow.preflow_push.html#networkx.algorithms.flow.preflow_push" title="networkx.algorithms.flow.preflow_push"><tt class="xref py py-meth docutils literal"><span class="pre">preflow_push()</span></tt></a>, <a class="reference internal" href="networkx.algorithms.flow.shortest_augmenting_path.html#networkx.algorithms.flow.shortest_augmenting_path" title="networkx.algorithms.flow.shortest_augmenting_path"><tt class="xref py py-meth docutils literal"><span class="pre">shortest_augmenting_path()</span></tt></a></p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.flow.maximum_flow_value.html#networkx.algorithms.flow.maximum_flow_value" title="networkx.algorithms.flow.maximum_flow_value"><tt class="xref py py-meth docutils literal"><span class="pre">maximum_flow_value()</span></tt></a>, <a class="reference internal" href="networkx.algorithms.flow.minimum_cut.html#networkx.algorithms.flow.minimum_cut" title="networkx.algorithms.flow.minimum_cut"><tt class="xref py py-meth docutils literal"><span class="pre">minimum_cut()</span></tt></a>, <a class="reference internal" href="networkx.algorithms.flow.minimum_cut_value.html#networkx.algorithms.flow.minimum_cut_value" title="networkx.algorithms.flow.minimum_cut_value"><tt class="xref py py-meth docutils literal"><span class="pre">minimum_cut_value()</span></tt></a>, <a class="reference internal" href="networkx.algorithms.flow.edmonds_karp.html#networkx.algorithms.flow.edmonds_karp" title="networkx.algorithms.flow.edmonds_karp"><tt class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></tt></a>, <a class="reference internal" href="networkx.algorithms.flow.preflow_push.html#networkx.algorithms.flow.preflow_push" title="networkx.algorithms.flow.preflow_push"><tt class="xref py py-meth docutils literal"><span class="pre">preflow_push()</span></tt></a>, <a class="reference internal" href="networkx.algorithms.flow.shortest_augmenting_path.html#networkx.algorithms.flow.shortest_augmenting_path" title="networkx.algorithms.flow.shortest_augmenting_path"><tt class="xref py py-meth docutils literal"><span class="pre">shortest_augmenting_path()</span></tt></a></p>
 </div>
 <p class="rubric">Notes</p>
 <p>The function used in the flow_func paramter has to return a residual
@@ -291,8 +291,6 @@ only edges <tt class="samp docutils literal"><span class="pre">(u,</span> <span 
 <p>The function should supports an optional boolean parameter value_only. When
 True, it can optionally terminate the algorithm as soon as the maximum flow
 value and the minimum cut can be determined.</p>
-<p>The legacy <a class="reference internal" href="networkx.algorithms.flow.ford_fulkerson.html#networkx.algorithms.flow.ford_fulkerson" title="networkx.algorithms.flow.ford_fulkerson"><tt class="xref py py-meth docutils literal"><span class="pre">ford_fulkerson()</span></tt></a> maximum flow implementation doesn&#8217;t
-follow this conventions but it is supported as a valid flow_func.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
@@ -346,7 +344,7 @@ maximum flow by using the flow_func parameter.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Aug 05, 2014.
+      Last updated on Aug 06, 2014.
     </p>
   </div>
 
@@ -366,7 +364,7 @@ maximum flow by using the flow_func parameter.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140805000014',
+            VERSION:'2.0.dev20140806000008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
