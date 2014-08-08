@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.generators.random_graphs &mdash; NetworkX 2.0.dev20140807000007 documentation</title>
+  <title>networkx.generators.random_graphs &mdash; NetworkX 2.0.dev20140808000008 documentation</title>
   
 
   
@@ -20,7 +20,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140807000007 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140808000008 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +31,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140807000007 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140808000008 documentation" href="../../../index.html"/>
         <link rel="up" title="networkx" href="../../networkx.html"/> 
 
   
@@ -215,6 +215,7 @@
            <span class="s">&#39;random_regular_graph&#39;</span><span class="p">,</span>
            <span class="s">&#39;barabasi_albert_graph&#39;</span><span class="p">,</span>
            <span class="s">&#39;powerlaw_cluster_graph&#39;</span><span class="p">,</span>
+           <span class="s">&#39;duplication_divergence_graph&#39;</span><span class="p">,</span>
            <span class="s">&#39;random_lobster&#39;</span><span class="p">,</span>
            <span class="s">&#39;random_shell_graph&#39;</span><span class="p">,</span>
            <span class="s">&#39;random_powerlaw_tree&#39;</span><span class="p">,</span>
@@ -900,6 +901,73 @@
         <span class="n">source</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">G</span>
 </div>
+<span class="k">def</span> <span class="nf">duplication_divergence_graph</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a undirected graph using the Duplication-Divergence model</span>
+
+<span class="sd">    A graph of n nodes is created by duplicating the initial nodes and</span>
+<span class="sd">    retain edges of the original nodes with a retention probability p.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    n : int</span>
+<span class="sd">        The desired number of nodes in the graph.</span>
+<span class="sd">    p : float</span>
+<span class="sd">        The probability for retaining the edge of the replicated node.</span>
+<span class="sd">    seed : int, optional</span>
+<span class="sd">        A seed for the random number generator of ``random`` (default=None).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    G : Graph</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    NetworkXError</span>
+<span class="sd">        If `p` is not a valid probability.</span>
+<span class="sd">        If `n` is less than 2.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] I. Ispolatov, P. L. Krapivsky, A. Yuryev,</span>
+<span class="sd">       &quot;Duplication-divergence model of protein interaction network&quot;,</span>
+<span class="sd">       Phys. Rev. E, 71, 061911, 2005.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">p</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s">&quot;NetworkXError p={0} is not in [0,1].&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s">&#39;n must be greater than or equal to 2&#39;</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Duplication-Divergence Graph&quot;</span>
+
+    <span class="c"># Initialize the graph with two connected nodes.</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="c"># Choose a random node from current graph to duplicate.</span>
+        <span class="n">random_node</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+        <span class="c"># Make the replica.</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="c"># flag indicates whether at least one edge is connected on the replica.</span>
+        <span class="n">flag</span><span class="o">=</span><span class="bp">False</span>
+        <span class="k">for</span> <span class="n">nbr</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">random_node</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">:</span>
+                <span class="c"># Link retention step.</span>
+                <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">nbr</span><span class="p">)</span>
+                <span class="n">flag</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">flag</span><span class="p">:</span>
+            <span class="c"># Delete replica if no edges retained.</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">remove_node</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c"># Successful duplication.</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">G</span>
+
 <div class="viewcode-block" id="random_lobster"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.random_graphs.random_lobster.html#networkx.generators.random_graphs.random_lobster">[docs]</a><span class="k">def</span> <span class="nf">random_lobster</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a random lobster.</span>
 
@@ -1087,7 +1155,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Aug 07, 2014.
+      Last updated on Aug 08, 2014.
     </p>
   </div>
 
@@ -1107,7 +1175,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20140807000007',
+            VERSION:'2.0.dev20140808000008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
