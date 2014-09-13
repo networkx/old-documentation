@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>spectral_ordering &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>spectral_ordering &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="Linear algebra" href="../linalg.html"/>
         <link rel="next" title="attr_matrix" href="networkx.linalg.attrmatrix.attr_matrix.html"/>
         <link rel="prev" title="fiedler_vector" href="networkx.linalg.algebraicconnectivity.fiedler_vector.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,13 +95,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../functions.html">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generators.html">Graph generators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../linalg.html">Linear algebra</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../linalg.html">Linear algebra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../convert.html">Converting to and from other data formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../relabel.html">Relabeling nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readwrite.html">Reading and writing graphs</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -188,7 +187,7 @@
 <h1>spectral_ordering<a class="headerlink" href="#spectral-ordering" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.linalg.algebraicconnectivity.spectral_ordering">
-<tt class="descname">spectral_ordering</tt><big>(</big><em>G</em>, <em>weight='weight'</em>, <em>normalized=False</em>, <em>tol=1e-08</em>, <em>method='tracemin'</em><big>)</big><a class="reference internal" href="../../_modules/networkx/linalg/algebraicconnectivity.html#spectral_ordering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.linalg.algebraicconnectivity.spectral_ordering" title="Permalink to this definition">¶</a></dt>
+<code class="descname">spectral_ordering</code><span class="sig-paren">(</span><em>G</em>, <em>weight='weight'</em>, <em>normalized=False</em>, <em>tol=1e-08</em>, <em>method='tracemin'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/linalg/algebraicconnectivity.html#spectral_ordering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.linalg.algebraicconnectivity.spectral_ordering" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the spectral_ordering of a graph.</p>
 <p>The spectral ordering of a graph is an ordering of its nodes where nodes
 in the same weakly connected components appear contiguous and ordered by
@@ -197,7 +196,7 @@ their corresponding elements in the Fiedler vector of the component.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
 <blockquote>
 <div><p>A graph.</p>
 </div></blockquote>
@@ -228,40 +227,32 @@ values allow specifying the solver to be used.</p>
 <col width="73%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head"><p class="first last">Value</p>
-</th>
-<th class="head"><p class="first last">Solver</p>
-</th>
+<tr class="row-odd"><th class="head">Value</th>
+<th class="head">Solver</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><p class="first last">&#8216;tracemin_pcg&#8217;</p>
-</td>
-<td><p class="first last">Preconditioned conjugate gradient method</p>
-</td>
+<tr class="row-even"><td>&#8216;tracemin_pcg&#8217;</td>
+<td>Preconditioned conjugate gradient method</td>
 </tr>
-<tr class="row-odd"><td><p class="first last">&#8216;tracemin_chol&#8217;</p>
-</td>
-<td><p class="first last">Cholesky factorization</p>
-</td>
+<tr class="row-odd"><td>&#8216;tracemin_chol&#8217;</td>
+<td>Cholesky factorization</td>
 </tr>
-<tr class="row-even"><td><p class="first last">&#8216;tracemin_lu&#8217;</p>
-</td>
-<td><p class="first last">LU factorization</p>
-</td>
+<tr class="row-even"><td>&#8216;tracemin_lu&#8217;</td>
+<td>LU factorization</td>
 </tr>
 </tbody>
 </table>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>spectral_ordering</strong> : NumPy array of floats.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>spectral_ordering</strong> : NumPy array of floats.</p>
 <blockquote>
 <div><p>Spectral ordering of nodes.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
 <blockquote class="last">
 <div><p>If G is empty.</p>
 </div></blockquote>
@@ -269,15 +260,15 @@ values allow specifying the solver to be used.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><tt class="xref py py-obj docutils literal"><span class="pre">laplacian_matrix</span></tt></p>
+<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">laplacian_matrix</span></code></p>
 </div>
 <p class="rubric">Notes</p>
 <p>Edge weights are interpreted by their absolute values. For MultiGraph&#8217;s,
 weights of parallel edges are summed. Zero-weighted edges are ignored.</p>
 <p>To use Cholesky factorization in the TraceMIN algorithm, the
-<tt class="samp docutils literal"><span class="pre">scikits.sparse</span></tt> package must be installed.</p>
+<code class="samp docutils literal"><span class="pre">scikits.sparse</span></code> package must be installed.</p>
 </dd></dl>
 
 </div>
@@ -321,7 +312,7 @@ weights of parallel edges are summed. Zero-weighted edges are ignored.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

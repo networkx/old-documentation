@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>strongly_connected_components &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>strongly_connected_components &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="Components" href="../algorithms.component.html"/>
         <link rel="next" title="strongly_connected_component_subgraphs" href="networkx.algorithms.components.strongly_connected.strongly_connected_component_subgraphs.html"/>
         <link rel="prev" title="number_strongly_connected_components" href="networkx.algorithms.components.strongly_connected.number_strongly_connected_components.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,10 +95,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../functions.html">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generators.html">Graph generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linalg.html">Linear algebra</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -190,32 +189,32 @@
 <h1>strongly_connected_components<a class="headerlink" href="#strongly-connected-components" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.algorithms.components.strongly_connected.strongly_connected_components">
-<tt class="descname">strongly_connected_components</tt><big>(</big><em>G</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/components/strongly_connected.html#strongly_connected_components"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.components.strongly_connected.strongly_connected_components" title="Permalink to this definition">¶</a></dt>
+<code class="descname">strongly_connected_components</code><span class="sig-paren">(</span><em>G</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/components/strongly_connected.html#strongly_connected_components"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.components.strongly_connected.strongly_connected_components" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate nodes in strongly connected components of graph.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX Graph</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX Graph</p>
 <blockquote>
 <div><p>An directed graph.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>comp</strong> : generator of lists</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>comp</strong> : generator of lists</p>
 <blockquote>
 <div><p>A list of nodes for each strongly connected component of G.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last"><strong>NetworkXNotImplemented: If G is undirected.</strong></p>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><strong>NetworkXNotImplemented: If G is undirected.</strong></p>
 </td>
 </tr>
 </tbody>
 </table>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><tt class="xref py py-obj docutils literal"><span class="pre">connected_components</span></tt>, <tt class="xref py py-obj docutils literal"><span class="pre">weakly_connected_components</span></tt></p>
+<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">connected_components</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">weakly_connected_components</span></code></p>
 </div>
 <p class="rubric">Notes</p>
 <p>Uses Tarjan&#8217;s algorithm with Nuutila&#8217;s modifications.
@@ -279,7 +278,7 @@ Information Processing Letters 49(1): 9-14, (1994)..</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

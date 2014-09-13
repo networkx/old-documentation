@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Creating a graph &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>Creating a graph &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../index.html"/>
         <link rel="up" title="Tutorial" href="index.html"/>
         <link rel="next" title="Reference" href="../reference/index.html"/>
         <link rel="prev" title="Tutorial" href="index.html"/> 
@@ -188,7 +187,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>By definition, a <a class="reference internal" href="../reference/classes.graph.html#networkx.Graph" title="networkx.Graph"><tt class="xref py py-class docutils literal"><span class="pre">Graph</span></tt></a> is a collection of nodes (vertices)
+<p>By definition, a <a class="reference internal" href="../reference/classes.graph.html#networkx.Graph" title="networkx.Graph"><code class="xref py py-class docutils literal"><span class="pre">Graph</span></code></a> is a collection of nodes (vertices)
 along with identified pairs of nodes (called edges, links, etc).
 In NetworkX, nodes can be any hashable object e.g. a text string, an
 image, an XML object, another Graph, a customized node object, etc.
@@ -255,11 +254,11 @@ Edge attributes are discussed further below</p>
 </pre></div>
 </div>
 <p>One can demolish the graph in a similar fashion; using
-<a class="reference internal" href="../reference/generated/networkx.Graph.remove_node.html#networkx.Graph.remove_node" title="networkx.Graph.remove_node"><tt class="xref py py-meth docutils literal"><span class="pre">Graph.remove_node()</span></tt></a>,
-<a class="reference internal" href="../reference/generated/networkx.Graph.remove_nodes_from.html#networkx.Graph.remove_nodes_from" title="networkx.Graph.remove_nodes_from"><tt class="xref py py-meth docutils literal"><span class="pre">Graph.remove_nodes_from()</span></tt></a>,
-<a class="reference internal" href="../reference/generated/networkx.Graph.remove_edge.html#networkx.Graph.remove_edge" title="networkx.Graph.remove_edge"><tt class="xref py py-meth docutils literal"><span class="pre">Graph.remove_edge()</span></tt></a>
+<a class="reference internal" href="../reference/generated/networkx.Graph.remove_node.html#networkx.Graph.remove_node" title="networkx.Graph.remove_node"><code class="xref py py-meth docutils literal"><span class="pre">Graph.remove_node()</span></code></a>,
+<a class="reference internal" href="../reference/generated/networkx.Graph.remove_nodes_from.html#networkx.Graph.remove_nodes_from" title="networkx.Graph.remove_nodes_from"><code class="xref py py-meth docutils literal"><span class="pre">Graph.remove_nodes_from()</span></code></a>,
+<a class="reference internal" href="../reference/generated/networkx.Graph.remove_edge.html#networkx.Graph.remove_edge" title="networkx.Graph.remove_edge"><code class="xref py py-meth docutils literal"><span class="pre">Graph.remove_edge()</span></code></a>
 and
-<a class="reference internal" href="../reference/generated/networkx.Graph.remove_edges_from.html#networkx.Graph.remove_edges_from" title="networkx.Graph.remove_edges_from"><tt class="xref py py-meth docutils literal"><span class="pre">Graph.remove_edges_from()</span></tt></a>, e.g.</p>
+<a class="reference internal" href="../reference/generated/networkx.Graph.remove_edges_from.html#networkx.Graph.remove_edges_from" title="networkx.Graph.remove_edges_from"><code class="xref py py-meth docutils literal"><span class="pre">Graph.remove_edges_from()</span></code></a>, e.g.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">remove_node</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -322,16 +321,16 @@ Data Bank, and x could refer to an XML record of publications detailing
 experimental observations of their interaction.</p>
 <p>We have found this power quite useful, but its abuse
 can lead to unexpected surprises unless one is familiar with Python.
-If in doubt, consider using <tt class="xref py py-func docutils literal"><span class="pre">convert_node_labels_to_integers()</span></tt> to obtain
+If in doubt, consider using <code class="xref py py-func docutils literal"><span class="pre">convert_node_labels_to_integers()</span></code> to obtain
 a more traditional graph with integer labels.</p>
 </div>
 <div class="section" id="accessing-edges">
 <h1>Accessing edges<a class="headerlink" href="#accessing-edges" title="Permalink to this headline">¶</a></h1>
 <p>In addition to the methods
-<a class="reference internal" href="../reference/generated/networkx.Graph.nodes.html#networkx.Graph.nodes" title="networkx.Graph.nodes"><tt class="xref py py-meth docutils literal"><span class="pre">Graph.nodes()</span></tt></a>,
-<a class="reference internal" href="../reference/generated/networkx.Graph.edges.html#networkx.Graph.edges" title="networkx.Graph.edges"><tt class="xref py py-meth docutils literal"><span class="pre">Graph.edges()</span></tt></a>, and
-<a class="reference internal" href="../reference/generated/networkx.Graph.neighbors.html#networkx.Graph.neighbors" title="networkx.Graph.neighbors"><tt class="xref py py-meth docutils literal"><span class="pre">Graph.neighbors()</span></tt></a>,
-iterator versions (e.g. <a class="reference internal" href="../reference/generated/networkx.Graph.edges_iter.html#networkx.Graph.edges_iter" title="networkx.Graph.edges_iter"><tt class="xref py py-meth docutils literal"><span class="pre">Graph.edges_iter()</span></tt></a>) can save you from
+<a class="reference internal" href="../reference/generated/networkx.Graph.nodes.html#networkx.Graph.nodes" title="networkx.Graph.nodes"><code class="xref py py-meth docutils literal"><span class="pre">Graph.nodes()</span></code></a>,
+<a class="reference internal" href="../reference/generated/networkx.Graph.edges.html#networkx.Graph.edges" title="networkx.Graph.edges"><code class="xref py py-meth docutils literal"><span class="pre">Graph.edges()</span></code></a>, and
+<a class="reference internal" href="../reference/generated/networkx.Graph.neighbors.html#networkx.Graph.neighbors" title="networkx.Graph.neighbors"><code class="xref py py-meth docutils literal"><span class="pre">Graph.neighbors()</span></code></a>,
+iterator versions (e.g. <a class="reference internal" href="../reference/generated/networkx.Graph.edges_iter.html#networkx.Graph.edges_iter" title="networkx.Graph.edges_iter"><code class="xref py py-meth docutils literal"><span class="pre">Graph.edges_iter()</span></code></a>) can save you from
 creating large lists when you are just going to iterate
 through them anyway.</p>
 <p>Fast direct access to the graph data structure is also possible
@@ -425,12 +424,12 @@ should be numeric and holds values used by algorithms requiring weighted edges.<
 </div>
 <div class="section" id="directed-graphs">
 <h1>Directed graphs<a class="headerlink" href="#directed-graphs" title="Permalink to this headline">¶</a></h1>
-<p>The <a class="reference internal" href="../reference/classes.digraph.html#networkx.DiGraph" title="networkx.DiGraph"><tt class="xref py py-class docutils literal"><span class="pre">DiGraph</span></tt></a> class provides additional methods specific to directed
+<p>The <a class="reference internal" href="../reference/classes.digraph.html#networkx.DiGraph" title="networkx.DiGraph"><code class="xref py py-class docutils literal"><span class="pre">DiGraph</span></code></a> class provides additional methods specific to directed
 edges, e.g.
-<a class="reference internal" href="../reference/generated/networkx.DiGraph.out_edges.html#networkx.DiGraph.out_edges" title="networkx.DiGraph.out_edges"><tt class="xref py py-meth docutils literal"><span class="pre">DiGraph.out_edges()</span></tt></a>,
-<a class="reference internal" href="../reference/generated/networkx.DiGraph.in_degree.html#networkx.DiGraph.in_degree" title="networkx.DiGraph.in_degree"><tt class="xref py py-meth docutils literal"><span class="pre">DiGraph.in_degree()</span></tt></a>,
-<a class="reference internal" href="../reference/generated/networkx.DiGraph.predecessors.html#networkx.DiGraph.predecessors" title="networkx.DiGraph.predecessors"><tt class="xref py py-meth docutils literal"><span class="pre">DiGraph.predecessors()</span></tt></a>,
-<a class="reference internal" href="../reference/generated/networkx.DiGraph.successors.html#networkx.DiGraph.successors" title="networkx.DiGraph.successors"><tt class="xref py py-meth docutils literal"><span class="pre">DiGraph.successors()</span></tt></a> etc.
+<a class="reference internal" href="../reference/generated/networkx.DiGraph.out_edges.html#networkx.DiGraph.out_edges" title="networkx.DiGraph.out_edges"><code class="xref py py-meth docutils literal"><span class="pre">DiGraph.out_edges()</span></code></a>,
+<a class="reference internal" href="../reference/generated/networkx.DiGraph.in_degree.html#networkx.DiGraph.in_degree" title="networkx.DiGraph.in_degree"><code class="xref py py-meth docutils literal"><span class="pre">DiGraph.in_degree()</span></code></a>,
+<a class="reference internal" href="../reference/generated/networkx.DiGraph.predecessors.html#networkx.DiGraph.predecessors" title="networkx.DiGraph.predecessors"><code class="xref py py-meth docutils literal"><span class="pre">DiGraph.predecessors()</span></code></a>,
+<a class="reference internal" href="../reference/generated/networkx.DiGraph.successors.html#networkx.DiGraph.successors" title="networkx.DiGraph.successors"><code class="xref py py-meth docutils literal"><span class="pre">DiGraph.successors()</span></code></a> etc.
 To allow algorithms to work with both classes easily, the directed
 versions of neighbors() and degree() are equivalent to successors()
 and the sum of in_degree() and out_degree() respectively even though
@@ -451,7 +450,7 @@ that may feel inconsistent at times.</p>
 defined for directed graphs.  Indeed the tendency to lump directed
 and undirected graphs together is dangerous.  If you want to treat
 a directed graph as undirected for some measurement you should probably
-convert it using <a class="reference internal" href="../reference/generated/networkx.Graph.to_undirected.html#networkx.Graph.to_undirected" title="networkx.Graph.to_undirected"><tt class="xref py py-meth docutils literal"><span class="pre">Graph.to_undirected()</span></tt></a> or with</p>
+convert it using <a class="reference internal" href="../reference/generated/networkx.Graph.to_undirected.html#networkx.Graph.to_undirected" title="networkx.Graph.to_undirected"><code class="xref py py-meth docutils literal"><span class="pre">Graph.to_undirected()</span></code></a> or with</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">H</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="c"># convert G to undirected graph</span>
 </pre></div>
 </div>
@@ -459,13 +458,13 @@ convert it using <a class="reference internal" href="../reference/generated/netw
 <div class="section" id="multigraphs">
 <h1>Multigraphs<a class="headerlink" href="#multigraphs" title="Permalink to this headline">¶</a></h1>
 <p>NetworkX provides classes for graphs which allow multiple edges
-between any pair of nodes.  The <a class="reference internal" href="../reference/classes.multigraph.html#networkx.MultiGraph" title="networkx.MultiGraph"><tt class="xref py py-class docutils literal"><span class="pre">MultiGraph</span></tt></a> and
-<a class="reference internal" href="../reference/classes.multidigraph.html#networkx.MultiDiGraph" title="networkx.MultiDiGraph"><tt class="xref py py-class docutils literal"><span class="pre">MultiDiGraph</span></tt></a>
+between any pair of nodes.  The <a class="reference internal" href="../reference/classes.multigraph.html#networkx.MultiGraph" title="networkx.MultiGraph"><code class="xref py py-class docutils literal"><span class="pre">MultiGraph</span></code></a> and
+<a class="reference internal" href="../reference/classes.multidigraph.html#networkx.MultiDiGraph" title="networkx.MultiDiGraph"><code class="xref py py-class docutils literal"><span class="pre">MultiDiGraph</span></code></a>
 classes allow you to add the same edge twice, possibly with different
 edge data.  This can be powerful for some applications, but many
 algorithms are not well defined on such graphs.  Shortest path is one
 example.  Where results are well defined,
-e.g. <a class="reference internal" href="../reference/generated/networkx.MultiGraph.degree.html#networkx.MultiGraph.degree" title="networkx.MultiGraph.degree"><tt class="xref py py-meth docutils literal"><span class="pre">MultiGraph.degree()</span></tt></a> we provide the function.  Otherwise you
+e.g. <a class="reference internal" href="../reference/generated/networkx.MultiGraph.degree.html#networkx.MultiGraph.degree" title="networkx.MultiGraph.degree"><code class="xref py py-meth docutils literal"><span class="pre">MultiGraph.degree()</span></code></a> we provide the function.  Otherwise you
 should convert to a standard graph in a way that makes the measurement
 well defined.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">MG</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">MultiGraph</span><span class="p">()</span>
@@ -489,7 +488,7 @@ well defined.</p>
 can also be generated by</p>
 <ol class="arabic">
 <li><p class="first">Applying classic graph operations, such as:</p>
-<div class="highlight-python"><pre>subgraph(G, nbunch)      - induce subgraph of G on nodes in nbunch
+<div class="highlight-python"><div class="highlight"><pre>subgraph(G, nbunch)      - induce subgraph of G on nodes in nbunch
 union(G1,G2)             - graph union
 disjoint_union(G1,G2)    - graph union assuming all nodes are different
 cartesian_product(G1,G2) - return Cartesian product graph
@@ -497,7 +496,8 @@ compose(G1,G2)           - combine graphs identifying nodes common to both
 complement(G)            - graph complement
 create_empty_copy(G)     - return an empty copy of the same graph class
 convert_to_undirected(G) - return an undirected representation of G
-convert_to_directed(G)   - return a directed representation of G</pre>
+convert_to_directed(G)   - return a directed representation of G
+</pre></div>
 </div>
 </li>
 <li><p class="first">Using a call to one of the classic small graphs, e.g.</p>
@@ -668,7 +668,7 @@ and PyGraphviz, or pydot, are available on your system, you can also use</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

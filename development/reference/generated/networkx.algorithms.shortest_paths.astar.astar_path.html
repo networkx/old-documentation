@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>astar_path &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>astar_path &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="Shortest Paths" href="../algorithms.shortest_paths.html"/>
         <link rel="next" title="astar_path_length" href="networkx.algorithms.shortest_paths.astar.astar_path_length.html"/>
         <link rel="prev" title="floyd_warshall_numpy" href="networkx.algorithms.shortest_paths.dense.floyd_warshall_numpy.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,10 +95,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../functions.html">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generators.html">Graph generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linalg.html">Linear algebra</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -190,7 +189,7 @@
 <h1>astar_path<a class="headerlink" href="#astar-path" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.algorithms.shortest_paths.astar.astar_path">
-<tt class="descname">astar_path</tt><big>(</big><em>G</em>, <em>source</em>, <em>target</em>, <em>heuristic=None</em>, <em>weight='weight'</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/shortest_paths/astar.html#astar_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.shortest_paths.astar.astar_path" title="Permalink to this definition">¶</a></dt>
+<code class="descname">astar_path</code><span class="sig-paren">(</span><em>G</em>, <em>source</em>, <em>target</em>, <em>heuristic=None</em>, <em>weight='weight'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/shortest_paths/astar.html#astar_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.shortest_paths.astar.astar_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of nodes in a shortest path between source and target
 using the A* (&#8220;A-star&#8221;) algorithm.</p>
 <p>There may be more than one shortest path.  This returns only one.</p>
@@ -198,7 +197,7 @@ using the A* (&#8220;A-star&#8221;) algorithm.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
 <p><strong>source</strong> : node</p>
 <blockquote>
 <div><p>Starting node for path</p>
@@ -219,7 +218,7 @@ two nodes arguments and must return a number.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>NetworkXNoPath</strong></p>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXNoPath</strong></p>
 <blockquote class="last">
 <div><p>If no path exists between source and target.</p>
 </div></blockquote>
@@ -227,9 +226,9 @@ two nodes arguments and must return a number.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><tt class="xref py py-obj docutils literal"><span class="pre">shortest_path</span></tt>, <tt class="xref py py-obj docutils literal"><span class="pre">dijkstra_path</span></tt></p>
+<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">shortest_path</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">dijkstra_path</span></code></p>
 </div>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -287,7 +286,7 @@ two nodes arguments and must return a number.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

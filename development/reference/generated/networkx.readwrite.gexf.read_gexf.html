@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>read_gexf &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>read_gexf &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="GEXF" href="../readwrite.gexf.html"/>
         <link rel="next" title="write_gexf" href="networkx.readwrite.gexf.write_gexf.html"/>
         <link rel="prev" title="relabel_gexf_graph" href="networkx.readwrite.gexf.relabel_gexf_graph.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,7 +95,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
@@ -105,7 +104,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../linalg.html">Linear algebra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../convert.html">Converting to and from other data formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../relabel.html">Relabeling nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../readwrite.html">Reading and writing graphs</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../readwrite.html">Reading and writing graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../drawing.html">Drawing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exceptions.html">Exceptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../utils.html">Utilities</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -190,15 +189,15 @@
 <h1>read_gexf<a class="headerlink" href="#read-gexf" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.readwrite.gexf.read_gexf">
-<tt class="descname">read_gexf</tt><big>(</big><em>path</em>, <em>node_type=None</em>, <em>relabel=False</em>, <em>version='1.1draft'</em><big>)</big><a class="reference internal" href="../../_modules/networkx/readwrite/gexf.html#read_gexf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.readwrite.gexf.read_gexf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">read_gexf</code><span class="sig-paren">(</span><em>path</em>, <em>node_type=None</em>, <em>relabel=False</em>, <em>version='1.1draft'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/readwrite/gexf.html#read_gexf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.readwrite.gexf.read_gexf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read graph in GEXF format from path.</p>
 <p>&#8220;GEXF (Graph Exchange XML Format) is a language for describing
-complex networks structures, their associated data and dynamics&#8221; <a class="reference internal" href="#r332">[R332]</a>.</p>
+complex networks structures, their associated data and dynamics&#8221; <a class="reference internal" href="#r332" id="id1">[R332]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>path</strong> : file or string</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>path</strong> : file or string</p>
 <blockquote>
 <div><p>File or file name to write.
 File names ending in .gz or .bz2 will be compressed.</p>
@@ -214,7 +213,7 @@ instead of the node &#8220;id&#8221; attribute as the NetworkX node label.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">graph: NetworkX graph</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">graph: NetworkX graph</p>
 <blockquote class="last">
 <div><p>If no parallel edges are found a Graph or DiGraph is returned.
 Otherwise a MultiGraph or MultiDiGraph is returned.</p>
@@ -276,7 +275,7 @@ edges together).</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

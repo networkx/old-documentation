@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>simple_cycles &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>simple_cycles &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="Cycles" href="../algorithms.cycles.html"/>
         <link rel="next" title="Directed Acyclic Graphs" href="../algorithms.dag.html"/>
         <link rel="prev" title="cycle_basis" href="networkx.algorithms.cycles.cycle_basis.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,10 +95,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../functions.html">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generators.html">Graph generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linalg.html">Linear algebra</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -190,25 +189,25 @@
 <h1>simple_cycles<a class="headerlink" href="#simple-cycles" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.algorithms.cycles.simple_cycles">
-<tt class="descname">simple_cycles</tt><big>(</big><em>G</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/cycles.html#simple_cycles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.cycles.simple_cycles" title="Permalink to this definition">¶</a></dt>
+<code class="descname">simple_cycles</code><span class="sig-paren">(</span><em>G</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/cycles.html#simple_cycles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.cycles.simple_cycles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find simple cycles (elementary circuits) of a directed graph.</p>
 <p>An simple cycle, or elementary circuit, is a closed path where no
 node appears twice, except that the first and last node are the same.
 Two elementary circuits are distinct if they are not cyclic permutations
 of each other.</p>
 <p>This is a nonrecursive, iterator/generator version of Johnson&#8217;s
-algorithm <a class="reference internal" href="#r238">[R238]</a>.  There may be better algorithms for some cases <a class="reference internal" href="#r239">[R239]</a> <a class="reference internal" href="#r240">[R240]</a>.</p>
+algorithm <a class="reference internal" href="#r238" id="id1">[R238]</a>.  There may be better algorithms for some cases <a class="reference internal" href="#r239" id="id2">[R239]</a> <a class="reference internal" href="#r240" id="id3">[R240]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX DiGraph</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX DiGraph</p>
 <blockquote>
 <div><p>A directed graph</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">cycle_generator: generator</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">cycle_generator: generator</p>
 <blockquote class="last">
 <div><p>A generator that produces elementary cycles of the graph.  Each cycle is
 a list of nodes with the first and last nodes being the same.</p>
@@ -217,12 +216,12 @@ a list of nodes with the first and last nodes being the same.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.cycles.cycle_basis.html#networkx.algorithms.cycles.cycle_basis" title="networkx.algorithms.cycles.cycle_basis"><tt class="xref py py-obj docutils literal"><span class="pre">cycle_basis</span></tt></a></p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.cycles.cycle_basis.html#networkx.algorithms.cycles.cycle_basis" title="networkx.algorithms.cycles.cycle_basis"><code class="xref py py-obj docutils literal"><span class="pre">cycle_basis</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>The implementation follows pp. 79-80 in <a class="reference internal" href="#r238">[R238]</a>.</p>
+<p>The implementation follows pp. 79-80 in <a class="reference internal" href="#r238" id="id4">[R238]</a>.</p>
 <p>The time complexity is <span class="math">\(O((n+e)(c+1))\)</span> for <span class="math">\(n\)</span> nodes, <span class="math">\(e\)</span> edges and <span class="math">\(c\)</span>
 elementary circuits.</p>
 <p>To filter the cycles so that they don&#8217;t include certain nodes or edges,
@@ -307,7 +306,7 @@ v. 16, no. 2, 192-204, 1976.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

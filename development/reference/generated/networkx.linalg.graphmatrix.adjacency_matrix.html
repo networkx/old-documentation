@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>adjacency_matrix &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>adjacency_matrix &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="Linear algebra" href="../linalg.html"/>
         <link rel="next" title="incidence_matrix" href="networkx.linalg.graphmatrix.incidence_matrix.html"/>
         <link rel="prev" title="attr_sparse_matrix" href="networkx.linalg.attrmatrix.attr_sparse_matrix.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,13 +95,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../functions.html">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generators.html">Graph generators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../linalg.html">Linear algebra</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../linalg.html">Linear algebra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../convert.html">Converting to and from other data formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../relabel.html">Relabeling nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readwrite.html">Reading and writing graphs</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -188,13 +187,13 @@
 <h1>adjacency_matrix<a class="headerlink" href="#adjacency-matrix" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.linalg.graphmatrix.adjacency_matrix">
-<tt class="descname">adjacency_matrix</tt><big>(</big><em>G</em>, <em>nodelist=None</em>, <em>weight='weight'</em><big>)</big><a class="reference internal" href="../../_modules/networkx/linalg/graphmatrix.html#adjacency_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.linalg.graphmatrix.adjacency_matrix" title="Permalink to this definition">¶</a></dt>
+<code class="descname">adjacency_matrix</code><span class="sig-paren">(</span><em>G</em>, <em>nodelist=None</em>, <em>weight='weight'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/linalg/graphmatrix.html#adjacency_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.linalg.graphmatrix.adjacency_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return adjacency matrix of G.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
 <blockquote>
 <div><p>A NetworkX graph</p>
 </div></blockquote>
@@ -210,7 +209,7 @@ If None, then each edge has weight 1.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>A</strong> : SciPy sparse matrix</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>A</strong> : SciPy sparse matrix</p>
 <blockquote class="last">
 <div><p>Adjacency matrix representation of G.</p>
 </div></blockquote>
@@ -218,9 +217,9 @@ If None, then each edge has weight 1.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><tt class="xref py py-obj docutils literal"><span class="pre">to_numpy_matrix</span></tt>, <tt class="xref py py-obj docutils literal"><span class="pre">to_scipy_sparse_matrix</span></tt>, <tt class="xref py py-obj docutils literal"><span class="pre">to_dict_of_dicts</span></tt></p>
+<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">to_numpy_matrix</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">to_scipy_sparse_matrix</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">to_dict_of_dicts</span></code></p>
 </div>
 <p class="rubric">Notes</p>
 <p>If you want a pure Python adjacency matrix representation try
@@ -287,7 +286,7 @@ resulting Scipy sparse matrix can be modified as follows:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

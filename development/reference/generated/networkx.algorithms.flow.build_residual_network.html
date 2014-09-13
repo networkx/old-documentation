@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>build_residual_network &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>build_residual_network &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="Flows" href="../algorithms.flow.html"/>
         <link rel="next" title="network_simplex" href="networkx.algorithms.flow.network_simplex.html"/>
         <link rel="prev" title="preflow_push" href="networkx.algorithms.flow.preflow_push.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,10 +95,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../functions.html">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generators.html">Graph generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linalg.html">Linear algebra</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -190,26 +189,26 @@
 <h1>build_residual_network<a class="headerlink" href="#build-residual-network" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.algorithms.flow.build_residual_network">
-<tt class="descname">build_residual_network</tt><big>(</big><em>G</em>, <em>capacity</em><big>)</big><a class="headerlink" href="#networkx.algorithms.flow.build_residual_network" title="Permalink to this definition">¶</a></dt>
+<code class="descname">build_residual_network</code><span class="sig-paren">(</span><em>G</em>, <em>capacity</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/flow/utils.html#build_residual_network"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.flow.build_residual_network" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build a residual network and initialize a zero flow.</p>
-<p>The residual network <tt class="samp docutils literal"><span class="pre">R</span></tt> from an input graph <tt class="samp docutils literal"><span class="pre">G</span></tt> has the
-same nodes as <tt class="samp docutils literal"><span class="pre">G</span></tt>. <tt class="samp docutils literal"><span class="pre">R</span></tt> is a DiGraph that contains a pair
-of edges <tt class="samp docutils literal"><span class="pre">(u,</span> <span class="pre">v)</span></tt> and <tt class="samp docutils literal"><span class="pre">(v,</span> <span class="pre">u)</span></tt> iff <tt class="samp docutils literal"><span class="pre">(u,</span> <span class="pre">v)</span></tt> is not a
-self-loop, and at least one of <tt class="samp docutils literal"><span class="pre">(u,</span> <span class="pre">v)</span></tt> and <tt class="samp docutils literal"><span class="pre">(v,</span> <span class="pre">u)</span></tt> exists
-in <tt class="samp docutils literal"><span class="pre">G</span></tt>.</p>
-<p>For each edge <tt class="samp docutils literal"><span class="pre">(u,</span> <span class="pre">v)</span></tt> in <tt class="samp docutils literal"><span class="pre">R</span></tt>, <tt class="samp docutils literal"><span class="pre">R[u][v]['capacity']</span></tt>
-is equal to the capacity of <tt class="samp docutils literal"><span class="pre">(u,</span> <span class="pre">v)</span></tt> in <tt class="samp docutils literal"><span class="pre">G</span></tt> if it exists
-in <tt class="samp docutils literal"><span class="pre">G</span></tt> or zero otherwise. If the capacity is infinite,
-<tt class="samp docutils literal"><span class="pre">R[u][v]['capacity']</span></tt> will have a high arbitrary finite value
+<p>The residual network <code class="samp docutils literal"><span class="pre">R</span></code> from an input graph <code class="samp docutils literal"><span class="pre">G</span></code> has the
+same nodes as <code class="samp docutils literal"><span class="pre">G</span></code>. <code class="samp docutils literal"><span class="pre">R</span></code> is a DiGraph that contains a pair
+of edges <code class="samp docutils literal"><span class="pre">(u,</span> <span class="pre">v)</span></code> and <code class="samp docutils literal"><span class="pre">(v,</span> <span class="pre">u)</span></code> iff <code class="samp docutils literal"><span class="pre">(u,</span> <span class="pre">v)</span></code> is not a
+self-loop, and at least one of <code class="samp docutils literal"><span class="pre">(u,</span> <span class="pre">v)</span></code> and <code class="samp docutils literal"><span class="pre">(v,</span> <span class="pre">u)</span></code> exists
+in <code class="samp docutils literal"><span class="pre">G</span></code>.</p>
+<p>For each edge <code class="samp docutils literal"><span class="pre">(u,</span> <span class="pre">v)</span></code> in <code class="samp docutils literal"><span class="pre">R</span></code>, <code class="samp docutils literal"><span class="pre">R[u][v]['capacity']</span></code>
+is equal to the capacity of <code class="samp docutils literal"><span class="pre">(u,</span> <span class="pre">v)</span></code> in <code class="samp docutils literal"><span class="pre">G</span></code> if it exists
+in <code class="samp docutils literal"><span class="pre">G</span></code> or zero otherwise. If the capacity is infinite,
+<code class="samp docutils literal"><span class="pre">R[u][v]['capacity']</span></code> will have a high arbitrary finite value
 that does not affect the solution of the problem. This value is stored in
-<tt class="samp docutils literal"><span class="pre">R.graph['inf']</span></tt>. For each edge <tt class="samp docutils literal"><span class="pre">(u,</span> <span class="pre">v)</span></tt> in <tt class="samp docutils literal"><span class="pre">R</span></tt>,
-<tt class="samp docutils literal"><span class="pre">R[u][v]['flow']</span></tt> represents the flow function of <tt class="samp docutils literal"><span class="pre">(u,</span> <span class="pre">v)</span></tt> and
-satisfies <tt class="samp docutils literal"><span class="pre">R[u][v]['flow']</span> <span class="pre">==</span> <span class="pre">-R[v][u]['flow']</span></tt>.</p>
-<p>The flow value, defined as the total flow into <tt class="samp docutils literal"><span class="pre">t</span></tt>, the sink, is
-stored in <tt class="samp docutils literal"><span class="pre">R.graph['flow_value']</span></tt>. If <tt class="samp docutils literal"><span class="pre">cutoff</span></tt> is not
-specified, reachability to <tt class="samp docutils literal"><span class="pre">t</span></tt> using only edges <tt class="samp docutils literal"><span class="pre">(u,</span> <span class="pre">v)</span></tt> such
-that <tt class="samp docutils literal"><span class="pre">R[u][v]['flow']</span> <span class="pre">&lt;</span> <span class="pre">R[u][v]['capacity']</span></tt> induces a minimum
-<tt class="samp docutils literal"><span class="pre">s</span></tt>-<tt class="samp docutils literal"><span class="pre">t</span></tt> cut.</p>
+<code class="samp docutils literal"><span class="pre">R.graph['inf']</span></code>. For each edge <code class="samp docutils literal"><span class="pre">(u,</span> <span class="pre">v)</span></code> in <code class="samp docutils literal"><span class="pre">R</span></code>,
+<code class="samp docutils literal"><span class="pre">R[u][v]['flow']</span></code> represents the flow function of <code class="samp docutils literal"><span class="pre">(u,</span> <span class="pre">v)</span></code> and
+satisfies <code class="samp docutils literal"><span class="pre">R[u][v]['flow']</span> <span class="pre">==</span> <span class="pre">-R[v][u]['flow']</span></code>.</p>
+<p>The flow value, defined as the total flow into <code class="samp docutils literal"><span class="pre">t</span></code>, the sink, is
+stored in <code class="samp docutils literal"><span class="pre">R.graph['flow_value']</span></code>. If <code class="samp docutils literal"><span class="pre">cutoff</span></code> is not
+specified, reachability to <code class="samp docutils literal"><span class="pre">t</span></code> using only edges <code class="samp docutils literal"><span class="pre">(u,</span> <span class="pre">v)</span></code> such
+that <code class="samp docutils literal"><span class="pre">R[u][v]['flow']</span> <span class="pre">&lt;</span> <span class="pre">R[u][v]['capacity']</span></code> induces a minimum
+<code class="samp docutils literal"><span class="pre">s</span></code>-<code class="samp docutils literal"><span class="pre">t</span></code> cut.</p>
 </dd></dl>
 
 </div>
@@ -253,7 +252,7 @@ that <tt class="samp docutils literal"><span class="pre">R[u][v]['flow']</span> 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

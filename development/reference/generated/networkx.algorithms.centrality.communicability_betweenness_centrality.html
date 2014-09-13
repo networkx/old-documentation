@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>communicability_betweenness_centrality &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>communicability_betweenness_centrality &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="Centrality" href="../algorithms.centrality.html"/>
         <link rel="next" title="estrada_index" href="networkx.algorithms.centrality.estrada_index.html"/>
         <link rel="prev" title="communicability_centrality_exp" href="networkx.algorithms.centrality.communicability_centrality_exp.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,10 +95,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../functions.html">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generators.html">Graph generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linalg.html">Linear algebra</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -190,7 +189,7 @@
 <h1>communicability_betweenness_centrality<a class="headerlink" href="#communicability-betweenness-centrality" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.algorithms.centrality.communicability_betweenness_centrality">
-<tt class="descname">communicability_betweenness_centrality</tt><big>(</big><em>G</em>, <em>normalized=True</em><big>)</big><a class="headerlink" href="#networkx.algorithms.centrality.communicability_betweenness_centrality" title="Permalink to this definition">¶</a></dt>
+<code class="descname">communicability_betweenness_centrality</code><span class="sig-paren">(</span><em>G</em>, <em>normalized=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/centrality/communicability_alg.html#communicability_betweenness_centrality"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.centrality.communicability_betweenness_centrality" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return communicability betweenness for all pairs of nodes in G.</p>
 <p>Communicability betweenness measure makes use of the number of walks
 connecting every pair of nodes as the basis of a betweenness centrality
@@ -199,16 +198,16 @@ measure.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G: graph</strong></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G: graph</strong></p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">nodes:dictionary</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">nodes:dictionary</p>
 <blockquote>
 <div><p>Dictionary of nodes with communicability betweenness as the value.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
 <blockquote class="last">
 <div><p>If the graph is not undirected and simple.</p>
 </div></blockquote>
@@ -216,14 +215,14 @@ measure.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="networkx.algorithms.centrality.communicability.html#networkx.algorithms.centrality.communicability" title="networkx.algorithms.centrality.communicability"><tt class="xref py py-obj docutils literal"><span class="pre">communicability</span></tt></a></dt>
+<dt><a class="reference internal" href="networkx.algorithms.centrality.communicability.html#networkx.algorithms.centrality.communicability" title="networkx.algorithms.centrality.communicability"><code class="xref py py-obj docutils literal"><span class="pre">communicability</span></code></a></dt>
 <dd>Communicability between all pairs of nodes in G.</dd>
-<dt><a class="reference internal" href="networkx.algorithms.centrality.communicability_centrality.html#networkx.algorithms.centrality.communicability_centrality" title="networkx.algorithms.centrality.communicability_centrality"><tt class="xref py py-obj docutils literal"><span class="pre">communicability_centrality</span></tt></a></dt>
+<dt><a class="reference internal" href="networkx.algorithms.centrality.communicability_centrality.html#networkx.algorithms.centrality.communicability_centrality" title="networkx.algorithms.centrality.communicability_centrality"><code class="xref py py-obj docutils literal"><span class="pre">communicability_centrality</span></code></a></dt>
 <dd>Communicability centrality for each node of G using matrix exponential.</dd>
-<dt><a class="reference internal" href="networkx.algorithms.centrality.communicability_centrality_exp.html#networkx.algorithms.centrality.communicability_centrality_exp" title="networkx.algorithms.centrality.communicability_centrality_exp"><tt class="xref py py-obj docutils literal"><span class="pre">communicability_centrality_exp</span></tt></a></dt>
+<dt><a class="reference internal" href="networkx.algorithms.centrality.communicability_centrality_exp.html#networkx.algorithms.centrality.communicability_centrality_exp" title="networkx.algorithms.centrality.communicability_centrality_exp"><code class="xref py py-obj docutils literal"><span class="pre">communicability_centrality_exp</span></code></a></dt>
 <dd>Communicability centrality for each node in G using spectral decomposition.</dd>
 </dl>
 </div>
@@ -234,7 +233,7 @@ and <span class="math">\(A\)</span> denote the adjacency matrix of <span class="
 removing all edges connected to node <span class="math">\(r\)</span> but not the node itself.</p>
 <p>The adjacency matrix for <span class="math">\(G(r)\)</span> is <span class="math">\(A+E(r)\)</span>,  where <span class="math">\(E(r)\)</span> has nonzeros
 only in row and column <span class="math">\(r\)</span>.</p>
-<p>The communicability betweenness of a node <span class="math">\(r\)</span>  is <a class="reference internal" href="#r179">[R179]</a></p>
+<p>The communicability betweenness of a node <span class="math">\(r\)</span>  is <a class="reference internal" href="#r179" id="id1">[R179]</a></p>
 <div class="math">
 \[\omega_{r} = \frac{1}{C}\sum_{p}\sum_{q}\frac{G_{prq}}{G_{pq}},
 p\neq q, q\neq r,\]</div>
@@ -306,7 +305,7 @@ Physica A 388 (2009) 764-774.
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

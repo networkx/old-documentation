@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Version 2.0 Notes and API Changes &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>Version 2.0 Notes and API Changes &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../index.html"/>
         <link rel="up" title="API changes" href="api_changes.html"/>
         <link rel="next" title="Version 1.9 notes and API changes" href="api_1.9.html"/>
         <link rel="prev" title="API changes" href="api_changes.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#goals">Goals</a></li>
@@ -127,8 +126,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../developer/gitwash/index.html">Working with <em>networkx</em> source code</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="history.html">History</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api_changes.html">API changes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="history.html">History</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="api_changes.html">API changes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="news.html">Release Log</a></li>
 </ul>
 </li>
@@ -192,15 +191,15 @@ NetworkX 1.9 to NetworkX 2.0.</p>
 <h2>New functionalities<a class="headerlink" href="#new-functionalities" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/823">#823</a>]
-A <tt class="samp docutils literal"><span class="pre">enumerate_all_cliques</span></tt> function is added in the clique package
-(<tt class="samp docutils literal"><span class="pre">networkx.algorithms.clique</span></tt>) for enumerating all cliques (including
+A <code class="samp docutils literal"><span class="pre">enumerate_all_cliques</span></code> function is added in the clique package
+(<code class="samp docutils literal"><span class="pre">networkx.algorithms.clique</span></code>) for enumerating all cliques (including
 nonmaximal ones) of undirected graphs.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1105">#1105</a>]
-A coloring package (<tt class="samp docutils literal"><span class="pre">networkx.algorithms.coloring</span></tt>) is created for
-graph coloring algorithms. Initially, a <tt class="samp docutils literal"><span class="pre">greedy_color</span></tt> function is
+A coloring package (<code class="samp docutils literal"><span class="pre">networkx.algorithms.coloring</span></code>) is created for
+graph coloring algorithms. Initially, a <code class="samp docutils literal"><span class="pre">greedy_color</span></code> function is
 provided for coloring graphs using various greedy heuristics.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1193">#1193</a>]
-A new generator <tt class="samp docutils literal"><span class="pre">edge_dfs</span></tt>, added to <tt class="samp docutils literal"><span class="pre">networkx.algorithms.traversal</span></tt>,
+A new generator <code class="samp docutils literal"><span class="pre">edge_dfs</span></code>, added to <code class="samp docutils literal"><span class="pre">networkx.algorithms.traversal</span></code>,
 implements a depth-first traversal of the edges in a graph. This complements
 functionality provided by a depth-first traversal of the nodes in a graph.
 For multigraphs, it allows the user to know precisely which edges were
@@ -209,10 +208,10 @@ can also reverse edge orientations or ignore them.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1210">#1210</a>]
 Add a random generator for the duplication-divergence model.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1210">#1241</a>]
-A new <tt class="samp docutils literal"><span class="pre">networkx.algorithms.dominance</span></tt> package is added for
+A new <code class="samp docutils literal"><span class="pre">networkx.algorithms.dominance</span></code> package is added for
 dominance/dominator algorithms on directed graphs. It contains a
-<tt class="samp docutils literal"><span class="pre">immediate_dominators</span></tt> function for computing immediate
-dominators/dominator trees and a <tt class="samp docutils literal"><span class="pre">dominance_frontiers</span></tt> function for
+<code class="samp docutils literal"><span class="pre">immediate_dominators</span></code> function for computing immediate
+dominators/dominator trees and a <code class="samp docutils literal"><span class="pre">dominance_frontiers</span></code> function for
 computing dominance frontiers.</li>
 </ul>
 </div>
@@ -220,7 +219,7 @@ computing dominance frontiers.</li>
 <h2>Removed functionalities<a class="headerlink" href="#removed-functionalities" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1236">#1236</a>]
-The legacy <tt class="samp docutils literal"><span class="pre">ford_fulkerson</span></tt> maximum flow function is removed.</li>
+The legacy <code class="samp docutils literal"><span class="pre">ford_fulkerson</span></code> maximum flow function is removed.</li>
 </ul>
 </div>
 <div class="section" id="miscellaneous-changes">
@@ -271,7 +270,7 @@ Support for Python 2.6 is dropped.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>cuthill_mckee_ordering &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>cuthill_mckee_ordering &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="Utilities" href="../utils.html"/>
         <link rel="next" title="reverse_cuthill_mckee_ordering" href="networkx.utils.rcm.reverse_cuthill_mckee_ordering.html"/>
         <link rel="prev" title="open_file" href="networkx.utils.decorators.open_file.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,7 +95,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
@@ -108,12 +107,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../readwrite.html">Reading and writing graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../drawing.html">Drawing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exceptions.html">Exceptions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../utils.html">Utilities</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../utils.html">Utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../legal.html">License</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -188,15 +187,15 @@
 <h1>cuthill_mckee_ordering<a class="headerlink" href="#cuthill-mckee-ordering" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.utils.rcm.cuthill_mckee_ordering">
-<tt class="descname">cuthill_mckee_ordering</tt><big>(</big><em>G</em>, <em>heuristic=None</em><big>)</big><a class="reference internal" href="../../_modules/networkx/utils/rcm.html#cuthill_mckee_ordering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.utils.rcm.cuthill_mckee_ordering" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cuthill_mckee_ordering</code><span class="sig-paren">(</span><em>G</em>, <em>heuristic=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/utils/rcm.html#cuthill_mckee_ordering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.utils.rcm.cuthill_mckee_ordering" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an ordering (permutation) of the graph nodes to make
 a sparse matrix.</p>
-<p>Uses the Cuthill-McKee heuristic (based on breadth-first search) <a class="reference internal" href="#r342">[R342]</a>.</p>
+<p>Uses the Cuthill-McKee heuristic (based on breadth-first search) <a class="reference internal" href="#r342" id="id1">[R342]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
 <blockquote>
 <div><p>A NetworkX graph</p>
 </div></blockquote>
@@ -208,7 +207,7 @@ can be supplied that takes a graph object and returns a single node.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>nodes</strong> : generator</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>nodes</strong> : generator</p>
 <blockquote class="last">
 <div><p>Generator of nodes in Cuthill-McKee ordering.</p>
 </div></blockquote>
@@ -216,12 +215,12 @@ can be supplied that takes a graph object and returns a single node.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.utils.rcm.reverse_cuthill_mckee_ordering.html#networkx.utils.rcm.reverse_cuthill_mckee_ordering" title="networkx.utils.rcm.reverse_cuthill_mckee_ordering"><tt class="xref py py-obj docutils literal"><span class="pre">reverse_cuthill_mckee_ordering</span></tt></a></p>
+<p class="last"><a class="reference internal" href="networkx.utils.rcm.reverse_cuthill_mckee_ordering.html#networkx.utils.rcm.reverse_cuthill_mckee_ordering" title="networkx.utils.rcm.reverse_cuthill_mckee_ordering"><code class="xref py py-obj docutils literal"><span class="pre">reverse_cuthill_mckee_ordering</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>The optimal solution the the bandwidth reduction is NP-complete <a class="reference internal" href="#r343">[R343]</a>.</p>
+<p>The optimal solution the the bandwidth reduction is NP-complete <a class="reference internal" href="#r343" id="id2">[R343]</a>.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r342" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -296,7 +295,7 @@ Springer-Verlag New York, Inc., New York, NY, USA.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

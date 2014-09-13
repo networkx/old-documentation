@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Multiline Adjacency List &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>Multiline Adjacency List &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../index.html"/>
         <link rel="up" title="Reading and writing graphs" href="readwrite.html"/>
         <link rel="next" title="read_multiline_adjlist" href="generated/networkx.readwrite.multiline_adjlist.read_multiline_adjlist.html"/>
         <link rel="prev" title="generate_adjlist" href="generated/networkx.readwrite.adjlist.generate_adjlist.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#goals">Goals</a></li>
@@ -96,7 +95,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classes.html">Graph types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
@@ -105,7 +104,7 @@
 <li class="toctree-l2"><a class="reference internal" href="linalg.html">Linear algebra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="convert.html">Converting to and from other data formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relabel.html">Relabeling nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="readwrite.html">Reading and writing graphs</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="readwrite.html">Reading and writing graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="drawing.html">Drawing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="utils.html">Utilities</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../test.html">Testing</a><ul>
@@ -197,12 +196,13 @@ d.  The next d lines are target node labels and optional edge data.
 That pattern repeats for all nodes in the graph.</p>
 <p>The graph with edges a-b, a-c, d-e can be represented as the following
 adjacency list (anything following the # in a line is a comment):</p>
-<div class="highlight-python"><pre># example.multiline-adjlist
+<div class="highlight-python"><div class="highlight"><pre># example.multiline-adjlist
 a 2
 b
 c
 d 1
-e</pre>
+e
+</pre></div>
 </div>
 </div>
 <table border="1" class="longtable docutils">
@@ -211,16 +211,16 @@ e</pre>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.readwrite.multiline_adjlist.read_multiline_adjlist.html#networkx.readwrite.multiline_adjlist.read_multiline_adjlist" title="networkx.readwrite.multiline_adjlist.read_multiline_adjlist"><tt class="xref py py-obj docutils literal"><span class="pre">read_multiline_adjlist</span></tt></a>(path[,&nbsp;comments,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.readwrite.multiline_adjlist.read_multiline_adjlist.html#networkx.readwrite.multiline_adjlist.read_multiline_adjlist" title="networkx.readwrite.multiline_adjlist.read_multiline_adjlist"><code class="xref py py-obj docutils literal"><span class="pre">read_multiline_adjlist</span></code></a>(path[,&nbsp;comments,&nbsp;...])</td>
 <td>Read graph in multi-line adjacency list format from path.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.readwrite.multiline_adjlist.write_multiline_adjlist.html#networkx.readwrite.multiline_adjlist.write_multiline_adjlist" title="networkx.readwrite.multiline_adjlist.write_multiline_adjlist"><tt class="xref py py-obj docutils literal"><span class="pre">write_multiline_adjlist</span></tt></a>(G,&nbsp;path[,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.readwrite.multiline_adjlist.write_multiline_adjlist.html#networkx.readwrite.multiline_adjlist.write_multiline_adjlist" title="networkx.readwrite.multiline_adjlist.write_multiline_adjlist"><code class="xref py py-obj docutils literal"><span class="pre">write_multiline_adjlist</span></code></a>(G,&nbsp;path[,&nbsp;...])</td>
 <td>Write the graph G in multiline adjacency list format to path</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.readwrite.multiline_adjlist.parse_multiline_adjlist.html#networkx.readwrite.multiline_adjlist.parse_multiline_adjlist" title="networkx.readwrite.multiline_adjlist.parse_multiline_adjlist"><tt class="xref py py-obj docutils literal"><span class="pre">parse_multiline_adjlist</span></tt></a>(lines[,&nbsp;comments,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.readwrite.multiline_adjlist.parse_multiline_adjlist.html#networkx.readwrite.multiline_adjlist.parse_multiline_adjlist" title="networkx.readwrite.multiline_adjlist.parse_multiline_adjlist"><code class="xref py py-obj docutils literal"><span class="pre">parse_multiline_adjlist</span></code></a>(lines[,&nbsp;comments,&nbsp;...])</td>
 <td>Parse lines of a multiline adjacency list representation of a graph.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.readwrite.multiline_adjlist.generate_multiline_adjlist.html#networkx.readwrite.multiline_adjlist.generate_multiline_adjlist" title="networkx.readwrite.multiline_adjlist.generate_multiline_adjlist"><tt class="xref py py-obj docutils literal"><span class="pre">generate_multiline_adjlist</span></tt></a>(G[,&nbsp;delimiter])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.readwrite.multiline_adjlist.generate_multiline_adjlist.html#networkx.readwrite.multiline_adjlist.generate_multiline_adjlist" title="networkx.readwrite.multiline_adjlist.generate_multiline_adjlist"><code class="xref py py-obj docutils literal"><span class="pre">generate_multiline_adjlist</span></code></a>(G[,&nbsp;delimiter])</td>
 <td>Generate a single line of the graph G in multiline adjacency list format.</td>
 </tr>
 </tbody>
@@ -266,7 +266,7 @@ e</pre>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

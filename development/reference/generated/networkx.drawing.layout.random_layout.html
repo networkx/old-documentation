@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>random_layout &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>random_layout &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="Drawing" href="../drawing.html"/>
         <link rel="next" title="shell_layout" href="networkx.drawing.layout.shell_layout.html"/>
         <link rel="prev" title="circular_layout" href="networkx.drawing.layout.circular_layout.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,7 +95,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
@@ -106,14 +105,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../convert.html">Converting to and from other data formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../relabel.html">Relabeling nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readwrite.html">Reading and writing graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../drawing.html">Drawing</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../drawing.html">Drawing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exceptions.html">Exceptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../utils.html">Utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../legal.html">License</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -188,7 +187,7 @@
 <h1>random_layout<a class="headerlink" href="#random-layout" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.drawing.layout.random_layout">
-<tt class="descname">random_layout</tt><big>(</big><em>G</em>, <em>dim=2</em><big>)</big><a class="reference internal" href="../../_modules/networkx/drawing/layout.html#random_layout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.drawing.layout.random_layout" title="Permalink to this definition">¶</a></dt>
+<code class="descname">random_layout</code><span class="sig-paren">(</span><em>G</em>, <em>dim=2</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/drawing/layout.html#random_layout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.drawing.layout.random_layout" title="Permalink to this definition">¶</a></dt>
 <dd><p>Position nodes uniformly at random in the unit square.</p>
 <p>For every node, a position is generated by choosing each of dim
 coordinates uniformly at random on the interval [0.0, 1.0).</p>
@@ -197,7 +196,7 @@ coordinates uniformly at random on the interval [0.0, 1.0).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
 <blockquote>
 <div><p>A position will be assigned to every node in G.</p>
 </div></blockquote>
@@ -207,7 +206,7 @@ coordinates uniformly at random on the interval [0.0, 1.0).</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">dict :</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dict :</p>
 <blockquote class="last">
 <div><p>A dictionary of positions keyed by node</p>
 </div></blockquote>
@@ -263,7 +262,7 @@ coordinates uniformly at random on the interval [0.0, 1.0).</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

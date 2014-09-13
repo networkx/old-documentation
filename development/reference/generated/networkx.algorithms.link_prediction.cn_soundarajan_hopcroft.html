@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>cn_soundarajan_hopcroft &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>cn_soundarajan_hopcroft &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="Link Prediction" href="../algorithms.link_prediction.html"/>
         <link rel="next" title="ra_index_soundarajan_hopcroft" href="networkx.algorithms.link_prediction.ra_index_soundarajan_hopcroft.html"/>
         <link rel="prev" title="preferential_attachment" href="networkx.algorithms.link_prediction.preferential_attachment.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,10 +95,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../functions.html">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generators.html">Graph generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linalg.html">Linear algebra</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -190,9 +189,11 @@
 <h1>cn_soundarajan_hopcroft<a class="headerlink" href="#cn-soundarajan-hopcroft" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.algorithms.link_prediction.cn_soundarajan_hopcroft">
-<tt class="descname">cn_soundarajan_hopcroft</tt><big>(</big><em>G</em>, <em>ebunch=None</em>, <em>community='community'</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/link_prediction.html#cn_soundarajan_hopcroft"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.link_prediction.cn_soundarajan_hopcroft" title="Permalink to this definition">¶</a></dt>
-<dd><p>Count the number of common neighbors of all node pairs in ebunch
-using community information.</p>
+<code class="descname">cn_soundarajan_hopcroft</code><span class="sig-paren">(</span><em>G</em>, <em>ebunch=None</em>, <em>community='community'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/link_prediction.html#cn_soundarajan_hopcroft"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.link_prediction.cn_soundarajan_hopcroft" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Count the number of common neighbors of all node pairs in ebunch</dt>
+<dd>using community information.</dd>
+</dl>
 <p>For two nodes <span class="math">\(u\)</span> and <span class="math">\(v\)</span>, this function computes the number of
 common neighbors and bonus one for each common neighbor belonging to
 the same community as <span class="math">\(u\)</span> and <span class="math">\(v\)</span>. Mathematically,</p>
@@ -205,7 +206,7 @@ neighbors of <span class="math">\(u\)</span>.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
 <blockquote>
 <div><p>A NetworkX undirected graph.</p>
 </div></blockquote>
@@ -225,7 +226,7 @@ node belongs to at most one community. Default value: &#8216;community&#8217;.</
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>piter</strong> : iterator</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>piter</strong> : iterator</p>
 <blockquote class="last">
 <div><p>An iterator of 3-tuples in the form (u, v, p) where (u, v) is a
 pair of nodes and p is their score.</p>
@@ -302,7 +303,7 @@ World Wide Web (WWW &#8216;12 Companion). ACM, New York, NY, USA, 607-608.
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

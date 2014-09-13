@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Introduction &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>Introduction &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../index.html"/>
         <link rel="up" title="Reference" href="pdf_reference.html"/>
         <link rel="next" title="Graph types" href="classes.html"/>
         <link rel="prev" title="Overview" href="../overview.html"/> 
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../test.html">Testing</a><ul>
@@ -214,19 +213,19 @@ NetworkX has been imported this way.</p>
 module. Check your installation and your PYTHONPATH.</p>
 <p>The following basic graph types are provided as Python classes:</p>
 <dl class="docutils">
-<dt><a class="reference internal" href="classes.graph.html#networkx.Graph" title="networkx.Graph"><tt class="xref py py-class docutils literal"><span class="pre">Graph</span></tt></a></dt>
+<dt><a class="reference internal" href="classes.graph.html#networkx.Graph" title="networkx.Graph"><code class="xref py py-class docutils literal"><span class="pre">Graph</span></code></a></dt>
 <dd>This class implements an undirected graph. It ignores
 multiple edges between two nodes.  It does allow self-loop
 edges between a node and itself.</dd>
-<dt><a class="reference internal" href="classes.digraph.html#networkx.DiGraph" title="networkx.DiGraph"><tt class="xref py py-class docutils literal"><span class="pre">DiGraph</span></tt></a></dt>
+<dt><a class="reference internal" href="classes.digraph.html#networkx.DiGraph" title="networkx.DiGraph"><code class="xref py py-class docutils literal"><span class="pre">DiGraph</span></code></a></dt>
 <dd>Directed graphs, that is, graphs with directed edges.
 Operations common to directed graphs,
 (a subclass of Graph).</dd>
-<dt><a class="reference internal" href="classes.multigraph.html#networkx.MultiGraph" title="networkx.MultiGraph"><tt class="xref py py-class docutils literal"><span class="pre">MultiGraph</span></tt></a></dt>
+<dt><a class="reference internal" href="classes.multigraph.html#networkx.MultiGraph" title="networkx.MultiGraph"><code class="xref py py-class docutils literal"><span class="pre">MultiGraph</span></code></a></dt>
 <dd>A flexible graph class that allows multiple undirected edges between
 pairs of nodes.  The additional flexibility leads to some degradation
 in performance, though usually not significant.</dd>
-<dt><a class="reference internal" href="classes.multidigraph.html#networkx.MultiDiGraph" title="networkx.MultiDiGraph"><tt class="xref py py-class docutils literal"><span class="pre">MultiDiGraph</span></tt></a></dt>
+<dt><a class="reference internal" href="classes.multidigraph.html#networkx.MultiDiGraph" title="networkx.MultiDiGraph"><code class="xref py py-class docutils literal"><span class="pre">MultiDiGraph</span></code></a></dt>
 <dd>A directed version of a MultiGraph.</dd>
 </dl>
 <p>Empty graph-like objects are created with</p>
@@ -426,9 +425,9 @@ fast edge detection nor convenient storage of edge data.</p>
 <li>Prefer to &#8220;lists&#8221; because of fast lookup with sparse storage.</li>
 <li>Prefer to &#8220;sets&#8221; since data can be attached to edge.</li>
 <li>G[u][v] returns the edge attribute dictionary.</li>
-<li><tt class="docutils literal"><span class="pre">n</span> <span class="pre">in</span> <span class="pre">G</span></tt> tests if node <tt class="docutils literal"><span class="pre">n</span></tt> is in graph G.</li>
-<li><tt class="docutils literal"><span class="pre">for</span> <span class="pre">n</span> <span class="pre">in</span> <span class="pre">G:</span></tt> iterates through the graph.</li>
-<li><tt class="docutils literal"><span class="pre">for</span> <span class="pre">nbr</span> <span class="pre">in</span> <span class="pre">G[n]:</span></tt> iterates through neighbors.</li>
+<li><code class="docutils literal"><span class="pre">n</span> <span class="pre">in</span> <span class="pre">G</span></code> tests if node <code class="docutils literal"><span class="pre">n</span></code> is in graph G.</li>
+<li><code class="docutils literal"><span class="pre">for</span> <span class="pre">n</span> <span class="pre">in</span> <span class="pre">G:</span></code> iterates through the graph.</li>
+<li><code class="docutils literal"><span class="pre">for</span> <span class="pre">nbr</span> <span class="pre">in</span> <span class="pre">G[n]:</span></code> iterates through neighbors.</li>
 </ul>
 </div></blockquote>
 <p>As an example, here is a representation of an undirected graph with the
@@ -506,7 +505,7 @@ dictionary storing &#8220;name-value&#8221; relationships for that edge.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

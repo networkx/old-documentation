@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>nbunch_iter &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>nbunch_iter &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="Graph – Undirected graphs with self loops" href="../classes.graph.html"/>
         <link rel="next" title="has_node" href="networkx.Graph.has_node.html"/>
         <link rel="prev" title="adjacency_iter" href="networkx.Graph.adjacency_iter.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,9 +95,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../classes.html">Graph types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../functions.html">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generators.html">Graph generators</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -190,7 +189,7 @@
 <h1>nbunch_iter<a class="headerlink" href="#nbunch-iter" title="Permalink to this headline">¶</a></h1>
 <dl class="method">
 <dt id="networkx.Graph.nbunch_iter">
-<tt class="descclassname">Graph.</tt><tt class="descname">nbunch_iter</tt><big>(</big><em>nbunch=None</em><big>)</big><a class="headerlink" href="#networkx.Graph.nbunch_iter" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">Graph.</code><code class="descname">nbunch_iter</code><span class="sig-paren">(</span><em>nbunch=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/classes/graph.html#Graph.nbunch_iter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.Graph.nbunch_iter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return an iterator of nodes contained in nbunch that are
 also in the graph.</p>
 <p>The nodes in nbunch are checked for membership in the graph
@@ -199,21 +198,21 @@ and if not are silently ignored.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>nbunch</strong> : iterable container, optional (default=all nodes)</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>nbunch</strong> : iterable container, optional (default=all nodes)</p>
 <blockquote>
 <div><p>A container of nodes.  The container will be iterated
 through once.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>niter</strong> : iterator</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>niter</strong> : iterator</p>
 <blockquote>
 <div><p>An iterator over nodes in nbunch that are also in the graph.
 If nbunch is None, iterate over all nodes in the graph.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
 <blockquote class="last">
 <div><p>If nbunch is not a node or or sequence of nodes.
 If a node in nbunch is not hashable.</p>
@@ -222,9 +221,9 @@ If a node in nbunch is not hashable.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.Graph.__iter__.html#networkx.Graph.__iter__" title="networkx.Graph.__iter__"><tt class="xref py py-obj docutils literal"><span class="pre">Graph.__iter__</span></tt></a></p>
+<p class="last"><a class="reference internal" href="networkx.Graph.__iter__.html#networkx.Graph.__iter__" title="networkx.Graph.__iter__"><code class="xref py py-obj docutils literal"><span class="pre">Graph.__iter__</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
 <p>When nbunch is an iterator, the returned iterator yields values
@@ -277,7 +276,7 @@ nbunch is not hashable, a NetworkXError is raised.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

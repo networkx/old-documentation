@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>MultiGraph - Undirected graphs with self loops and parallel edges &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>MultiGraph - Undirected graphs with self loops and parallel edges &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../index.html"/>
         <link rel="up" title="Graph types" href="classes.html"/>
         <link rel="next" title="__init__" href="generated/networkx.MultiGraph.__init__.html"/>
         <link rel="prev" title="reverse" href="generated/networkx.DiGraph.reverse.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#goals">Goals</a></li>
@@ -96,9 +95,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="classes.html">Graph types</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="classes.html">Graph types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="functions.html">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generators.html">Graph generators</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../test.html">Testing</a><ul>
@@ -190,7 +189,7 @@
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="networkx.MultiGraph">
-<tt class="descname">MultiGraph</tt><big>(</big><em>data=None</em>, <em>**attr</em><big>)</big><a class="headerlink" href="#networkx.MultiGraph" title="Permalink to this definition">¶</a></dt>
+<code class="descname">MultiGraph</code><span class="sig-paren">(</span><em>data=None</em>, <em>**attr</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/networkx/classes/multigraph.html#MultiGraph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.MultiGraph" title="Permalink to this definition">¶</a></dt>
 <dd><p>An undirected graph class that can store multiedges.</p>
 <p>Multiedges are multiple edges between two nodes.  Each edge
 can hold optional data or attributes.</p>
@@ -203,7 +202,7 @@ key/value attributes.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>data</strong> : input graph</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : input graph</p>
 <blockquote>
 <div><p>Data to initialize graph.  If data=None (default) an empty
 graph is created.  The data can be an edge list, or any
@@ -219,9 +218,9 @@ or 2d ndarray, a SciPy sparse matrix, or a PyGraphviz graph.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="classes.graph.html#networkx.Graph" title="networkx.Graph"><tt class="xref py py-obj docutils literal"><span class="pre">Graph</span></tt></a>, <a class="reference internal" href="classes.digraph.html#networkx.DiGraph" title="networkx.DiGraph"><tt class="xref py py-obj docutils literal"><span class="pre">DiGraph</span></tt></a>, <a class="reference internal" href="classes.multidigraph.html#networkx.MultiDiGraph" title="networkx.MultiDiGraph"><tt class="xref py py-obj docutils literal"><span class="pre">MultiDiGraph</span></tt></a></p>
+<p class="last"><a class="reference internal" href="classes.graph.html#networkx.Graph" title="networkx.Graph"><code class="xref py py-obj docutils literal"><span class="pre">Graph</span></code></a>, <a class="reference internal" href="classes.digraph.html#networkx.DiGraph" title="networkx.DiGraph"><code class="xref py py-obj docutils literal"><span class="pre">DiGraph</span></code></a>, <a class="reference internal" href="classes.multidigraph.html#networkx.MultiDiGraph" title="networkx.MultiDiGraph"><code class="xref py py-obj docutils literal"><span class="pre">MultiDiGraph</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
 <p>Create an empty graph structure (a &#8220;null graph&#8221;) with no nodes and
@@ -350,46 +349,46 @@ as well as the number of nodes and edges.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.__init__.html#networkx.MultiGraph.__init__" title="networkx.MultiGraph.__init__"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.__init__</span></tt></a>([data])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.__init__.html#networkx.MultiGraph.__init__" title="networkx.MultiGraph.__init__"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.__init__</span></code></a>([data])</td>
 <td>Initialize a graph with edges, name, graph attributes.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.add_node.html#networkx.MultiGraph.add_node" title="networkx.MultiGraph.add_node"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.add_node</span></tt></a>(n[,&nbsp;attr_dict])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.add_node.html#networkx.MultiGraph.add_node" title="networkx.MultiGraph.add_node"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.add_node</span></code></a>(n[,&nbsp;attr_dict])</td>
 <td>Add a single node n and update node attributes.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.add_nodes_from.html#networkx.MultiGraph.add_nodes_from" title="networkx.MultiGraph.add_nodes_from"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.add_nodes_from</span></tt></a>(nodes,&nbsp;**attr)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.add_nodes_from.html#networkx.MultiGraph.add_nodes_from" title="networkx.MultiGraph.add_nodes_from"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.add_nodes_from</span></code></a>(nodes,&nbsp;**attr)</td>
 <td>Add multiple nodes.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.remove_node.html#networkx.MultiGraph.remove_node" title="networkx.MultiGraph.remove_node"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.remove_node</span></tt></a>(n)</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.remove_node.html#networkx.MultiGraph.remove_node" title="networkx.MultiGraph.remove_node"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.remove_node</span></code></a>(n)</td>
 <td>Remove node n.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.remove_nodes_from.html#networkx.MultiGraph.remove_nodes_from" title="networkx.MultiGraph.remove_nodes_from"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.remove_nodes_from</span></tt></a>(nodes)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.remove_nodes_from.html#networkx.MultiGraph.remove_nodes_from" title="networkx.MultiGraph.remove_nodes_from"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.remove_nodes_from</span></code></a>(nodes)</td>
 <td>Remove multiple nodes.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.add_edge.html#networkx.MultiGraph.add_edge" title="networkx.MultiGraph.add_edge"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.add_edge</span></tt></a>(u,&nbsp;v[,&nbsp;key,&nbsp;attr_dict])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.add_edge.html#networkx.MultiGraph.add_edge" title="networkx.MultiGraph.add_edge"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.add_edge</span></code></a>(u,&nbsp;v[,&nbsp;key,&nbsp;attr_dict])</td>
 <td>Add an edge between u and v.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.add_edges_from.html#networkx.MultiGraph.add_edges_from" title="networkx.MultiGraph.add_edges_from"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.add_edges_from</span></tt></a>(ebunch[,&nbsp;attr_dict])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.add_edges_from.html#networkx.MultiGraph.add_edges_from" title="networkx.MultiGraph.add_edges_from"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.add_edges_from</span></code></a>(ebunch[,&nbsp;attr_dict])</td>
 <td>Add all the edges in ebunch.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.add_weighted_edges_from.html#networkx.MultiGraph.add_weighted_edges_from" title="networkx.MultiGraph.add_weighted_edges_from"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.add_weighted_edges_from</span></tt></a>(ebunch[,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.add_weighted_edges_from.html#networkx.MultiGraph.add_weighted_edges_from" title="networkx.MultiGraph.add_weighted_edges_from"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.add_weighted_edges_from</span></code></a>(ebunch[,&nbsp;...])</td>
 <td>Add all the edges in ebunch as weighted edges with specified weights.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.remove_edge.html#networkx.MultiGraph.remove_edge" title="networkx.MultiGraph.remove_edge"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.remove_edge</span></tt></a>(u,&nbsp;v[,&nbsp;key])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.remove_edge.html#networkx.MultiGraph.remove_edge" title="networkx.MultiGraph.remove_edge"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.remove_edge</span></code></a>(u,&nbsp;v[,&nbsp;key])</td>
 <td>Remove an edge between u and v.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.remove_edges_from.html#networkx.MultiGraph.remove_edges_from" title="networkx.MultiGraph.remove_edges_from"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.remove_edges_from</span></tt></a>(ebunch)</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.remove_edges_from.html#networkx.MultiGraph.remove_edges_from" title="networkx.MultiGraph.remove_edges_from"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.remove_edges_from</span></code></a>(ebunch)</td>
 <td>Remove all edges specified in ebunch.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.add_star.html#networkx.MultiGraph.add_star" title="networkx.MultiGraph.add_star"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.add_star</span></tt></a>(nodes,&nbsp;**attr)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.add_star.html#networkx.MultiGraph.add_star" title="networkx.MultiGraph.add_star"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.add_star</span></code></a>(nodes,&nbsp;**attr)</td>
 <td>Add a star.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.add_path.html#networkx.MultiGraph.add_path" title="networkx.MultiGraph.add_path"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.add_path</span></tt></a>(nodes,&nbsp;**attr)</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.add_path.html#networkx.MultiGraph.add_path" title="networkx.MultiGraph.add_path"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.add_path</span></code></a>(nodes,&nbsp;**attr)</td>
 <td>Add a path.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.add_cycle.html#networkx.MultiGraph.add_cycle" title="networkx.MultiGraph.add_cycle"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.add_cycle</span></tt></a>(nodes,&nbsp;**attr)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.add_cycle.html#networkx.MultiGraph.add_cycle" title="networkx.MultiGraph.add_cycle"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.add_cycle</span></code></a>(nodes,&nbsp;**attr)</td>
 <td>Add a cycle.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.clear.html#networkx.MultiGraph.clear" title="networkx.MultiGraph.clear"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.clear</span></tt></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.clear.html#networkx.MultiGraph.clear" title="networkx.MultiGraph.clear"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.clear</span></code></a>()</td>
 <td>Remove all nodes and edges from the graph.</td>
 </tr>
 </tbody>
@@ -403,40 +402,40 @@ as well as the number of nodes and edges.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.nodes.html#networkx.MultiGraph.nodes" title="networkx.MultiGraph.nodes"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.nodes</span></tt></a>([data])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.nodes.html#networkx.MultiGraph.nodes" title="networkx.MultiGraph.nodes"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.nodes</span></code></a>([data])</td>
 <td>Return a list of the nodes in the graph.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.nodes_iter.html#networkx.MultiGraph.nodes_iter" title="networkx.MultiGraph.nodes_iter"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.nodes_iter</span></tt></a>([data])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.nodes_iter.html#networkx.MultiGraph.nodes_iter" title="networkx.MultiGraph.nodes_iter"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.nodes_iter</span></code></a>([data])</td>
 <td>Return an iterator over the nodes.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.__iter__.html#networkx.MultiGraph.__iter__" title="networkx.MultiGraph.__iter__"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.__iter__</span></tt></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.__iter__.html#networkx.MultiGraph.__iter__" title="networkx.MultiGraph.__iter__"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.__iter__</span></code></a>()</td>
 <td>Iterate over the nodes.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.edges.html#networkx.MultiGraph.edges" title="networkx.MultiGraph.edges"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.edges</span></tt></a>([nbunch,&nbsp;data,&nbsp;keys])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.edges.html#networkx.MultiGraph.edges" title="networkx.MultiGraph.edges"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.edges</span></code></a>([nbunch,&nbsp;data,&nbsp;keys])</td>
 <td>Return a list of edges.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.edges_iter.html#networkx.MultiGraph.edges_iter" title="networkx.MultiGraph.edges_iter"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.edges_iter</span></tt></a>([nbunch,&nbsp;data,&nbsp;keys])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.edges_iter.html#networkx.MultiGraph.edges_iter" title="networkx.MultiGraph.edges_iter"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.edges_iter</span></code></a>([nbunch,&nbsp;data,&nbsp;keys])</td>
 <td>Return an iterator over the edges.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.get_edge_data.html#networkx.MultiGraph.get_edge_data" title="networkx.MultiGraph.get_edge_data"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.get_edge_data</span></tt></a>(u,&nbsp;v[,&nbsp;key,&nbsp;default])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.get_edge_data.html#networkx.MultiGraph.get_edge_data" title="networkx.MultiGraph.get_edge_data"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.get_edge_data</span></code></a>(u,&nbsp;v[,&nbsp;key,&nbsp;default])</td>
 <td>Return the attribute dictionary associated with edge (u,v).</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.neighbors.html#networkx.MultiGraph.neighbors" title="networkx.MultiGraph.neighbors"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.neighbors</span></tt></a>(n)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.neighbors.html#networkx.MultiGraph.neighbors" title="networkx.MultiGraph.neighbors"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.neighbors</span></code></a>(n)</td>
 <td>Return a list of the nodes connected to the node n.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.neighbors_iter.html#networkx.MultiGraph.neighbors_iter" title="networkx.MultiGraph.neighbors_iter"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.neighbors_iter</span></tt></a>(n)</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.neighbors_iter.html#networkx.MultiGraph.neighbors_iter" title="networkx.MultiGraph.neighbors_iter"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.neighbors_iter</span></code></a>(n)</td>
 <td>Return an iterator over all neighbors of node n.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.__getitem__.html#networkx.MultiGraph.__getitem__" title="networkx.MultiGraph.__getitem__"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.__getitem__</span></tt></a>(n)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.__getitem__.html#networkx.MultiGraph.__getitem__" title="networkx.MultiGraph.__getitem__"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.__getitem__</span></code></a>(n)</td>
 <td>Return a dict of neighbors of node n.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.adjacency_list.html#networkx.MultiGraph.adjacency_list" title="networkx.MultiGraph.adjacency_list"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.adjacency_list</span></tt></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.adjacency_list.html#networkx.MultiGraph.adjacency_list" title="networkx.MultiGraph.adjacency_list"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.adjacency_list</span></code></a>()</td>
 <td>Return an adjacency list representation of the graph.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.adjacency_iter.html#networkx.MultiGraph.adjacency_iter" title="networkx.MultiGraph.adjacency_iter"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.adjacency_iter</span></tt></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.adjacency_iter.html#networkx.MultiGraph.adjacency_iter" title="networkx.MultiGraph.adjacency_iter"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.adjacency_iter</span></code></a>()</td>
 <td>Return an iterator of (node, adjacency dict) tuples for all nodes.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.nbunch_iter.html#networkx.MultiGraph.nbunch_iter" title="networkx.MultiGraph.nbunch_iter"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.nbunch_iter</span></tt></a>([nbunch])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.nbunch_iter.html#networkx.MultiGraph.nbunch_iter" title="networkx.MultiGraph.nbunch_iter"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.nbunch_iter</span></code></a>([nbunch])</td>
 <td>Return an iterator of nodes contained in nbunch that are also in the graph.</td>
 </tr>
 </tbody>
@@ -450,43 +449,43 @@ as well as the number of nodes and edges.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.has_node.html#networkx.MultiGraph.has_node" title="networkx.MultiGraph.has_node"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.has_node</span></tt></a>(n)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.has_node.html#networkx.MultiGraph.has_node" title="networkx.MultiGraph.has_node"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.has_node</span></code></a>(n)</td>
 <td>Return True if the graph contains the node n.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.__contains__.html#networkx.MultiGraph.__contains__" title="networkx.MultiGraph.__contains__"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.__contains__</span></tt></a>(n)</td>
-<td>Return True if n is a node, False otherwise. Use the expression</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.__contains__.html#networkx.MultiGraph.__contains__" title="networkx.MultiGraph.__contains__"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.__contains__</span></code></a>(n)</td>
+<td>Return True if n is a node, False otherwise.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.has_edge.html#networkx.MultiGraph.has_edge" title="networkx.MultiGraph.has_edge"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.has_edge</span></tt></a>(u,&nbsp;v[,&nbsp;key])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.has_edge.html#networkx.MultiGraph.has_edge" title="networkx.MultiGraph.has_edge"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.has_edge</span></code></a>(u,&nbsp;v[,&nbsp;key])</td>
 <td>Return True if the graph has an edge between nodes u and v.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.order.html#networkx.MultiGraph.order" title="networkx.MultiGraph.order"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.order</span></tt></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.order.html#networkx.MultiGraph.order" title="networkx.MultiGraph.order"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.order</span></code></a>()</td>
 <td>Return the number of nodes in the graph.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.number_of_nodes.html#networkx.MultiGraph.number_of_nodes" title="networkx.MultiGraph.number_of_nodes"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.number_of_nodes</span></tt></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.number_of_nodes.html#networkx.MultiGraph.number_of_nodes" title="networkx.MultiGraph.number_of_nodes"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.number_of_nodes</span></code></a>()</td>
 <td>Return the number of nodes in the graph.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.__len__.html#networkx.MultiGraph.__len__" title="networkx.MultiGraph.__len__"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.__len__</span></tt></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.__len__.html#networkx.MultiGraph.__len__" title="networkx.MultiGraph.__len__"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.__len__</span></code></a>()</td>
 <td>Return the number of nodes.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.degree.html#networkx.MultiGraph.degree" title="networkx.MultiGraph.degree"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.degree</span></tt></a>([nbunch,&nbsp;weight])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.degree.html#networkx.MultiGraph.degree" title="networkx.MultiGraph.degree"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.degree</span></code></a>([nbunch,&nbsp;weight])</td>
 <td>Return the degree of a node or nodes.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.degree_iter.html#networkx.MultiGraph.degree_iter" title="networkx.MultiGraph.degree_iter"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.degree_iter</span></tt></a>([nbunch,&nbsp;weight])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.degree_iter.html#networkx.MultiGraph.degree_iter" title="networkx.MultiGraph.degree_iter"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.degree_iter</span></code></a>([nbunch,&nbsp;weight])</td>
 <td>Return an iterator for (node, degree).</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.size.html#networkx.MultiGraph.size" title="networkx.MultiGraph.size"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.size</span></tt></a>([weight])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.size.html#networkx.MultiGraph.size" title="networkx.MultiGraph.size"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.size</span></code></a>([weight])</td>
 <td>Return the number of edges.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.number_of_edges.html#networkx.MultiGraph.number_of_edges" title="networkx.MultiGraph.number_of_edges"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.number_of_edges</span></tt></a>([u,&nbsp;v])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.number_of_edges.html#networkx.MultiGraph.number_of_edges" title="networkx.MultiGraph.number_of_edges"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.number_of_edges</span></code></a>([u,&nbsp;v])</td>
 <td>Return the number of edges between two nodes.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.nodes_with_selfloops.html#networkx.MultiGraph.nodes_with_selfloops" title="networkx.MultiGraph.nodes_with_selfloops"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.nodes_with_selfloops</span></tt></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.nodes_with_selfloops.html#networkx.MultiGraph.nodes_with_selfloops" title="networkx.MultiGraph.nodes_with_selfloops"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.nodes_with_selfloops</span></code></a>()</td>
 <td>Return a list of nodes with self loops.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.selfloop_edges.html#networkx.MultiGraph.selfloop_edges" title="networkx.MultiGraph.selfloop_edges"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.selfloop_edges</span></tt></a>([data,&nbsp;keys])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.selfloop_edges.html#networkx.MultiGraph.selfloop_edges" title="networkx.MultiGraph.selfloop_edges"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.selfloop_edges</span></code></a>([data,&nbsp;keys])</td>
 <td>Return a list of selfloop edges.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.number_of_selfloops.html#networkx.MultiGraph.number_of_selfloops" title="networkx.MultiGraph.number_of_selfloops"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.number_of_selfloops</span></tt></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.number_of_selfloops.html#networkx.MultiGraph.number_of_selfloops" title="networkx.MultiGraph.number_of_selfloops"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.number_of_selfloops</span></code></a>()</td>
 <td>Return the number of selfloop edges.</td>
 </tr>
 </tbody>
@@ -500,16 +499,16 @@ as well as the number of nodes and edges.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.copy.html#networkx.MultiGraph.copy" title="networkx.MultiGraph.copy"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.copy</span></tt></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.copy.html#networkx.MultiGraph.copy" title="networkx.MultiGraph.copy"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.copy</span></code></a>()</td>
 <td>Return a copy of the graph.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.to_undirected.html#networkx.MultiGraph.to_undirected" title="networkx.MultiGraph.to_undirected"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.to_undirected</span></tt></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.to_undirected.html#networkx.MultiGraph.to_undirected" title="networkx.MultiGraph.to_undirected"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.to_undirected</span></code></a>()</td>
 <td>Return an undirected copy of the graph.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.to_directed.html#networkx.MultiGraph.to_directed" title="networkx.MultiGraph.to_directed"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.to_directed</span></tt></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.MultiGraph.to_directed.html#networkx.MultiGraph.to_directed" title="networkx.MultiGraph.to_directed"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.to_directed</span></code></a>()</td>
 <td>Return a directed representation of the graph.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.subgraph.html#networkx.MultiGraph.subgraph" title="networkx.MultiGraph.subgraph"><tt class="xref py py-obj docutils literal"><span class="pre">MultiGraph.subgraph</span></tt></a>(nbunch)</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.MultiGraph.subgraph.html#networkx.MultiGraph.subgraph" title="networkx.MultiGraph.subgraph"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph.subgraph</span></code></a>(nbunch)</td>
 <td>Return the subgraph induced on nodes in nbunch.</td>
 </tr>
 </tbody>
@@ -556,7 +555,7 @@ as well as the number of nodes and edges.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

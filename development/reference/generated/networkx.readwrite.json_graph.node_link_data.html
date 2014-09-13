@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>node_link_data &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>node_link_data &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="JSON" href="../readwrite.json_graph.html"/>
         <link rel="next" title="node_link_graph" href="networkx.readwrite.json_graph.node_link_graph.html"/>
         <link rel="prev" title="tree_graph" href="networkx.readwrite.json_graph.tree_graph.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,7 +95,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
@@ -105,7 +104,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../linalg.html">Linear algebra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../convert.html">Converting to and from other data formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../relabel.html">Relabeling nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../readwrite.html">Reading and writing graphs</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../readwrite.html">Reading and writing graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../drawing.html">Drawing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exceptions.html">Exceptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../utils.html">Utilities</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -190,33 +189,33 @@
 <h1>node_link_data<a class="headerlink" href="#node-link-data" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.readwrite.json_graph.node_link_data">
-<tt class="descname">node_link_data</tt><big>(</big><em>G</em>, <em>attrs={'source': 'source'</em>, <em>'target': 'target'</em>, <em>'key': 'key'</em>, <em>'id': 'id'}</em><big>)</big><a class="headerlink" href="#networkx.readwrite.json_graph.node_link_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">node_link_data</code><span class="sig-paren">(</span><em>G</em>, <em>attrs={'source': 'source'</em>, <em>'target': 'target'</em>, <em>'key': 'key'</em>, <em>'id': 'id'}</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/readwrite/json_graph/node_link.html#node_link_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.readwrite.json_graph.node_link_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return data in node-link format that is suitable for JSON serialization
 and use in Javascript documents.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
 <p><strong>attrs</strong> : dict</p>
 <blockquote>
 <div><p>A dictionary that contains four keys &#8216;id&#8217;, &#8216;source&#8217;, &#8216;target&#8217; and
 &#8216;key&#8217;. The corresponding values provide the attribute names for storing
 NetworkX-internal graph data. The values should be unique. Default
 value:
-<tt class="samp docutils literal"><span class="pre">dict(id='id',</span> <span class="pre">source='source',</span> <span class="pre">target='target',</span> <span class="pre">key='key')</span></tt>.</p>
+<code class="samp docutils literal"><span class="pre">dict(id='id',</span> <span class="pre">source='source',</span> <span class="pre">target='target',</span> <span class="pre">key='key')</span></code>.</p>
 <p>If some user-defined graph data use these attribute names as data keys,
 they may be silently dropped.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>data</strong> : dict</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>data</strong> : dict</p>
 <blockquote>
 <div><p>A dictionary with node-link formatted data.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
 <blockquote class="last">
 <div><p>If values in attrs are not unique.</p>
 </div></blockquote>
@@ -224,9 +223,9 @@ they may be silently dropped.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.readwrite.json_graph.node_link_graph.html#networkx.readwrite.json_graph.node_link_graph" title="networkx.readwrite.json_graph.node_link_graph"><tt class="xref py py-obj docutils literal"><span class="pre">node_link_graph</span></tt></a>, <a class="reference internal" href="networkx.readwrite.json_graph.adjacency_data.html#networkx.readwrite.json_graph.adjacency_data" title="networkx.readwrite.json_graph.adjacency_data"><tt class="xref py py-obj docutils literal"><span class="pre">adjacency_data</span></tt></a>, <a class="reference internal" href="networkx.readwrite.json_graph.tree_data.html#networkx.readwrite.json_graph.tree_data" title="networkx.readwrite.json_graph.tree_data"><tt class="xref py py-obj docutils literal"><span class="pre">tree_data</span></tt></a></p>
+<p class="last"><a class="reference internal" href="networkx.readwrite.json_graph.node_link_graph.html#networkx.readwrite.json_graph.node_link_graph" title="networkx.readwrite.json_graph.node_link_graph"><code class="xref py py-obj docutils literal"><span class="pre">node_link_graph</span></code></a>, <a class="reference internal" href="networkx.readwrite.json_graph.adjacency_data.html#networkx.readwrite.json_graph.adjacency_data" title="networkx.readwrite.json_graph.adjacency_data"><code class="xref py py-obj docutils literal"><span class="pre">adjacency_data</span></code></a>, <a class="reference internal" href="networkx.readwrite.json_graph.tree_data.html#networkx.readwrite.json_graph.tree_data" title="networkx.readwrite.json_graph.tree_data"><code class="xref py py-obj docutils literal"><span class="pre">tree_data</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
 <p>Graph, node, and link attributes are stored in this format but keys
@@ -286,7 +285,7 @@ for attributes must be strings if you want to serialize with JSON.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

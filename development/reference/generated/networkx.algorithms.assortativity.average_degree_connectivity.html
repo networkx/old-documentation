@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>average_degree_connectivity &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>average_degree_connectivity &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="Assortativity" href="../algorithms.assortativity.html"/>
         <link rel="next" title="k_nearest_neighbors" href="networkx.algorithms.assortativity.k_nearest_neighbors.html"/>
         <link rel="prev" title="average_neighbor_degree" href="networkx.algorithms.assortativity.average_neighbor_degree.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,10 +95,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../functions.html">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generators.html">Graph generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linalg.html">Linear algebra</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -190,12 +189,12 @@
 <h1>average_degree_connectivity<a class="headerlink" href="#average-degree-connectivity" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.algorithms.assortativity.average_degree_connectivity">
-<tt class="descname">average_degree_connectivity</tt><big>(</big><em>G</em>, <em>source='in+out'</em>, <em>target='in+out'</em>, <em>nodes=None</em>, <em>weight=None</em><big>)</big><a class="headerlink" href="#networkx.algorithms.assortativity.average_degree_connectivity" title="Permalink to this definition">¶</a></dt>
+<code class="descname">average_degree_connectivity</code><span class="sig-paren">(</span><em>G</em>, <em>source='in+out'</em>, <em>target='in+out'</em>, <em>nodes=None</em>, <em>weight=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/assortativity/connectivity.html#average_degree_connectivity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.assortativity.average_degree_connectivity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the average degree connectivity of graph.</p>
 <p>The average degree connectivity is the average nearest neighbor degree of
 nodes with degree k. For weighted graphs, an analogous measure can
 be computed using the weighted average neighbors degree defined in
-<a class="reference internal" href="#r151">[R151]</a>, for a node <span class="math">\(i\)</span>, as:</p>
+<a class="reference internal" href="#r151" id="id1">[R151]</a>, for a node <span class="math">\(i\)</span>, as:</p>
 <div class="math">
 \[k_{nn,i}^{w} = \frac{1}{s_i} \sum_{j \in N(i)} w_{ij} k_j\]</div>
 <p>where <span class="math">\(s_i\)</span> is the weighted degree of node <span class="math">\(i\)</span>,
@@ -205,7 +204,7 @@ and <span class="math">\(N(i)\)</span> are the neighbors of node <span class="ma
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
 <p><strong>source</strong> :  &#8220;in&#8221;|&#8221;out&#8221;|&#8221;in+out&#8221; (default:&#8221;in+out&#8221;)</p>
 <blockquote>
 <div><p>Directed graphs only. Use &#8220;in&#8221;- or &#8220;out&#8221;-degree for source node.</p>
@@ -225,7 +224,7 @@ If None, then each edge has weight 1.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">d: dict</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">d: dict</p>
 <blockquote class="last">
 <div><p>A dictionary keyed by degree k with the value of average connectivity.</p>
 </div></blockquote>
@@ -233,9 +232,9 @@ If None, then each edge has weight 1.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors_average_degree</span></tt></p>
+<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">neighbors_average_degree</span></code></p>
 </div>
 <p class="rubric">Notes</p>
 <p>This algorithm is sometimes called &#8220;k nearest neighbors&#8217; and is also
@@ -301,7 +300,7 @@ PNAS 101 (11): 3747–3752 (2004).</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

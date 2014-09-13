@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>adjacency_iter &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>adjacency_iter &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="MultiGraph - Undirected graphs with self loops and parallel edges" href="../classes.multigraph.html"/>
         <link rel="next" title="nbunch_iter" href="networkx.MultiGraph.nbunch_iter.html"/>
         <link rel="prev" title="adjacency_list" href="networkx.MultiGraph.adjacency_list.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,9 +95,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../classes.html">Graph types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../functions.html">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generators.html">Graph generators</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -190,7 +189,7 @@
 <h1>adjacency_iter<a class="headerlink" href="#adjacency-iter" title="Permalink to this headline">¶</a></h1>
 <dl class="method">
 <dt id="networkx.MultiGraph.adjacency_iter">
-<tt class="descclassname">MultiGraph.</tt><tt class="descname">adjacency_iter</tt><big>(</big><big>)</big><a class="headerlink" href="#networkx.MultiGraph.adjacency_iter" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">MultiGraph.</code><code class="descname">adjacency_iter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#networkx.MultiGraph.adjacency_iter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return an iterator of (node, adjacency dict) tuples for all nodes.</p>
 <p>This is the fastest way to look at every edge.
 For directed graphs, only outgoing adjacencies are included.</p>
@@ -198,7 +197,7 @@ For directed graphs, only outgoing adjacencies are included.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>adj_iter</strong> : iterator</p>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>adj_iter</strong> : iterator</p>
 <blockquote class="last">
 <div><p>An iterator of (node, adjacency dictionary) for all nodes in
 the graph.</p>
@@ -207,9 +206,9 @@ the graph.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.MultiGraph.adjacency_list.html#networkx.MultiGraph.adjacency_list" title="networkx.MultiGraph.adjacency_list"><tt class="xref py py-obj docutils literal"><span class="pre">adjacency_list</span></tt></a></p>
+<p class="last"><a class="reference internal" href="networkx.MultiGraph.adjacency_list.html#networkx.MultiGraph.adjacency_list" title="networkx.MultiGraph.adjacency_list"><code class="xref py py-obj docutils literal"><span class="pre">adjacency_list</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>   <span class="c"># or DiGraph, MultiGraph, MultiDiGraph, etc</span>
@@ -261,7 +260,7 @@ the graph.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

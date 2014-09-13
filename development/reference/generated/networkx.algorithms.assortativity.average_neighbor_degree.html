@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>average_neighbor_degree &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>average_neighbor_degree &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="Assortativity" href="../algorithms.assortativity.html"/>
         <link rel="next" title="average_degree_connectivity" href="networkx.algorithms.assortativity.average_degree_connectivity.html"/>
         <link rel="prev" title="degree_pearson_correlation_coefficient" href="networkx.algorithms.assortativity.degree_pearson_correlation_coefficient.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,10 +95,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../functions.html">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generators.html">Graph generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linalg.html">Linear algebra</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -190,14 +189,14 @@
 <h1>average_neighbor_degree<a class="headerlink" href="#average-neighbor-degree" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.algorithms.assortativity.average_neighbor_degree">
-<tt class="descname">average_neighbor_degree</tt><big>(</big><em>G</em>, <em>source='out'</em>, <em>target='out'</em>, <em>nodes=None</em>, <em>weight=None</em><big>)</big><a class="headerlink" href="#networkx.algorithms.assortativity.average_neighbor_degree" title="Permalink to this definition">¶</a></dt>
+<code class="descname">average_neighbor_degree</code><span class="sig-paren">(</span><em>G</em>, <em>source='out'</em>, <em>target='out'</em>, <em>nodes=None</em>, <em>weight=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/assortativity/neighbor_degree.html#average_neighbor_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.assortativity.average_neighbor_degree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the average degree of the neighborhood of each node.</p>
 <p>The average degree of a node <span class="math">\(i\)</span> is</p>
 <div class="math">
 \[k_{nn,i} = \frac{1}{|N(i)|} \sum_{j \in N(i)} k_j\]</div>
 <p>where <span class="math">\(N(i)\)</span> are the neighbors of node <span class="math">\(i\)</span> and <span class="math">\(k_j\)</span> is
 the degree of node <span class="math">\(j\)</span> which belongs to <span class="math">\(N(i)\)</span>. For weighted 
-graphs, an analogous measure can be defined <a class="reference internal" href="#r152">[R152]</a>,</p>
+graphs, an analogous measure can be defined <a class="reference internal" href="#r152" id="id1">[R152]</a>,</p>
 <div class="math">
 \[k_{nn,i}^{w} = \frac{1}{s_i} \sum_{j \in N(i)} w_{ij} k_j\]</div>
 <p>where <span class="math">\(s_i\)</span> is the weighted degree of node <span class="math">\(i\)</span>, <span class="math">\(w_{ij}\)</span>
@@ -207,7 +206,7 @@ is the weight of the edge that links <span class="math">\(i\)</span> and <span c
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
 <p><strong>source</strong> : string (&#8220;in&#8221;|&#8221;out&#8221;)</p>
 <blockquote>
 <div><p>Directed graphs only.
@@ -230,7 +229,7 @@ If None, then each edge has weight 1.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">d: dict</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">d: dict</p>
 <blockquote class="last">
 <div><p>A dictionary keyed by node with average neighbors degree value.</p>
 </div></blockquote>
@@ -238,9 +237,9 @@ If None, then each edge has weight 1.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.assortativity.average_degree_connectivity.html#networkx.algorithms.assortativity.average_degree_connectivity" title="networkx.algorithms.assortativity.average_degree_connectivity"><tt class="xref py py-obj docutils literal"><span class="pre">average_degree_connectivity</span></tt></a></p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.assortativity.average_degree_connectivity.html#networkx.algorithms.assortativity.average_degree_connectivity" title="networkx.algorithms.assortativity.average_degree_connectivity"><code class="xref py py-obj docutils literal"><span class="pre">average_degree_connectivity</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
 <p>For directed graphs you can also specify in-degree or out-degree 
@@ -319,7 +318,7 @@ PNAS 101 (11): 3747–3752 (2004).</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

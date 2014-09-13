@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>rich_club_coefficient &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>rich_club_coefficient &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="Rich Club" href="../algorithms.rich_club.html"/>
         <link rel="next" title="Shortest Paths" href="../algorithms.shortest_paths.html"/>
         <link rel="prev" title="rich_club_coefficient" href=""/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,10 +95,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../functions.html">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generators.html">Graph generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linalg.html">Linear algebra</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -190,7 +189,7 @@
 <h1>rich_club_coefficient<a class="headerlink" href="#rich-club-coefficient" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.algorithms.richclub.rich_club_coefficient">
-<tt class="descname">rich_club_coefficient</tt><big>(</big><em>G</em>, <em>normalized=True</em>, <em>Q=100</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/richclub.html#rich_club_coefficient"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.richclub.rich_club_coefficient" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rich_club_coefficient</code><span class="sig-paren">(</span><em>G</em>, <em>normalized=True</em>, <em>Q=100</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/richclub.html#rich_club_coefficient"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.richclub.rich_club_coefficient" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the rich-club coefficient of the graph G.</p>
 <p>The rich-club coefficient is the ratio, for every degree k, of the
 number of actual to the number of potential edges for nodes 
@@ -203,10 +202,10 @@ be the number of edges among those nodes.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
 <p><strong>normalized</strong> : bool (optional)</p>
 <blockquote>
-<div><p>Normalize using randomized network (see <a class="reference internal" href="#r279">[R279]</a>)</p>
+<div><p>Normalize using randomized network (see <a class="reference internal" href="#r279" id="id1">[R279]</a>)</p>
 </div></blockquote>
 <p><strong>Q</strong> : float (optional, default=100)</p>
 <blockquote>
@@ -216,7 +215,7 @@ to use as a null-model for normalization.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>rc</strong> : dictionary</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>rc</strong> : dictionary</p>
 <blockquote class="last">
 <div><p>A dictionary, keyed by degree, with rich club coefficient values.</p>
 </div></blockquote>
@@ -225,10 +224,10 @@ to use as a null-model for normalization.</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>The rich club definition and algorithm are found in <a class="reference internal" href="#r279">[R279]</a>.  This
+<p>The rich club definition and algorithm are found in <a class="reference internal" href="#r279" id="id2">[R279]</a>.  This
 algorithm ignores any edge weights and is not defined for directed
 graphs or graphs with parallel edges or self loops.</p>
-<p>Estimates for appropriate values of Q are found in <a class="reference internal" href="#r280">[R280]</a>.</p>
+<p>Estimates for appropriate values of Q are found in <a class="reference internal" href="#r280" id="id3">[R280]</a>.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r279" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -297,7 +296,7 @@ sequences&#8221;, 2006. <a class="reference external" href="http://arxiv.org/abs
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

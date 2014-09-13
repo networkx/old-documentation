@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>random_clustered_graph &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>random_clustered_graph &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
         <link rel="next" title="gn_graph" href="networkx.generators.directed.gn_graph.html"/>
         <link rel="prev" title="random_degree_sequence_graph" href="networkx.generators.degree_seq.random_degree_sequence_graph.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,12 +95,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../functions.html">Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../generators.html">Graph generators</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../generators.html">Graph generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linalg.html">Linear algebra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../convert.html">Converting to and from other data formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../relabel.html">Relabeling nodes</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -188,7 +187,7 @@
 <h1>random_clustered_graph<a class="headerlink" href="#random-clustered-graph" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.generators.random_clustered.random_clustered_graph">
-<tt class="descname">random_clustered_graph</tt><big>(</big><em>joint_degree_sequence</em>, <em>create_using=None</em>, <em>seed=None</em><big>)</big><a class="reference internal" href="../../_modules/networkx/generators/random_clustered.html#random_clustered_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.random_clustered.random_clustered_graph" title="Permalink to this definition">¶</a></dt>
+<code class="descname">random_clustered_graph</code><span class="sig-paren">(</span><em>joint_degree_sequence</em>, <em>create_using=None</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/generators/random_clustered.html#random_clustered_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.random_clustered.random_clustered_graph" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a random graph with the given joint degree and triangle
 degree sequence.</p>
 <p>This uses a configuration model-like approach to generate a
@@ -199,7 +198,7 @@ and triangle degree sequence.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>joint_degree_sequence</strong> : list of integer pairs</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>joint_degree_sequence</strong> : list of integer pairs</p>
 <blockquote>
 <div><p>Each list entry corresponds to the independent edge degree and
 triangle degree of a node.</p>
@@ -214,7 +213,7 @@ triangle degree of a node.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>G</strong> : MultiGraph</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>G</strong> : MultiGraph</p>
 <blockquote>
 <div><p>A graph with the specified degree sequence. Nodes are labeled
 starting at 0 with an index corresponding to the position in
@@ -222,7 +221,7 @@ deg_sequence.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
 <blockquote class="last">
 <div><p>If the independent edge degree sequence sum is not even
 or the triangle degree sequence sum is not divisible by 3.</p>
@@ -232,7 +231,7 @@ or the triangle degree sequence sum is not divisible by 3.</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>As described by Miller <a class="reference internal" href="#r308">[R308]</a> (see also Newman <a class="reference internal" href="#r309">[R309]</a> for an equivalent
+<p>As described by Miller <a class="reference internal" href="#r308" id="id1">[R308]</a> (see also Newman <a class="reference internal" href="#r309" id="id2">[R309]</a> for an equivalent
 description).</p>
 <p>A non-graphical degree sequence (not realizable by some simple
 graph) is allowed since this function returns graphs with self
@@ -315,7 +314,7 @@ Physical Review Letters (to appear).</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

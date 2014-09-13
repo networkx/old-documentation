@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>closeness_centrality &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>closeness_centrality &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="Bipartite" href="../algorithms.bipartite.html"/>
         <link rel="next" title="degree_centrality" href="networkx.algorithms.bipartite.centrality.degree_centrality.html"/>
         <link rel="prev" title="node_redundancy" href="networkx.algorithms.bipartite.redundancy.node_redundancy.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,10 +95,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../functions.html">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generators.html">Graph generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linalg.html">Linear algebra</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -190,7 +189,7 @@
 <h1>closeness_centrality<a class="headerlink" href="#closeness-centrality" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.algorithms.bipartite.centrality.closeness_centrality">
-<tt class="descname">closeness_centrality</tt><big>(</big><em>G</em>, <em>nodes</em>, <em>normalized=True</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/bipartite/centrality.html#closeness_centrality"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.bipartite.centrality.closeness_centrality" title="Permalink to this definition">¶</a></dt>
+<code class="descname">closeness_centrality</code><span class="sig-paren">(</span><em>G</em>, <em>nodes</em>, <em>normalized=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/bipartite/centrality.html#closeness_centrality"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.bipartite.centrality.closeness_centrality" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the closeness centrality for nodes in a bipartite network.</p>
 <p>The closeness of a node is the distance to all other nodes in the 
 graph or in the case that the graph is not connected to all other nodes
@@ -199,7 +198,7 @@ in the connected component containing that node.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
 <blockquote>
 <div><p>A bipartite network</p>
 </div></blockquote>
@@ -213,7 +212,7 @@ in the connected component containing that node.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>closeness</strong> : dictionary</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>closeness</strong> : dictionary</p>
 <blockquote class="last">
 <div><p>Dictionary keyed by node with bipartite closeness centrality 
 as the value.</p>
@@ -222,9 +221,9 @@ as the value.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.bipartite.centrality.betweenness_centrality.html#networkx.algorithms.bipartite.centrality.betweenness_centrality" title="networkx.algorithms.bipartite.centrality.betweenness_centrality"><tt class="xref py py-obj docutils literal"><span class="pre">betweenness_centrality</span></tt></a>, <a class="reference internal" href="networkx.algorithms.bipartite.centrality.degree_centrality.html#networkx.algorithms.bipartite.centrality.degree_centrality" title="networkx.algorithms.bipartite.centrality.degree_centrality"><tt class="xref py py-obj docutils literal"><span class="pre">degree_centrality</span></tt></a>, <a class="reference external" href="http://docs.python.org/library/sets.html#module-sets" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">sets</span></tt></a>, <tt class="xref py py-obj docutils literal"><span class="pre">is_bipartite</span></tt></p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.bipartite.centrality.betweenness_centrality.html#networkx.algorithms.bipartite.centrality.betweenness_centrality" title="networkx.algorithms.bipartite.centrality.betweenness_centrality"><code class="xref py py-obj docutils literal"><span class="pre">betweenness_centrality</span></code></a>, <a class="reference internal" href="networkx.algorithms.bipartite.centrality.degree_centrality.html#networkx.algorithms.bipartite.centrality.degree_centrality" title="networkx.algorithms.bipartite.centrality.degree_centrality"><code class="xref py py-obj docutils literal"><span class="pre">degree_centrality</span></code></a>, <a class="reference external" href="http://docs.python.org/library/sets.html#module-sets" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">sets</span></code></a>, <code class="xref py py-obj docutils literal"><span class="pre">is_bipartite</span></code></p>
 </div>
 <p class="rubric">Notes</p>
 <p>The nodes input parameter must conatin all nodes in one bipartite node set,
@@ -232,7 +231,7 @@ but the dictionary returned contains all nodes from both node sets.</p>
 <p>Closeness centrality is normalized by the minimum distance possible. 
 In the bipartite case the minimum distance for a node in one bipartite 
 node set is 1 from all nodes in the other node set and 2 from all 
-other nodes in its own set <a class="reference internal" href="#r160">[R160]</a>. Thus the closeness centrality
+other nodes in its own set <a class="reference internal" href="#r160" id="id1">[R160]</a>. Thus the closeness centrality
 for node <span class="math">\(v\)</span>  in the two bipartite sets <span class="math">\(U\)</span> with 
 <span class="math">\(n\)</span> nodes and <span class="math">\(V\)</span> with <span class="math">\(m\)</span> nodes is</p>
 <div class="math">
@@ -299,7 +298,7 @@ of Social Network Analysis. Sage Publications.
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

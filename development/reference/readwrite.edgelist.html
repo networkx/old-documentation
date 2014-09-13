@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Edge List &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>Edge List &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../index.html"/>
         <link rel="up" title="Reading and writing graphs" href="readwrite.html"/>
         <link rel="next" title="read_edgelist" href="generated/networkx.readwrite.edgelist.read_edgelist.html"/>
         <link rel="prev" title="generate_multiline_adjlist" href="generated/networkx.readwrite.multiline_adjlist.generate_multiline_adjlist.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#goals">Goals</a></li>
@@ -96,7 +95,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classes.html">Graph types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
@@ -105,7 +104,7 @@
 <li class="toctree-l2"><a class="reference internal" href="linalg.html">Linear algebra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="convert.html">Converting to and from other data formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relabel.html">Relabeling nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="readwrite.html">Reading and writing graphs</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="readwrite.html">Reading and writing graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="drawing.html">Drawing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="utils.html">Utilities</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../test.html">Testing</a><ul>
@@ -196,13 +195,16 @@ self-loop edge.</p>
 <h2>Format<a class="headerlink" href="#format" title="Permalink to this headline">¶</a></h2>
 <p>You can read or write three formats of edge lists with these functions.</p>
 <p>Node pairs with no data:</p>
-<div class="highlight-python"><pre>1 2</pre>
+<div class="highlight-python"><div class="highlight"><pre>1 2
+</pre></div>
 </div>
 <p>Python dictionary as data:</p>
-<div class="highlight-python"><pre>1 2 {'weight':7, 'color':'green'}</pre>
+<div class="highlight-python"><div class="highlight"><pre>1 2 {&#39;weight&#39;:7, &#39;color&#39;:&#39;green&#39;}
+</pre></div>
 </div>
 <p>Arbitrary data:</p>
-<div class="highlight-python"><pre>1 2 7 green</pre>
+<div class="highlight-python"><div class="highlight"><pre>1 2 7 green
+</pre></div>
 </div>
 </div>
 <table border="1" class="longtable docutils">
@@ -211,22 +213,22 @@ self-loop edge.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.readwrite.edgelist.read_edgelist.html#networkx.readwrite.edgelist.read_edgelist" title="networkx.readwrite.edgelist.read_edgelist"><tt class="xref py py-obj docutils literal"><span class="pre">read_edgelist</span></tt></a>(path[,&nbsp;comments,&nbsp;delimiter,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.readwrite.edgelist.read_edgelist.html#networkx.readwrite.edgelist.read_edgelist" title="networkx.readwrite.edgelist.read_edgelist"><code class="xref py py-obj docutils literal"><span class="pre">read_edgelist</span></code></a>(path[,&nbsp;comments,&nbsp;delimiter,&nbsp;...])</td>
 <td>Read a graph from a list of edges.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.readwrite.edgelist.write_edgelist.html#networkx.readwrite.edgelist.write_edgelist" title="networkx.readwrite.edgelist.write_edgelist"><tt class="xref py py-obj docutils literal"><span class="pre">write_edgelist</span></tt></a>(G,&nbsp;path[,&nbsp;comments,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.readwrite.edgelist.write_edgelist.html#networkx.readwrite.edgelist.write_edgelist" title="networkx.readwrite.edgelist.write_edgelist"><code class="xref py py-obj docutils literal"><span class="pre">write_edgelist</span></code></a>(G,&nbsp;path[,&nbsp;comments,&nbsp;...])</td>
 <td>Write graph as a list of edges.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.readwrite.edgelist.read_weighted_edgelist.html#networkx.readwrite.edgelist.read_weighted_edgelist" title="networkx.readwrite.edgelist.read_weighted_edgelist"><tt class="xref py py-obj docutils literal"><span class="pre">read_weighted_edgelist</span></tt></a>(path[,&nbsp;comments,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.readwrite.edgelist.read_weighted_edgelist.html#networkx.readwrite.edgelist.read_weighted_edgelist" title="networkx.readwrite.edgelist.read_weighted_edgelist"><code class="xref py py-obj docutils literal"><span class="pre">read_weighted_edgelist</span></code></a>(path[,&nbsp;comments,&nbsp;...])</td>
 <td>Read a graph as list of edges with numeric weights.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.readwrite.edgelist.write_weighted_edgelist.html#networkx.readwrite.edgelist.write_weighted_edgelist" title="networkx.readwrite.edgelist.write_weighted_edgelist"><tt class="xref py py-obj docutils literal"><span class="pre">write_weighted_edgelist</span></tt></a>(G,&nbsp;path[,&nbsp;comments,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.readwrite.edgelist.write_weighted_edgelist.html#networkx.readwrite.edgelist.write_weighted_edgelist" title="networkx.readwrite.edgelist.write_weighted_edgelist"><code class="xref py py-obj docutils literal"><span class="pre">write_weighted_edgelist</span></code></a>(G,&nbsp;path[,&nbsp;comments,&nbsp;...])</td>
 <td>Write graph G as a list of edges with numeric weights.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.readwrite.edgelist.generate_edgelist.html#networkx.readwrite.edgelist.generate_edgelist" title="networkx.readwrite.edgelist.generate_edgelist"><tt class="xref py py-obj docutils literal"><span class="pre">generate_edgelist</span></tt></a>(G[,&nbsp;delimiter,&nbsp;data])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.readwrite.edgelist.generate_edgelist.html#networkx.readwrite.edgelist.generate_edgelist" title="networkx.readwrite.edgelist.generate_edgelist"><code class="xref py py-obj docutils literal"><span class="pre">generate_edgelist</span></code></a>(G[,&nbsp;delimiter,&nbsp;data])</td>
 <td>Generate a single line of the graph G in edge list format.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.readwrite.edgelist.parse_edgelist.html#networkx.readwrite.edgelist.parse_edgelist" title="networkx.readwrite.edgelist.parse_edgelist"><tt class="xref py py-obj docutils literal"><span class="pre">parse_edgelist</span></tt></a>(lines[,&nbsp;comments,&nbsp;delimiter,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.readwrite.edgelist.parse_edgelist.html#networkx.readwrite.edgelist.parse_edgelist" title="networkx.readwrite.edgelist.parse_edgelist"><code class="xref py py-obj docutils literal"><span class="pre">parse_edgelist</span></code></a>(lines[,&nbsp;comments,&nbsp;delimiter,&nbsp;...])</td>
 <td>Parse lines of an edge list representation of a graph.</td>
 </tr>
 </tbody>
@@ -272,7 +274,7 @@ self-loop edge.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

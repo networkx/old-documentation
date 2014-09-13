@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>minimum_node_cut &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>minimum_node_cut &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="Connectivity" href="../algorithms.connectivity.html"/>
         <link rel="next" title="minimum_st_edge_cut" href="networkx.algorithms.connectivity.cuts.minimum_st_edge_cut.html"/>
         <link rel="prev" title="minimum_edge_cut" href="networkx.algorithms.connectivity.cuts.minimum_edge_cut.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,10 +95,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../functions.html">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generators.html">Graph generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linalg.html">Linear algebra</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -190,7 +189,7 @@
 <h1>minimum_node_cut<a class="headerlink" href="#minimum-node-cut" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.algorithms.connectivity.cuts.minimum_node_cut">
-<tt class="descname">minimum_node_cut</tt><big>(</big><em>G</em>, <em>s=None</em>, <em>t=None</em>, <em>flow_func=None</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/connectivity/cuts.html#minimum_node_cut"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.connectivity.cuts.minimum_node_cut" title="Permalink to this definition">¶</a></dt>
+<code class="descname">minimum_node_cut</code><span class="sig-paren">(</span><em>G</em>, <em>s=None</em>, <em>t=None</em>, <em>flow_func=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/connectivity/cuts.html#minimum_node_cut"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.connectivity.cuts.minimum_node_cut" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a set of nodes of minimum cardinality that disconnects G.</p>
 <p>If source and target nodes are provided, this function returns the
 set of nodes of minimum cardinality that, if removed, would destroy
@@ -200,7 +199,7 @@ of nodes of minimum cardinality that disconnects G.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
 <p><strong>s</strong> : node</p>
 <blockquote>
 <div><p>Source node. Optional. Default value: None.</p>
@@ -214,15 +213,15 @@ of nodes of minimum cardinality that disconnects G.</p>
 <div><p>A function for computing the maximum flow among a pair of nodes.
 The function has to accept at least three parameters: a Digraph, 
 a source node, and a target node. And return a residual network 
-that follows NetworkX conventions (see <tt class="xref py py-meth docutils literal"><span class="pre">maximum_flow()</span></tt> for 
+that follows NetworkX conventions (see <code class="xref py py-meth docutils literal"><span class="pre">maximum_flow()</span></code> for 
 details). If flow_func is None, the default maximum flow function 
-(<tt class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></tt>) is used. See below for details. The
+(<code class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></code>) is used. See below for details. The
 choice of the default function may change from version
 to version and should not be relied on. Default value: None.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>cutset</strong> : set</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>cutset</strong> : set</p>
 <blockquote class="last">
 <div><p>Set of nodes that, if removed, would disconnect G. If source
 and target nodes are provided, the set contians the nodes that
@@ -232,9 +231,9 @@ if removed, would destroy all paths between source and target.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.connectivity.cuts.minimum_st_node_cut.html#networkx.algorithms.connectivity.cuts.minimum_st_node_cut" title="networkx.algorithms.connectivity.cuts.minimum_st_node_cut"><tt class="xref py py-meth docutils literal"><span class="pre">minimum_st_node_cut()</span></tt></a>, <tt class="xref py py-meth docutils literal"><span class="pre">minimum_cut()</span></tt>, <a class="reference internal" href="networkx.algorithms.connectivity.cuts.minimum_edge_cut.html#networkx.algorithms.connectivity.cuts.minimum_edge_cut" title="networkx.algorithms.connectivity.cuts.minimum_edge_cut"><tt class="xref py py-meth docutils literal"><span class="pre">minimum_edge_cut()</span></tt></a>, <tt class="xref py py-meth docutils literal"><span class="pre">stoer_wagner()</span></tt>, <tt class="xref py py-meth docutils literal"><span class="pre">node_connectivity()</span></tt>, <tt class="xref py py-meth docutils literal"><span class="pre">edge_connectivity()</span></tt>, <tt class="xref py py-meth docutils literal"><span class="pre">maximum_flow()</span></tt>, <tt class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></tt>, <tt class="xref py py-meth docutils literal"><span class="pre">preflow_push()</span></tt>, <tt class="xref py py-meth docutils literal"><span class="pre">shortest_augmenting_path()</span></tt></p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.connectivity.cuts.minimum_st_node_cut.html#networkx.algorithms.connectivity.cuts.minimum_st_node_cut" title="networkx.algorithms.connectivity.cuts.minimum_st_node_cut"><code class="xref py py-meth docutils literal"><span class="pre">minimum_st_node_cut()</span></code></a>, <code class="xref py py-meth docutils literal"><span class="pre">minimum_cut()</span></code>, <a class="reference internal" href="networkx.algorithms.connectivity.cuts.minimum_edge_cut.html#networkx.algorithms.connectivity.cuts.minimum_edge_cut" title="networkx.algorithms.connectivity.cuts.minimum_edge_cut"><code class="xref py py-meth docutils literal"><span class="pre">minimum_edge_cut()</span></code></a>, <code class="xref py py-meth docutils literal"><span class="pre">stoer_wagner()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">node_connectivity()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">edge_connectivity()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">maximum_flow()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">preflow_push()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">shortest_augmenting_path()</span></code></p>
 </div>
 <p class="rubric">Notes</p>
 <p>This is a flow based implementation of minimum node cut. The algorithm
@@ -242,7 +241,7 @@ is based in solving a number of maximum flow computations to determine
 the capacity of the minimum cut on an auxiliary directed network that
 corresponds to the minimum node cut of G. It handles both directed
 and undirected graphs. This implementation is based on algorithm 11 
-in <a class="reference internal" href="#r227">[R227]</a>.</p>
+in <a class="reference internal" href="#r227" id="id1">[R227]</a>.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r227" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -261,8 +260,8 @@ in <a class="reference internal" href="#r227">[R227]</a>.</p>
 </div>
 <p>You can use alternative flow algorithms for the underlying maximum
 flow computation. In dense networks the algorithm
-<tt class="xref py py-meth docutils literal"><span class="pre">shortest_augmenting_path()</span></tt> will usually perform better
-than the default <tt class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></tt>, which is faster for
+<code class="xref py py-meth docutils literal"><span class="pre">shortest_augmenting_path()</span></code> will usually perform better
+than the default <code class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></code>, which is faster for
 sparse networks with highly skewed degree distributions. Alternative
 flow functions have to be explicitly imported from the flow package.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.algorithms.flow</span> <span class="kn">import</span> <span class="n">shortest_augmenting_path</span>
@@ -279,7 +278,7 @@ this function returns a local st node cut.</p>
 <p>If you need to perform several local st cuts among different
 pairs of nodes on the same graph, it is recommended that you reuse
 the data structures used in the maximum flow computations. See 
-<a class="reference internal" href="networkx.algorithms.connectivity.cuts.minimum_st_node_cut.html#networkx.algorithms.connectivity.cuts.minimum_st_node_cut" title="networkx.algorithms.connectivity.cuts.minimum_st_node_cut"><tt class="xref py py-meth docutils literal"><span class="pre">minimum_st_node_cut()</span></tt></a> for details.</p>
+<a class="reference internal" href="networkx.algorithms.connectivity.cuts.minimum_st_node_cut.html#networkx.algorithms.connectivity.cuts.minimum_st_node_cut" title="networkx.algorithms.connectivity.cuts.minimum_st_node_cut"><code class="xref py py-meth docutils literal"><span class="pre">minimum_st_node_cut()</span></code></a> for details.</p>
 </dd></dl>
 
 </div>
@@ -323,7 +322,7 @@ the data structures used in the maximum flow computations. See
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

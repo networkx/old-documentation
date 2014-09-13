@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>havel_hakimi_graph &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>havel_hakimi_graph &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
         <link rel="next" title="directed_havel_hakimi_graph" href="networkx.generators.degree_seq.directed_havel_hakimi_graph.html"/>
         <link rel="prev" title="expected_degree_graph" href="networkx.generators.degree_seq.expected_degree_graph.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,12 +95,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../functions.html">Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../generators.html">Graph generators</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../generators.html">Graph generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linalg.html">Linear algebra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../convert.html">Converting to and from other data formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../relabel.html">Relabeling nodes</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -188,14 +187,14 @@
 <h1>havel_hakimi_graph<a class="headerlink" href="#havel-hakimi-graph" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.generators.degree_seq.havel_hakimi_graph">
-<tt class="descname">havel_hakimi_graph</tt><big>(</big><em>deg_sequence</em>, <em>create_using=None</em><big>)</big><a class="reference internal" href="../../_modules/networkx/generators/degree_seq.html#havel_hakimi_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.degree_seq.havel_hakimi_graph" title="Permalink to this definition">¶</a></dt>
+<code class="descname">havel_hakimi_graph</code><span class="sig-paren">(</span><em>deg_sequence</em>, <em>create_using=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/generators/degree_seq.html#havel_hakimi_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.degree_seq.havel_hakimi_graph" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a simple graph with given degree sequence constructed
 using the Havel-Hakimi algorithm.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deg_sequence: list of integers</strong></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>deg_sequence: list of integers</strong></p>
 <blockquote>
 <div><p>Each integer corresponds to the degree of a node (need not be sorted).</p>
 </div></blockquote>
@@ -206,7 +205,7 @@ Directed graphs are not allowed.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>NetworkXException</strong></p>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXException</strong></p>
 <blockquote class="last">
 <div><p>For a non-graphical degree sequence (i.e. one
 not realizable by some simple graph).</p>
@@ -222,8 +221,8 @@ of highest degree, resorting remaining nodes by degree, and
 repeating the process. The resulting graph has a high
 degree-associativity.  Nodes are labeled 1,.., len(deg_sequence),
 corresponding to their position in deg_sequence.</p>
-<p>The basic algorithm is from Hakimi <a class="reference internal" href="#r292">[R292]</a> and was generalized by
-Kleitman and Wang <a class="reference internal" href="#r293">[R293]</a>.</p>
+<p>The basic algorithm is from Hakimi <a class="reference internal" href="#r292" id="id1">[R292]</a> and was generalized by
+Kleitman and Wang <a class="reference internal" href="#r293" id="id2">[R293]</a>.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r292" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -284,7 +283,7 @@ and Factors  Discrete Mathematics, 6(1), pp. 79-88 (1973)</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

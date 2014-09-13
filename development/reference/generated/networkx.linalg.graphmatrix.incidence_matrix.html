@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>incidence_matrix &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>incidence_matrix &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="Linear algebra" href="../linalg.html"/>
         <link rel="next" title="laplacian_matrix" href="networkx.linalg.laplacianmatrix.laplacian_matrix.html"/>
         <link rel="prev" title="adjacency_matrix" href="networkx.linalg.graphmatrix.adjacency_matrix.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,13 +95,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../functions.html">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generators.html">Graph generators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../linalg.html">Linear algebra</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../linalg.html">Linear algebra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../convert.html">Converting to and from other data formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../relabel.html">Relabeling nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readwrite.html">Reading and writing graphs</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -188,7 +187,7 @@
 <h1>incidence_matrix<a class="headerlink" href="#incidence-matrix" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.linalg.graphmatrix.incidence_matrix">
-<tt class="descname">incidence_matrix</tt><big>(</big><em>G</em>, <em>nodelist=None</em>, <em>edgelist=None</em>, <em>oriented=False</em>, <em>weight=None</em><big>)</big><a class="reference internal" href="../../_modules/networkx/linalg/graphmatrix.html#incidence_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.linalg.graphmatrix.incidence_matrix" title="Permalink to this definition">¶</a></dt>
+<code class="descname">incidence_matrix</code><span class="sig-paren">(</span><em>G</em>, <em>nodelist=None</em>, <em>edgelist=None</em>, <em>oriented=False</em>, <em>weight=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/linalg/graphmatrix.html#incidence_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.linalg.graphmatrix.incidence_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return incidence matrix of G.</p>
 <p>The incidence matrix assigns each row to a node and each column to an edge.
 For a standard incidence matrix a 1 appears wherever a row&#8217;s node is
@@ -200,7 +199,7 @@ for the head of the edge.  The elements are zero otherwise.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
 <blockquote>
 <div><p>A NetworkX graph</p>
 </div></blockquote>
@@ -227,7 +226,7 @@ should be positive so that the orientation can provide the sign.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>A</strong> : SciPy sparse matrix</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>A</strong> : SciPy sparse matrix</p>
 <blockquote class="last">
 <div><p>The incidence matrix of G.</p>
 </div></blockquote>
@@ -239,7 +238,7 @@ should be positive so that the orientation can provide the sign.</p>
 <p>For MultiGraph/MultiDiGraph, the edges in edgelist should be
 (u,v,key) 3-tuples.</p>
 <p>&#8220;Networks are the best discrete model for so many problems in
-applied mathematics&#8221; <a class="reference internal" href="#r328">[R328]</a>.</p>
+applied mathematics&#8221; <a class="reference internal" href="#r328" id="id1">[R328]</a>.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r328" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -291,7 +290,7 @@ applied mathematics&#8221; <a class="reference internal" href="#r328">[R328]</a>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

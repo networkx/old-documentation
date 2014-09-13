@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tree &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>Tree &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../index.html"/>
         <link rel="up" title="Algorithms" href="algorithms.html"/>
         <link rel="next" title="is_tree" href="generated/networkx.algorithms.tree.recognition.is_tree.html"/>
         <link rel="prev" title="edge_dfs" href="generated/networkx.algorithms.traversal.edgedfs.edge_dfs.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#goals">Goals</a></li>
@@ -96,10 +95,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classes.html">Graph types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="functions.html">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generators.html">Graph generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linalg.html">Linear algebra</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../test.html">Testing</a><ul>
@@ -206,14 +205,15 @@ the previous convention&#8217;s branchings and arborescences, respectively. Then
 new terms, <em>polyforest</em> and <em>polytree</em>, are defined to correspond to the other
 convention&#8217;s forest and tree.</p>
 <p>Summarizing:</p>
-<div class="highlight-python"><pre>+-----------------------------+
+<div class="highlight-python"><div class="highlight"><pre>+-----------------------------+
 | Convention 1 | Convention 2 |
 +=============================+
 | forest       | polyforest   |
 | tree         | polytree     |
 | branching    | forest       |
 | arborescence | tree         |
-+-----------------------------+</pre>
++-----------------------------+
+</pre></div>
 </div>
 <p>Each convention has its reasons. The first convention emphasizes definitional
 similarity in that directed forests and trees are only concerned with
@@ -251,10 +251,10 @@ in-degree is equal to 1. In another convention, this is known as a tree.</dd>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.tree.recognition.is_tree.html#networkx.algorithms.tree.recognition.is_tree" title="networkx.algorithms.tree.recognition.is_tree"><tt class="xref py py-obj docutils literal"><span class="pre">is_tree</span></tt></a>(G)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.tree.recognition.is_tree.html#networkx.algorithms.tree.recognition.is_tree" title="networkx.algorithms.tree.recognition.is_tree"><code class="xref py py-obj docutils literal"><span class="pre">is_tree</span></code></a>(G)</td>
 <td>Returns <span class="math">\(True\)</span> if <span class="math">\(G\)</span> is a tree.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.tree.recognition.is_forest.html#networkx.algorithms.tree.recognition.is_forest" title="networkx.algorithms.tree.recognition.is_forest"><tt class="xref py py-obj docutils literal"><span class="pre">is_forest</span></tt></a>(G)</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.tree.recognition.is_forest.html#networkx.algorithms.tree.recognition.is_forest" title="networkx.algorithms.tree.recognition.is_forest"><code class="xref py py-obj docutils literal"><span class="pre">is_forest</span></code></a>(G)</td>
 <td>Returns <span class="math">\(True\)</span> if G is a forest.</td>
 </tr>
 </tbody>
@@ -301,7 +301,7 @@ in-degree is equal to 1. In another convention, this is known as a tree.</dd>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

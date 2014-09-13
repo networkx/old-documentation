@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>is_valid_degree_sequence_havel_hakimi &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>is_valid_degree_sequence_havel_hakimi &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="Graphical degree sequence" href="../algorithms.graphical.html"/>
         <link rel="next" title="is_valid_degree_sequence_erdos_gallai" href="networkx.algorithms.graphical.is_valid_degree_sequence_erdos_gallai.html"/>
         <link rel="prev" title="is_pseudographical" href="networkx.algorithms.graphical.is_pseudographical.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,10 +95,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../functions.html">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generators.html">Graph generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linalg.html">Linear algebra</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -190,7 +189,7 @@
 <h1>is_valid_degree_sequence_havel_hakimi<a class="headerlink" href="#is-valid-degree-sequence-havel-hakimi" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.algorithms.graphical.is_valid_degree_sequence_havel_hakimi">
-<tt class="descname">is_valid_degree_sequence_havel_hakimi</tt><big>(</big><em>deg_sequence</em><big>)</big><a class="reference internal" href="../../_modules/networkx/algorithms/graphical.html#is_valid_degree_sequence_havel_hakimi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.graphical.is_valid_degree_sequence_havel_hakimi" title="Permalink to this definition">¶</a></dt>
+<code class="descname">is_valid_degree_sequence_havel_hakimi</code><span class="sig-paren">(</span><em>deg_sequence</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/graphical.html#is_valid_degree_sequence_havel_hakimi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.graphical.is_valid_degree_sequence_havel_hakimi" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns True if deg_sequence can be realized by a simple graph.</p>
 <p>The validation proceeds using the Havel-Hakimi theorem.
 Worst-case run time is: O(s) where s is the sum of the sequence.</p>
@@ -198,14 +197,14 @@ Worst-case run time is: O(s) where s is the sum of the sequence.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>deg_sequence</strong> : list</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>deg_sequence</strong> : list</p>
 <blockquote>
 <div><p>A list of integers where each element specifies the degree of a node
 in a graph.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>valid</strong> : bool</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>valid</strong> : bool</p>
 <blockquote class="last">
 <div><p>True if deg_sequence is graphical and False if not.</p>
 </div></blockquote>
@@ -217,7 +216,7 @@ in a graph.</p>
 <p>The ZZ condition says that for the sequence d if</p>
 <div class="math">
 \[\begin{split}|d| &gt;= \frac{(\max(d) + \min(d) + 1)^2}{4*\min(d)}\end{split}\]</div>
-<p>then d is graphical.  This was shown in Theorem 6 in <a class="reference internal" href="#r256">[R256]</a>.</p>
+<p>then d is graphical.  This was shown in Theorem 6 in <a class="reference internal" href="#r256" id="id1">[R256]</a>.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r256" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -226,7 +225,7 @@ in a graph.</p>
 of graphic sequences&#8221;, Discrete Mathematics, 105, pp. 292-303 (1992).</td></tr>
 </tbody>
 </table>
-<p><a class="reference internal" href="../../bibliography.html#havel1955">[havel1955]</a>, <a class="reference internal" href="../../bibliography.html#hakimi1962">[hakimi1962]</a>, <a class="reference internal" href="../../bibliography.html#cl1996">[CL1996]</a></p>
+<p><a class="reference internal" href="../../bibliography.html#havel1955" id="id2">[havel1955]</a>, <a class="reference internal" href="../../bibliography.html#hakimi1962" id="id3">[hakimi1962]</a>, <a class="reference internal" href="../../bibliography.html#cl1996" id="id4">[CL1996]</a></p>
 </dd></dl>
 
 </div>
@@ -270,7 +269,7 @@ of graphic sequences&#8221;, Discrete Mathematics, 105, pp. 292-303 (1992).</td>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

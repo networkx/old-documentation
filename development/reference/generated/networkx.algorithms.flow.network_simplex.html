@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>network_simplex &mdash; NetworkX 2.0.dev20140913000009 documentation</title>
+  <title>network_simplex &mdash; NetworkX 2.0.dev20140913145834 documentation</title>
   
 
   
@@ -20,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140913145834 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -31,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140913000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140913145834 documentation" href="../../index.html"/>
         <link rel="up" title="Flows" href="../algorithms.flow.html"/>
         <link rel="next" title="min_cost_flow_cost" href="networkx.algorithms.flow.min_cost_flow_cost.html"/>
         <link rel="prev" title="build_residual_network" href="networkx.algorithms.flow.build_residual_network.html"/> 
@@ -61,7 +60,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul>
+            <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../overview.html#goals">Goals</a></li>
@@ -96,10 +95,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../classes.html">Graph types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../algorithms.html">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../functions.html">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generators.html">Graph generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../linalg.html">Linear algebra</a></li>
@@ -113,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../test.html">Testing</a><ul>
@@ -190,7 +189,7 @@
 <h1>network_simplex<a class="headerlink" href="#network-simplex" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.algorithms.flow.network_simplex">
-<tt class="descname">network_simplex</tt><big>(</big><em>G</em>, <em>demand='demand'</em>, <em>capacity='capacity'</em>, <em>weight='weight'</em><big>)</big><a class="headerlink" href="#networkx.algorithms.flow.network_simplex" title="Permalink to this definition">¶</a></dt>
+<code class="descname">network_simplex</code><span class="sig-paren">(</span><em>G</em>, <em>demand='demand'</em>, <em>capacity='capacity'</em>, <em>weight='weight'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/flow/networksimplex.html#network_simplex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.flow.network_simplex" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find a minimum cost flow satisfying all demands in digraph G.</p>
 <p>This is a primal network simplex algorithm that uses the leaving
 arc rule to prevent cycling.</p>
@@ -204,7 +203,7 @@ is equal to the demand of that node.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
 <blockquote>
 <div><p>DiGraph on which a minimum cost flow satisfying all demands is
 to be found.</p>
@@ -234,7 +233,7 @@ Default value: &#8216;weight&#8217;.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first">flowCost: integer, float</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">flowCost: integer, float</p>
 <blockquote>
 <div><p>Cost of a minimum cost flow satisfying all demands.</p>
 </div></blockquote>
@@ -245,7 +244,7 @@ flowDict[u][v] is the flow edge (u, v).</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
 <blockquote>
 <div><p>This exception is raised if the input graph is not directed,
 not connected or is a multigraph.</p>
@@ -272,9 +271,9 @@ satisfying all demands is unbounded below.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.flow.cost_of_flow.html#networkx.algorithms.flow.cost_of_flow" title="networkx.algorithms.flow.cost_of_flow"><tt class="xref py py-obj docutils literal"><span class="pre">cost_of_flow</span></tt></a>, <a class="reference internal" href="networkx.algorithms.flow.max_flow_min_cost.html#networkx.algorithms.flow.max_flow_min_cost" title="networkx.algorithms.flow.max_flow_min_cost"><tt class="xref py py-obj docutils literal"><span class="pre">max_flow_min_cost</span></tt></a>, <a class="reference internal" href="networkx.algorithms.flow.min_cost_flow.html#networkx.algorithms.flow.min_cost_flow" title="networkx.algorithms.flow.min_cost_flow"><tt class="xref py py-obj docutils literal"><span class="pre">min_cost_flow</span></tt></a>, <a class="reference internal" href="networkx.algorithms.flow.min_cost_flow_cost.html#networkx.algorithms.flow.min_cost_flow_cost" title="networkx.algorithms.flow.min_cost_flow_cost"><tt class="xref py py-obj docutils literal"><span class="pre">min_cost_flow_cost</span></tt></a></p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.flow.cost_of_flow.html#networkx.algorithms.flow.cost_of_flow" title="networkx.algorithms.flow.cost_of_flow"><code class="xref py py-obj docutils literal"><span class="pre">cost_of_flow</span></code></a>, <a class="reference internal" href="networkx.algorithms.flow.max_flow_min_cost.html#networkx.algorithms.flow.max_flow_min_cost" title="networkx.algorithms.flow.max_flow_min_cost"><code class="xref py py-obj docutils literal"><span class="pre">max_flow_min_cost</span></code></a>, <a class="reference internal" href="networkx.algorithms.flow.min_cost_flow.html#networkx.algorithms.flow.min_cost_flow" title="networkx.algorithms.flow.min_cost_flow"><code class="xref py py-obj docutils literal"><span class="pre">min_cost_flow</span></code></a>, <a class="reference internal" href="networkx.algorithms.flow.min_cost_flow_cost.html#networkx.algorithms.flow.min_cost_flow_cost" title="networkx.algorithms.flow.min_cost_flow_cost"><code class="xref py py-obj docutils literal"><span class="pre">min_cost_flow_cost</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
 <p>This algorithm is not guaranteed to work if edge weights
@@ -391,7 +390,7 @@ algorithm.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140913000009',
+            VERSION:'2.0.dev20140913145834',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
