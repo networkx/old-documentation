@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.drawing.nx_pylab &mdash; NetworkX 2.0.dev20140917000009 documentation</title>
+  <title>networkx.drawing.nx_pylab &mdash; NetworkX 2.0.dev20140918000008 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140917000009 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140918000008 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140917000009 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140918000008 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -299,11 +299,10 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">ax</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
 
- <span class="c"># allow callers to override the hold state by passing hold=True|False</span>
-
     <span class="k">if</span> <span class="s">&#39;with_labels&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwds</span><span class="p">:</span>
-        <span class="n">kwds</span><span class="p">[</span><span class="s">&#39;with_labels&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">kwds</span><span class="p">[</span><span class="s">&#39;with_labels&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;labels&#39;</span> <span class="ow">in</span> <span class="n">kwds</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">ishold</span><span class="p">()</span>
+    <span class="c"># allow callers to override the hold state by passing hold=True|False</span>
     <span class="n">h</span> <span class="o">=</span> <span class="n">kwds</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;hold&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">h</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">hold</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
@@ -1053,15 +1052,15 @@
 </div>
 <div class="viewcode-block" id="draw_circular"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pylab.draw_circular.html#networkx.drawing.nx_pylab.draw_circular">[docs]</a><span class="k">def</span> <span class="nf">draw_circular</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Draw the graph G with a circular layout.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    G : graph</span>
 <span class="sd">       A networkx graph</span>
-<span class="sd">       </span>
+
 <span class="sd">    **kwargs : optional keywords</span>
 <span class="sd">       See networkx.draw_networkx() for a description of optional keywords,</span>
-<span class="sd">       with the exception of the pos parameter which is not used by this </span>
+<span class="sd">       with the exception of the pos parameter which is not used by this</span>
 <span class="sd">       function.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">circular_layout</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1069,15 +1068,15 @@
 </div>
 <div class="viewcode-block" id="draw_random"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pylab.draw_random.html#networkx.drawing.nx_pylab.draw_random">[docs]</a><span class="k">def</span> <span class="nf">draw_random</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Draw the graph G with a random layout.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    G : graph</span>
 <span class="sd">       A networkx graph</span>
-<span class="sd">       </span>
+
 <span class="sd">    **kwargs : optional keywords</span>
 <span class="sd">       See networkx.draw_networkx() for a description of optional keywords,</span>
-<span class="sd">       with the exception of the pos parameter which is not used by this </span>
+<span class="sd">       with the exception of the pos parameter which is not used by this</span>
 <span class="sd">       function.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">random_layout</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1085,15 +1084,15 @@
 </div>
 <div class="viewcode-block" id="draw_spectral"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pylab.draw_spectral.html#networkx.drawing.nx_pylab.draw_spectral">[docs]</a><span class="k">def</span> <span class="nf">draw_spectral</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Draw the graph G with a spectral layout.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    G : graph</span>
 <span class="sd">       A networkx graph</span>
-<span class="sd">       </span>
+
 <span class="sd">    **kwargs : optional keywords</span>
 <span class="sd">       See networkx.draw_networkx() for a description of optional keywords,</span>
-<span class="sd">       with the exception of the pos parameter which is not used by this </span>
+<span class="sd">       with the exception of the pos parameter which is not used by this</span>
 <span class="sd">       function.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">spectral_layout</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1101,7 +1100,7 @@
 </div>
 <div class="viewcode-block" id="draw_spring"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pylab.draw_spring.html#networkx.drawing.nx_pylab.draw_spring">[docs]</a><span class="k">def</span> <span class="nf">draw_spring</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Draw the graph G with a spring layout.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    G : graph</span>
@@ -1109,7 +1108,7 @@
 
 <span class="sd">    **kwargs : optional keywords</span>
 <span class="sd">       See networkx.draw_networkx() for a description of optional keywords,</span>
-<span class="sd">       with the exception of the pos parameter which is not used by this </span>
+<span class="sd">       with the exception of the pos parameter which is not used by this</span>
 <span class="sd">       function.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1117,15 +1116,15 @@
 </div>
 <div class="viewcode-block" id="draw_shell"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pylab.draw_shell.html#networkx.drawing.nx_pylab.draw_shell">[docs]</a><span class="k">def</span> <span class="nf">draw_shell</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Draw networkx graph with shell layout.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    G : graph</span>
 <span class="sd">       A networkx graph</span>
-<span class="sd">       </span>
+
 <span class="sd">    **kwargs : optional keywords</span>
 <span class="sd">       See networkx.draw_networkx() for a description of optional keywords,</span>
-<span class="sd">       with the exception of the pos parameter which is not used by this </span>
+<span class="sd">       with the exception of the pos parameter which is not used by this</span>
 <span class="sd">       function.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">nlist</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;nlist&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
@@ -1177,7 +1176,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Sep 17, 2014.
+      Last updated on Sep 18, 2014.
     </p>
   </div>
 
@@ -1197,7 +1196,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20140917000009',
+            VERSION:'2.0.dev20140918000008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
