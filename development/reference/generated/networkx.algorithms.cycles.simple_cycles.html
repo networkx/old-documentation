@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>simple_cycles &mdash; NetworkX 2.0.dev20140925000008 documentation</title>
+  <title>simple_cycles &mdash; NetworkX 2.0.dev20140926000007 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140925000008 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140926000007 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140925000008 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140926000007 documentation" href="../../index.html"/>
         <link rel="up" title="Cycles" href="../algorithms.cycles.html"/>
         <link rel="next" title="Directed Acyclic Graphs" href="../algorithms.dag.html"/>
         <link rel="prev" title="cycle_basis" href="networkx.algorithms.cycles.cycle_basis.html"/> 
@@ -196,7 +196,7 @@ node appears twice, except that the first and last node are the same.
 Two elementary circuits are distinct if they are not cyclic permutations
 of each other.</p>
 <p>This is a nonrecursive, iterator/generator version of Johnson&#8217;s
-algorithm <a class="reference internal" href="#r238" id="id1">[R238]</a>.  There may be better algorithms for some cases <a class="reference internal" href="#r239" id="id2">[R239]</a> <a class="reference internal" href="#r240" id="id3">[R240]</a>.</p>
+algorithm <a class="reference internal" href="#r241" id="id1">[R241]</a>.  There may be better algorithms for some cases <a class="reference internal" href="#r242" id="id2">[R242]</a> <a class="reference internal" href="#r243" id="id3">[R243]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -221,7 +221,7 @@ a list of nodes with the first and last nodes being the same.</p>
 <p class="last"><a class="reference internal" href="networkx.algorithms.cycles.cycle_basis.html#networkx.algorithms.cycles.cycle_basis" title="networkx.algorithms.cycles.cycle_basis"><code class="xref py py-obj docutils literal"><span class="pre">cycle_basis</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>The implementation follows pp. 79-80 in <a class="reference internal" href="#r238" id="id4">[R238]</a>.</p>
+<p>The implementation follows pp. 79-80 in <a class="reference internal" href="#r241" id="id4">[R241]</a>.</p>
 <p>The time complexity is <span class="math">\(O((n+e)(c+1))\)</span> for <span class="math">\(n\)</span> nodes, <span class="math">\(e\)</span> edges and <span class="math">\(c\)</span>
 elementary circuits.</p>
 <p>To filter the cycles so that they don&#8217;t include certain nodes or edges,
@@ -234,25 +234,25 @@ copy your graph and eliminate those nodes or edges before calling.</p>
 </pre></div>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r238" rules="none">
+<table class="docutils citation" frame="void" id="r241" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R238]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id4">2</a>, <a class="fn-backref" href="#id5">3</a>)</em> Finding all the elementary circuits of a directed graph.
+<tr><td class="label">[R241]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id4">2</a>, <a class="fn-backref" href="#id5">3</a>)</em> Finding all the elementary circuits of a directed graph.
 D. B. Johnson, SIAM Journal on Computing 4, no. 1, 77-84, 1975.
 <a class="reference external" href="http://dx.doi.org/10.1137/0204007">http://dx.doi.org/10.1137/0204007</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r239" rules="none">
+<table class="docutils citation" frame="void" id="r242" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R239]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id6">2</a>)</em> Enumerating the cycles of a digraph: a new preprocessing strategy.
+<tr><td class="label">[R242]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id6">2</a>)</em> Enumerating the cycles of a digraph: a new preprocessing strategy.
 G. Loizou and P. Thanish, Information Sciences, v. 27, 163-182, 1982.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r240" rules="none">
+<table class="docutils citation" frame="void" id="r243" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R240]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id7">2</a>)</em> A search strategy for the elementary cycles of a directed graph.
+<tr><td class="label">[R243]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id7">2</a>)</em> A search strategy for the elementary cycles of a directed graph.
 J.L. Szwarcfiter and P.E. Lauer, BIT NUMERICAL MATHEMATICS,
 v. 16, no. 2, 192-204, 1976.</td></tr>
 </tbody>
@@ -286,7 +286,7 @@ v. 16, no. 2, 192-204, 1976.</td></tr>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Sep 25, 2014.
+      Last updated on Sep 26, 2014.
     </p>
   </div>
 
@@ -306,7 +306,7 @@ v. 16, no. 2, 192-204, 1976.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20140925000008',
+            VERSION:'2.0.dev20140926000007',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

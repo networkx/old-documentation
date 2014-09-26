@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.flow.capacityscaling &mdash; NetworkX 2.0.dev20140925000008 documentation</title>
+  <title>networkx.algorithms.flow.capacityscaling &mdash; NetworkX 2.0.dev20140926000007 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140925000008 documentation" href="../../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140926000007 documentation" href="../../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140925000008 documentation" href="../../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140926000007 documentation" href="../../../../index.html"/>
         <link rel="up" title="Module code" href="../../../index.html"/> 
 
   
@@ -220,7 +220,7 @@
     <span class="k">if</span> <span class="n">nx</span><span class="o">.</span><span class="n">negative_edge_cycle</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
         <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXUnbounded</span><span class="p">(</span>
             <span class="s">&#39;Negative cost cycle of infinite capacity found. &#39;</span>
-            <span class="s">&#39;Min cost flow unbounded below.&#39;</span><span class="p">)</span>
+            <span class="s">&#39;Min cost flow may be unbounded below.&#39;</span><span class="p">)</span>
 
 
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;undirected&#39;</span><span class="p">)</span>
@@ -240,7 +240,7 @@
         <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">capacity</span><span class="p">,</span> <span class="n">inf</span><span class="p">)</span> <span class="o">==</span> <span class="n">inf</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXUnbounded</span><span class="p">(</span>
                 <span class="s">&#39;Negative cost cycle of infinite capacity found. &#39;</span>
-                <span class="s">&#39;Min cost flow bounded below.&#39;</span><span class="p">)</span>
+                <span class="s">&#39;Min cost flow may be unbounded below.&#39;</span><span class="p">)</span>
 
     <span class="c"># Extract edges with positive capacities. Self loops excluded.</span>
     <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
@@ -373,7 +373,7 @@
 <span class="sd">    ------</span>
 <span class="sd">    NetworkXError</span>
 <span class="sd">        This exception is raised if the input graph is not directed,</span>
-<span class="sd">        not connected or is a multigraph.</span>
+<span class="sd">        not connected.</span>
 
 <span class="sd">    NetworkXUnfeasible</span>
 <span class="sd">        This exception is raised in the following situations:</span>
@@ -566,7 +566,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Sep 25, 2014.
+      Last updated on Sep 26, 2014.
     </p>
   </div>
 
@@ -586,7 +586,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../../',
-            VERSION:'2.0.dev20140925000008',
+            VERSION:'2.0.dev20140926000007',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
