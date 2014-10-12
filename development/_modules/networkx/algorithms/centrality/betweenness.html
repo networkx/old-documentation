@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.centrality.betweenness &mdash; NetworkX 2.0.dev20141011000008 documentation</title>
+  <title>networkx.algorithms.centrality.betweenness &mdash; NetworkX 2.0.dev20141012000008 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141011000008 documentation" href="../../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141012000008 documentation" href="../../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20141011000008 documentation" href="../../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20141012000008 documentation" href="../../../../index.html"/>
         <link rel="up" title="Module code" href="../../../index.html"/> 
 
   
@@ -178,6 +178,7 @@
           <div role="main">
             
   <h1>Source code for networkx.algorithms.centrality.betweenness</h1><div class="highlight"><pre>
+<span class="c"># coding=utf8</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Betweenness centrality measures.</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -251,7 +252,8 @@
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    The algorithm is from Ulrik Brandes [1]_.</span>
-<span class="sd">    See [2]_ for details on algorithms for variations and related metrics.</span>
+<span class="sd">    See [4]_ for the original first published version and [2]_ for details on</span>
+<span class="sd">    algorithms for variations and related metrics.</span>
 
 <span class="sd">    For approximate betweenness calculations set k=#samples to use</span>
 <span class="sd">    k nodes (&quot;pivots&quot;) to estimate the betweenness values. For an estimate</span>
@@ -263,11 +265,12 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1]  A Faster Algorithm for Betweenness Centrality.</span>
-<span class="sd">       Ulrik Brandes,</span>
+<span class="sd">    .. [1] Ulrik Brandes:</span>
+<span class="sd">       A Faster Algorithm for Betweenness Centrality.</span>
 <span class="sd">       Journal of Mathematical Sociology 25(2):163-177, 2001.</span>
 <span class="sd">       http://www.inf.uni-konstanz.de/algo/publications/b-fabc-01.pdf</span>
-<span class="sd">    .. [2] Ulrik Brandes: On Variants of Shortest-Path Betweenness</span>
+<span class="sd">    .. [2] Ulrik Brandes:</span>
+<span class="sd">       On Variants of Shortest-Path Betweenness</span>
 <span class="sd">       Centrality and their Generic Computation.</span>
 <span class="sd">       Social Networks 30(2):136-145, 2008.</span>
 <span class="sd">       http://www.inf.uni-konstanz.de/algo/publications/b-vspbc-08.pdf</span>
@@ -275,6 +278,11 @@
 <span class="sd">       Centrality Estimation in Large Networks.</span>
 <span class="sd">       International Journal of Bifurcation and Chaos 17(7):2303-2318, 2007.</span>
 <span class="sd">       http://www.inf.uni-konstanz.de/algo/publications/bp-celn-06.pdf</span>
+<span class="sd">    .. [4] Linton C. Freeman:</span>
+<span class="sd">       A set of measures of centrality based on betweenness.</span>
+<span class="sd">       Sociometry 40: 35–41, 1977</span>
+<span class="sd">       http://moreno.ss.uci.edu/23.pdf</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">betweenness</span> <span class="o">=</span> <span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>  <span class="c"># b[v]=0 for v in G</span>
     <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
@@ -532,7 +540,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Oct 11, 2014.
+      Last updated on Oct 12, 2014.
     </p>
   </div>
 
@@ -552,7 +560,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../../',
-            VERSION:'2.0.dev20141011000008',
+            VERSION:'2.0.dev20141012000008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

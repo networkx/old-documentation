@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>katz_centrality &mdash; NetworkX 2.0.dev20141011000008 documentation</title>
+  <title>katz_centrality &mdash; NetworkX 2.0.dev20141012000008 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141011000008 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141012000008 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20141011000008 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20141012000008 documentation" href="../../index.html"/>
         <link rel="up" title="Centrality" href="../algorithms.centrality.html"/>
         <link rel="next" title="katz_centrality_numpy" href="networkx.algorithms.centrality.katz_centrality_numpy.html"/>
         <link rel="prev" title="eigenvector_centrality_numpy" href="networkx.algorithms.centrality.eigenvector_centrality_numpy.html"/> 
@@ -191,8 +191,9 @@
 <dt id="networkx.algorithms.centrality.katz_centrality">
 <code class="descname">katz_centrality</code><span class="sig-paren">(</span><em>G</em>, <em>alpha=0.1</em>, <em>beta=1.0</em>, <em>max_iter=1000</em>, <em>tol=1e-06</em>, <em>nstart=None</em>, <em>normalized=True</em>, <em>weight='weight'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/centrality/katz.html#katz_centrality"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.centrality.katz_centrality" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the Katz centrality for the nodes of the graph G.</p>
-<p>Katz centrality is related to eigenvalue centrality and PageRank.
-The Katz centrality for node <span class="math">\(i\)</span> is</p>
+<p>Katz centrality computes the centrality for a node based on the centrality
+of its neighbors. It is a generalization of the eigenvector centrality. The
+Katz centrality for node <span class="math">\(i\)</span> is</p>
 <div class="math">
 \[x_i = \alpha \sum_{j} A_{ij} x_j + \beta,\]</div>
 <p>where <span class="math">\(A\)</span> is the adjacency matrix of the graph G with eigenvalues <span class="math">\(\lambda\)</span>.</p>
@@ -208,7 +209,7 @@ parameter <span class="math">\(\beta\)</span>.  Connections made with distant ne
 are, however, penalized by an attenuation factor <span class="math">\(\alpha\)</span> which
 should be strictly less than the inverse largest eigenvalue of the
 adjacency matrix in order for the Katz centrality to be computed
-correctly. More information is provided in <a class="reference internal" href="#r198" id="id1">[R198]</a> .</p>
+correctly. More information is provided in <a class="reference internal" href="#r212" id="id1">[R212]</a> .</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -223,7 +224,7 @@ correctly. More information is provided in <a class="reference internal" href="#
 </div></blockquote>
 <p><strong>beta</strong> : scalar or dictionary, optional (default=1.0)</p>
 <blockquote>
-<div><p>Weight attributed to the immediate neighborhood. If not a scalar the
+<div><p>Weight attributed to the immediate neighborhood. If not a scalar, the
 dictionary must have an value for every node.</p>
 </div></blockquote>
 <p><strong>max_iter</strong> : integer, optional (default=1000)</p>
@@ -250,8 +251,15 @@ Otherwise holds the name of the edge attribute used as weight.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>nodes</strong> : dictionary</p>
-<blockquote class="last">
+<blockquote>
 <div><p>Dictionary of nodes with Katz centrality as the value.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
+<blockquote class="last">
+<div><p>If the parameter <span class="math">\(beta\)</span> is not a scalar but lacks a value for at least
+one node</p>
 </div></blockquote>
 </td>
 </tr>
@@ -262,23 +270,34 @@ Otherwise holds the name of the edge attribute used as weight.</p>
 <p class="last"><a class="reference internal" href="networkx.algorithms.centrality.katz_centrality_numpy.html#networkx.algorithms.centrality.katz_centrality_numpy" title="networkx.algorithms.centrality.katz_centrality_numpy"><code class="xref py py-obj docutils literal"><span class="pre">katz_centrality_numpy</span></code></a>, <a class="reference internal" href="networkx.algorithms.centrality.eigenvector_centrality.html#networkx.algorithms.centrality.eigenvector_centrality" title="networkx.algorithms.centrality.eigenvector_centrality"><code class="xref py py-obj docutils literal"><span class="pre">eigenvector_centrality</span></code></a>, <a class="reference internal" href="networkx.algorithms.centrality.eigenvector_centrality_numpy.html#networkx.algorithms.centrality.eigenvector_centrality_numpy" title="networkx.algorithms.centrality.eigenvector_centrality_numpy"><code class="xref py py-obj docutils literal"><span class="pre">eigenvector_centrality_numpy</span></code></a>, <code class="xref py py-obj docutils literal"><span class="pre">pagerank</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">hits</span></code></p>
 </div>
 <p class="rubric">Notes</p>
+<p>Katz centrality was introduced by <a class="reference internal" href="#r213" id="id2">[R213]</a>.</p>
 <p>This algorithm it uses the power method to find the eigenvector
 corresponding to the largest eigenvalue of the adjacency matrix of G.
 The constant alpha should be strictly less than the inverse of largest
 eigenvalue of the adjacency matrix for the algorithm to converge.
 The iteration will stop after max_iter iterations or an error tolerance of
 number_of_nodes(G)*tol has been reached.</p>
-<p>When <span class="math">\(\alpha = 1/\lambda_{max}\)</span> and <span class="math">\(\beta=1\)</span> Katz centrality is the same as
-eigenvector centrality.</p>
+<p>When <span class="math">\(\alpha = 1/\lambda_{max}\)</span> and <span class="math">\(\beta=0\)</span>, Katz centrality is the same
+as eigenvector centrality.</p>
 <p>For directed graphs this finds &#8220;left&#8221; eigenvectors which corresponds
-to the in-edges in the graph.  For out-edges Katz centrality
+to the in-edges in the graph. For out-edges Katz centrality
 first reverse the graph with G.reverse().</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r198" rules="none">
+<table class="docutils citation" frame="void" id="r212" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R198]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> M. Newman, Networks: An Introduction. Oxford University Press,
-USA, 2010, p. 720.</td></tr>
+<tr><td class="label">[R212]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> Mark E. J. Newman:
+Networks: An Introduction.
+Oxford University Press, USA, 2010, p. 720.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r213" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[R213]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> Leo Katz:
+A New Status Index Derived from Sociometric Index.
+Psychometrika 18(1):39–43, 1953
+<a class="reference external" href="http://phya.snu.ac.kr/~dkim/PRL87278701.pdf">http://phya.snu.ac.kr/~dkim/PRL87278701.pdf</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -317,7 +336,7 @@ USA, 2010, p. 720.</td></tr>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Oct 11, 2014.
+      Last updated on Oct 12, 2014.
     </p>
   </div>
 
@@ -337,7 +356,7 @@ USA, 2010, p. 720.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20141011000008',
+            VERSION:'2.0.dev20141012000008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

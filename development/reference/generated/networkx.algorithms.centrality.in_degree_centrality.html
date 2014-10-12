@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>in_degree_centrality &mdash; NetworkX 2.0.dev20141011000008 documentation</title>
+  <title>in_degree_centrality &mdash; NetworkX 2.0.dev20141012000008 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141011000008 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141012000008 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20141011000008 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20141012000008 documentation" href="../../index.html"/>
         <link rel="up" title="Centrality" href="../algorithms.centrality.html"/>
         <link rel="next" title="out_degree_centrality" href="networkx.algorithms.centrality.out_degree_centrality.html"/>
         <link rel="prev" title="degree_centrality" href="networkx.algorithms.centrality.degree_centrality.html"/> 
@@ -204,8 +204,14 @@ incoming edges are connected to.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>nodes</strong> : dictionary</p>
-<blockquote class="last">
+<blockquote>
 <div><p>Dictionary of nodes with in-degree centrality as values.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
+<blockquote class="last">
+<div><p>If the graph is undirected.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -244,7 +250,7 @@ are possible.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Oct 11, 2014.
+      Last updated on Oct 12, 2014.
     </p>
   </div>
 
@@ -264,7 +270,7 @@ are possible.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20141011000008',
+            VERSION:'2.0.dev20141012000008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

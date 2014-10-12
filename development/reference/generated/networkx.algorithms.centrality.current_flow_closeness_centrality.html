@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>current_flow_closeness_centrality &mdash; NetworkX 2.0.dev20141011000008 documentation</title>
+  <title>current_flow_closeness_centrality &mdash; NetworkX 2.0.dev20141012000008 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141011000008 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141012000008 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20141011000008 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20141012000008 documentation" href="../../index.html"/>
         <link rel="up" title="Centrality" href="../algorithms.centrality.html"/>
         <link rel="next" title="current_flow_betweenness_centrality" href="networkx.algorithms.centrality.current_flow_betweenness_centrality.html"/>
         <link rel="prev" title="edge_betweenness_centrality" href="networkx.algorithms.centrality.edge_betweenness_centrality.html"/> 
@@ -191,9 +191,9 @@
 <dt id="networkx.algorithms.centrality.current_flow_closeness_centrality">
 <code class="descname">current_flow_closeness_centrality</code><span class="sig-paren">(</span><em>G</em>, <em>weight='weight'</em>, <em>dtype=&lt;type 'float'&gt;</em>, <em>solver='lu'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/centrality/current_flow_closeness.html#current_flow_closeness_centrality"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.centrality.current_flow_closeness_centrality" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute current-flow closeness centrality for nodes.</p>
-<p>A variant of closeness centrality based on effective
-resistance between nodes in a network.  This metric
-is also known as information centrality.</p>
+<p>Current-flow closeness centrality is variant of closeness
+centrality based on effective resistance between nodes in
+a network. This metric is also known as information centrality.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -228,25 +228,25 @@ Options are &#8220;full&#8221; (uses most memory), &#8220;lu&#8221; (recommended
 <p class="last"><a class="reference internal" href="networkx.algorithms.centrality.closeness_centrality.html#networkx.algorithms.centrality.closeness_centrality" title="networkx.algorithms.centrality.closeness_centrality"><code class="xref py py-obj docutils literal"><span class="pre">closeness_centrality</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>The algorithm is from Brandes <a class="reference internal" href="#r190" id="id1">[R190]</a>.</p>
-<p>See also <a class="reference internal" href="#r191" id="id2">[R191]</a> for the original definition of information centrality.</p>
+<p>The algorithm is from Brandes <a class="reference internal" href="#r200" id="id1">[R200]</a>.</p>
+<p>See also <a class="reference internal" href="#r201" id="id2">[R201]</a> for the original definition of information centrality.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r190" rules="none">
+<table class="docutils citation" frame="void" id="r200" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R190]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> Ulrik Brandes and Daniel Fleischer,
+<tr><td class="label">[R200]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> Ulrik Brandes and Daniel Fleischer,
 Centrality Measures Based on Current Flow.
 Proc. 22nd Symp. Theoretical Aspects of Computer Science (STACS &#8216;05).
 LNCS 3404, pp. 533-544. Springer-Verlag, 2005.
 <a class="reference external" href="http://www.inf.uni-konstanz.de/algo/publications/bf-cmbcf-05.pdf">http://www.inf.uni-konstanz.de/algo/publications/bf-cmbcf-05.pdf</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r191" rules="none">
+<table class="docutils citation" frame="void" id="r201" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R191]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> Stephenson, K. and Zelen, M.
+<tr><td class="label">[R201]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> Karen Stephenson and Marvin Zelen:
 Rethinking centrality: Methods and examples.
-Social Networks. Volume 11, Issue 1, March 1989, pp. 1-37
+Social Networks 11(1):1-37, 1989.
 <a class="reference external" href="http://dx.doi.org/10.1016/0378-8733(89)90016-6">http://dx.doi.org/10.1016/0378-8733(89)90016-6</a></td></tr>
 </tbody>
 </table>
@@ -273,7 +273,7 @@ Social Networks. Volume 11, Issue 1, March 1989, pp. 1-37
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Oct 11, 2014.
+      Last updated on Oct 12, 2014.
     </p>
   </div>
 
@@ -293,7 +293,7 @@ Social Networks. Volume 11, Issue 1, March 1989, pp. 1-37
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20141011000008',
+            VERSION:'2.0.dev20141012000008',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
