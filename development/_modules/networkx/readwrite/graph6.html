@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.readwrite.graph6 &mdash; NetworkX 2.0.dev20141030000009 documentation</title>
+  <title>networkx.readwrite.graph6 &mdash; NetworkX 2.0.dev20141031000005 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141030000009 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141031000005 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20141030000009 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20141031000005 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -468,6 +468,12 @@
             <span class="p">(</span><span class="n">n</span><span class="o">&gt;&gt;</span><span class="mi">30</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x3f</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="o">&gt;&gt;</span><span class="mi">24</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x3f</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="o">&gt;&gt;</span><span class="mi">18</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x3f</span><span class="p">,</span>
             <span class="p">(</span><span class="n">n</span><span class="o">&gt;&gt;</span><span class="mi">12</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x3f</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="o">&gt;&gt;</span><span class="mi">6</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x3f</span><span class="p">,</span> <span class="n">n</span> <span class="o">&amp;</span> <span class="mh">0x3f</span><span class="p">]</span>
     <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s">&quot;Numbers above 68719476735 are not supported by graph6&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">teardown_module</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s">&#39;test.g6&#39;</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="s">&#39;test.g6&#39;</span><span class="p">)</span>
 </pre></div>
 
           </div>
@@ -479,7 +485,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Oct 30, 2014.
+      Last updated on Oct 31, 2014.
     </p>
   </div>
 
@@ -499,7 +505,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20141030000009',
+            VERSION:'2.0.dev20141031000005',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
