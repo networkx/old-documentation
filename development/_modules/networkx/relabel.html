@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.relabel &mdash; NetworkX 2.0.dev20141031000005 documentation</title>
+  <title>networkx.relabel &mdash; NetworkX 2.0.dev20141101000009 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141031000005 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141101000009 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20141031000005 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20141101000009 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -292,18 +292,18 @@
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s">&quot;Node </span><span class="si">%s</span><span class="s"> is not in the graph&quot;</span><span class="o">%</span><span class="n">old</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">multigraph</span><span class="p">:</span>
-            <span class="n">new_edges</span> <span class="o">=</span> <span class="p">[(</span><span class="n">new</span><span class="p">,</span> <span class="n">old</span> <span class="o">==</span> <span class="n">target</span> <span class="ow">and</span> <span class="n">new</span> <span class="ow">or</span> <span class="n">target</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+            <span class="n">new_edges</span> <span class="o">=</span> <span class="p">[(</span><span class="n">new</span><span class="p">,</span> <span class="n">new</span> <span class="k">if</span> <span class="n">old</span> <span class="o">==</span> <span class="n">target</span> <span class="k">else</span> <span class="n">target</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
                          <span class="k">for</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="n">target</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">data</span><span class="p">)</span>
                          <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">old</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="bp">True</span><span class="p">)]</span>
             <span class="k">if</span> <span class="n">directed</span><span class="p">:</span>
-                <span class="n">new_edges</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">old</span> <span class="o">==</span> <span class="n">source</span> <span class="ow">and</span> <span class="n">new</span> <span class="ow">or</span> <span class="n">source</span><span class="p">,</span> <span class="n">new</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+                <span class="n">new_edges</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">new</span> <span class="k">if</span> <span class="n">old</span> <span class="o">==</span> <span class="n">source</span> <span class="k">else</span> <span class="n">source</span><span class="p">,</span> <span class="n">new</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
                               <span class="k">for</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span><span class="n">data</span><span class="p">)</span>
                               <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">in_edges</span><span class="p">(</span><span class="n">old</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="bp">True</span><span class="p">)]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">new_edges</span> <span class="o">=</span> <span class="p">[(</span><span class="n">new</span><span class="p">,</span> <span class="n">old</span> <span class="o">==</span> <span class="n">target</span> <span class="ow">and</span> <span class="n">new</span> <span class="ow">or</span> <span class="n">target</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+            <span class="n">new_edges</span> <span class="o">=</span> <span class="p">[(</span><span class="n">new</span><span class="p">,</span> <span class="n">new</span> <span class="k">if</span> <span class="n">old</span> <span class="o">==</span> <span class="n">target</span> <span class="k">else</span> <span class="n">target</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
                          <span class="k">for</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="n">target</span><span class="p">,</span><span class="n">data</span><span class="p">)</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">old</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">)]</span>
             <span class="k">if</span> <span class="n">directed</span><span class="p">:</span>
-                <span class="n">new_edges</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">old</span> <span class="o">==</span> <span class="n">source</span> <span class="ow">and</span> <span class="n">new</span> <span class="ow">or</span> <span class="n">source</span><span class="p">,</span><span class="n">new</span><span class="p">,</span><span class="n">data</span><span class="p">)</span>
+                <span class="n">new_edges</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">new</span> <span class="k">if</span> <span class="n">old</span> <span class="o">==</span> <span class="n">source</span> <span class="k">else</span> <span class="n">source</span><span class="p">,</span><span class="n">new</span><span class="p">,</span><span class="n">data</span><span class="p">)</span>
                               <span class="k">for</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span><span class="n">_</span><span class="p">,</span><span class="n">data</span><span class="p">)</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">in_edges</span><span class="p">(</span><span class="n">old</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">)]</span>
         <span class="n">G</span><span class="o">.</span><span class="n">remove_node</span><span class="p">(</span><span class="n">old</span><span class="p">)</span>
         <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">new_edges</span><span class="p">)</span>
@@ -394,7 +394,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Oct 31, 2014.
+      Last updated on Nov 01, 2014.
     </p>
   </div>
 
@@ -414,7 +414,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20141031000005',
+            VERSION:'2.0.dev20141101000009',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
