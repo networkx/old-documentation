@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Version 2.0 Notes and API Changes &mdash; NetworkX 2.0.dev20141103000008 documentation</title>
+  <title>Version 2.0 Notes and API Changes &mdash; NetworkX 2.0.dev20141104000009 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141103000008 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141104000009 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20141103000008 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20141104000009 documentation" href="../index.html"/>
         <link rel="up" title="API changes" href="api_changes.html"/>
         <link rel="next" title="Version 1.9 notes and API changes" href="api_1.9.html"/>
         <link rel="prev" title="API changes" href="api_changes.html"/> 
@@ -211,12 +211,20 @@ package to find a cycle in a graph. Edge orientations can be optionally reversed
 or ignored.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1210">#1210</a>]
 Add a random generator for the duplication-divergence model.</li>
-<li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1210">#1241</a>]
+<li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1241">#1241</a>]
 A new <code class="samp docutils literal"><span class="pre">networkx.algorithms.dominance</span></code> package is added for
 dominance/dominator algorithms on directed graphs. It contains a
 <code class="samp docutils literal"><span class="pre">immediate_dominators</span></code> function for computing immediate
 dominators/dominator trees and a <code class="samp docutils literal"><span class="pre">dominance_frontiers</span></code> function for
 computing dominance frontiers.</li>
+<li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1269">#1269</a>]
+The GML reader/parser and writer/generator are rewritten to remove the
+dependence on pyparsing and enable handling of arbitrary graph data.</li>
+<li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1280">#1280</a>]
+The network simplex method in the <code class="samp docutils literal"><span class="pre">networkx.algorithms.flow</span></code> package is
+rewritten to improve its performance and support multi- and disconnected
+networks. For some cases, the new implementation is two or three orders of
+magnitude faster than the old implementation.</li>
 </ul>
 </div>
 <div class="section" id="removed-functionalities">
@@ -254,7 +262,7 @@ Support for Python 2.6 is dropped.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Nov 03, 2014.
+      Last updated on Nov 04, 2014.
     </p>
   </div>
 
@@ -274,7 +282,7 @@ Support for Python 2.6 is dropped.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20141103000008',
+            VERSION:'2.0.dev20141104000009',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

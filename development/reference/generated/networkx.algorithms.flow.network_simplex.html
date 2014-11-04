@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>network_simplex &mdash; NetworkX 2.0.dev20141103000008 documentation</title>
+  <title>network_simplex &mdash; NetworkX 2.0.dev20141104000009 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141103000008 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141104000009 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20141103000008 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20141104000009 documentation" href="../../index.html"/>
         <link rel="up" title="Flows" href="../algorithms.flow.html"/>
         <link rel="next" title="min_cost_flow_cost" href="networkx.algorithms.flow.min_cost_flow_cost.html"/>
         <link rel="prev" title="build_residual_network" href="networkx.algorithms.flow.build_residual_network.html"/> 
@@ -280,18 +280,33 @@ satisfying all demands is unbounded below.</p>
 are floating point numbers (overflows and roundoff errors can
 cause problems).</p>
 <p class="rubric">References</p>
-<p>W. J. Cook, W. H. Cunningham, W. R. Pulleyblank and A. Schrijver.
-Combinatorial Optimization. Wiley-Interscience, 1998.</p>
+<table class="docutils citation" frame="void" id="r277" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[R277]</a></td><td>Z. Kiraly, P. Kovacs.
+Efficient implementation of minimum-cost flow algorithms.
+Acta Universitatis Sapientiae, Informatica 4(1):67&#8211;118. 2012.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r278" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[R278]</a></td><td>R. Barr, F. Glover, D. Klingman.
+Enhancement of spanning tree labeling procedures for network
+optimization.
+INFOR 17(1):16&#8211;34. 1979.</td></tr>
+</tbody>
+</table>
 <p class="rubric">Examples</p>
 <p>A simple example of a min cost flow problem.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="n">demand</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="n">demand</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">capacity</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="n">capacity</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">capacity</span> <span class="o">=</span> <span class="mi">9</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">capacity</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="n">demand</span><span class="o">=-</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="n">demand</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">flowCost</span><span class="p">,</span> <span class="n">flowDict</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">network_simplex</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">flowCost</span>
 <span class="go">24</span>
@@ -306,15 +321,15 @@ node v a demand a 1. Then run the network simplex. The value of a
 min cost flow will be the distance between u and v and edges
 carrying positive flow will indicate the path.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_weighted_edges_from</span><span class="p">([(</span><span class="s">&#39;s&#39;</span><span class="p">,</span><span class="s">&#39;u&#39;</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;s&#39;</span><span class="p">,</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span>
-<span class="gp">... </span>                           <span class="p">(</span><span class="s">&#39;u&#39;</span><span class="p">,</span><span class="s">&#39;v&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;u&#39;</span><span class="p">,</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
-<span class="gp">... </span>                           <span class="p">(</span><span class="s">&#39;v&#39;</span><span class="p">,</span><span class="s">&#39;y&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;u&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
-<span class="gp">... </span>                           <span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;v&#39;</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span><span class="s">&#39;y&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
-<span class="gp">... </span>                           <span class="p">(</span><span class="s">&#39;y&#39;</span><span class="p">,</span><span class="s">&#39;s&#39;</span><span class="p">,</span><span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;y&#39;</span><span class="p">,</span><span class="s">&#39;v&#39;</span><span class="p">,</span><span class="mi">6</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_weighted_edges_from</span><span class="p">([(</span><span class="s">&#39;s&#39;</span><span class="p">,</span> <span class="s">&#39;u&#39;</span> <span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;s&#39;</span> <span class="p">,</span><span class="s">&#39;x&#39;</span> <span class="p">,</span><span class="mi">5</span><span class="p">),</span>
+<span class="gp">... </span>                           <span class="p">(</span><span class="s">&#39;u&#39;</span><span class="p">,</span> <span class="s">&#39;v&#39;</span> <span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;u&#39;</span> <span class="p">,</span><span class="s">&#39;x&#39;</span> <span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+<span class="gp">... </span>                           <span class="p">(</span><span class="s">&#39;v&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span> <span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;x&#39;</span> <span class="p">,</span><span class="s">&#39;u&#39;</span> <span class="p">,</span><span class="mi">3</span><span class="p">),</span>
+<span class="gp">... </span>                           <span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="s">&#39;v&#39;</span> <span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;x&#39;</span> <span class="p">,</span><span class="s">&#39;y&#39;</span> <span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+<span class="gp">... </span>                           <span class="p">(</span><span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;s&#39;</span> <span class="p">,</span><span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;y&#39;</span> <span class="p">,</span><span class="s">&#39;v&#39;</span> <span class="p">,</span><span class="mi">6</span><span class="p">)])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s">&#39;s&#39;</span><span class="p">,</span> <span class="n">demand</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s">&#39;v&#39;</span><span class="p">,</span> <span class="n">demand</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">flowCost</span><span class="p">,</span> <span class="n">flowDict</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">network_simplex</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">flowCost</span> <span class="o">==</span> <span class="n">nx</span><span class="o">.</span><span class="n">shortest_path_length</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s">&#39;s&#39;</span><span class="p">,</span> <span class="s">&#39;v&#39;</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="s">&#39;weight&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flowCost</span> <span class="o">==</span> <span class="n">nx</span><span class="o">.</span><span class="n">shortest_path_length</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s">&#39;s&#39;</span><span class="p">,</span> <span class="s">&#39;v&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">)</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">([(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">flowDict</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">flowDict</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="k">if</span> <span class="n">flowDict</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">])</span>
 <span class="go">[(&#39;s&#39;, &#39;x&#39;), (&#39;u&#39;, &#39;v&#39;), (&#39;x&#39;, &#39;u&#39;)]</span>
@@ -325,22 +340,22 @@ carrying positive flow will indicate the path.</p>
 <p>It is possible to change the name of the attributes used for the
 algorithm.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s">&#39;p&#39;</span><span class="p">,</span> <span class="n">spam</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s">&#39;q&#39;</span><span class="p">,</span> <span class="n">spam</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="n">spam</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="n">spam</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s">&#39;t&#39;</span><span class="p">,</span> <span class="n">spam</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">spam</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;p&#39;</span><span class="p">,</span> <span class="s">&#39;q&#39;</span><span class="p">,</span> <span class="n">cost</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span> <span class="n">vacancies</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;p&#39;</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="n">cost</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vacancies</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;q&#39;</span><span class="p">,</span> <span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="n">cost</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">vacancies</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;t&#39;</span><span class="p">,</span> <span class="s">&#39;q&#39;</span><span class="p">,</span> <span class="n">cost</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vacancies</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;t&#39;</span><span class="p">,</span> <span class="n">cost</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">vacancies</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">cost</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">vacancies</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;t&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">cost</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">vacancies</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">flowCost</span><span class="p">,</span> <span class="n">flowDict</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">network_simplex</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">demand</span> <span class="o">=</span> <span class="s">&#39;spam&#39;</span><span class="p">,</span>
-<span class="gp">... </span>                                        <span class="n">capacity</span> <span class="o">=</span> <span class="s">&#39;vacancies&#39;</span><span class="p">,</span>
-<span class="gp">... </span>                                        <span class="n">weight</span> <span class="o">=</span> <span class="s">&#39;cost&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s">&#39;p&#39;</span><span class="p">,</span> <span class="n">spam</span><span class="o">=-</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s">&#39;q&#39;</span><span class="p">,</span> <span class="n">spam</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="n">spam</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="n">spam</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s">&#39;t&#39;</span><span class="p">,</span> <span class="n">spam</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">spam</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;p&#39;</span><span class="p">,</span> <span class="s">&#39;q&#39;</span><span class="p">,</span> <span class="n">cost</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">vacancies</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;p&#39;</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="n">cost</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vacancies</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;q&#39;</span><span class="p">,</span> <span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="n">cost</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">vacancies</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;t&#39;</span><span class="p">,</span> <span class="s">&#39;q&#39;</span><span class="p">,</span> <span class="n">cost</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vacancies</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;t&#39;</span><span class="p">,</span> <span class="n">cost</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">vacancies</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">cost</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">vacancies</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s">&#39;t&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="n">cost</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">vacancies</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flowCost</span><span class="p">,</span> <span class="n">flowDict</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">network_simplex</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">demand</span><span class="o">=</span><span class="s">&#39;spam&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                                        <span class="n">capacity</span><span class="o">=</span><span class="s">&#39;vacancies&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                                        <span class="n">weight</span><span class="o">=</span><span class="s">&#39;cost&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">flowCost</span>
 <span class="go">37</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">flowDict</span>  
@@ -370,7 +385,7 @@ algorithm.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Nov 03, 2014.
+      Last updated on Nov 04, 2014.
     </p>
   </div>
 
@@ -390,7 +405,7 @@ algorithm.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20141103000008',
+            VERSION:'2.0.dev20141104000009',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

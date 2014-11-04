@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.flow.capacityscaling &mdash; NetworkX 2.0.dev20141103000008 documentation</title>
+  <title>networkx.algorithms.flow.capacityscaling &mdash; NetworkX 2.0.dev20141104000009 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141103000008 documentation" href="../../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141104000009 documentation" href="../../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20141103000008 documentation" href="../../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20141104000009 documentation" href="../../../../index.html"/>
         <link rel="up" title="Module code" href="../../../index.html"/> 
 
   
@@ -524,27 +524,31 @@
                     <span class="n">d_v</span> <span class="o">=</span> <span class="n">d_u</span> <span class="o">+</span> <span class="n">wmin</span> <span class="o">-</span> <span class="n">p_u</span> <span class="o">+</span> <span class="n">R_node</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="s">&#39;potential&#39;</span><span class="p">]</span>
                     <span class="k">if</span> <span class="n">h_insert</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">d_v</span><span class="p">):</span>
                         <span class="n">pred</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">kmin</span><span class="p">,</span> <span class="n">emin</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">t</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">t</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="c"># Augment Δ units of flow from s to t.</span>
+                <span class="k">while</span> <span class="n">u</span> <span class="o">!=</span> <span class="n">s</span><span class="p">:</span>
+                    <span class="n">v</span> <span class="o">=</span> <span class="n">u</span>
+                    <span class="n">u</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="n">pred</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
+                    <span class="n">e</span><span class="p">[</span><span class="s">&#39;flow&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">delta</span>
+                    <span class="n">R_succ</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">u</span><span class="p">][(</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="ow">not</span> <span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">])][</span><span class="s">&#39;flow&#39;</span><span class="p">]</span> <span class="o">-=</span> <span class="n">delta</span>
+                <span class="c"># Account node excess and deficit.</span>
+                <span class="n">R_node</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s">&#39;excess&#39;</span><span class="p">]</span> <span class="o">-=</span> <span class="n">delta</span>
+                <span class="n">R_node</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="s">&#39;excess&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">delta</span>
+                <span class="k">if</span> <span class="n">R_node</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s">&#39;excess&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">delta</span><span class="p">:</span>
+                    <span class="n">S_remove</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">R_node</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="s">&#39;excess&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="o">-</span><span class="n">delta</span><span class="p">:</span>
+                    <span class="n">T_remove</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+                <span class="c"># Update node potentials.</span>
+                <span class="n">d_t</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">d_u</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="n">R_node</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="s">&#39;potential&#39;</span><span class="p">]</span> <span class="o">-=</span> <span class="n">d_u</span> <span class="o">-</span> <span class="n">d_t</span>
+            <span class="k">else</span><span class="p">:</span>
                 <span class="c"># Path not found.</span>
-                <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXUnfeasible</span><span class="p">(</span><span class="s">&#39;No flow satisfying all demands.&#39;</span><span class="p">)</span>
-            <span class="c"># Augment Δ units of flow from s to t.</span>
-            <span class="k">while</span> <span class="n">u</span> <span class="o">!=</span> <span class="n">s</span><span class="p">:</span>
-                <span class="n">v</span> <span class="o">=</span> <span class="n">u</span>
-                <span class="n">u</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="n">pred</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
-                <span class="n">e</span><span class="p">[</span><span class="s">&#39;flow&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">delta</span>
-                <span class="n">R_succ</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">u</span><span class="p">][(</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="ow">not</span> <span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">])][</span><span class="s">&#39;flow&#39;</span><span class="p">]</span> <span class="o">-=</span> <span class="n">delta</span>
-            <span class="c"># Account node excess and deficit.</span>
-            <span class="n">R_node</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s">&#39;excess&#39;</span><span class="p">]</span> <span class="o">-=</span> <span class="n">delta</span>
-            <span class="n">R_node</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="s">&#39;excess&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">delta</span>
-            <span class="k">if</span> <span class="n">R_node</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s">&#39;excess&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">delta</span><span class="p">:</span>
                 <span class="n">S_remove</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">R_node</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="s">&#39;excess&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="o">-</span><span class="n">delta</span><span class="p">:</span>
-                <span class="n">T_remove</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-            <span class="c"># Update node potentials.</span>
-            <span class="n">d_t</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
-            <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">d_u</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="n">R_node</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="s">&#39;potential&#39;</span><span class="p">]</span> <span class="o">-=</span> <span class="n">d_u</span> <span class="o">-</span> <span class="n">d_t</span>
         <span class="n">delta</span> <span class="o">//=</span> <span class="mi">2</span>
+
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="s">&#39;excess&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">R</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXUnfeasible</span><span class="p">(</span><span class="s">&#39;No flow satisfying all demands.&#39;</span><span class="p">)</span>
 
     <span class="c"># Calculate the flow cost.</span>
     <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">R</span><span class="p">:</span>
@@ -566,7 +570,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Nov 03, 2014.
+      Last updated on Nov 04, 2014.
     </p>
   </div>
 
@@ -586,7 +590,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../../',
-            VERSION:'2.0.dev20141103000008',
+            VERSION:'2.0.dev20141104000009',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
