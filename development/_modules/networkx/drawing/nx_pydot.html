@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.drawing.nx_pydot &mdash; NetworkX 2.0.dev20141104000009 documentation</title>
+  <title>networkx.drawing.nx_pydot &mdash; NetworkX 2.0.dev20141105000009 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141104000009 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141105000009 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20141104000009 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20141105000009 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -205,6 +205,11 @@
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;write_dot&#39;</span><span class="p">,</span> <span class="s">&#39;read_dot&#39;</span><span class="p">,</span> <span class="s">&#39;graphviz_layout&#39;</span><span class="p">,</span> <span class="s">&#39;pydot_layout&#39;</span><span class="p">,</span>
            <span class="s">&#39;to_pydot&#39;</span><span class="p">,</span> <span class="s">&#39;from_pydot&#39;</span><span class="p">]</span>
 
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">basestring</span>
+<span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
+    <span class="nb">basestring</span> <span class="o">=</span> <span class="nb">str</span>
+
 <span class="nd">@open_file</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s">&#39;w&#39;</span><span class="p">)</span>
 <div class="viewcode-block" id="write_dot"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pydot.write_dot.html#networkx.drawing.nx_pydot.write_dot">[docs]</a><span class="k">def</span> <span class="nf">write_dot</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">path</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Write NetworkX graph G to Graphviz dot format on path.</span>
@@ -306,13 +311,13 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
             <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s">&#39;&quot;&#39;</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">unodes</span> <span class="ow">in</span> <span class="n">u</span><span class="p">[</span><span class="s">&#39;nodes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iterkeys</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">unodes</span> <span class="ow">in</span> <span class="n">u</span><span class="p">[</span><span class="s">&#39;nodes&#39;</span><span class="p">]:</span>
                 <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unodes</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s">&#39;&quot;&#39;</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
             <span class="n">d</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s">&#39;&quot;&#39;</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">vnodes</span> <span class="ow">in</span> <span class="n">v</span><span class="p">[</span><span class="s">&#39;nodes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iterkeys</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">vnodes</span> <span class="ow">in</span> <span class="n">v</span><span class="p">[</span><span class="s">&#39;nodes&#39;</span><span class="p">]:</span>
                 <span class="n">d</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vnodes</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s">&#39;&quot;&#39;</span><span class="p">))</span>
 
         <span class="k">for</span> <span class="n">source_node</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
@@ -493,7 +498,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Nov 04, 2014.
+      Last updated on Nov 05, 2014.
     </p>
   </div>
 
@@ -513,7 +518,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20141104000009',
+            VERSION:'2.0.dev20141105000009',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
