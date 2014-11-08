@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Version 2.0 Notes and API Changes &mdash; NetworkX 2.0.dev20141106000009 documentation</title>
+  <title>Version 2.0 notes and API changes &mdash; NetworkX 2.0.dev20141108000012 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141106000009 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141108000012 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20141106000009 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20141108000012 documentation" href="../index.html"/>
         <link rel="up" title="API changes" href="api_changes.html"/>
         <link rel="next" title="Version 1.9 notes and API changes" href="api_1.9.html"/>
         <link rel="prev" title="API changes" href="api_changes.html"/> 
@@ -172,7 +172,7 @@
       
           <li><a href="api_changes.html">API changes</a> &raquo;</li>
       
-    <li>Version 2.0 Notes and API Changes</li>
+    <li>Version 2.0 notes and API changes</li>
       <li class="wy-breadcrumbs-aside">
         
       </li>
@@ -182,7 +182,7 @@
           <div role="main">
             
   <div class="section" id="version-2-0-notes-and-api-changes">
-<h1>Version 2.0 Notes and API Changes<a class="headerlink" href="#version-2-0-notes-and-api-changes" title="Permalink to this headline">¶</a></h1>
+<h1>Version 2.0 notes and API changes<a class="headerlink" href="#version-2-0-notes-and-api-changes" title="Permalink to this headline">¶</a></h1>
 <p>This page includes more detailed release information and API changes from
 NetworkX 1.9 to NetworkX 2.0.</p>
 <p>Please send comments and questions to the networkx-discuss mailing list:
@@ -191,47 +191,49 @@ NetworkX 1.9 to NetworkX 2.0.</p>
 <h2>New functionalities<a class="headerlink" href="#new-functionalities" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/823">#823</a>]
-A <code class="samp docutils literal"><span class="pre">enumerate_all_cliques</span></code> function is added in the clique package
-(<code class="samp docutils literal"><span class="pre">networkx.algorithms.clique</span></code>) for enumerating all cliques (including
+A <code class="docutils literal"><span class="pre">enumerate_all_cliques</span></code> function is added in the clique package
+(<code class="docutils literal"><span class="pre">networkx.algorithms.clique</span></code>) for enumerating all cliques (including
 nonmaximal ones) of undirected graphs.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1105">#1105</a>]
-A coloring package (<code class="samp docutils literal"><span class="pre">networkx.algorithms.coloring</span></code>) is created for
-graph coloring algorithms. Initially, a <code class="samp docutils literal"><span class="pre">greedy_color</span></code> function is
+A coloring package (<code class="docutils literal"><span class="pre">networkx.algorithms.coloring</span></code>) is created for
+graph coloring algorithms. Initially, a <code class="docutils literal"><span class="pre">greedy_color</span></code> function is
 provided for coloring graphs using various greedy heuristics.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1193">#1193</a>]
-A new generator <code class="samp docutils literal"><span class="pre">edge_dfs</span></code>, added to <code class="samp docutils literal"><span class="pre">networkx.algorithms.traversal</span></code>,
+A new generator <code class="docutils literal"><span class="pre">edge_dfs</span></code>, added to <code class="docutils literal"><span class="pre">networkx.algorithms.traversal</span></code>,
 implements a depth-first traversal of the edges in a graph. This complements
 functionality provided by a depth-first traversal of the nodes in a graph.
 For multigraphs, it allows the user to know precisely which edges were
 followed in a traversal. All NetworkX graph types are supported. A traversal
 can also reverse edge orientations or ignore them.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1194">#1194</a>]
-A <code class="samp docutils literal"><span class="pre">find_cycle</span></code> function is added to the <code class="samp docutils literal"><span class="pre">networkx.algorithms.cycles</span></code>
-package to find a cycle in a graph. Edge orientations can be optionally reversed
-or ignored.</li>
+A <code class="docutils literal"><span class="pre">find_cycle</span></code> function is added to the <code class="docutils literal"><span class="pre">networkx.algorithms.cycles</span></code>
+package to find a cycle in a graph. Edge orientations can be optionally
+reversed or ignored.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1210">#1210</a>]
 Add a random generator for the duplication-divergence model.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1241">#1241</a>]
-A new <code class="samp docutils literal"><span class="pre">networkx.algorithms.dominance</span></code> package is added for
+A new <code class="docutils literal"><span class="pre">networkx.algorithms.dominance</span></code> package is added for
 dominance/dominator algorithms on directed graphs. It contains a
-<code class="samp docutils literal"><span class="pre">immediate_dominators</span></code> function for computing immediate
-dominators/dominator trees and a <code class="samp docutils literal"><span class="pre">dominance_frontiers</span></code> function for
+<code class="docutils literal"><span class="pre">immediate_dominators</span></code> function for computing immediate
+dominators/dominator trees and a <code class="docutils literal"><span class="pre">dominance_frontiers</span></code> function for
 computing dominance frontiers.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1269">#1269</a>]
 The GML reader/parser and writer/generator are rewritten to remove the
 dependence on pyparsing and enable handling of arbitrary graph data.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1280">#1280</a>]
-The network simplex method in the <code class="samp docutils literal"><span class="pre">networkx.algorithms.flow</span></code> package is
+The network simplex method in the <code class="docutils literal"><span class="pre">networkx.algorithms.flow</span></code> package is
 rewritten to improve its performance and support multi- and disconnected
 networks. For some cases, the new implementation is two or three orders of
 magnitude faster than the old implementation.</li>
+<li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1286">#1286</a>]
+Added the Margulis-Gabber-Galil graph to <code class="docutils literal"><span class="pre">networkx.generators</span></code>.</li>
 </ul>
 </div>
 <div class="section" id="removed-functionalities">
 <h2>Removed functionalities<a class="headerlink" href="#removed-functionalities" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1236">#1236</a>]
-The legacy <code class="samp docutils literal"><span class="pre">ford_fulkerson</span></code> maximum flow function is removed.</li>
+The legacy <code class="docutils literal"><span class="pre">ford_fulkerson</span></code> maximum flow function is removed.</li>
 </ul>
 </div>
 <div class="section" id="miscellaneous-changes">
@@ -262,7 +264,7 @@ Support for Python 2.6 is dropped.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Nov 06, 2014.
+      Last updated on Nov 08, 2014.
     </p>
   </div>
 
@@ -282,7 +284,7 @@ Support for Python 2.6 is dropped.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20141106000009',
+            VERSION:'2.0.dev20141108000012',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

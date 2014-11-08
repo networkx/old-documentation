@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Graph generators &mdash; NetworkX 2.0.dev20141106000009 documentation</title>
+  <title>Graph generators &mdash; NetworkX 2.0.dev20141108000012 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141106000009 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20141108000012 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20141106000009 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20141108000012 documentation" href="../index.html"/>
         <link rel="up" title="Reference" href="pdf_reference.html"/>
         <link rel="next" title="graph_atlas_g" href="generated/networkx.generators.atlas.graph_atlas_g.html"/>
         <link rel="prev" title="is_frozen" href="generated/networkx.classes.function.is_frozen.html"/> 
@@ -210,7 +210,7 @@ Oxford University Press, 1998.</p>
 </pre></div>
 </div>
 <p>returning the complete graph on n nodes labeled 0,..,99
-as a simple graph. Except for empty_graph, all the generators 
+as a simple graph. Except for empty_graph, all the generators
 in this module return a Graph class (i.e. a simple, undirected graph).</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -255,21 +255,24 @@ in this module return a Graph class (i.e. a simple, undirected graph).</p>
 <td>Return the Ladder graph of length n.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/networkx.generators.classic.lollipop_graph.html#networkx.generators.classic.lollipop_graph" title="networkx.generators.classic.lollipop_graph"><code class="xref py py-obj docutils literal"><span class="pre">lollipop_graph</span></code></a>(m,&nbsp;n[,&nbsp;create_using])</td>
-<td>Return the Lollipop Graph; K_m connected to P_n.</td>
+<td>Return the Lollipop Graph; <span class="math">\(K_m\)</span> connected to <span class="math">\(P_n\)</span>.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.generators.classic.null_graph.html#networkx.generators.classic.null_graph" title="networkx.generators.classic.null_graph"><code class="xref py py-obj docutils literal"><span class="pre">null_graph</span></code></a>([create_using])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.generators.classic.margulis_gabber_galil_graph.html#networkx.generators.classic.margulis_gabber_galil_graph" title="networkx.generators.classic.margulis_gabber_galil_graph"><code class="xref py py-obj docutils literal"><span class="pre">margulis_gabber_galil_graph</span></code></a>(n[,&nbsp;create_using])</td>
+<td>Return the Margulis-Gabber-Galil undirected MultiGraph on <span class="math">\(n^2\)</span> nodes.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.generators.classic.null_graph.html#networkx.generators.classic.null_graph" title="networkx.generators.classic.null_graph"><code class="xref py py-obj docutils literal"><span class="pre">null_graph</span></code></a>([create_using])</td>
 <td>Return the Null graph with no nodes or edges.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.generators.classic.path_graph.html#networkx.generators.classic.path_graph" title="networkx.generators.classic.path_graph"><code class="xref py py-obj docutils literal"><span class="pre">path_graph</span></code></a>(n[,&nbsp;create_using])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.generators.classic.path_graph.html#networkx.generators.classic.path_graph" title="networkx.generators.classic.path_graph"><code class="xref py py-obj docutils literal"><span class="pre">path_graph</span></code></a>(n[,&nbsp;create_using])</td>
 <td>Return the Path graph P_n of n nodes linearly connected by n-1 edges.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.generators.classic.star_graph.html#networkx.generators.classic.star_graph" title="networkx.generators.classic.star_graph"><code class="xref py py-obj docutils literal"><span class="pre">star_graph</span></code></a>(n[,&nbsp;create_using])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.generators.classic.star_graph.html#networkx.generators.classic.star_graph" title="networkx.generators.classic.star_graph"><code class="xref py py-obj docutils literal"><span class="pre">star_graph</span></code></a>(n[,&nbsp;create_using])</td>
 <td>Return the Star graph with n+1 nodes: one center node, connected to n outer nodes.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.generators.classic.trivial_graph.html#networkx.generators.classic.trivial_graph" title="networkx.generators.classic.trivial_graph"><code class="xref py py-obj docutils literal"><span class="pre">trivial_graph</span></code></a>([create_using])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.generators.classic.trivial_graph.html#networkx.generators.classic.trivial_graph" title="networkx.generators.classic.trivial_graph"><code class="xref py py-obj docutils literal"><span class="pre">trivial_graph</span></code></a>([create_using])</td>
 <td>Return the Trivial graph with one node (with integer label 0) and no edges.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.generators.classic.wheel_graph.html#networkx.generators.classic.wheel_graph" title="networkx.generators.classic.wheel_graph"><code class="xref py py-obj docutils literal"><span class="pre">wheel_graph</span></code></a>(n[,&nbsp;create_using])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.generators.classic.wheel_graph.html#networkx.generators.classic.wheel_graph" title="networkx.generators.classic.wheel_graph"><code class="xref py py-obj docutils literal"><span class="pre">wheel_graph</span></code></a>(n[,&nbsp;create_using])</td>
 <td>Return the wheel graph: a single hub node connected to each node of the (n-1)-node cycle graph.</td>
 </tr>
 </tbody>
@@ -718,7 +721,7 @@ Press Inc., pp. 271&#8211;305.</dd>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Nov 06, 2014.
+      Last updated on Nov 08, 2014.
     </p>
   </div>
 
@@ -738,7 +741,7 @@ Press Inc., pp. 271&#8211;305.</dd>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20141106000009',
+            VERSION:'2.0.dev20141108000012',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
