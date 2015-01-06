@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.convert &mdash; NetworkX 2.0.dev20150105000009 documentation</title>
+  <title>networkx.convert &mdash; NetworkX 2.0.dev20150106000012 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150105000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150106000012 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150105000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150106000012 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -220,14 +220,12 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">create_using</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">G</span><span class="o">=</span><span class="n">create_using</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">G</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&quot;Input graph is not a networkx graph type&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">G</span>
+        <span class="k">return</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">create_using</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&quot;Input graph is not a networkx graph type&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">create_using</span>
 
 <div class="viewcode-block" id="to_networkx_graph"><a class="viewcode-back" href="../../reference/generated/networkx.convert.to_networkx_graph.html#networkx.convert.to_networkx_graph">[docs]</a><span class="k">def</span> <span class="nf">to_networkx_graph</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">create_using</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">multigraph_input</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Make a NetworkX graph from a known data structure.</span>
@@ -306,6 +304,19 @@
             <span class="k">return</span> <span class="n">from_edgelist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">create_using</span><span class="o">=</span><span class="n">create_using</span><span class="p">)</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s">&quot;Input is not a valid edge list&quot;</span><span class="p">)</span>
+
+    <span class="c"># Pandas DataFrame</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_dataframe</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">create_using</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="s">&quot;Input is not a correct Pandas DataFrame.&quot;</span>
+                <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s">&#39;pandas not found, skipping conversion test.&#39;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="ne">ImportWarning</span><span class="p">)</span>
 
     <span class="c"># numpy matrix or ndarray</span>
     <span class="k">try</span><span class="p">:</span>
@@ -582,7 +593,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jan 05, 2015.
+      Last updated on Jan 06, 2015.
     </p>
   </div>
 
@@ -602,7 +613,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150105000009',
+            VERSION:'2.0.dev20150106000012',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

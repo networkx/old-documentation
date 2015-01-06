@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.readwrite.nx_shp &mdash; NetworkX 2.0.dev20150105000009 documentation</title>
+  <title>networkx.readwrite.nx_shp &mdash; NetworkX 2.0.dev20150106000012 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150105000009 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150106000012 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150105000009 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150106000012 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -235,16 +235,15 @@
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s">&quot;read_shp requires OGR: http://www.gdal.org/&quot;</span><span class="p">)</span>
 
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span>
+
     <span class="n">net</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">getfieldinfo</span><span class="p">(</span><span class="n">lyr</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">flds</span><span class="p">):</span>
-            <span class="n">f</span> <span class="o">=</span> <span class="n">feature</span>
-            <span class="k">return</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">GetField</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">GetFieldIndex</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">flds</span><span class="p">]</span>
-
-    <span class="k">def</span> <span class="nf">addlyr</span><span class="p">(</span><span class="n">lyr</span><span class="p">,</span> <span class="n">fields</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">findex</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lyr</span><span class="o">.</span><span class="n">GetFeatureCount</span><span class="p">()):</span>
-            <span class="n">f</span> <span class="o">=</span> <span class="n">lyr</span><span class="o">.</span><span class="n">GetFeature</span><span class="p">(</span><span class="n">findex</span><span class="p">)</span>
-            <span class="n">flddata</span> <span class="o">=</span> <span class="n">getfieldinfo</span><span class="p">(</span><span class="n">lyr</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">fields</span><span class="p">)</span>
+    <span class="n">shp</span> <span class="o">=</span> <span class="n">ogr</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">lyr</span> <span class="ow">in</span> <span class="n">shp</span><span class="p">:</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lyr</span><span class="o">.</span><span class="n">schema</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">lyr</span><span class="p">:</span>
+            <span class="n">flddata</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">GetField</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">GetFieldIndex</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">]</span>
             <span class="n">g</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
             <span class="n">attributes</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="n">flddata</span><span class="p">))</span>
             <span class="n">attributes</span><span class="p">[</span><span class="s">&quot;ShpName&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lyr</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
@@ -256,14 +255,6 @@
                 <span class="n">attributes</span><span class="p">[</span><span class="s">&quot;Json&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ExportToJson</span><span class="p">()</span>
                 <span class="n">last</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">GetPointCount</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
                 <span class="n">net</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">GetPoint_2D</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">g</span><span class="o">.</span><span class="n">GetPoint_2D</span><span class="p">(</span><span class="n">last</span><span class="p">),</span> <span class="n">attributes</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="n">shp</span> <span class="o">=</span> <span class="n">ogr</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-        <span class="n">lyrcount</span> <span class="o">=</span> <span class="n">shp</span><span class="o">.</span><span class="n">GetLayerCount</span><span class="p">()</span>  <span class="c"># multiple layers indicate a directory</span>
-        <span class="k">for</span> <span class="n">lyrindex</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lyrcount</span><span class="p">):</span>
-            <span class="n">lyr</span> <span class="o">=</span> <span class="n">shp</span><span class="o">.</span><span class="n">GetLayerByIndex</span><span class="p">(</span><span class="n">lyrindex</span><span class="p">)</span>
-            <span class="n">flds</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lyr</span><span class="o">.</span><span class="n">schema</span><span class="p">]</span>
-            <span class="n">addlyr</span><span class="p">(</span><span class="n">lyr</span><span class="p">,</span> <span class="n">flds</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">net</span>
 
 </div>
@@ -348,7 +339,7 @@
         <span class="k">pass</span>
     <span class="n">nodes</span> <span class="o">=</span> <span class="n">shpdir</span><span class="o">.</span><span class="n">CreateLayer</span><span class="p">(</span><span class="s">&quot;nodes&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">ogr</span><span class="o">.</span><span class="n">wkbPoint</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
         <span class="n">g</span> <span class="o">=</span> <span class="n">netgeometry</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
         <span class="n">create_feature</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
@@ -413,7 +404,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jan 05, 2015.
+      Last updated on Jan 06, 2015.
     </p>
   </div>
 
@@ -433,7 +424,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20150105000009',
+            VERSION:'2.0.dev20150106000012',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

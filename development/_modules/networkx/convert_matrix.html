@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.convert_matrix &mdash; NetworkX 2.0.dev20150105000009 documentation</title>
+  <title>networkx.convert_matrix &mdash; NetworkX 2.0.dev20150106000012 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150105000009 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150106000012 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150105000009 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150106000012 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -214,9 +214,138 @@
                            <span class="s">&#39;Pieter Swart (swart@lanl.gov)&#39;</span><span class="p">,</span>
                            <span class="s">&#39;Dan Schult(dschult@colgate.edu)&#39;</span><span class="p">])</span>
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;from_numpy_matrix&#39;</span><span class="p">,</span> <span class="s">&#39;to_numpy_matrix&#39;</span><span class="p">,</span>
+           <span class="s">&#39;from_pandas_dataframe&#39;</span><span class="p">,</span> <span class="s">&#39;to_pandas_dataframe&#39;</span><span class="p">,</span>
            <span class="s">&#39;to_numpy_recarray&#39;</span><span class="p">,</span>
            <span class="s">&#39;from_scipy_sparse_matrix&#39;</span><span class="p">,</span> <span class="s">&#39;to_scipy_sparse_matrix&#39;</span><span class="p">]</span>
 
+<div class="viewcode-block" id="to_pandas_dataframe"><a class="viewcode-back" href="../../reference/generated/networkx.convert_matrix.to_pandas_dataframe.html#networkx.convert_matrix.to_pandas_dataframe">[docs]</a><span class="k">def</span> <span class="nf">to_pandas_dataframe</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">multigraph_weight</span><span class="o">=</span><span class="nb">sum</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">,</span> <span class="n">nonedge</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the graph adjacency matrix as a Pandas DataFrame.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : graph</span>
+<span class="sd">        The NetworkX graph used to construct the Pandas DataFrame.</span>
+
+<span class="sd">    nodelist : list, optional</span>
+<span class="sd">       The rows and columns are ordered according to the nodes in `nodelist`.</span>
+<span class="sd">       If `nodelist` is None, then the ordering is produced by G.nodes().</span>
+
+<span class="sd">    multigraph_weight : {sum, min, max}, optional</span>
+<span class="sd">        An operator that determines how weights in multigraphs are handled.</span>
+<span class="sd">        The default is to sum the weights of the multiple edges.</span>
+
+<span class="sd">    weight : string or None, optional</span>
+<span class="sd">        The edge attribute that holds the numerical value used for</span>
+<span class="sd">        the edge weight.  If an edge does not have that attribute, then the</span>
+<span class="sd">        value 1 is used instead.</span>
+
+<span class="sd">    nonedge : float, optional</span>
+<span class="sd">        The matrix values corresponding to nonedges are typically set to zero.</span>
+<span class="sd">        However, this could be undesirable if there are matrix values</span>
+<span class="sd">        corresponding to actual edges that also have the value zero. If so,</span>
+<span class="sd">        one might prefer nonedges to have some other value, such as nan.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    df : Pandas DataFrame</span>
+<span class="sd">       Graph adjacency matrix</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The DataFrame entries are assigned to the weight edge attribute. When</span>
+<span class="sd">    an edge does not have a weight attribute, the value of the entry is set to</span>
+<span class="sd">    the number 1.  For multiple (parallel) edges, the values of the entries</span>
+<span class="sd">    are determined by the &#39;multigraph_weight&#39; parameter.  The default is to</span>
+<span class="sd">    sum the weight attributes for each of the parallel edges.</span>
+
+<span class="sd">    When `nodelist` does not contain every node in `G`, the matrix is built</span>
+<span class="sd">    from the subgraph of `G` that is induced by the nodes in `nodelist`.</span>
+
+<span class="sd">    The convention used for self-loop edges in graphs is to assign the</span>
+<span class="sd">    diagonal matrix entry value to the weight attribute of the edge</span>
+<span class="sd">    (or the number 1 if the edge has no weight attribute).  If the</span>
+<span class="sd">    alternate convention of doubling the edge weight is desired the</span>
+<span class="sd">    resulting Pandas DataFrame can be modified as follows:</span>
+
+<span class="sd">    &gt;&gt;&gt; import pandas as pd</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.Graph([(1,1)])</span>
+<span class="sd">    &gt;&gt;&gt; df = nx.to_pandas_dataframe(G)</span>
+<span class="sd">    &gt;&gt;&gt; df</span>
+<span class="sd">       1</span>
+<span class="sd">    1  1</span>
+<span class="sd">    &gt;&gt;&gt; df.values[np.diag_indices_from(df)] *= 2</span>
+<span class="sd">    &gt;&gt;&gt; df</span>
+<span class="sd">       1</span>
+<span class="sd">    1  2</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.MultiDiGraph()</span>
+<span class="sd">    &gt;&gt;&gt; G.add_edge(0,1,weight=2)</span>
+<span class="sd">    &gt;&gt;&gt; G.add_edge(1,0)</span>
+<span class="sd">    &gt;&gt;&gt; G.add_edge(2,2,weight=3)</span>
+<span class="sd">    &gt;&gt;&gt; G.add_edge(2,2)</span>
+<span class="sd">    &gt;&gt;&gt; nx.to_pandas_dataframe(G, nodelist=[0,1,2])</span>
+<span class="sd">       0  1  2</span>
+<span class="sd">    0  0  2  0</span>
+<span class="sd">    1  1  0  0</span>
+<span class="sd">    2  0  0  4</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">to_numpy_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">multigraph_weight</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">nonedge</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nodelist</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">nodelist</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span>
+    <span class="n">nodeset</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nodelist</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">M</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">nodelist</span> <span class="p">,</span><span class="n">columns</span> <span class="o">=</span> <span class="n">nodelist</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+</div>
+<div class="viewcode-block" id="from_pandas_dataframe"><a class="viewcode-back" href="../../reference/generated/networkx.convert_matrix.from_pandas_dataframe.html#networkx.convert_matrix.from_pandas_dataframe">[docs]</a><span class="k">def</span> <span class="nf">from_pandas_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">create_using</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a graph from Pandas DataFrame.</span>
+
+<span class="sd">    The Pandas DataFrame is interpreted as an adjacency matrix for the graph.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df : Pandas DataFrame</span>
+<span class="sd">      An adjacency matrix representation of a graph</span>
+
+<span class="sd">    create_using : NetworkX graph</span>
+<span class="sd">       Use specified graph for result.  The default is Graph()</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    If the numpy matrix has a single data type for each matrix entry it</span>
+<span class="sd">    will be converted to an appropriate Python data type.</span>
+
+<span class="sd">    If the numpy matrix has a user-specified compound data type the names</span>
+<span class="sd">    of the data fields will be used as attribute keys in the resulting</span>
+<span class="sd">    NetworkX graph.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    from_pandas_dataframe</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Simple integer weights on edges:</span>
+
+<span class="sd">    &gt;&gt;&gt; import pandas as pd</span>
+<span class="sd">    &gt;&gt;&gt; df=pd.DataFrame([[1,1],[2,1]])</span>
+<span class="sd">    &gt;&gt;&gt; G=nx.from_pandas_dataframe(df)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">from_numpy_matrix</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">create_using</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s">&quot;Columns must match Indices.&quot;</span><span class="p">,</span>
+                               <span class="s">&quot;</span><span class="si">%s</span><span class="s"> not in columns&quot;</span><span class="o">%</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">))))</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">relabel</span><span class="o">.</span><span class="n">relabel_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)),</span> <span class="n">copy</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">G</span>
+</div>
 <div class="viewcode-block" id="to_numpy_matrix"><a class="viewcode-back" href="../../reference/generated/networkx.convert_matrix.to_numpy_matrix.html#networkx.convert_matrix.to_numpy_matrix">[docs]</a><span class="k">def</span> <span class="nf">to_numpy_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                     <span class="n">multigraph_weight</span><span class="o">=</span><span class="nb">sum</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">,</span> <span class="n">nonedge</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return the graph adjacency matrix as a NumPy matrix.</span>
@@ -270,14 +399,14 @@
 <span class="sd">    The matrix entries are assigned to the weight edge attribute. When</span>
 <span class="sd">    an edge does not have a weight attribute, the value of the entry is set to</span>
 <span class="sd">    the number 1.  For multiple (parallel) edges, the values of the entries</span>
-<span class="sd">    are determined by the &#39;multigraph_weight&#39; paramter.  The default is to</span>
+<span class="sd">    are determined by the &#39;multigraph_weight&#39; parameter.  The default is to</span>
 <span class="sd">    sum the weight attributes for each of the parallel edges.</span>
 
 <span class="sd">    When `nodelist` does not contain every node in `G`, the matrix is built</span>
 <span class="sd">    from the subgraph of `G` that is induced by the nodes in `nodelist`.</span>
 
 <span class="sd">    The convention used for self-loop edges in graphs is to assign the</span>
-<span class="sd">    diagonal matrix entry value to the weight attributr of the edge</span>
+<span class="sd">    diagonal matrix entry value to the weight attribute of the edge</span>
 <span class="sd">    (or the number 1 if the edge has no weight attribute).  If the</span>
 <span class="sd">    alternate convention of doubling the edge weight is desired the</span>
 <span class="sd">    resulting Numpy matrix can be modified as follows:</span>
@@ -758,7 +887,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jan 05, 2015.
+      Last updated on Jan 06, 2015.
     </p>
   </div>
 
@@ -778,7 +907,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150105000009',
+            VERSION:'2.0.dev20150106000012',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
