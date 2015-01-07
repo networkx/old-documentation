@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.classes.graph &mdash; NetworkX 2.0.dev20150106000012 documentation</title>
+  <title>networkx.classes.graph &mdash; NetworkX 2.0.dev20150107000010 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150106000012 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150107000010 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150106000012 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150107000010 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -187,7 +187,7 @@
 
 <span class="sd">For directed graphs see DiGraph and MultiDiGraph.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="c">#    Copyright (C) 2004-2011 by</span>
+<span class="c">#    Copyright (C) 2004-2015 by</span>
 <span class="c">#    Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
 <span class="c">#    Dan Schult &lt;dschult@colgate.edu&gt;</span>
 <span class="c">#    Pieter Swart &lt;swart@lanl.gov&gt;</span>
@@ -351,7 +351,87 @@
 <span class="sd">    as well as the number of nodes and edges.</span>
 
 <span class="sd">    For details on these and other miscellaneous methods, see below.</span>
+
+<span class="sd">    **Subclasses (Advanced):**</span>
+
+<span class="sd">    The Graph class uses a dict-of-dict-of-dict data structure.</span>
+<span class="sd">    The outer dict (node_dict) holds adjacency lists keyed by node.</span>
+<span class="sd">    The next dict (adjlist) represents the adjacency list and holds</span>
+<span class="sd">    edge data keyed by neighbor.  The inner dict (edge_attr) represents</span>
+<span class="sd">    the edge data and holds edge attribute values keyed by attribute names.</span>
+
+<span class="sd">    Each of these three dicts can be replaced by a user defined </span>
+<span class="sd">    dict-like object. In general, the dict-like features should be</span>
+<span class="sd">    maintained but extra features can be added. To replace one of the</span>
+<span class="sd">    dicts create a new graph class by changing the class(!) variable</span>
+<span class="sd">    holding the factory for that dict-like structure. The variable names</span>
+<span class="sd">    are node_dict_factory, adjlist_dict_factory and edge_attr_dict_factory.</span>
+
+<span class="sd">    node_dict_factory : function, (default: dict)</span>
+<span class="sd">        Factory function to be used to create the outer-most dict</span>
+<span class="sd">        in the data structure that holds adjacency lists keyed by node.</span>
+<span class="sd">        It should require no arguments and return a dict-like object.</span>
+
+<span class="sd">    adjlist_dict_factory : function, (default: dict)</span>
+<span class="sd">        Factory function to be used to create the adjacency list</span>
+<span class="sd">        dict which holds edge data keyed by neighbor.</span>
+<span class="sd">        It should require no arguments and return a dict-like object</span>
+
+<span class="sd">    edge_attr_dict_factory : function, (default: dict)</span>
+<span class="sd">        Factory function to be used to create the edge attribute</span>
+<span class="sd">        dict which holds attrbute values keyed by attribute name.</span>
+<span class="sd">        It should require no arguments and return a dict-like object.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a graph object that tracks the order nodes are added.</span>
+
+<span class="sd">    &gt;&gt;&gt; from collections import OrderedDict</span>
+<span class="sd">    &gt;&gt;&gt; class OrderedNodeGraph(nx.Graph):</span>
+<span class="sd">    ...     node_dict_factory=OrderedDict</span>
+<span class="sd">    &gt;&gt;&gt; G=OrderedNodeGraph()</span>
+<span class="sd">    &gt;&gt;&gt; G.add_nodes_from( (2,1) )</span>
+<span class="sd">    &gt;&gt;&gt; G.nodes()</span>
+<span class="sd">    [2, 1]</span>
+<span class="sd">    &gt;&gt;&gt; G.add_edges_from( ((2,2), (2,1), (1,1)) )</span>
+<span class="sd">    &gt;&gt;&gt; G.edges()</span>
+<span class="sd">    [(2, 1), (2, 2), (1, 1)]</span>
+
+<span class="sd">    Create a graph object that tracks the order nodes are added</span>
+<span class="sd">    and for each node track the order that neighbors are added.</span>
+
+<span class="sd">    &gt;&gt;&gt; class OrderedGraph(nx.Graph):</span>
+<span class="sd">    ...    node_dict_factory = OrderedDict</span>
+<span class="sd">    ...    adjlist_dict_factory = OrderedDict</span>
+<span class="sd">    &gt;&gt;&gt; G = OrderedGraph()</span>
+<span class="sd">    &gt;&gt;&gt; G.add_nodes_from( (2,1) )</span>
+<span class="sd">    &gt;&gt;&gt; G.nodes()</span>
+<span class="sd">    [2, 1]</span>
+<span class="sd">    &gt;&gt;&gt; G.add_edges_from( ((2,2), (2,1), (1,1)) )</span>
+<span class="sd">    &gt;&gt;&gt; G.edges()</span>
+<span class="sd">    [(2, 2), (2, 1), (1, 1)]</span>
+
+<span class="sd">    Create a low memory graph class that effectively disallows edge</span>
+<span class="sd">    attributes by using a single attribute dict for all edges.</span>
+<span class="sd">    This reduces the memory used, but you lose edge attributes.</span>
+
+<span class="sd">    &gt;&gt;&gt; class ThinGraph(nx.Graph):</span>
+<span class="sd">    ...     all_edge_dict = {&#39;weight&#39;: 1}</span>
+<span class="sd">    ...     def single_edge_dict(self):</span>
+<span class="sd">    ...         return self.all_edge_dict</span>
+<span class="sd">    ...     edge_attr_dict_factory = single_edge_dict</span>
+<span class="sd">    &gt;&gt;&gt; G = ThinGraph()</span>
+<span class="sd">    &gt;&gt;&gt; G.add_edge(2,1)</span>
+<span class="sd">    &gt;&gt;&gt; G.edges(data= True)</span>
+<span class="sd">    [(1, 2, {&#39;weight&#39;: 1})]</span>
+<span class="sd">    &gt;&gt;&gt; G.add_edge(2,2)</span>
+<span class="sd">    &gt;&gt;&gt; G[2][1] is G[2][2]</span>
+<span class="sd">    True</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">node_dict_factory</span><span class="o">=</span><span class="nb">dict</span>
+    <span class="n">adjlist_dict_factory</span><span class="o">=</span><span class="nb">dict</span>
+    <span class="n">edge_attr_dict_factory</span><span class="o">=</span><span class="nb">dict</span>
 <div class="viewcode-block" id="Graph.__init__"><a class="viewcode-back" href="../../../reference/generated/networkx.Graph.__init__.html#networkx.Graph.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialize a graph with edges, name, graph attributes.</span>
 
@@ -386,9 +466,13 @@
 <span class="sd">        {&#39;day&#39;: &#39;Friday&#39;}</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">node_dict_factory</span> <span class="o">=</span> <span class="n">ndf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node_dict_factory</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edge_attr_dict_factory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge_attr_dict_factory</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">graph</span> <span class="o">=</span> <span class="p">{}</span>   <span class="c"># dictionary for graph attributes</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">node</span> <span class="o">=</span> <span class="p">{}</span>    <span class="c"># empty node dict (created before convert)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">adj</span> <span class="o">=</span> <span class="p">{}</span>     <span class="c"># empty adjacency dict</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">node</span> <span class="o">=</span> <span class="n">ndf</span><span class="p">()</span> <span class="c"># empty node attribute dict</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adj</span> <span class="o">=</span> <span class="n">ndf</span><span class="p">()</span>  <span class="c"># empty adjacency dict</span>
         <span class="c"># attempt to load graph with data</span>
         <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">convert</span><span class="o">.</span><span class="n">to_networkx_graph</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">create_using</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
@@ -551,7 +635,7 @@
                 <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span>\
                     <span class="s">&quot;The attr_dict argument must be a dictionary.&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">attr_dict</span>
         <span class="k">else</span><span class="p">:</span> <span class="c"># update attr even if node already exists</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">attr_dict</span><span class="p">)</span>
@@ -604,11 +688,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+                <span class="n">newnode</span><span class="o">=</span><span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">node</span>
             <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
                 <span class="n">nn</span><span class="p">,</span><span class="n">ndict</span> <span class="o">=</span> <span class="n">n</span>
                 <span class="k">if</span> <span class="n">nn</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">:</span>
@@ -620,6 +700,12 @@
                     <span class="n">olddict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">nn</span><span class="p">]</span>
                     <span class="n">olddict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
                     <span class="n">olddict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">ndict</span><span class="p">)</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">newnode</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="Graph.remove_node"><a class="viewcode-back" href="../../../reference/generated/networkx.Graph.remove_node.html#networkx.Graph.remove_node">[docs]</a>    <span class="k">def</span> <span class="nf">remove_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Remove node n.</span>
@@ -882,13 +968,13 @@
                     <span class="s">&quot;The attr_dict argument must be a dictionary.&quot;</span><span class="p">)</span>
         <span class="c"># add nodes</span>
         <span class="k">if</span> <span class="n">u</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="c"># add the edge</span>
-        <span class="n">datadict</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">v</span><span class="p">,{})</span>
+        <span class="n">datadict</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">edge_attr_dict_factory</span><span class="p">())</span>
         <span class="n">datadict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">attr_dict</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">datadict</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">datadict</span>
@@ -922,7 +1008,7 @@
 <span class="sd">        Adding the same edge twice has no effect but any edge data</span>
 <span class="sd">        will be updated when each duplicate edge is added.</span>
 
-<span class="sd">        Edge attributes specified in edges as a tuple take precedence</span>
+<span class="sd">        Edge attributes specified in edges take precedence</span>
 <span class="sd">        over attributes specified generally.</span>
 
 <span class="sd">        Examples</span>
@@ -958,12 +1044,12 @@
                 <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span>\
                     <span class="s">&quot;Edge tuple </span><span class="si">%s</span><span class="s"> must be a 2-tuple or 3-tuple.&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">e</span><span class="p">,))</span>
             <span class="k">if</span> <span class="n">u</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
             <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-            <span class="n">datadict</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">v</span><span class="p">,{})</span>
+            <span class="n">datadict</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">edge_attr_dict_factory</span><span class="p">())</span>
             <span class="n">datadict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">attr_dict</span><span class="p">)</span>
             <span class="n">datadict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">dd</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">datadict</span>
@@ -1556,6 +1642,12 @@
 <span class="sd">        See the Python copy module for more information on shallow</span>
 <span class="sd">        and deep copies, http://docs.python.org/library/copy.html.</span>
 
+<span class="sd">        Warning</span>
+<span class="sd">        -------</span>
+<span class="sd">        If you have subclassed Graph to use dict-like objects in the</span>
+<span class="sd">        data structure, those changes do not transfer to the DiGraph</span>
+<span class="sd">        created by this method.</span>
+
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
 <span class="sd">        &gt;&gt;&gt; G = nx.Graph()   # or MultiGraph, etc</span>
@@ -1670,7 +1762,7 @@
         <span class="n">self_adj</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">adj</span>
         <span class="c"># add nodes and edges (undirected method)</span>
         <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">H</span><span class="o">.</span><span class="n">node</span><span class="p">:</span>
-            <span class="n">Hnbrs</span><span class="o">=</span><span class="p">{}</span>
+            <span class="n">Hnbrs</span><span class="o">=</span><span class="n">H</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
             <span class="n">H_adj</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="n">Hnbrs</span>
             <span class="k">for</span> <span class="n">nbr</span><span class="p">,</span><span class="n">d</span> <span class="ow">in</span> <span class="n">self_adj</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                 <span class="k">if</span> <span class="n">nbr</span> <span class="ow">in</span> <span class="n">H_adj</span><span class="p">:</span>
@@ -2006,7 +2098,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jan 06, 2015.
+      Last updated on Jan 07, 2015.
     </p>
   </div>
 
@@ -2026,7 +2118,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20150106000012',
+            VERSION:'2.0.dev20150107000010',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

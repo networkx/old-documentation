@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>__init__ &mdash; NetworkX 2.0.dev20150106000012 documentation</title>
+  <title>__init__ &mdash; NetworkX 2.0.dev20150107000010 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150106000012 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150107000010 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150106000012 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150107000010 documentation" href="../../index.html"/>
         <link rel="up" title="MultiGraph - Undirected graphs with self loops and parallel edges" href="../classes.multigraph.html"/>
         <link rel="next" title="add_node" href="networkx.MultiGraph.add_node.html"/>
         <link rel="prev" title="subgraph" href="networkx.MultiGraph.subgraph.html"/> 
@@ -189,50 +189,8 @@
 <h1>__init__<a class="headerlink" href="#init" title="Permalink to this headline">¶</a></h1>
 <dl class="method">
 <dt id="networkx.MultiGraph.__init__">
-<code class="descclassname">MultiGraph.</code><code class="descname">__init__</code><span class="sig-paren">(</span><em>data=None</em>, <em>**attr</em><span class="sig-paren">)</span><a class="headerlink" href="#networkx.MultiGraph.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize a graph with edges, name, graph attributes.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : input graph</p>
-<blockquote>
-<div><p>Data to initialize graph.  If data=None (default) an empty
-graph is created.  The data can be an edge list, or any
-NetworkX graph object.  If the corresponding optional Python
-packages are installed the data can also be a NumPy matrix
-or 2d ndarray, a SciPy sparse matrix, or a PyGraphviz graph.</p>
-</div></blockquote>
-<p><strong>name</strong> : string, optional (default=&#8217;&#8216;)</p>
-<blockquote>
-<div><p>An optional name for the graph.</p>
-</div></blockquote>
-<p><strong>attr</strong> : keyword arguments, optional (default= no attributes)</p>
-<blockquote class="last">
-<div><p>Attributes to add to graph as key=value pairs.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="../convert.html#module-networkx.convert" title="networkx.convert"><code class="xref py py-obj docutils literal"><span class="pre">convert</span></code></a></p>
-</div>
-<p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>   <span class="c"># or DiGraph, MultiGraph, MultiDiGraph, etc</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;my graph&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)]</span> <span class="c"># list of edges</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Arbitrary graph attribute pairs (key=value) may be assigned</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="s">&quot;Friday&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">graph</span>
-<span class="go">{&#39;day&#39;: &#39;Friday&#39;}</span>
-</pre></div>
-</div>
-</dd></dl>
+<code class="descclassname">MultiGraph.</code><code class="descname">__init__</code><span class="sig-paren">(</span><em>data=None</em>, <em>**attr</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/classes/multigraph.html#MultiGraph.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.MultiGraph.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 
@@ -255,7 +213,7 @@ or 2d ndarray, a SciPy sparse matrix, or a PyGraphviz graph.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jan 06, 2015.
+      Last updated on Jan 07, 2015.
     </p>
   </div>
 
@@ -275,7 +233,7 @@ or 2d ndarray, a SciPy sparse matrix, or a PyGraphviz graph.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150106000012',
+            VERSION:'2.0.dev20150107000010',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
