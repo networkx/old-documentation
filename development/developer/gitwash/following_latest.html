@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Following the latest source &mdash; NetworkX 2.0.dev20150108000012 documentation</title>
+  <title>Following the latest source &mdash; NetworkX 2.0.dev20150109000010 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150108000012 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150109000010 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150108000012 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150109000010 documentation" href="../../index.html"/>
         <link rel="up" title="Working with networkx source code" href="index.html"/>
         <link rel="next" title="Making a patch" href="patching.html"/>
         <link rel="prev" title="Install git" href="git_install.html"/> 
@@ -201,13 +201,32 @@
 </div>
 <div class="section" id="updating-the-code">
 <h2>Updating the code<a class="headerlink" href="#updating-the-code" title="Permalink to this headline">¶</a></h2>
-<p>From time to time you may want to pull down the latest code.  Do this with:</p>
-<div class="highlight-python"><div class="highlight"><pre>cd networkx
-git pull
-</pre></div>
-</div>
+<p>From time to time you may want to pull down the latest code. It is necessary
+to add the networkx repository as a remote to your configuration file. We call it
+upstream.</p>
+<blockquote>
+<div>git remote set-url upstream <a class="reference external" href="https://github.com/networkx/networkx.git">https://github.com/networkx/networkx.git</a></div></blockquote>
+<p>Now git knows where to fetch updates from.</p>
+<blockquote>
+<div>cd networkx
+git fetch upstream</div></blockquote>
 <p>The tree in <code class="docutils literal"><span class="pre">networkx</span></code> will now have the latest changes from the initial
-repository.</p>
+repository, unless you have made local changes in the meantime. In this case, you have to merge.</p>
+<blockquote>
+<div>git merge upstream/master</div></blockquote>
+<p>It is also possible to update your local fork directly from GitHub:</p>
+<ol class="arabic simple">
+<li>Open your fork on GitHub.</li>
+<li>Click on &#8216;Pull Requests&#8217;.</li>
+</ol>
+<p>3. Click on &#8216;New Pull Request&#8217;. By default, GitHub will compare the original with your fork. If
+you didn’t make any changes, there is nothing to compare.
+4. Click on &#8216;Switching the base&#8217; or click &#8216;Edit&#8217; and switch the base manually. Now GitHub will
+compare your fork with the original, and you should see all the latest changes.
+5. Click on &#8216;Click to create a pull request for this comparison&#8217; and name your pull request.
+6. Click on Send pull request.
+7. Scroll down and click &#8216;Merge pull request&#8217; and finally &#8216;Confirm merge&#8217;. You will be able to merge
+it automatically unless you didnot change you local repo.</p>
 </div>
 </div>
 
@@ -230,7 +249,7 @@ repository.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jan 08, 2015.
+      Last updated on Jan 09, 2015.
     </p>
   </div>
 
@@ -250,7 +269,7 @@ repository.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150108000012',
+            VERSION:'2.0.dev20150109000010',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
