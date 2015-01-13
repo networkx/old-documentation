@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.convert_matrix &mdash; NetworkX 2.0.dev20150112000007 documentation</title>
+  <title>networkx.convert_matrix &mdash; NetworkX 2.0.dev20150113000010 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150112000007 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150113000010 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150112000007 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150113000010 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -516,11 +516,6 @@
 
 <span class="sd">    The numpy matrix is interpreted as an adjacency matrix for the graph.</span>
 
-<span class="sd">    If `create_using` is an instance of :class:`networkx.MultiGraph` or</span>
-<span class="sd">    :class:`networkx.MultiDiGraph` and the entries of `A` are of type ``int``,</span>
-<span class="sd">    then this function returns a multigraph (of the same type as</span>
-<span class="sd">    `create_using`) with parallel edges.</span>
-
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    A : numpy matrix</span>
@@ -531,6 +526,15 @@
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
+<span class="sd">    If `create_using` is an instance of :class:`networkx.MultiGraph` or</span>
+<span class="sd">    :class:`networkx.MultiDiGraph` and the entries of `A` are of type ``int``,</span>
+<span class="sd">    then this function returns a multigraph (of the same type as</span>
+<span class="sd">    `create_using`) with parallel edges.</span>
+
+<span class="sd">    If `create_using` is an undirected multigraph, then only the edges</span>
+<span class="sd">    indicated by the upper triangle of the matrix `A` will be added to the</span>
+<span class="sd">    graph.</span>
+
 <span class="sd">    If the numpy matrix has a single data type for each matrix entry it</span>
 <span class="sd">    will be converted to an appropriate Python data type.</span>
 
@@ -598,39 +602,48 @@
     <span class="k">except</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s">&quot;Unknown numpy data type: </span><span class="si">%s</span><span class="s">&quot;</span><span class="o">%</span><span class="n">dt</span><span class="p">)</span>
 
-    <span class="c"># make sure we get isolated nodes</span>
+    <span class="c"># Make sure we get even the isolated nodes of the graph.</span>
     <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
-    <span class="c"># get a list of edges</span>
-    <span class="n">edges</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">nonzero</span><span class="p">())</span>
-
+    <span class="c"># Get a list of all the entries in the matrix with nonzero entries. These</span>
+    <span class="c"># coordinates will become the edges in the graph.</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()))</span>
     <span class="c"># handle numpy constructed data type</span>
     <span class="k">if</span> <span class="n">python_type</span> <span class="ow">is</span> <span class="s">&#39;void&#39;</span><span class="p">:</span>
-        <span class="n">fields</span><span class="o">=</span><span class="nb">sorted</span><span class="p">([(</span><span class="n">offset</span><span class="p">,</span><span class="n">dtype</span><span class="p">,</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span><span class="p">,(</span><span class="n">dtype</span><span class="p">,</span><span class="n">offset</span><span class="p">)</span> <span class="ow">in</span>
-                       <span class="n">A</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
-        <span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>
-            <span class="n">attr</span><span class="o">=</span><span class="p">{}</span>
-            <span class="k">for</span> <span class="p">(</span><span class="n">offset</span><span class="p">,</span><span class="n">dtype</span><span class="p">,</span><span class="n">name</span><span class="p">),</span><span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span><span class="n">A</span><span class="p">[</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">]):</span>
-                <span class="n">attr</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">=</span><span class="n">kind_to_python_type</span><span class="p">[</span><span class="n">dtype</span><span class="o">.</span><span class="n">kind</span><span class="p">](</span><span class="n">val</span><span class="p">)</span>
-            <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">attr</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="c"># If the entries in the adjacency matrix are integers and the graph is</span>
-        <span class="c"># a multigraph, then create parallel edges, each with weight 1, for</span>
-        <span class="c"># each entry in the adjacency matrix. Otherwise, create one edge for</span>
-        <span class="c"># each positive entry in the adjacency matrix and set the weight of</span>
-        <span class="c"># that edge to be the entry in the matrix.</span>
-        <span class="k">if</span> <span class="n">python_type</span> <span class="ow">is</span> <span class="nb">int</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiGraph</span><span class="p">):</span>
-            <span class="n">chain</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span>
-            <span class="c"># The following line is equivalent to:</span>
-            <span class="c">#</span>
-            <span class="c">#     for (u, v) in edges:</span>
-            <span class="c">#         for d in range(A[u, v]):</span>
-            <span class="c">#             G.add_edge(u, v, weight=1)</span>
-            <span class="c">#</span>
-            <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">chain</span><span class="p">(((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">]))</span>
-                                   <span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">),</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">G</span><span class="o">.</span><span class="n">add_weighted_edges_from</span><span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">python_type</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">]))</span>
-                                      <span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">)</span>
+        <span class="c"># Sort the fields by their offset, then by dtype, then by name.</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">((</span><span class="n">offset</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span> <span class="ow">in</span>
+                        <span class="n">A</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="n">triples</span> <span class="o">=</span> <span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">kind_to_python_type</span><span class="p">[</span><span class="n">dtype</span><span class="o">.</span><span class="n">kind</span><span class="p">](</span><span class="n">val</span><span class="p">)</span>
+                           <span class="k">for</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">name</span><span class="p">),</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">])})</span>
+                   <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">)</span>
+    <span class="c"># If the entries in the adjacency matrix are integers and the graph is a</span>
+    <span class="c"># multigraph, then create parallel edges, each with weight 1, for each</span>
+    <span class="c"># entry in the adjacency matrix. Otherwise, create one edge for each</span>
+    <span class="c"># positive entry in the adjacency matrix and set the weight of that edge to</span>
+    <span class="c"># be the entry in the matrix.</span>
+    <span class="k">elif</span> <span class="n">python_type</span> <span class="ow">is</span> <span class="nb">int</span> <span class="ow">and</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
+        <span class="n">chain</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span>
+        <span class="c"># The following line is equivalent to:</span>
+        <span class="c">#</span>
+        <span class="c">#     for (u, v) in edges:</span>
+        <span class="c">#         for d in range(A[u, v]):</span>
+        <span class="c">#             G.add_edge(u, v, weight=1)</span>
+        <span class="c">#</span>
+        <span class="n">triples</span> <span class="o">=</span> <span class="n">chain</span><span class="p">(((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">]))</span>
+                        <span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c"># basic data type</span>
+        <span class="n">triples</span> <span class="o">=</span> <span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">weight</span><span class="o">=</span><span class="n">python_type</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">])))</span>
+                   <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">)</span>
+    <span class="c"># If we are creating an undirected multigraph, only add the edges from the</span>
+    <span class="c"># upper triangle of the matrix. Otherwise, add all the edges. This relies</span>
+    <span class="c"># on the fact that the vertices created in the</span>
+    <span class="c"># ``_generated_weighted_edges()`` function are actually the row/column</span>
+    <span class="c"># indices for the matrix ``A``.</span>
+    <span class="c">#</span>
+    <span class="c"># Without this check, we run into a problem where each edge is added twice</span>
+    <span class="c"># when ``G.add_edges_from()`` is invoked below.</span>
+    <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
+        <span class="n">triples</span> <span class="o">=</span> <span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">triples</span> <span class="k">if</span> <span class="n">u</span> <span class="o">&lt;=</span> <span class="n">v</span><span class="p">)</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">triples</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">G</span>
 
 </div>
@@ -827,7 +840,10 @@
 
 </div>
 <span class="k">def</span> <span class="nf">_csr_gen_triples</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
-    <span class="c"># Helper function for conversion from csr formatted scipy.sparse matrix.</span>
+    <span class="sd">&quot;&quot;&quot;Converts a SciPy sparse matrix in **Compressed Sparse Row** format to</span>
+<span class="sd">    an iterable of weighted edge triples.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">nrows</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">data</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">indptr</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">indices</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">indptr</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
@@ -836,7 +852,10 @@
 
 
 <span class="k">def</span> <span class="nf">_csc_gen_triples</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
-    <span class="c"># Helper function for conversion from csc formatted scipy.sparse matrix.</span>
+    <span class="sd">&quot;&quot;&quot;Converts a SciPy sparse matrix in **Compressed Sparse Column** format to</span>
+<span class="sd">    an iterable of weighted edge triples.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">ncols</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">data</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">indptr</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">indices</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">indptr</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
@@ -845,19 +864,43 @@
 
 
 <span class="k">def</span> <span class="nf">_coo_gen_triples</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
-    <span class="c"># Helper function for conversion from coo formatted scipy.sparse matrix.</span>
+    <span class="sd">&quot;&quot;&quot;Converts a SciPy sparse matrix in **Coordinate** format to an iterable</span>
+<span class="sd">    of weighted edge triples.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">col</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">data</span>
     <span class="k">return</span> <span class="nb">zip</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">_dok_gen_triples</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
-    <span class="c"># Helper function for conversion from coo formatted scipy.sparse matrix.</span>
+    <span class="sd">&quot;&quot;&quot;Converts a SciPy sparse matrix in **Dictionary of Keys** format to an</span>
+<span class="sd">    iterable of weighted edge triples.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">),</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">A</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="k">yield</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">v</span>
 
 
+<span class="k">def</span> <span class="nf">_generate_weighted_edges</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns an iterable over (u, v, w) triples, where u and v are adjacent</span>
+<span class="sd">    vertices and w is the weight of the edge joining u and v.</span>
+
+<span class="sd">    `A` is a SciPy sparse matrix (in any format).</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">A</span><span class="o">.</span><span class="n">format</span> <span class="o">==</span> <span class="s">&#39;csr&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_csr_gen_triples</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">A</span><span class="o">.</span><span class="n">format</span> <span class="o">==</span> <span class="s">&#39;csc&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_csc_gen_triples</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">A</span><span class="o">.</span><span class="n">format</span> <span class="o">==</span> <span class="s">&#39;dok&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_dok_gen_triples</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="c"># If A is in any other format (including COO), convert it to COO format.</span>
+    <span class="k">return</span> <span class="n">_coo_gen_triples</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">tocoo</span><span class="p">())</span>
+
+
 <div class="viewcode-block" id="from_scipy_sparse_matrix"><a class="viewcode-back" href="../../reference/generated/networkx.convert_matrix.from_scipy_sparse_matrix.html#networkx.convert_matrix.from_scipy_sparse_matrix">[docs]</a><span class="k">def</span> <span class="nf">from_scipy_sparse_matrix</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">edge_attribute</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return a graph from scipy sparse matrix adjacency list.</span>
+    <span class="sd">&quot;&quot;&quot;Creates a new graph from an adjacency matrix given as a SciPy sparse</span>
+<span class="sd">    matrix.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -880,6 +923,10 @@
 <span class="sd">    `create_using`) with parallel edges. In this case, `edge_attribute` will be</span>
 <span class="sd">    ignored.</span>
 
+<span class="sd">    If `create_using` is an undirected multigraph, then only the edges</span>
+<span class="sd">    indicated by the upper triangle of the matrix `A` will be added to the</span>
+<span class="sd">    graph.</span>
+
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; import scipy.sparse</span>
@@ -901,25 +948,17 @@
     <span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="n">m</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span>\
               <span class="s">&quot;Adjacency matrix is not square. nx,ny=</span><span class="si">%s</span><span class="s">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">,))</span>
-    <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="c"># make sure we get isolated nodes</span>
-
-    <span class="k">if</span> <span class="n">A</span><span class="o">.</span><span class="n">format</span> <span class="o">==</span> <span class="s">&#39;csr&#39;</span><span class="p">:</span>
-        <span class="n">triples</span> <span class="o">=</span> <span class="n">_csr_gen_triples</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">A</span><span class="o">.</span><span class="n">format</span> <span class="o">==</span> <span class="s">&#39;csc&#39;</span><span class="p">:</span>
-        <span class="n">triples</span> <span class="o">=</span> <span class="n">_csc_gen_triples</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">A</span><span class="o">.</span><span class="n">format</span> <span class="o">==</span> <span class="s">&#39;dok&#39;</span><span class="p">:</span>
-        <span class="n">triples</span> <span class="o">=</span> <span class="n">_dok_gen_triples</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">A</span><span class="o">.</span><span class="n">format</span> <span class="o">!=</span> <span class="s">&#39;coo&#39;</span><span class="p">:</span>
-            <span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">tocoo</span><span class="p">()</span>
-        <span class="n">triples</span> <span class="o">=</span> <span class="n">_coo_gen_triples</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-
+    <span class="c"># Make sure we get even the isolated nodes of the graph.</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="c"># Create an iterable over (u, v, w) triples and for each triple, add an</span>
+    <span class="c"># edge from u to v with weight w.</span>
+    <span class="n">triples</span> <span class="o">=</span> <span class="n">_generate_weighted_edges</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
     <span class="c"># If the entries in the adjacency matrix are integers and the graph is a</span>
     <span class="c"># multigraph, then create parallel edges, each with weight 1, for each</span>
     <span class="c"># entry in the adjacency matrix. Otherwise, create one edge for each</span>
     <span class="c"># positive entry in the adjacency matrix and set the weight of that edge to</span>
     <span class="c"># be the entry in the matrix.</span>
-    <span class="k">if</span> <span class="n">A</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="s">&#39;u&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiGraph</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">A</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="s">&#39;u&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
         <span class="n">chain</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span>
         <span class="c"># The following line is equivalent to:</span>
         <span class="c">#</span>
@@ -927,10 +966,18 @@
         <span class="c">#         for d in range(A[u, v]):</span>
         <span class="c">#             G.add_edge(u, v, weight=1)</span>
         <span class="c">#</span>
-        <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">chain</span><span class="p">(((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
-                               <span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="ow">in</span> <span class="n">triples</span><span class="p">),</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">G</span><span class="o">.</span><span class="n">add_weighted_edges_from</span><span class="p">(</span><span class="n">triples</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">edge_attribute</span><span class="p">)</span>
+        <span class="n">triples</span> <span class="o">=</span> <span class="n">chain</span><span class="p">(((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">w</span><span class="p">))</span> <span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="ow">in</span> <span class="n">triples</span><span class="p">)</span>
+    <span class="c"># If we are creating an undirected multigraph, only add the edges from the</span>
+    <span class="c"># upper triangle of the matrix. Otherwise, add all the edges. This relies</span>
+    <span class="c"># on the fact that the vertices created in the</span>
+    <span class="c"># ``_generated_weighted_edges()`` function are actually the row/column</span>
+    <span class="c"># indices for the matrix ``A``.</span>
+    <span class="c">#</span>
+    <span class="c"># Without this check, we run into a problem where each edge is added twice</span>
+    <span class="c"># when `G.add_weighted_edges_from()` is invoked below.</span>
+    <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
+        <span class="n">triples</span> <span class="o">=</span> <span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">triples</span> <span class="k">if</span> <span class="n">u</span> <span class="o">&lt;=</span> <span class="n">v</span><span class="p">)</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_weighted_edges_from</span><span class="p">(</span><span class="n">triples</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">edge_attribute</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">G</span>
 
 
@@ -956,7 +1003,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jan 12, 2015.
+      Last updated on Jan 13, 2015.
     </p>
   </div>
 
@@ -976,7 +1023,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150112000007',
+            VERSION:'2.0.dev20150113000010',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
