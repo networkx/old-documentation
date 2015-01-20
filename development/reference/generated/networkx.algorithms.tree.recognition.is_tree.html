@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>is_tree &mdash; NetworkX 2.0.dev20150119000010 documentation</title>
+  <title>is_tree &mdash; NetworkX 2.0.dev20150120000010 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150119000010 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150120000010 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,10 +30,10 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150119000010 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150120000010 documentation" href="../../index.html"/>
         <link rel="up" title="Tree" href="../algorithms.tree.html"/>
         <link rel="next" title="is_forest" href="networkx.algorithms.tree.recognition.is_forest.html"/>
-        <link rel="prev" title="is_forest" href="networkx.algorithms.tree.recognition.is_forest.html"/> 
+        <link rel="prev" title="Edmonds" href="networkx.algorithms.tree.branchings.Edmonds.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -190,9 +190,9 @@
 <dl class="function">
 <dt id="networkx.algorithms.tree.recognition.is_tree">
 <code class="descname">is_tree</code><span class="sig-paren">(</span><em>G</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/tree/recognition.html#is_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.tree.recognition.is_tree" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns <span class="math">\(True\)</span> if <span class="math">\(G\)</span> is a tree.</p>
+<dd><p>Returns <code class="docutils literal"><span class="pre">True</span></code> if <code class="docutils literal"><span class="pre">G</span></code> is a tree.</p>
 <p>A tree is a connected graph with no undirected cycles.</p>
-<p>For directed graphs, <span class="math">\(G\)</span> is a tree if the underlying graph is a tree. The
+<p>For directed graphs, <code class="docutils literal"><span class="pre">G</span></code> is a tree if the underlying graph is a tree. The
 underlying graph is obtained by treating each directed edge as a single
 undirected edge in a multigraph.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -207,7 +207,7 @@ undirected edge in a multigraph.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>b</strong> : bool</p>
 <blockquote class="last">
-<div><p>A boolean that is <span class="math">\(True\)</span> if <span class="math">\(G\)</span> is a tree.</p>
+<div><p>A boolean that is <code class="docutils literal"><span class="pre">True</span></code> if <code class="docutils literal"><span class="pre">G</span></code> is a tree.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -215,7 +215,7 @@ undirected edge in a multigraph.</p>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">is_arborescence</span></code></p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.tree.recognition.is_arborescence.html#networkx.algorithms.tree.recognition.is_arborescence" title="networkx.algorithms.tree.recognition.is_arborescence"><code class="xref py py-obj docutils literal"><span class="pre">is_arborescence</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
 <p>In another convention, a directed tree is known as a <em>polytree</em> and then
@@ -233,7 +233,7 @@ undirected edge in a multigraph.</p>
         <a href="networkx.algorithms.tree.recognition.is_forest.html" class="btn btn-neutral float-right" title="is_forest"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="networkx.algorithms.tree.recognition.is_forest.html" class="btn btn-neutral" title="is_forest"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="networkx.algorithms.tree.branchings.Edmonds.html" class="btn btn-neutral" title="Edmonds"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -243,7 +243,7 @@ undirected edge in a multigraph.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jan 19, 2015.
+      Last updated on Jan 20, 2015.
     </p>
   </div>
 
@@ -263,7 +263,7 @@ undirected edge in a multigraph.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150119000010',
+            VERSION:'2.0.dev20150120000010',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

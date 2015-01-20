@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.generators.social &mdash; NetworkX 2.0.dev20150119000010 documentation</title>
+  <title>networkx.generators.social &mdash; NetworkX 2.0.dev20150120000010 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150119000010 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150120000010 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150119000010 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150120000010 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -299,41 +299,41 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
     <span class="c"># Top nodes</span>
-    <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">([</span><span class="s">&quot;Evelyn Jefferson&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;Laura Mandeville&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;Theresa Anderson&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;Brenda Rogers&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;Charlotte McDowd&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;Frances Anderson&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;Eleanor Nye&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;Pearl Oglethorpe&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;Ruth DeSand&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;Verne Sanderson&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;Myra Liddel&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;Katherina Rogers&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;Sylvia Avondale&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;Nora Fayette&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;Helen Lloyd&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;Dorothy Murchison&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;Olivia Carleton&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;Flora Price&quot;</span><span class="p">],</span> 
-                     <span class="n">bipartite</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">women</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;Evelyn Jefferson&quot;</span><span class="p">,</span>
+             <span class="s">&quot;Laura Mandeville&quot;</span><span class="p">,</span>
+             <span class="s">&quot;Theresa Anderson&quot;</span><span class="p">,</span>
+             <span class="s">&quot;Brenda Rogers&quot;</span><span class="p">,</span>
+             <span class="s">&quot;Charlotte McDowd&quot;</span><span class="p">,</span>
+             <span class="s">&quot;Frances Anderson&quot;</span><span class="p">,</span>
+             <span class="s">&quot;Eleanor Nye&quot;</span><span class="p">,</span>
+             <span class="s">&quot;Pearl Oglethorpe&quot;</span><span class="p">,</span>
+             <span class="s">&quot;Ruth DeSand&quot;</span><span class="p">,</span>
+             <span class="s">&quot;Verne Sanderson&quot;</span><span class="p">,</span>
+             <span class="s">&quot;Myra Liddel&quot;</span><span class="p">,</span>
+             <span class="s">&quot;Katherina Rogers&quot;</span><span class="p">,</span>
+             <span class="s">&quot;Sylvia Avondale&quot;</span><span class="p">,</span>
+             <span class="s">&quot;Nora Fayette&quot;</span><span class="p">,</span>
+             <span class="s">&quot;Helen Lloyd&quot;</span><span class="p">,</span>
+             <span class="s">&quot;Dorothy Murchison&quot;</span><span class="p">,</span>
+             <span class="s">&quot;Olivia Carleton&quot;</span><span class="p">,</span>
+             <span class="s">&quot;Flora Price&quot;</span><span class="p">]</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">women</span><span class="p">,</span> <span class="n">bipartite</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="c"># Bottom nodes</span>
-    <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">([</span><span class="s">&quot;E1&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;E2&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;E3&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;E4&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;E5&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;E6&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;E7&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;E8&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;E9&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;E10&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;E11&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;E12&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;E13&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;E14&quot;</span><span class="p">],</span> 
-                     <span class="n">bipartite</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">events</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;E1&quot;</span><span class="p">,</span>
+              <span class="s">&quot;E2&quot;</span><span class="p">,</span>
+              <span class="s">&quot;E3&quot;</span><span class="p">,</span>
+              <span class="s">&quot;E4&quot;</span><span class="p">,</span>
+              <span class="s">&quot;E5&quot;</span><span class="p">,</span>
+              <span class="s">&quot;E6&quot;</span><span class="p">,</span>
+              <span class="s">&quot;E7&quot;</span><span class="p">,</span>
+              <span class="s">&quot;E8&quot;</span><span class="p">,</span>
+              <span class="s">&quot;E9&quot;</span><span class="p">,</span>
+              <span class="s">&quot;E10&quot;</span><span class="p">,</span>
+              <span class="s">&quot;E11&quot;</span><span class="p">,</span>
+              <span class="s">&quot;E12&quot;</span><span class="p">,</span>
+              <span class="s">&quot;E13&quot;</span><span class="p">,</span>
+              <span class="s">&quot;E14&quot;</span><span class="p">]</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">events</span><span class="p">,</span> <span class="n">bipartite</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="s">&quot;Evelyn Jefferson&quot;</span><span class="p">,</span><span class="s">&quot;E1&quot;</span><span class="p">),</span>
                       <span class="p">(</span><span class="s">&quot;Evelyn Jefferson&quot;</span><span class="p">,</span><span class="s">&quot;E2&quot;</span><span class="p">),</span>
@@ -424,6 +424,8 @@
                       <span class="p">(</span><span class="s">&quot;Olivia Carleton&quot;</span><span class="p">,</span><span class="s">&quot;E11&quot;</span><span class="p">),</span>
                       <span class="p">(</span><span class="s">&quot;Flora Price&quot;</span><span class="p">,</span><span class="s">&quot;E9&quot;</span><span class="p">),</span>
                       <span class="p">(</span><span class="s">&quot;Flora Price&quot;</span><span class="p">,</span><span class="s">&quot;E11&quot;</span><span class="p">)])</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s">&#39;top&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">women</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s">&#39;bottom&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">events</span>
     <span class="k">return</span> <span class="n">G</span>
 </div>
 <div class="viewcode-block" id="florentine_families_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.social.florentine_families_graph.html#networkx.generators.social.florentine_families_graph">[docs]</a><span class="k">def</span> <span class="nf">florentine_families_graph</span><span class="p">():</span>
@@ -468,7 +470,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jan 19, 2015.
+      Last updated on Jan 20, 2015.
     </p>
   </div>
 
@@ -488,7 +490,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20150119000010',
+            VERSION:'2.0.dev20150120000010',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
