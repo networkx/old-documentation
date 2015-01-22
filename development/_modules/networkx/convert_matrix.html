@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.convert_matrix &mdash; NetworkX 2.0.dev20150120000010 documentation</title>
+  <title>networkx.convert_matrix &mdash; NetworkX 2.0.dev20150122000009 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150120000010 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150122000009 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150120000010 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150122000009 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -511,7 +511,7 @@
     <span class="k">return</span> <span class="n">M</span>
 
 </div>
-<div class="viewcode-block" id="from_numpy_matrix"><a class="viewcode-back" href="../../reference/generated/networkx.convert_matrix.from_numpy_matrix.html#networkx.convert_matrix.from_numpy_matrix">[docs]</a><span class="k">def</span> <span class="nf">from_numpy_matrix</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="from_numpy_matrix"><a class="viewcode-back" href="../../reference/generated/networkx.convert_matrix.from_numpy_matrix.html#networkx.convert_matrix.from_numpy_matrix">[docs]</a><span class="k">def</span> <span class="nf">from_numpy_matrix</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">parallel_edges</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a graph from numpy matrix.</span>
 
 <span class="sd">    The numpy matrix is interpreted as an adjacency matrix for the graph.</span>
@@ -521,15 +521,22 @@
 <span class="sd">    A : numpy matrix</span>
 <span class="sd">      An adjacency matrix representation of a graph</span>
 
+<span class="sd">    parallel_edges : Boolean</span>
+<span class="sd">      If this is ``True``, `create_using` is a multigraph, and `A` is an</span>
+<span class="sd">      integer matrix, then entry *(i, j)* in the matrix is interpreted as the</span>
+<span class="sd">      number of parallel edges joining vertices *i* and *j* in the graph. If it</span>
+<span class="sd">      is ``False``, then the entries in the adjacency matrix are interpreted as</span>
+<span class="sd">      the weight of a single edge joining the vertices.</span>
+
 <span class="sd">    create_using : NetworkX graph</span>
 <span class="sd">       Use specified graph for result.  The default is Graph()</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    If `create_using` is an instance of :class:`networkx.MultiGraph` or</span>
-<span class="sd">    :class:`networkx.MultiDiGraph` and the entries of `A` are of type ``int``,</span>
-<span class="sd">    then this function returns a multigraph (of the same type as</span>
-<span class="sd">    `create_using`) with parallel edges.</span>
+<span class="sd">    :class:`networkx.MultiDiGraph`, `parallel_edges` is ``True``, and the</span>
+<span class="sd">    entries of `A` are of type ``int``, then this function returns a multigraph</span>
+<span class="sd">    (of the same type as `create_using`) with parallel edges.</span>
 
 <span class="sd">    If `create_using` is an undirected multigraph, then only the edges</span>
 <span class="sd">    indicated by the upper triangle of the matrix `A` will be added to the</span>
@@ -555,11 +562,23 @@
 <span class="sd">    &gt;&gt;&gt; G=nx.from_numpy_matrix(A)</span>
 
 <span class="sd">    If `create_using` is a multigraph and the matrix has only integer entries,</span>
-<span class="sd">    the entries will be interpreted as parallel edges between the vertices:</span>
+<span class="sd">    the entries will be interpreted as weighted edges joining the vertices</span>
+<span class="sd">    (without creating parallel edges):</span>
 
 <span class="sd">    &gt;&gt;&gt; import numpy</span>
 <span class="sd">    &gt;&gt;&gt; A = numpy.matrix([[1, 1], [1, 2]])</span>
 <span class="sd">    &gt;&gt;&gt; G = nx.from_numpy_matrix(A, create_using=nx.MultiGraph())</span>
+<span class="sd">    &gt;&gt;&gt; G[1][1]</span>
+<span class="sd">    {0: {&#39;weight&#39;: 2}}</span>
+
+<span class="sd">    If `create_using` is a multigraph and the matrix has only integer entries</span>
+<span class="sd">    but `parallel_edges` is ``True``, then the entries will be interpreted as</span>
+<span class="sd">    the number of parallel edges joining those two vertices:</span>
+
+<span class="sd">    &gt;&gt;&gt; import numpy</span>
+<span class="sd">    &gt;&gt;&gt; A = numpy.matrix([[1, 1], [1, 2]])</span>
+<span class="sd">    &gt;&gt;&gt; temp = nx.MultiGraph()</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.from_numpy_matrix(A, parallel_edges=True, create_using=temp)</span>
 <span class="sd">    &gt;&gt;&gt; G[1][1]</span>
 <span class="sd">    {0: {&#39;weight&#39;: 1}, 1: {&#39;weight&#39;: 1}}</span>
 
@@ -615,12 +634,12 @@
         <span class="n">triples</span> <span class="o">=</span> <span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">kind_to_python_type</span><span class="p">[</span><span class="n">dtype</span><span class="o">.</span><span class="n">kind</span><span class="p">](</span><span class="n">val</span><span class="p">)</span>
                            <span class="k">for</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">name</span><span class="p">),</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">])})</span>
                    <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">)</span>
-    <span class="c"># If the entries in the adjacency matrix are integers and the graph is a</span>
-    <span class="c"># multigraph, then create parallel edges, each with weight 1, for each</span>
-    <span class="c"># entry in the adjacency matrix. Otherwise, create one edge for each</span>
-    <span class="c"># positive entry in the adjacency matrix and set the weight of that edge to</span>
-    <span class="c"># be the entry in the matrix.</span>
-    <span class="k">elif</span> <span class="n">python_type</span> <span class="ow">is</span> <span class="nb">int</span> <span class="ow">and</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
+    <span class="c"># If the entries in the adjacency matrix are integers, the graph is a</span>
+    <span class="c"># multigraph, and parallel_edges is True, then create parallel edges, each</span>
+    <span class="c"># with weight 1, for each entry in the adjacency matrix. Otherwise, create</span>
+    <span class="c"># one edge for each positive entry in the adjacency matrix and set the</span>
+    <span class="c"># weight of that edge to be the entry in the matrix.</span>
+    <span class="k">elif</span> <span class="n">python_type</span> <span class="ow">is</span> <span class="nb">int</span> <span class="ow">and</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">()</span> <span class="ow">and</span> <span class="n">parallel_edges</span><span class="p">:</span>
         <span class="n">chain</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span>
         <span class="c"># The following line is equivalent to:</span>
         <span class="c">#</span>
@@ -898,7 +917,8 @@
     <span class="k">return</span> <span class="n">_coo_gen_triples</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">tocoo</span><span class="p">())</span>
 
 
-<div class="viewcode-block" id="from_scipy_sparse_matrix"><a class="viewcode-back" href="../../reference/generated/networkx.convert_matrix.from_scipy_sparse_matrix.html#networkx.convert_matrix.from_scipy_sparse_matrix">[docs]</a><span class="k">def</span> <span class="nf">from_scipy_sparse_matrix</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">edge_attribute</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="from_scipy_sparse_matrix"><a class="viewcode-back" href="../../reference/generated/networkx.convert_matrix.from_scipy_sparse_matrix.html#networkx.convert_matrix.from_scipy_sparse_matrix">[docs]</a><span class="k">def</span> <span class="nf">from_scipy_sparse_matrix</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">parallel_edges</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                             <span class="n">edge_attribute</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Creates a new graph from an adjacency matrix given as a SciPy sparse</span>
 <span class="sd">    matrix.</span>
 
@@ -906,6 +926,13 @@
 <span class="sd">    ----------</span>
 <span class="sd">    A: scipy sparse matrix</span>
 <span class="sd">      An adjacency matrix representation of a graph</span>
+
+<span class="sd">    parallel_edges : Boolean</span>
+<span class="sd">      If this is ``True``, `create_using` is a multigraph, and `A` is an</span>
+<span class="sd">      integer matrix, then entry *(i, j)* in the matrix is interpreted as the</span>
+<span class="sd">      number of parallel edges joining vertices *i* and *j* in the graph. If it</span>
+<span class="sd">      is ``False``, then the entries in the adjacency matrix are interpreted as</span>
+<span class="sd">      the weight of a single edge joining the vertices.</span>
 
 <span class="sd">    create_using: NetworkX graph</span>
 <span class="sd">       Use specified graph for result.  The default is Graph()</span>
@@ -918,10 +945,10 @@
 <span class="sd">    -----</span>
 
 <span class="sd">    If `create_using` is an instance of :class:`networkx.MultiGraph` or</span>
-<span class="sd">    :class:`networkx.MultiDiGraph` and the entries of `A` are of type ``int``,</span>
-<span class="sd">    then this function returns a multigraph (of the same type as</span>
-<span class="sd">    `create_using`) with parallel edges. In this case, `edge_attribute` will be</span>
-<span class="sd">    ignored.</span>
+<span class="sd">    :class:`networkx.MultiDiGraph`, `parallel_edges` is ``True``, and the</span>
+<span class="sd">    entries of `A` are of type ``int``, then this function returns a multigraph</span>
+<span class="sd">    (of the same type as `create_using`) with parallel edges. In this case,</span>
+<span class="sd">    `edge_attribute` will be ignored.</span>
 
 <span class="sd">    If `create_using` is an undirected multigraph, then only the edges</span>
 <span class="sd">    indicated by the upper triangle of the matrix `A` will be added to the</span>
@@ -934,11 +961,23 @@
 <span class="sd">    &gt;&gt;&gt; G = nx.from_scipy_sparse_matrix(A)</span>
 
 <span class="sd">    If `create_using` is a multigraph and the matrix has only integer entries,</span>
-<span class="sd">    the entries will be interpreted as parallel edges between the vertices:</span>
+<span class="sd">    the entries will be interpreted as weighted edges joining the vertices</span>
+<span class="sd">    (without creating parallel edges):</span>
 
 <span class="sd">    &gt;&gt;&gt; import scipy</span>
 <span class="sd">    &gt;&gt;&gt; A = scipy.sparse.csr_matrix([[1, 1], [1, 2]])</span>
 <span class="sd">    &gt;&gt;&gt; G = nx.from_scipy_sparse_matrix(A, create_using=nx.MultiGraph())</span>
+<span class="sd">    &gt;&gt;&gt; G[1][1]</span>
+<span class="sd">    {0: {&#39;weight&#39;: 2}}</span>
+
+<span class="sd">    If `create_using` is a multigraph and the matrix has only integer entries</span>
+<span class="sd">    but `parallel_edges` is ``True``, then the entries will be interpreted as</span>
+<span class="sd">    the number of parallel edges joining those two vertices:</span>
+
+<span class="sd">    &gt;&gt;&gt; import scipy</span>
+<span class="sd">    &gt;&gt;&gt; A = scipy.sparse.csr_matrix([[1, 1], [1, 2]])</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.from_scipy_sparse_matrix(A, parallel_edges=True,</span>
+<span class="sd">    ...                                 create_using=nx.MultiGraph())</span>
 <span class="sd">    &gt;&gt;&gt; G[1][1]</span>
 <span class="sd">    {0: {&#39;weight&#39;: 1}, 1: {&#39;weight&#39;: 1}}</span>
 
@@ -953,12 +992,12 @@
     <span class="c"># Create an iterable over (u, v, w) triples and for each triple, add an</span>
     <span class="c"># edge from u to v with weight w.</span>
     <span class="n">triples</span> <span class="o">=</span> <span class="n">_generate_weighted_edges</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-    <span class="c"># If the entries in the adjacency matrix are integers and the graph is a</span>
-    <span class="c"># multigraph, then create parallel edges, each with weight 1, for each</span>
-    <span class="c"># entry in the adjacency matrix. Otherwise, create one edge for each</span>
-    <span class="c"># positive entry in the adjacency matrix and set the weight of that edge to</span>
-    <span class="c"># be the entry in the matrix.</span>
-    <span class="k">if</span> <span class="n">A</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="s">&#39;u&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
+    <span class="c"># If the entries in the adjacency matrix are integers, the graph is a</span>
+    <span class="c"># multigraph, and parallel_edges is True, then create parallel edges, each</span>
+    <span class="c"># with weight 1, for each entry in the adjacency matrix. Otherwise, create</span>
+    <span class="c"># one edge for each positive entry in the adjacency matrix and set the</span>
+    <span class="c"># weight of that edge to be the entry in the matrix.</span>
+    <span class="k">if</span> <span class="n">A</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="s">&#39;u&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">()</span> <span class="ow">and</span> <span class="n">parallel_edges</span><span class="p">:</span>
         <span class="n">chain</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span>
         <span class="c"># The following line is equivalent to:</span>
         <span class="c">#</span>
@@ -1003,7 +1042,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jan 20, 2015.
+      Last updated on Jan 22, 2015.
     </p>
   </div>
 
@@ -1023,7 +1062,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150120000010',
+            VERSION:'2.0.dev20150122000009',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
