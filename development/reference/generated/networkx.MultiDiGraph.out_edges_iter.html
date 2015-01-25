@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>out_edges_iter &mdash; NetworkX 2.0.dev20150124000010 documentation</title>
+  <title>out_edges_iter &mdash; NetworkX 2.0.dev20150125000010 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150124000010 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150125000010 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150124000010 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150125000010 documentation" href="../../index.html"/>
         <link rel="up" title="MultiDiGraph - Directed graphs with self loops and parallel edges" href="../classes.multidigraph.html"/>
         <link rel="next" title="in_edges" href="networkx.MultiDiGraph.in_edges.html"/>
         <link rel="prev" title="out_edges" href="networkx.MultiDiGraph.out_edges.html"/> 
@@ -189,7 +189,7 @@
 <h1>out_edges_iter<a class="headerlink" href="#out-edges-iter" title="Permalink to this headline">¶</a></h1>
 <dl class="method">
 <dt id="networkx.MultiDiGraph.out_edges_iter">
-<code class="descclassname">MultiDiGraph.</code><code class="descname">out_edges_iter</code><span class="sig-paren">(</span><em>nbunch=None</em>, <em>data=False</em>, <em>keys=False</em><span class="sig-paren">)</span><a class="headerlink" href="#networkx.MultiDiGraph.out_edges_iter" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">MultiDiGraph.</code><code class="descname">out_edges_iter</code><span class="sig-paren">(</span><em>nbunch=None</em>, <em>data=False</em>, <em>keys=False</em>, <em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#networkx.MultiDiGraph.out_edges_iter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return an iterator over the edges.</p>
 <p>Edges are returned as tuples with optional data and keys
 in the order (node, neighbor, key, data).</p>
@@ -202,13 +202,20 @@ in the order (node, neighbor, key, data).</p>
 <div><p>A container of nodes.  The container will be iterated
 through once.</p>
 </div></blockquote>
-<p><strong>data</strong> : bool, optional (default=False)</p>
+<p><strong>data</strong> : string or bool, optional (default=False)</p>
 <blockquote>
-<div><p>If True, return edge attribute dict with each edge.</p>
+<div><p>The edge attribute returned in 3-tuple (u,v,ddict[data]).
+If True, return edge attribute dict in 3-tuple (u,v,ddict).
+If False, return 2-tuple (u,v).</p>
 </div></blockquote>
 <p><strong>keys</strong> : bool, optional (default=False)</p>
 <blockquote>
 <div><p>If True, return edge keys with each edge.</p>
+</div></blockquote>
+<p><strong>default</strong> : value, optional (default=None)</p>
+<blockquote>
+<div><p>Value used for edges that dont have the requested attribute.
+Only relevant if data is not True or False.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -232,11 +239,20 @@ through once.</p>
 For directed graphs this returns the out-edges.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiDiGraph</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_path</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_path</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges_iter</span><span class="p">()]</span>
 <span class="go">[(0, 1), (1, 2), (2, 3)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges_iter</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span> <span class="c"># default data is {} (empty dict)</span>
-<span class="go">[(0, 1, {}), (1, 2, {}), (2, 3, {})]</span>
+<span class="go">[(0, 1, {}), (1, 2, {}), (2, 3, {&#39;weight&#39;: 5})]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges_iter</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> 
+<span class="go">[(0, 1, 1), (1, 2, 1), (2, 3, 5)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span> <span class="c"># default keys are integers</span>
+<span class="go">[(0, 1, 0), (1, 2, 0), (2, 3, 0)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">keys</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span> <span class="c"># default keys are integers</span>
+<span class="go">[(0, 1, 0, {}), (1, 2, 0, {}), (2, 3, 0, {&#39;weight&#39;: 5})]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">keys</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+<span class="go">[(0, 1, 0, 1), (1, 2, 0, 1), (2, 3, 0, 5)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges_iter</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]))</span>
 <span class="go">[(0, 1), (2, 3)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges_iter</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
@@ -266,7 +282,7 @@ For directed graphs this returns the out-edges.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jan 24, 2015.
+      Last updated on Jan 25, 2015.
     </p>
   </div>
 
@@ -286,7 +302,7 @@ For directed graphs this returns the out-edges.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150124000010',
+            VERSION:'2.0.dev20150125000010',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

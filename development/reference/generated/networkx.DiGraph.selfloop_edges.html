@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>selfloop_edges &mdash; NetworkX 2.0.dev20150124000010 documentation</title>
+  <title>selfloop_edges &mdash; NetworkX 2.0.dev20150125000010 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150124000010 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150125000010 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150124000010 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150125000010 documentation" href="../../index.html"/>
         <link rel="up" title="DiGraph - Directed graphs with self loops" href="../classes.digraph.html"/>
         <link rel="next" title="number_of_selfloops" href="networkx.DiGraph.number_of_selfloops.html"/>
         <link rel="prev" title="nodes_with_selfloops" href="networkx.DiGraph.nodes_with_selfloops.html"/> 
@@ -189,17 +189,23 @@
 <h1>selfloop_edges<a class="headerlink" href="#selfloop-edges" title="Permalink to this headline">¶</a></h1>
 <dl class="method">
 <dt id="networkx.DiGraph.selfloop_edges">
-<code class="descclassname">DiGraph.</code><code class="descname">selfloop_edges</code><span class="sig-paren">(</span><em>data=False</em><span class="sig-paren">)</span><a class="headerlink" href="#networkx.DiGraph.selfloop_edges" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">DiGraph.</code><code class="descname">selfloop_edges</code><span class="sig-paren">(</span><em>data=False</em>, <em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#networkx.DiGraph.selfloop_edges" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of selfloop edges.</p>
 <p>A selfloop edge has the same node at both ends.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : bool, optional (default=False)</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : string or bool, optional (default=False)</p>
 <blockquote>
 <div><p>Return selfloop edges as two tuples (u,v) (data=False)
-or three-tuples (u,v,data) (data=True)</p>
+or three-tuples (u,v,datadict) (data=True)
+or three-tuples (u,v,datavalue) (data=&#8217;attrname&#8217;)</p>
+</div></blockquote>
+<p><strong>default</strong> : value, optional (default=None)</p>
+<blockquote>
+<div><p>Value used for edges that dont have the requested attribute.
+Only relevant if data is not True or False.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -248,7 +254,7 @@ or three-tuples (u,v,data) (data=True)</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jan 24, 2015.
+      Last updated on Jan 25, 2015.
     </p>
   </div>
 
@@ -268,7 +274,7 @@ or three-tuples (u,v,data) (data=True)</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150124000010',
+            VERSION:'2.0.dev20150125000010',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

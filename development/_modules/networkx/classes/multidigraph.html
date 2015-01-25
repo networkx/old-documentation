@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.classes.multidigraph &mdash; NetworkX 2.0.dev20150124000010 documentation</title>
+  <title>networkx.classes.multidigraph &mdash; NetworkX 2.0.dev20150125000010 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150124000010 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150125000010 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150124000010 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150125000010 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -339,8 +339,8 @@
 <span class="sd">    ...                (n,nbr,eattr[&#39;weight&#39;])</span>
 <span class="sd">    (1, 2, 4)</span>
 <span class="sd">    (2, 3, 8)</span>
-<span class="sd">    &gt;&gt;&gt; [ (u,v,edata[&#39;weight&#39;]) for u,v,edata in G.edges(data=True) if &#39;weight&#39; in edata ]</span>
-<span class="sd">    [(1, 2, 4), (2, 3, 8)]</span>
+<span class="sd">    &gt;&gt;&gt; G.edges(data=&#39;weight&#39;)</span>
+<span class="sd">    [(1, 2, 4), (1, 2, None), (2, 3, 8), (3, 4, None), (4, 5, None)]</span>
 
 <span class="sd">    **Reporting:**</span>
 
@@ -585,7 +585,7 @@
             <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">u</span><span class="p">]</span>
 
 </div>
-<div class="viewcode-block" id="MultiDiGraph.edges_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiDiGraph.edges_iter.html#networkx.MultiDiGraph.edges_iter">[docs]</a>    <span class="k">def</span> <span class="nf">edges_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<div class="viewcode-block" id="MultiDiGraph.edges_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiDiGraph.edges_iter.html#networkx.MultiDiGraph.edges_iter">[docs]</a>    <span class="k">def</span> <span class="nf">edges_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator over the edges.</span>
 
 <span class="sd">        Edges are returned as tuples with optional data and keys</span>
@@ -596,10 +596,15 @@
 <span class="sd">        nbunch : iterable container, optional (default= all nodes)</span>
 <span class="sd">            A container of nodes.  The container will be iterated</span>
 <span class="sd">            through once.</span>
-<span class="sd">        data : bool, optional (default=False)</span>
-<span class="sd">            If True, return edge attribute dict with each edge.</span>
+<span class="sd">        data : string or bool, optional (default=False)</span>
+<span class="sd">            The edge attribute returned in 3-tuple (u,v,ddict[data]).</span>
+<span class="sd">            If True, return edge attribute dict in 3-tuple (u,v,ddict).</span>
+<span class="sd">            If False, return 2-tuple (u,v). </span>
 <span class="sd">        keys : bool, optional (default=False)</span>
 <span class="sd">            If True, return edge keys with each edge.</span>
+<span class="sd">        default : value, optional (default=None)</span>
+<span class="sd">            Value used for edges that dont have the requested attribute.</span>
+<span class="sd">            Only relevant if data is not True or False.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -618,11 +623,20 @@
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
 <span class="sd">        &gt;&gt;&gt; G = nx.MultiDiGraph()</span>
-<span class="sd">        &gt;&gt;&gt; G.add_path([0,1,2,3])</span>
+<span class="sd">        &gt;&gt;&gt; G.add_path([0,1,2])</span>
+<span class="sd">        &gt;&gt;&gt; G.add_edge(2,3,weight=5)</span>
 <span class="sd">        &gt;&gt;&gt; [e for e in G.edges_iter()]</span>
 <span class="sd">        [(0, 1), (1, 2), (2, 3)]</span>
 <span class="sd">        &gt;&gt;&gt; list(G.edges_iter(data=True)) # default data is {} (empty dict)</span>
-<span class="sd">        [(0, 1, {}), (1, 2, {}), (2, 3, {})]</span>
+<span class="sd">        [(0, 1, {}), (1, 2, {}), (2, 3, {&#39;weight&#39;: 5})]</span>
+<span class="sd">        &gt;&gt;&gt; list(G.edges_iter(data=&#39;weight&#39;, default=1)) </span>
+<span class="sd">        [(0, 1, 1), (1, 2, 1), (2, 3, 5)]</span>
+<span class="sd">        &gt;&gt;&gt; list(G.edges(keys=True)) # default keys are integers</span>
+<span class="sd">        [(0, 1, 0), (1, 2, 0), (2, 3, 0)]</span>
+<span class="sd">        &gt;&gt;&gt; list(G.edges(data=True,keys=True)) # default keys are integers</span>
+<span class="sd">        [(0, 1, 0, {}), (1, 2, 0, {}), (2, 3, 0, {&#39;weight&#39;: 5})]</span>
+<span class="sd">        &gt;&gt;&gt; list(G.edges(data=&#39;weight&#39;,default=1,keys=True))</span>
+<span class="sd">        [(0, 1, 0, 1), (1, 2, 0, 1), (2, 3, 0, 5)]</span>
 <span class="sd">        &gt;&gt;&gt; list(G.edges_iter([0,2]))</span>
 <span class="sd">        [(0, 1), (2, 3)]</span>
 <span class="sd">        &gt;&gt;&gt; list(G.edges_iter(0))</span>
@@ -633,22 +647,22 @@
             <span class="n">nodes_nbrs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">nodes_nbrs</span><span class="o">=</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nbunch_iter</span><span class="p">(</span><span class="n">nbunch</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">nbr</span><span class="p">,</span><span class="n">keydict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">data</span> <span class="ow">in</span> <span class="n">keydict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                        <span class="k">if</span> <span class="n">keys</span><span class="p">:</span>
-                            <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">nbr</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">data</span><span class="p">)</span>
-                        <span class="k">else</span><span class="p">:</span>
-                            <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">nbr</span><span class="p">,</span><span class="n">data</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">ddict</span> <span class="ow">in</span> <span class="n">keydict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                        <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">nbr</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">ddict</span><span class="p">)</span> <span class="k">if</span> <span class="n">keys</span> <span class="k">else</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">nbr</span><span class="p">,</span><span class="n">ddict</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">False</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">nbr</span><span class="p">,</span><span class="n">keydict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">ddict</span> <span class="ow">in</span> <span class="n">keydict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                        <span class="n">d</span><span class="o">=</span><span class="n">ddict</span><span class="p">[</span><span class="n">data</span><span class="p">]</span> <span class="k">if</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">ddict</span> <span class="k">else</span> <span class="n">default</span>
+                        <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">nbr</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="k">if</span> <span class="n">keys</span> <span class="k">else</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">nbr</span><span class="p">,</span><span class="n">d</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">nbr</span><span class="p">,</span><span class="n">keydict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">data</span> <span class="ow">in</span> <span class="n">keydict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                        <span class="k">if</span> <span class="n">keys</span><span class="p">:</span>
-                            <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">nbr</span><span class="p">,</span><span class="n">key</span><span class="p">)</span>
-                        <span class="k">else</span><span class="p">:</span>
-                            <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">nbr</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keydict</span><span class="p">:</span>
+                        <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">nbr</span><span class="p">,</span><span class="n">key</span><span class="p">)</span> <span class="k">if</span> <span class="n">keys</span> <span class="k">else</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">nbr</span><span class="p">)</span>
 
     <span class="c"># alias out_edges to edges</span></div>
     <span class="n">out_edges_iter</span><span class="o">=</span><span class="n">edges_iter</span>
@@ -1126,7 +1140,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jan 24, 2015.
+      Last updated on Jan 25, 2015.
     </p>
   </div>
 
@@ -1146,7 +1160,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20150124000010',
+            VERSION:'2.0.dev20150125000010',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

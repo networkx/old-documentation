@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.drawing.nx_pydot &mdash; NetworkX 2.0.dev20150124000010 documentation</title>
+  <title>networkx.drawing.nx_pydot &mdash; NetworkX 2.0.dev20150125000010 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150124000010 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150125000010 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150124000010 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150125000010 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -205,27 +205,40 @@
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;write_dot&#39;</span><span class="p">,</span> <span class="s">&#39;read_dot&#39;</span><span class="p">,</span> <span class="s">&#39;graphviz_layout&#39;</span><span class="p">,</span> <span class="s">&#39;pydot_layout&#39;</span><span class="p">,</span>
            <span class="s">&#39;to_pydot&#39;</span><span class="p">,</span> <span class="s">&#39;from_pydot&#39;</span><span class="p">]</span>
 
+<span class="c"># 2.x/3.x compatibility</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="nb">basestring</span>
 <span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
     <span class="nb">basestring</span> <span class="o">=</span> <span class="nb">str</span>
 
-<span class="nd">@open_file</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s">&#39;w&#39;</span><span class="p">)</span>
-<div class="viewcode-block" id="write_dot"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pydot.write_dot.html#networkx.drawing.nx_pydot.write_dot">[docs]</a><span class="k">def</span> <span class="nf">write_dot</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">path</span><span class="p">):</span>
+<span class="n">PYDOT_LIBRARIES</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;pydot&#39;</span><span class="p">,</span> <span class="s">&#39;pydotplus&#39;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">load_pydot</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">library</span> <span class="ow">in</span> <span class="n">PYDOT_LIBRARIES</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">module</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="n">library</span><span class="p">,</span> <span class="n">fromlist</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;&#39;</span><span class="p">])</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s">&quot;pydot could not be loaded: http://code.google.com/p/pydot/&quot;</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">module</span>
+
+<span class="nd">@open_file</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">&#39;w&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="write_dot"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pydot.write_dot.html#networkx.drawing.nx_pydot.write_dot">[docs]</a><span class="k">def</span> <span class="nf">write_dot</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Write NetworkX graph G to Graphviz dot format on path.</span>
 
 <span class="sd">    Path can be a string or a file handle.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">pydot</span>
-    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s">&quot;write_dot() requires pydot&quot;</span><span class="p">,</span>
-                          <span class="s">&quot;http://code.google.com/p/pydot/&quot;</span><span class="p">)</span>
+    <span class="n">pydot</span> <span class="o">=</span> <span class="n">load_pydot</span><span class="p">()</span>
     <span class="n">P</span><span class="o">=</span><span class="n">to_pydot</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
     <span class="n">path</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">P</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
     <span class="k">return</span>
 </div>
-<span class="nd">@open_file</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">)</span>
+<span class="nd">@open_file</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">)</span>
 <div class="viewcode-block" id="read_dot"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pydot.read_dot.html#networkx.drawing.nx_pydot.read_dot">[docs]</a><span class="k">def</span> <span class="nf">read_dot</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a NetworkX MultiGraph or MultiDiGraph from a dot file on path.</span>
 
@@ -242,14 +255,9 @@
 <span class="sd">    -----</span>
 <span class="sd">    Use G=nx.Graph(nx.read_dot(path)) to return a Graph instead of a MultiGraph.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">pydot</span>
-    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s">&quot;read_dot() requires pydot&quot;</span><span class="p">,</span>
-                          <span class="s">&quot;http://code.google.com/p/pydot/&quot;</span><span class="p">)</span>
-
-    <span class="n">data</span><span class="o">=</span><span class="n">path</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-    <span class="n">P</span><span class="o">=</span><span class="n">pydot</span><span class="o">.</span><span class="n">graph_from_dot_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">pydot</span> <span class="o">=</span> <span class="n">load_pydot</span><span class="p">()</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">pydot</span><span class="o">.</span><span class="n">graph_from_dot_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">from_pydot</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="from_pydot"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pydot.from_pydot.html#networkx.drawing.nx_pydot.from_pydot">[docs]</a><span class="k">def</span> <span class="nf">from_pydot</span><span class="p">(</span><span class="n">P</span><span class="p">):</span>
@@ -353,11 +361,7 @@
 <span class="sd">    -----</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">pydot</span>
-    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s">&#39;to_pydot() requires pydot: &#39;</span>
-                          <span class="s">&#39;http://code.google.com/p/pydot/&#39;</span><span class="p">)</span>
+    <span class="n">pydot</span> <span class="o">=</span> <span class="n">load_pydot</span><span class="p">()</span>
 
     <span class="c"># set Graphviz graph type</span>
     <span class="k">if</span> <span class="n">N</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
@@ -443,11 +447,7 @@
 <span class="sd">    &gt;&gt;&gt; pos=nx.pydot_layout(G)</span>
 <span class="sd">    &gt;&gt;&gt; pos=nx.pydot_layout(G,prog=&#39;dot&#39;)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">pydot</span>
-    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s">&#39;pydot_layout() requires pydot &#39;</span><span class="p">,</span>
-                          <span class="s">&#39;http://code.google.com/p/pydot/&#39;</span><span class="p">)</span>
+    <span class="n">pydot</span> <span class="o">=</span> <span class="n">load_pydot</span><span class="p">()</span>
 
     <span class="n">P</span><span class="o">=</span><span class="n">to_pydot</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="p">:</span>
@@ -483,9 +483,8 @@
 <span class="k">def</span> <span class="nf">setup_module</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
     <span class="kn">from</span> <span class="nn">nose</span> <span class="kn">import</span> <span class="n">SkipTest</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">pydot</span>
-        <span class="kn">import</span> <span class="nn">dot_parser</span>
-    <span class="k">except</span><span class="p">:</span>
+        <span class="n">pydot</span> <span class="o">=</span> <span class="n">load_pydot</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">SkipTest</span><span class="p">(</span><span class="s">&quot;pydot not available&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -498,7 +497,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jan 24, 2015.
+      Last updated on Jan 25, 2015.
     </p>
   </div>
 
@@ -518,7 +517,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20150124000010',
+            VERSION:'2.0.dev20150125000010',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
