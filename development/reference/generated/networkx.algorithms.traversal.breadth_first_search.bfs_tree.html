@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>bfs_tree &mdash; NetworkX 2.0.dev20150219000010 documentation</title>
+  <title>bfs_tree &mdash; NetworkX 2.0.dev20150220000009 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150219000010 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150220000009 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150219000010 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150220000009 documentation" href="../../index.html"/>
         <link rel="up" title="Traversal" href="../algorithms.traversal.html"/>
         <link rel="next" title="bfs_predecessors" href="networkx.algorithms.traversal.breadth_first_search.bfs_predecessors.html"/>
         <link rel="prev" title="bfs_edges" href="networkx.algorithms.traversal.breadth_first_search.bfs_edges.html"/> 
@@ -197,7 +197,7 @@ starting at source.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
-<p><strong>source</strong> : node, optional</p>
+<p><strong>source</strong> : node</p>
 <blockquote>
 <div><p>Specify starting node for breadth-first search and return edges in
 the component reachable from source.</p>
@@ -219,8 +219,6 @@ the component reachable from source.</p>
 <p class="rubric">Notes</p>
 <p>Based on <a class="reference external" href="http://www.ics.uci.edu/~eppstein/PADS/BFS.py">http://www.ics.uci.edu/~eppstein/PADS/BFS.py</a>
 by D. Eppstein, July 2004.</p>
-<p>If a source is not specified then a source is chosen arbitrarily and
-repeatedly until all components in the graph are searched.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_path</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
@@ -251,7 +249,7 @@ repeatedly until all components in the graph are searched.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Feb 19, 2015.
+      Last updated on Feb 20, 2015.
     </p>
   </div>
 
@@ -271,7 +269,7 @@ repeatedly until all components in the graph are searched.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150219000010',
+            VERSION:'2.0.dev20150220000009',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
