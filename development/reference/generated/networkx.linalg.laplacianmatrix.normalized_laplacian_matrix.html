@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>normalized_laplacian_matrix &mdash; NetworkX 2.0.dev20150226000011 documentation</title>
+  <title>normalized_laplacian_matrix &mdash; NetworkX 2.0.dev20150227000010 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150226000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150227000010 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150226000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150227000010 documentation" href="../../index.html"/>
         <link rel="up" title="Linear algebra" href="../linalg.html"/>
         <link rel="next" title="directed_laplacian_matrix" href="networkx.linalg.laplacianmatrix.directed_laplacian_matrix.html"/>
         <link rel="prev" title="laplacian_matrix" href="networkx.linalg.laplacianmatrix.laplacian_matrix.html"/> 
@@ -191,7 +191,7 @@
 <dd><p>Return the normalized Laplacian matrix of G.</p>
 <p>The normalized graph Laplacian is the matrix</p>
 <div class="math">
-\[NL = D^{-1/2} L D^{-1/2}\]</div>
+\[N = D^{-1/2} L D^{-1/2}\]</div>
 <p>where <span class="math">\(L\)</span> is the graph Laplacian and <span class="math">\(D\)</span> is the diagonal matrix of
 node degrees.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -214,7 +214,7 @@ If None, then each edge has weight 1.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>L</strong> : NumPy matrix</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>N</strong> : NumPy matrix</p>
 <blockquote class="last">
 <div><p>The normalized Laplacian matrix of G.</p>
 </div></blockquote>
@@ -230,7 +230,7 @@ If None, then each edge has weight 1.</p>
 <p>For MultiGraph/MultiDiGraph, the edges weights are summed.
 See to_numpy_matrix for other options.</p>
 <p>If the Graph contains selfloops, D is defined as diag(sum(A,1)), where A is
-the adjencency matrix <a class="reference internal" href="#r362" id="id1">[R362]</a>.</p>
+the adjacency matrix <a class="reference internal" href="#r362" id="id1">[R362]</a>.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r361" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -270,7 +270,7 @@ March 2007.</td></tr>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Feb 26, 2015.
+      Last updated on Feb 27, 2015.
     </p>
   </div>
 
@@ -290,7 +290,7 @@ March 2007.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150226000011',
+            VERSION:'2.0.dev20150227000010',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
