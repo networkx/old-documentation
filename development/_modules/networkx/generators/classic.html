@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.generators.classic &mdash; NetworkX 2.0.dev20150302000014 documentation</title>
+  <title>networkx.generators.classic &mdash; NetworkX 2.0.dev20150303000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150302000014 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150303000013 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150302000014 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150303000013 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -197,12 +197,12 @@
 <span class="c">#    All rights reserved.</span>
 <span class="c">#    BSD license.</span>
 <span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">from</span> <span class="nn">networkx.generators.bipartite</span> <span class="kn">import</span> <span class="n">complete_bipartite_graph</span>
 <span class="n">__author__</span> <span class="o">=</span><span class="s">&quot;&quot;&quot;Aric Hagberg (hagberg@lanl.gov)</span><span class="se">\n</span><span class="s">Pieter Swart (swart@lanl.gov)&quot;&quot;&quot;</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&#39;balanced_tree&#39;</span><span class="p">,</span>
             <span class="s">&#39;barbell_graph&#39;</span><span class="p">,</span>
             <span class="s">&#39;complete_graph&#39;</span><span class="p">,</span>
-            <span class="s">&#39;complete_bipartite_graph&#39;</span><span class="p">,</span>
             <span class="s">&#39;circular_ladder_graph&#39;</span><span class="p">,</span>
             <span class="s">&#39;cycle_graph&#39;</span><span class="p">,</span>
             <span class="s">&#39;dorogovtsev_goltsev_mendes_graph&#39;</span><span class="p">,</span>
@@ -371,25 +371,6 @@
         <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">G</span>
 
-</div>
-<div class="viewcode-block" id="complete_bipartite_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.classic.complete_bipartite_graph.html#networkx.generators.classic.complete_bipartite_graph">[docs]</a><span class="k">def</span> <span class="nf">complete_bipartite_graph</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span><span class="n">n2</span><span class="p">,</span><span class="n">create_using</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return the complete bipartite graph K_{n1_n2}.</span>
-
-<span class="sd">    Composed of two partitions with n1 nodes in the first</span>
-<span class="sd">    and n2 nodes in the second. Each node in the first is</span>
-<span class="sd">    connected to each node in the second.</span>
-
-<span class="sd">    Node labels are the integers 0 to n1+n2-1</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">create_using</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">create_using</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
-        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s">&quot;Directed Graph not supported&quot;</span><span class="p">)</span>
-    <span class="n">G</span><span class="o">=</span><span class="n">empty_graph</span><span class="p">(</span><span class="n">n1</span><span class="o">+</span><span class="n">n2</span><span class="p">,</span><span class="n">create_using</span><span class="p">)</span>
-    <span class="n">G</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;complete_bipartite_graph(</span><span class="si">%d</span><span class="s">,</span><span class="si">%d</span><span class="s">)&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span><span class="n">n2</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">v1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">v2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n2</span><span class="p">):</span>
-            <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="n">n1</span><span class="o">+</span><span class="n">v2</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">G</span>
 </div>
 <div class="viewcode-block" id="circular_ladder_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.classic.circular_ladder_graph.html#networkx.generators.classic.circular_ladder_graph">[docs]</a><span class="k">def</span> <span class="nf">circular_ladder_graph</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">create_using</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return the circular ladder graph CL_n of length n.</span>
@@ -680,6 +661,8 @@
 <span class="sd">   Node labels are the integers 0 to n - 1.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">nx</span><span class="o">.</span><span class="n">empty_graph</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">create_using</span><span class="p">)</span>
     <span class="n">G</span><span class="o">=</span><span class="n">star_graph</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">create_using</span><span class="p">)</span>
     <span class="n">G</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;wheel_graph(</span><span class="si">%d</span><span class="s">)&quot;</span><span class="o">%</span><span class="n">n</span>
     <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="n">v</span><span class="p">,</span><span class="n">v</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)])</span>
@@ -697,7 +680,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Mar 02, 2015.
+      Last updated on Mar 03, 2015.
     </p>
   </div>
 
@@ -717,7 +700,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20150302000014',
+            VERSION:'2.0.dev20150303000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

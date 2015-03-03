@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>complete_bipartite_graph &mdash; NetworkX 2.0.dev20150302000014 documentation</title>
+  <title>complete_bipartite_graph &mdash; NetworkX 2.0.dev20150303000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150302000014 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150303000013 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,10 +30,10 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150302000014 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150303000013 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
-        <link rel="next" title="circular_ladder_graph" href="networkx.generators.classic.circular_ladder_graph.html"/>
-        <link rel="prev" title="complete_graph" href="networkx.generators.classic.complete_graph.html"/> 
+        <link rel="next" title="bipartite_configuration_model" href="networkx.generators.bipartite.bipartite_configuration_model.html"/>
+        <link rel="prev" title="is_kl_connected" href="networkx.generators.hybrid.is_kl_connected.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -186,13 +186,36 @@
   <div class="section" id="complete-bipartite-graph">
 <h1>complete_bipartite_graph<a class="headerlink" href="#complete-bipartite-graph" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
-<dt id="networkx.generators.classic.complete_bipartite_graph">
-<code class="descname">complete_bipartite_graph</code><span class="sig-paren">(</span><em>n1</em>, <em>n2</em>, <em>create_using=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/generators/classic.html#complete_bipartite_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.classic.complete_bipartite_graph" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the complete bipartite graph K_{n1_n2}.</p>
-<p>Composed of two partitions with n1 nodes in the first
-and n2 nodes in the second. Each node in the first is
+<dt id="networkx.generators.bipartite.complete_bipartite_graph">
+<code class="descname">complete_bipartite_graph</code><span class="sig-paren">(</span><em>n1</em>, <em>n2</em>, <em>create_using=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/generators/bipartite.html#complete_bipartite_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.bipartite.complete_bipartite_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the complete bipartite graph <span class="math">\(K_{n_1,n_2}\)</span>.</p>
+<p>Composed of two partitions with <span class="math">\(n_1\)</span> nodes in the first
+and <span class="math">\(n_2\)</span> nodes in the second. Each node in the first is
 connected to each node in the second.</p>
-<p>Node labels are the integers 0 to n1+n2-1</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>n1</strong> : integer</p>
+<blockquote>
+<div><p>Number of nodes for node set A.</p>
+</div></blockquote>
+<p><strong>n2</strong> : integer</p>
+<blockquote>
+<div><p>Number of nodes for node set B.</p>
+</div></blockquote>
+<p><strong>create_using</strong> : NetworkX graph instance, optional</p>
+<blockquote class="last">
+<div><p>Return graph of this type.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Node labels are the integers 0 to <span class="math">\(n_1 + n_2 - 1\)</span>.</p>
+<p>The nodes are assigned the attribute &#8216;bipartite&#8217; with the value 0 or 1
+to indicate which bipartite set the node belongs to.</p>
 </dd></dl>
 
 </div>
@@ -203,10 +226,10 @@ connected to each node in the second.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="networkx.generators.classic.circular_ladder_graph.html" class="btn btn-neutral float-right" title="circular_ladder_graph"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="networkx.generators.bipartite.bipartite_configuration_model.html" class="btn btn-neutral float-right" title="bipartite_configuration_model"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="networkx.generators.classic.complete_graph.html" class="btn btn-neutral" title="complete_graph"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="networkx.generators.hybrid.is_kl_connected.html" class="btn btn-neutral" title="is_kl_connected"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -216,7 +239,7 @@ connected to each node in the second.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Mar 02, 2015.
+      Last updated on Mar 03, 2015.
     </p>
   </div>
 
@@ -236,7 +259,7 @@ connected to each node in the second.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150302000014',
+            VERSION:'2.0.dev20150303000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

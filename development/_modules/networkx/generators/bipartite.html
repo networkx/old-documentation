@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.generators.bipartite &mdash; NetworkX 2.0.dev20150302000014 documentation</title>
+  <title>networkx.generators.bipartite &mdash; NetworkX 2.0.dev20150303000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150302000014 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150303000013 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150302000014 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150303000013 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -204,9 +204,51 @@
          <span class="s">&#39;bipartite_preferential_attachment_graph&#39;</span><span class="p">,</span>
          <span class="s">&#39;bipartite_random_graph&#39;</span><span class="p">,</span>
          <span class="s">&#39;bipartite_gnmk_random_graph&#39;</span><span class="p">,</span>
+         <span class="s">&#39;complete_bipartite_graph&#39;</span><span class="p">,</span>
          <span class="p">]</span>
 
 
+<div class="viewcode-block" id="complete_bipartite_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.bipartite.complete_bipartite_graph.html#networkx.generators.bipartite.complete_bipartite_graph">[docs]</a><span class="k">def</span> <span class="nf">complete_bipartite_graph</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the complete bipartite graph `K_{n_1,n_2}`.</span>
+
+<span class="sd">    Composed of two partitions with `n_1` nodes in the first</span>
+<span class="sd">    and `n_2` nodes in the second. Each node in the first is</span>
+<span class="sd">    connected to each node in the second.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    n1 : integer</span>
+<span class="sd">       Number of nodes for node set A.</span>
+<span class="sd">    n2 : integer</span>
+<span class="sd">       Number of nodes for node set B.</span>
+<span class="sd">    create_using : NetworkX graph instance, optional</span>
+<span class="sd">       Return graph of this type.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Node labels are the integers 0 to `n_1 + n_2 - 1`.</span>
+
+<span class="sd">    The nodes are assigned the attribute &#39;bipartite&#39; with the value 0 or 1</span>
+<span class="sd">    to indicate which bipartite set the node belongs to.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">create_using</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">create_using</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s">&quot;Directed Graph not supported&quot;</span><span class="p">)</span>
+        <span class="n">G</span> <span class="o">=</span> <span class="n">create_using</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    
+    <span class="n">top</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n1</span><span class="p">))</span>
+    <span class="n">bottom</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n1</span><span class="o">+</span><span class="n">n2</span><span class="p">))</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="n">bipartite</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">bottom</span><span class="p">,</span> <span class="n">bipartite</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">top</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">bottom</span><span class="p">)</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;complete_bipartite_graph(</span><span class="si">%d</span><span class="s">,</span><span class="si">%d</span><span class="s">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">G</span>
+
+</div>
 <div class="viewcode-block" id="bipartite_configuration_model"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.bipartite.bipartite_configuration_model.html#networkx.generators.bipartite.bipartite_configuration_model">[docs]</a><span class="k">def</span> <span class="nf">bipartite_configuration_model</span><span class="p">(</span><span class="n">aseq</span><span class="p">,</span> <span class="n">bseq</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a random bipartite graph from two given degree sequences.</span>
 
@@ -718,7 +760,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Mar 02, 2015.
+      Last updated on Mar 03, 2015.
     </p>
   </div>
 
@@ -738,7 +780,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20150302000014',
+            VERSION:'2.0.dev20150303000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
