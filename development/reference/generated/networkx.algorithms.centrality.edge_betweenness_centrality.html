@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>edge_betweenness_centrality &mdash; NetworkX 2.0.dev20150305000011 documentation</title>
+  <title>edge_betweenness_centrality &mdash; NetworkX 2.0.dev20150306000010 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150305000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150306000010 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150305000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150306000010 documentation" href="../../index.html"/>
         <link rel="up" title="Centrality" href="../algorithms.centrality.html"/>
         <link rel="next" title="current_flow_closeness_centrality" href="networkx.algorithms.centrality.current_flow_closeness_centrality.html"/>
         <link rel="prev" title="betweenness_centrality" href="networkx.algorithms.centrality.betweenness_centrality.html"/> 
@@ -189,7 +189,7 @@
 <h1>edge_betweenness_centrality<a class="headerlink" href="#edge-betweenness-centrality" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.algorithms.centrality.edge_betweenness_centrality">
-<code class="descname">edge_betweenness_centrality</code><span class="sig-paren">(</span><em>G</em>, <em>normalized=True</em>, <em>weight=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/centrality/betweenness.html#edge_betweenness_centrality"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.centrality.edge_betweenness_centrality" title="Permalink to this definition">¶</a></dt>
+<code class="descname">edge_betweenness_centrality</code><span class="sig-paren">(</span><em>G</em>, <em>k=None</em>, <em>normalized=True</em>, <em>weight=None</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/centrality/betweenness.html#edge_betweenness_centrality"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.centrality.edge_betweenness_centrality" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute betweenness centrality for edges.</p>
 <p>Betweenness centrality of an edge <span class="math">\(e\)</span> is the sum of the
 fraction of all-pairs shortest paths that pass through <span class="math">\(e\)</span>:</p>
@@ -205,6 +205,12 @@ those paths passing through edge <span class="math">\(e\)</span> <a class="refer
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
 <blockquote>
 <div><p>A NetworkX graph</p>
+</div></blockquote>
+<p><strong>k</strong> : int, optional (default=None)</p>
+<blockquote>
+<div><p>If k is not None use k node samples to estimate betweenness.
+The value of k &lt;= n where n is the number of nodes in the graph.
+Higher values give better approximation.</p>
 </div></blockquote>
 <p><strong>normalized</strong> : bool, optional</p>
 <blockquote>
@@ -277,7 +283,7 @@ Social Networks 30(2):136-145, 2008.
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Mar 05, 2015.
+      Last updated on Mar 06, 2015.
     </p>
   </div>
 
@@ -297,7 +303,7 @@ Social Networks 30(2):136-145, 2008.
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150305000011',
+            VERSION:'2.0.dev20150306000010',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

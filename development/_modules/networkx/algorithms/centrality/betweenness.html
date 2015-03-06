@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.centrality.betweenness &mdash; NetworkX 2.0.dev20150305000011 documentation</title>
+  <title>networkx.algorithms.centrality.betweenness &mdash; NetworkX 2.0.dev20150306000010 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150305000011 documentation" href="../../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150306000010 documentation" href="../../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150305000011 documentation" href="../../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150306000010 documentation" href="../../../../index.html"/>
         <link rel="up" title="Module code" href="../../../index.html"/> 
 
   
@@ -309,7 +309,8 @@
     <span class="k">return</span> <span class="n">betweenness</span>
 
 </div>
-<div class="viewcode-block" id="edge_betweenness_centrality"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.centrality.edge_betweenness_centrality.html#networkx.algorithms.centrality.edge_betweenness_centrality">[docs]</a><span class="k">def</span> <span class="nf">edge_betweenness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">normalized</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="edge_betweenness_centrality"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.centrality.edge_betweenness_centrality.html#networkx.algorithms.centrality.edge_betweenness_centrality">[docs]</a><span class="k">def</span> <span class="nf">edge_betweenness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">normalized</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                                <span class="n">seed</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="sd">r&quot;&quot;&quot;Compute betweenness centrality for edges.</span>
 
 <span class="sd">    Betweenness centrality of an edge `e` is the sum of the</span>
@@ -327,6 +328,11 @@
 <span class="sd">    ----------</span>
 <span class="sd">    G : graph</span>
 <span class="sd">      A NetworkX graph</span>
+
+<span class="sd">    k : int, optional (default=None)</span>
+<span class="sd">      If k is not None use k node samples to estimate betweenness.</span>
+<span class="sd">      The value of k &lt;= n where n is the number of nodes in the graph.</span>
+<span class="sd">      Higher values give better approximation.</span>
 
 <span class="sd">    normalized : bool, optional</span>
 <span class="sd">      If True the betweenness values are normalized by `2/(n(n-1))`</span>
@@ -368,7 +374,12 @@
     <span class="n">betweenness</span> <span class="o">=</span> <span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>  <span class="c"># b[v]=0 for v in G</span>
     <span class="c"># b[e]=0 for e in G.edges()</span>
     <span class="n">betweenness</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(),</span> <span class="mf">0.0</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="n">G</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">(),</span> <span class="n">k</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
         <span class="c"># single source shortest paths</span>
         <span class="k">if</span> <span class="n">weight</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>  <span class="c"># use BFS</span>
             <span class="n">S</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">_single_source_shortest_path_basic</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
@@ -387,8 +398,8 @@
 <span class="c"># obsolete name</span>
 
 </div>
-<span class="k">def</span> <span class="nf">edge_betweenness</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">normalized</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">edge_betweenness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">normalized</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">edge_betweenness</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">normalized</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">edge_betweenness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">normalized</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
 
 
 <span class="c"># helpers for betweenness centrality</span>
@@ -514,7 +525,7 @@
     <span class="k">return</span> <span class="n">betweenness</span>
 
 
-<span class="k">def</span> <span class="nf">_rescale_e</span><span class="p">(</span><span class="n">betweenness</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">normalized</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_rescale_e</span><span class="p">(</span><span class="n">betweenness</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">normalized</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">normalized</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">scale</span> <span class="o">=</span> <span class="bp">None</span>  <span class="c"># no normalization b=0 for all nodes</span>
@@ -526,6 +537,8 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">scale</span> <span class="o">=</span> <span class="bp">None</span>
     <span class="k">if</span> <span class="n">scale</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">scale</span> <span class="o">=</span> <span class="n">scale</span> <span class="o">*</span> <span class="n">n</span> <span class="o">/</span> <span class="n">k</span>
         <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">betweenness</span><span class="p">:</span>
             <span class="n">betweenness</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">*=</span> <span class="n">scale</span>
     <span class="k">return</span> <span class="n">betweenness</span>
@@ -540,7 +553,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Mar 05, 2015.
+      Last updated on Mar 06, 2015.
     </p>
   </div>
 
@@ -560,7 +573,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../../',
-            VERSION:'2.0.dev20150305000011',
+            VERSION:'2.0.dev20150306000010',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
