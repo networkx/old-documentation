@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>edge_connectivity &mdash; NetworkX 2.0.dev20150306000010 documentation</title>
+  <title>edge_connectivity &mdash; NetworkX 2.0.dev20150307000006 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150306000010 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150307000006 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150306000010 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150307000006 documentation" href="../../index.html"/>
         <link rel="up" title="Connectivity" href="../algorithms.connectivity.html"/>
         <link rel="next" title="local_edge_connectivity" href="networkx.algorithms.connectivity.connectivity.local_edge_connectivity.html"/>
         <link rel="prev" title="all_pairs_node_connectivity" href="networkx.algorithms.connectivity.connectivity.all_pairs_node_connectivity.html"/> 
@@ -241,17 +241,17 @@ and target were provided</p>
 <p class="rubric">Notes</p>
 <p>This is a flow based implementation of global edge connectivity.
 For undirected graphs the algorithm works by finding a &#8216;small&#8217; 
-dominating set of nodes of G (see algorithm 7 in <a class="reference internal" href="#r246" id="id1">[R246]</a> ) and 
+dominating set of nodes of G (see algorithm 7 in <a class="reference internal" href="#r250" id="id1">[R250]</a> ) and 
 computing local maximum flow (see <a class="reference internal" href="networkx.algorithms.connectivity.connectivity.local_edge_connectivity.html#networkx.algorithms.connectivity.connectivity.local_edge_connectivity" title="networkx.algorithms.connectivity.connectivity.local_edge_connectivity"><code class="xref py py-meth docutils literal"><span class="pre">local_edge_connectivity()</span></code></a>)
 between an arbitrary node in the dominating set and the rest of 
-nodes in it. This is an implementation of algorithm 6 in <a class="reference internal" href="#r246" id="id2">[R246]</a> . 
+nodes in it. This is an implementation of algorithm 6 in <a class="reference internal" href="#r250" id="id2">[R250]</a> . 
 For directed graphs, the algorithm does n calls to the maximum 
-flow function. This is an implementation of algorithm 8 in <a class="reference internal" href="#r246" id="id3">[R246]</a> .</p>
+flow function. This is an implementation of algorithm 8 in <a class="reference internal" href="#r250" id="id3">[R250]</a> .</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r246" rules="none">
+<table class="docutils citation" frame="void" id="r250" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R246]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id3">3</a>, <a class="fn-backref" href="#id4">4</a>)</em> Abdol-Hossein Esfahanian. Connectivity Algorithms.
+<tr><td class="label">[R250]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id3">3</a>, <a class="fn-backref" href="#id4">4</a>)</em> Abdol-Hossein Esfahanian. Connectivity Algorithms.
 <a class="reference external" href="http://www.cse.msu.edu/~cse835/Papers/Graph_connectivity_revised.pdf">http://www.cse.msu.edu/~cse835/Papers/Graph_connectivity_revised.pdf</a></td></tr>
 </tbody>
 </table>
@@ -307,7 +307,7 @@ the data structures used in the maximum flow computations. See
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Mar 06, 2015.
+      Last updated on Mar 07, 2015.
     </p>
   </div>
 
@@ -327,7 +327,7 @@ the data structures used in the maximum flow computations. See
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150306000010',
+            VERSION:'2.0.dev20150307000006',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

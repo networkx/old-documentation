@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Bipartite &mdash; NetworkX 2.0.dev20150306000010 documentation</title>
+  <title>Bipartite &mdash; NetworkX 2.0.dev20150307000006 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150306000010 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150307000006 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150306000010 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150307000006 documentation" href="../index.html"/>
         <link rel="up" title="Algorithms" href="algorithms.html"/>
         <link rel="next" title="is_bipartite" href="generated/networkx.algorithms.bipartite.basic.is_bipartite.html"/>
         <link rel="prev" title="attribute_mixing_dict" href="generated/networkx.algorithms.assortativity.attribute_mixing_dict.html"/> 
@@ -253,7 +253,7 @@ container with all nodes that belong to one node set:</p>
 </div>
 <p>All bipartite graph generators in NetworkX build bipartite graphs with the 
 &#8220;bipartite&#8221; node attribute. Thus, you can use the same approach:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">RB</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">bipartite_random_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">RB</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">bipartite</span><span class="o">.</span><span class="n">random_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">RB_top</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">d</span> <span class="ow">in</span> <span class="n">RB</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s">&#39;bipartite&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">RB_bottom</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">RB</span><span class="p">)</span> <span class="o">-</span> <span class="n">RB_top</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">RB_top</span><span class="p">)</span>
@@ -436,6 +436,42 @@ vertices in both the left and right vertex sets.</p>
 </tbody>
 </table>
 </div>
+<div class="section" id="module-networkx.algorithms.bipartite.generators">
+<span id="generators"></span><h2>Generators<a class="headerlink" href="#module-networkx.algorithms.bipartite.generators" title="Permalink to this headline">¶</a></h2>
+<p>Generators and functions for bipartite graphs.</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.generators.complete_bipartite_graph.html#networkx.algorithms.bipartite.generators.complete_bipartite_graph" title="networkx.algorithms.bipartite.generators.complete_bipartite_graph"><code class="xref py py-obj docutils literal"><span class="pre">complete_bipartite_graph</span></code></a>(n1,&nbsp;n2[,&nbsp;create_using])</td>
+<td>Return the complete bipartite graph <span class="math">\(K_{n_1,n_2}\)</span>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.generators.configuration_model.html#networkx.algorithms.bipartite.generators.configuration_model" title="networkx.algorithms.bipartite.generators.configuration_model"><code class="xref py py-obj docutils literal"><span class="pre">configuration_model</span></code></a>(aseq,&nbsp;bseq[,&nbsp;...])</td>
+<td>Return a random bipartite graph from two given degree sequences.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.generators.havel_hakimi_graph.html#networkx.algorithms.bipartite.generators.havel_hakimi_graph" title="networkx.algorithms.bipartite.generators.havel_hakimi_graph"><code class="xref py py-obj docutils literal"><span class="pre">havel_hakimi_graph</span></code></a>(aseq,&nbsp;bseq[,&nbsp;create_using])</td>
+<td>Return a bipartite graph from two given degree sequences using a  Havel-Hakimi style construction.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.generators.reverse_havel_hakimi_graph.html#networkx.algorithms.bipartite.generators.reverse_havel_hakimi_graph" title="networkx.algorithms.bipartite.generators.reverse_havel_hakimi_graph"><code class="xref py py-obj docutils literal"><span class="pre">reverse_havel_hakimi_graph</span></code></a>(aseq,&nbsp;bseq[,&nbsp;...])</td>
+<td>Return a bipartite graph from two given degree sequences using a Havel-Hakimi style construction.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.generators.alternating_havel_hakimi_graph.html#networkx.algorithms.bipartite.generators.alternating_havel_hakimi_graph" title="networkx.algorithms.bipartite.generators.alternating_havel_hakimi_graph"><code class="xref py py-obj docutils literal"><span class="pre">alternating_havel_hakimi_graph</span></code></a>(aseq,&nbsp;bseq[,&nbsp;...])</td>
+<td>Return a bipartite graph from two given degree sequences using  an alternating Havel-Hakimi style construction.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.generators.preferential_attachment_graph.html#networkx.algorithms.bipartite.generators.preferential_attachment_graph" title="networkx.algorithms.bipartite.generators.preferential_attachment_graph"><code class="xref py py-obj docutils literal"><span class="pre">preferential_attachment_graph</span></code></a>(aseq,&nbsp;p[,&nbsp;...])</td>
+<td>Create a bipartite graph with a preferential attachment model from  a given single degree sequence.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.generators.random_graph.html#networkx.algorithms.bipartite.generators.random_graph" title="networkx.algorithms.bipartite.generators.random_graph"><code class="xref py py-obj docutils literal"><span class="pre">random_graph</span></code></a>(n,&nbsp;m,&nbsp;p[,&nbsp;seed,&nbsp;directed])</td>
+<td>Return a bipartite random graph.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.generators.gnmk_random_graph.html#networkx.algorithms.bipartite.generators.gnmk_random_graph" title="networkx.algorithms.bipartite.generators.gnmk_random_graph"><code class="xref py py-obj docutils literal"><span class="pre">gnmk_random_graph</span></code></a>(n,&nbsp;m,&nbsp;k[,&nbsp;seed,&nbsp;directed])</td>
+<td>Return a random bipartite graph G_{n,m,k}.</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 
@@ -457,7 +493,7 @@ vertices in both the left and right vertex sets.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Mar 06, 2015.
+      Last updated on Mar 07, 2015.
     </p>
   </div>
 
@@ -477,7 +513,7 @@ vertices in both the left and right vertex sets.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20150306000010',
+            VERSION:'2.0.dev20150307000006',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

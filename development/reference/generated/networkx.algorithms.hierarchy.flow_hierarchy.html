@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>flow_hierarchy &mdash; NetworkX 2.0.dev20150306000010 documentation</title>
+  <title>flow_hierarchy &mdash; NetworkX 2.0.dev20150307000006 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150306000010 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150307000006 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150306000010 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150307000006 documentation" href="../../index.html"/>
         <link rel="up" title="Hierarchy" href="../algorithms.hierarchy.html"/>
         <link rel="next" title="Isolates" href="../algorithms.isolates.html"/>
         <link rel="prev" title="flow_hierarchy" href=""/> 
@@ -192,7 +192,7 @@
 <code class="descname">flow_hierarchy</code><span class="sig-paren">(</span><em>G</em>, <em>weight=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/hierarchy.html#flow_hierarchy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.hierarchy.flow_hierarchy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the flow hierarchy of a directed network.</p>
 <p>Flow hierarchy is defined as the fraction of edges not participating
-in cycles in a directed graph <a class="reference internal" href="#r287" id="id1">[R287]</a>.</p>
+in cycles in a directed graph <a class="reference internal" href="#r291" id="id1">[R291]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -216,16 +216,16 @@ in cycles in a directed graph <a class="reference internal" href="#r287" id="id1
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>The algorithm described in <a class="reference internal" href="#r287" id="id2">[R287]</a> computes the flow hierarchy through
+<p>The algorithm described in <a class="reference internal" href="#r291" id="id2">[R291]</a> computes the flow hierarchy through
 exponentiation of the adjacency matrix.  This function implements an
 alternative approach that finds strongly connected components.
 An edge is in a cycle if and only if it is in a strongly connected
 component, which can be found in <span class="math">\(O(m)\)</span> time using Tarjan&#8217;s algorithm.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r287" rules="none">
+<table class="docutils citation" frame="void" id="r291" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R287]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id3">3</a>)</em> Luo, J.; Magee, C.L. (2011),
+<tr><td class="label">[R291]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id3">3</a>)</em> Luo, J.; Magee, C.L. (2011),
 Detecting evolving patterns of self-organizing networks by flow
 hierarchy measurement, Complexity, Volume 16 Issue 6 53-61.
 DOI: 10.1002/cplx.20368
@@ -255,7 +255,7 @@ DOI: 10.1002/cplx.20368
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Mar 06, 2015.
+      Last updated on Mar 07, 2015.
     </p>
   </div>
 
@@ -275,7 +275,7 @@ DOI: 10.1002/cplx.20368
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150306000010',
+            VERSION:'2.0.dev20150307000006',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
