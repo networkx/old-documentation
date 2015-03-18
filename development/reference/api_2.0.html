@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Version 2.0 notes and API changes &mdash; NetworkX 2.0.dev20150317000012 documentation</title>
+  <title>Version 2.0 notes and API changes &mdash; NetworkX 2.0.dev20150318000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150317000012 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150318000013 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150317000012 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150318000013 documentation" href="../index.html"/>
         <link rel="up" title="API changes" href="api_changes.html"/>
         <link rel="next" title="Version 1.9 notes and API changes" href="api_1.9.html"/>
         <link rel="prev" title="API changes" href="api_changes.html"/> 
@@ -253,6 +253,10 @@ Added harmonic centrality to <code class="docutils literal"><span class="pre">ne
 The <code class="docutils literal"><span class="pre">generators.bipartite</span></code> have been moved to
 <code class="docutils literal"><span class="pre">algorithms.bipartite.generators</span></code>. The functions are not imported in the
 main  namespace, so to use it, the bipartite package has to be imported.</li>
+<li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1405">#1405</a>]
+Added fast approximation for node connectivity based on White and
+Newman&#8217;s approximation algorithm for finding node independent paths
+between two nodes.</li>
 </ul>
 </div>
 <div class="section" id="removed-functionalities">
@@ -291,7 +295,7 @@ Support for Python 2.6 is dropped.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Mar 17, 2015.
+      Last updated on Mar 18, 2015.
     </p>
   </div>
 
@@ -311,7 +315,7 @@ Support for Python 2.6 is dropped.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20150317000012',
+            VERSION:'2.0.dev20150318000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

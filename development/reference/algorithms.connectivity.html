@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Connectivity &mdash; NetworkX 2.0.dev20150317000012 documentation</title>
+  <title>Connectivity &mdash; NetworkX 2.0.dev20150318000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150317000012 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150318000013 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -30,9 +30,9 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150317000012 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150318000013 documentation" href="../index.html"/>
         <link rel="up" title="Algorithms" href="algorithms.html"/>
-        <link rel="next" title="average_node_connectivity" href="generated/networkx.algorithms.connectivity.connectivity.average_node_connectivity.html"/>
+        <link rel="next" title="all_node_cuts" href="generated/networkx.algorithms.connectivity.kcutsets.all_node_cuts.html"/>
         <link rel="prev" title="is_semiconnected" href="generated/networkx.algorithms.components.semiconnected.is_semiconnected.html"/> 
 
   
@@ -186,6 +186,21 @@
   <div class="section" id="module-networkx.algorithms.connectivity">
 <span id="connectivity"></span><h1>Connectivity<a class="headerlink" href="#module-networkx.algorithms.connectivity" title="Permalink to this headline">¶</a></h1>
 <p>Connectivity and cut algorithms</p>
+<div class="section" id="module-networkx.algorithms.connectivity.kcutsets">
+<span id="k-node-cutsets"></span><h2>K-node-cutsets<a class="headerlink" href="#module-networkx.algorithms.connectivity.kcutsets" title="Permalink to this headline">¶</a></h2>
+<p>Kanevsky all minimum node k cutsets</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.connectivity.kcutsets.all_node_cuts.html#networkx.algorithms.connectivity.kcutsets.all_node_cuts" title="networkx.algorithms.connectivity.kcutsets.all_node_cuts"><code class="xref py py-obj docutils literal"><span class="pre">all_node_cuts</span></code></a>(G[,&nbsp;k,&nbsp;flow_func])</td>
+<td>Returns all minimum k cutsets of an undirected graph G.</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="module-networkx.algorithms.connectivity.connectivity">
 <span id="flow-based-connectivity"></span><h2>Flow-based Connectivity<a class="headerlink" href="#module-networkx.algorithms.connectivity.connectivity" title="Permalink to this headline">¶</a></h2>
 <p>Flow based connectivity algorithms</p>
@@ -281,7 +296,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="generated/networkx.algorithms.connectivity.connectivity.average_node_connectivity.html" class="btn btn-neutral float-right" title="average_node_connectivity"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="generated/networkx.algorithms.connectivity.kcutsets.all_node_cuts.html" class="btn btn-neutral float-right" title="all_node_cuts"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="generated/networkx.algorithms.components.semiconnected.is_semiconnected.html" class="btn btn-neutral" title="is_semiconnected"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -294,7 +309,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Mar 17, 2015.
+      Last updated on Mar 18, 2015.
     </p>
   </div>
 
@@ -314,7 +329,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20150317000012',
+            VERSION:'2.0.dev20150318000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
