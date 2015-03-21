@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.dag &mdash; NetworkX 2.0.dev20150320000017 documentation</title>
+  <title>networkx.algorithms.dag &mdash; NetworkX 2.0.dev20150321000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150320000017 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150321000013 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150320000017 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150321000013 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -181,6 +181,7 @@
 <span class="c"># -*- coding: utf-8 -*-</span>
 <span class="kn">from</span> <span class="nn">fractions</span> <span class="kn">import</span> <span class="n">gcd</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
+<span class="kn">from</span> <span class="nn">networkx.utils.decorators</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="sd">&quot;&quot;&quot;Algorithms for directed acyclic graphs (DAGs).&quot;&quot;&quot;</span>
 <span class="c">#    Copyright (C) 2006-2011 by </span>
 <span class="c">#    Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
@@ -196,7 +197,9 @@
            <span class="s">&#39;topological_sort&#39;</span><span class="p">,</span> 
            <span class="s">&#39;topological_sort_recursive&#39;</span><span class="p">,</span>
            <span class="s">&#39;is_directed_acyclic_graph&#39;</span><span class="p">,</span>
-           <span class="s">&#39;is_aperiodic&#39;</span><span class="p">]</span>
+           <span class="s">&#39;is_aperiodic&#39;</span><span class="p">,</span>
+           <span class="s">&#39;transitive_closure&#39;</span><span class="p">,</span>
+           <span class="s">&#39;antichains&#39;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="descendants"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.dag.descendants.html#networkx.algorithms.dag.descendants">[docs]</a><span class="k">def</span> <span class="nf">descendants</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return all nodes reachable from `source` in G.</span>
@@ -466,7 +469,95 @@
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">levels</span><span class="p">)</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">):</span> <span class="c">#All nodes in tree</span>
         <span class="k">return</span> <span class="n">g</span><span class="o">==</span><span class="mi">1</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">g</span><span class="o">==</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">nx</span><span class="o">.</span><span class="n">is_aperiodic</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">-</span><span class="nb">set</span><span class="p">(</span><span class="n">levels</span><span class="p">)))</span></div>
+        <span class="k">return</span> <span class="n">g</span><span class="o">==</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">nx</span><span class="o">.</span><span class="n">is_aperiodic</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">-</span><span class="nb">set</span><span class="p">(</span><span class="n">levels</span><span class="p">)))</span>
+</div>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;undirected&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="transitive_closure"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.dag.transitive_closure.html#networkx.algorithms.dag.transitive_closure">[docs]</a><span class="k">def</span> <span class="nf">transitive_closure</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Returns transitive closure of a directed graph</span>
+
+<span class="sd">    The transitive closure of G = (V,E) is a graph G+ = (V,E+) such that</span>
+<span class="sd">    for all v,w in V there is an edge (v,w) in E+ if and only if there</span>
+<span class="sd">    is a non-null path from v to w in G.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : NetworkX DiGraph</span>
+<span class="sd">      Graph</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    TC : NetworkX DiGraph</span>
+<span class="sd">       Graph</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    NetworkXNotImplemented</span>
+<span class="sd">      If G is not directed</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] http://www.ics.uci.edu/~eppstein/PADS/PartialOrder.py</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">TC</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+    <span class="n">TC</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes_iter</span><span class="p">())</span>
+    <span class="n">TC</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges_iter</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
+        <span class="n">TC</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">dfs_preorder_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">v</span><span class="p">)</span>
+                          <span class="k">if</span> <span class="n">v</span> <span class="o">!=</span> <span class="n">u</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">TC</span>
+</div>
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;undirected&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="antichains"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.dag.antichains.html#networkx.algorithms.dag.antichains">[docs]</a><span class="k">def</span> <span class="nf">antichains</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Generates antichains from a DAG.</span>
+
+<span class="sd">    An antichain is a subset of a partially ordered set such that any</span>
+<span class="sd">    two elements in the subset are incomparable.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : NetworkX DiGraph</span>
+<span class="sd">      Graph</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    antichain : generator object</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    NetworkXNotImplemented</span>
+<span class="sd">      If G is not directed</span>
+
+<span class="sd">    NetworkXUnfeasible</span>
+<span class="sd">       If G contains a cycle</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    This function was originally developed by Peter Jipsen and Franco Saliola</span>
+<span class="sd">    for the SAGE project. It&#39;s included in NetworkX with permission from the</span>
+<span class="sd">    authors. Original SAGE code at:</span>
+
+<span class="sd">    https://sage.informatik.uni-goettingen.de/src/combinat/posets/hasse_diagram.py</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] Free Lattices, by R. Freese, J. Jezek and J. B. Nation,</span>
+<span class="sd">    AMS, Vol 42, 1995, p. 226.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">TC</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">transitive_closure</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="n">antichains_stacks</span> <span class="o">=</span> <span class="p">[([],</span> <span class="n">nx</span><span class="o">.</span><span class="n">topological_sort</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">))]</span>
+    <span class="k">while</span> <span class="n">antichains_stacks</span><span class="p">:</span>
+        <span class="p">(</span><span class="n">antichain</span><span class="p">,</span> <span class="n">stack</span><span class="p">)</span> <span class="o">=</span> <span class="n">antichains_stacks</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="c"># Invariant:</span>
+        <span class="c">#  - the elements of antichain are independent</span>
+        <span class="c">#  - the elements of stack are independent from those of antichain</span>
+        <span class="k">yield</span> <span class="n">antichain</span>
+        <span class="k">while</span> <span class="n">stack</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">new_antichain</span> <span class="o">=</span> <span class="n">antichain</span> <span class="o">+</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
+            <span class="n">new_stack</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">stack</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">((</span><span class="n">t</span> <span class="ow">in</span> <span class="n">TC</span><span class="p">[</span><span class="n">x</span><span class="p">])</span> <span class="ow">or</span> <span class="p">(</span><span class="n">x</span> <span class="ow">in</span> <span class="n">TC</span><span class="p">[</span><span class="n">t</span><span class="p">]))]</span>
+            <span class="n">antichains_stacks</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">new_antichain</span><span class="p">,</span> <span class="n">new_stack</span><span class="p">))</span></div>
 </pre></div>
 
           </div>
@@ -478,7 +569,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Mar 20, 2015.
+      Last updated on Mar 21, 2015.
     </p>
   </div>
 
@@ -498,7 +589,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20150320000017',
+            VERSION:'2.0.dev20150321000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

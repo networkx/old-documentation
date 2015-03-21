@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>eigenvector_centrality_numpy &mdash; NetworkX 2.0.dev20150320000017 documentation</title>
+  <title>eigenvector_centrality_numpy &mdash; NetworkX 2.0.dev20150321000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150320000017 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150321000013 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150320000017 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150321000013 documentation" href="../../index.html"/>
         <link rel="up" title="Centrality" href="../algorithms.centrality.html"/>
         <link rel="next" title="katz_centrality" href="networkx.algorithms.centrality.katz_centrality.html"/>
         <link rel="prev" title="eigenvector_centrality" href="networkx.algorithms.centrality.eigenvector_centrality.html"/> 
@@ -198,7 +198,7 @@ centrality of its neighbors. The eigenvector centrality for node <span class="ma
 <p>where <span class="math">\(A\)</span> is the adjacency matrix of the graph G with eigenvalue <span class="math">\(\lambda\)</span>.
 By virtue of the Perron–Frobenius theorem, there is a unique and positive
 solution if <span class="math">\(\lambda\)</span> is the largest eigenvalue associated with the
-eigenvector of the adjacency matrix <span class="math">\(A\)</span> (<a class="reference internal" href="#r219" id="id1">[R219]</a>).</p>
+eigenvector of the adjacency matrix <span class="math">\(A\)</span> (<a class="reference internal" href="#r221" id="id1">[R221]</a>).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -227,25 +227,25 @@ If None, all edge weights are considered equal.</p>
 <p class="last"><a class="reference internal" href="networkx.algorithms.centrality.eigenvector_centrality.html#networkx.algorithms.centrality.eigenvector_centrality" title="networkx.algorithms.centrality.eigenvector_centrality"><code class="xref py py-obj docutils literal"><span class="pre">eigenvector_centrality</span></code></a>, <code class="xref py py-obj docutils literal"><span class="pre">pagerank</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">hits</span></code></p>
 </div>
 <p class="rubric">Notes</p>
-<p>The measure was introduced by <a class="reference internal" href="#r218" id="id2">[R218]</a>.</p>
+<p>The measure was introduced by <a class="reference internal" href="#r220" id="id2">[R220]</a>.</p>
 <p>This algorithm uses the SciPy sparse eigenvalue solver (ARPACK) to
 find the largest eigenvalue/eigenvector pair.</p>
 <p>For directed graphs this is &#8220;left&#8221; eigenvector centrality which corresponds
 to the in-edges in the graph. For out-edges eigenvector centrality
 first reverse the graph with G.reverse().</p>
-<table class="docutils citation" frame="void" id="r218" rules="none">
+<table class="docutils citation" frame="void" id="r220" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R218]</a></td><td>Phillip Bonacich:
+<tr><td class="label"><a class="fn-backref" href="#id2">[R220]</a></td><td>Phillip Bonacich:
 Power and Centrality: A Family of Measures.
 American Journal of Sociology 92(5):1170–1182, 1986
 <a class="reference external" href="http://www.leonidzhukov.net/hse/2014/socialnetworks/papers/Bonacich-Centrality.pdf">http://www.leonidzhukov.net/hse/2014/socialnetworks/papers/Bonacich-Centrality.pdf</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r219" rules="none">
+<table class="docutils citation" frame="void" id="r221" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R219]</a></td><td>Mark E. J. Newman:
+<tr><td class="label"><a class="fn-backref" href="#id1">[R221]</a></td><td>Mark E. J. Newman:
 Networks: An Introduction.
 Oxford University Press, USA, 2010, pp. 169.</td></tr>
 </tbody>
@@ -280,7 +280,7 @@ Oxford University Press, USA, 2010, pp. 169.</td></tr>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Mar 20, 2015.
+      Last updated on Mar 21, 2015.
     </p>
   </div>
 
@@ -300,7 +300,7 @@ Oxford University Press, USA, 2010, pp. 169.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150320000017',
+            VERSION:'2.0.dev20150321000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

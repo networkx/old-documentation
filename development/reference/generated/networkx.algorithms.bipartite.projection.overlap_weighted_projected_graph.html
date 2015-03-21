@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>overlap_weighted_projected_graph &mdash; NetworkX 2.0.dev20150320000017 documentation</title>
+  <title>overlap_weighted_projected_graph &mdash; NetworkX 2.0.dev20150321000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150320000017 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150321000013 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150320000017 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150321000013 documentation" href="../../index.html"/>
         <link rel="up" title="Bipartite" href="../algorithms.bipartite.html"/>
         <link rel="next" title="generic_weighted_projected_graph" href="networkx.algorithms.bipartite.projection.generic_weighted_projected_graph.html"/>
         <link rel="prev" title="collaboration_weighted_projected_graph" href="networkx.algorithms.bipartite.projection.collaboration_weighted_projected_graph.html"/> 
@@ -194,12 +194,12 @@
 <p>The overlap weighted projection is the projection of the bipartite 
 network B onto the specified nodes with weights representing 
 the Jaccard index between the neighborhoods of the two nodes in the
-original bipartite network <a class="reference internal" href="#r188" id="id1">[R188]</a>:</p>
+original bipartite network <a class="reference internal" href="#r190" id="id1">[R190]</a>:</p>
 <div class="math">
 \[w_{v,u} = \frac{|N(u) \cap N(v)|}{|N(u) \cup N(v)|}\]</div>
 <p>or if the parameter &#8216;jaccard&#8217; is False, the fraction of common 
 neighbors by minimum of both nodes degree in the original 
-bipartite graph <a class="reference internal" href="#r188" id="id2">[R188]</a>:</p>
+bipartite graph <a class="reference internal" href="#r190" id="id2">[R190]</a>:</p>
 <div class="math">
 \[w_{v,u} = \frac{|N(u) \cap N(v)|}{min(|N(u)|,|N(v)|)}\]</div>
 <p>The nodes retain their attributes and are connected in the resulting
@@ -235,10 +235,10 @@ graph if have an edge to a common node in the original bipartite graph.</p>
 <p>No attempt is made to verify that the input graph B is bipartite.
 The graph and node properties are (shallow) copied to the projected graph.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r188" rules="none">
+<table class="docutils citation" frame="void" id="r190" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R188]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id3">3</a>)</em> Borgatti, S.P. and Halgin, D. In press. Analyzing Affiliation 
+<tr><td class="label">[R190]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id3">3</a>)</em> Borgatti, S.P. and Halgin, D. In press. Analyzing Affiliation 
 Networks. In Carrington, P. and Scott, J. (eds) The Sage Handbook 
 of Social Network Analysis. Sage Publications.</td></tr>
 </tbody>
@@ -279,7 +279,7 @@ of Social Network Analysis. Sage Publications.</td></tr>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Mar 20, 2015.
+      Last updated on Mar 21, 2015.
     </p>
   </div>
 
@@ -299,7 +299,7 @@ of Social Network Analysis. Sage Publications.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150320000017',
+            VERSION:'2.0.dev20150321000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
