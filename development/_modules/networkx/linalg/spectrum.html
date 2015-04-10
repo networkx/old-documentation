@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.linalg.spectrum &mdash; NetworkX 2.0.dev20150409000007 documentation</title>
+  <title>networkx.linalg.spectrum &mdash; NetworkX 2.0.dev20150410000011 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150409000007 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150410000011 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150409000007 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150410000011 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -190,9 +190,10 @@
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
 <span class="n">__author__</span> <span class="o">=</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">&#39;Aric Hagberg &lt;aric.hagberg@gmail.com&gt;&#39;</span><span class="p">,</span>
                         <span class="s">&#39;Pieter Swart (swart@lanl.gov)&#39;</span><span class="p">,</span>
-                        <span class="s">&#39;Dan Schult(dschult@colgate.edu)&#39;</span><span class="p">])</span>
+                        <span class="s">&#39;Dan Schult(dschult@colgate.edu)&#39;</span><span class="p">,</span>
+                        <span class="s">&#39;Jean-Gabriel Young &lt;jean.gabriel.young@gmail.com&gt;&#39;</span><span class="p">])</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;laplacian_spectrum&#39;</span><span class="p">,</span> <span class="s">&#39;adjacency_spectrum&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;laplacian_spectrum&#39;</span><span class="p">,</span> <span class="s">&#39;adjacency_spectrum&#39;</span><span class="p">,</span> <span class="s">&#39;modularity_spectrum&#39;</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="laplacian_spectrum"><a class="viewcode-back" href="../../../reference/generated/networkx.linalg.spectrum.laplacian_spectrum.html#networkx.linalg.spectrum.laplacian_spectrum">[docs]</a><span class="k">def</span> <span class="nf">laplacian_spectrum</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">):</span>
@@ -252,8 +253,33 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">eigvals</span>
     <span class="k">return</span> <span class="n">eigvals</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">adjacency_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span>
+</div>
+<span class="k">def</span> <span class="nf">modularity_spectrum</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return eigenvalues of the modularity matrix of G.</span>
 
-<span class="c"># fixture for nose tests</span></div>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : graph</span>
+<span class="sd">       A NetworkX graph</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    evals : NumPy array</span>
+<span class="sd">      Eigenvalues</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    modularity_matrix</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] M. E. J. Newman, &quot;Modularity and community structure in networks&quot;,</span>
+<span class="sd">       Proc. Natl. Acad. Sci. USA, vol. 103, pp. 8577-8582, 2006.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">eigvals</span>
+    <span class="k">return</span> <span class="n">eigvals</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">modularity_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
+
+<span class="c"># fixture for nose tests</span>
 <span class="k">def</span> <span class="nf">setup_module</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
     <span class="kn">from</span> <span class="nn">nose</span> <span class="kn">import</span> <span class="n">SkipTest</span>
     <span class="k">try</span><span class="p">:</span>
@@ -271,7 +297,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Apr 09, 2015.
+      Last updated on Apr 10, 2015.
     </p>
   </div>
 
@@ -291,7 +317,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20150409000007',
+            VERSION:'2.0.dev20150410000011',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

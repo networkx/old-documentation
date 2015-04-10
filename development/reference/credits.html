@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Credits &mdash; NetworkX 2.0.dev20150409000007 documentation</title>
+  <title>Credits &mdash; NetworkX 2.0.dev20150410000011 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150409000007 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150410000011 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150409000007 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150410000011 documentation" href="../index.html"/>
         <link rel="up" title="Reference" href="pdf_reference.html"/>
         <link rel="next" title="Glossary" href="glossary.html"/>
         <link rel="prev" title="Citing" href="citing.html"/> 
@@ -184,97 +184,142 @@
   <div class="section" id="credits">
 <h1>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h1>
 <p>NetworkX was originally written by Aric Hagberg, Dan Schult, and Pieter Swart,
-and has been developed with the help of many others.</p>
-<p>Thanks to Guido van Rossum for the idea of using Python for
-implementing a graph data structure
-<a class="reference external" href="https://www.python.org/doc/essays/graphs">https://www.python.org/doc/essays/graphs</a></p>
-<p>Thanks to David Eppstein for the idea of representing a graph G so
-that &#8220;for n in G&#8221; loops over the nodes in G and G[n] are node n&#8217;s
-neighbors.</p>
-<p>Thanks to everyone who has improved NetworkX by contributing code,
-bug reports (and fixes), documentation, and input on design, featues,
-and the future of NetworkX.</p>
-<p>Thanks especially to the following contributors:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Katy Bold contributed the Karate Club graph.</li>
-<li>Hernan Rozenfeld added dorogovtsev_goltsev_mendes_graph and did
-stress testing.</li>
-<li>Brendt Wohlberg added examples from the Stanford GraphBase.</li>
-<li>Jim Bagrow reported bugs in the search methods.</li>
-<li>Holly Johnsen helped fix the path based centrality measures.</li>
-<li>Arnar Flatberg fixed the graph laplacian routines.</li>
-<li>Chris Myers suggested using None as a default datatype, suggested
-improvements for the IO routines, added grid generator index tuple
-labeling and associated routines, and reported bugs.</li>
-<li>Joel Miller tested and improved the connected components methods
-fixed bugs and typos in the graph generators, and contributed
-the random clustered graph generator.</li>
-<li>Keith Briggs sorted out naming issues for random graphs and
-wrote dense_gnm_random_graph.</li>
-<li>Ignacio Rozada provided the Krapivsky-Redner graph generator.</li>
-<li>Phillipp Pagel helped fix eccentricity etc. for disconnected graphs.</li>
-<li>Sverre Sundsdal contributed bidirectional shortest path and
-Dijkstra routines, s-metric computation and graph generation</li>
-<li>Ross M. Richardson contributed the expected degree graph generator
-and helped test the pygraphviz interface.</li>
-<li>Christopher Ellison implemented the VF2 isomorphism algorithm
-and is a core developer.</li>
-<li>Eben Kenah contributed the strongly connected components and
-DFS functions.</li>
-<li>Sasha Gutfriend contributed edge betweenness algorithms.</li>
-<li>Udi Weinsberg helped develop intersection and difference operators.</li>
-<li>Matteo Dell&#8217;Amico wrote the random regular graph generator.</li>
-<li>Andrew Conway contributed ego_graph, eigenvector centrality,
-line graph and much more.</li>
-<li>Raf Guns wrote the GraphML writer.</li>
-<li>Salim Fadhley and Matteo Dell&#8217;Amico contributed the A* algorithm.</li>
-<li>Fabrice Desclaux contributed the Matplotlib edge labeling code.</li>
-<li>Arpad Horvath fixed the barabasi_albert_graph() generator.</li>
-<li>Minh Van Nguyen contributed the connected_watts_strogatz_graph()
-and documentation for the Graph and MultiGraph classes.</li>
-<li>Willem Ligtenberg contributed the directed scale free graph
-generator.</li>
-<li>Loïc Séguin-C. contributed the Ford-Fulkerson max flow and min cut
-algorithms, and ported all of NetworkX to Python3.  He is a
-NetworkX core developer.</li>
-<li>Paul McGuire improved the performance of the GML data parser.</li>
-<li>Jesus Cerquides contributed the chordal graph algorithms.</li>
-<li>Ben Edwards contributed tree generating functions, the rich club
-coefficient algorithm, the graph product functions, and a whole lot
-of other useful nuts and bolts.</li>
-<li>Jon Olav Vik contributed cycle finding algorithms.</li>
-<li>Hugh Brown improved the words.py example from the n^2 algorithm.</li>
-<li>Ben Reilly contributed the shapefile reader and writer.</li>
-<li>Leo Lopes contributed the maximal independent set algorithm.</li>
-<li>Jordi Torrents contributed the bipartite clustering, bipartite
-node redundancy, square clustering, bipartite projection
-articulation point, and flow-based connectivity algorithms.</li>
-<li>Dheeraj M R contributed the distance-regular testing algorithm</li>
-<li>Franck Kalala contributed the subgraph_centrality and communicability
-algorithms</li>
-<li>Simon Knight improved the GraphML functions to handle yEd/yfiles data,
-and to handle types correctly.</li>
-<li>Conrad Lee contributed the k-clique community finding algorithm.</li>
-<li>Sérgio Nery Simões wrote the function for finding all simple paths,
-and all shortest paths.</li>
-<li>Robert King contributed union, disjoint union, compose, and intersection
-operators that work on lists of graphs.</li>
-<li>Nick Mancuso wrote the approximation algorithms for dominating set,
-edge dominating set, independent set, max clique, and min-weighted
-vertex cover.</li>
-<li>Brian Cloteaux contributed the linear-time graphicality tests and
-Havel-Hakimi graph generators.</li>
-<li>Alejandro Weinstein contributed the directed Laplacian code</li>
-<li>Dustin Smith wrote the dictionary to numpy array function</li>
-<li>Mathieu Larose sped up the topological sort code</li>
-<li>Vincent Gauthier contributed the Katz centrality algorithm</li>
-<li>Sérgio Nery Simões developed the code for finding all simple paths</li>
-<li>Peter Jipsen and Franco Saliola contributed the antichains generator.
-This function was originally developed for the SAGE project. Included
-in NetworkX with permission from the authors.</li>
+and has been developed with the help of many others. Thanks to everyone who has
+improved NetworkX by contributing code, bug reports (and fixes), documentation,
+and input on design, features, and the future of NetworkX.</p>
+<div class="section" id="contributions">
+<h2>Contributions<a class="headerlink" href="#contributions" title="Permalink to this headline">¶</a></h2>
+<p>This section aims to provide a list of people and projects that have
+contributed to <code class="docutils literal"><span class="pre">networkx</span></code>. It is intended to be an <em>inclusive</em> list, and
+anyone who has contributed and wishes to make that contribution known is
+welcome to add an entry into this file.  Generally, no name should be added to
+this list without the approval of the person associated with that name.</p>
+<p>Creating a comprehensive list of contributors can be difficult, and the list
+within this file is almost certainly incomplete.  Contributors include
+testers, bug reporters, contributors who wish to remain anonymous, funding
+sources, academic advisors, end users, and even build/integration systems (such
+as <a class="reference external" href="https://travis-ci.org">TravisCI</a>, <a class="reference external" href="https://coveralls.io">coveralls</a>,
+and <a class="reference external" href="https://readthedocs.org">readthedocs</a>).</p>
+<p>Do you want to make your contribution known? If you have commit access, edit
+this file and add your name. If you do not have commit access, feel free to
+open an <a class="reference external" href="https://github.com/networkx/networkx/issues/new">issue</a>, submit a
+<a class="reference external" href="https://github.com/networkx/networkx/compare/">pull request</a>, or get in
+contact with one of the official team
+<a class="reference external" href="https://github.com/networkx?tab=members">members</a>.</p>
+<p>A supplementary (but still incomplete) list of contributors is given by the
+list of names that have commits in <code class="docutils literal"><span class="pre">networkx</span></code>&#8216;s
+<a class="reference external" href="http://git-scm.com">git</a> repository. This can be obtained via:</p>
+<div class="highlight-python"><div class="highlight"><pre>git log --raw | grep &quot;^Author: &quot; | sort | uniq
+</pre></div>
+</div>
+<p>A historical, partial listing of contributors and their contributions to some
+of the earlier versions of NetworkX can be found
+<a class="reference external" href="/reference/credits_old.html">here</a>.</p>
+<div class="section" id="original-authors">
+<h3>Original Authors<a class="headerlink" href="#original-authors" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">Aric Hagberg</div>
+<div class="line">Dan Schult</div>
+<div class="line">Pieter Swart</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="contributors">
+<h3>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h3>
+<p>Optionally, add your desired name and include a few relevant links. The order
+is partially historical, and now, mostly arbitrary.</p>
+<ul class="simple">
+<li>Aric Hagberg, GitHub: <a class="reference external" href="https://github.com/hagberg">hagberg</a></li>
+<li>Dan Schult, GitHub: <a class="reference external" href="https://github.com/dschult">dschult</a></li>
+<li>Pieter Swart</li>
+<li>Katy Bold</li>
+<li>Hernan Rozenfeld</li>
+<li>Brendt Wohlberg</li>
+<li>Jim Bagrow</li>
+<li>Holly Johnsen</li>
+<li>Arnar Flatberg</li>
+<li>Chris Myers</li>
+<li>Joel Miller</li>
+<li>Keith Briggs</li>
+<li>Ignacio Rozada</li>
+<li>Phillipp Pagel</li>
+<li>Sverre Sundsdal</li>
+<li>Ross M. Richardson</li>
+<li>Eben Kenah</li>
+<li>Sasha Gutfriend</li>
+<li>Udi Weinsberg</li>
+<li>Matteo Dell&#8217;Amico</li>
+<li>Andrew Conway</li>
+<li>Raf Guns</li>
+<li>Salim Fadhley</li>
+<li>Matteo Dell&#8217;Amico</li>
+<li>Fabrice Desclaux</li>
+<li>Arpad Horvath</li>
+<li>Minh Van Nguyen</li>
+<li>Willem Ligtenberg</li>
+<li>Loïc Séguin-C.</li>
+<li>Paul McGuire</li>
+<li>Jesus Cerquides</li>
+<li>Ben Edwards</li>
+<li>Jon Olav Vik</li>
+<li>Hugh Brown</li>
+<li>Ben Reilly</li>
+<li>Leo Lopes</li>
+<li>Jordi Torrents, GitHub: <a class="reference external" href="https://github.com/jtorrents">jtorrents</a></li>
+<li>Dheeraj M R</li>
+<li>Franck Kalala</li>
+<li>Simon Knight</li>
+<li>Conrad Lee</li>
+<li>Sérgio Nery Simões</li>
+<li>Robert King</li>
+<li>Nick Mancuso</li>
+<li>Brian Cloteaux</li>
+<li>Alejandro Weinstein</li>
+<li>Dustin Smith</li>
+<li>Mathieu Larose</li>
+<li>Vincent Gauthier</li>
+<li>Sérgio Nery Simões</li>
+<li>chebee7i, GitHub: <a class="reference external" href="https://github.com/chebee7i">chebee7i</a></li>
 </ul>
-</div></blockquote>
+</div>
+</div>
+<div class="section" id="support">
+<h2>Support<a class="headerlink" href="#support" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">networkx</span></code> and those who have contributed to <code class="docutils literal"><span class="pre">networkx</span></code> have received
+support throughout the years from a variety of sources.  We list them below.
+If you have provided support to <code class="docutils literal"><span class="pre">networkx</span></code> and a support acknowledgment does
+not appear below, please help us remedy the situation, and similarly, please
+let us know if you&#8217;d like something modified or corrected.</p>
+<div class="section" id="research-groups">
+<h3>Research Groups<a class="headerlink" href="#research-groups" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">networkx</span></code> acknowledges support from the following:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://cnls.lanl.gov">Center for Nonlinear Studies</a>, Los Alamos National
+Laboratory, PI: Aric Hagberg</li>
+<li><a class="reference external" href="https://developers.google.com/open-source/">Open Source Programs Office</a>,
+Google</li>
+<li><a class="reference external" href="http://csc.ucdavis.edu/">Complexity Sciences Center</a>, Department of
+Physics, University of California-Davis, PI: James P. Crutchfield</li>
+<li><a class="reference external" href="http://c4.discovery.wisc.edu">Center for Complexity and Collective Computation</a>,
+Wisconsin Institute for Discovery, University of Wisconsin-Madison,
+PIs: Jessica C. Flack and David C. Krakauer</li>
+</ul>
+</div>
+<div class="section" id="funding">
+<h3>Funding<a class="headerlink" href="#funding" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">networkx</span></code> acknowledges support from the following:</p>
+<ul class="simple">
+<li>Google Summer of Code via Python Software Foundation</li>
+<li>U.S. Army Research Office grant W911NF-12-1-0288</li>
+<li>DARPA Physical Intelligence Subcontract No. 9060-000709</li>
+<li>NSF Grant No. PHY-0748828</li>
+<li>John Templeton Foundation through a grant to the Santa Fe Institute to
+study complexity</li>
+<li>U.S. Army Research Laboratory and the U.S. Army Research Office under
+contract number W911NF-13-1-0340</li>
+</ul>
+</div>
+</div>
 </div>
 
 
@@ -296,7 +341,7 @@ in NetworkX with permission from the authors.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Apr 09, 2015.
+      Last updated on Apr 10, 2015.
     </p>
   </div>
 
@@ -316,7 +361,7 @@ in NetworkX with permission from the authors.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20150409000007',
+            VERSION:'2.0.dev20150410000011',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
