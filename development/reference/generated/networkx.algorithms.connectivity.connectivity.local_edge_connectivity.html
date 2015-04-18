@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>local_edge_connectivity &mdash; NetworkX 2.0.dev20150417000011 documentation</title>
+  <title>local_edge_connectivity &mdash; NetworkX 2.0.dev20150418000010 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150417000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150418000010 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150417000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150418000010 documentation" href="../../index.html"/>
         <link rel="up" title="Connectivity" href="../algorithms.connectivity.html"/>
         <link rel="next" title="local_node_connectivity" href="networkx.algorithms.connectivity.connectivity.local_node_connectivity.html"/>
         <link rel="prev" title="edge_connectivity" href="networkx.algorithms.connectivity.connectivity.edge_connectivity.html"/> 
@@ -197,7 +197,7 @@ of edges that must be removed to disconnect them.</p>
 maximum flow on an auxiliary digraph build from the original
 network (see below for details). This is equal to the local edge
 connectivity because the value of a maximum s-t-flow is equal to the
-capacity of a minimum s-t-cut (Ford and Fulkerson theorem) <a class="reference internal" href="#r254" id="id1">[R254]</a> .</p>
+capacity of a minimum s-t-cut (Ford and Fulkerson theorem) <a class="reference internal" href="#r255" id="id1">[R255]</a> .</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -265,15 +265,15 @@ auxiliary digraph build from the original input graph:</p>
 two reciprocal arcs (<span class="math">\(u\)</span>, <span class="math">\(v\)</span>) and (<span class="math">\(v\)</span>, <span class="math">\(u\)</span>) and then we set the attribute
 &#8216;capacity&#8217; for each arc to 1. If the input graph is directed we simply
 add the &#8216;capacity&#8217; attribute. This is an implementation of algorithm 1
-in <a class="reference internal" href="#r254" id="id2">[R254]</a>.</p>
+in <a class="reference internal" href="#r255" id="id2">[R255]</a>.</p>
 <p>The maximum flow in the auxiliary network is equal to the local edge
 connectivity because the value of a maximum s-t-flow is equal to the
 capacity of a minimum s-t-cut (Ford and Fulkerson theorem).</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r254" rules="none">
+<table class="docutils citation" frame="void" id="r255" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R254]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id3">3</a>)</em> Abdol-Hossein Esfahanian. Connectivity Algorithms.
+<tr><td class="label">[R255]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id3">3</a>)</em> Abdol-Hossein Esfahanian. Connectivity Algorithms.
 <a class="reference external" href="http://www.cse.msu.edu/~cse835/Papers/Graph_connectivity_revised.pdf">http://www.cse.msu.edu/~cse835/Papers/Graph_connectivity_revised.pdf</a></td></tr>
 </tbody>
 </table>
@@ -353,7 +353,7 @@ functions have to be explicitly imported from the flow package.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Apr 17, 2015.
+      Last updated on Apr 18, 2015.
     </p>
   </div>
 
@@ -373,7 +373,7 @@ functions have to be explicitly imported from the flow package.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150417000011',
+            VERSION:'2.0.dev20150418000010',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

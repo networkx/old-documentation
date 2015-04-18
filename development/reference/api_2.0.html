@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Version 2.0 notes and API changes &mdash; NetworkX 2.0.dev20150417000011 documentation</title>
+  <title>Version 2.0 notes and API changes &mdash; NetworkX 2.0.dev20150418000010 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150417000011 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150418000010 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150417000011 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150418000010 documentation" href="../index.html"/>
         <link rel="up" title="API changes" href="api_changes.html"/>
         <link rel="next" title="Version 1.9 notes and API changes" href="api_1.9.html"/>
         <link rel="prev" title="API changes" href="api_changes.html"/> 
@@ -263,13 +263,20 @@ graphs in <code class="docutils literal"><span class="pre">algorithms.dag</span>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1436">#1436</a>]
 Added a generator function for circulant graphs to the
 <code class="docutils literal"><span class="pre">networkx.generators.classic</span></code> module.</li>
+<li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1437">#1437</a>]
+Added function for computing quotient graphs; also created a new module,
+<code class="docutils literal"><span class="pre">networkx.algorithms.minors</span></code>.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1448">#1445</a>]
-Added a new modularity matrix module to <code class="docutils literal"><span class="pre">networkx.linealg</span></code>,
-and associated spectrum functions to the <code class="docutils literal"><span class="pre">networkx.linealg.spectrum</span></code>
+Added a new modularity matrix module to <code class="docutils literal"><span class="pre">networkx.linalg</span></code>,
+and associated spectrum functions to the <code class="docutils literal"><span class="pre">networkx.linalg.spectrum</span></code>
 module.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1455">#1455</a>]
 Added the directed modularity matrix to the
-<code class="docutils literal"><span class="pre">networkx.linealg.modularity_matrix</span></code> module.</li>
+<code class="docutils literal"><span class="pre">networkx.linalg.modularity_matrix</span></code> module.</li>
+<li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1447">#1447</a>]
+Added function to generate all simple paths starting with the shortest
+ones based on Yen&#8217;s algorithm for finding k shortest paths at
+<code class="docutils literal"><span class="pre">algorithms.simple_paths</span></code></li>
 </ul>
 </div>
 <div class="section" id="removed-functionalities">
@@ -308,7 +315,7 @@ Support for Python 2.6 is dropped.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Apr 17, 2015.
+      Last updated on Apr 18, 2015.
     </p>
   </div>
 
@@ -328,7 +335,7 @@ Support for Python 2.6 is dropped.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20150417000011',
+            VERSION:'2.0.dev20150418000010',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
