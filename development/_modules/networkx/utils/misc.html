@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.utils.misc &mdash; NetworkX 2.0.dev20150418000010 documentation</title>
+  <title>networkx.utils.misc &mdash; NetworkX 2.0.dev20150420000011 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150418000010 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150420000011 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150418000010 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150420000011 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -196,6 +196,28 @@
 <span class="c">#    BSD license.</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">uuid</span>
+<span class="c"># itertools.accumulate is only available on Python 3.2 or later.</span>
+<span class="c">#</span>
+<span class="c"># Once support for Python versions less than 3.2 is dropped, this code should</span>
+<span class="c"># be removed.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">accumulate</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">operator</span>
+
+    <span class="c"># The code for this function is from the Python 3.5 documentation,</span>
+    <span class="c"># distributed under the PSF license:</span>
+    <span class="c"># &lt;https://docs.python.org/3.5/library/itertools.html#itertools.accumulate&gt;</span>
+    <span class="k">def</span> <span class="nf">accumulate</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="n">operator</span><span class="o">.</span><span class="n">add</span><span class="p">):</span>
+        <span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">total</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">yield</span> <span class="n">total</span>
+        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+            <span class="n">total</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">total</span>
 
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
 
@@ -263,18 +285,7 @@
 <div class="viewcode-block" id="make_str"><a class="viewcode-back" href="../../../reference/generated/networkx.utils.misc.make_str.html#networkx.utils.misc.make_str">[docs]</a>    <span class="k">def</span> <span class="nf">make_str</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the string representation of t.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</div>
-<div class="viewcode-block" id="cumulative_sum"><a class="viewcode-back" href="../../../reference/generated/networkx.utils.misc.cumulative_sum.html#networkx.utils.misc.cumulative_sum">[docs]</a><span class="k">def</span> <span class="nf">cumulative_sum</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Yield cumulative sum of numbers.</span>
 
-<span class="sd">    &gt;&gt;&gt; import networkx.utils as utils</span>
-<span class="sd">    &gt;&gt;&gt; list(utils.cumulative_sum([1,2,3,4]))</span>
-<span class="sd">    [1, 3, 6, 10]</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">csum</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
-        <span class="n">csum</span> <span class="o">+=</span> <span class="n">n</span>
-        <span class="k">yield</span> <span class="n">csum</span>
 </div>
 <div class="viewcode-block" id="generate_unique_node"><a class="viewcode-back" href="../../../reference/generated/networkx.utils.misc.generate_unique_node.html#networkx.utils.misc.generate_unique_node">[docs]</a><span class="k">def</span> <span class="nf">generate_unique_node</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot; Generate a unique node label.&quot;&quot;&quot;</span>
@@ -355,7 +366,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Apr 18, 2015.
+      Last updated on Apr 20, 2015.
     </p>
   </div>
 
@@ -375,7 +386,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20150418000010',
+            VERSION:'2.0.dev20150420000011',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

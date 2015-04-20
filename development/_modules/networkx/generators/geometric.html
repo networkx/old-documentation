@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.generators.geometric &mdash; NetworkX 2.0.dev20150418000010 documentation</title>
+  <title>networkx.generators.geometric &mdash; NetworkX 2.0.dev20150420000011 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150418000010 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150420000011 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150418000010 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150420000011 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -522,7 +522,7 @@
             <span class="k">if</span> <span class="n">d</span> <span class="o">&lt;=</span> <span class="n">p</span><span class="p">:</span>
                 <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="n">p2</span><span class="p">)</span>
             <span class="n">probs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="o">**-</span><span class="n">r</span><span class="p">)</span>
-        <span class="n">cdf</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">cumulative_sum</span><span class="p">(</span><span class="n">probs</span><span class="p">))</span>
+        <span class="n">cdf</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">accumulate</span><span class="p">(</span><span class="n">probs</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
             <span class="n">target</span> <span class="o">=</span> <span class="n">nodes</span><span class="p">[</span><span class="n">bisect_left</span><span class="p">(</span><span class="n">cdf</span><span class="p">,</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">cdf</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))]</span>
             <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="n">target</span><span class="p">)</span>
@@ -538,7 +538,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Apr 18, 2015.
+      Last updated on Apr 20, 2015.
     </p>
   </div>
 
@@ -558,7 +558,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20150418000010',
+            VERSION:'2.0.dev20150420000011',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

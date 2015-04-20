@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.generators.classic &mdash; NetworkX 2.0.dev20150418000010 documentation</title>
+  <title>networkx.generators.classic &mdash; NetworkX 2.0.dev20150420000011 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150418000010 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150420000011 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150418000010 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150420000011 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -197,12 +197,16 @@
 <span class="c">#    All rights reserved.</span>
 <span class="c">#    BSD license.</span>
 <span class="kn">import</span> <span class="nn">itertools</span>
+
 <span class="kn">from</span> <span class="nn">networkx.algorithms.bipartite.generators</span> <span class="kn">import</span> <span class="n">complete_bipartite_graph</span>
+<span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="kn">import</span> <span class="n">accumulate</span>
+
 <span class="n">__author__</span> <span class="o">=</span><span class="s">&quot;&quot;&quot;Aric Hagberg (hagberg@lanl.gov)</span><span class="se">\n</span><span class="s">Pieter Swart (swart@lanl.gov)&quot;&quot;&quot;</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&#39;balanced_tree&#39;</span><span class="p">,</span>
             <span class="s">&#39;barbell_graph&#39;</span><span class="p">,</span>
             <span class="s">&#39;complete_graph&#39;</span><span class="p">,</span>
+            <span class="s">&#39;complete_multipartite_graph&#39;</span><span class="p">,</span>
             <span class="s">&#39;circular_ladder_graph&#39;</span><span class="p">,</span>
             <span class="s">&#39;circulant_graph&#39;</span><span class="p">,</span>
             <span class="s">&#39;cycle_graph&#39;</span><span class="p">,</span>
@@ -725,7 +729,80 @@
     <span class="k">if</span> <span class="n">n</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">:</span>
         <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">G</span>
-</pre></div></div>
+
+</div>
+<div class="viewcode-block" id="complete_multipartite_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.classic.complete_multipartite_graph.html#networkx.generators.classic.complete_multipartite_graph">[docs]</a><span class="k">def</span> <span class="nf">complete_multipartite_graph</span><span class="p">(</span><span class="o">*</span><span class="n">block_sizes</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the complete multipartite graph with the specified block sizes.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    block_sizes : tuple of integers</span>
+
+<span class="sd">       The number of vertices in each block of the multipartite graph. The</span>
+<span class="sd">       length of this tuple is the number of blocks.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    G : NetworkX Graph</span>
+
+<span class="sd">       Returns the complete multipartite graph with the specified block sizes.</span>
+
+<span class="sd">       For each node, the node attribute ``&#39;block&#39;`` is an integer indicating</span>
+<span class="sd">       which block contains the node.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    Creating a complete tripartite graph, with blocks of one, two, and three</span>
+<span class="sd">    vertices, respectively.</span>
+
+<span class="sd">        &gt;&gt;&gt; import networkx as nx</span>
+<span class="sd">        &gt;&gt;&gt; G = nx.complete_multipartite_graph(1, 2, 3)</span>
+<span class="sd">        &gt;&gt;&gt; [G.node[u][&#39;block&#39;] for u in G]</span>
+<span class="sd">        [0, 1, 1, 2, 2, 2]</span>
+<span class="sd">        &gt;&gt;&gt; G.edges(0)</span>
+<span class="sd">        [(0, 1), (0, 2), (0, 3), (0, 4), (0, 5)]</span>
+<span class="sd">        &gt;&gt;&gt; G.edges(2)</span>
+<span class="sd">        [(2, 0), (2, 3), (2, 4), (2, 5)]</span>
+<span class="sd">        &gt;&gt;&gt; G.edges(4)</span>
+<span class="sd">        [(4, 0), (4, 1), (4, 2)]</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+
+<span class="sd">    This function generalizes several other graph generator functions.</span>
+
+<span class="sd">    - If no block sizes are given, this returns the null graph.</span>
+<span class="sd">    - If a single block size ``n`` is given, this returns the empty graph on</span>
+<span class="sd">      ``n`` nodes.</span>
+<span class="sd">    - If two block sizes ``m`` and ``n`` are given, this returns the complete</span>
+<span class="sd">      bipartite graph on ``m + n`` nodes.</span>
+<span class="sd">    - If block sizes ``1`` and ``n`` are given, this returns the star graph on</span>
+<span class="sd">      ``n + 1`` nodes.</span>
+
+<span class="sd">    See also</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    complete_bipartite_graph</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">empty_graph</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">block_sizes</span><span class="p">))</span>
+    <span class="c"># If block_sizes is (n1, n2, n3, ...), create pairs of the form (0, n1),</span>
+    <span class="c"># (n1, n1 + n2), (n1 + n2, n1 + n2 + n3), etc.</span>
+    <span class="n">extents</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">accumulate</span><span class="p">(</span><span class="n">block_sizes</span><span class="p">)),</span> <span class="n">accumulate</span><span class="p">(</span><span class="n">block_sizes</span><span class="p">))</span>
+    <span class="n">blocks</span> <span class="o">=</span> <span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span> <span class="k">for</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="ow">in</span> <span class="n">extents</span><span class="p">]</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">block</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">blocks</span><span class="p">):</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">block</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+    <span class="c"># Across blocks, all vertices should be adjacent. We can use</span>
+    <span class="c"># itertools.combinations() because the complete multipartite graph is an</span>
+    <span class="c"># undirected graph.</span>
+    <span class="k">for</span> <span class="n">block1</span><span class="p">,</span> <span class="n">block2</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">blocks</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">block1</span><span class="p">,</span> <span class="n">block2</span><span class="p">))</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#39;complete_multiparite_graph{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">block_sizes</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">G</span></div>
+</pre></div>
 
           </div>
           <footer>
@@ -736,7 +813,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Apr 18, 2015.
+      Last updated on Apr 20, 2015.
     </p>
   </div>
 
@@ -756,7 +833,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20150418000010',
+            VERSION:'2.0.dev20150420000011',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
