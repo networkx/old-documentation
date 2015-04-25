@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Graph generators &mdash; NetworkX 2.0.dev20150422000011 documentation</title>
+  <title>Graph generators &mdash; NetworkX 2.0.dev20150425000011 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150422000011 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150425000011 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150422000011 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150425000011 documentation" href="../index.html"/>
         <link rel="up" title="Reference" href="pdf_reference.html"/>
         <link rel="next" title="graph_atlas_g" href="generated/networkx.generators.atlas.graph_atlas_g.html"/>
         <link rel="prev" title="is_frozen" href="generated/networkx.classes.function.is_frozen.html"/> 
@@ -682,6 +682,58 @@ Press Inc., pp. 271&#8211;305.</dd>
 </tbody>
 </table>
 </div>
+<div class="section" id="module-networkx.generators.community">
+<span id="community"></span><h2>Community<a class="headerlink" href="#module-networkx.generators.community" title="Permalink to this headline">¶</a></h2>
+<p>Generators for classes of graphs used in studying social networks.</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.generators.community.caveman_graph.html#networkx.generators.community.caveman_graph" title="networkx.generators.community.caveman_graph"><code class="xref py py-obj docutils literal"><span class="pre">caveman_graph</span></code></a>(l,&nbsp;k)</td>
+<td>Returns a caveman graph of <code class="docutils literal"><span class="pre">l</span></code> cliques of size <code class="docutils literal"><span class="pre">k</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.generators.community.connected_caveman_graph.html#networkx.generators.community.connected_caveman_graph" title="networkx.generators.community.connected_caveman_graph"><code class="xref py py-obj docutils literal"><span class="pre">connected_caveman_graph</span></code></a>(l,&nbsp;k)</td>
+<td>Returns a connected caveman graph of <code class="docutils literal"><span class="pre">l</span></code> cliques of size <code class="docutils literal"><span class="pre">k</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.generators.community.relaxed_caveman_graph.html#networkx.generators.community.relaxed_caveman_graph" title="networkx.generators.community.relaxed_caveman_graph"><code class="xref py py-obj docutils literal"><span class="pre">relaxed_caveman_graph</span></code></a>(l,&nbsp;k,&nbsp;p[,&nbsp;seed])</td>
+<td>Return a relaxed caveman graph.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.generators.community.random_partition_graph.html#networkx.generators.community.random_partition_graph" title="networkx.generators.community.random_partition_graph"><code class="xref py py-obj docutils literal"><span class="pre">random_partition_graph</span></code></a>(sizes,&nbsp;p_in,&nbsp;p_out[,&nbsp;...])</td>
+<td>Return the random partition graph with a partition of sizes.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.generators.community.planted_partition_graph.html#networkx.generators.community.planted_partition_graph" title="networkx.generators.community.planted_partition_graph"><code class="xref py py-obj docutils literal"><span class="pre">planted_partition_graph</span></code></a>(l,&nbsp;k,&nbsp;p_in,&nbsp;p_out[,&nbsp;...])</td>
+<td>Return the planted l-partition graph.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.generators.community.gaussian_random_partition_graph.html#networkx.generators.community.gaussian_random_partition_graph" title="networkx.generators.community.gaussian_random_partition_graph"><code class="xref py py-obj docutils literal"><span class="pre">gaussian_random_partition_graph</span></code></a>(n,&nbsp;s,&nbsp;v,&nbsp;...)</td>
+<td>Generate a Gaussian random partition graph.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-networkx.generators.nonisomorphic_trees">
+<span id="non-isomorphic-trees"></span><h2>Non Isomorphic Trees<a class="headerlink" href="#module-networkx.generators.nonisomorphic_trees" title="Permalink to this headline">¶</a></h2>
+<p>Implementation of the Wright, Richmond, Odlyzko and McKay (WROM)
+algorithm for the enumeration of all non-isomorphic free trees of a
+given order.  Rooted trees are represented by level sequences, i.e.,
+lists in which the i-th element specifies the distance of vertex i to
+the root.</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.generators.nonisomorphic_trees.nonisomorphic_trees.html#networkx.generators.nonisomorphic_trees.nonisomorphic_trees" title="networkx.generators.nonisomorphic_trees.nonisomorphic_trees"><code class="xref py py-obj docutils literal"><span class="pre">nonisomorphic_trees</span></code></a>(order[,&nbsp;create])</td>
+<td>Returns a list of nonisomporphic trees</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.generators.nonisomorphic_trees.number_of_nonisomorphic_trees.html#networkx.generators.nonisomorphic_trees.number_of_nonisomorphic_trees" title="networkx.generators.nonisomorphic_trees.number_of_nonisomorphic_trees"><code class="xref py py-obj docutils literal"><span class="pre">number_of_nonisomorphic_trees</span></code></a>(order)</td>
+<td>Returns the number of nonisomorphic trees</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 
@@ -703,7 +755,7 @@ Press Inc., pp. 271&#8211;305.</dd>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Apr 22, 2015.
+      Last updated on Apr 25, 2015.
     </p>
   </div>
 
@@ -723,7 +775,7 @@ Press Inc., pp. 271&#8211;305.</dd>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20150422000011',
+            VERSION:'2.0.dev20150425000011',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Version 2.0 notes and API changes &mdash; NetworkX 2.0.dev20150422000011 documentation</title>
+  <title>Version 2.0 notes and API changes &mdash; NetworkX 2.0.dev20150425000011 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150422000011 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150425000011 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150422000011 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150425000011 documentation" href="../index.html"/>
         <link rel="up" title="API changes" href="api_changes.html"/>
         <link rel="next" title="Version 1.9 notes and API changes" href="api_1.9.html"/>
         <link rel="prev" title="API changes" href="api_changes.html"/> 
@@ -237,14 +237,18 @@ expander) and the new chordal cycle graph function to a new module,
 Allow overwriting of base class dict with dict-like:
 OrderedGraph, ThinGraph, LogGraph, etc.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1321">#1321</a>]
-Added <code class="docutils literal"><span class="pre">to_pandas_dataframe</span></code> and <code class="docutils literal"><span class="pre">from_pandas_dataframe</span></code></li>
+Added <code class="docutils literal"><span class="pre">to_pandas_dataframe</span></code> and <code class="docutils literal"><span class="pre">from_pandas_dataframe</span></code>.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1322">#1322</a>]
 Added the Hopcroft&#8211;Karp algorithm for finding a maximum cardinality
 matching in bipartite graphs.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1336">#1336</a>]
-Expanded data keyword in G.edges and added default keyword</li>
+Expanded data keyword in G.edges and added default keyword.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1338">#1338</a>]
 Added support for finding optimum branchings and arborescences.</li>
+<li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1354">#1354</a>]
+Expanded layout functions to add flexibility for drawing subsets of nodes
+with distinct layouts and for centering each layout around given
+coordinates.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1356">#1356</a>]
 Added ordered variants of default graph class.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1360">#1360</a>]
@@ -259,9 +263,11 @@ Newman&#8217;s approximation algorithm for finding node independent paths
 between two nodes.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1413">#1413</a>]
 Added transitive closure and antichains function for directed acyclic
-graphs in <code class="docutils literal"><span class="pre">algorithms.dag</span></code></li>
+graphs in <code class="docutils literal"><span class="pre">algorithms.dag</span></code>.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1425">#1425</a>]
 Added generator function for the complete multipartite graph.</li>
+<li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1427">#1427</a>]
+Added nonisomorphic trees generator.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1436">#1436</a>]
 Added a generator function for circulant graphs to the
 <code class="docutils literal"><span class="pre">networkx.generators.classic</span></code> module.</li>
@@ -278,7 +284,12 @@ Added the directed modularity matrix to the
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1447">#1447</a>]
 Added function to generate all simple paths starting with the shortest
 ones based on Yen&#8217;s algorithm for finding k shortest paths at
-<code class="docutils literal"><span class="pre">algorithms.simple_paths</span></code></li>
+<code class="docutils literal"><span class="pre">algorithms.simple_paths</span></code>.</li>
+<li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1474">#1474</a>]
+Adds <code class="docutils literal"><span class="pre">triadic_census</span></code> function; also creates a new module,
+<a class="reference internal" href="algorithms.triads.html#module-networkx.algorithms.triads" title="networkx.algorithms.triads"><code class="xref py py-mod docutils literal"><span class="pre">networkx.algorithms.triads</span></code></a>.</li>
+<li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1438">#1438</a>]
+Added longest_path and longest_path_length for DAG.</li>
 </ul>
 </div>
 <div class="section" id="removed-functionalities">
@@ -317,7 +328,7 @@ Support for Python 2.6 is dropped.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Apr 22, 2015.
+      Last updated on Apr 25, 2015.
     </p>
   </div>
 
@@ -337,7 +348,7 @@ Support for Python 2.6 is dropped.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20150422000011',
+            VERSION:'2.0.dev20150425000011',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
