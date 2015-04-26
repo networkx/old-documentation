@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>from_numpy_matrix &mdash; NetworkX 2.0.dev20150425000011 documentation</title>
+  <title>from_numpy_matrix &mdash; NetworkX 2.0.dev20150426000011 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150425000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150426000011 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150425000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150426000011 documentation" href="../../index.html"/>
         <link rel="up" title="Converting to and from other data formats" href="../convert.html"/>
         <link rel="next" title="to_scipy_sparse_matrix" href="networkx.convert_matrix.to_scipy_sparse_matrix.html"/>
         <link rel="prev" title="to_numpy_recarray" href="networkx.convert_matrix.to_numpy_recarray.html"/> 
@@ -200,7 +200,7 @@
 </div></blockquote>
 <p><strong>parallel_edges</strong> : Boolean</p>
 <blockquote>
-<div><p>If this is <code class="docutils literal"><span class="pre">True</span></code>, <span class="math">\(create_using\)</span> is a multigraph, and <span class="math">\(A\)</span> is an
+<div><p>If this is <code class="docutils literal"><span class="pre">True</span></code>, <code class="docutils literal"><span class="pre">create_using</span></code> is a multigraph, and <code class="docutils literal"><span class="pre">A</span></code> is an
 integer matrix, then entry <em>(i, j)</em> in the matrix is interpreted as the
 number of parallel edges joining vertices <em>i</em> and <em>j</em> in the graph. If it
 is <code class="docutils literal"><span class="pre">False</span></code>, then the entries in the adjacency matrix are interpreted as
@@ -208,7 +208,7 @@ the weight of a single edge joining the vertices.</p>
 </div></blockquote>
 <p><strong>create_using</strong> : NetworkX graph</p>
 <blockquote class="last">
-<div><p>Use specified graph for result.  The default is Graph()</p>
+<div><p>Use specified graph for result. The default is Graph()</p>
 </div></blockquote>
 </td>
 </tr>
@@ -219,11 +219,11 @@ the weight of a single edge joining the vertices.</p>
 <p class="last"><a class="reference internal" href="networkx.convert_matrix.to_numpy_matrix.html#networkx.convert_matrix.to_numpy_matrix" title="networkx.convert_matrix.to_numpy_matrix"><code class="xref py py-obj docutils literal"><span class="pre">to_numpy_matrix</span></code></a>, <a class="reference internal" href="networkx.convert_matrix.to_numpy_recarray.html#networkx.convert_matrix.to_numpy_recarray" title="networkx.convert_matrix.to_numpy_recarray"><code class="xref py py-obj docutils literal"><span class="pre">to_numpy_recarray</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>If <span class="math">\(create_using\)</span> is an instance of <a class="reference internal" href="../classes.multigraph.html#networkx.MultiGraph" title="networkx.MultiGraph"><code class="xref py py-class docutils literal"><span class="pre">networkx.MultiGraph</span></code></a> or
-<a class="reference internal" href="../classes.multidigraph.html#networkx.MultiDiGraph" title="networkx.MultiDiGraph"><code class="xref py py-class docutils literal"><span class="pre">networkx.MultiDiGraph</span></code></a>, <span class="math">\(parallel_edges\)</span> is <code class="docutils literal"><span class="pre">True</span></code>, and the
-entries of <span class="math">\(A\)</span> are of type <code class="docutils literal"><span class="pre">int</span></code>, then this function returns a multigraph
-(of the same type as <span class="math">\(create_using\)</span>) with parallel edges.</p>
-<p>If <span class="math">\(create_using\)</span> is an undirected multigraph, then only the edges
+<p>If <code class="docutils literal"><span class="pre">create_using</span></code> is an instance of <a class="reference internal" href="../classes.multigraph.html#networkx.MultiGraph" title="networkx.MultiGraph"><code class="xref py py-class docutils literal"><span class="pre">networkx.MultiGraph</span></code></a> or
+<a class="reference internal" href="../classes.multidigraph.html#networkx.MultiDiGraph" title="networkx.MultiDiGraph"><code class="xref py py-class docutils literal"><span class="pre">networkx.MultiDiGraph</span></code></a>, <code class="docutils literal"><span class="pre">parallel_edges</span></code> is <code class="docutils literal"><span class="pre">True</span></code>, and the
+entries of <code class="docutils literal"><span class="pre">A</span></code> are of type <code class="docutils literal"><span class="pre">int</span></code>, then this function returns a multigraph
+(of the same type as <code class="docutils literal"><span class="pre">create_using</span></code>) with parallel edges.</p>
+<p>If <code class="docutils literal"><span class="pre">create_using</span></code> is an undirected multigraph, then only the edges
 indicated by the upper triangle of the matrix <span class="math">\(A\)</span> will be added to the
 graph.</p>
 <p>If the numpy matrix has a single data type for each matrix entry it
@@ -234,36 +234,36 @@ NetworkX graph.</p>
 <p class="rubric">Examples</p>
 <p>Simple integer weights on edges:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_matrix</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>If <span class="math">\(create_using\)</span> is a multigraph and the matrix has only integer entries,
+<p>If <code class="docutils literal"><span class="pre">create_using</span></code> is a multigraph and the matrix has only integer entries,
 the entries will be interpreted as weighted edges joining the vertices
 (without creating parallel edges):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_matrix</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">MultiGraph</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_matrix</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">create_using</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiGraph</span><span class="p">())</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
 <span class="go">{0: {&#39;weight&#39;: 2}}</span>
 </pre></div>
 </div>
-<p>If <span class="math">\(create_using\)</span> is a multigraph and the matrix has only integer entries
-but <span class="math">\(parallel_edges\)</span> is <code class="docutils literal"><span class="pre">True</span></code>, then the entries will be interpreted as
+<p>If <code class="docutils literal"><span class="pre">create_using</span></code> is a multigraph and the matrix has only integer entries
+but <code class="docutils literal"><span class="pre">parallel_edges</span></code> is <code class="docutils literal"><span class="pre">True</span></code>, then the entries will be interpreted as
 the number of parallel edges joining those two vertices:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">temp</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiGraph</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_matrix</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">parallel_edges</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">temp</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_matrix</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">parallel_edges</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">create_using</span> <span class="o">=</span> <span class="n">temp</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
 <span class="go">{0: {&#39;weight&#39;: 1}, 1: {&#39;weight&#39;: 1}}</span>
 </pre></div>
 </div>
 <p>User defined compound data type on edges:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span><span class="o">=</span><span class="p">[(</span><span class="s">&#39;weight&#39;</span><span class="p">,</span><span class="nb">float</span><span class="p">),(</span><span class="s">&#39;cost&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">)]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">matrix</span><span class="p">([[(</span><span class="mf">1.0</span><span class="p">,</span><span class="mi">2</span><span class="p">)]],</span><span class="n">dtype</span><span class="o">=</span><span class="n">dt</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_matrix</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;weight&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;cost&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">matrix</span><span class="p">([[(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">dt</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_matrix</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span>
 <span class="go">[(0, 0)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;cost&#39;</span><span class="p">]</span>
@@ -295,7 +295,7 @@ the number of parallel edges joining those two vertices:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Apr 25, 2015.
+      Last updated on Apr 26, 2015.
     </p>
   </div>
 
@@ -315,7 +315,7 @@ the number of parallel edges joining those two vertices:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150425000011',
+            VERSION:'2.0.dev20150426000011',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

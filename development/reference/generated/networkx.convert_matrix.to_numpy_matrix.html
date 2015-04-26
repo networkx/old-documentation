@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>to_numpy_matrix &mdash; NetworkX 2.0.dev20150425000011 documentation</title>
+  <title>to_numpy_matrix &mdash; NetworkX 2.0.dev20150426000011 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150425000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150426000011 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150425000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150426000011 documentation" href="../../index.html"/>
         <link rel="up" title="Converting to and from other data formats" href="../convert.html"/>
         <link rel="next" title="to_numpy_recarray" href="networkx.convert_matrix.to_numpy_recarray.html"/>
         <link rel="prev" title="from_edgelist" href="networkx.convert.from_edgelist.html"/> 
@@ -199,8 +199,8 @@
 </div></blockquote>
 <p><strong>nodelist</strong> : list, optional</p>
 <blockquote>
-<div><p>The rows and columns are ordered according to the nodes in <span class="math">\(nodelist\)</span>.
-If <span class="math">\(nodelist\)</span> is None, then the ordering is produced by G.nodes().</p>
+<div><p>The rows and columns are ordered according to the nodes in <code class="docutils literal"><span class="pre">nodelist</span></code>.
+If <code class="docutils literal"><span class="pre">nodelist</span></code> is None, then the ordering is produced by G.nodes().</p>
 </div></blockquote>
 <p><strong>dtype</strong> : NumPy data type, optional</p>
 <blockquote>
@@ -220,13 +220,13 @@ is used.</p>
 <div><p>An operator that determines how weights in multigraphs are handled.
 The default is to sum the weights of the multiple edges.</p>
 </div></blockquote>
-<p><strong>weight</strong> : string or None   optional (default=&#8217;weight&#8217;)</p>
+<p><strong>weight</strong> : string or None optional (default = &#8216;weight&#8217;)</p>
 <blockquote>
 <div><p>The edge attribute that holds the numerical value used for
-the edge weight.  If an edge does not have that attribute, then the
+the edge weight. If an edge does not have that attribute, then the
 value 1 is used instead.</p>
 </div></blockquote>
-<p><strong>nonedge</strong> : float (default=0.0)</p>
+<p><strong>nonedge</strong> : float (default = 0.0)</p>
 <blockquote>
 <div><p>The matrix values corresponding to nonedges are typically set to zero.
 However, this could be undesirable if there are matrix values
@@ -251,17 +251,17 @@ one might prefer nonedges to have some other value, such as nan.</p>
 <p>The matrix entries are assigned to the weight edge attribute. When
 an edge does not have a weight attribute, the value of the entry is set to
 the number 1.  For multiple (parallel) edges, the values of the entries
-are determined by the &#8216;multigraph_weight&#8217; parameter.  The default is to
+are determined by the <code class="docutils literal"><span class="pre">multigraph_weight</span></code> parameter.  The default is to
 sum the weight attributes for each of the parallel edges.</p>
-<p>When <span class="math">\(nodelist\)</span> does not contain every node in <span class="math">\(G\)</span>, the matrix is built
-from the subgraph of <span class="math">\(G\)</span> that is induced by the nodes in <span class="math">\(nodelist\)</span>.</p>
+<p>When <code class="docutils literal"><span class="pre">nodelist</span></code> does not contain every node in <code class="docutils literal"><span class="pre">G</span></code>, the matrix is built
+from the subgraph of <code class="docutils literal"><span class="pre">G</span></code> that is induced by the nodes in <code class="docutils literal"><span class="pre">nodelist</span></code>.</p>
 <p>The convention used for self-loop edges in graphs is to assign the
 diagonal matrix entry value to the weight attribute of the edge
 (or the number 1 if the edge has no weight attribute).  If the
 alternate convention of doubling the edge weight is desired the
 resulting Numpy matrix can be modified as follows:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">A</span>
 <span class="go">matrix([[ 1.]])</span>
@@ -305,7 +305,7 @@ resulting Numpy matrix can be modified as follows:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Apr 25, 2015.
+      Last updated on Apr 26, 2015.
     </p>
   </div>
 
@@ -325,7 +325,7 @@ resulting Numpy matrix can be modified as follows:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150425000011',
+            VERSION:'2.0.dev20150426000011',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

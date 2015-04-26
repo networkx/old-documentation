@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.convert_matrix &mdash; NetworkX 2.0.dev20150425000011 documentation</title>
+  <title>networkx.convert_matrix &mdash; NetworkX 2.0.dev20150426000011 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150425000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150426000011 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150425000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150426000011 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -357,8 +357,8 @@
 <span class="sd">        The NetworkX graph used to construct the NumPy matrix.</span>
 
 <span class="sd">    nodelist : list, optional</span>
-<span class="sd">       The rows and columns are ordered according to the nodes in `nodelist`.</span>
-<span class="sd">       If `nodelist` is None, then the ordering is produced by G.nodes().</span>
+<span class="sd">        The rows and columns are ordered according to the nodes in ``nodelist``.</span>
+<span class="sd">        If ``nodelist`` is None, then the ordering is produced by G.nodes().</span>
 
 <span class="sd">    dtype : NumPy data type, optional</span>
 <span class="sd">        A valid single NumPy data type used to initialize the array.</span>
@@ -375,12 +375,12 @@
 <span class="sd">        An operator that determines how weights in multigraphs are handled.</span>
 <span class="sd">        The default is to sum the weights of the multiple edges.</span>
 
-<span class="sd">    weight : string or None   optional (default=&#39;weight&#39;)</span>
+<span class="sd">    weight : string or None optional (default = &#39;weight&#39;)</span>
 <span class="sd">        The edge attribute that holds the numerical value used for</span>
-<span class="sd">        the edge weight.  If an edge does not have that attribute, then the</span>
+<span class="sd">        the edge weight. If an edge does not have that attribute, then the</span>
 <span class="sd">        value 1 is used instead.</span>
 
-<span class="sd">    nonedge : float (default=0.0)</span>
+<span class="sd">    nonedge : float (default = 0.0)</span>
 <span class="sd">        The matrix values corresponding to nonedges are typically set to zero.</span>
 <span class="sd">        However, this could be undesirable if there are matrix values</span>
 <span class="sd">        corresponding to actual edges that also have the value zero. If so,</span>
@@ -389,7 +389,7 @@
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    M : NumPy matrix</span>
-<span class="sd">       Graph adjacency matrix</span>
+<span class="sd">        Graph adjacency matrix</span>
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
@@ -400,11 +400,11 @@
 <span class="sd">    The matrix entries are assigned to the weight edge attribute. When</span>
 <span class="sd">    an edge does not have a weight attribute, the value of the entry is set to</span>
 <span class="sd">    the number 1.  For multiple (parallel) edges, the values of the entries</span>
-<span class="sd">    are determined by the &#39;multigraph_weight&#39; parameter.  The default is to</span>
+<span class="sd">    are determined by the ``multigraph_weight`` parameter.  The default is to</span>
 <span class="sd">    sum the weight attributes for each of the parallel edges.</span>
 
-<span class="sd">    When `nodelist` does not contain every node in `G`, the matrix is built</span>
-<span class="sd">    from the subgraph of `G` that is induced by the nodes in `nodelist`.</span>
+<span class="sd">    When ``nodelist`` does not contain every node in ``G``, the matrix is built</span>
+<span class="sd">    from the subgraph of ``G`` that is induced by the nodes in ``nodelist``.</span>
 
 <span class="sd">    The convention used for self-loop edges in graphs is to assign the</span>
 <span class="sd">    diagonal matrix entry value to the weight attribute of the edge</span>
@@ -413,7 +413,7 @@
 <span class="sd">    resulting Numpy matrix can be modified as follows:</span>
 
 <span class="sd">    &gt;&gt;&gt; import numpy as np</span>
-<span class="sd">    &gt;&gt;&gt; G = nx.Graph([(1,1)])</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.Graph([(1, 1)])</span>
 <span class="sd">    &gt;&gt;&gt; A = nx.to_numpy_matrix(G)</span>
 <span class="sd">    &gt;&gt;&gt; A</span>
 <span class="sd">    matrix([[ 1.]])</span>
@@ -519,26 +519,26 @@
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    A : numpy matrix</span>
-<span class="sd">      An adjacency matrix representation of a graph</span>
+<span class="sd">        An adjacency matrix representation of a graph</span>
 
 <span class="sd">    parallel_edges : Boolean</span>
-<span class="sd">      If this is ``True``, `create_using` is a multigraph, and `A` is an</span>
-<span class="sd">      integer matrix, then entry *(i, j)* in the matrix is interpreted as the</span>
-<span class="sd">      number of parallel edges joining vertices *i* and *j* in the graph. If it</span>
-<span class="sd">      is ``False``, then the entries in the adjacency matrix are interpreted as</span>
-<span class="sd">      the weight of a single edge joining the vertices.</span>
+<span class="sd">        If this is ``True``, ``create_using`` is a multigraph, and ``A`` is an</span>
+<span class="sd">        integer matrix, then entry *(i, j)* in the matrix is interpreted as the</span>
+<span class="sd">        number of parallel edges joining vertices *i* and *j* in the graph. If it</span>
+<span class="sd">        is ``False``, then the entries in the adjacency matrix are interpreted as</span>
+<span class="sd">        the weight of a single edge joining the vertices.</span>
 
 <span class="sd">    create_using : NetworkX graph</span>
-<span class="sd">       Use specified graph for result.  The default is Graph()</span>
+<span class="sd">        Use specified graph for result. The default is Graph()</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    If `create_using` is an instance of :class:`networkx.MultiGraph` or</span>
-<span class="sd">    :class:`networkx.MultiDiGraph`, `parallel_edges` is ``True``, and the</span>
-<span class="sd">    entries of `A` are of type ``int``, then this function returns a multigraph</span>
-<span class="sd">    (of the same type as `create_using`) with parallel edges.</span>
+<span class="sd">    If ``create_using`` is an instance of :class:`networkx.MultiGraph` or</span>
+<span class="sd">    :class:`networkx.MultiDiGraph`, ``parallel_edges`` is ``True``, and the</span>
+<span class="sd">    entries of ``A`` are of type ``int``, then this function returns a multigraph</span>
+<span class="sd">    (of the same type as ``create_using``) with parallel edges.</span>
 
-<span class="sd">    If `create_using` is an undirected multigraph, then only the edges</span>
+<span class="sd">    If ``create_using`` is an undirected multigraph, then only the edges</span>
 <span class="sd">    indicated by the upper triangle of the matrix `A` will be added to the</span>
 <span class="sd">    graph.</span>
 
@@ -558,36 +558,36 @@
 <span class="sd">    Simple integer weights on edges:</span>
 
 <span class="sd">    &gt;&gt;&gt; import numpy</span>
-<span class="sd">    &gt;&gt;&gt; A=numpy.matrix([[1,1],[2,1]])</span>
+<span class="sd">    &gt;&gt;&gt; A=numpy.matrix([[1, 1], [2, 1]])</span>
 <span class="sd">    &gt;&gt;&gt; G=nx.from_numpy_matrix(A)</span>
 
-<span class="sd">    If `create_using` is a multigraph and the matrix has only integer entries,</span>
+<span class="sd">    If ``create_using`` is a multigraph and the matrix has only integer entries,</span>
 <span class="sd">    the entries will be interpreted as weighted edges joining the vertices</span>
 <span class="sd">    (without creating parallel edges):</span>
 
 <span class="sd">    &gt;&gt;&gt; import numpy</span>
 <span class="sd">    &gt;&gt;&gt; A = numpy.matrix([[1, 1], [1, 2]])</span>
-<span class="sd">    &gt;&gt;&gt; G = nx.from_numpy_matrix(A, create_using=nx.MultiGraph())</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.from_numpy_matrix(A, create_using = nx.MultiGraph())</span>
 <span class="sd">    &gt;&gt;&gt; G[1][1]</span>
 <span class="sd">    {0: {&#39;weight&#39;: 2}}</span>
 
-<span class="sd">    If `create_using` is a multigraph and the matrix has only integer entries</span>
-<span class="sd">    but `parallel_edges` is ``True``, then the entries will be interpreted as</span>
+<span class="sd">    If ``create_using`` is a multigraph and the matrix has only integer entries</span>
+<span class="sd">    but ``parallel_edges`` is ``True``, then the entries will be interpreted as</span>
 <span class="sd">    the number of parallel edges joining those two vertices:</span>
 
 <span class="sd">    &gt;&gt;&gt; import numpy</span>
 <span class="sd">    &gt;&gt;&gt; A = numpy.matrix([[1, 1], [1, 2]])</span>
 <span class="sd">    &gt;&gt;&gt; temp = nx.MultiGraph()</span>
-<span class="sd">    &gt;&gt;&gt; G = nx.from_numpy_matrix(A, parallel_edges=True, create_using=temp)</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.from_numpy_matrix(A, parallel_edges = True, create_using = temp)</span>
 <span class="sd">    &gt;&gt;&gt; G[1][1]</span>
 <span class="sd">    {0: {&#39;weight&#39;: 1}, 1: {&#39;weight&#39;: 1}}</span>
 
 <span class="sd">    User defined compound data type on edges:</span>
 
 <span class="sd">    &gt;&gt;&gt; import numpy</span>
-<span class="sd">    &gt;&gt;&gt; dt=[(&#39;weight&#39;,float),(&#39;cost&#39;,int)]</span>
-<span class="sd">    &gt;&gt;&gt; A=numpy.matrix([[(1.0,2)]],dtype=dt)</span>
-<span class="sd">    &gt;&gt;&gt; G=nx.from_numpy_matrix(A)</span>
+<span class="sd">    &gt;&gt;&gt; dt = [(&#39;weight&#39;, float), (&#39;cost&#39;, int)]</span>
+<span class="sd">    &gt;&gt;&gt; A = numpy.matrix([[(1.0, 2)]], dtype = dt)</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.from_numpy_matrix(A)</span>
 <span class="sd">    &gt;&gt;&gt; G.edges()</span>
 <span class="sd">    [(0, 0)]</span>
 <span class="sd">    &gt;&gt;&gt; G[0][0][&#39;cost&#39;]</span>
@@ -1042,7 +1042,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Apr 25, 2015.
+      Last updated on Apr 26, 2015.
     </p>
   </div>
 
@@ -1062,7 +1062,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150425000011',
+            VERSION:'2.0.dev20150426000011',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
