@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.classes.function &mdash; NetworkX 2.0.dev20150429000011 documentation</title>
+  <title>networkx.classes.function &mdash; NetworkX 2.0.dev20150430000006 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150429000011 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150430000006 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150429000011 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150430000006 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -200,7 +200,8 @@
            <span class="s">&#39;set_node_attributes&#39;</span><span class="p">,</span><span class="s">&#39;get_node_attributes&#39;</span><span class="p">,</span>
            <span class="s">&#39;set_edge_attributes&#39;</span><span class="p">,</span><span class="s">&#39;get_edge_attributes&#39;</span><span class="p">,</span>
            <span class="s">&#39;all_neighbors&#39;</span><span class="p">,</span><span class="s">&#39;non_neighbors&#39;</span><span class="p">,</span> <span class="s">&#39;non_edges&#39;</span><span class="p">,</span>
-           <span class="s">&#39;common_neighbors&#39;</span><span class="p">]</span>
+           <span class="s">&#39;common_neighbors&#39;</span><span class="p">,</span> <span class="s">&#39;is_weighted&#39;</span><span class="p">,</span><span class="s">&#39;is_negatively_weighted&#39;</span><span class="p">,</span>
+           <span class="s">&#39;is_empty&#39;</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="nodes"><a class="viewcode-back" href="../../../reference/generated/networkx.classes.function.nodes.html#networkx.classes.function.nodes">[docs]</a><span class="k">def</span> <span class="nf">nodes</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
@@ -678,12 +679,11 @@
             <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">non_neighbors</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">u</span><span class="p">):</span>
                 <span class="k">yield</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">S</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">nodes_iter</span><span class="p">():</span>
-            <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">non_neighbors</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">u</span><span class="p">):</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">S</span><span class="p">:</span>
-                    <span class="k">yield</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-                    <span class="n">S</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">))</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">nodes</span><span class="p">:</span>
+            <span class="n">u</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">nodes</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">graph</span><span class="p">[</span><span class="n">u</span><span class="p">]):</span>
+                <span class="k">yield</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
 
 </div>
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
@@ -721,7 +721,136 @@
 
     <span class="c"># Return a generator explicitly instead of yielding so that the above</span>
     <span class="c"># checks are executed eagerly.</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="k">if</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="ow">and</span> <span class="n">w</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span></div>
+    <span class="k">return</span> <span class="p">(</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="k">if</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="ow">and</span> <span class="n">w</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+
+</div>
+<span class="k">def</span> <span class="nf">is_weighted</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">edge</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns ``True`` if ``G`` has weighted edges.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : graph</span>
+<span class="sd">        A NetworkX graph.</span>
+
+<span class="sd">    edge : tuple, optional</span>
+<span class="sd">        A 2-tuple specifying the only edge in ``G`` that will be tested. If</span>
+<span class="sd">        ``None``, then every edge in ``G`` is tested.</span>
+
+<span class="sd">    weight: string, optional</span>
+<span class="sd">        The attribute name used to query for edge weights.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        A boolean signifying if ``G``, or the specified edge, is weighted.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    NetworkXError</span>
+<span class="sd">        If the specified edge does not exist.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.path_graph(4)</span>
+<span class="sd">    &gt;&gt;&gt; nx.is_weighted(G)</span>
+<span class="sd">    False</span>
+<span class="sd">    &gt;&gt;&gt; nx.is_weighted(G, (2, 3))</span>
+<span class="sd">    False</span>
+
+<span class="sd">    &gt;&gt;&gt; G = nx.DiGraph()</span>
+<span class="sd">    &gt;&gt;&gt; G.add_edge(1, 2, weight=1)</span>
+<span class="sd">    &gt;&gt;&gt; nx.is_weighted(G)</span>
+<span class="sd">    True</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">edge</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">get_edge_data</span><span class="p">(</span><span class="o">*</span><span class="n">edge</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s">&#39;Edge {!r} does not exist.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">data</span>
+
+    <span class="k">if</span> <span class="n">is_empty</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+        <span class="c"># Special handling required since: all([]) == True</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="n">weight</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">is_negatively_weighted</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">edge</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns ``True`` if ``G`` has negatively weighted edges.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : graph</span>
+<span class="sd">        A NetworkX graph.</span>
+
+<span class="sd">    edge : tuple, optional</span>
+<span class="sd">        A 2-tuple specifying the only edge in ``G`` that will be tested. If</span>
+<span class="sd">        ``None``, then every edge in ``G`` is tested.</span>
+
+<span class="sd">    weight: string, optional</span>
+<span class="sd">        The attribute name used to query for edge weights.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        A boolean signifying if ``G``, or the specified edge, is negatively</span>
+<span class="sd">        weighted.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    NetworkXError</span>
+<span class="sd">        If the specified edge does not exist.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; G=nx.Graph()</span>
+<span class="sd">    &gt;&gt;&gt; G.add_edges_from([(1, 3), (2, 4), (2, 6)])</span>
+<span class="sd">    &gt;&gt;&gt; G.add_edge(1, 2, weight=4)</span>
+<span class="sd">    &gt;&gt;&gt; nx.is_negatively_weighted(G, (1, 2))</span>
+<span class="sd">    False</span>
+<span class="sd">    &gt;&gt;&gt; G[2][4][&#39;weight&#39;] = -2</span>
+<span class="sd">    &gt;&gt;&gt; nx.is_negatively_weighted(G)</span>
+<span class="sd">    True</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.DiGraph()</span>
+<span class="sd">    &gt;&gt;&gt; G.add_weighted_edges_from([(&#39;0&#39;, &#39;3&#39;, 3), (&#39;0&#39;, &#39;1&#39;, -5), (&#39;1&#39;, &#39;0&#39;, -2)])</span>
+<span class="sd">    &gt;&gt;&gt; nx.is_negatively_weighted(G)</span>
+<span class="sd">    True</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">edge</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">get_edge_data</span><span class="p">(</span><span class="o">*</span><span class="n">edge</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s">&#39;Edge {!r} does not exist.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">data</span> <span class="ow">and</span> <span class="n">data</span><span class="p">[</span><span class="n">weight</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span>
+
+    <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">weight</span> <span class="ow">in</span> <span class="n">data</span> <span class="ow">and</span> <span class="n">data</span><span class="p">[</span><span class="n">weight</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span>
+               <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns ``True`` if ``G`` has no edges.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : graph</span>
+<span class="sd">        A NetworkX graph.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        ``True`` if ``G`` has no edges, and ``False`` otherwise.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    An empty graph can have nodes but not edges. The empty graph with zero</span>
+<span class="sd">    nodes is known as the null graph. This is an O(n) operation where n is the</span>
+<span class="sd">    number of nodes in the graph.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">adj</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 </pre></div>
 
           </div>
@@ -733,7 +862,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Apr 29, 2015.
+      Last updated on Apr 30, 2015.
     </p>
   </div>
 
@@ -753,7 +882,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20150429000011',
+            VERSION:'2.0.dev20150430000006',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

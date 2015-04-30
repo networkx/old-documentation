@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>quotient_graph &mdash; NetworkX 2.0.dev20150429000011 documentation</title>
+  <title>quotient_graph &mdash; NetworkX 2.0.dev20150430000006 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150429000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150430000006 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,10 +30,10 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150429000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150430000006 documentation" href="../../index.html"/>
         <link rel="up" title="Minors" href="../algorithms.minors.html"/>
         <link rel="next" title="Maximal independent set" href="../algorithms.mis.html"/>
-        <link rel="prev" title="quotient_graph" href=""/> 
+        <link rel="prev" title="contracted_nodes" href="networkx.algorithms.minors.contracted_nodes.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -206,7 +206,7 @@ relation.</p>
 <div><p>This function must represent an equivalence relation on the nodes of
 <code class="docutils literal"><span class="pre">G</span></code>. It must take two arguments <em>u</em> and <em>v</em> and return <code class="docutils literal"><span class="pre">True</span></code>
 exactly when <em>u</em> and <em>v</em> are in the same equivalence class. The
-equivalence classes form the vertices in the returned graph.</p>
+equivalence classes form the nodes in the returned graph.</p>
 </div></blockquote>
 <p><strong>edge_relation</strong> : Boolean function with two arguments</p>
 <blockquote>
@@ -216,9 +216,8 @@ arguments, <em>B</em> and <em>C</em>, each one a set of nodes, and return <code 
 exactly when there should be an edge joining block <em>B</em> to block <em>C</em> in
 the returned graph.</p>
 <p>If <code class="docutils literal"><span class="pre">edge_relation</span></code> is not specified, it is assumed to be the following
-relation. Block <em>B</em> is related to block <em>C</em> if and only if some vertex
-in <em>B</em> is adjacent to some vertex in <em>C</em>, according to the edge set of
-<code class="docutils literal"><span class="pre">G</span></code>.</p>
+relation. Block <em>B</em> is related to block <em>C</em> if and only if some node in
+<em>B</em> is adjacent to some node in <em>C</em>, according to the edge set of <code class="docutils literal"><span class="pre">G</span></code>.</p>
 </div></blockquote>
 <p><strong>create_using</strong> : NetworkX graph</p>
 <blockquote>
@@ -273,15 +272,18 @@ component&#8221; equivalence relation is the condensation of the graph (see
 <span class="go">True</span>
 </pre></div>
 </div>
-<p>Vertex identification can be represented as the quotient of a graph under
-the equivalence relation that places the two vertices in one block and each
-other vertex in its own singleton block:</p>
+<p>Node identification can be represented as the quotient of a graph under the
+equivalence relation that places the two nodes in one block and each other
+node in its own singleton block:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">K24</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">complete_bipartite_graph</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">K34</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">complete_bipartite_graph</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">vertices</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">is_contracted</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">vertices</span> <span class="ow">and</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vertices</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">C</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">contracted_nodes</span><span class="p">(</span><span class="n">K34</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nodes</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_contracted</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">nodes</span> <span class="ow">and</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">nodes</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Q</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">quotient_graph</span><span class="p">(</span><span class="n">K34</span><span class="p">,</span> <span class="n">is_contracted</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">is_isomorphic</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">is_isomorphic</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">K24</span><span class="p">)</span>
 <span class="go">True</span>
 </pre></div>
@@ -299,7 +301,7 @@ other vertex in its own singleton block:</p>
         <a href="../algorithms.mis.html" class="btn btn-neutral float-right" title="Maximal independent set"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="" class="btn btn-neutral" title="quotient_graph"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="networkx.algorithms.minors.contracted_nodes.html" class="btn btn-neutral" title="contracted_nodes"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -309,7 +311,7 @@ other vertex in its own singleton block:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Apr 29, 2015.
+      Last updated on Apr 30, 2015.
     </p>
   </div>
 
@@ -329,7 +331,7 @@ other vertex in its own singleton block:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150429000011',
+            VERSION:'2.0.dev20150430000006',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
