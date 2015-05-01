@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.convert_matrix &mdash; NetworkX 2.0.dev20150430000006 documentation</title>
+  <title>networkx.convert_matrix &mdash; NetworkX 2.0.dev20150501000011 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150430000006 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150501000011 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150430000006 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150501000011 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -301,51 +301,101 @@
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">M</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">nodelist</span> <span class="p">,</span><span class="n">columns</span> <span class="o">=</span> <span class="n">nodelist</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">df</span>
 </div>
-<div class="viewcode-block" id="from_pandas_dataframe"><a class="viewcode-back" href="../../reference/generated/networkx.convert_matrix.from_pandas_dataframe.html#networkx.convert_matrix.from_pandas_dataframe">[docs]</a><span class="k">def</span> <span class="nf">from_pandas_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">create_using</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="from_pandas_dataframe"><a class="viewcode-back" href="../../reference/generated/networkx.convert_matrix.from_pandas_dataframe.html#networkx.convert_matrix.from_pandas_dataframe">[docs]</a><span class="k">def</span> <span class="nf">from_pandas_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">edge_attr</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+        <span class="n">create_using</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a graph from Pandas DataFrame.</span>
 
-<span class="sd">    The Pandas DataFrame is interpreted as an adjacency matrix for the graph.</span>
+<span class="sd">    The Pandas DataFrame should contain at least two columns of node names and</span>
+<span class="sd">    zero or more columns of node attributes. Each row will be processed as one</span>
+<span class="sd">    edge instance.</span>
+
+<span class="sd">    Note: This function iterates over DataFrame.values, which is not</span>
+<span class="sd">    guaranteed to retain the data type across columns in the row. This is only</span>
+<span class="sd">    a problem if your row is entirely numeric and a mix of ints and floats. In</span>
+<span class="sd">    that case, all values will be returned as floats. See the</span>
+<span class="sd">    DataFrame.iterrows documentation for an example.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    df : Pandas DataFrame</span>
-<span class="sd">      An adjacency matrix representation of a graph</span>
+<span class="sd">        An edge list representation of a graph</span>
+
+<span class="sd">    source : str or int</span>
+<span class="sd">        A valid column name (string or iteger) for the source nodes (for the</span>
+<span class="sd">        directed case).</span>
+
+<span class="sd">    target : str or int</span>
+<span class="sd">        A valid column name (string or iteger) for the target nodes (for the</span>
+<span class="sd">        directed case).</span>
+
+<span class="sd">    edge_attr : str or int, iterable, True</span>
+<span class="sd">        A valid column name (str or integer) or list of column names that will</span>
+<span class="sd">        be used to retrieve items from the row and add them to the graph as edge</span>
+<span class="sd">        attributes. If `True`, all of the remaining columns will be added.</span>
 
 <span class="sd">    create_using : NetworkX graph</span>
-<span class="sd">       Use specified graph for result.  The default is Graph()</span>
-
-<span class="sd">    Notes</span>
-<span class="sd">    -----</span>
-<span class="sd">    If the numpy matrix has a single data type for each matrix entry it</span>
-<span class="sd">    will be converted to an appropriate Python data type.</span>
-
-<span class="sd">    If the numpy matrix has a user-specified compound data type the names</span>
-<span class="sd">    of the data fields will be used as attribute keys in the resulting</span>
-<span class="sd">    NetworkX graph.</span>
+<span class="sd">        Use specified graph for result.  The default is Graph()</span>
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
-<span class="sd">    from_pandas_dataframe</span>
+<span class="sd">    to_pandas_dataframe</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    Simple integer weights on edges:</span>
 
 <span class="sd">    &gt;&gt;&gt; import pandas as pd</span>
-<span class="sd">    &gt;&gt;&gt; df=pd.DataFrame([[1,1],[2,1]])</span>
-<span class="sd">    &gt;&gt;&gt; G=nx.from_pandas_dataframe(df)</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; r = np.random.RandomState(seed=5)</span>
+<span class="sd">    &gt;&gt;&gt; ints = r.random_integers(1, 10, size=(3,2))</span>
+<span class="sd">    &gt;&gt;&gt; a = [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;]</span>
+<span class="sd">    &gt;&gt;&gt; b = [&#39;D&#39;, &#39;A&#39;, &#39;E&#39;]</span>
+<span class="sd">    &gt;&gt;&gt; df = pd.DataFrame(ints, columns=[&#39;weight&#39;, &#39;cost&#39;])</span>
+<span class="sd">    &gt;&gt;&gt; df[0] = a</span>
+<span class="sd">    &gt;&gt;&gt; df[&#39;b&#39;] = b</span>
+<span class="sd">    &gt;&gt;&gt; df</span>
+<span class="sd">       weight  cost  0  b</span>
+<span class="sd">    0       4     7  A  D</span>
+<span class="sd">    1       7     1  B  A</span>
+<span class="sd">    2      10     9  C  E</span>
+<span class="sd">    &gt;&gt;&gt; G=nx.from_pandas_dataframe(df, 0, &#39;b&#39;, [&#39;weight&#39;, &#39;cost&#39;])</span>
+<span class="sd">    &gt;&gt;&gt; G[&#39;E&#39;][&#39;C&#39;][&#39;weight&#39;]</span>
+<span class="sd">    10</span>
+<span class="sd">    &gt;&gt;&gt; G[&#39;E&#39;][&#39;C&#39;][&#39;cost&#39;]</span>
+<span class="sd">    9</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-    <span class="n">A</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">values</span>
-    <span class="n">G</span> <span class="o">=</span> <span class="n">from_numpy_matrix</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">create_using</span><span class="p">)</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s">&quot;Columns must match Indices.&quot;</span><span class="p">,</span>
-                               <span class="s">&quot;</span><span class="si">%s</span><span class="s"> not in columns&quot;</span><span class="o">%</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">))))</span>
-    <span class="n">nx</span><span class="o">.</span><span class="n">relabel</span><span class="o">.</span><span class="n">relabel_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)),</span> <span class="n">copy</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">G</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">_prep_create_using</span><span class="p">(</span><span class="n">create_using</span><span class="p">)</span>
+
+    <span class="c"># Index of source and target</span>
+    <span class="n">src_i</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+    <span class="n">tar_i</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">edge_attr</span><span class="p">:</span>
+        <span class="c"># If all additional columns requested, build up a list of tuples</span>
+        <span class="c"># [(name, index),...]</span>
+        <span class="k">if</span> <span class="n">edge_attr</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="c"># Create a list of all columns indices, ignore nodes</span>
+            <span class="n">edge_i</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">col</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">source</span> <span class="ow">and</span> <span class="n">col</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">target</span><span class="p">:</span>
+                    <span class="n">edge_i</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">col</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+        <span class="c"># If a list or tuple of name is requested</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">edge_attr</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+            <span class="n">edge_i</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">edge_attr</span><span class="p">]</span>
+        <span class="c"># If a string or int is passed</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">edge_i</span> <span class="o">=</span> <span class="p">[(</span><span class="n">edge_attr</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">edge_attr</span><span class="p">)),]</span>
+
+        <span class="c"># Iteration on values returns the rows as Numpy arrays</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">src_i</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="n">tar_i</span><span class="p">],</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span><span class="n">row</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">edge_i</span><span class="p">})</span>
+    
+    <span class="c"># If no column names are given, then just return the edges.</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">src_i</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="n">tar_i</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">g</span>
 </div>
 <div class="viewcode-block" id="to_numpy_matrix"><a class="viewcode-back" href="../../reference/generated/networkx.convert_matrix.to_numpy_matrix.html#networkx.convert_matrix.to_numpy_matrix">[docs]</a><span class="k">def</span> <span class="nf">to_numpy_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                     <span class="n">multigraph_weight</span><span class="o">=</span><span class="nb">sum</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">,</span> <span class="n">nonedge</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
@@ -1042,7 +1092,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Apr 30, 2015.
+      Last updated on May 01, 2015.
     </p>
   </div>
 
@@ -1062,7 +1112,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150430000006',
+            VERSION:'2.0.dev20150501000011',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

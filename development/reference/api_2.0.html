@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Version 2.0 notes and API changes &mdash; NetworkX 2.0.dev20150430000006 documentation</title>
+  <title>Version 2.0 notes and API changes &mdash; NetworkX 2.0.dev20150501000011 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150430000006 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150501000011 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150430000006 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150501000011 documentation" href="../index.html"/>
         <link rel="up" title="API changes" href="api_changes.html"/>
         <link rel="next" title="Version 1.9 notes and API changes" href="api_1.9.html"/>
         <link rel="prev" title="API changes" href="api_changes.html"/> 
@@ -245,6 +245,12 @@ matching in bipartite graphs.</li>
 Expanded data keyword in G.edges and added default keyword.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1338">#1338</a>]
 Added support for finding optimum branchings and arborescences.</li>
+<li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1340">#1340</a>]
+Added a <code class="docutils literal"><span class="pre">from_pandas_dataframe</span></code> function that accepts Pandas DataFrames
+and returns a new graph object. At a minimum, the DataFrame must have two
+columns, which define the nodes that make up an edge. However, the function
+can also process an arbitrary number of additional columns as edge
+attributes, such as &#8216;weight&#8217;.</li>
 <li>[<a class="reference external" href="https://github.com/networkx/networkx/pull/1354">#1354</a>]
 Expanded layout functions to add flexibility for drawing subsets of nodes
 with distinct layouts and for centering each layout around given
@@ -335,7 +341,7 @@ Support for Python 2.6 is dropped.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Apr 30, 2015.
+      Last updated on May 01, 2015.
     </p>
   </div>
 
@@ -355,7 +361,7 @@ Support for Python 2.6 is dropped.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20150430000006',
+            VERSION:'2.0.dev20150501000011',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
