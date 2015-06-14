@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>gnr_graph &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>gnr_graph &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
         <link rel="next" title="gnc_graph" href="networkx.generators.directed.gnc_graph.html"/>
         <link rel="prev" title="gn_graph" href="networkx.generators.directed.gn_graph.html"/> 
@@ -188,12 +188,13 @@
 <dl class="function">
 <dt id="networkx.generators.directed.gnr_graph">
 <code class="descname">gnr_graph</code><span class="sig-paren">(</span><em>n</em>, <em>p</em>, <em>create_using=None</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/generators/directed.html#gnr_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.directed.gnr_graph" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the GNR digraph with n nodes and redirection probability p.</p>
-<p>The GNR (growing network with redirection) graph is built by adding nodes 
-one at a time with a link to one previously added node.  The previous 
-target node is chosen uniformly at random.  With probabiliy p the link is 
-instead &#8220;redirected&#8221; to the successor node of the target.  The graph is 
-always a (directed) tree.</p>
+<dd><p>Return the growing network with redirection (GNR) digraph with <code class="docutils literal"><span class="pre">n</span></code>
+nodes and redirection probability <code class="docutils literal"><span class="pre">p</span></code>.</p>
+<p>The GNR graph is built by adding nodes one at a time with a link to one
+previously added node.  The previous target node is chosen uniformly at
+random.  With probabiliy <code class="docutils literal"><span class="pre">p</span></code> the link is instead &#8220;redirected&#8221; to the
+successor node of the target.</p>
+<p>The graph is always a (directed) tree.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -219,17 +220,19 @@ always a (directed) tree.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r344" rules="none">
+<table class="docutils citation" frame="void" id="r376" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R344]</a></td><td>P. L. Krapivsky and S. Redner,
+<tr><td class="label"><a class="fn-backref" href="#id1">[R376]</a></td><td>P. L. Krapivsky and S. Redner,
 Organization of Growing Random Networks,
 Phys. Rev. E, 63, 066123, 2001.</td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">gnr_graph</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c"># the GNR graph</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">D</span><span class="o">.</span><span class="n">to_undirected</span><span class="p">()</span>  <span class="c"># the undirected version</span>
+<p>To create the undirected GNR graph, use the <code class="xref py py-meth docutils literal"><span class="pre">to_directed()</span></code>
+method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">D</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">gnr_graph</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>  <span class="c"># the GNR graph</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">to_undirected</span><span class="p">()</span>  <span class="c"># the undirected version</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -255,7 +258,7 @@ Phys. Rev. E, 63, 066123, 2001.</td></tr>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -275,7 +278,7 @@ Phys. Rev. E, 63, 066123, 2001.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

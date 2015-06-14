@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>random_powerlaw_tree_sequence &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>random_powerlaw_tree_sequence &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
         <link rel="next" title="configuration_model" href="networkx.generators.degree_seq.configuration_model.html"/>
         <link rel="prev" title="random_powerlaw_tree" href="networkx.generators.random_graphs.random_powerlaw_tree.html"/> 
@@ -188,35 +188,43 @@
 <dl class="function">
 <dt id="networkx.generators.random_graphs.random_powerlaw_tree_sequence">
 <code class="descname">random_powerlaw_tree_sequence</code><span class="sig-paren">(</span><em>n</em>, <em>gamma=3</em>, <em>seed=None</em>, <em>tries=100</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/generators/random_graphs.html#random_powerlaw_tree_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.random_graphs.random_powerlaw_tree_sequence" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a degree sequence for a tree with a powerlaw distribution.</p>
+<dd><p>Returns a degree sequence for a tree with a power law distribution.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>n</strong> : int,</p>
 <blockquote>
-<div><p>The number of nodes</p>
+<div><p>The number of nodes.</p>
 </div></blockquote>
 <p><strong>gamma</strong> : float</p>
 <blockquote>
-<div><p>Exponent of the power-law</p>
+<div><p>Exponent of the power law.</p>
 </div></blockquote>
 <p><strong>seed</strong> : int, optional</p>
 <blockquote>
 <div><p>Seed for random number generator (default=None).</p>
 </div></blockquote>
 <p><strong>tries</strong> : int</p>
+<blockquote>
+<div><p>Number of attempts to adjust the sequence to make it a tree.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
 <blockquote class="last">
-<div><p>Number of attempts to adjust sequence to make a tree</p>
+<div><p>If no valid sequence is found within the maximum number of
+attempts.</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>A trial powerlaw degree sequence is chosen and then elements are
-swapped with new elements from a powerlaw distribution until
-the sequence makes a tree (#edges=#nodes-1).</p>
+<p>A trial power law degree sequence is chosen and then elements are
+swapped with new elements from a power law distribution until
+the sequence makes a tree (by checking, for example, that the number of
+edges is one smaller than the number of nodes).</p>
 </dd></dl>
 
 </div>
@@ -240,7 +248,7 @@ the sequence makes a tree (#edges=#nodes-1).</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -260,7 +268,7 @@ the sequence makes a tree (#edges=#nodes-1).</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

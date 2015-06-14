@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>gn_graph &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>gn_graph &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
         <link rel="next" title="gnr_graph" href="networkx.generators.directed.gnr_graph.html"/>
         <link rel="prev" title="random_clustered_graph" href="networkx.generators.random_clustered.random_clustered_graph.html"/> 
@@ -188,11 +188,11 @@
 <dl class="function">
 <dt id="networkx.generators.directed.gn_graph">
 <code class="descname">gn_graph</code><span class="sig-paren">(</span><em>n</em>, <em>kernel=None</em>, <em>create_using=None</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/generators/directed.html#gn_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.directed.gn_graph" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the GN digraph with n nodes.</p>
-<p>The GN (growing network) graph is built by adding nodes one at a time with
-a link to one previously added node.  The target node for the link is 
-chosen with probability based on degree.  The default attachment kernel is
-a linear function of degree.</p>
+<dd><p>Return the growing network (GN) digraph with <code class="docutils literal"><span class="pre">n</span></code> nodes.</p>
+<p>The GN graph is built by adding nodes one at a time with a link to one
+previously added node.  The target node for the link is chosen with
+probability based on degree.  The default attachment kernel is a linear
+function of the degree of a node.</p>
 <p>The graph is always a (directed) tree.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -219,21 +219,23 @@ a linear function of degree.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r342" rules="none">
+<table class="docutils citation" frame="void" id="r374" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R342]</a></td><td>P. L. Krapivsky and S. Redner,
+<tr><td class="label"><a class="fn-backref" href="#id1">[R374]</a></td><td>P. L. Krapivsky and S. Redner,
 Organization of Growing Random Networks,
 Phys. Rev. E, 63, 066123, 2001.</td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">gn_graph</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>    <span class="c"># the GN graph</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">D</span><span class="o">.</span><span class="n">to_undirected</span><span class="p">()</span>  <span class="c"># the undirected version</span>
+<p>To create the undirected GN graph, use the <code class="xref py py-meth docutils literal"><span class="pre">to_directed()</span></code>
+method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">D</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">gn_graph</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c"># the GN graph</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">to_undirected</span><span class="p">()</span>  <span class="c"># the undirected version</span>
 </pre></div>
 </div>
-<p>To specify an attachment kernel use the kernel keyword</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">gn_graph</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="n">kernel</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">**</span><span class="mf">1.5</span><span class="p">)</span> <span class="c"># A_k=k^1.5</span>
+<p>To specify an attachment kernel, use the <code class="docutils literal"><span class="pre">kernel</span></code> keyword argument:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">D</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">gn_graph</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">**</span> <span class="mf">1.5</span><span class="p">)</span>  <span class="c"># A_k = k^1.5</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -259,7 +261,7 @@ Phys. Rev. E, 63, 066123, 2001.</td></tr>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -279,7 +281,7 @@ Phys. Rev. E, 63, 066123, 2001.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

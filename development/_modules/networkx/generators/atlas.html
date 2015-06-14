@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.generators.atlas &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>networkx.generators.atlas &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -12505,15 +12505,8 @@
        <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
        <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
        <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]]]]</span>
-
-    <span class="n">GAG</span><span class="o">=</span><span class="p">[]</span>
-
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1253</span><span class="p">):</span>
-        <span class="n">g</span><span class="o">=</span><span class="n">make_small_graph</span><span class="p">(</span><span class="n">descr_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-        <span class="n">GAG</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">GAG</span>
-</pre></div></div>
+    <span class="k">return</span> <span class="p">[</span><span class="n">make_small_graph</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="k">for</span> <span class="n">G</span> <span class="ow">in</span> <span class="n">descr_list</span><span class="p">]</span></div>
+</pre></div>
 
           </div>
           <footer>
@@ -12524,7 +12517,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -12544,7 +12537,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

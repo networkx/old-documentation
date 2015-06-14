@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>waxman_graph &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>waxman_graph &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
         <link rel="next" title="navigable_small_world_graph" href="networkx.generators.geometric.navigable_small_world_graph.html"/>
         <link rel="prev" title="geographical_threshold_graph" href="networkx.generators.geometric.geographical_threshold_graph.html"/> 
@@ -189,19 +189,19 @@
 <dt id="networkx.generators.geometric.waxman_graph">
 <code class="descname">waxman_graph</code><span class="sig-paren">(</span><em>n</em>, <em>alpha=0.4</em>, <em>beta=0.1</em>, <em>L=None</em>, <em>domain=(0</em>, <em>0</em>, <em>1</em>, <em>1)</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/generators/geometric.html#waxman_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.geometric.waxman_graph" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a Waxman random graph.</p>
-<p>The Waxman random graph models place n nodes uniformly at random
-in a rectangular domain. Two nodes u,v are connected with an edge
-with probability</p>
+<p>The Waxman random graph model places <code class="docutils literal"><span class="pre">n</span></code> nodes uniformly at random in a
+rectangular domain. Each pair of nodes at Euclidean distance <span class="math">\(d\)</span> is joined
+by an edge with probability</p>
 <div class="math">
-\[p = \alpha*exp(-d/(\beta*L)).\]</div>
-<p>This function implements both Waxman models.</p>
-<dl class="docutils">
-<dt>Waxman-1:  <span class="math">\(L\)</span> not specified</dt>
-<dd>The distance <span class="math">\(d\)</span> is the Euclidean distance between the nodes u and v.
-<span class="math">\(L\)</span> is the maximum distance between all nodes in the graph.</dd>
-<dt>Waxman-2: <span class="math">\(L\)</span> specified</dt>
-<dd>The distance <span class="math">\(d\)</span> is chosen randomly in <span class="math">\([0,L]\)</span>.</dd>
-</dl>
+\[p = \alpha \exp(-d / \beta L).\]</div>
+<p>This function implements both Waxman models, using the <code class="docutils literal"><span class="pre">L</span></code> keyword
+argument.</p>
+<ul class="simple">
+<li>Waxman-1: if <code class="docutils literal"><span class="pre">L</span></code> is not specified, it is set to be the maximum distance
+between any pair of nodes.</li>
+<li>Waxman-2: if <code class="docutils literal"><span class="pre">L</span></code> is specified, the distance between a pair of nodes is
+chosen uniformly at random from the interval <span class="math">\([0, L]\)</span>.</li>
+</ul>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -220,12 +220,13 @@ with probability</p>
 </div></blockquote>
 <p><strong>L</strong> : float, optional</p>
 <blockquote>
-<div><p>Maximum distance between nodes.  If not specified the actual distance
+<div><p>Maximum distance between nodes.  If not specified, the actual distance
 is calculated.</p>
 </div></blockquote>
-<p><strong>domain</strong> : tuple of numbers, optional</p>
+<p><strong>domain</strong> : four-tuple of numbers, optional</p>
 <blockquote>
-<div><p>Domain size (xmin, ymin, xmax, ymax)</p>
+<div><p>Domain size, given as a tuple of the form <span class="math">\((x_min, y_min, x_max,
+y_max)\)</span>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -235,10 +236,10 @@ is calculated.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r351" rules="none">
+<table class="docutils citation" frame="void" id="r384" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R351]</a></td><td>B. M. Waxman, Routing of multipoint connections.
+<tr><td class="label"><a class="fn-backref" href="#id1">[R384]</a></td><td>B. M. Waxman, Routing of multipoint connections.
 IEEE J. Select. Areas Commun. 6(9),(1988) 1617-1622.</td></tr>
 </tbody>
 </table>
@@ -265,7 +266,7 @@ IEEE J. Select. Areas Commun. 6(9),(1988) 1617-1622.</td></tr>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -285,7 +286,7 @@ IEEE J. Select. Areas Commun. 6(9),(1988) 1617-1622.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>random_regular_graph &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>random_regular_graph &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
         <link rel="next" title="barabasi_albert_graph" href="networkx.generators.random_graphs.barabasi_albert_graph.html"/>
         <link rel="prev" title="connected_watts_strogatz_graph" href="networkx.generators.random_graphs.connected_watts_strogatz_graph.html"/> 
@@ -188,47 +188,53 @@
 <dl class="function">
 <dt id="networkx.generators.random_graphs.random_regular_graph">
 <code class="descname">random_regular_graph</code><span class="sig-paren">(</span><em>d</em>, <em>n</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/generators/random_graphs.html#random_regular_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.random_graphs.random_regular_graph" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a random regular graph of n nodes each with degree d.</p>
-<p>The resulting graph G has no self-loops or parallel edges.</p>
+<dd><p>Returns a random <code class="docutils literal"><span class="pre">d</span></code>-regular graph on <code class="docutils literal"><span class="pre">n</span></code> nodes.</p>
+<p>The resulting graph has no self-loops or parallel edges.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>d</strong> : int</p>
 <blockquote>
-<div><p>Degree</p>
+<div><p>The degree of each node.</p>
 </div></blockquote>
 <p><strong>n</strong> : integer</p>
 <blockquote>
-<div><p>Number of nodes. The value of n*d must be even.</p>
+<div><p>The number of nodes. The value of <code class="docutils literal"><span class="pre">n</span> <span class="pre">*</span> <span class="pre">d</span></code> must be even.</p>
 </div></blockquote>
 <p><strong>seed</strong> : hashable object</p>
-<blockquote class="last">
+<blockquote>
 <div><p>The seed for random number generator.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
+<blockquote class="last">
+<div><p>If <code class="docutils literal"><span class="pre">n</span> <span class="pre">*</span> <span class="pre">d</span></code> is odd or <code class="docutils literal"><span class="pre">d</span></code> is greater than or equal to <code class="docutils literal"><span class="pre">n</span></code>.</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>The nodes are numbered form 0 to n-1.</p>
-<p>Kim and Vu&#8217;s paper <a class="reference internal" href="#r370" id="id1">[R370]</a> shows that this algorithm samples in an
+<p>The nodes are numbered from <code class="docutils literal"><span class="pre">0</span></code> to <code class="docutils literal"><span class="pre">n</span> <span class="pre">-</span> <span class="pre">1</span></code>.</p>
+<p>Kim and Vu&#8217;s paper <a class="reference internal" href="#r404" id="id1">[R404]</a> shows that this algorithm samples in an
 asymptotically uniform way from the space of random graphs when
-d = O(n**(1/3-epsilon)).</p>
+<span class="math">\(d = O(n^{1 / 3 - \epsilon})\)</span>.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r369" rules="none">
+<table class="docutils citation" frame="void" id="r403" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R369]</a></td><td>A. Steger and N. Wormald,
+<tr><td class="label"><a class="fn-backref" href="#id2">[R403]</a></td><td>A. Steger and N. Wormald,
 Generating random regular graphs quickly,
 Probability and Computing 8 (1999), 377-396, 1999.
 <a class="reference external" href="http://citeseer.ist.psu.edu/steger99generating.html">http://citeseer.ist.psu.edu/steger99generating.html</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r370" rules="none">
+<table class="docutils citation" frame="void" id="r404" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R370]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> Jeong Han Kim and Van H. Vu,
+<tr><td class="label">[R404]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> Jeong Han Kim and Van H. Vu,
 Generating random regular graphs,
 Proceedings of the thirty-fifth ACM symposium on Theory of computing,
 San Diego, CA, USA, pp 213&#8211;222, 2003.
@@ -258,7 +264,7 @@ San Diego, CA, USA, pp 213&#8211;222, 2003.
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -278,7 +284,7 @@ San Diego, CA, USA, pp 213&#8211;222, 2003.
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

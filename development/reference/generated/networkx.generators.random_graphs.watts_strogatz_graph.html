@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>watts_strogatz_graph &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>watts_strogatz_graph &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
         <link rel="next" title="connected_watts_strogatz_graph" href="networkx.generators.random_graphs.connected_watts_strogatz_graph.html"/>
         <link rel="prev" title="newman_watts_strogatz_graph" href="networkx.generators.random_graphs.newman_watts_strogatz_graph.html"/> 
@@ -188,7 +188,7 @@
 <dl class="function">
 <dt id="networkx.generators.random_graphs.watts_strogatz_graph">
 <code class="descname">watts_strogatz_graph</code><span class="sig-paren">(</span><em>n</em>, <em>k</em>, <em>p</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/generators/random_graphs.html#watts_strogatz_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.random_graphs.watts_strogatz_graph" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a Watts-Strogatz small-world graph.</p>
+<dd><p>Return a Watts–Strogatz small-world graph.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -199,7 +199,8 @@
 </div></blockquote>
 <p><strong>k</strong> : int</p>
 <blockquote>
-<div><p>Each node is connected to k nearest neighbors in ring topology</p>
+<div><p>Each node is joined with its <code class="docutils literal"><span class="pre">k</span></code> nearest neighbors in a ring
+topology.</p>
 </div></blockquote>
 <p><strong>p</strong> : float</p>
 <blockquote>
@@ -218,20 +219,20 @@
 <p class="last"><a class="reference internal" href="networkx.generators.random_graphs.newman_watts_strogatz_graph.html#networkx.generators.random_graphs.newman_watts_strogatz_graph" title="networkx.generators.random_graphs.newman_watts_strogatz_graph"><code class="xref py py-obj docutils literal"><span class="pre">newman_watts_strogatz_graph</span></code></a>, <a class="reference internal" href="networkx.generators.random_graphs.connected_watts_strogatz_graph.html#networkx.generators.random_graphs.connected_watts_strogatz_graph" title="networkx.generators.random_graphs.connected_watts_strogatz_graph"><code class="xref py py-obj docutils literal"><span class="pre">connected_watts_strogatz_graph</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>First create a ring over n nodes.  Then each node in the ring is
-connected with its k nearest neighbors (k-1 neighbors if k is odd).
-Then shortcuts are created by replacing some edges as follows:
-for each edge u-v in the underlying &#8220;n-ring with k nearest neighbors&#8221;
-with probability p replace it with a new edge u-w with uniformly
-random choice of existing node w.</p>
-<p>In contrast with newman_watts_strogatz_graph(), the random
-rewiring does not increase the number of edges. The rewired graph
-is not guaranteed to be connected as in  connected_watts_strogatz_graph().</p>
+<p>First create a ring over <code class="docutils literal"><span class="pre">n</span></code> nodes.  Then each node in the ring is joined
+to its <code class="docutils literal"><span class="pre">k</span></code> nearest neighbors (or <code class="docutils literal"><span class="pre">k</span> <span class="pre">-</span> <span class="pre">1</span></code> neighbors if <code class="docutils literal"><span class="pre">k</span></code> is odd).
+Then shortcuts are created by replacing some edges as follows: for each
+edge <code class="docutils literal"><span class="pre">(u,</span> <span class="pre">v)</span></code> in the underlying &#8220;<code class="docutils literal"><span class="pre">n</span></code>-ring with <code class="docutils literal"><span class="pre">k</span></code> nearest neighbors&#8221;
+with probability <code class="docutils literal"><span class="pre">p</span></code> replace it with a new edge <code class="docutils literal"><span class="pre">(u,</span> <span class="pre">w)</span></code> with uniformly
+random choice of existing node <code class="docutils literal"><span class="pre">w</span></code>.</p>
+<p>In contrast with <a class="reference internal" href="networkx.generators.random_graphs.newman_watts_strogatz_graph.html#networkx.generators.random_graphs.newman_watts_strogatz_graph" title="networkx.generators.random_graphs.newman_watts_strogatz_graph"><code class="xref py py-func docutils literal"><span class="pre">newman_watts_strogatz_graph()</span></code></a>, the random rewiring
+does not increase the number of edges. The rewired graph is not guaranteed
+to be connected as in <a class="reference internal" href="networkx.generators.random_graphs.connected_watts_strogatz_graph.html#networkx.generators.random_graphs.connected_watts_strogatz_graph" title="networkx.generators.random_graphs.connected_watts_strogatz_graph"><code class="xref py py-func docutils literal"><span class="pre">connected_watts_strogatz_graph()</span></code></a>.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r371" rules="none">
+<table class="docutils citation" frame="void" id="r405" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R371]</a></td><td>Duncan J. Watts and Steven H. Strogatz,
+<tr><td class="label"><a class="fn-backref" href="#id1">[R405]</a></td><td>Duncan J. Watts and Steven H. Strogatz,
 Collective dynamics of small-world networks,
 Nature, 393, pp. 440&#8211;442, 1998.</td></tr>
 </tbody>
@@ -259,7 +260,7 @@ Nature, 393, pp. 440&#8211;442, 1998.</td></tr>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -279,7 +280,7 @@ Nature, 393, pp. 440&#8211;442, 1998.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

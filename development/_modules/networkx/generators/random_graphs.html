@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.generators.random_graphs &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>networkx.generators.random_graphs &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -225,7 +225,8 @@
 
 
 <div class="viewcode-block" id="fast_gnp_random_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.random_graphs.fast_gnp_random_graph.html#networkx.generators.random_graphs.fast_gnp_random_graph">[docs]</a><span class="k">def</span> <span class="nf">fast_gnp_random_graph</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return a random graph G_{n,p} (Erdős-Rényi graph, binomial graph).</span>
+    <span class="sd">&quot;&quot;&quot;Returns a `G_{n,p}` random graph, also known as an Erdős-Rényi graph or</span>
+<span class="sd">    a binomial graph.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -236,18 +237,17 @@
 <span class="sd">    seed : int, optional</span>
 <span class="sd">        Seed for random number generator (default=None).</span>
 <span class="sd">    directed : bool, optional (default=False)</span>
-<span class="sd">        If True return a directed graph</span>
+<span class="sd">        If ``True``, this function returns a directed graph.</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    The G_{n,p} graph algorithm chooses each of the [n(n-1)]/2</span>
-<span class="sd">    (undirected) or n(n-1) (directed) possible edges with probability p.</span>
+<span class="sd">    The `G_{n,p}` graph algorithm chooses each of the `[n (n - 1)] / 2`</span>
+<span class="sd">    (undirected) or `n (n - 1)` (directed) possible edges with probability `p`.</span>
 
-<span class="sd">    This algorithm is O(n+m) where m is the expected number of</span>
-<span class="sd">    edges m=p*n*(n-1)/2.</span>
-
-<span class="sd">    It should be faster than gnp_random_graph when p is small and</span>
-<span class="sd">    the expected number of edges is small (sparse graph).</span>
+<span class="sd">    This algorithm runs in `O(n + m)` time, where `m` is the expected number of</span>
+<span class="sd">    edges, which equals `p n (n - 1) / 2`. This should be faster than</span>
+<span class="sd">    :func:`gnp_random_graph` when `p` is small and the expected number of edges</span>
+<span class="sd">    is small (that is, the graph is sparse).</span>
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
@@ -302,11 +302,14 @@
 
 </div>
 <div class="viewcode-block" id="gnp_random_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.random_graphs.gnp_random_graph.html#networkx.generators.random_graphs.gnp_random_graph">[docs]</a><span class="k">def</span> <span class="nf">gnp_random_graph</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return a random graph G_{n,p} (Erdős-Rényi graph, binomial graph).</span>
+    <span class="sd">&quot;&quot;&quot;Returns a `G_{n,p}` random graph, also known as an Erdős-Rényi graph or</span>
+<span class="sd">    a binomial graph.</span>
 
-<span class="sd">    Chooses each of the possible edges with probability p.</span>
+<span class="sd">    The `G_{n,p}` model chooses each of the possible edges with probability</span>
+<span class="sd">    ``p``.</span>
 
-<span class="sd">    This is also called binomial_graph and erdos_renyi_graph.</span>
+<span class="sd">    The functions :func:`binomial_graph` and :func:`erdos_renyi_graph` are</span>
+<span class="sd">    aliases of this function.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -317,7 +320,7 @@
 <span class="sd">    seed : int, optional</span>
 <span class="sd">        Seed for random number generator (default=None).</span>
 <span class="sd">    directed : bool, optional (default=False)</span>
-<span class="sd">        If True return a directed graph</span>
+<span class="sd">        If ``True``, this function returns a directed graph.</span>
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
@@ -325,8 +328,8 @@
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    This is an O(n^2) algorithm.  For sparse graphs (small p) see</span>
-<span class="sd">    fast_gnp_random_graph for a faster algorithm.</span>
+<span class="sd">    This algorithm runs in `O(n^2)` time.  For sparse graphs (that is, for</span>
+<span class="sd">    small values of `p`), :func:`fast_gnp_random_graph` is a faster algorithm.</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
@@ -363,11 +366,13 @@
 <span class="n">erdos_renyi_graph</span><span class="o">=</span><span class="n">gnp_random_graph</span>
 
 <div class="viewcode-block" id="dense_gnm_random_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.random_graphs.dense_gnm_random_graph.html#networkx.generators.random_graphs.dense_gnm_random_graph">[docs]</a><span class="k">def</span> <span class="nf">dense_gnm_random_graph</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return the random graph G_{n,m}.</span>
+    <span class="sd">&quot;&quot;&quot;Returns a `G_{n,m}` random graph.</span>
 
-<span class="sd">    Gives a graph picked randomly out of the set of all graphs</span>
-<span class="sd">    with n nodes and m edges.</span>
-<span class="sd">    This algorithm should be faster than gnm_random_graph for dense graphs.</span>
+<span class="sd">    In the `G_{n,m}` model, a graph is chosen uniformly at random from the set</span>
+<span class="sd">    of all graphs with `n` nodes and `m` edges.</span>
+
+<span class="sd">    This algorithm should be faster than :func:`gnm_random_graph` for dense</span>
+<span class="sd">    graphs.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -422,10 +427,13 @@
             <span class="n">v</span><span class="o">=</span><span class="n">u</span><span class="o">+</span><span class="mi">1</span>
 </div>
 <div class="viewcode-block" id="gnm_random_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.random_graphs.gnm_random_graph.html#networkx.generators.random_graphs.gnm_random_graph">[docs]</a><span class="k">def</span> <span class="nf">gnm_random_graph</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return the random graph G_{n,m}.</span>
+    <span class="sd">&quot;&quot;&quot;Returns a `G_{n,m}` random graph.</span>
 
-<span class="sd">    Produces a graph picked randomly out of the set of all graphs</span>
-<span class="sd">    with n nodes and m edges.</span>
+<span class="sd">    In the `G_{n,m}` model, a graph is chosen uniformly at random from the set</span>
+<span class="sd">    of all graphs with `n` nodes and `m` edges.</span>
+
+<span class="sd">    This algorithm should be faster than :func:`dense_gnm_random_graph` for</span>
+<span class="sd">    sparse graphs.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -437,6 +445,11 @@
 <span class="sd">        Seed for random number generator (default=None).</span>
 <span class="sd">    directed : bool, optional (default=False)</span>
 <span class="sd">        If True return a directed graph</span>
+
+<span class="sd">    See also</span>
+<span class="sd">    --------</span>
+<span class="sd">    dense_gnm_random_graph</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">directed</span><span class="p">:</span>
         <span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
@@ -471,27 +484,29 @@
 
 </div>
 <div class="viewcode-block" id="newman_watts_strogatz_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.random_graphs.newman_watts_strogatz_graph.html#networkx.generators.random_graphs.newman_watts_strogatz_graph">[docs]</a><span class="k">def</span> <span class="nf">newman_watts_strogatz_graph</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return a Newman-Watts-Strogatz small world graph.</span>
+    <span class="sd">&quot;&quot;&quot;Return a Newman–Watts–Strogatz small-world graph.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    n : int</span>
-<span class="sd">        The number of nodes</span>
+<span class="sd">        The number of nodes.</span>
 <span class="sd">    k : int</span>
-<span class="sd">        Each node is connected to k nearest neighbors in ring topology</span>
+<span class="sd">        Each node is joined with its ``k`` nearest neighbors in a ring</span>
+<span class="sd">        topology.</span>
 <span class="sd">    p : float</span>
-<span class="sd">        The probability of adding a new edge for each edge</span>
+<span class="sd">        The probability of adding a new edge for each edge.</span>
 <span class="sd">    seed : int, optional</span>
-<span class="sd">       seed for random number generator (default=None)</span>
+<span class="sd">        The seed for the random number generator (the default is ``None``).</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    First create a ring over n nodes.  Then each node in the ring is</span>
-<span class="sd">    connected with its k nearest neighbors (k-1 neighbors if k is odd).</span>
-<span class="sd">    Then shortcuts are created by adding new edges as follows:</span>
-<span class="sd">    for each edge u-v in the underlying &quot;n-ring with k nearest neighbors&quot;</span>
-<span class="sd">    with probability p add a new edge u-w with randomly-chosen existing</span>
-<span class="sd">    node w.  In contrast with watts_strogatz_graph(), no edges are removed.</span>
+<span class="sd">    First create a ring over ``n`` nodes.  Then each node in the ring is</span>
+<span class="sd">    connected with its ``k`` nearest neighbors (or ``k - 1`` neighbors if ``k``</span>
+<span class="sd">    is odd).  Then shortcuts are created by adding new edges as follows: for</span>
+<span class="sd">    each edge ``(u, v)`` in the underlying &quot;``n``-ring with ``k`` nearest</span>
+<span class="sd">    neighbors&quot; with probability ``p`` add a new edge ``(u, w)`` with</span>
+<span class="sd">    randomly-chosen existing node ``w``.  In contrast with</span>
+<span class="sd">    :func:`watts_strogatz_graph`, no edges are removed.</span>
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
@@ -535,15 +550,15 @@
 
 </div>
 <div class="viewcode-block" id="watts_strogatz_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.random_graphs.watts_strogatz_graph.html#networkx.generators.random_graphs.watts_strogatz_graph">[docs]</a><span class="k">def</span> <span class="nf">watts_strogatz_graph</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return a Watts-Strogatz small-world graph.</span>
-
+    <span class="sd">&quot;&quot;&quot;Return a Watts–Strogatz small-world graph.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    n : int</span>
 <span class="sd">        The number of nodes</span>
 <span class="sd">    k : int</span>
-<span class="sd">        Each node is connected to k nearest neighbors in ring topology</span>
+<span class="sd">        Each node is joined with its ``k`` nearest neighbors in a ring</span>
+<span class="sd">        topology.</span>
 <span class="sd">    p : float</span>
 <span class="sd">        The probability of rewiring each edge</span>
 <span class="sd">    seed : int, optional</span>
@@ -556,16 +571,16 @@
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    First create a ring over n nodes.  Then each node in the ring is</span>
-<span class="sd">    connected with its k nearest neighbors (k-1 neighbors if k is odd).</span>
-<span class="sd">    Then shortcuts are created by replacing some edges as follows:</span>
-<span class="sd">    for each edge u-v in the underlying &quot;n-ring with k nearest neighbors&quot;</span>
-<span class="sd">    with probability p replace it with a new edge u-w with uniformly</span>
-<span class="sd">    random choice of existing node w.</span>
+<span class="sd">    First create a ring over ``n`` nodes.  Then each node in the ring is joined</span>
+<span class="sd">    to its ``k`` nearest neighbors (or ``k - 1`` neighbors if ``k`` is odd).</span>
+<span class="sd">    Then shortcuts are created by replacing some edges as follows: for each</span>
+<span class="sd">    edge ``(u, v)`` in the underlying &quot;``n``-ring with ``k`` nearest neighbors&quot;</span>
+<span class="sd">    with probability ``p`` replace it with a new edge ``(u, w)`` with uniformly</span>
+<span class="sd">    random choice of existing node ``w``.</span>
 
-<span class="sd">    In contrast with newman_watts_strogatz_graph(), the random</span>
-<span class="sd">    rewiring does not increase the number of edges. The rewired graph</span>
-<span class="sd">    is not guaranteed to be connected as in  connected_watts_strogatz_graph().</span>
+<span class="sd">    In contrast with :func:`newman_watts_strogatz_graph`, the random rewiring</span>
+<span class="sd">    does not increase the number of edges. The rewired graph is not guaranteed</span>
+<span class="sd">    to be connected as in :func:`connected_watts_strogatz_graph`.</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
@@ -605,18 +620,19 @@
     <span class="k">return</span> <span class="n">G</span>
 </div>
 <div class="viewcode-block" id="connected_watts_strogatz_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.random_graphs.connected_watts_strogatz_graph.html#networkx.generators.random_graphs.connected_watts_strogatz_graph">[docs]</a><span class="k">def</span> <span class="nf">connected_watts_strogatz_graph</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">tries</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return a connected Watts-Strogatz small-world graph.</span>
+    <span class="sd">&quot;&quot;&quot;Returns a connected Watts–Strogatz small-world graph.</span>
 
-<span class="sd">    Attempt to generate a connected realization by repeated</span>
-<span class="sd">    generation of Watts-Strogatz small-world graphs.</span>
-<span class="sd">    An exception is raised if the maximum number of tries is exceeded.</span>
+<span class="sd">    Attempts to generate a connected graph by repeated generation of</span>
+<span class="sd">    Watts–Strogatz small-world graphs.  An exception is raised if the maximum</span>
+<span class="sd">    number of tries is exceeded.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    n : int</span>
 <span class="sd">        The number of nodes</span>
 <span class="sd">    k : int</span>
-<span class="sd">        Each node is connected to k nearest neighbors in ring topology</span>
+<span class="sd">        Each node is joined with its ``k`` nearest neighbors in a ring</span>
+<span class="sd">        topology.</span>
 <span class="sd">    p : float</span>
 <span class="sd">        The probability of rewiring each edge</span>
 <span class="sd">    tries : int</span>
@@ -641,26 +657,32 @@
 
 </div>
 <div class="viewcode-block" id="random_regular_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.random_graphs.random_regular_graph.html#networkx.generators.random_graphs.random_regular_graph">[docs]</a><span class="k">def</span> <span class="nf">random_regular_graph</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return a random regular graph of n nodes each with degree d.</span>
+    <span class="sd">&quot;&quot;&quot;Returns a random ``d``-regular graph on ``n`` nodes.</span>
 
-<span class="sd">    The resulting graph G has no self-loops or parallel edges.</span>
+<span class="sd">    The resulting graph has no self-loops or parallel edges.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    d : int</span>
-<span class="sd">      Degree</span>
+<span class="sd">      The degree of each node.</span>
 <span class="sd">    n : integer</span>
-<span class="sd">      Number of nodes. The value of n*d must be even.</span>
+<span class="sd">      The number of nodes. The value of ``n * d`` must be even.</span>
 <span class="sd">    seed : hashable object</span>
 <span class="sd">        The seed for random number generator.</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    The nodes are numbered form 0 to n-1.</span>
+<span class="sd">    The nodes are numbered from ``0`` to ``n - 1``.</span>
 
 <span class="sd">    Kim and Vu&#39;s paper [2]_ shows that this algorithm samples in an</span>
 <span class="sd">    asymptotically uniform way from the space of random graphs when</span>
-<span class="sd">    d = O(n**(1/3-epsilon)).</span>
+<span class="sd">    `d = O(n^{1 / 3 - \epsilon})`.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+
+<span class="sd">    NetworkXError</span>
+<span class="sd">        If ``n * d`` is odd or ``d`` is greater than or equal to ``n``.</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
@@ -758,11 +780,11 @@
     <span class="k">return</span> <span class="n">targets</span>
 
 <div class="viewcode-block" id="barabasi_albert_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.random_graphs.barabasi_albert_graph.html#networkx.generators.random_graphs.barabasi_albert_graph">[docs]</a><span class="k">def</span> <span class="nf">barabasi_albert_graph</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return random graph using Barabási-Albert preferential attachment model.</span>
+    <span class="sd">&quot;&quot;&quot;Returns a random graph according to the Barabási–Albert preferential</span>
+<span class="sd">    attachment model.</span>
 
-<span class="sd">    A graph of n nodes is grown by attaching new nodes each with m</span>
-<span class="sd">    edges that are preferentially attached to existing nodes with high</span>
-<span class="sd">    degree.</span>
+<span class="sd">    A graph of ``n`` nodes is grown by attaching new nodes each with ``m``</span>
+<span class="sd">    edges that are preferentially attached to existing nodes with high degree.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -777,9 +799,10 @@
 <span class="sd">    -------</span>
 <span class="sd">    G : Graph</span>
 
-<span class="sd">    Notes</span>
-<span class="sd">    -----</span>
-<span class="sd">    The initialization is a graph with with m nodes and no edges.</span>
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    NetworkXError</span>
+<span class="sd">        If ``m`` does not satisfy ``1 &lt;= m &lt; n``.</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
@@ -788,8 +811,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="n">m</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span>  <span class="n">m</span> <span class="o">&gt;=</span><span class="n">n</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span>\
-              <span class="s">&quot;Barabási-Albert network must have m&gt;=1 and m&lt;n, m=</span><span class="si">%d</span><span class="s">,n=</span><span class="si">%d</span><span class="s">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s">&quot;Barabási–Albert network must have m &gt;= 1&quot;</span>
+                               <span class="s">&quot; and m &lt; n, m = </span><span class="si">%d</span><span class="s">, n = </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
         <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
 
@@ -832,21 +855,27 @@
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    The average clustering has a hard time getting above</span>
-<span class="sd">    a certain cutoff that depends on m.  This cutoff is often quite low.</span>
-<span class="sd">    Note that the transitivity (fraction of triangles to possible</span>
-<span class="sd">    triangles) seems to go down with network size.</span>
+<span class="sd">    The average clustering has a hard time getting above a certain</span>
+<span class="sd">    cutoff that depends on ``m``.  This cutoff is often quite low.  The</span>
+<span class="sd">    transitivity (fraction of triangles to possible triangles) seems to</span>
+<span class="sd">    decrease with network size.</span>
 
-<span class="sd">    It is essentially the Barabási-Albert (B-A) growth model with an</span>
+<span class="sd">    It is essentially the Barabási–Albert (BA) growth model with an</span>
 <span class="sd">    extra step that each random edge is followed by a chance of</span>
 <span class="sd">    making an edge to one of its neighbors too (and thus a triangle).</span>
 
-<span class="sd">    This algorithm improves on B-A in the sense that it enables a</span>
+<span class="sd">    This algorithm improves on BA in the sense that it enables a</span>
 <span class="sd">    higher average clustering to be attained if desired.</span>
 
 <span class="sd">    It seems possible to have a disconnected graph with this algorithm</span>
-<span class="sd">    since the initial m nodes may not be all linked to a new node</span>
-<span class="sd">    on the first iteration like the B-A model.</span>
+<span class="sd">    since the initial ``m`` nodes may not be all linked to a new node</span>
+<span class="sd">    on the first iteration like the BA model.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    NetworkXError</span>
+<span class="sd">        If ``m`` does not satisfy ``1 &lt;= m &lt;= n`` or ``p`` does not</span>
+<span class="sd">        satisfy ``0 &lt;= p &lt;= 1``.</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
@@ -898,11 +927,12 @@
         <span class="n">source</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">G</span>
 </div>
-<span class="k">def</span> <span class="nf">duplication_divergence_graph</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return a undirected graph using the Duplication-Divergence model</span>
+<div class="viewcode-block" id="duplication_divergence_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.random_graphs.duplication_divergence_graph.html#networkx.generators.random_graphs.duplication_divergence_graph">[docs]</a><span class="k">def</span> <span class="nf">duplication_divergence_graph</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns an undirected graph using the duplication-divergence model.</span>
 
-<span class="sd">    A graph of n nodes is created by duplicating the initial nodes and</span>
-<span class="sd">    retain edges of the original nodes with a retention probability p.</span>
+<span class="sd">    A graph of ``n`` nodes is created by duplicating the initial nodes</span>
+<span class="sd">    and retaining edges incident to the original nodes with a retention</span>
+<span class="sd">    probability ``p``.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -964,26 +994,24 @@
             <span class="c"># Successful duplication.</span>
             <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">G</span>
-
+</div>
 <div class="viewcode-block" id="random_lobster"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.random_graphs.random_lobster.html#networkx.generators.random_graphs.random_lobster">[docs]</a><span class="k">def</span> <span class="nf">random_lobster</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return a random lobster.</span>
+    <span class="sd">&quot;&quot;&quot;Returns a random lobster graph.</span>
 
 <span class="sd">     A lobster is a tree that reduces to a caterpillar when pruning all</span>
-<span class="sd">     leaf nodes.</span>
+<span class="sd">     leaf nodes. A caterpillar is a tree that reduces to a path graph</span>
+<span class="sd">     when pruning all leaf nodes; setting ``p2`` to zero produces a caterillar.</span>
 
-<span class="sd">     A caterpillar is a tree that reduces to a path graph when pruning</span>
-<span class="sd">     all leaf nodes (p2=0).</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    n : int</span>
-<span class="sd">        The expected number of nodes in the backbone</span>
-<span class="sd">    p1 : float</span>
-<span class="sd">        Probability of adding an edge to the backbone</span>
-<span class="sd">    p2 : float</span>
-<span class="sd">        Probability of adding an edge one level beyond backbone</span>
-<span class="sd">    seed : int, optional</span>
-<span class="sd">        Seed for random number generator (default=None).</span>
+<span class="sd">     Parameters</span>
+<span class="sd">     ----------</span>
+<span class="sd">     n : int</span>
+<span class="sd">         The expected number of nodes in the backbone</span>
+<span class="sd">     p1 : float</span>
+<span class="sd">         Probability of adding an edge to the backbone</span>
+<span class="sd">     p2 : float</span>
+<span class="sd">         Probability of adding an edge one level beyond backbone</span>
+<span class="sd">     seed : int, optional</span>
+<span class="sd">         Seed for random number generator (default=None).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c"># a necessary ingredient in any self-respecting graph library</span>
     <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
@@ -1003,26 +1031,25 @@
     <span class="k">return</span> <span class="n">L</span> <span class="c"># voila, un lobster!</span>
 </div>
 <div class="viewcode-block" id="random_shell_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.random_graphs.random_shell_graph.html#networkx.generators.random_graphs.random_shell_graph">[docs]</a><span class="k">def</span> <span class="nf">random_shell_graph</span><span class="p">(</span><span class="n">constructor</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return a random shell graph for the constructor given.</span>
+    <span class="sd">&quot;&quot;&quot;Returns a random shell graph for the constructor given.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    constructor: a list of three-tuples</span>
-<span class="sd">        (n,m,d) for each shell starting at the center shell.</span>
-<span class="sd">    n : int</span>
-<span class="sd">        The number of nodes in the shell</span>
-<span class="sd">    m : int</span>
-<span class="sd">        The number or edges in the shell</span>
-<span class="sd">    d : float</span>
-<span class="sd">        The ratio of inter-shell (next) edges to intra-shell edges.</span>
-<span class="sd">        d=0 means no intra shell edges, d=1 for the last shell</span>
+<span class="sd">    constructor : list of three-tuples</span>
+<span class="sd">        Represents the parameters for a shell, starting at the center</span>
+<span class="sd">        shell.  Each element of the list must be of the form ``(n, m,</span>
+<span class="sd">        d)``, where ``n`` is the number of nodes in the shell, ``m`` is</span>
+<span class="sd">        the number of edges in the shell, and ``d`` is the ratio of</span>
+<span class="sd">        inter-shell (next) edges to intra-shell edges. If ``d`` is zero,</span>
+<span class="sd">        there will be no intra-shell edges, and if ``d`` is one there</span>
+<span class="sd">        will be all possible intra-shell edges.</span>
 <span class="sd">    seed : int, optional</span>
 <span class="sd">        Seed for random number generator (default=None).</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; constructor=[(10,20,0.8),(20,40,0.8)]</span>
-<span class="sd">    &gt;&gt;&gt; G=nx.random_shell_graph(constructor)</span>
+<span class="sd">    &gt;&gt;&gt; constructor = [(10, 20, 0.8), (20, 40, 0.8)]</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.random_shell_graph(constructor)</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">G</span><span class="o">=</span><span class="n">empty_graph</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -1063,24 +1090,31 @@
 
 </div>
 <div class="viewcode-block" id="random_powerlaw_tree"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.random_graphs.random_powerlaw_tree.html#networkx.generators.random_graphs.random_powerlaw_tree">[docs]</a><span class="k">def</span> <span class="nf">random_powerlaw_tree</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">tries</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return a tree with a powerlaw degree distribution.</span>
+    <span class="sd">&quot;&quot;&quot;Returns a tree with a power law degree distribution.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    n : int,</span>
-<span class="sd">        The number of nodes</span>
+<span class="sd">    n : int</span>
+<span class="sd">        The number of nodes.</span>
 <span class="sd">    gamma : float</span>
-<span class="sd">        Exponent of the power-law</span>
+<span class="sd">        Exponent of the power law.</span>
 <span class="sd">    seed : int, optional</span>
 <span class="sd">        Seed for random number generator (default=None).</span>
 <span class="sd">    tries : int</span>
-<span class="sd">        Number of attempts to adjust sequence to make a tree</span>
+<span class="sd">        Number of attempts to adjust the sequence to make it a tree.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    NetworkXError</span>
+<span class="sd">        If no valid sequence is found within the maximum number of</span>
+<span class="sd">        attempts.</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    A trial powerlaw degree sequence is chosen and then elements are</span>
-<span class="sd">    swapped with new elements from a powerlaw distribution until</span>
-<span class="sd">    the sequence makes a tree (#edges=#nodes-1).</span>
+<span class="sd">    A trial power law degree sequence is chosen and then elements are</span>
+<span class="sd">    swapped with new elements from a powerlaw distribution until the</span>
+<span class="sd">    sequence makes a tree (by checking, for example, that the number of</span>
+<span class="sd">    edges is one smaller than the number of nodes).</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">networkx.generators.degree_seq</span> <span class="kn">import</span> <span class="n">degree_sequence_tree</span>
@@ -1098,25 +1132,31 @@
 
 </div>
 <div class="viewcode-block" id="random_powerlaw_tree_sequence"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.random_graphs.random_powerlaw_tree_sequence.html#networkx.generators.random_graphs.random_powerlaw_tree_sequence">[docs]</a><span class="k">def</span> <span class="nf">random_powerlaw_tree_sequence</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">tries</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Return a degree sequence for a tree with a powerlaw distribution.</span>
+    <span class="sd">&quot;&quot;&quot;Returns a degree sequence for a tree with a power law distribution.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    n : int,</span>
-<span class="sd">        The number of nodes</span>
+<span class="sd">        The number of nodes.</span>
 <span class="sd">    gamma : float</span>
-<span class="sd">        Exponent of the power-law</span>
+<span class="sd">        Exponent of the power law.</span>
 <span class="sd">    seed : int, optional</span>
 <span class="sd">        Seed for random number generator (default=None).</span>
 <span class="sd">    tries : int</span>
-<span class="sd">        Number of attempts to adjust sequence to make a tree</span>
+<span class="sd">        Number of attempts to adjust the sequence to make it a tree.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    NetworkXError</span>
+<span class="sd">        If no valid sequence is found within the maximum number of</span>
+<span class="sd">        attempts.</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    A trial powerlaw degree sequence is chosen and then elements are</span>
-<span class="sd">    swapped with new elements from a powerlaw distribution until</span>
-<span class="sd">    the sequence makes a tree (#edges=#nodes-1).</span>
-
+<span class="sd">    A trial power law degree sequence is chosen and then elements are</span>
+<span class="sd">    swapped with new elements from a power law distribution until</span>
+<span class="sd">    the sequence makes a tree (by checking, for example, that the number of</span>
+<span class="sd">    edges is one smaller than the number of nodes).</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
@@ -1152,7 +1192,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -1172,7 +1212,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

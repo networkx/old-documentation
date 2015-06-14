@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>random_geometric_graph &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>random_geometric_graph &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
         <link rel="next" title="geographical_threshold_graph" href="networkx.generators.geometric.geographical_threshold_graph.html"/>
         <link rel="prev" title="scale_free_graph" href="networkx.generators.directed.scale_free_graph.html"/> 
@@ -188,11 +188,10 @@
 <dl class="function">
 <dt id="networkx.generators.geometric.random_geometric_graph">
 <code class="descname">random_geometric_graph</code><span class="sig-paren">(</span><em>n</em>, <em>radius</em>, <em>dim=2</em>, <em>pos=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/generators/geometric.html#random_geometric_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.geometric.random_geometric_graph" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the random geometric graph in the unit cube.</p>
-<p>The random geometric graph model places n nodes uniformly at random
-in the unit cube  Two nodes <span class="math">\(u,v\)</span> are connected with an edge if
-<span class="math">\(d(u,v)&lt;=r\)</span> where <span class="math">\(d\)</span> is the Euclidean distance and <span class="math">\(r\)</span> is a radius
-threshold.</p>
+<dd><p>Returns a random geometric graph in the unit cube.</p>
+<p>The random geometric graph model places <code class="docutils literal"><span class="pre">n</span></code> nodes uniformly at random in
+the unit cube. Two nodes are joined by an edge if the Euclidean distance
+between the nodes is at most <code class="docutils literal"><span class="pre">radius</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -221,29 +220,31 @@ threshold.</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>This uses an <span class="math">\(n^2\)</span> algorithm to build the graph.  A faster algorithm
+<p>This algorithm currently only supports Euclidean distance.</p>
+<p>This uses an <span class="math">\(O(n^2)\)</span> algorithm to build the graph.  A faster algorithm
 is possible using k-d trees.</p>
-<p>The pos keyword can be used to specify node positions so you can create
-an arbitrary distribution and domain for positions.  If you need a distance
-function other than Euclidean you&#8217;ll have to hack the algorithm.</p>
-<p>E.g to use a 2d Gaussian distribution of node positions with mean (0,0)
-and std. dev. 2</p>
+<p>The <code class="docutils literal"><span class="pre">pos</span></code> keyword argument can be used to specify node positions so you
+can create an arbitrary distribution and domain for positions.</p>
+<p>For example, to use a 2D Gaussian distribution of node positions with mean
+(0, 0) and standard deviation 2:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">random</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span><span class="o">=</span><span class="mi">20</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">=</span><span class="nb">dict</span><span class="p">((</span><span class="n">i</span><span class="p">,(</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">random_geometric_graph</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="n">pos</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">random_geometric_graph</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r350" rules="none">
+<table class="docutils citation" frame="void" id="r383" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R350]</a></td><td>Penrose, Mathew, Random Geometric Graphs,
+<tr><td class="label"><a class="fn-backref" href="#id1">[R383]</a></td><td>Penrose, Mathew, Random Geometric Graphs,
 Oxford Studies in Probability, 5, 2003.</td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">random_geometric_graph</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+<p>Create a random geometric graph on twenty nodes where nodes are joined by
+an edge if their distance is at most 0.1:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">random_geometric_graph</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -269,7 +270,7 @@ Oxford Studies in Probability, 5, 2003.</td></tr>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -289,7 +290,7 @@ Oxford Studies in Probability, 5, 2003.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

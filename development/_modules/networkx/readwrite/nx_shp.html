@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.readwrite.nx_shp &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>networkx.readwrite.nx_shp &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -203,7 +203,7 @@
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;read_shp&#39;</span><span class="p">,</span> <span class="s">&#39;write_shp&#39;</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="read_shp"><a class="viewcode-back" href="../../../reference/generated/networkx.readwrite.nx_shp.read_shp.html#networkx.readwrite.nx_shp.read_shp">[docs]</a><span class="k">def</span> <span class="nf">read_shp</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+<div class="viewcode-block" id="read_shp"><a class="viewcode-back" href="../../../reference/generated/networkx.readwrite.nx_shp.read_shp.html#networkx.readwrite.nx_shp.read_shp">[docs]</a><span class="k">def</span> <span class="nf">read_shp</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">simplify</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generates a networkx.DiGraph from shapefiles. Point geometries are</span>
 <span class="sd">    translated into nodes, lines into edges. Coordinate tuples are used as</span>
 <span class="sd">    keys. Attributes are preserved, line geometries are simplified into start</span>
@@ -217,6 +217,12 @@
 <span class="sd">    ----------</span>
 <span class="sd">    path : file or string</span>
 <span class="sd">       File, directory, or filename to read.</span>
+
+<span class="sd">    simplify:  bool</span>
+<span class="sd">        If ``True``, simplify line geometries to start and end coordinates.</span>
+<span class="sd">        If ``False``, and line feature geometry has multiple segments, the </span>
+<span class="sd">        non-geometric attributes for that feature will be repeated for each </span>
+<span class="sd">        edge comprising that feature.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -250,11 +256,25 @@
             <span class="k">if</span> <span class="n">g</span><span class="o">.</span><span class="n">GetGeometryType</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c"># point</span>
                 <span class="n">net</span><span class="o">.</span><span class="n">add_node</span><span class="p">((</span><span class="n">g</span><span class="o">.</span><span class="n">GetPoint_2D</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span> <span class="n">attributes</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">g</span><span class="o">.</span><span class="n">GetGeometryType</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>  <span class="c"># linestring</span>
-                <span class="n">attributes</span><span class="p">[</span><span class="s">&quot;Wkb&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ExportToWkb</span><span class="p">()</span>
-                <span class="n">attributes</span><span class="p">[</span><span class="s">&quot;Wkt&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ExportToWkt</span><span class="p">()</span>
-                <span class="n">attributes</span><span class="p">[</span><span class="s">&quot;Json&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ExportToJson</span><span class="p">()</span>
                 <span class="n">last</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">GetPointCount</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
-                <span class="n">net</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">GetPoint_2D</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">g</span><span class="o">.</span><span class="n">GetPoint_2D</span><span class="p">(</span><span class="n">last</span><span class="p">),</span> <span class="n">attributes</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">simplify</span><span class="p">:</span>
+                    <span class="n">attributes</span><span class="p">[</span><span class="s">&quot;Wkb&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ExportToWkb</span><span class="p">()</span>
+                    <span class="n">attributes</span><span class="p">[</span><span class="s">&quot;Wkt&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ExportToWkt</span><span class="p">()</span>
+                    <span class="n">attributes</span><span class="p">[</span><span class="s">&quot;Json&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ExportToJson</span><span class="p">()</span>
+                    <span class="n">net</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">GetPoint_2D</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">g</span><span class="o">.</span><span class="n">GetPoint_2D</span><span class="p">(</span><span class="n">last</span><span class="p">),</span> <span class="n">attributes</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c"># separate out each segment as individual edge</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">last</span><span class="p">):</span>
+                        <span class="n">pt1</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">GetPoint_2D</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                        <span class="n">pt2</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">GetPoint_2D</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                        <span class="n">segment</span> <span class="o">=</span> <span class="n">ogr</span><span class="o">.</span><span class="n">Geometry</span><span class="p">(</span><span class="n">ogr</span><span class="o">.</span><span class="n">wkbLineString</span><span class="p">)</span>
+                        <span class="n">segment</span><span class="o">.</span><span class="n">AddPoint_2D</span><span class="p">(</span><span class="n">pt1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pt1</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                        <span class="n">segment</span><span class="o">.</span><span class="n">AddPoint_2D</span><span class="p">(</span><span class="n">pt2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pt2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                        <span class="n">attributes</span><span class="p">[</span><span class="s">&quot;Wkb&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">segment</span><span class="o">.</span><span class="n">ExportToWkb</span><span class="p">()</span>
+                        <span class="n">attributes</span><span class="p">[</span><span class="s">&quot;Wkt&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">segment</span><span class="o">.</span><span class="n">ExportToWkt</span><span class="p">()</span>
+                        <span class="n">attributes</span><span class="p">[</span><span class="s">&quot;Json&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">segment</span><span class="o">.</span><span class="n">ExportToJson</span><span class="p">()</span>
+                        <span class="n">net</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">pt1</span><span class="p">,</span> <span class="n">pt2</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
+
     <span class="k">return</span> <span class="n">net</span>
 
 </div>
@@ -404,7 +424,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -424,7 +444,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

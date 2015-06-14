@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>random_shell_graph &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>random_shell_graph &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
         <link rel="next" title="random_powerlaw_tree" href="networkx.generators.random_graphs.random_powerlaw_tree.html"/>
         <link rel="prev" title="random_lobster" href="networkx.generators.random_graphs.random_lobster.html"/> 
@@ -188,27 +188,20 @@
 <dl class="function">
 <dt id="networkx.generators.random_graphs.random_shell_graph">
 <code class="descname">random_shell_graph</code><span class="sig-paren">(</span><em>constructor</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/generators/random_graphs.html#random_shell_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.random_graphs.random_shell_graph" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a random shell graph for the constructor given.</p>
+<dd><p>Returns a random shell graph for the constructor given.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>constructor: a list of three-tuples</strong></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>constructor</strong> : list of three-tuples</p>
 <blockquote>
-<div><p>(n,m,d) for each shell starting at the center shell.</p>
-</div></blockquote>
-<p><strong>n</strong> : int</p>
-<blockquote>
-<div><p>The number of nodes in the shell</p>
-</div></blockquote>
-<p><strong>m</strong> : int</p>
-<blockquote>
-<div><p>The number or edges in the shell</p>
-</div></blockquote>
-<p><strong>d</strong> : float</p>
-<blockquote>
-<div><p>The ratio of inter-shell (next) edges to intra-shell edges.
-d=0 means no intra shell edges, d=1 for the last shell</p>
+<div><p>Represents the parameters for a shell, starting at the center
+shell.  Each element of the list must be of the form <code class="docutils literal"><span class="pre">(n,</span> <span class="pre">m,</span>
+<span class="pre">d)</span></code>, where <code class="docutils literal"><span class="pre">n</span></code> is the number of nodes in the shell, <code class="docutils literal"><span class="pre">m</span></code> is
+the number of edges in the shell, and <code class="docutils literal"><span class="pre">d</span></code> is the ratio of
+inter-shell (next) edges to intra-shell edges. If <code class="docutils literal"><span class="pre">d</span></code> is zero,
+there will be no intra-shell edges, and if <code class="docutils literal"><span class="pre">d</span></code> is one there
+will be all possible intra-shell edges.</p>
 </div></blockquote>
 <p><strong>seed</strong> : int, optional</p>
 <blockquote class="last">
@@ -219,8 +212,8 @@ d=0 means no intra shell edges, d=1 for the last shell</p>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">constructor</span><span class="o">=</span><span class="p">[(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mf">0.8</span><span class="p">),(</span><span class="mi">20</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mf">0.8</span><span class="p">)]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">random_shell_graph</span><span class="p">(</span><span class="n">constructor</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">constructor</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">random_shell_graph</span><span class="p">(</span><span class="n">constructor</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -246,7 +239,7 @@ d=0 means no intra shell edges, d=1 for the last shell</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -266,7 +259,7 @@ d=0 means no intra shell edges, d=1 for the last shell</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

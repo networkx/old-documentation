@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>powerlaw_cluster_graph &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>powerlaw_cluster_graph &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,9 +30,9 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
-        <link rel="next" title="random_lobster" href="networkx.generators.random_graphs.random_lobster.html"/>
+        <link rel="next" title="duplication_divergence_graph" href="networkx.generators.random_graphs.duplication_divergence_graph.html"/>
         <link rel="prev" title="barabasi_albert_graph" href="networkx.generators.random_graphs.barabasi_albert_graph.html"/> 
 
   
@@ -207,31 +207,38 @@ degree distribution and approximate average clustering.</p>
 <div><p>Probability of adding a triangle after adding a random edge</p>
 </div></blockquote>
 <p><strong>seed</strong> : int, optional</p>
-<blockquote class="last">
+<blockquote>
 <div><p>Seed for random number generator (default=None).</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
+<blockquote class="last">
+<div><p>If <code class="docutils literal"><span class="pre">m</span></code> does not satisfy <code class="docutils literal"><span class="pre">1</span> <span class="pre">&lt;=</span> <span class="pre">m</span> <span class="pre">&lt;=</span> <span class="pre">n</span></code> or <code class="docutils literal"><span class="pre">p</span></code> does not
+satisfy <code class="docutils literal"><span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">p</span> <span class="pre">&lt;=</span> <span class="pre">1</span></code>.</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>The average clustering has a hard time getting above
-a certain cutoff that depends on m.  This cutoff is often quite low.
-Note that the transitivity (fraction of triangles to possible
-triangles) seems to go down with network size.</p>
-<p>It is essentially the Barabási-Albert (B-A) growth model with an
+<p>The average clustering has a hard time getting above a certain
+cutoff that depends on <code class="docutils literal"><span class="pre">m</span></code>.  This cutoff is often quite low.  The
+transitivity (fraction of triangles to possible triangles) seems to
+decrease with network size.</p>
+<p>It is essentially the Barabási–Albert (BA) growth model with an
 extra step that each random edge is followed by a chance of
 making an edge to one of its neighbors too (and thus a triangle).</p>
-<p>This algorithm improves on B-A in the sense that it enables a
+<p>This algorithm improves on BA in the sense that it enables a
 higher average clustering to be attained if desired.</p>
 <p>It seems possible to have a disconnected graph with this algorithm
-since the initial m nodes may not be all linked to a new node
-on the first iteration like the B-A model.</p>
+since the initial <code class="docutils literal"><span class="pre">m</span></code> nodes may not be all linked to a new node
+on the first iteration like the BA model.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r368" rules="none">
+<table class="docutils citation" frame="void" id="r402" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R368]</a></td><td>P. Holme and B. J. Kim,
+<tr><td class="label"><a class="fn-backref" href="#id1">[R402]</a></td><td>P. Holme and B. J. Kim,
 &#8220;Growing scale-free networks with tunable clustering&#8221;,
 Phys. Rev. E, 65, 026107, 2002.</td></tr>
 </tbody>
@@ -246,7 +253,7 @@ Phys. Rev. E, 65, 026107, 2002.</td></tr>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="networkx.generators.random_graphs.random_lobster.html" class="btn btn-neutral float-right" title="random_lobster"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="networkx.generators.random_graphs.duplication_divergence_graph.html" class="btn btn-neutral float-right" title="duplication_divergence_graph"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="networkx.generators.random_graphs.barabasi_albert_graph.html" class="btn btn-neutral" title="barabasi_albert_graph"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -259,7 +266,7 @@ Phys. Rev. E, 65, 026107, 2002.</td></tr>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -279,7 +286,7 @@ Phys. Rev. E, 65, 026107, 2002.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

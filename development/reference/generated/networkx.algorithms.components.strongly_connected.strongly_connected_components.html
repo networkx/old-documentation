@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>strongly_connected_components &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>strongly_connected_components &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../index.html"/>
         <link rel="up" title="Components" href="../algorithms.component.html"/>
         <link rel="next" title="strongly_connected_component_subgraphs" href="networkx.algorithms.components.strongly_connected.strongly_connected_component_subgraphs.html"/>
         <link rel="prev" title="number_strongly_connected_components" href="networkx.algorithms.components.strongly_connected.number_strongly_connected_components.html"/> 
@@ -201,13 +201,17 @@
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>comp</strong> : generator of lists</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>comp</strong> : generator of sets</p>
 <blockquote>
-<div><p>A list of nodes for each strongly connected component of G.</p>
+<div><p>A generator of sets of nodes, one for each strongly connected
+component of G.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><strong>NetworkXNotImplemented: If G is undirected.</strong></p>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXNotImplemented:</strong></p>
+<blockquote class="last">
+<div><p>If G is undirected.</p>
+</div></blockquote>
 </td>
 </tr>
 </tbody>
@@ -220,21 +224,35 @@
 <p>Uses Tarjan&#8217;s algorithm with Nuutila&#8217;s modifications.
 Nonrecursive version of algorithm.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r250" rules="none">
+<table class="docutils citation" frame="void" id="r274" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R250]</a></td><td>Depth-first search and linear graph algorithms, R. Tarjan
+<tr><td class="label"><a class="fn-backref" href="#id1">[R274]</a></td><td>Depth-first search and linear graph algorithms, R. Tarjan
 SIAM Journal of Computing 1(2):146-160, (1972).</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r251" rules="none">
+<table class="docutils citation" frame="void" id="r275" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R251]</a></td><td>On finding the strongly connected components in a directed graph.
+<tr><td class="label"><a class="fn-backref" href="#id2">[R275]</a></td><td>On finding the strongly connected components in a directed graph.
 E. Nuutila and E. Soisalon-Soinen
 Information Processing Letters 49(1): 9-14, (1994)..</td></tr>
 </tbody>
 </table>
+<p class="rubric">Examples</p>
+<p>Generate a sorted list of strongly connected components, largest first.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">cycle_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_cycle</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">strongly_connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">),</span>
+<span class="gp">... </span>                        <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)]</span>
+<span class="go">[4, 3]</span>
+</pre></div>
+</div>
+<p>If you only want the largest component, it&#8217;s more efficient to
+use max instead of sort.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">largest</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">strongly_connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -258,7 +276,7 @@ Information Processing Letters 49(1): 9-14, (1994)..</td></tr>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -278,7 +296,7 @@ Information Processing Letters 49(1): 9-14, (1994)..</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

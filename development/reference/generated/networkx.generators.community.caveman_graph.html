@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>caveman_graph &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>caveman_graph &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
         <link rel="next" title="connected_caveman_graph" href="networkx.generators.community.connected_caveman_graph.html"/>
         <link rel="prev" title="florentine_families_graph" href="networkx.generators.social.florentine_families_graph.html"/> 
@@ -219,8 +219,16 @@
 <p>This returns an undirected graph, it can be converted to a directed
 graph using <code class="xref py py-func docutils literal"><span class="pre">nx.to_directed()</span></code>, or a multigraph using
 <code class="docutils literal"><span class="pre">nx.MultiGraph(nx.caveman_graph(l,</span> <span class="pre">k))</span></code>. Only the undirected version is
-described in <a href="#id2"><span class="problematic" id="id3"><span id="id1"></span>[1]_</span></a> and it is unclear which of the directed
+described in <a class="reference internal" href="#r359" id="id1">[R359]</a> and it is unclear which of the directed
 generalizations is most useful.</p>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r359" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[R359]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Watts, D. J. &#8216;Networks, Dynamics, and the Small-World Phenomenon.&#8217;
+Amer. J. Soc. 105, 493-527, 1999.</td></tr>
+</tbody>
+</table>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">caveman_graph</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </pre></div>
@@ -248,7 +256,7 @@ generalizations is most useful.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -268,7 +276,7 @@ generalizations is most useful.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

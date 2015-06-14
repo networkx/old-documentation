@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Drawing &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>Drawing &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../index.html"/>
         <link rel="up" title="Reference" href="pdf_reference.html"/>
         <link rel="next" title="draw" href="generated/networkx.drawing.nx_pylab.draw.html"/>
         <link rel="prev" title="write_shp" href="generated/networkx.readwrite.nx_shp.write_shp.html"/> 
@@ -183,6 +183,22 @@
             
   <div class="section" id="drawing">
 <span id="id1"></span><h1>Drawing<a class="headerlink" href="#drawing" title="Permalink to this headline">¶</a></h1>
+<p>NetworkX provides basic functionality for visualizing graphs, but its main goal
+is to enable graph analysis rather than perform graph visualization. In the
+future, graph visualization functionality may be removed from NetworkX or only
+available as an add-on package.</p>
+<p>Proper graph visualization is hard, and we highly recommend that people
+visualize their graphs with tools dedicated to that task. Notable examples of
+dedicated and fully-featured graph visualization tools are
+<a class="reference external" href="http://www.cytoscape.org/">Cytoscape</a>,
+<a class="reference external" href="http://gephi.github.io/">Gephi</a>,
+<a class="reference external" href="http://www.graphviz.org/">Graphviz</a> and, for
+<a class="reference external" href="http://www.latex-project.org/">LaTeX</a> typesetting,
+<a class="reference external" href="http://sourceforge.net/projects/pgf/">PGF/TikZ</a>.
+To use these and other such tools, you should export your NetworkX graph into
+a format that can be read by those tools. For example, Cytoscape can read the
+GraphML format, and so, <span class="math">\(networkx.write_graphml(G)\)</span> might be an appropriate
+choice.</p>
 <div class="section" id="module-networkx.drawing.nx_pylab">
 <span id="matplotlib"></span><h2>Matplotlib<a class="headerlink" href="#module-networkx.drawing.nx_pylab" title="Permalink to this headline">¶</a></h2>
 <p>Draw networks with matplotlib.</p>
@@ -200,7 +216,7 @@
 <tr class="row-odd"><td><a class="reference internal" href="generated/networkx.drawing.nx_pylab.draw.html#networkx.drawing.nx_pylab.draw" title="networkx.drawing.nx_pylab.draw"><code class="xref py py-obj docutils literal"><span class="pre">draw</span></code></a>(G[,&nbsp;pos,&nbsp;ax,&nbsp;hold])</td>
 <td>Draw the graph G with Matplotlib.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.drawing.nx_pylab.draw_networkx.html#networkx.drawing.nx_pylab.draw_networkx" title="networkx.drawing.nx_pylab.draw_networkx"><code class="xref py py-obj docutils literal"><span class="pre">draw_networkx</span></code></a>(G[,&nbsp;pos,&nbsp;with_labels])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.drawing.nx_pylab.draw_networkx.html#networkx.drawing.nx_pylab.draw_networkx" title="networkx.drawing.nx_pylab.draw_networkx"><code class="xref py py-obj docutils literal"><span class="pre">draw_networkx</span></code></a>(G[,&nbsp;pos,&nbsp;arrows,&nbsp;with_labels])</td>
 <td>Draw the graph G using Matplotlib.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/networkx.drawing.nx_pylab.draw_networkx_nodes.html#networkx.drawing.nx_pylab.draw_networkx_nodes" title="networkx.drawing.nx_pylab.draw_networkx_nodes"><code class="xref py py-obj docutils literal"><span class="pre">draw_networkx_nodes</span></code></a>(G,&nbsp;pos[,&nbsp;nodelist,&nbsp;...])</td>
@@ -363,7 +379,7 @@ DOT Language:  <a class="reference external" href="http://www.graphviz.org/doc/i
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -383,7 +399,7 @@ DOT Language:  <a class="reference external" href="http://www.graphviz.org/doc/i
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

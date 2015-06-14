@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>draw_networkx &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>draw_networkx &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../index.html"/>
         <link rel="up" title="Drawing" href="../drawing.html"/>
         <link rel="next" title="draw_networkx_nodes" href="networkx.drawing.nx_pylab.draw_networkx_nodes.html"/>
         <link rel="prev" title="draw" href="networkx.drawing.nx_pylab.draw.html"/> 
@@ -187,7 +187,7 @@
 <h1>draw_networkx<a class="headerlink" href="#draw-networkx" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.drawing.nx_pylab.draw_networkx">
-<code class="descname">draw_networkx</code><span class="sig-paren">(</span><em>G</em>, <em>pos=None</em>, <em>with_labels=True</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/drawing/nx_pylab.html#draw_networkx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.drawing.nx_pylab.draw_networkx" title="Permalink to this definition">¶</a></dt>
+<code class="descname">draw_networkx</code><span class="sig-paren">(</span><em>G</em>, <em>pos=None</em>, <em>arrows=True</em>, <em>with_labels=True</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/drawing/nx_pylab.html#draw_networkx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.drawing.nx_pylab.draw_networkx" title="Permalink to this definition">¶</a></dt>
 <dd><p>Draw the graph G using Matplotlib.</p>
 <p>Draw the graph with Matplotlib with options for node positions,
 labeling, titles, and many other drawing features.
@@ -205,6 +205,10 @@ See draw() for simple drawing without labels or axes.</p>
 <div><p>A dictionary with nodes as keys and positions as values.
 If not specified a spring layout positioning will be computed.
 See networkx.layout for functions that compute node positions.</p>
+</div></blockquote>
+<p><strong>arrows</strong> : bool, optional (default=True)</p>
+<blockquote>
+<div><p>For directed graphs, if True draw arrowheads.</p>
 </div></blockquote>
 <p><strong>with_labels</strong> :  bool, optional (default=True)</p>
 <blockquote>
@@ -311,6 +315,11 @@ colors using the edge_cmap and edge_vmin,edge_vmax parameters.</p>
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="networkx.drawing.nx_pylab.draw.html#networkx.drawing.nx_pylab.draw" title="networkx.drawing.nx_pylab.draw"><code class="xref py py-obj docutils literal"><span class="pre">draw</span></code></a>, <a class="reference internal" href="networkx.drawing.nx_pylab.draw_networkx_nodes.html#networkx.drawing.nx_pylab.draw_networkx_nodes" title="networkx.drawing.nx_pylab.draw_networkx_nodes"><code class="xref py py-obj docutils literal"><span class="pre">draw_networkx_nodes</span></code></a>, <a class="reference internal" href="networkx.drawing.nx_pylab.draw_networkx_edges.html#networkx.drawing.nx_pylab.draw_networkx_edges" title="networkx.drawing.nx_pylab.draw_networkx_edges"><code class="xref py py-obj docutils literal"><span class="pre">draw_networkx_edges</span></code></a>, <a class="reference internal" href="networkx.drawing.nx_pylab.draw_networkx_labels.html#networkx.drawing.nx_pylab.draw_networkx_labels" title="networkx.drawing.nx_pylab.draw_networkx_labels"><code class="xref py py-obj docutils literal"><span class="pre">draw_networkx_labels</span></code></a>, <a class="reference internal" href="networkx.drawing.nx_pylab.draw_networkx_edge_labels.html#networkx.drawing.nx_pylab.draw_networkx_edge_labels" title="networkx.drawing.nx_pylab.draw_networkx_edge_labels"><code class="xref py py-obj docutils literal"><span class="pre">draw_networkx_edge_labels</span></code></a></p>
 </div>
+<p class="rubric">Notes</p>
+<p>For directed graphs, &#8220;arrows&#8221; (actually just thicker stubs) are drawn
+at the head end.  Arrows can be turned off with keyword arrows=False.
+Yes, it is ugly but drawing proper arrows with Matplotlib this
+way is tricky.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">dodecahedral_graph</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
@@ -346,7 +355,7 @@ colors using the edge_cmap and edge_vmin,edge_vmax parameters.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -366,7 +375,7 @@ colors using the edge_cmap and edge_vmin,edge_vmax parameters.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

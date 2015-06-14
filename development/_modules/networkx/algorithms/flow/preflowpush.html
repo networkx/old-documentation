@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.flow.preflowpush &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>networkx.algorithms.flow.preflowpush &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../../../index.html"/>
         <link rel="up" title="Module code" href="../../../index.html"/> 
 
   
@@ -282,7 +282,7 @@
             <span class="n">push</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">flow</span><span class="p">)</span>
 
     <span class="c"># Partition nodes into levels.</span>
-    <span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="n">Level</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>
+    <span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="n">Level</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">n</span><span class="p">)]</span>
     <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">R</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">u</span> <span class="o">!=</span> <span class="n">s</span> <span class="ow">and</span> <span class="n">u</span> <span class="o">!=</span> <span class="n">t</span><span class="p">:</span>
             <span class="n">level</span> <span class="o">=</span> <span class="n">levels</span><span class="p">[</span><span class="n">R_node</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="s">&#39;height&#39;</span><span class="p">]]</span>
@@ -613,7 +613,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -633,7 +633,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

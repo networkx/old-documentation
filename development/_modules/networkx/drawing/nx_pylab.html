@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.drawing.nx_pylab &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>networkx.drawing.nx_pylab &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -317,7 +317,7 @@
     <span class="k">return</span>
 
 </div>
-<div class="viewcode-block" id="draw_networkx"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pylab.draw_networkx.html#networkx.drawing.nx_pylab.draw_networkx">[docs]</a><span class="k">def</span> <span class="nf">draw_networkx</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
+<div class="viewcode-block" id="draw_networkx"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.nx_pylab.draw_networkx.html#networkx.drawing.nx_pylab.draw_networkx">[docs]</a><span class="k">def</span> <span class="nf">draw_networkx</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">arrows</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Draw the graph G using Matplotlib.</span>
 
 <span class="sd">    Draw the graph with Matplotlib with options for node positions,</span>
@@ -333,6 +333,9 @@
 <span class="sd">       A dictionary with nodes as keys and positions as values.</span>
 <span class="sd">       If not specified a spring layout positioning will be computed.</span>
 <span class="sd">       See networkx.layout for functions that compute node positions.</span>
+
+<span class="sd">    arrows : bool, optional (default=True)</span>
+<span class="sd">       For directed graphs, if True draw arrowheads.</span>
 
 <span class="sd">    with_labels :  bool, optional (default=True)</span>
 <span class="sd">       Set to True to draw labels on the nodes.</span>
@@ -409,6 +412,13 @@
 <span class="sd">    label : string, optional</span>
 <span class="sd">        Label for graph legend</span>
 
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    For directed graphs, &quot;arrows&quot; (actually just thicker stubs) are drawn</span>
+<span class="sd">    at the head end.  Arrows can be turned off with keyword arrows=False.</span>
+<span class="sd">    Yes, it is ugly but drawing proper arrows with Matplotlib this</span>
+<span class="sd">    way is tricky.</span>
+
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; G=nx.dodecahedral_graph()</span>
@@ -441,7 +451,7 @@
         <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">drawing</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>  <span class="c"># default to spring layout</span>
 
     <span class="n">node_collection</span> <span class="o">=</span> <span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-    <span class="n">edge_collection</span> <span class="o">=</span> <span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+    <span class="n">edge_collection</span> <span class="o">=</span> <span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">arrows</span><span class="o">=</span><span class="n">arrows</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">with_labels</span><span class="p">:</span>
         <span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">draw_if_interactive</span><span class="p">()</span>
@@ -1178,7 +1188,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -1198,7 +1208,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

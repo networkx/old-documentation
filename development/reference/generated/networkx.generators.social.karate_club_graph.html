@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>karate_club_graph &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>karate_club_graph &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
         <link rel="next" title="davis_southern_women_graph" href="networkx.generators.social.davis_southern_women_graph.html"/>
         <link rel="prev" title="general_random_intersection_graph" href="networkx.generators.intersection.general_random_intersection_graph.html"/> 
@@ -188,23 +188,36 @@
 <dl class="function">
 <dt id="networkx.generators.social.karate_club_graph">
 <code class="descname">karate_club_graph</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/generators/social.html#karate_club_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.social.karate_club_graph" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return Zachary&#8217;s Karate club graph.</p>
+<dd><p>Return Zachary&#8217;s Karate Club graph.</p>
+<p>Each node in the returned graph has a node attribute <code class="docutils literal"><span class="pre">'club'</span></code> that
+indicates the name of the club to which the member represented by that node
+belongs, either <code class="docutils literal"><span class="pre">'Mr.</span> <span class="pre">Hi'</span></code> or <code class="docutils literal"><span class="pre">'Officer'</span></code>.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r374" rules="none">
+<table class="docutils citation" frame="void" id="r408" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R374]</a></td><td>Zachary W. 
-An information flow model for conflict and fission in small groups.
-Journal of Anthropological Research, 33, 452-473, (1977).</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[R408]</a></td><td>Zachary, Wayne W.
+&#8220;An Information Flow Model for Conflict and Fission in Small Groups.&#8221;
+<em>Journal of Anthropological Research</em>, 33, 452&#8211;473, (1977).</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r375" rules="none">
+<table class="docutils citation" frame="void" id="r409" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R375]</a></td><td>Data file from:
+<tr><td class="label"><a class="fn-backref" href="#id2">[R409]</a></td><td>Data file from:
 <a class="reference external" href="http://vlado.fmf.uni-lj.si/pub/networks/data/Ucinet/UciData.htm">http://vlado.fmf.uni-lj.si/pub/networks/data/Ucinet/UciData.htm</a></td></tr>
 </tbody>
 </table>
+<p class="rubric">Examples</p>
+<p>To get the name of the club to which a node belongs:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">karate_club_graph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="s">&#39;club&#39;</span><span class="p">]</span>
+<span class="go">&#39;Mr. Hi&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="mi">9</span><span class="p">][</span><span class="s">&#39;club&#39;</span><span class="p">]</span>
+<span class="go">&#39;Officer&#39;</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -228,7 +241,7 @@ Journal of Anthropological Research, 33, 452-473, (1977).</td></tr>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -248,7 +261,7 @@ Journal of Anthropological Research, 33, 452-473, (1977).</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

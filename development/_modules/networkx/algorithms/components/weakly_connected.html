@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.components.weakly_connected &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>networkx.algorithms.components.weakly_connected &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../../../index.html"/>
         <link rel="up" title="Module code" href="../../../index.html"/> 
 
   
@@ -190,31 +190,90 @@
 
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
 <span class="kn">from</span> <span class="nn">networkx.utils.decorators</span> <span class="kn">import</span> <span class="n">not_implemented_for</span>
+
 <span class="n">__authors__</span> <span class="o">=</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">&#39;Aric Hagberg (hagberg@lanl.gov)&#39;</span>
                          <span class="s">&#39;Christopher Ellison&#39;</span><span class="p">])</span>
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;number_weakly_connected_components&#39;</span><span class="p">,</span>
-           <span class="s">&#39;weakly_connected_components&#39;</span><span class="p">,</span>
-           <span class="s">&#39;weakly_connected_component_subgraphs&#39;</span><span class="p">,</span>
-           <span class="s">&#39;is_weakly_connected&#39;</span>
-           <span class="p">]</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&#39;number_weakly_connected_components&#39;</span><span class="p">,</span>
+    <span class="s">&#39;weakly_connected_components&#39;</span><span class="p">,</span>
+    <span class="s">&#39;weakly_connected_component_subgraphs&#39;</span><span class="p">,</span>
+    <span class="s">&#39;is_weakly_connected&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
 
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;undirected&#39;</span><span class="p">)</span>
 <div class="viewcode-block" id="weakly_connected_components"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.components.weakly_connected.weakly_connected_components.html#networkx.algorithms.components.weakly_connected.weakly_connected_components">[docs]</a><span class="k">def</span> <span class="nf">weakly_connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generate weakly connected components of G.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : NetworkX graph</span>
+<span class="sd">        A directed graph</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    comp : generator of sets</span>
+<span class="sd">        A generator of sets of nodes, one for each weakly connected</span>
+<span class="sd">        component of G.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Generate a sorted list of weakly connected components, largest first.</span>
+
+<span class="sd">    &gt;&gt;&gt; G = nx.path_graph(4, create_using=nx.DiGraph())</span>
+<span class="sd">    &gt;&gt;&gt; G.add_path([10, 11, 12])</span>
+<span class="sd">    &gt;&gt;&gt; [len(c) for c in sorted(nx.weakly_connected_components(G),</span>
+<span class="sd">    ...                         key=len, reverse=True)]</span>
+<span class="sd">    [4, 3]</span>
+
+<span class="sd">    If you only want the largest component, it&#39;s more efficient to</span>
+<span class="sd">    use max instead of sort.</span>
+
+<span class="sd">    &gt;&gt;&gt; largest_cc = max(nx.weakly_connected_components(G), key=len)</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    strongly_connected_components</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    For directed graphs only.</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">seen</span><span class="o">=</span><span class="p">{}</span>
+    <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
-            <span class="n">c</span><span class="o">=</span><span class="n">_single_source_shortest_unipath_length</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
-            <span class="k">yield</span> <span class="nb">list</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">_plain_bfs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+            <span class="k">yield</span> <span class="n">c</span>
             <span class="n">seen</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
 </div>
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;undirected&#39;</span><span class="p">)</span>
 <div class="viewcode-block" id="number_weakly_connected_components"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.components.weakly_connected.number_weakly_connected_components.html#networkx.algorithms.components.weakly_connected.number_weakly_connected_components">[docs]</a><span class="k">def</span> <span class="nf">number_weakly_connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return the number of connected components in G.</span>
+    <span class="sd">&quot;&quot;&quot;Return the number of weakly connected components in G.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : NetworkX graph</span>
+<span class="sd">        A directed graph.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    n : integer</span>
+<span class="sd">        Number of weakly connected components</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    connected_components</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
 <span class="sd">    For directed graphs only.</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">weakly_connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">)))</span>
+
 </div>
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;undirected&#39;</span><span class="p">)</span>
 <div class="viewcode-block" id="weakly_connected_component_subgraphs"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.components.weakly_connected.weakly_connected_component_subgraphs.html#networkx.algorithms.components.weakly_connected.weakly_connected_component_subgraphs">[docs]</a><span class="k">def</span> <span class="nf">weakly_connected_component_subgraphs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
@@ -222,18 +281,49 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    G : NetworkX Graph</span>
-<span class="sd">       A directed graph.</span>
+<span class="sd">    G : NetworkX graph</span>
+<span class="sd">        A directed graph.</span>
 
-<span class="sd">    copy : bool</span>
-<span class="sd">        If copy is True, graph, node, and edge attributes are copied to the</span>
-<span class="sd">        subgraphs.</span>
+<span class="sd">    copy: bool (default=True)</span>
+<span class="sd">        If True make a copy of the graph attributes</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    comp : generator</span>
+<span class="sd">        A generator of graphs, one for each weakly connected component of G.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Generate a sorted list of weakly connected components, largest first.</span>
+
+<span class="sd">    &gt;&gt;&gt; G = nx.path_graph(4, create_using=nx.DiGraph())</span>
+<span class="sd">    &gt;&gt;&gt; G.add_path([10, 11, 12])</span>
+<span class="sd">    &gt;&gt;&gt; [len(c) for c in sorted(nx.weakly_connected_component_subgraphs(G),</span>
+<span class="sd">    ...                         key=len, reverse=True)]</span>
+<span class="sd">    [4, 3]</span>
+
+<span class="sd">    If you only want the largest component, it&#39;s more efficient to</span>
+<span class="sd">    use max instead of sort.</span>
+
+<span class="sd">    &gt;&gt;&gt; Gc = max(nx.weakly_connected_component_subgraphs(G), key=len)</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    strongly_connected_components</span>
+<span class="sd">    connected_components</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    For directed graphs only.</span>
+<span class="sd">    Graph, node, and edge attributes are copied to the subgraphs by default.</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">comp</span> <span class="ow">in</span> <span class="n">weakly_connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">copy</span><span class="p">:</span>
             <span class="k">yield</span> <span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">comp</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">yield</span> <span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">comp</span><span class="p">)</span>
+
 </div>
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;undirected&#39;</span><span class="p">)</span>
 <div class="viewcode-block" id="is_weakly_connected"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.components.weakly_connected.is_weakly_connected.html#networkx.algorithms.components.weakly_connected.is_weakly_connected">[docs]</a><span class="k">def</span> <span class="nf">is_weakly_connected</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
@@ -245,12 +335,12 @@
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    G : NetworkX Graph</span>
-<span class="sd">       A directed graph.</span>
+<span class="sd">        A directed graph.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    connected : bool</span>
-<span class="sd">      True if the graph is weakly connected, False otherwise.</span>
+<span class="sd">        True if the graph is weakly connected, False otherwise.</span>
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
@@ -261,53 +351,37 @@
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    For directed graphs only.</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXPointlessConcept</span><span class="p">(</span>
             <span class="sd">&quot;&quot;&quot;Connectivity is undefined for the null graph.&quot;&quot;&quot;</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">weakly_connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">weakly_connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
 </div>
-<span class="k">def</span> <span class="nf">_single_source_shortest_unipath_length</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">source</span><span class="p">,</span><span class="n">cutoff</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Compute the shortest path lengths from source to all reachable nodes.</span>
+<span class="k">def</span> <span class="nf">_plain_bfs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A fast BFS node generator</span>
 
 <span class="sd">    The direction of the edge between nodes is ignored.</span>
 
 <span class="sd">    For directed graphs only.</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    G : NetworkX graph</span>
-
-<span class="sd">    source : node</span>
-<span class="sd">       Starting node for path</span>
-
-<span class="sd">    cutoff : integer, optional</span>
-<span class="sd">        Depth to stop the search. Only paths of length &lt;= cutoff are returned.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    lengths : dictionary</span>
-<span class="sd">        Dictionary of shortest path lengths keyed by target.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c"># namespace speedups</span>
     <span class="n">Gsucc</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">succ</span>
     <span class="n">Gpred</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">pred</span>
 
-    <span class="n">seen</span><span class="o">=</span><span class="p">{}</span>                  <span class="c"># level (number of hops) when seen in BFS</span>
-    <span class="n">level</span><span class="o">=</span><span class="mi">0</span>                  <span class="c"># the current level</span>
-    <span class="n">nextlevel</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">source</span><span class="p">])</span> <span class="c"># set of nodes to check at next level</span>
+    <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">nextlevel</span> <span class="o">=</span> <span class="p">{</span><span class="n">source</span><span class="p">}</span>
     <span class="k">while</span> <span class="n">nextlevel</span><span class="p">:</span>
-        <span class="n">thislevel</span><span class="o">=</span><span class="n">nextlevel</span>  <span class="c"># advance to next level</span>
-        <span class="n">nextlevel</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>         <span class="c"># and start a new list (fringe)</span>
+        <span class="n">thislevel</span> <span class="o">=</span> <span class="n">nextlevel</span>
+        <span class="n">nextlevel</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">thislevel</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
-                <span class="n">seen</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">=</span><span class="n">level</span> <span class="c"># set the level of vertex v</span>
-                <span class="n">nextlevel</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">Gsucc</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="c"># add successors of v</span>
-                <span class="n">nextlevel</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">Gpred</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="c"># add predecessors of v</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">cutoff</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">cutoff</span> <span class="o">&lt;=</span> <span class="n">level</span><span class="p">):</span>  <span class="k">break</span>
-        <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="o">+</span><span class="mi">1</span>
-    <span class="k">return</span> <span class="n">seen</span>  <span class="c"># return all path lengths as dictionary</span>
+                <span class="k">yield</span> <span class="n">v</span>
+                <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+                <span class="n">nextlevel</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">Gsucc</span><span class="p">[</span><span class="n">v</span><span class="p">])</span>
+                <span class="n">nextlevel</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">Gpred</span><span class="p">[</span><span class="n">v</span><span class="p">])</span>
 </pre></div>
 
           </div>
@@ -319,7 +393,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -339,7 +413,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>scale_free_graph &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>scale_free_graph &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
         <link rel="next" title="random_geometric_graph" href="networkx.generators.geometric.random_geometric_graph.html"/>
         <link rel="prev" title="gnc_graph" href="networkx.generators.directed.gnc_graph.html"/> 
@@ -188,7 +188,7 @@
 <dl class="function">
 <dt id="networkx.generators.directed.scale_free_graph">
 <code class="descname">scale_free_graph</code><span class="sig-paren">(</span><em>n</em>, <em>alpha=0.41</em>, <em>beta=0.54</em>, <em>gamma=0.05</em>, <em>delta_in=0.2</em>, <em>delta_out=0</em>, <em>create_using=None</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/generators/directed.html#scale_free_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.directed.scale_free_graph" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a scale free directed graph.</p>
+<dd><p>Returns a scale-free directed graph.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -235,19 +235,20 @@ chosen randomly according to the out-degree distribution.</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>The sum of alpha, beta, and gamma must be 1.</p>
+<p>The sum of <code class="docutils literal"><span class="pre">alpha</span></code>, <code class="docutils literal"><span class="pre">beta</span></code>, and <code class="docutils literal"><span class="pre">gamma</span></code> must be 1.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r345" rules="none">
+<table class="docutils citation" frame="void" id="r377" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R345]</a></td><td>B. Bollob{&#8216;a}s, C. Borgs, J. Chayes, and O. Riordan,
+<tr><td class="label"><a class="fn-backref" href="#id1">[R377]</a></td><td>B. Bollobás, C. Borgs, J. Chayes, and O. Riordan,
 Directed scale-free graphs,
-Proceedings of the fourteenth annual ACM-SIAM symposium on
-Discrete algorithms, 132&#8211;139, 2003.</td></tr>
+Proceedings of the fourteenth annual ACM-SIAM Symposium on
+Discrete Algorithms, 132&#8211;139, 2003.</td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">scale_free_graph</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<p>Create a scale-free graph on one hundred nodes:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">scale_free_graph</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -273,7 +274,7 @@ Discrete algorithms, 132&#8211;139, 2003.</td></tr>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -293,7 +294,7 @@ Discrete algorithms, 132&#8211;139, 2003.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

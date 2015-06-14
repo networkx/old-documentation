@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>condensation &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>condensation &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../index.html"/>
         <link rel="up" title="Components" href="../algorithms.component.html"/>
         <link rel="next" title="is_weakly_connected" href="networkx.algorithms.components.weakly_connected.is_weakly_connected.html"/>
         <link rel="prev" title="kosaraju_strongly_connected_components" href="networkx.algorithms.components.strongly_connected.kosaraju_strongly_connected_components.html"/> 
@@ -216,12 +216,15 @@ corresponding to the index of the component in the list of
 strongly connected components of G. C has a graph attribute named
 &#8216;mapping&#8217; with a dictionary mapping the original nodes to the
 nodes in C to which they belong. Each node in C also has a node
-attribute &#8216;members&#8217; with the list of original nodes in G that
+attribute &#8216;members&#8217; with the set of original nodes in G that
 form the SCC that the node in C represents.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><strong>NetworkXNotImplemented: If G is not directed</strong></p>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXNotImplemented:</strong></p>
+<blockquote class="last">
+<div><p>If G is not directed</p>
+</div></blockquote>
 </td>
 </tr>
 </tbody>
@@ -252,7 +255,7 @@ the resulting graph is a directed acyclic graph.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -272,7 +275,7 @@ the resulting graph is a directed acyclic graph.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

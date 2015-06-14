@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.connectivity.kcutsets &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>networkx.algorithms.connectivity.kcutsets &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../../../index.html"/>
         <link rel="up" title="Module code" href="../../../index.html"/> 
 
   
@@ -180,7 +180,7 @@
   <h1>Source code for networkx.algorithms.connectivity.kcutsets</h1><div class="highlight"><pre>
 <span class="c"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Kanevsky all minimum node k cutsets</span>
+<span class="sd">Kanevsky all minimum node k cutsets algorithm.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">itemgetter</span>
 
@@ -191,7 +191,6 @@
     <span class="n">edmonds_karp</span><span class="p">,</span>
     <span class="n">shortest_augmenting_path</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="c"># Define the default maximum flow function.</span>
 <span class="n">default_flow_func</span> <span class="o">=</span> <span class="n">edmonds_karp</span>
 
 
@@ -288,7 +287,7 @@
     <span class="c"># step 2: </span>
     <span class="c"># Find k nodes with top degree, call it X:</span>
     <span class="n">degree</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">degree</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)[:</span><span class="n">k</span><span class="p">])</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="p">{</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">degree</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)[:</span><span class="n">k</span><span class="p">]}</span>
     <span class="c"># Check if X is a k-node-cutset</span>
     <span class="k">if</span> <span class="n">_is_separating_set</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
         <span class="n">seen</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -316,18 +315,18 @@
                 <span class="n">cmap</span> <span class="o">=</span> <span class="n">L</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s">&#39;mapping&#39;</span><span class="p">]</span>
                 <span class="c"># step 7: Compute antichains of L; they map to closed sets in H</span>
                 <span class="c"># Any edge in H that links a closed set is part of a cutset</span>
-                <span class="k">for</span> <span class="n">antichain</span> <span class="ow">in</span> <span class="n">antichain_generator</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">antichain</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">antichains</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
                     <span class="c"># Nodes in an antichain of the condensation graph of</span>
                     <span class="c"># the residual network map to a closed set of nodes that</span>
                     <span class="c"># define a node partition of the auxiliary digraph H.</span>
-                    <span class="n">S</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">scc</span> <span class="ow">in</span> <span class="n">cmap</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">scc</span> <span class="ow">in</span> <span class="n">antichain</span><span class="p">)</span>
+                    <span class="n">S</span> <span class="o">=</span> <span class="p">{</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">scc</span> <span class="ow">in</span> <span class="n">cmap</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">scc</span> <span class="ow">in</span> <span class="n">antichain</span><span class="p">}</span>
                     <span class="c"># Find the cutset that links the node partition (S,~S) in H</span>
                     <span class="n">cutset</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
                     <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">S</span><span class="p">:</span>
                         <span class="n">cutset</span><span class="o">.</span><span class="n">update</span><span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">H</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="k">if</span> <span class="n">w</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">S</span><span class="p">)</span>
                     <span class="c"># The edges in H that form the cutset are internal edges</span>
                     <span class="c"># (ie edges that represent a node of the original graph G)</span>
-                    <span class="n">node_cut</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">H</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s">&#39;id&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">cutset</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">edge</span><span class="p">)</span>
+                    <span class="n">node_cut</span> <span class="o">=</span> <span class="p">{</span><span class="n">H</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s">&#39;id&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">cutset</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">edge</span><span class="p">}</span>
 
                     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">node_cut</span><span class="p">)</span> <span class="o">==</span> <span class="n">k</span><span class="p">:</span>
                         <span class="k">if</span> <span class="n">node_cut</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
@@ -352,43 +351,6 @@
                 <span class="n">R</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">saturated_edges</span><span class="p">)</span>
 
 </div>
-<span class="k">def</span> <span class="nf">transitive_closure</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Based on http://www.ics.uci.edu/~eppstein/PADS/PartialOrder.py&quot;&quot;&quot;</span>
-    <span class="n">TC</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
-    <span class="n">TC</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes_iter</span><span class="p">())</span>
-    <span class="n">TC</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges_iter</span><span class="p">())</span>
-    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-        <span class="n">TC</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">dfs_preorder_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">v</span><span class="p">)</span>
-                          <span class="k">if</span> <span class="n">v</span> <span class="o">!=</span> <span class="n">u</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">TC</span>
-
-   
-<span class="k">def</span> <span class="nf">antichain_generator</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Generates antichains from a DAG.</span>
-
-<span class="sd">    This function was originally developed by Peter Jipsen and Franco Saliola</span>
-<span class="sd">    for the SAGE project. It&#39;s included in NetworkX with permission from the </span>
-<span class="sd">    authors. Original SAGE code at:</span>
-
-<span class="sd">    https://sage.informatik.uni-goettingen.de/src/combinat/posets/hasse_diagram.py</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c"># Based on SAGE combinat.posets.hasse_diagram.py</span>
-    <span class="n">TC</span> <span class="o">=</span> <span class="n">transitive_closure</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-    <span class="n">antichains_queues</span> <span class="o">=</span> <span class="p">[([],</span> <span class="n">nx</span><span class="o">.</span><span class="n">topological_sort</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">))]</span>
-    <span class="k">while</span> <span class="n">antichains_queues</span><span class="p">:</span>
-        <span class="p">(</span><span class="n">antichain</span><span class="p">,</span> <span class="n">queue</span><span class="p">)</span> <span class="o">=</span> <span class="n">antichains_queues</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-        <span class="c"># Invariant:</span>
-        <span class="c">#  - the elements of antichain are independent</span>
-        <span class="c">#  - the elements of queue are independent from those of antichain</span>
-        <span class="k">yield</span> <span class="n">antichain</span>
-        <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-            <span class="n">new_antichain</span> <span class="o">=</span> <span class="n">antichain</span> <span class="o">+</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
-            <span class="n">new_queue</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">queue</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">((</span><span class="n">t</span> <span class="ow">in</span> <span class="n">TC</span><span class="p">[</span><span class="n">x</span><span class="p">])</span> <span class="ow">or</span> <span class="p">(</span><span class="n">x</span> <span class="ow">in</span> <span class="n">TC</span><span class="p">[</span><span class="n">t</span><span class="p">]))]</span>
-            <span class="n">antichains_queues</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">new_antichain</span><span class="p">,</span> <span class="n">new_queue</span><span class="p">))</span>
-
-
 <span class="k">def</span> <span class="nf">_is_separating_set</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">cut</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Assumes that the input graph is connected&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cut</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
@@ -410,7 +372,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -430,7 +392,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

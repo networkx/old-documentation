@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.cycles &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>networkx.algorithms.cycles &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -307,8 +307,18 @@
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; G = nx.DiGraph([(0, 0), (0, 1), (0, 2), (1, 2), (2, 0), (2, 1), (2, 2)])</span>
-<span class="sd">    &gt;&gt;&gt; list(nx.simple_cycles(G))</span>
-<span class="sd">    [[2], [2, 1], [2, 0], [2, 0, 1], [0]]</span>
+<span class="sd">    &gt;&gt;&gt; len(list(nx.simple_cycles(G)))</span>
+<span class="sd">    5</span>
+
+<span class="sd">    To filter the cycles so that they don&#39;t include certain nodes or edges,</span>
+<span class="sd">    copy your graph and eliminate those nodes or edges before calling</span>
+
+<span class="sd">    &gt;&gt;&gt; copyG = G.copy()</span>
+<span class="sd">    &gt;&gt;&gt; copyG.remove_nodes_from([1])</span>
+<span class="sd">    &gt;&gt;&gt; copyG.remove_edges_from([(0, 1)])</span>
+<span class="sd">    &gt;&gt;&gt; len(list(nx.simple_cycles(copyG)))</span>
+<span class="sd">    3</span>
+
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
@@ -316,15 +326,6 @@
 
 <span class="sd">    The time complexity is `O((n+e)(c+1))` for `n` nodes, `e` edges and `c`</span>
 <span class="sd">    elementary circuits.</span>
-
-<span class="sd">    To filter the cycles so that they don&#39;t include certain nodes or edges,</span>
-<span class="sd">    copy your graph and eliminate those nodes or edges before calling::</span>
-
-<span class="sd">        &gt;&gt;&gt; copyG = G.copy()</span>
-<span class="sd">        &gt;&gt;&gt; copyG.remove_nodes_from([1])</span>
-<span class="sd">        &gt;&gt;&gt; copyG.remove_edges_from([(0,1)])</span>
-<span class="sd">        &gt;&gt;&gt; list(nx.simple_cycles(copyG))</span>
-<span class="sd">        [[2], [2, 0], [0]]</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
@@ -652,7 +653,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -672,7 +673,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>biconnected_components &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>biconnected_components &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../index.html"/>
         <link rel="up" title="Components" href="../algorithms.component.html"/>
         <link rel="next" title="biconnected_component_edges" href="networkx.algorithms.components.biconnected.biconnected_component_edges.html"/>
         <link rel="prev" title="is_biconnected" href="networkx.algorithms.components.biconnected.is_biconnected.html"/> 
@@ -239,23 +239,39 @@ by the DFS we can obtain the biconnected components because all
 edges of a bicomponent will be traversed consecutively between
 articulation points.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r248" rules="none">
+<table class="docutils citation" frame="void" id="r272" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R248]</a></td><td>Hopcroft, J.; Tarjan, R. (1973).
+<tr><td class="label"><a class="fn-backref" href="#id1">[R272]</a></td><td>Hopcroft, J.; Tarjan, R. (1973).
 &#8220;Efficient algorithms for graph manipulation&#8221;.
 Communications of the ACM 16: 372–378. doi:10.1145/362248.362272</td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">barbell_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">lollipop_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">is_biconnected</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
 <span class="go">False</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">components</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">biconnected_components</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bicomponents</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">biconnected_components</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">bicomponents</span><span class="p">)</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">is_biconnected</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
 <span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">components</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">biconnected_components</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bicomponents</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">biconnected_components</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">bicomponents</span><span class="p">)</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<p>You can generate a sorted list of biconnected components, largest
+first, using sort.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">biconnected_components</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)]</span>
+<span class="go">[5, 2]</span>
+</pre></div>
+</div>
+<p>If you only want the largest connected component, it&#8217;s more
+efficient to use max instead of sort.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Gc</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">biconnected_components</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -281,7 +297,7 @@ Communications of the ACM 16: 372–378. doi:10.1145/362248.362272</td></tr>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -301,7 +317,7 @@ Communications of the ACM 16: 372–378. doi:10.1145/362248.362272</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

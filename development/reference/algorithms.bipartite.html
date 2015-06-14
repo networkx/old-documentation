@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Bipartite &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>Bipartite &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../index.html"/>
         <link rel="up" title="Algorithms" href="algorithms.html"/>
         <link rel="next" title="is_bipartite" href="generated/networkx.algorithms.bipartite.basic.is_bipartite.html"/>
         <link rel="prev" title="attribute_mixing_dict" href="generated/networkx.algorithms.assortativity.attribute_mixing_dict.html"/> 
@@ -290,9 +290,6 @@ container with all nodes that belong to one node set:</p>
 <tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.basic.degrees.html#networkx.algorithms.bipartite.basic.degrees" title="networkx.algorithms.bipartite.basic.degrees"><code class="xref py py-obj docutils literal"><span class="pre">degrees</span></code></a>(B,&nbsp;nodes[,&nbsp;weight])</td>
 <td>Return the degrees of the two node sets in the bipartite graph B.</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">biadjacency_matrix</span></code></td>
-<td></td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -332,6 +329,23 @@ vertices in both the left and right vertex sets.</p>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.matching.to_vertex_cover.html#networkx.algorithms.bipartite.matching.to_vertex_cover" title="networkx.algorithms.bipartite.matching.to_vertex_cover"><code class="xref py py-obj docutils literal"><span class="pre">to_vertex_cover</span></code></a>(G,&nbsp;matching)</td>
 <td>Returns the minimum vertex cover corresponding to the given maximum matching of the bipartite graph <span class="math">\(G\)</span>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-networkx.algorithms.bipartite.matrix">
+<span id="matrix"></span><h2>Matrix<a class="headerlink" href="#module-networkx.algorithms.bipartite.matrix" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.matrix.biadjacency_matrix.html#networkx.algorithms.bipartite.matrix.biadjacency_matrix" title="networkx.algorithms.bipartite.matrix.biadjacency_matrix"><code class="xref py py-obj docutils literal"><span class="pre">biadjacency_matrix</span></code></a>(G,&nbsp;row_order[,&nbsp;...])</td>
+<td>Return the biadjacency matrix of the bipartite graph G.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.matrix.from_biadjacency_matrix.html#networkx.algorithms.bipartite.matrix.from_biadjacency_matrix" title="networkx.algorithms.bipartite.matrix.from_biadjacency_matrix"><code class="xref py py-obj docutils literal"><span class="pre">from_biadjacency_matrix</span></code></a>(A[,&nbsp;create_using,&nbsp;...])</td>
+<td>Creates a new bipartite graph from a biadjacency matrix given as a  SciPy sparse matrix.</td>
 </tr>
 </tbody>
 </table>
@@ -411,7 +425,7 @@ vertices in both the left and right vertex sets.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.redundancy.node_redundancy.html#networkx.algorithms.bipartite.redundancy.node_redundancy" title="networkx.algorithms.bipartite.redundancy.node_redundancy"><code class="xref py py-obj docutils literal"><span class="pre">node_redundancy</span></code></a>(G[,&nbsp;nodes])</td>
-<td>Compute bipartite node redundancy coefficient.</td>
+<td>Computes the node redundancy coefficients for the nodes in the bipartite graph <code class="docutils literal"><span class="pre">G</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -493,7 +507,7 @@ vertices in both the left and right vertex sets.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -513,7 +527,7 @@ vertices in both the left and right vertex sets.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

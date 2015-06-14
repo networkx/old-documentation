@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>shortest_simple_paths &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>shortest_simple_paths &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../index.html"/>
         <link rel="up" title="Simple Paths" href="../algorithms.simple_paths.html"/>
         <link rel="next" title="Swap" href="../algorithms.swap.html"/>
         <link rel="prev" title="all_simple_paths" href="networkx.algorithms.simple_paths.all_simple_paths.html"/> 
@@ -245,17 +245,35 @@ shortest to longest.</p>
 <p class="last"><code class="xref py py-obj docutils literal"><span class="pre">all_shortest_paths</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">shortest_path</span></code>, <a class="reference internal" href="networkx.algorithms.simple_paths.all_simple_paths.html#networkx.algorithms.simple_paths.all_simple_paths" title="networkx.algorithms.simple_paths.all_simple_paths"><code class="xref py py-obj docutils literal"><span class="pre">all_simple_paths</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>This procedure is based on algorithm by Jin Y. Yen <a class="reference internal" href="#r324" id="id1">[R324]</a>.  Finding
+<p>This procedure is based on algorithm by Jin Y. Yen <a class="reference internal" href="#r354" id="id1">[R354]</a>.  Finding
 the first K paths requires O(KN^3) operations.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r324" rules="none">
+<table class="docutils citation" frame="void" id="r354" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R324]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Jin Y. Yen, &#8220;Finding the K Shortest Loopless Paths in a
+<tr><td class="label">[R354]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Jin Y. Yen, &#8220;Finding the K Shortest Loopless Paths in a
 Network&#8221;, Management Science, Vol. 17, No. 11, Theory Series
 (Jul., 1971), pp. 712-716.</td></tr>
 </tbody>
 </table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">cycle_graph</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paths</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">shortest_simple_paths</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span>
+<span class="go">[[0, 1, 2, 3], [0, 6, 5, 4, 3]]</span>
+</pre></div>
+</div>
+<p>You can use this function to efficiently compute the k shortest/best
+paths between two nodes.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">islice</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">k_shortest_paths</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">islice</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">shortest_simple_paths</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">),</span> <span class="n">k</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">k_shortest_paths</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="go">[0, 1, 2, 3]</span>
+<span class="go">[0, 6, 5, 4, 3]</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -279,7 +297,7 @@ Network&#8221;, Management Science, Vol. 17, No. 11, Theory Series
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -299,7 +317,7 @@ Network&#8221;, Management Science, Vol. 17, No. 11, Theory Series
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>dense_gnm_random_graph &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>dense_gnm_random_graph &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
         <link rel="next" title="gnm_random_graph" href="networkx.generators.random_graphs.gnm_random_graph.html"/>
         <link rel="prev" title="gnp_random_graph" href="networkx.generators.random_graphs.gnp_random_graph.html"/> 
@@ -188,10 +188,11 @@
 <dl class="function">
 <dt id="networkx.generators.random_graphs.dense_gnm_random_graph">
 <code class="descname">dense_gnm_random_graph</code><span class="sig-paren">(</span><em>n</em>, <em>m</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/generators/random_graphs.html#dense_gnm_random_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.random_graphs.dense_gnm_random_graph" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the random graph G_{n,m}.</p>
-<p>Gives a graph picked randomly out of the set of all graphs
-with n nodes and m edges.
-This algorithm should be faster than gnm_random_graph for dense graphs.</p>
+<dd><p>Returns a <span class="math">\(G_{n,m}\)</span> random graph.</p>
+<p>In the <span class="math">\(G_{n,m}\)</span> model, a graph is chosen uniformly at random from the set
+of all graphs with <span class="math">\(n\)</span> nodes and <span class="math">\(m\)</span> edges.</p>
+<p>This algorithm should be faster than <a class="reference internal" href="networkx.generators.random_graphs.gnm_random_graph.html#networkx.generators.random_graphs.gnm_random_graph" title="networkx.generators.random_graphs.gnm_random_graph"><code class="xref py py-func docutils literal"><span class="pre">gnm_random_graph()</span></code></a> for dense
+graphs.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -219,12 +220,12 @@ This algorithm should be faster than gnm_random_graph for dense graphs.</p>
 <p class="rubric">Notes</p>
 <p>Algorithm by Keith M. Briggs Mar 31, 2006.
 Inspired by Knuth&#8217;s Algorithm S (Selection sampling technique),
-in section 3.4.2 of <a class="reference internal" href="#r361" id="id1">[R361]</a>.</p>
+in section 3.4.2 of <a class="reference internal" href="#r394" id="id1">[R394]</a>.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r361" rules="none">
+<table class="docutils citation" frame="void" id="r394" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R361]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Donald E. Knuth, The Art of Computer Programming,
+<tr><td class="label">[R394]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Donald E. Knuth, The Art of Computer Programming,
 Volume 2/Seminumerical algorithms, Third Edition, Addison-Wesley, 1997.</td></tr>
 </tbody>
 </table>
@@ -251,7 +252,7 @@ Volume 2/Seminumerical algorithms, Third Edition, Addison-Wesley, 1997.</td></tr
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -271,7 +272,7 @@ Volume 2/Seminumerical algorithms, Third Edition, Addison-Wesley, 1997.</td></tr
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

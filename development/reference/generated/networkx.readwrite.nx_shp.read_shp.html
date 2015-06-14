@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>read_shp &mdash; NetworkX 2.0.dev20150502000011 documentation</title>
+  <title>read_shp &mdash; NetworkX 2.0.dev20150614000013 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150502000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150614000013 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150502000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20150614000013 documentation" href="../../index.html"/>
         <link rel="up" title="GIS Shapefile" href="../readwrite.nx_shp.html"/>
         <link rel="next" title="write_shp" href="networkx.readwrite.nx_shp.write_shp.html"/>
         <link rel="prev" title="write_shp" href="networkx.readwrite.nx_shp.write_shp.html"/> 
@@ -189,14 +189,14 @@
 <h1>read_shp<a class="headerlink" href="#read-shp" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.readwrite.nx_shp.read_shp">
-<code class="descname">read_shp</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/readwrite/nx_shp.html#read_shp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.readwrite.nx_shp.read_shp" title="Permalink to this definition">¶</a></dt>
+<code class="descname">read_shp</code><span class="sig-paren">(</span><em>path</em>, <em>simplify=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/readwrite/nx_shp.html#read_shp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.readwrite.nx_shp.read_shp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates a networkx.DiGraph from shapefiles. Point geometries are
 translated into nodes, lines into edges. Coordinate tuples are used as
 keys. Attributes are preserved, line geometries are simplified into start
 and end coordinates. Accepts a single shapefile or directory of many
 shapefiles.</p>
 <p>&#8220;The Esri Shapefile or simply a shapefile is a popular geospatial vector
-data format for geographic information systems software <a class="reference internal" href="#r386" id="id1">[R386]</a>.&#8221;</p>
+data format for geographic information systems software <a class="reference internal" href="#r420" id="id1">[R420]</a>.&#8221;</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -204,6 +204,13 @@ data format for geographic information systems software <a class="reference inte
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>path</strong> : file or string</p>
 <blockquote>
 <div><p>File, directory, or filename to read.</p>
+</div></blockquote>
+<p><strong>simplify:  bool</strong></p>
+<blockquote>
+<div><p>If <code class="docutils literal"><span class="pre">True</span></code>, simplify line geometries to start and end coordinates.
+If <code class="docutils literal"><span class="pre">False</span></code>, and line feature geometry has multiple segments, the 
+non-geometric attributes for that feature will be repeated for each 
+edge comprising that feature.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -213,10 +220,10 @@ data format for geographic information systems software <a class="reference inte
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r386" rules="none">
+<table class="docutils citation" frame="void" id="r420" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R386]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/Shapefile">http://en.wikipedia.org/wiki/Shapefile</a></td></tr>
+<tr><td class="label">[R420]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/Shapefile">http://en.wikipedia.org/wiki/Shapefile</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -246,7 +253,7 @@ data format for geographic information systems software <a class="reference inte
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014, NetworkX Developers.
-      Last updated on May 02, 2015.
+      Last updated on Jun 14, 2015.
     </p>
   </div>
 
@@ -266,7 +273,7 @@ data format for geographic information systems software <a class="reference inte
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150502000011',
+            VERSION:'2.0.dev20150614000013',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
