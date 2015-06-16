@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>current_flow_betweenness_centrality &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>current_flow_betweenness_centrality &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Centrality" href="../algorithms.centrality.html"/>
         <link rel="next" title="edge_current_flow_betweenness_centrality" href="networkx.algorithms.centrality.edge_current_flow_betweenness_centrality.html"/>
         <link rel="prev" title="current_flow_closeness_centrality" href="networkx.algorithms.centrality.current_flow_closeness_centrality.html"/> 
@@ -195,75 +195,63 @@
 model for information spreading in contrast to betweenness
 centrality which uses shortest paths.</p>
 <p>Current-flow betweenness centrality is also known as
-random-walk betweenness centrality <a class="reference internal" href="#r236" id="id1">[R236]</a>.</p>
+random-walk betweenness centrality <a class="footnote-reference" href="#id4" id="id1">[2]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
-<blockquote>
-<div><p>A NetworkX graph</p>
-</div></blockquote>
-<p><strong>normalized</strong> : bool, optional (default=True)</p>
-<blockquote>
-<div><p>If True the betweenness values are normalized by 2/[(n-1)(n-2)] where
-n is the number of nodes in G.</p>
-</div></blockquote>
-<p><strong>weight</strong> : string or None, optional (default=&#8217;weight&#8217;)</p>
-<blockquote>
-<div><p>Key for edge data used as the edge weight.
-If None, then use 1 as each edge weight.</p>
-</div></blockquote>
-<p><strong>dtype: data type (float)</strong></p>
-<blockquote>
-<div><p>Default data type for internal matrices.
-Set to np.float32 for lower memory consumption.</p>
-</div></blockquote>
-<p><strong>solver: string (default=&#8217;lu&#8217;)</strong></p>
-<blockquote>
-<div><p>Type of linear solver to use for computing the flow matrix.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>graph</em>) &#8211; A NetworkX graph</li>
+<li><strong>normalized</strong> (<em>bool, optional (default=True)</em>) &#8211; If True the betweenness values are normalized by 2/[(n-1)(n-2)] where
+n is the number of nodes in G.</li>
+<li><strong>weight</strong> (<em>string or None, optional (default=&#8217;weight&#8217;)</em>) &#8211; Key for edge data used as the edge weight.
+If None, then use 1 as each edge weight.</li>
+<li><strong>dtype</strong> (<em>data type (float)</em>) &#8211; Default data type for internal matrices.
+Set to np.float32 for lower memory consumption.</li>
+<li><strong>solver</strong> (<em>string (default=&#8217;lu&#8217;)</em>) &#8211; Type of linear solver to use for computing the flow matrix.
 Options are &#8220;full&#8221; (uses most memory), &#8220;lu&#8221; (recommended), and
-&#8220;cg&#8221; (uses least memory).</p>
-</div></blockquote>
+&#8220;cg&#8221; (uses least memory).</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>nodes</strong> : dictionary</p>
-<blockquote class="last">
-<div><p>Dictionary of nodes with betweenness centrality as the value.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>nodes</strong> &#8211;
+Dictionary of nodes with betweenness centrality as the value.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
 </td>
 </tr>
 </tbody>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.centrality.approximate_current_flow_betweenness_centrality.html#networkx.algorithms.centrality.approximate_current_flow_betweenness_centrality" title="networkx.algorithms.centrality.approximate_current_flow_betweenness_centrality"><code class="xref py py-obj docutils literal"><span class="pre">approximate_current_flow_betweenness_centrality</span></code></a>, <a class="reference internal" href="networkx.algorithms.centrality.betweenness_centrality.html#networkx.algorithms.centrality.betweenness_centrality" title="networkx.algorithms.centrality.betweenness_centrality"><code class="xref py py-obj docutils literal"><span class="pre">betweenness_centrality</span></code></a>, <a class="reference internal" href="networkx.algorithms.centrality.edge_betweenness_centrality.html#networkx.algorithms.centrality.edge_betweenness_centrality" title="networkx.algorithms.centrality.edge_betweenness_centrality"><code class="xref py py-obj docutils literal"><span class="pre">edge_betweenness_centrality</span></code></a>, <a class="reference internal" href="networkx.algorithms.centrality.edge_current_flow_betweenness_centrality.html#networkx.algorithms.centrality.edge_current_flow_betweenness_centrality" title="networkx.algorithms.centrality.edge_current_flow_betweenness_centrality"><code class="xref py py-obj docutils literal"><span class="pre">edge_current_flow_betweenness_centrality</span></code></a></p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.centrality.approximate_current_flow_betweenness_centrality.html#networkx.algorithms.centrality.approximate_current_flow_betweenness_centrality" title="networkx.algorithms.centrality.approximate_current_flow_betweenness_centrality"><code class="xref py py-func docutils literal"><span class="pre">approximate_current_flow_betweenness_centrality()</span></code></a>, <a class="reference internal" href="networkx.algorithms.centrality.betweenness_centrality.html#networkx.algorithms.centrality.betweenness_centrality" title="networkx.algorithms.centrality.betweenness_centrality"><code class="xref py py-func docutils literal"><span class="pre">betweenness_centrality()</span></code></a>, <a class="reference internal" href="networkx.algorithms.centrality.edge_betweenness_centrality.html#networkx.algorithms.centrality.edge_betweenness_centrality" title="networkx.algorithms.centrality.edge_betweenness_centrality"><code class="xref py py-func docutils literal"><span class="pre">edge_betweenness_centrality()</span></code></a>, <a class="reference internal" href="networkx.algorithms.centrality.edge_current_flow_betweenness_centrality.html#networkx.algorithms.centrality.edge_current_flow_betweenness_centrality" title="networkx.algorithms.centrality.edge_current_flow_betweenness_centrality"><code class="xref py py-func docutils literal"><span class="pre">edge_current_flow_betweenness_centrality()</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>Current-flow betweenness can be computed in <span class="math">\(O(I(n-1)+mn \log n)\)</span>
-time <a class="reference internal" href="#r235" id="id2">[R235]</a>, where <span class="math">\(I(n-1)\)</span> is the time needed to compute the
-inverse Laplacian.  For a full matrix this is <span class="math">\(O(n^3)\)</span> but using
-sparse methods you can achieve <span class="math">\(O(nm{\sqrt k})\)</span> where <span class="math">\(k\)</span> is the
+<p>Current-flow betweenness can be computed in <img class="math" src="../../_images/math/56e707ba6e44a046f707d20248195b0a100cf7da.png" alt="O(I(n-1)+mn \log n)" style="vertical-align: -4px"/>
+time <a class="footnote-reference" href="#id3" id="id2">[1]</a>, where <img class="math" src="../../_images/math/d944fca77640685dbde951ed29a2edfd875194f9.png" alt="I(n-1)" style="vertical-align: -4px"/> is the time needed to compute the
+inverse Laplacian.  For a full matrix this is <img class="math" src="../../_images/math/5213435fc1c1f2f84cdad47244b97a38d235431a.png" alt="O(n^3)" style="vertical-align: -4px"/> but using
+sparse methods you can achieve <img class="math" src="../../_images/math/f085cc17d0a9dd58c9df41ac85fad10ed282dd1c.png" alt="O(nm{\sqrt k})" style="vertical-align: -4px"/> where <img class="math" src="../../_images/math/c8ff6dc362a9a07153582909d5a26898fae59569.png" alt="k" style="vertical-align: 0px"/> is the
 Laplacian matrix condition number.</p>
-<p>The space required is <span class="math">\(O(nw)\)</span> where <span class="math">\(w\)</span> is the width of the sparse
-Laplacian matrix.  Worse case is <span class="math">\(w=n\)</span> for <span class="math">\(O(n^2)\)</span>.</p>
+<p>The space required is <img class="math" src="../../_images/math/7dfa048be9ed62f65e0459aeef8261d010b50859.png" alt="O(nw) where `w" style="vertical-align: -4px"/> is the width of the sparse
+Laplacian matrix.  Worse case is <img class="math" src="../../_images/math/8b3b01cf28dbadbba0380ee8a61d07f662557c4f.png" alt="w=n" style="vertical-align: 0px"/> for <img class="math" src="../../_images/math/c1f8dc073b911a44c044908b87d892f8429f1654.png" alt="O(n^2)" style="vertical-align: -4px"/>.</p>
 <p>If the edges have a &#8216;weight&#8217; attribute they will be used as
 weights in this algorithm.  Unspecified weights are set to 1.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r235" rules="none">
+<table class="docutils footnote" frame="void" id="id3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R235]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> Centrality Measures Based on Current Flow.
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Centrality Measures Based on Current Flow.
 Ulrik Brandes and Daniel Fleischer,
 Proc. 22nd Symp. Theoretical Aspects of Computer Science (STACS &#8216;05).
 LNCS 3404, pp. 533-544. Springer-Verlag, 2005.
 <a class="reference external" href="http://www.inf.uni-konstanz.de/algo/publications/bf-cmbcf-05.pdf">http://www.inf.uni-konstanz.de/algo/publications/bf-cmbcf-05.pdf</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r236" rules="none">
+<table class="docutils footnote" frame="void" id="id4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R236]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> A measure of betweenness centrality based on random walks,
+<tr><td class="label"><a class="fn-backref" href="#id1">[2]</a></td><td>A measure of betweenness centrality based on random walks,
 M. E. J. Newman, Social Networks 27, 39-54 (2005).</td></tr>
 </tbody>
 </table>
@@ -289,8 +277,8 @@ M. E. J. Newman, Social Networks 27, 39-54 (2005).</td></tr>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -310,7 +298,7 @@ M. E. J. Newman, Social Networks 27, 39-54 (2005).</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

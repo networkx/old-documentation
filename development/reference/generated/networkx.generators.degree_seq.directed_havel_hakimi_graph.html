@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>directed_havel_hakimi_graph &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>directed_havel_hakimi_graph &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
         <link rel="next" title="degree_sequence_tree" href="networkx.generators.degree_seq.degree_sequence_tree.html"/>
         <link rel="prev" title="havel_hakimi_graph" href="networkx.generators.degree_seq.havel_hakimi_graph.html"/> 
@@ -193,47 +193,39 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>in_deg_sequence</strong> :  list of integers</p>
-<blockquote>
-<div><p>Each list entry corresponds to the in-degree of a node.</p>
-</div></blockquote>
-<p><strong>out_deg_sequence</strong> : list of integers</p>
-<blockquote>
-<div><p>Each list entry corresponds to the out-degree of a node.</p>
-</div></blockquote>
-<p><strong>create_using</strong> : graph, optional (default DiGraph)</p>
-<blockquote>
-<div><p>Return graph of this type. The instance will be cleared.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>in_deg_sequence</strong> (<em>list of integers</em>) &#8211; Each list entry corresponds to the in-degree of a node.</li>
+<li><strong>out_deg_sequence</strong> (<em>list of integers</em>) &#8211; Each list entry corresponds to the out-degree of a node.</li>
+<li><strong>create_using</strong> (<em>graph, optional (default DiGraph)</em>) &#8211; Return graph of this type. The instance will be cleared.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>G</strong> : DiGraph</p>
-<blockquote>
-<div><p>A graph with the specified degree sequences.
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>G</strong> &#8211;
+A graph with the specified degree sequences.
 Nodes are labeled starting at 0 with an index
 corresponding to the position in deg_sequence</p>
-</div></blockquote>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
-<blockquote class="last">
-<div><p>If the degree sequences are not digraphical.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">DiGraph</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">NetworkXError</span></code> &#8211;
+If the degree sequences are not digraphical.</p>
 </td>
 </tr>
 </tbody>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.generators.degree_seq.configuration_model.html#networkx.generators.degree_seq.configuration_model" title="networkx.generators.degree_seq.configuration_model"><code class="xref py py-obj docutils literal"><span class="pre">configuration_model</span></code></a></p>
+<p class="last"><a class="reference internal" href="networkx.generators.degree_seq.configuration_model.html#networkx.generators.degree_seq.configuration_model" title="networkx.generators.degree_seq.configuration_model"><code class="xref py py-func docutils literal"><span class="pre">configuration_model()</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>Algorithm as described by Kleitman and Wang <a class="reference internal" href="#r368" id="id1">[R368]</a>.</p>
+<p>Algorithm as described by Kleitman and Wang <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r368" rules="none">
+<table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R368]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> D.J. Kleitman and D.L. Wang
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>D.J. Kleitman and D.L. Wang
 Algorithms for Constructing Graphs and Digraphs with Given Valences
 and Factors Discrete Mathematics, 6(1), pp. 79-88 (1973)</td></tr>
 </tbody>
@@ -260,8 +252,8 @@ and Factors Discrete Mathematics, 6(1), pp. 79-88 (1973)</td></tr>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -281,7 +273,7 @@ and Factors Discrete Mathematics, 6(1), pp. 79-88 (1973)</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

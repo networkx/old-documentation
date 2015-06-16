@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.traversal.breadth_first_search &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>networkx.algorithms.traversal.breadth_first_search &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../../../index.html"/>
         <link rel="up" title="Module code" href="../../../index.html"/> 
 
   
@@ -197,7 +197,7 @@
 <span class="sd">    ----------</span>
 <span class="sd">    G : NetworkX graph</span>
 
-<span class="sd">    source : node</span>
+<span class="sd">    source : node, optional</span>
 <span class="sd">       Specify starting node for breadth-first search and return edges in</span>
 <span class="sd">       the component reachable from source.</span>
 
@@ -220,6 +220,9 @@
 <span class="sd">    -----</span>
 <span class="sd">    Based on http://www.ics.uci.edu/~eppstein/PADS/BFS.py</span>
 <span class="sd">    by D. Eppstein, July 2004.</span>
+
+<span class="sd">    If a source is not specified then a source is chosen arbitrarily and</span>
+<span class="sd">    repeatedly until all components in the graph are searched.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">reverse</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">):</span>
         <span class="n">neighbors</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">predecessors_iter</span>
@@ -246,7 +249,7 @@
 <span class="sd">    ----------</span>
 <span class="sd">    G : NetworkX graph</span>
 
-<span class="sd">    source : node</span>
+<span class="sd">    source : node, optional</span>
 <span class="sd">       Specify starting node for breadth-first search and return edges in</span>
 <span class="sd">       the component reachable from source.</span>
 
@@ -269,6 +272,9 @@
 <span class="sd">    -----</span>
 <span class="sd">    Based on http://www.ics.uci.edu/~eppstein/PADS/BFS.py</span>
 <span class="sd">    by D. Eppstein, July 2004.</span>
+
+<span class="sd">    If a source is not specified then a source is chosen arbitrarily and</span>
+<span class="sd">    repeatedly until all components in the graph are searched.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">T</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
     <span class="n">T</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
@@ -282,7 +288,7 @@
 <span class="sd">    ----------</span>
 <span class="sd">    G : NetworkX graph</span>
 
-<span class="sd">    source : node</span>
+<span class="sd">    source : node, optional</span>
 <span class="sd">       Specify starting node for breadth-first search and return edges in</span>
 <span class="sd">       the component reachable from source.</span>
 
@@ -302,6 +308,9 @@
 <span class="sd">    -----</span>
 <span class="sd">    Based on http://www.ics.uci.edu/~eppstein/PADS/BFS.py</span>
 <span class="sd">    by D. Eppstein, July 2004.</span>
+
+<span class="sd">    If a source is not specified then a source is chosen arbitrarily and</span>
+<span class="sd">    repeatedly until all components in the graph are searched.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">dict</span><span class="p">((</span><span class="n">t</span><span class="p">,</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="n">bfs_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">source</span><span class="p">))</span>
 </div>
@@ -312,7 +321,7 @@
 <span class="sd">    ----------</span>
 <span class="sd">    G : NetworkX graph</span>
 
-<span class="sd">    source : node</span>
+<span class="sd">    source : node, optional</span>
 <span class="sd">       Specify starting node for breadth-first search and return edges in</span>
 <span class="sd">       the component reachable from source.</span>
 
@@ -332,6 +341,9 @@
 <span class="sd">    -----</span>
 <span class="sd">    Based on http://www.ics.uci.edu/~eppstein/PADS/BFS.py</span>
 <span class="sd">    by D. Eppstein, July 2004.</span>
+
+<span class="sd">    If a source is not specified then a source is chosen arbitrarily and</span>
+<span class="sd">    repeatedly until all components in the graph are searched.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">d</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">s</span><span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="n">bfs_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">source</span><span class="p">):</span>
@@ -347,8 +359,8 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -368,7 +380,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

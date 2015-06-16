@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>to_numpy_matrix &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>to_numpy_matrix &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Converting to and from other data formats" href="../convert.html"/>
         <link rel="next" title="to_numpy_recarray" href="networkx.convert_matrix.to_numpy_recarray.html"/>
         <link rel="prev" title="from_edgelist" href="networkx.convert.from_edgelist.html"/> 
@@ -193,75 +193,57 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
-<blockquote>
-<div><p>The NetworkX graph used to construct the NumPy matrix.</p>
-</div></blockquote>
-<p><strong>nodelist</strong> : list, optional</p>
-<blockquote>
-<div><p>The rows and columns are ordered according to the nodes in <code class="docutils literal"><span class="pre">nodelist</span></code>.
-If <code class="docutils literal"><span class="pre">nodelist</span></code> is None, then the ordering is produced by G.nodes().</p>
-</div></blockquote>
-<p><strong>dtype</strong> : NumPy data type, optional</p>
-<blockquote>
-<div><p>A valid single NumPy data type used to initialize the array.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>graph</em>) &#8211; The NetworkX graph used to construct the NumPy matrix.</li>
+<li><strong>nodelist</strong> (<em>list, optional</em>) &#8211; The rows and columns are ordered according to the nodes in <img class="math" src="../../_images/math/d096ef06a1ca57900297a2d3ecbc06672ae967d5.png" alt="nodelist" style="vertical-align: 0px"/>.
+If <img class="math" src="../../_images/math/d096ef06a1ca57900297a2d3ecbc06672ae967d5.png" alt="nodelist" style="vertical-align: 0px"/> is None, then the ordering is produced by G.nodes().</li>
+<li><strong>dtype</strong> (<em>NumPy data type, optional</em>) &#8211; A valid single NumPy data type used to initialize the array.
 This must be a simple type such as int or numpy.float64 and
 not a compound data type (see to_numpy_recarray)
-If None, then the NumPy default is used.</p>
-</div></blockquote>
-<p><strong>order</strong> : {&#8216;C&#8217;, &#8216;F&#8217;}, optional</p>
-<blockquote>
-<div><p>Whether to store multidimensional data in C- or Fortran-contiguous
+If None, then the NumPy default is used.</li>
+<li><strong>order</strong> (<em>{&#8216;C&#8217;, &#8216;F&#8217;}, optional</em>) &#8211; Whether to store multidimensional data in C- or Fortran-contiguous
 (row- or column-wise) order in memory. If None, then the NumPy default
-is used.</p>
-</div></blockquote>
-<p><strong>multigraph_weight</strong> : {sum, min, max}, optional</p>
-<blockquote>
-<div><p>An operator that determines how weights in multigraphs are handled.
-The default is to sum the weights of the multiple edges.</p>
-</div></blockquote>
-<p><strong>weight</strong> : string or None optional (default = &#8216;weight&#8217;)</p>
-<blockquote>
-<div><p>The edge attribute that holds the numerical value used for
-the edge weight. If an edge does not have that attribute, then the
-value 1 is used instead.</p>
-</div></blockquote>
-<p><strong>nonedge</strong> : float (default = 0.0)</p>
-<blockquote>
-<div><p>The matrix values corresponding to nonedges are typically set to zero.
+is used.</li>
+<li><strong>multigraph_weight</strong> (<em>{sum, min, max}, optional</em>) &#8211; An operator that determines how weights in multigraphs are handled.
+The default is to sum the weights of the multiple edges.</li>
+<li><strong>weight</strong> (<em>string or None   optional (default=&#8217;weight&#8217;)</em>) &#8211; The edge attribute that holds the numerical value used for
+the edge weight.  If an edge does not have that attribute, then the
+value 1 is used instead.</li>
+<li><strong>nonedge</strong> (<em>float (default=0.0)</em>) &#8211; The matrix values corresponding to nonedges are typically set to zero.
 However, this could be undesirable if there are matrix values
 corresponding to actual edges that also have the value zero. If so,
-one might prefer nonedges to have some other value, such as nan.</p>
-</div></blockquote>
+one might prefer nonedges to have some other value, such as nan.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>M</strong> : NumPy matrix</p>
-<blockquote class="last">
-<div><p>Graph adjacency matrix</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>M</strong> &#8211;
+Graph adjacency matrix</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">NumPy matrix</p>
 </td>
 </tr>
 </tbody>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.convert_matrix.to_numpy_recarray.html#networkx.convert_matrix.to_numpy_recarray" title="networkx.convert_matrix.to_numpy_recarray"><code class="xref py py-obj docutils literal"><span class="pre">to_numpy_recarray</span></code></a>, <a class="reference internal" href="networkx.convert_matrix.from_numpy_matrix.html#networkx.convert_matrix.from_numpy_matrix" title="networkx.convert_matrix.from_numpy_matrix"><code class="xref py py-obj docutils literal"><span class="pre">from_numpy_matrix</span></code></a></p>
+<p class="last"><a class="reference internal" href="networkx.convert_matrix.to_numpy_recarray.html#networkx.convert_matrix.to_numpy_recarray" title="networkx.convert_matrix.to_numpy_recarray"><code class="xref py py-func docutils literal"><span class="pre">to_numpy_recarray()</span></code></a>, <a class="reference internal" href="networkx.convert_matrix.from_numpy_matrix.html#networkx.convert_matrix.from_numpy_matrix" title="networkx.convert_matrix.from_numpy_matrix"><code class="xref py py-func docutils literal"><span class="pre">from_numpy_matrix()</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
 <p>The matrix entries are assigned to the weight edge attribute. When
 an edge does not have a weight attribute, the value of the entry is set to
 the number 1.  For multiple (parallel) edges, the values of the entries
-are determined by the <code class="docutils literal"><span class="pre">multigraph_weight</span></code> parameter.  The default is to
+are determined by the &#8216;multigraph_weight&#8217; paramter.  The default is to
 sum the weight attributes for each of the parallel edges.</p>
-<p>When <code class="docutils literal"><span class="pre">nodelist</span></code> does not contain every node in <code class="docutils literal"><span class="pre">G</span></code>, the matrix is built
-from the subgraph of <code class="docutils literal"><span class="pre">G</span></code> that is induced by the nodes in <code class="docutils literal"><span class="pre">nodelist</span></code>.</p>
+<p>When <img class="math" src="../../_images/math/d096ef06a1ca57900297a2d3ecbc06672ae967d5.png" alt="nodelist" style="vertical-align: 0px"/> does not contain every node in <img class="math" src="../../_images/math/a3b876a880363bc604f5b4e0f360b95ffc7f4738.png" alt="G" style="vertical-align: 0px"/>, the matrix is built
+from the subgraph of <img class="math" src="../../_images/math/a3b876a880363bc604f5b4e0f360b95ffc7f4738.png" alt="G" style="vertical-align: 0px"/> that is induced by the nodes in <img class="math" src="../../_images/math/d096ef06a1ca57900297a2d3ecbc06672ae967d5.png" alt="nodelist" style="vertical-align: 0px"/>.</p>
 <p>The convention used for self-loop edges in graphs is to assign the
-diagonal matrix entry value to the weight attribute of the edge
+diagonal matrix entry value to the weight attributr of the edge
 (or the number 1 if the edge has no weight attribute).  If the
 alternate convention of doubling the edge weight is desired the
 resulting Numpy matrix can be modified as follows:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">A</span>
 <span class="go">matrix([[ 1.]])</span>
@@ -304,8 +286,8 @@ resulting Numpy matrix can be modified as follows:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -325,7 +307,7 @@ resulting Numpy matrix can be modified as follows:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>read_graph6 &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>read_graph6 &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="SparseGraph6" href="../readwrite.sparsegraph6.html"/>
         <link rel="next" title="generate_graph6" href="networkx.readwrite.graph6.generate_graph6.html"/>
         <link rel="prev" title="parse_graph6" href="networkx.readwrite.graph6.parse_graph6.html"/> 
@@ -195,33 +195,18 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>path</strong> : file or string</p>
-<blockquote>
-<div><p>File or filename to write.</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>file or string</em>) &#8211; File or filename to write.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>G</strong> : Graph or list of Graphs</p>
-<blockquote>
-<div><p>If the file contains multiple lines then a list of graphs is returned</p>
-</div></blockquote>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>G</strong> &#8211;
+If the file contains multiple lines then a list of graphs is returned</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
-<blockquote class="last">
-<div><p>If the string is unable to be parsed in graph6 format</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Graph or list of Graphs</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">NetworkXError</span></code> &#8211;
+If the string is unable to be parsed in graph6 format</td>
 </tr>
 </tbody>
 </table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.readwrite.graph6.generate_graph6.html#networkx.readwrite.graph6.generate_graph6" title="networkx.readwrite.graph6.generate_graph6"><code class="xref py py-obj docutils literal"><span class="pre">generate_graph6</span></code></a>, <a class="reference internal" href="networkx.readwrite.graph6.parse_graph6.html#networkx.readwrite.graph6.parse_graph6" title="networkx.readwrite.graph6.parse_graph6"><code class="xref py py-obj docutils literal"><span class="pre">parse_graph6</span></code></a>, <a class="reference internal" href="networkx.readwrite.graph6.write_graph6.html#networkx.readwrite.graph6.write_graph6" title="networkx.readwrite.graph6.write_graph6"><code class="xref py py-obj docutils literal"><span class="pre">write_graph6</span></code></a></p>
-</div>
-<p class="rubric">References</p>
-<p>Graph6 specification:
-<a class="reference external" href="http://cs.anu.edu.au/~bdm/data/formats.txt">http://cs.anu.edu.au/~bdm/data/formats.txt</a> for details.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">write_graph6</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)]),</span> <span class="s">&#39;test.g6&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_graph6</span><span class="p">(</span><span class="s">&#39;test.g6&#39;</span><span class="p">)</span>
@@ -229,6 +214,13 @@
 <span class="go">[(0, 1)]</span>
 </pre></div>
 </div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="networkx.readwrite.graph6.generate_graph6.html#networkx.readwrite.graph6.generate_graph6" title="networkx.readwrite.graph6.generate_graph6"><code class="xref py py-func docutils literal"><span class="pre">generate_graph6()</span></code></a>, <a class="reference internal" href="networkx.readwrite.graph6.parse_graph6.html#networkx.readwrite.graph6.parse_graph6" title="networkx.readwrite.graph6.parse_graph6"><code class="xref py py-func docutils literal"><span class="pre">parse_graph6()</span></code></a>, <a class="reference internal" href="networkx.readwrite.graph6.write_graph6.html#networkx.readwrite.graph6.write_graph6" title="networkx.readwrite.graph6.write_graph6"><code class="xref py py-func docutils literal"><span class="pre">write_graph6()</span></code></a></p>
+</div>
+<p class="rubric">References</p>
+<p>Graph6 specification:
+<a class="reference external" href="http://cs.anu.edu.au/~bdm/data/formats.txt">http://cs.anu.edu.au/~bdm/data/formats.txt</a> for details.</p>
 </dd></dl>
 
 </div>
@@ -251,8 +243,8 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -272,7 +264,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

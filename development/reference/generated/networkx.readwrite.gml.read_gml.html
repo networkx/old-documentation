@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>read_gml &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>read_gml &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,10 +30,9 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="GML" href="../readwrite.gml.html"/>
-        <link rel="next" title="write_gml" href="networkx.readwrite.gml.write_gml.html"/>
-        <link rel="prev" title="literal_stringizer" href="networkx.readwrite.gml.literal_stringizer.html"/> 
+        <link rel="next" title="write_gml" href="networkx.readwrite.gml.write_gml.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -189,57 +188,46 @@
 <h1>read_gml<a class="headerlink" href="#read-gml" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.readwrite.gml.read_gml">
-<code class="descname">read_gml</code><span class="sig-paren">(</span><em>path</em>, <em>label='label'</em>, <em>destringizer=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/readwrite/gml.html#read_gml"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.readwrite.gml.read_gml" title="Permalink to this definition">¶</a></dt>
+<code class="descname">read_gml</code><span class="sig-paren">(</span><em>path</em>, <em>relabel=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/readwrite/gml.html#read_gml"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.readwrite.gml.read_gml" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read graph in GML format from path.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>path</strong> : filename or filehandle</p>
-<blockquote>
-<div><p>The filename or filehandle to read from.</p>
-</div></blockquote>
-<p><strong>label</strong> : string, optional</p>
-<blockquote>
-<div><p>If not None, the parsed nodes will be renamed according to node
-attributes indicated by <code class="docutils literal"><span class="pre">label</span></code>. Default value: <code class="docutils literal"><span class="pre">'label'</span></code>.</p>
-</div></blockquote>
-<p><strong>destringizer</strong> : callable, optional</p>
-<blockquote>
-<div><p>A destringizer that recovers values stored as strings in GML. If it
-cannot convert a string to a value, a <code class="docutils literal"><span class="pre">ValueError</span></code> is raised. Default
-value : <code class="docutils literal"><span class="pre">None</span></code>.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> (<em>filename or filehandle</em>) &#8211; The filename or filehandle to read from.</li>
+<li><strong>relabel</strong> (<em>bool, optional</em>) &#8211; If True use the GML node label attribute for node names otherwise use
+the node id.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
-<blockquote>
-<div><p>The parsed graph.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>G</strong></p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
-<blockquote class="last">
-<div><p>If the input cannot be parsed.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">MultiGraph or MultiDiGraph</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">ImportError</span></code> &#8211;
+If the pyparsing module is not available.</p>
 </td>
 </tr>
 </tbody>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.readwrite.gml.write_gml.html#networkx.readwrite.gml.write_gml" title="networkx.readwrite.gml.write_gml"><code class="xref py py-obj docutils literal"><span class="pre">write_gml</span></code></a>, <a class="reference internal" href="networkx.readwrite.gml.parse_gml.html#networkx.readwrite.gml.parse_gml" title="networkx.readwrite.gml.parse_gml"><code class="xref py py-obj docutils literal"><span class="pre">parse_gml</span></code></a></p>
+<p class="last"><a class="reference internal" href="networkx.readwrite.gml.write_gml.html#networkx.readwrite.gml.write_gml" title="networkx.readwrite.gml.write_gml"><code class="xref py py-func docutils literal"><span class="pre">write_gml()</span></code></a>, <a class="reference internal" href="networkx.readwrite.gml.parse_gml.html#networkx.readwrite.gml.parse_gml" title="networkx.readwrite.gml.parse_gml"><code class="xref py py-func docutils literal"><span class="pre">parse_gml()</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>The GML specification says that files should be ASCII encoded, with any
+<p>Requires pyparsing: <a class="reference external" href="http://pyparsing.wikispaces.com/">http://pyparsing.wikispaces.com/</a>
+The GML specification says that files should be ASCII encoded, with any
 extended ASCII characters (iso8859-1) appearing as HTML character entities.</p>
 <p class="rubric">References</p>
 <p>GML specification:
 <a class="reference external" href="http://www.infosun.fim.uni-passau.de/Graphlet/GML/gml-tr.html">http://www.infosun.fim.uni-passau.de/Graphlet/GML/gml-tr.html</a></p>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">write_gml</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s">&#39;test.gml&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">H</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_gml</span><span class="p">(</span><span class="s">&#39;test.gml&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">write_gml</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="s">&#39;test.gml&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">H</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">read_gml</span><span class="p">(</span><span class="s">&#39;test.gml&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -255,8 +243,6 @@ extended ASCII characters (iso8859-1) appearing as HTML character entities.</p>
         <a href="networkx.readwrite.gml.write_gml.html" class="btn btn-neutral float-right" title="write_gml"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="networkx.readwrite.gml.literal_stringizer.html" class="btn btn-neutral" title="literal_stringizer"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
     </div>
   
 
@@ -264,8 +250,8 @@ extended ASCII characters (iso8859-1) appearing as HTML character entities.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -285,7 +271,7 @@ extended ASCII characters (iso8859-1) appearing as HTML character entities.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

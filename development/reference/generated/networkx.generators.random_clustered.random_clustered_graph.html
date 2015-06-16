@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>random_clustered_graph &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>random_clustered_graph &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
         <link rel="next" title="gn_graph" href="networkx.generators.directed.gn_graph.html"/>
         <link rel="prev" title="random_degree_sequence_graph" href="networkx.generators.degree_seq.random_degree_sequence_graph.html"/> 
@@ -188,54 +188,42 @@
 <dl class="function">
 <dt id="networkx.generators.random_clustered.random_clustered_graph">
 <code class="descname">random_clustered_graph</code><span class="sig-paren">(</span><em>joint_degree_sequence</em>, <em>create_using=None</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/generators/random_clustered.html#random_clustered_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.random_clustered.random_clustered_graph" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate a random graph with the given joint independent edge degree and
-triangle degree sequence.</p>
-<p>This uses a configuration model-like approach to generate a random graph
-(with parallel edges and self-loops) by randomly assigning edges to match
-the given joint degree sequence.</p>
-<p>The joint degree sequence is a list of pairs of integers of the form
-<span class="math">\([(d_{1,i}, d_{1,t}), \dotsc, (d_{n,i}, d_{n,t})]\)</span>. According to this list,
-vertex <span class="math">\(u\)</span> is a member of <span class="math">\(d_{u,t}\)</span> triangles and has <span class="math">\(d_{u, i}\)</span> other
-edges. The number <span class="math">\(d_{u,t}\)</span> is the <em>triangle degree</em> of <span class="math">\(u\)</span> and the number
-<span class="math">\(d_{u,i}\)</span> is the <em>independent edge degree</em>.</p>
+<dd><p>Generate a random graph with the given joint degree and triangle
+degree sequence.</p>
+<p>This uses a configuration model-like approach to generate a
+random pseudograph (graph with parallel edges and self loops) by
+randomly assigning edges to match the given indepdenent edge
+and triangle degree sequence.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>joint_degree_sequence</strong> : list of integer pairs</p>
-<blockquote>
-<div><p>Each list entry corresponds to the independent edge degree and
-triangle degree of a node.</p>
-</div></blockquote>
-<p><strong>create_using</strong> : graph, optional (default MultiGraph)</p>
-<blockquote>
-<div><p>Return graph of this type. The instance will be cleared.</p>
-</div></blockquote>
-<p><strong>seed</strong> : hashable object, optional</p>
-<blockquote>
-<div><p>The seed for the random number generator.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>joint_degree_sequence</strong> (<em>list of integer pairs</em>) &#8211; Each list entry corresponds to the independent edge degree and
+triangle degree of a node.</li>
+<li><strong>create_using</strong> (<em>graph, optional (default MultiGraph)</em>) &#8211; Return graph of this type. The instance will be cleared.</li>
+<li><strong>seed</strong> (<em>hashable object, optional</em>) &#8211; The seed for the random number generator.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>G</strong> : MultiGraph</p>
-<blockquote>
-<div><p>A graph with the specified degree sequence. Nodes are labeled
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>G</strong> &#8211;
+A graph with the specified degree sequence. Nodes are labeled
 starting at 0 with an index corresponding to the position in
 deg_sequence.</p>
-</div></blockquote>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
-<blockquote class="last">
-<div><p>If the independent edge degree sequence sum is not even
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">MultiGraph</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">NetworkXError</span></code> &#8211;
+If the independent edge degree sequence sum is not even
 or the triangle degree sequence sum is not divisible by 3.</p>
-</div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>As described by Miller <a class="reference internal" href="#r389" id="id1">[R389]</a> (see also Newman <a class="reference internal" href="#r390" id="id2">[R390]</a> for an equivalent
+<p>As described by Miller <a class="footnote-reference" href="#id3" id="id1">[1]</a> (see also Newman <a class="footnote-reference" href="#id4" id="id2">[2]</a> for an equivalent
 description).</p>
 <p>A non-graphical degree sequence (not realizable by some simple
 graph) is allowed since this function returns graphs with self
@@ -248,28 +236,27 @@ parallel edges (see below) which will likely result in a graph
 that doesn&#8217;t have the exact degree sequence specified.  This
 &#8220;finite-size effect&#8221; decreases as the size of the graph increases.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r389" rules="none">
+<table class="docutils footnote" frame="void" id="id3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R389]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> Joel C. Miller. &#8220;Percolation and epidemics in random clustered
-networks&#8221;. In: Physical review. E, Statistical, nonlinear, and soft
-matter physics 80 (2 Part 1 August 2009).</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>J. C. Miller &#8220;Percolation and Epidemics on Random Clustered Graphs.&#8221;
+Physical Review E, Rapid Communication (to appear).</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r390" rules="none">
+<table class="docutils footnote" frame="void" id="id4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R390]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> M. E. J. Newman. &#8220;Random Graphs with Clustering&#8221;.
-In: Physical Review Letters 103 (5 July 2009)</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>M.E.J. Newman, &#8220;Random clustered networks&#8221;.
+Physical Review Letters (to appear).</td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">deg</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">random_clustered_graph</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">deg_tri</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">random_clustered_graph</span><span class="p">(</span><span class="n">deg_tri</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>To remove parallel edges:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>To remove self loops:</p>
@@ -298,8 +285,8 @@ In: Physical Review Letters 103 (5 July 2009)</td></tr>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -319,7 +306,7 @@ In: Physical Review Letters 103 (5 July 2009)</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

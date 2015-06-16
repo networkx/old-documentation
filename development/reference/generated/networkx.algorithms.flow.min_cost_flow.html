@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>min_cost_flow &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>min_cost_flow &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Flows" href="../algorithms.flow.html"/>
         <link rel="next" title="cost_of_flow" href="networkx.algorithms.flow.cost_of_flow.html"/>
         <link rel="prev" title="min_cost_flow_cost" href="networkx.algorithms.flow.min_cost_flow_cost.html"/> 
@@ -201,73 +201,62 @@ is equal to the demand of that node.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
-<blockquote>
-<div><p>DiGraph on which a minimum cost flow satisfying all demands is
-to be found.</p>
-</div></blockquote>
-<p><strong>demand: string</strong></p>
-<blockquote>
-<div><p>Nodes of the graph G are expected to have an attribute demand
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>NetworkX graph</em>) &#8211; DiGraph on which a minimum cost flow satisfying all demands is
+to be found.</li>
+<li><strong>demand</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Nodes of the graph G are expected to have an attribute demand
 that indicates how much flow a node wants to send (negative
 demand) or receive (positive demand). Note that the sum of the
 demands should be 0 otherwise the problem in not feasible. If
 this attribute is not present, a node is considered to have 0
-demand. Default value: &#8216;demand&#8217;.</p>
-</div></blockquote>
-<p><strong>capacity: string</strong></p>
-<blockquote>
-<div><p>Edges of the graph G are expected to have an attribute capacity
+demand. Default value: &#8216;demand&#8217;.</li>
+<li><strong>capacity</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Edges of the graph G are expected to have an attribute capacity
 that indicates how much flow the edge can support. If this
 attribute is not present, the edge is considered to have
-infinite capacity. Default value: &#8216;capacity&#8217;.</p>
-</div></blockquote>
-<p><strong>weight: string</strong></p>
-<blockquote>
-<div><p>Edges of the graph G are expected to have an attribute weight
+infinite capacity. Default value: &#8216;capacity&#8217;.</li>
+<li><strong>weight</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Edges of the graph G are expected to have an attribute weight
 that indicates the cost incurred by sending one unit of flow on
 that edge. If not present, the weight is considered to be 0.
-Default value: &#8216;weight&#8217;.</p>
-</div></blockquote>
+Default value: &#8216;weight&#8217;.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">flowDict: dictionary</p>
-<blockquote>
-<div><p>Dictionary of dictionaries keyed by nodes such that
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>flowDict</strong> &#8211;
+Dictionary of dictionaries keyed by nodes such that
 flowDict[u][v] is the flow edge (u, v).</p>
-</div></blockquote>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
-<blockquote>
-<div><p>This exception is raised if the input graph is not directed or
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">dictionary</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last">
+<li><p class="first"><code class="xref py py-exc docutils literal"><span class="pre">NetworkXError</span></code> &#8211;
+This exception is raised if the input graph is not directed or
 not connected.</p>
-</div></blockquote>
-<p><strong>NetworkXUnfeasible</strong></p>
+</li>
+<li><p class="first"><code class="xref py py-exc docutils literal"><span class="pre">NetworkXUnfeasible</span></code> &#8211;
+This exception is raised in the following situations:</p>
 <blockquote>
-<div><dl class="docutils">
-<dt>This exception is raised in the following situations:</dt>
-<dd><ul class="first last simple">
+<div><ul class="simple">
 <li>The sum of the demands is not zero. Then, there is no
 flow satisfying all demands.</li>
 <li>There is no flow satisfying all demand.</li>
 </ul>
-</dd>
-</dl>
 </div></blockquote>
-<p><strong>NetworkXUnbounded</strong></p>
-<blockquote class="last">
-<div><p>This exception is raised if the digraph G has a cycle of
+</li>
+<li><p class="first"><code class="xref py py-exc docutils literal"><span class="pre">NetworkXUnbounded</span></code> &#8211;
+This exception is raised if the digraph G has a cycle of
 negative cost and infinite capacity. Then, the cost of a flow
 satisfying all demands is unbounded below.</p>
-</div></blockquote>
+</li>
+</ul>
 </td>
 </tr>
 </tbody>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.flow.cost_of_flow.html#networkx.algorithms.flow.cost_of_flow" title="networkx.algorithms.flow.cost_of_flow"><code class="xref py py-obj docutils literal"><span class="pre">cost_of_flow</span></code></a>, <a class="reference internal" href="networkx.algorithms.flow.max_flow_min_cost.html#networkx.algorithms.flow.max_flow_min_cost" title="networkx.algorithms.flow.max_flow_min_cost"><code class="xref py py-obj docutils literal"><span class="pre">max_flow_min_cost</span></code></a>, <a class="reference internal" href="networkx.algorithms.flow.min_cost_flow_cost.html#networkx.algorithms.flow.min_cost_flow_cost" title="networkx.algorithms.flow.min_cost_flow_cost"><code class="xref py py-obj docutils literal"><span class="pre">min_cost_flow_cost</span></code></a>, <a class="reference internal" href="networkx.algorithms.flow.network_simplex.html#networkx.algorithms.flow.network_simplex" title="networkx.algorithms.flow.network_simplex"><code class="xref py py-obj docutils literal"><span class="pre">network_simplex</span></code></a></p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.flow.cost_of_flow.html#networkx.algorithms.flow.cost_of_flow" title="networkx.algorithms.flow.cost_of_flow"><code class="xref py py-func docutils literal"><span class="pre">cost_of_flow()</span></code></a>, <a class="reference internal" href="networkx.algorithms.flow.max_flow_min_cost.html#networkx.algorithms.flow.max_flow_min_cost" title="networkx.algorithms.flow.max_flow_min_cost"><code class="xref py py-func docutils literal"><span class="pre">max_flow_min_cost()</span></code></a>, <a class="reference internal" href="networkx.algorithms.flow.min_cost_flow_cost.html#networkx.algorithms.flow.min_cost_flow_cost" title="networkx.algorithms.flow.min_cost_flow_cost"><code class="xref py py-func docutils literal"><span class="pre">min_cost_flow_cost()</span></code></a>, <a class="reference internal" href="networkx.algorithms.flow.network_simplex.html#networkx.algorithms.flow.network_simplex" title="networkx.algorithms.flow.network_simplex"><code class="xref py py-func docutils literal"><span class="pre">network_simplex()</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
 <p>A simple example of a min cost flow problem.</p>
@@ -304,8 +293,8 @@ satisfying all demands is unbounded below.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -325,7 +314,7 @@ satisfying all demands is unbounded below.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

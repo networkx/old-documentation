@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>min_weighted_dominating_set &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>min_weighted_dominating_set &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Approximation" href="../algorithms.approximation.html"/>
         <link rel="next" title="min_edge_dominating_set" href="networkx.algorithms.approximation.dominating_set.min_edge_dominating_set.html"/>
         <link rel="prev" title="average_clustering" href="networkx.algorithms.approximation.clustering_coefficient.average_clustering.html"/> 
@@ -190,50 +190,37 @@
 <dl class="function">
 <dt id="networkx.algorithms.approximation.dominating_set.min_weighted_dominating_set">
 <code class="descname">min_weighted_dominating_set</code><span class="sig-paren">(</span><em>G</em>, <em>weight=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/approximation/dominating_set.html#min_weighted_dominating_set"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.approximation.dominating_set.min_weighted_dominating_set" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a dominating set that approximates the minimum weight node
-dominating set.</p>
+<dd><p>Return minimum weight vertex dominating set.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
-<blockquote>
-<div><p>Undirected graph.</p>
-</div></blockquote>
-<p><strong>weight</strong> : string</p>
-<blockquote>
-<div><p>The node attribute storing the weight of an edge. If provided,
-the node attribute with this key must be a number for each
-node. If not provided, each node is assumed to have weight one.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>NetworkX graph</em>) &#8211; Undirected graph</li>
+<li><strong>weight</strong> (<em>None or string, optional (default = None)</em>) &#8211; If None, every edge has weight/distance/weight 1. If a string, use this
+edge attribute as the edge weight. Any edge attribute not present
+defaults to 1.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>min_weight_dominating_set</strong> : set</p>
-<blockquote class="last">
-<div><p>A set of nodes, the sum of whose weights is no more than <span class="math">\((\log
-w(V)) w(V^*)\)</span>, where <span class="math">\(w(V)\)</span> denotes the sum of the weights of
-each node in the graph and <span class="math">\(w(V^*)\)</span> denotes the sum of the
-weights of each node in the minimum weight dominating set.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>min_weight_dominating_set</strong> &#8211;
+Returns a set of vertices whose weight sum is no more than log w(V) * OPT</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">set</p>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>This algorithm computes an approximate minimum weighted dominating
-set for the graph <code class="docutils literal"><span class="pre">G</span></code>. The returned solution has weight <span class="math">\((\log
-w(V)) w(V^*)\)</span>, where <span class="math">\(w(V)\)</span> denotes the sum of the weights of each
-node in the graph and <span class="math">\(w(V^*)\)</span> denotes the sum of the weights of
-each node in the minimum weight dominating set for the graph.</p>
-<p>This implementation of the algorithm runs in <span class="math">\(O(m)\)</span> time, where <span class="math">\(m\)</span>
-is the number of edges in the graph.</p>
+<p>This algorithm computes an approximate minimum weighted dominating set
+for the graph G. The upper-bound on the size of the solution is
+log w(V) * OPT.  Runtime of the algorithm is <img class="math" src="../../_images/math/ae5dccd6a2d1a2a34dc4979d03995aee7f225217.png" alt="O(|E|)" style="vertical-align: -5px"/>.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r187" rules="none">
+<table class="docutils footnote" frame="void" id="id1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R187]</a></td><td>Vazirani, Vijay V.
-<em>Approximation Algorithms</em>.
-Springer Science &amp; Business Media, 2001.</td></tr>
+<tr><td class="label">[1]</td><td>Vazirani, Vijay Approximation Algorithms (2001)</td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -258,8 +245,8 @@ Springer Science &amp; Business Media, 2001.</td></tr>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -279,7 +266,7 @@ Springer Science &amp; Business Media, 2001.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

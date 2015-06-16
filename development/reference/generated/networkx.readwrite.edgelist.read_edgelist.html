@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>read_edgelist &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>read_edgelist &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Edge List" href="../readwrite.edgelist.html"/>
         <link rel="next" title="write_edgelist" href="networkx.readwrite.edgelist.write_edgelist.html"/>
         <link rel="prev" title="parse_edgelist" href="networkx.readwrite.edgelist.parse_edgelist.html"/> 
@@ -195,58 +195,30 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>path</strong> : file or string</p>
-<blockquote>
-<div><p>File or filename to read. If a file is provided, it must be
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> (<em>file or string</em>) &#8211; File or filename to read. If a file is provided, it must be
 opened in &#8216;rb&#8217; mode.
-Filenames ending in .gz or .bz2 will be uncompressed.</p>
-</div></blockquote>
-<p><strong>comments</strong> : string, optional</p>
-<blockquote>
-<div><p>The character used to indicate the start of a comment.</p>
-</div></blockquote>
-<p><strong>delimiter</strong> : string, optional</p>
-<blockquote>
-<div><p>The string used to separate values.  The default is whitespace.</p>
-</div></blockquote>
-<p><strong>create_using</strong> : Graph container, optional,</p>
-<blockquote>
-<div><p>Use specified container to build graph.  The default is networkx.Graph,
-an undirected graph.</p>
-</div></blockquote>
-<p><strong>nodetype</strong> : int, float, str, Python type, optional</p>
-<blockquote>
-<div><p>Convert node data from strings to specified type</p>
-</div></blockquote>
-<p><strong>data</strong> : bool or list of (label,type) tuples</p>
-<blockquote>
-<div><p>Tuples specifying dictionary key names and types for edge data</p>
-</div></blockquote>
-<p><strong>edgetype</strong> : int, float, str, Python type, optional OBSOLETE</p>
-<blockquote>
-<div><p>Convert edge data from strings to specified type and use as &#8216;weight&#8217;</p>
-</div></blockquote>
-<p><strong>encoding: string, optional</strong></p>
-<blockquote>
-<div><p>Specify which encoding to use when reading file.</p>
-</div></blockquote>
+Filenames ending in .gz or .bz2 will be uncompressed.</li>
+<li><strong>comments</strong> (<em>string, optional</em>) &#8211; The character used to indicate the start of a comment.</li>
+<li><strong>delimiter</strong> (<em>string, optional</em>) &#8211; The string used to separate values.  The default is whitespace.</li>
+<li><strong>create_using</strong> (<em>Graph container, optional,</em>) &#8211; Use specified container to build graph.  The default is networkx.Graph,
+an undirected graph.</li>
+<li><strong>nodetype</strong> (<em>int, float, str, Python type, optional</em>) &#8211; Convert node data from strings to specified type</li>
+<li><strong>data</strong> (<em>bool or list of (label,type) tuples</em>) &#8211; Tuples specifying dictionary key names and types for edge data</li>
+<li><strong>edgetype</strong> (<em>int, float, str, Python type, optional OBSOLETE</em>) &#8211; Convert edge data from strings to specified type and use as &#8216;weight&#8217;</li>
+<li><strong>encoding</strong> (<em>string, optional</em>) &#8211; Specify which encoding to use when reading file.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
-<blockquote class="last">
-<div><p>A networkx Graph or other type specified with create_using</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>G</strong> &#8211;
+A networkx Graph or other type specified with create_using</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">graph</p>
 </td>
 </tr>
 </tbody>
 </table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.readwrite.edgelist.parse_edgelist.html#networkx.readwrite.edgelist.parse_edgelist" title="networkx.readwrite.edgelist.parse_edgelist"><code class="xref py py-obj docutils literal"><span class="pre">parse_edgelist</span></code></a></p>
-</div>
-<p class="rubric">Notes</p>
-<p>Since nodes must be hashable, the function nodetype must return hashable
-types (e.g. int, float, str, frozenset - or tuples of those, etc.)</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">write_edgelist</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="s">&quot;test.edgelist&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">read_edgelist</span><span class="p">(</span><span class="s">&quot;test.edgelist&quot;</span><span class="p">)</span>
@@ -274,6 +246,13 @@ types (e.g. int, float, str, frozenset - or tuples of those, etc.)</p>
 </pre></div>
 </div>
 <p>See parse_edgelist() for more examples of formatting.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="networkx.readwrite.edgelist.parse_edgelist.html#networkx.readwrite.edgelist.parse_edgelist" title="networkx.readwrite.edgelist.parse_edgelist"><code class="xref py py-func docutils literal"><span class="pre">parse_edgelist()</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>Since nodes must be hashable, the function nodetype must return hashable
+types (e.g. int, float, str, frozenset - or tuples of those, etc.)</p>
 </dd></dl>
 
 </div>
@@ -296,8 +275,8 @@ types (e.g. int, float, str, frozenset - or tuples of those, etc.)</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -317,7 +296,7 @@ types (e.g. int, float, str, frozenset - or tuples of those, etc.)</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

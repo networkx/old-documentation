@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.generators.community &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>networkx.generators.community &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -178,7 +178,6 @@
           <div role="main">
             
   <h1>Source code for networkx.generators.community</h1><div class="highlight"><pre>
-<span class="sd">&quot;&quot;&quot;Generators for classes of graphs used in studying social networks.&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">itertools</span>
 <span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">random</span>
@@ -196,14 +195,18 @@
 
 
 <div class="viewcode-block" id="caveman_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.community.caveman_graph.html#networkx.generators.community.caveman_graph">[docs]</a><span class="k">def</span> <span class="nf">caveman_graph</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns a caveman graph of ``l`` cliques of size ``k``.</span>
+    <span class="sd">&quot;&quot;&quot;Returns a caveman graph of l cliques of size k.</span>
+
+<span class="sd">    The caveman graph is formed by creating n cliques of size k.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    l : int</span>
+<span class="sd">    n : int</span>
 <span class="sd">      Number of cliques</span>
 <span class="sd">    k : int</span>
 <span class="sd">      Size of cliques</span>
+<span class="sd">    directed : boolean optional (default=True)</span>
+<span class="sd">      If true return directed caveman graph</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -213,22 +216,17 @@
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    This returns an undirected graph, it can be converted to a directed</span>
-<span class="sd">    graph using :func:`nx.to_directed`, or a multigraph using</span>
-<span class="sd">    ``nx.MultiGraph(nx.caveman_graph(l, k))``. Only the undirected version is</span>
+<span class="sd">    graph using nx.to_directed(), or a multigraph using</span>
+<span class="sd">    nx.MultiGraph(nx.caveman_graph). Only the undirected version is</span>
 <span class="sd">    described in [1]_ and it is unclear which of the directed</span>
 <span class="sd">    generalizations is most useful.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; G = nx.caveman_graph(3, 3)</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.caveman_graph(3,3)</span>
 
-<span class="sd">    See also</span>
-<span class="sd">    --------</span>
-
-<span class="sd">    connected_caveman_graph</span>
-
-<span class="sd">    References</span>
-<span class="sd">    ----------</span>
+<span class="sd">    Reference</span>
+<span class="sd">    ---------</span>
 <span class="sd">    .. [1] Watts, D. J. &#39;Networks, Dynamics, and the Small-World Phenomenon.&#39;</span>
 <span class="sd">       Amer. J. Soc. 105, 493-527, 1999.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -243,38 +241,39 @@
 
 </div>
 <div class="viewcode-block" id="connected_caveman_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.community.connected_caveman_graph.html#networkx.generators.community.connected_caveman_graph">[docs]</a><span class="k">def</span> <span class="nf">connected_caveman_graph</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns a connected caveman graph of ``l`` cliques of size ``k``.</span>
+    <span class="sd">&quot;&quot;&quot;Returns a connected caveman graph of n cliques of size k.</span>
 
-<span class="sd">    The connected caveman graph is formed by creating ``n`` cliques of size</span>
-<span class="sd">    ``k``, then a single edge in each clique is rewired to a node in an</span>
-<span class="sd">    adjacent clique.</span>
+<span class="sd">    The connected caveman graph is formed by creating n cliques of size k. Then</span>
+<span class="sd">    a single node in each clique is rewired to a node in the adjacent clique.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    l : int</span>
+<span class="sd">    n : int</span>
 <span class="sd">      number of cliques</span>
 <span class="sd">    k : int</span>
 <span class="sd">      size of cliques</span>
+<span class="sd">    directed : boolean optional (default=True)</span>
+<span class="sd">      if true return directed caveman graph</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    G : NetworkX Graph</span>
-<span class="sd">      connected caveman graph</span>
+<span class="sd">      caveman graph</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    This returns an undirected graph, it can be converted to a directed</span>
-<span class="sd">    graph using :func:`nx.to_directed`, or a multigraph using</span>
-<span class="sd">    ``nx.MultiGraph(nx.caveman_graph(l, k))``. Only the undirected version is</span>
+<span class="sd">    graph using nx.to_directed(), or a multigraph using</span>
+<span class="sd">    nx.MultiGraph(nx.caveman_graph). Only the undirected version is</span>
 <span class="sd">    described in [1]_ and it is unclear which of the directed</span>
 <span class="sd">    generalizations is most useful.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; G = nx.connected_caveman_graph(3, 3)</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.caveman_graph(3, 3)</span>
 
-<span class="sd">    References</span>
-<span class="sd">    ----------</span>
+<span class="sd">    Reference</span>
+<span class="sd">    ---------</span>
 <span class="sd">    .. [1] Watts, D. J. &#39;Networks, Dynamics, and the Small-World Phenomenon.&#39;</span>
 <span class="sd">       Amer. J. Soc. 105, 493-527, 1999.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -286,11 +285,12 @@
     <span class="k">return</span> <span class="n">G</span>
 
 </div>
-<div class="viewcode-block" id="relaxed_caveman_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.community.relaxed_caveman_graph.html#networkx.generators.community.relaxed_caveman_graph">[docs]</a><span class="k">def</span> <span class="nf">relaxed_caveman_graph</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="relaxed_caveman_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.community.relaxed_caveman_graph.html#networkx.generators.community.relaxed_caveman_graph">[docs]</a><span class="k">def</span> <span class="nf">relaxed_caveman_graph</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a relaxed caveman graph.</span>
 
-<span class="sd">    A relaxed caveman graph starts with ``l`` cliques of size ``k``.  Edges are</span>
-<span class="sd">    then randomly rewired with probability ``p`` to link different cliques.</span>
+<span class="sd">    A relaxed caveman graph starts with l cliques of size k.  Edges</span>
+<span class="sd">    are then randomly rewired with probability p to link different</span>
+<span class="sd">    cliques.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -302,6 +302,8 @@
 <span class="sd">      Probabilty of rewiring each edge.</span>
 <span class="sd">    seed : int,optional</span>
 <span class="sd">      Seed for random number generator(default=None)</span>
+<span class="sd">    directed : bool,optional (default=False)</span>
+<span class="sd">      If True return a directed graph</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -317,7 +319,7 @@
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; G = nx.relaxed_caveman_graph(2, 3, 0.1, seed=42)</span>
 
-<span class="sd">    References</span>
+<span class="sd">     References</span>
 <span class="sd">    ----------</span>
 <span class="sd">    .. [1] Santo Fortunato, Community Detection in Graphs,</span>
 <span class="sd">       Physics Reports Volume 486, Issues 3-5, February 2010, Pages 75-174.</span>
@@ -346,8 +348,8 @@
 <span class="sd">    p_in and nodes of different groups are connected with probability</span>
 <span class="sd">    p_out.</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
+<span class="sd">    Paramters</span>
+<span class="sd">    ---------</span>
 <span class="sd">    sizes : list of ints</span>
 <span class="sd">      Sizes of groups</span>
 <span class="sd">    p_in : float</span>
@@ -596,8 +598,8 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -617,7 +619,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

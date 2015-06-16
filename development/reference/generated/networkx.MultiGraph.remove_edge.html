@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>remove_edge &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>remove_edge &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="MultiGraph - Undirected graphs with self loops and parallel edges" href="../classes.multigraph.html"/>
         <link rel="next" title="remove_edges_from" href="networkx.MultiGraph.remove_edges_from.html"/>
         <link rel="prev" title="add_weighted_edges_from" href="networkx.MultiGraph.add_weighted_edges_from.html"/> 
@@ -195,22 +195,16 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>u,v: nodes</strong></p>
-<blockquote>
-<div><p>Remove an edge between nodes u and v.</p>
-</div></blockquote>
-<p><strong>key</strong> : hashable identifier, optional (default=None)</p>
-<blockquote>
-<div><p>Used to distinguish multiple edges between a pair of nodes.
-If None remove a single (abritrary) edge between u and v.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>u,v</strong> (<em>nodes</em>) &#8211; Remove an edge between nodes u and v.</li>
+<li><strong>key</strong> (<em>hashable identifier, optional (default=None)</em>) &#8211; Used to distinguish multiple edges between a pair of nodes.
+If None remove a single (abritrary) edge between u and v.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
-<blockquote class="last">
-<div><p>If there is not an edge between u and v, or
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../exceptions.html#networkx.NetworkXError" title="networkx.NetworkXError"><code class="xref py py-exc docutils literal"><span class="pre">NetworkXError</span></code></a> &#8211;
+If there is not an edge between u and v, or
 if there is no edge with the specified key.</p>
-</div></blockquote>
 </td>
 </tr>
 </tbody>
@@ -218,7 +212,7 @@ if there is no edge with the specified key.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="networkx.MultiGraph.remove_edges_from.html#networkx.MultiGraph.remove_edges_from" title="networkx.MultiGraph.remove_edges_from"><code class="xref py py-obj docutils literal"><span class="pre">remove_edges_from</span></code></a></dt>
+<dt><a class="reference internal" href="networkx.MultiGraph.remove_edges_from.html#networkx.MultiGraph.remove_edges_from" title="networkx.MultiGraph.remove_edges_from"><code class="xref py py-meth docutils literal"><span class="pre">remove_edges_from()</span></code></a></dt>
 <dd>remove a collection of edges</dd>
 </dl>
 </div>
@@ -265,8 +259,8 @@ if there is no edge with the specified key.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -286,7 +280,7 @@ if there is no edge with the specified key.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

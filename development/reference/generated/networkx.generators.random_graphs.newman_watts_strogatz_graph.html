@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>newman_watts_strogatz_graph &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>newman_watts_strogatz_graph &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
         <link rel="next" title="watts_strogatz_graph" href="networkx.generators.random_graphs.watts_strogatz_graph.html"/>
         <link rel="prev" title="binomial_graph" href="networkx.generators.random_graphs.binomial_graph.html"/> 
@@ -188,49 +188,37 @@
 <dl class="function">
 <dt id="networkx.generators.random_graphs.newman_watts_strogatz_graph">
 <code class="descname">newman_watts_strogatz_graph</code><span class="sig-paren">(</span><em>n</em>, <em>k</em>, <em>p</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/generators/random_graphs.html#newman_watts_strogatz_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.random_graphs.newman_watts_strogatz_graph" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a Newman–Watts–Strogatz small-world graph.</p>
+<dd><p>Return a Newman-Watts-Strogatz small world graph.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>n</strong> : int</p>
-<blockquote>
-<div><p>The number of nodes.</p>
-</div></blockquote>
-<p><strong>k</strong> : int</p>
-<blockquote>
-<div><p>Each node is joined with its <code class="docutils literal"><span class="pre">k</span></code> nearest neighbors in a ring
-topology.</p>
-</div></blockquote>
-<p><strong>p</strong> : float</p>
-<blockquote>
-<div><p>The probability of adding a new edge for each edge.</p>
-</div></blockquote>
-<p><strong>seed</strong> : int, optional</p>
-<blockquote class="last">
-<div><p>The seed for the random number generator (the default is <code class="docutils literal"><span class="pre">None</span></code>).</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>n</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The number of nodes</li>
+<li><strong>k</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Each node is connected to k nearest neighbors in ring topology</li>
+<li><strong>p</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; The probability of adding a new edge for each edge</li>
+<li><strong>seed</strong> (<em>int, optional</em>) &#8211; seed for random number generator (default=None)</li>
+</ul>
 </td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>First create a ring over n nodes.  Then each node in the ring is
+connected with its k nearest neighbors (k-1 neighbors if k is odd).
+Then shortcuts are created by adding new edges as follows:
+for each edge u-v in the underlying &#8220;n-ring with k nearest neighbors&#8221;
+with probability p add a new edge u-w with randomly-chosen existing
+node w.  In contrast with watts_strogatz_graph(), no edges are removed.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.generators.random_graphs.watts_strogatz_graph.html#networkx.generators.random_graphs.watts_strogatz_graph" title="networkx.generators.random_graphs.watts_strogatz_graph"><code class="xref py py-obj docutils literal"><span class="pre">watts_strogatz_graph</span></code></a></p>
+<p class="last"><a class="reference internal" href="networkx.generators.random_graphs.watts_strogatz_graph.html#networkx.generators.random_graphs.watts_strogatz_graph" title="networkx.generators.random_graphs.watts_strogatz_graph"><code class="xref py py-func docutils literal"><span class="pre">watts_strogatz_graph()</span></code></a></p>
 </div>
-<p class="rubric">Notes</p>
-<p>First create a ring over <code class="docutils literal"><span class="pre">n</span></code> nodes.  Then each node in the ring is
-connected with its <code class="docutils literal"><span class="pre">k</span></code> nearest neighbors (or <code class="docutils literal"><span class="pre">k</span> <span class="pre">-</span> <span class="pre">1</span></code> neighbors if <code class="docutils literal"><span class="pre">k</span></code>
-is odd).  Then shortcuts are created by adding new edges as follows: for
-each edge <code class="docutils literal"><span class="pre">(u,</span> <span class="pre">v)</span></code> in the underlying &#8220;<code class="docutils literal"><span class="pre">n</span></code>-ring with <code class="docutils literal"><span class="pre">k</span></code> nearest
-neighbors&#8221; with probability <code class="docutils literal"><span class="pre">p</span></code> add a new edge <code class="docutils literal"><span class="pre">(u,</span> <span class="pre">w)</span></code> with
-randomly-chosen existing node <code class="docutils literal"><span class="pre">w</span></code>.  In contrast with
-<a class="reference internal" href="networkx.generators.random_graphs.watts_strogatz_graph.html#networkx.generators.random_graphs.watts_strogatz_graph" title="networkx.generators.random_graphs.watts_strogatz_graph"><code class="xref py py-func docutils literal"><span class="pre">watts_strogatz_graph()</span></code></a>, no edges are removed.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r401" rules="none">
+<table class="docutils footnote" frame="void" id="id1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R401]</a></td><td>M. E. J. Newman and D. J. Watts,
+<tr><td class="label">[1]</td><td>M. E. J. Newman and D. J. Watts,
 Renormalization group analysis of the small-world network model,
 Physics Letters A, 263, 341, 1999.
 <a class="reference external" href="http://dx.doi.org/10.1016/S0375-9601(99)00757-4">http://dx.doi.org/10.1016/S0375-9601(99)00757-4</a></td></tr>
@@ -258,8 +246,8 @@ Physics Letters A, 263, 341, 1999.
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -279,7 +267,7 @@ Physics Letters A, 263, 341, 1999.
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

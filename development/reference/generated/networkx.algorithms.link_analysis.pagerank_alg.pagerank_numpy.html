@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pagerank_numpy &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>pagerank_numpy &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Link Analysis" href="../algorithms.link_analysis.html"/>
         <link rel="next" title="pagerank_scipy" href="networkx.algorithms.link_analysis.pagerank_alg.pagerank_scipy.html"/>
         <link rel="prev" title="pagerank" href="networkx.algorithms.link_analysis.pagerank_alg.pagerank.html"/> 
@@ -194,52 +194,42 @@
 <p>PageRank computes a ranking of the nodes in the graph G based on
 the structure of the incoming links. It was originally designed as
 an algorithm to rank web pages.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
-<blockquote>
-<div><p>A NetworkX graph.  Undirected graphs will be converted to a directed
-graph with two directed edges for each undirected edge.</p>
-</div></blockquote>
-<p><strong>alpha</strong> : float, optional</p>
-<blockquote>
-<div><p>Damping parameter for PageRank, default=0.85.</p>
-</div></blockquote>
-<p><strong>personalization: dict, optional</strong></p>
-<blockquote>
-<div><p>The &#8220;personalization vector&#8221; consisting of a dictionary with a
+<dl class="docutils">
+<dt>G <span class="classifier-delimiter">:</span> <span class="classifier">graph</span></dt>
+<dd>A NetworkX graph.  Undirected graphs will be converted to a directed
+graph with two directed edges for each undirected edge.</dd>
+<dt>alpha <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd>Damping parameter for PageRank, default=0.85.</dd>
+<dt>personalization: dict, optional</dt>
+<dd>The &#8220;personalization vector&#8221; consisting of a dictionary with a
 key for every graph node and nonzero personalization value for each
-node. By default, a uniform distribution is used.</p>
-</div></blockquote>
-<p><strong>weight</strong> : key, optional</p>
-<blockquote>
-<div><p>Edge data key to use as weight.  If None weights are set to 1.</p>
-</div></blockquote>
-<p><strong>dangling: dict, optional</strong></p>
-<blockquote>
-<div><p>The outedges to be assigned to any &#8220;dangling&#8221; nodes, i.e., nodes without
+node. By default, a uniform distribution is used.</dd>
+<dt>weight <span class="classifier-delimiter">:</span> <span class="classifier">key, optional</span></dt>
+<dd>Edge data key to use as weight.  If None weights are set to 1.</dd>
+<dt>dangling: dict, optional</dt>
+<dd>The outedges to be assigned to any &#8220;dangling&#8221; nodes, i.e., nodes without
 any outedges. The dict key is the node the outedge points to and the dict
 value is the weight of that outedge. By default, dangling nodes are given
 outedges according to the personalization vector (uniform if not
 specified) This must be selected to result in an irreducible transition
 matrix (see notes under google_matrix). It may be common to have the
-dangling dict to be the same as the personalization dict.</p>
-</div></blockquote>
-</td>
+dangling dict to be the same as the personalization dict.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>pagerank</strong> &#8211;
+Dictionary of nodes with PageRank as value.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pagerank</strong> : dictionary</p>
-<blockquote class="last">
-<div><p>Dictionary of nodes with PageRank as value.</p>
-</div></blockquote>
-</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dictionary</td>
 </tr>
 </tbody>
 </table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.link_analysis.pagerank_alg.pagerank.html#networkx.algorithms.link_analysis.pagerank_alg.pagerank" title="networkx.algorithms.link_analysis.pagerank_alg.pagerank"><code class="xref py py-obj docutils literal"><span class="pre">pagerank</span></code></a>, <a class="reference internal" href="networkx.algorithms.link_analysis.pagerank_alg.pagerank_scipy.html#networkx.algorithms.link_analysis.pagerank_alg.pagerank_scipy" title="networkx.algorithms.link_analysis.pagerank_alg.pagerank_scipy"><code class="xref py py-obj docutils literal"><span class="pre">pagerank_scipy</span></code></a>, <a class="reference internal" href="networkx.algorithms.link_analysis.pagerank_alg.google_matrix.html#networkx.algorithms.link_analysis.pagerank_alg.google_matrix" title="networkx.algorithms.link_analysis.pagerank_alg.google_matrix"><code class="xref py py-obj docutils literal"><span class="pre">google_matrix</span></code></a></p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pr</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">pagerank_numpy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+</pre></div>
 </div>
 <p class="rubric">Notes</p>
 <p>The eigenvector calculation uses NumPy&#8217;s interface to the LAPACK
@@ -248,28 +238,27 @@ for small graphs.</p>
 <p>This implementation works with Multi(Di)Graphs. For multigraphs the
 weight between two nodes is set to be the sum of all edge weights
 between those nodes.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.link_analysis.pagerank_alg.pagerank.html#networkx.algorithms.link_analysis.pagerank_alg.pagerank" title="networkx.algorithms.link_analysis.pagerank_alg.pagerank"><code class="xref py py-func docutils literal"><span class="pre">pagerank()</span></code></a>, <a class="reference internal" href="networkx.algorithms.link_analysis.pagerank_alg.pagerank_scipy.html#networkx.algorithms.link_analysis.pagerank_alg.pagerank_scipy" title="networkx.algorithms.link_analysis.pagerank_alg.pagerank_scipy"><code class="xref py py-func docutils literal"><span class="pre">pagerank_scipy()</span></code></a>, <a class="reference internal" href="networkx.algorithms.link_analysis.pagerank_alg.google_matrix.html#networkx.algorithms.link_analysis.pagerank_alg.google_matrix" title="networkx.algorithms.link_analysis.pagerank_alg.google_matrix"><code class="xref py py-func docutils literal"><span class="pre">google_matrix()</span></code></a></p>
+</div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r338" rules="none">
+<table class="docutils footnote" frame="void" id="id1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R338]</a></td><td>A. Langville and C. Meyer,
+<tr><td class="label">[1]</td><td>A. Langville and C. Meyer,
 &#8220;A survey of eigenvector methods of web information retrieval.&#8221;
 <a class="reference external" href="http://citeseer.ist.psu.edu/713792.html">http://citeseer.ist.psu.edu/713792.html</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r339" rules="none">
+<table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R339]</a></td><td>Page, Lawrence; Brin, Sergey; Motwani, Rajeev and Winograd, Terry,
+<tr><td class="label">[2]</td><td>Page, Lawrence; Brin, Sergey; Motwani, Rajeev and Winograd, Terry,
 The PageRank citation ranking: Bringing order to the Web. 1999
 <a class="reference external" href="http://dbpubs.stanford.edu:8090/pub/showDoc.Fulltext?lang=en&amp;doc=1999-66&amp;format=pdf">http://dbpubs.stanford.edu:8090/pub/showDoc.Fulltext?lang=en&amp;doc=1999-66&amp;format=pdf</a></td></tr>
 </tbody>
 </table>
-<p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pr</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">pagerank_numpy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
-</pre></div>
-</div>
 </dd></dl>
 
 </div>
@@ -292,8 +281,8 @@ The PageRank citation ranking: Bringing order to the Web. 1999
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -313,7 +302,7 @@ The PageRank citation ranking: Bringing order to the Web. 1999
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

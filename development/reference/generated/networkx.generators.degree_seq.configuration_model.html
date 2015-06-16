@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>configuration_model &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>configuration_model &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
         <link rel="next" title="directed_configuration_model" href="networkx.generators.degree_seq.directed_configuration_model.html"/>
         <link rel="prev" title="random_powerlaw_tree_sequence" href="networkx.generators.random_graphs.random_powerlaw_tree_sequence.html"/> 
@@ -196,42 +196,34 @@ match the given degree sequence.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>deg_sequence</strong> :  list of integers</p>
-<blockquote>
-<div><p>Each list entry corresponds to the degree of a node.</p>
-</div></blockquote>
-<p><strong>create_using</strong> : graph, optional (default MultiGraph)</p>
-<blockquote>
-<div><p>Return graph of this type. The instance will be cleared.</p>
-</div></blockquote>
-<p><strong>seed</strong> : hashable object, optional</p>
-<blockquote>
-<div><p>Seed for random number generator.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>deg_sequence</strong> (<em>list of integers</em>) &#8211; Each list entry corresponds to the degree of a node.</li>
+<li><strong>create_using</strong> (<em>graph, optional (default MultiGraph)</em>) &#8211; Return graph of this type. The instance will be cleared.</li>
+<li><strong>seed</strong> (<em>hashable object, optional</em>) &#8211; Seed for random number generator.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>G</strong> : MultiGraph</p>
-<blockquote>
-<div><p>A graph with the specified degree sequence.
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>G</strong> &#8211;
+A graph with the specified degree sequence.
 Nodes are labeled starting at 0 with an index
 corresponding to the position in deg_sequence.</p>
-</div></blockquote>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
-<blockquote class="last">
-<div><p>If the degree sequence does not have an even sum.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">MultiGraph</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">NetworkXError</span></code> &#8211;
+If the degree sequence does not have an even sum.</p>
 </td>
 </tr>
 </tbody>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">is_valid_degree_sequence</span></code></p>
+<p class="last"><code class="xref py py-func docutils literal"><span class="pre">is_valid_degree_sequence()</span></code></p>
 </div>
 <p class="rubric">Notes</p>
-<p>As described by Newman <a class="reference internal" href="#r366" id="id1">[R366]</a>.</p>
+<p>As described by Newman <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
 <p>A non-graphical degree sequence (not realizable by some simple
 graph) is allowed since this function returns graphs with self
 loops and parallel edges.  An exception is raised if the degree
@@ -240,20 +232,20 @@ sequence does not have an even sum.</p>
 duplicate edges and loops.  You can remove the self-loops and
 parallel edges (see below) which will likely result in a graph
 that doesn&#8217;t have the exact degree sequence specified.</p>
-<p>The density of self-loops and parallel edges tends to decrease 
-as the number of nodes increases. However, typically the number 
-of self-loops will approach a Poisson distribution with a nonzero 
-mean, and similarly for the number of parallel edges.   Consider a 
-node with k stubs. The probability of being joined to another stub of 
-the same node is basically (k-1)/N where k is the degree and N is 
-the number of nodes. So the probability of a self-loop  scales like c/N 
-for some constant c.  As N grows, this means we expect c self-loops. 
+<p>The density of self-loops and parallel edges tends to decrease
+as the number of nodes increases. However, typically the number
+of self-loops will approach a Poisson distribution with a nonzero
+mean, and similarly for the number of parallel edges.   Consider a
+node with k stubs. The probability of being joined to another stub of
+the same node is basically (k-1)/N where k is the degree and N is
+the number of nodes. So the probability of a self-loop  scales like c/N
+for some constant c.  As N grows, this means we expect c self-loops.
 Similarly for parallel edges.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r366" rules="none">
+<table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R366]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> M.E.J. Newman, &#8220;The structure and function of complex networks&#8221;,
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>M.E.J. Newman, &#8220;The structure and function of complex networks&#8221;,
 SIAM REVIEW 45-2, pp 167-256, 2003.</td></tr>
 </tbody>
 </table>
@@ -293,8 +285,8 @@ SIAM REVIEW 45-2, pp 167-256, 2003.</td></tr>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -314,7 +306,7 @@ SIAM REVIEW 45-2, pp 167-256, 2003.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

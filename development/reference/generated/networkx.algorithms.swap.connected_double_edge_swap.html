@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>connected_double_edge_swap &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>connected_double_edge_swap &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Swap" href="../algorithms.swap.html"/>
         <link rel="next" title="Traversal" href="../algorithms.traversal.html"/>
         <link rel="prev" title="double_edge_swap" href="networkx.algorithms.swap.double_edge_swap.html"/> 
@@ -189,69 +189,44 @@
 <h1>connected_double_edge_swap<a class="headerlink" href="#connected-double-edge-swap" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.algorithms.swap.connected_double_edge_swap">
-<code class="descname">connected_double_edge_swap</code><span class="sig-paren">(</span><em>G</em>, <em>nswap=1</em>, <em>_window_threshold=3</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/swap.html#connected_double_edge_swap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.swap.connected_double_edge_swap" title="Permalink to this definition">¶</a></dt>
-<dd><p>Attempts the specified number of double-edge swaps in the graph <code class="docutils literal"><span class="pre">G</span></code>.</p>
-<p>A double-edge swap removes two randomly chosen edges <code class="docutils literal"><span class="pre">(u,</span> <span class="pre">v)</span></code> and <code class="docutils literal"><span class="pre">(x,</span>
-<span class="pre">y)</span></code> and creates the new edges <code class="docutils literal"><span class="pre">(u,</span> <span class="pre">x)</span></code> and <code class="docutils literal"><span class="pre">(v,</span> <span class="pre">y)</span></code>:</p>
+<code class="descname">connected_double_edge_swap</code><span class="sig-paren">(</span><em>G</em>, <em>nswap=1</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/swap.html#connected_double_edge_swap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.swap.connected_double_edge_swap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attempt nswap double-edge swaps in the graph G.</p>
+<p>A double-edge swap removes two randomly chosen edges u-v and x-y
+and creates the new edges u-x and v-y:</p>
 <div class="highlight-python"><div class="highlight"><pre>u--v            u  v
        becomes  |  |
 x--y            x  y
 </pre></div>
 </div>
-<p>If either <code class="docutils literal"><span class="pre">(u,</span> <span class="pre">x)</span></code> or <code class="docutils literal"><span class="pre">(v,</span> <span class="pre">y)</span></code> already exist, then no swap is performed
-so the actual number of swapped edges is always <em>at most</em> <code class="docutils literal"><span class="pre">nswap</span></code>.</p>
+<p>If either the edge u-x or v-y already exist no swap is performed so
+the actual count of swapped edges is always &lt;= nswap</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
-<blockquote>
-<div><p>An undirected graph</p>
-</div></blockquote>
-<p><strong>nswap</strong> : integer (optional, default=1)</p>
-<blockquote>
-<div><p>Number of double-edge swaps to perform</p>
-</div></blockquote>
-<p><strong>_window_threshold</strong> : integer</p>
-<blockquote>
-<div><p>The window size below which connectedness of the graph will be checked
-after each swap.</p>
-<p>The &#8220;window&#8221; in this function is a dynamically updated integer that
-represents the number of swap attempts to make before checking if the
-graph remains connected. It is an optimization used to decrease the
-running time of the algorithm in exchange for increased complexity of
-implementation.</p>
-<p>If the window size is below this threshold, then the algorithm checks
-after each swap if the graph remains connected by checking if there is a
-path joining the two nodes whose edge was just removed. If the window
-size is above this threshold, then the algorithm performs do all the
-swaps in the window and only then check if the graph is still connected.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>graph</em>) &#8211; An undirected graph</li>
+<li><strong>nswap</strong> (<em>integer (optional, default=1)</em>) &#8211; Number of double-edge swaps to perform</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">int</p>
-<blockquote>
-<div><p>The number of successful swaps</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>G</strong> &#8211;
+The number of successful swaps</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
-<blockquote class="last">
-<div><p>If the input graph is not connected, or if the graph has fewer than four
-nodes.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">int</p>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>The initial graph <code class="docutils literal"><span class="pre">G</span></code> must be connected, and the resulting graph is
-connected. The graph <code class="docutils literal"><span class="pre">G</span></code> is modified in place.</p>
+<p>The initial graph G must be connected, and the resulting graph is connected.
+The graph G is modified in place.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r355" rules="none">
+<table class="docutils footnote" frame="void" id="id1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R355]</a></td><td>C. Gkantsidis and M. Mihail and E. Zegura,
+<tr><td class="label">[1]</td><td>C. Gkantsidis and M. Mihail and E. Zegura,
 The Markov chain simulation method for generating connected
 power law random graphs, 2003.
 <a class="reference external" href="http://citeseer.ist.psu.edu/gkantsidis03markov.html">http://citeseer.ist.psu.edu/gkantsidis03markov.html</a></td></tr>
@@ -279,8 +254,8 @@ power law random graphs, 2003.
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -300,7 +275,7 @@ power law random graphs, 2003.
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

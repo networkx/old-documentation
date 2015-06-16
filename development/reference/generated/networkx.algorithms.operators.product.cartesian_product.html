@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>cartesian_product &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>cartesian_product &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Operators" href="../algorithms.operators.html"/>
         <link rel="next" title="lexicographic_product" href="networkx.algorithms.operators.product.lexicographic_product.html"/>
         <link rel="prev" title="intersection_all" href="networkx.algorithms.operators.all.intersection_all.html"/> 
@@ -193,32 +193,24 @@
 <dd><p>Return the Cartesian product of G and H.</p>
 <p>The tensor product P of the graphs G and H has a node set that
 is the Cartesian product of the node sets, $V(P)=V(G)       imes V(H)$.
-P has an edge ((u,v),(x,y)) if and only if (u,v) is an edge in G 
+P has an edge ((u,v),(x,y)) if and only if (u,v) is an edge in G
 and x==y or  and (x,y) is an edge in H and u==v.
 and (x,y) is an edge in H.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G, H: graphs</strong></p>
-<blockquote>
-<div><p>Networkx graphs.</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>H</strong> (<em>G,</em>) &#8211; Networkx graphs.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">P: NetworkX graph</p>
-<blockquote>
-<div><p>The Cartesian product of G and H. P will be a multi-graph if either G
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>P</strong> &#8211;
+The Cartesian product of G and H. P will be a multi-graph if either G
 or H is a multi-graph. Will be a directed if G and H are directed,
-and undirected if G and H are undirected.</p>
-</div></blockquote>
-</td>
+and undirected if G and H are undirected.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
-<blockquote class="last">
-<div><p>If G and H are not both directed or both undirected.</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">NetworkX graph</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">NetworkXError</span></code> &#8211;
+If G and H are not both directed or both undirected.</td>
 </tr>
 </tbody>
 </table>
@@ -257,8 +249,8 @@ new product graph</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -278,7 +270,7 @@ new product graph</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

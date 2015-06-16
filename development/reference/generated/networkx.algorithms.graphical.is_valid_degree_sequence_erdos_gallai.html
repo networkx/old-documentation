@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>is_valid_degree_sequence_erdos_gallai &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>is_valid_degree_sequence_erdos_gallai &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Graphical degree sequence" href="../algorithms.graphical.html"/>
         <link rel="next" title="Hierarchy" href="../algorithms.hierarchy.html"/>
         <link rel="prev" title="is_valid_degree_sequence_havel_hakimi" href="networkx.algorithms.graphical.is_valid_degree_sequence_havel_hakimi.html"/> 
@@ -196,17 +196,12 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>deg_sequence</strong> : list</p>
-<blockquote>
-<div><p>A list of integers</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>deg_sequence</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; A list of integers</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>valid</strong> : bool</p>
-<blockquote class="last">
-<div><p>True if deg_sequence is graphical and False if not.</p>
-</div></blockquote>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>valid</strong> &#8211;
+True if deg_sequence is graphical and False if not.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
 </tr>
 </tbody>
 </table>
@@ -217,33 +212,33 @@ Worst-case run time is: O(n) where n is the length of the sequence.</p>
 sum of the sequence is even and for all strong indices k in the sequence,</p>
 <blockquote>
 <div><div class="math">
-\[\sum_{i=1}^{k} d_i \leq k(k-1) + \sum_{j=k+1}^{n} \min(d_i,k)
-      = k(n-1) - ( k \sum_{j=0}^{k-1} n_j - \sum_{j=0}^{k-1} j n_j )\]</div>
-</div></blockquote>
-<p>A strong index k is any index where <span class="math">\(d_k \geq k\)</span> and the value <span class="math">\(n_j\)</span> is the
+<p><img src="../../_images/math/9f8808645e9b6f1f45aedec6e6ff7a4ea15a9279.png" alt="\sum_{i=1}^{k} d_i \leq k(k-1) + \sum_{j=k+1}^{n} \min(d_i,k)
+      = k(n-1) - ( k \sum_{j=0}^{k-1} n_j - \sum_{j=0}^{k-1} j n_j )"/></p>
+</div></div></blockquote>
+<p>A strong index k is any index where <img class="math" src="../../_images/math/77cac43aade0dc58efe3919d844f1df23d402016.png" alt="d_k \geq k" style="vertical-align: -3px"/> and the value <img class="math" src="../../_images/math/03fea40a1da0c8756b66d9794a492fb54e47e380.png" alt="n_j" style="vertical-align: -6px"/> is the
 number of occurrences of j in d.  The maximal strong index is called the
 Durfee index.</p>
-<p>This particular rearrangement comes from the proof of Theorem 3 in <a class="reference internal" href="#r324" id="id2">[R324]</a>.</p>
+<p>This particular rearrangement comes from the proof of Theorem 3 in <a class="footnote-reference" href="#id5" id="id2">[2]</a>.</p>
 <p>The ZZ condition says that for the sequence d if</p>
 <div class="math">
-\[\begin{split}|d| &gt;= \frac{(\max(d) + \min(d) + 1)^2}{4*\min(d)}\end{split}\]</div>
-<p>then d is graphical.  This was shown in Theorem 6 in <a class="reference internal" href="#r324" id="id3">[R324]</a>.</p>
+<p><img src="../../_images/math/5359f048b65e214c2690277c176e6791ac6bdea2.png" alt="|d| &gt;= \frac{(\max(d) + \min(d) + 1)^2}{4*\min(d)}"/></p>
+</div><p>then d is graphical.  This was shown in Theorem 6 in <a class="footnote-reference" href="#id5" id="id3">[2]</a>.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r323" rules="none">
+<table class="docutils footnote" frame="void" id="id4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id6">[R323]</a></td><td>A. Tripathi and S. Vijay. &#8220;A note on a theorem of Erdős &amp; Gallai&#8221;,
+<tr><td class="label">[1]</td><td>A. Tripathi and S. Vijay. &#8220;A note on a theorem of Erdős &amp; Gallai&#8221;,
 Discrete Mathematics, 265, pp. 417-420 (2003).</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r324" rules="none">
+<table class="docutils footnote" frame="void" id="id5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R324]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>, <a class="fn-backref" href="#id7">3</a>)</em> I.E. Zverovich and V.E. Zverovich. &#8220;Contributions to the theory
+<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> I.E. Zverovich and V.E. Zverovich. &#8220;Contributions to the theory
 of graphic sequences&#8221;, Discrete Mathematics, 105, pp. 292-303 (1992).</td></tr>
 </tbody>
 </table>
-<p><a class="reference internal" href="../../bibliography.html#eg1960" id="id4">[EG1960]</a>, <a class="reference internal" href="../../bibliography.html#choudum1986" id="id5">[choudum1986]</a></p>
+<p><a class="reference internal" href="../../bibliography.html#eg1960" id="id6">[EG1960]</a>, <a class="reference internal" href="../../bibliography.html#choudum1986" id="id7">[choudum1986]</a></p>
 </dd></dl>
 
 </div>
@@ -266,8 +261,8 @@ of graphic sequences&#8221;, Discrete Mathematics, 105, pp. 292-303 (1992).</td>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -287,7 +282,7 @@ of graphic sequences&#8221;, Discrete Mathematics, 105, pp. 292-303 (1992).</td>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

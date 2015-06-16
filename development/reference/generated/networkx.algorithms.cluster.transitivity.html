@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>transitivity &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>transitivity &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Clustering" href="../algorithms.clustering.html"/>
         <link rel="next" title="clustering" href="networkx.algorithms.cluster.clustering.html"/>
         <link rel="prev" title="triangles" href="networkx.algorithms.cluster.triangles.html"/> 
@@ -190,25 +190,21 @@
 <dl class="function">
 <dt id="networkx.algorithms.cluster.transitivity">
 <code class="descname">transitivity</code><span class="sig-paren">(</span><em>G</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/cluster.html#transitivity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.cluster.transitivity" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute graph transitivity, the fraction of all possible triangles 
+<dd><p>Compute graph transitivity, the fraction of all possible triangles
 present in G.</p>
-<p>Possible triangles are identified by the number of &#8220;triads&#8221; 
+<p>Possible triangles are identified by the number of &#8220;triads&#8221;
 (two edges with a shared vertex).</p>
 <p>The transitivity is</p>
 <div class="math">
-\[T = 3\frac{\#triangles}{\#triads}.\]</div>
-<table class="docutils field-list" frame="void" rules="none">
+<p><img src="../../_images/math/624e168ddc6f96331c9d50cd3f93c20009fb085d.png" alt="T = 3\frac{\#triangles}{\#triads}."/></p>
+</div><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
-</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> &#8211;
+Transitivity</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : float</p>
-<blockquote class="last">
-<div><p>Transitivity</p>
-</div></blockquote>
-</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
 </tr>
 </tbody>
 </table>
@@ -240,8 +236,8 @@ present in G.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -261,7 +257,7 @@ present in G.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

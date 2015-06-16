@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>is_distance_regular &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>is_distance_regular &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Distance-Regular Graphs" href="../algorithms.distance_regular.html"/>
         <link rel="next" title="intersection_array" href="networkx.algorithms.distance_regular.intersection_array.html"/>
         <link rel="prev" title="global_parameters" href="networkx.algorithms.distance_regular.global_parameters.html"/> 
@@ -200,36 +200,10 @@ between x and y, independently of the choice of x and y.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G: Networkx graph (undirected)</strong></p>
-</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the graph is Distance Regular, False otherwise</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool</p>
-<blockquote class="last">
-<div><p>True if the graph is Distance Regular, False otherwise</p>
-</div></blockquote>
-</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
 </tr>
-</tbody>
-</table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.distance_regular.intersection_array.html#networkx.algorithms.distance_regular.intersection_array" title="networkx.algorithms.distance_regular.intersection_array"><code class="xref py py-obj docutils literal"><span class="pre">intersection_array</span></code></a>, <a class="reference internal" href="networkx.algorithms.distance_regular.global_parameters.html#networkx.algorithms.distance_regular.global_parameters" title="networkx.algorithms.distance_regular.global_parameters"><code class="xref py py-obj docutils literal"><span class="pre">global_parameters</span></code></a></p>
-</div>
-<p class="rubric">Notes</p>
-<p>For undirected and simple graphs only</p>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r309" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R309]</a></td><td>Brouwer, A. E.; Cohen, A. M.; and Neumaier, A. 
-Distance-Regular Graphs. New York: Springer-Verlag, 1989.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="r310" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R310]</a></td><td>Weisstein, Eric W. &#8220;Distance-Regular Graph.&#8221; 
-<a class="reference external" href="http://mathworld.wolfram.com/Distance-RegularGraph.html">http://mathworld.wolfram.com/Distance-RegularGraph.html</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -238,6 +212,27 @@ Distance-Regular Graphs. New York: Springer-Verlag, 1989.</td></tr>
 <span class="go">True</span>
 </pre></div>
 </div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.distance_regular.intersection_array.html#networkx.algorithms.distance_regular.intersection_array" title="networkx.algorithms.distance_regular.intersection_array"><code class="xref py py-func docutils literal"><span class="pre">intersection_array()</span></code></a>, <a class="reference internal" href="networkx.algorithms.distance_regular.global_parameters.html#networkx.algorithms.distance_regular.global_parameters" title="networkx.algorithms.distance_regular.global_parameters"><code class="xref py py-func docutils literal"><span class="pre">global_parameters()</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>For undirected and simple graphs only</p>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td>Brouwer, A. E.; Cohen, A. M.; and Neumaier, A.
+Distance-Regular Graphs. New York: Springer-Verlag, 1989.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td>Weisstein, Eric W. &#8220;Distance-Regular Graph.&#8221;
+<a class="reference external" href="http://mathworld.wolfram.com/Distance-RegularGraph.html">http://mathworld.wolfram.com/Distance-RegularGraph.html</a></td></tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -260,8 +255,8 @@ Distance-Regular Graphs. New York: Springer-Verlag, 1989.</td></tr>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -281,7 +276,7 @@ Distance-Regular Graphs. New York: Springer-Verlag, 1989.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

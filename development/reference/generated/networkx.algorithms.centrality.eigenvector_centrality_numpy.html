@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>eigenvector_centrality_numpy &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>eigenvector_centrality_numpy &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Centrality" href="../algorithms.centrality.html"/>
         <link rel="next" title="katz_centrality" href="networkx.algorithms.centrality.katz_centrality.html"/>
         <link rel="prev" title="eigenvector_centrality" href="networkx.algorithms.centrality.eigenvector_centrality.html"/> 
@@ -191,64 +191,24 @@
 <dt id="networkx.algorithms.centrality.eigenvector_centrality_numpy">
 <code class="descname">eigenvector_centrality_numpy</code><span class="sig-paren">(</span><em>G</em>, <em>weight='weight'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/centrality/eigenvector.html#eigenvector_centrality_numpy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.centrality.eigenvector_centrality_numpy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the eigenvector centrality for the graph G.</p>
-<p>Eigenvector centrality computes the centrality for a node based on the
-centrality of its neighbors. The eigenvector centrality for node <span class="math">\(i\)</span> is</p>
-<div class="math">
-\[\mathbf{Ax} = \lambda \mathbf{x}\]</div>
-<p>where <span class="math">\(A\)</span> is the adjacency matrix of the graph G with eigenvalue <span class="math">\(\lambda\)</span>.
-By virtue of the Perron–Frobenius theorem, there is a unique and positive
-solution if <span class="math">\(\lambda\)</span> is the largest eigenvalue associated with the
-eigenvector of the adjacency matrix <span class="math">\(A\)</span> (<a class="reference internal" href="#r247" id="id1">[R247]</a>).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
-<blockquote>
-<div><p>A networkx graph</p>
-</div></blockquote>
-<p><strong>weight</strong> : None or string, optional</p>
-<blockquote>
-<div><p>The name of the edge attribute used as weight.
-If None, all edge weights are considered equal.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>graph</em>) &#8211; A networkx graph</li>
+<li><strong>weight</strong> (<em>None or string, optional</em>) &#8211; The name of the edge attribute used as weight.
+If None, all edge weights are considered equal.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>nodes</strong> : dictionary</p>
-<blockquote class="last">
-<div><p>Dictionary of nodes with eigenvector centrality as the value.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>nodes</strong> &#8211;
+Dictionary of nodes with eigenvector centrality as the value.</p>
 </td>
 </tr>
-</tbody>
-</table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.centrality.eigenvector_centrality.html#networkx.algorithms.centrality.eigenvector_centrality" title="networkx.algorithms.centrality.eigenvector_centrality"><code class="xref py py-obj docutils literal"><span class="pre">eigenvector_centrality</span></code></a>, <code class="xref py py-obj docutils literal"><span class="pre">pagerank</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">hits</span></code></p>
-</div>
-<p class="rubric">Notes</p>
-<p>The measure was introduced by <a class="reference internal" href="#r246" id="id2">[R246]</a>.</p>
-<p>This algorithm uses the SciPy sparse eigenvalue solver (ARPACK) to
-find the largest eigenvalue/eigenvector pair.</p>
-<p>For directed graphs this is &#8220;left&#8221; eigenvector centrality which corresponds
-to the in-edges in the graph. For out-edges eigenvector centrality
-first reverse the graph with G.reverse().</p>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r246" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R246]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> Phillip Bonacich:
-Power and Centrality: A Family of Measures.
-American Journal of Sociology 92(5):1170–1182, 1986
-<a class="reference external" href="http://www.leonidzhukov.net/hse/2014/socialnetworks/papers/Bonacich-Centrality.pdf">http://www.leonidzhukov.net/hse/2014/socialnetworks/papers/Bonacich-Centrality.pdf</a></td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="r247" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R247]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> Mark E. J. Newman:
-Networks: An Introduction.
-Oxford University Press, USA, 2010, pp. 169.</td></tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -257,6 +217,15 @@ Oxford University Press, USA, 2010, pp. 169.</td></tr>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">([</span><span class="s">&#39;</span><span class="si">%s</span><span class="s"> </span><span class="si">%0.2f</span><span class="s">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="n">centrality</span><span class="p">[</span><span class="n">node</span><span class="p">])</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">centrality</span><span class="p">])</span>
 <span class="go">[&#39;0 0.37&#39;, &#39;1 0.60&#39;, &#39;2 0.60&#39;, &#39;3 0.37&#39;]</span>
 </pre></div>
+</div>
+<p>This algorithm uses the SciPy sparse eigenvalue solver (ARPACK) to
+find the largest eigenvalue/eigenvector pair.</p>
+<p>For directed graphs this is &#8220;left&#8221; eigevector centrality which corresponds
+to the in-edges in the graph.  For out-edges eigenvector centrality
+first reverse the graph with G.reverse().</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.centrality.eigenvector_centrality.html#networkx.algorithms.centrality.eigenvector_centrality" title="networkx.algorithms.centrality.eigenvector_centrality"><code class="xref py py-func docutils literal"><span class="pre">eigenvector_centrality()</span></code></a>, <code class="xref py py-func docutils literal"><span class="pre">pagerank()</span></code>, <code class="xref py py-func docutils literal"><span class="pre">hits()</span></code></p>
 </div>
 </dd></dl>
 
@@ -280,8 +249,8 @@ Oxford University Press, USA, 2010, pp. 169.</td></tr>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -301,7 +270,7 @@ Oxford University Press, USA, 2010, pp. 169.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.centrality.katz &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>networkx.algorithms.centrality.katz &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../../../index.html"/>
         <link rel="up" title="Module code" href="../../../index.html"/> 
 
   
@@ -178,11 +178,10 @@
           <div role="main">
             
   <h1>Source code for networkx.algorithms.centrality.katz</h1><div class="highlight"><pre>
-<span class="c"># coding=utf8</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Katz centrality.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="c">#    Copyright (C) 2004-2015 by</span>
+<span class="c">#    Copyright (C) 2004-2013 by</span>
 <span class="c">#    Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
 <span class="c">#    Dan Schult &lt;dschult@colgate.edu&gt;</span>
 <span class="c">#    Pieter Swart &lt;swart@lanl.gov&gt;</span>
@@ -205,9 +204,8 @@
     <span class="sd">r&quot;&quot;&quot;Compute the Katz centrality for the nodes of the graph G.</span>
 
 
-<span class="sd">    Katz centrality computes the centrality for a node based on the centrality</span>
-<span class="sd">    of its neighbors. It is a generalization of the eigenvector centrality. The</span>
-<span class="sd">    Katz centrality for node `i` is</span>
+<span class="sd">    Katz centrality is related to eigenvalue centrality and PageRank.</span>
+<span class="sd">    The Katz centrality for node `i` is</span>
 
 <span class="sd">    .. math::</span>
 
@@ -244,7 +242,7 @@
 <span class="sd">      Attenuation factor</span>
 
 <span class="sd">    beta : scalar or dictionary, optional (default=1.0)</span>
-<span class="sd">      Weight attributed to the immediate neighborhood. If not a scalar, the</span>
+<span class="sd">      Weight attributed to the immediate neighborhood. If not a scalar the</span>
 <span class="sd">      dictionary must have an value for every node.</span>
 
 <span class="sd">    max_iter : integer, optional (default=1000)</span>
@@ -268,12 +266,6 @@
 <span class="sd">    nodes : dictionary</span>
 <span class="sd">       Dictionary of nodes with Katz centrality as the value.</span>
 
-<span class="sd">    Raises</span>
-<span class="sd">    ------</span>
-<span class="sd">    NetworkXError</span>
-<span class="sd">       If the parameter `beta` is not a scalar but lacks a value for at least</span>
-<span class="sd">       one node</span>
-
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; import math</span>
@@ -287,18 +279,8 @@
 <span class="sd">    2 0.60</span>
 <span class="sd">    3 0.37</span>
 
-<span class="sd">    See Also</span>
-<span class="sd">    --------</span>
-<span class="sd">    katz_centrality_numpy</span>
-<span class="sd">    eigenvector_centrality</span>
-<span class="sd">    eigenvector_centrality_numpy</span>
-<span class="sd">    pagerank</span>
-<span class="sd">    hits</span>
-
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    Katz centrality was introduced by [2]_.</span>
-
 <span class="sd">    This algorithm it uses the power method to find the eigenvector</span>
 <span class="sd">    corresponding to the largest eigenvalue of the adjacency matrix of G.</span>
 <span class="sd">    The constant alpha should be strictly less than the inverse of largest</span>
@@ -306,22 +288,26 @@
 <span class="sd">    The iteration will stop after max_iter iterations or an error tolerance of</span>
 <span class="sd">    number_of_nodes(G)*tol has been reached.</span>
 
-<span class="sd">    When `\alpha = 1/\lambda_{max}` and `\beta=0`, Katz centrality is the same</span>
-<span class="sd">    as eigenvector centrality.</span>
+<span class="sd">    When `\alpha = 1/\lambda_{max}` and `\beta=1` Katz centrality is the same as</span>
+<span class="sd">    eigenvector centrality.</span>
 
 <span class="sd">    For directed graphs this finds &quot;left&quot; eigenvectors which corresponds</span>
-<span class="sd">    to the in-edges in the graph. For out-edges Katz centrality</span>
+<span class="sd">    to the in-edges in the graph.  For out-edges Katz centrality</span>
 <span class="sd">    first reverse the graph with G.reverse().</span>
+
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] Mark E. J. Newman:</span>
-<span class="sd">       Networks: An Introduction.</span>
-<span class="sd">       Oxford University Press, USA, 2010, p. 720.</span>
-<span class="sd">    .. [2] Leo Katz:</span>
-<span class="sd">       A New Status Index Derived from Sociometric Index.</span>
-<span class="sd">       Psychometrika 18(1):39–43, 1953</span>
-<span class="sd">       http://phya.snu.ac.kr/~dkim/PRL87278701.pdf</span>
+<span class="sd">    .. [1] M. Newman, Networks: An Introduction. Oxford University Press,</span>
+<span class="sd">       USA, 2010, p. 720.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    katz_centrality_numpy</span>
+<span class="sd">    eigenvector_centrality</span>
+<span class="sd">    eigenvector_centrality_numpy</span>
+<span class="sd">    pagerank</span>
+<span class="sd">    hits</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
 
@@ -379,9 +365,9 @@
                           <span class="n">weight</span> <span class="o">=</span> <span class="s">&#39;weight&#39;</span><span class="p">):</span>
     <span class="sd">r&quot;&quot;&quot;Compute the Katz centrality for the graph G.</span>
 
-<span class="sd">    Katz centrality computes the centrality for a node based on the centrality</span>
-<span class="sd">    of its neighbors. It is a generalization of the eigenvector centrality. The</span>
-<span class="sd">    Katz centrality for node `i` is</span>
+
+<span class="sd">    Katz centrality is related to eigenvalue centrality and PageRank.</span>
+<span class="sd">    The Katz centrality for node `i` is</span>
 
 <span class="sd">    .. math::</span>
 
@@ -432,12 +418,6 @@
 <span class="sd">    nodes : dictionary</span>
 <span class="sd">       Dictionary of nodes with Katz centrality as the value.</span>
 
-<span class="sd">    Raises</span>
-<span class="sd">    ------</span>
-<span class="sd">    NetworkXError</span>
-<span class="sd">       If the parameter `beta` is not a scalar but lacks a value for at least</span>
-<span class="sd">       one node</span>
-
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; import math</span>
@@ -451,6 +431,23 @@
 <span class="sd">    2 0.60</span>
 <span class="sd">    3 0.37</span>
 
+<span class="sd">    Notes</span>
+<span class="sd">    ------</span>
+<span class="sd">    This algorithm uses a direct linear solver to solve the above equation.</span>
+<span class="sd">    The constant alpha should be strictly less than the inverse of largest</span>
+<span class="sd">    eigenvalue of the adjacency matrix for there to be a solution.  When</span>
+<span class="sd">    `\alpha = 1/\lambda_{max}` and `\beta=1` Katz centrality is the same as</span>
+<span class="sd">    eigenvector centrality.</span>
+
+<span class="sd">    For directed graphs this finds &quot;left&quot; eigenvectors which corresponds</span>
+<span class="sd">    to the in-edges in the graph.  For out-edges Katz centrality</span>
+<span class="sd">    first reverse the graph with G.reverse().</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] M. Newman, Networks: An Introduction. Oxford University Press,</span>
+<span class="sd">       USA, 2010, p. 720.</span>
+
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
 <span class="sd">    katz_centrality</span>
@@ -458,30 +455,6 @@
 <span class="sd">    eigenvector_centrality</span>
 <span class="sd">    pagerank</span>
 <span class="sd">    hits</span>
-
-<span class="sd">    Notes</span>
-<span class="sd">    ------</span>
-<span class="sd">    Katz centrality was introduced by [2]_.</span>
-
-<span class="sd">    This algorithm uses a direct linear solver to solve the above equation.</span>
-<span class="sd">    The constant alpha should be strictly less than the inverse of largest</span>
-<span class="sd">    eigenvalue of the adjacency matrix for there to be a solution.  When</span>
-<span class="sd">    `\alpha = 1/\lambda_{max}` and `\beta=0`, Katz centrality is the same as</span>
-<span class="sd">    eigenvector centrality.</span>
-
-<span class="sd">    For directed graphs this finds &quot;left&quot; eigenvectors which corresponds</span>
-<span class="sd">    to the in-edges in the graph. For out-edges Katz centrality</span>
-<span class="sd">    first reverse the graph with G.reverse().</span>
-
-<span class="sd">    References</span>
-<span class="sd">    ----------</span>
-<span class="sd">    .. [1] Mark E. J. Newman:</span>
-<span class="sd">       Networks: An Introduction.</span>
-<span class="sd">       Oxford University Press, USA, 2010, p. 720.</span>
-<span class="sd">    .. [2] Leo Katz:</span>
-<span class="sd">       A New Status Index Derived from Sociometric Index.</span>
-<span class="sd">       Psychometrika 18(1):39–43, 1953</span>
-<span class="sd">       http://phya.snu.ac.kr/~dkim/PRL87278701.pdf</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -531,8 +504,8 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -552,7 +525,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

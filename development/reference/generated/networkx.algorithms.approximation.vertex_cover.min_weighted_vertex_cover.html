@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>min_weighted_vertex_cover &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>min_weighted_vertex_cover &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Approximation" href="../algorithms.approximation.html"/>
         <link rel="next" title="Assortativity" href="../algorithms.assortativity.html"/>
         <link rel="prev" title="ramsey_R2" href="networkx.algorithms.approximation.ramsey.ramsey_R2.html"/> 
@@ -196,22 +196,19 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
-<blockquote>
-<div><p>Undirected graph</p>
-</div></blockquote>
-<p><strong>weight</strong> : None or string, optional (default = None)</p>
-<blockquote>
-<div><p>If None, every edge has weight/distance/cost 1. If a string, use this
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>NetworkX graph</em>) &#8211; Undirected graph</li>
+<li><strong>weight</strong> (<em>None or string, optional (default = None)</em>) &#8211; If None, every edge has weight/distance/cost 1. If a string, use this
 edge attribute as the edge weight. Any edge attribute not present
-defaults to 1.</p>
-</div></blockquote>
+defaults to 1.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>min_weighted_cover</strong> : set</p>
-<blockquote class="last">
-<div><p>Returns a set of vertices whose weight sum is no more than 2 * OPT.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>min_weighted_cover</strong> &#8211;
+Returns a set of vertices whose weight sum is no more than 2 * OPT.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">set</p>
 </td>
 </tr>
 </tbody>
@@ -219,12 +216,12 @@ defaults to 1.</p>
 <p class="rubric">Notes</p>
 <p>Local-Ratio algorithm for computing an approximate vertex cover.
 Algorithm greedily reduces the costs over edges and iteratively
-builds a cover. Worst-case runtime is <span class="math">\(O(|E|)\)</span>.</p>
+builds a cover. Worst-case runtime is <img class="math" src="../../_images/math/ae5dccd6a2d1a2a34dc4979d03995aee7f225217.png" alt="O(|E|)" style="vertical-align: -5px"/>.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r193" rules="none">
+<table class="docutils footnote" frame="void" id="id1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R193]</a></td><td>Bar-Yehuda, R., &amp; Even, S. (1985). A local-ratio theorem for
+<tr><td class="label">[1]</td><td>Bar-Yehuda, R., &amp; Even, S. (1985). A local-ratio theorem for
 approximating the weighted vertex cover problem.
 Annals of Discrete Mathematics, 25, 27–46
 <a class="reference external" href="http://www.cs.technion.ac.il/~reuven/PDF/vc_lr.pdf">http://www.cs.technion.ac.il/~reuven/PDF/vc_lr.pdf</a></td></tr>
@@ -252,8 +249,8 @@ Annals of Discrete Mathematics, 25, 27–46
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -273,7 +270,7 @@ Annals of Discrete Mathematics, 25, 27–46
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

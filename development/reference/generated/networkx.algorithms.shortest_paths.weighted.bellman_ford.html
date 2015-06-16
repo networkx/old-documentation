@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>bellman_ford &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>bellman_ford &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Shortest Paths" href="../algorithms.shortest_paths.html"/>
         <link rel="next" title="negative_edge_cycle" href="networkx.algorithms.shortest_paths.weighted.negative_edge_cycle.html"/>
         <link rel="prev" title="dijkstra_predecessor_and_distance" href="networkx.algorithms.shortest_paths.weighted.dijkstra_predecessor_and_distance.html"/> 
@@ -199,47 +199,31 @@ can handle negative edge weights.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
-<blockquote>
-<div><p>The algorithm works for all types of graphs, including directed
-graphs and multigraphs.</p>
-</div></blockquote>
-<p><strong>source: node label</strong></p>
-<blockquote>
-<div><p>Starting node for path</p>
-</div></blockquote>
-<p><strong>weight: string, optional (default=&#8217;weight&#8217;)</strong></p>
-<blockquote>
-<div><p>Edge data key corresponding to the edge weight</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>NetworkX graph</em>) &#8211; The algorithm works for all types of graphs, including directed
+graphs and multigraphs.</li>
+<li><strong>source</strong> (<em>node label</em>) &#8211; Starting node for path</li>
+<li><strong>weight</strong> (<em>string, optional (default=&#8217;weight&#8217;)</em>) &#8211; Edge data key corresponding to the edge weight</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pred, dist</strong> : dictionaries</p>
-<blockquote>
-<div><p>Returns two dictionaries keyed by node to predecessor in the
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pred, dist</strong> &#8211;
+Returns two dictionaries keyed by node to predecessor in the
 path and to the distance from the source respectively.</p>
-</div></blockquote>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXUnbounded</strong></p>
-<blockquote class="last">
-<div><p>If the (di)graph contains a negative cost (di)cycle, the
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">dictionaries</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">NetworkXUnbounded</span></code> &#8211;
+If the (di)graph contains a negative cost (di)cycle, the
 algorithm raises an exception to indicate the presence of the
 negative cost (di)cycle.  Note: any negative weight edge in an
 undirected graph is a negative cost cycle.</p>
-</div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Notes</p>
-<p>Edge weight attributes must be numerical.
-Distances are calculated as sums of weighted edges traversed.</p>
-<p>The dictionaries returned only have keys for nodes reachable from
-the source.</p>
-<p>In the case where the (di)graph is not connected, if a component
-not containing the source contains a negative cost (di)cycle, it
-will not be detected.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">create_using</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">())</span>
@@ -256,6 +240,14 @@ will not be detected.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">assert_raises</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">NetworkXUnbounded</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">bellman_ford</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
+<p class="rubric">Notes</p>
+<p>Edge weight attributes must be numerical.
+Distances are calculated as sums of weighted edges traversed.</p>
+<p>The dictionaries returned only have keys for nodes reachable from
+the source.</p>
+<p>In the case where the (di)graph is not connected, if a component
+not containing the source contains a negative cost (di)cycle, it
+will not be detected.</p>
 </dd></dl>
 
 </div>
@@ -278,8 +270,8 @@ will not be detected.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -299,7 +291,7 @@ will not be detected.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

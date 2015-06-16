@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>dfs_preorder_nodes &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>dfs_preorder_nodes &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Traversal" href="../algorithms.traversal.html"/>
         <link rel="next" title="dfs_postorder_nodes" href="networkx.algorithms.traversal.depth_first_search.dfs_postorder_nodes.html"/>
         <link rel="prev" title="dfs_successors" href="networkx.algorithms.traversal.depth_first_search.dfs_successors.html"/> 
@@ -196,27 +196,16 @@ from source.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
-<p><strong>source</strong> : node, optional</p>
-<blockquote>
-<div><p>Specify starting node for depth-first search and return edges in
-the component reachable from source.</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>source</strong> (<em>node, optional</em>) &#8211; Specify starting node for depth-first search and return edges in
+the component reachable from source.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">nodes: generator</p>
-<blockquote class="last">
-<div><p>A generator of nodes in a depth-first-search pre-ordering.</p>
-</div></blockquote>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>nodes</strong> &#8211;
+A generator of nodes in a depth-first-search pre-ordering.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">generator</td>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Notes</p>
-<p>Based on <a class="reference external" href="http://www.ics.uci.edu/~eppstein/PADS/DFS.py">http://www.ics.uci.edu/~eppstein/PADS/DFS.py</a>
-by D. Eppstein, July 2004.</p>
-<p>If a source is not specified then a source is chosen arbitrarily and
-repeatedly until all components in the graph are searched.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_path</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
@@ -224,6 +213,11 @@ repeatedly until all components in the graph are searched.</p>
 <span class="go">[0, 1, 2]</span>
 </pre></div>
 </div>
+<p class="rubric">Notes</p>
+<p>Based on <a class="reference external" href="http://www.ics.uci.edu/~eppstein/PADS/DFS.py">http://www.ics.uci.edu/~eppstein/PADS/DFS.py</a>
+by D. Eppstein, July 2004.</p>
+<p>If a source is not specified then a source is chosen arbitrarily and
+repeatedly until all components in the graph are searched.</p>
 </dd></dl>
 
 </div>
@@ -246,8 +240,8 @@ repeatedly until all components in the graph are searched.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -267,7 +261,7 @@ repeatedly until all components in the graph are searched.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

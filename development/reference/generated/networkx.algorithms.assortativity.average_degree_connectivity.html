@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>average_degree_connectivity &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>average_degree_connectivity &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Assortativity" href="../algorithms.assortativity.html"/>
         <link rel="next" title="k_nearest_neighbors" href="networkx.algorithms.assortativity.k_nearest_neighbors.html"/>
         <link rel="prev" title="average_neighbor_degree" href="networkx.algorithms.assortativity.average_neighbor_degree.html"/> 
@@ -194,59 +194,32 @@
 <p>The average degree connectivity is the average nearest neighbor degree of
 nodes with degree k. For weighted graphs, an analogous measure can
 be computed using the weighted average neighbors degree defined in
-<a class="reference internal" href="#r195" id="id1">[R195]</a>, for a node <span class="math">\(i\)</span>, as:</p>
+<a class="footnote-reference" href="#id2" id="id1">[1]</a>, for a node <img class="math" src="../../_images/math/62494ad46772c68b86d00123a1ea8f195a7864b2.png" alt="i" style="vertical-align: 0px"/>, as:</p>
 <div class="math">
-\[k_{nn,i}^{w} = \frac{1}{s_i} \sum_{j \in N(i)} w_{ij} k_j\]</div>
-<p>where <span class="math">\(s_i\)</span> is the weighted degree of node <span class="math">\(i\)</span>,
-<span class="math">\(w_{ij}\)</span> is the weight of the edge that links <span class="math">\(i\)</span> and <span class="math">\(j\)</span>,
-and <span class="math">\(N(i)\)</span> are the neighbors of node <span class="math">\(i\)</span>.</p>
+<p><img src="../../_images/math/20848505733e71688e5bfbe310322bac4b4ac407.png" alt="k_{nn,i}^{w} = \frac{1}{s_i} \sum_{j \in N(i)} w_{ij} k_j"/></p>
+</div><p>where <img class="math" src="../../_images/math/53d5632f649157302397e8f0e2f85811e43368a9.png" alt="s_i" style="vertical-align: -3px"/> is the weighted degree of node <img class="math" src="../../_images/math/62494ad46772c68b86d00123a1ea8f195a7864b2.png" alt="i" style="vertical-align: 0px"/>,
+<img class="math" src="../../_images/math/a03b4855e084a2bab0bb4ec36a83c733373b041d.png" alt="w_{ij}" style="vertical-align: -6px"/> is the weight of the edge that links <img class="math" src="../../_images/math/62494ad46772c68b86d00123a1ea8f195a7864b2.png" alt="i" style="vertical-align: 0px"/> and <img class="math" src="../../_images/math/976b652be33ea6b747a03babbb113160506846d0.png" alt="j" style="vertical-align: -4px"/>,
+and <img class="math" src="../../_images/math/5486e833a7f69f104ffb21e651fcca1121198746.png" alt="N(i)" style="vertical-align: -4px"/> are the neighbors of node <img class="math" src="../../_images/math/62494ad46772c68b86d00123a1ea8f195a7864b2.png" alt="i" style="vertical-align: 0px"/>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
-<p><strong>source</strong> :  &#8220;in&#8221;|&#8221;out&#8221;|&#8221;in+out&#8221; (default:&#8221;in+out&#8221;)</p>
-<blockquote>
-<div><p>Directed graphs only. Use &#8220;in&#8221;- or &#8220;out&#8221;-degree for source node.</p>
-</div></blockquote>
-<p><strong>target</strong> : &#8220;in&#8221;|&#8221;out&#8221;|&#8221;in+out&#8221; (default:&#8221;in+out&#8221;</p>
-<blockquote>
-<div><p>Directed graphs only. Use &#8220;in&#8221;- or &#8220;out&#8221;-degree for target node.</p>
-</div></blockquote>
-<p><strong>nodes: list or iterable (optional)</strong></p>
-<blockquote>
-<div><p>Compute neighbor connectivity for these nodes. The default is all
-nodes.</p>
-</div></blockquote>
-<p><strong>weight</strong> : string or None, optional (default=None)</p>
-<blockquote>
-<div><p>The edge attribute that holds the numerical value used as a weight.
-If None, then each edge has weight 1.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>source</strong> (<em>&#8220;in&#8221;|&#8221;out&#8221;|&#8221;in+out&#8221; (default:&#8221;in+out&#8221;)</em>) &#8211; Directed graphs only. Use &#8220;in&#8221;- or &#8220;out&#8221;-degree for source node.</li>
+<li><strong>target</strong> (<em>&#8220;in&#8221;|&#8221;out&#8221;|&#8221;in+out&#8221; (default:&#8221;in+out&#8221;</em>) &#8211; Directed graphs only. Use &#8220;in&#8221;- or &#8220;out&#8221;-degree for target node.</li>
+<li><strong>nodes</strong> (<em>list or iterable (optional)</em>) &#8211; Compute neighbor connectivity for these nodes. The default is all nodes.</li>
+<li><strong>weight</strong> (<em>string or None, optional (default=None)</em>) &#8211; The edge attribute that holds the numerical value used as a weight.
+If None, then each edge has weight 1.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">d: dict</p>
-<blockquote class="last">
-<div><p>A dictionary keyed by degree k with the value of average connectivity.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>d</strong> &#8211;
+A dictionary keyed by degree k with the value of average connectivity.</p>
 </td>
 </tr>
-</tbody>
-</table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">neighbors_average_degree</span></code></p>
-</div>
-<p class="rubric">Notes</p>
-<p>This algorithm is sometimes called &#8220;k nearest neighbors&#8221; and is also
-available as <code class="docutils literal"><span class="pre">k_nearest_neighbors</span></code>.</p>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r195" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R195]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> A. Barrat, M. Barthélemy, R. Pastor-Satorras, and A. Vespignani,
-&#8220;The architecture of complex weighted networks&#8221;.
-PNAS 101 (11): 3747–3752 (2004).</td></tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -258,6 +231,22 @@ PNAS 101 (11): 3747–3752 (2004).</td></tr>
 <span class="go">{1: 2.0, 2: 1.75}</span>
 </pre></div>
 </div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-func docutils literal"><span class="pre">neighbors_average_degree()</span></code></p>
+</div>
+<p class="rubric">Notes</p>
+<p>This algorithm is sometimes called &#8220;k nearest neighbors&#8217; and is also
+available as <img class="math" src="../../_images/math/febf02dc688f81701168ae7ec636e91a5add0962.png" alt="k_nearest_neighbors" style="vertical-align: -4px"/>.</p>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>A. Barrat, M. Barthélemy, R. Pastor-Satorras, and A. Vespignani,
+&#8220;The architecture of complex weighted networks&#8221;.
+PNAS 101 (11): 3747–3752 (2004).</td></tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -280,8 +269,8 @@ PNAS 101 (11): 3747–3752 (2004).</td></tr>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -301,7 +290,7 @@ PNAS 101 (11): 3747–3752 (2004).</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

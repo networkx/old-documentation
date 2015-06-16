@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>simple_cycles &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>simple_cycles &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,9 +30,8 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Cycles" href="../algorithms.cycles.html"/>
-        <link rel="next" title="find_cycle" href="networkx.algorithms.cycles.find_cycle.html"/>
         <link rel="prev" title="cycle_basis" href="networkx.algorithms.cycles.cycle_basis.html"/> 
 
   
@@ -196,72 +195,67 @@ node appears twice, except that the first and last node are the same.
 Two elementary circuits are distinct if they are not cyclic permutations
 of each other.</p>
 <p>This is a nonrecursive, iterator/generator version of Johnson&#8217;s
-algorithm <a class="reference internal" href="#r300" id="id1">[R300]</a>.  There may be better algorithms for some cases <a class="reference internal" href="#r301" id="id2">[R301]</a> <a class="reference internal" href="#r302" id="id3">[R302]</a>.</p>
+algorithm <a class="footnote-reference" href="#id5" id="id1">[1]</a>.  There may be better algorithms for some cases <a class="footnote-reference" href="#id6" id="id2">[2]</a> <a class="footnote-reference" href="#id7" id="id3">[3]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX DiGraph</p>
-<blockquote>
-<div><p>A directed graph</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>G</strong> (<em>NetworkX DiGraph</em>) &#8211; A directed graph</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">cycle_generator: generator</p>
-<blockquote class="last">
-<div><p>A generator that produces elementary cycles of the graph.  Each cycle is
-a list of nodes with the first and last nodes being the same.</p>
-</div></blockquote>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>cycle_generator</strong> &#8211;
+A generator that produces elementary cycles of the graph.  Each cycle is
+a list of nodes with the first and last nodes being the same.</td>
 </tr>
-</tbody>
-</table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.cycles.cycle_basis.html#networkx.algorithms.cycles.cycle_basis" title="networkx.algorithms.cycles.cycle_basis"><code class="xref py py-obj docutils literal"><span class="pre">cycle_basis</span></code></a></p>
-</div>
-<p class="rubric">Notes</p>
-<p>The implementation follows pp. 79-80 in <a class="reference internal" href="#r300" id="id4">[R300]</a>.</p>
-<p>The time complexity is <span class="math">\(O((n+e)(c+1))\)</span> for <span class="math">\(n\)</span> nodes, <span class="math">\(e\)</span> edges and <span class="math">\(c\)</span>
-elementary circuits.</p>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r300" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R300]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id4">2</a>, <a class="fn-backref" href="#id5">3</a>)</em> Finding all the elementary circuits of a directed graph.
-D. B. Johnson, SIAM Journal on Computing 4, no. 1, 77-84, 1975.
-<a class="reference external" href="http://dx.doi.org/10.1137/0204007">http://dx.doi.org/10.1137/0204007</a></td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="r301" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R301]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id6">2</a>)</em> Enumerating the cycles of a digraph: a new preprocessing strategy.
-G. Loizou and P. Thanish, Information Sciences, v. 27, 163-182, 1982.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="r302" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R302]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id7">2</a>)</em> A search strategy for the elementary cycles of a directed graph.
-J.L. Szwarcfiter and P.E. Lauer, BIT NUMERICAL MATHEMATICS,
-v. 16, no. 2, 192-204, 1976.</td></tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">generator</td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">simple_cycles</span><span class="p">(</span><span class="n">G</span><span class="p">)))</span>
-<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">simple_cycles</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
+<span class="go">[[2], [2, 1], [2, 0], [2, 0, 1], [0]]</span>
 </pre></div>
 </div>
+<p class="rubric">Notes</p>
+<p>The implementation follows pp. 79-80 in <a class="footnote-reference" href="#id5" id="id4">[1]</a>.</p>
+<p>The time complexity is <img class="math" src="../../_images/math/f84658a5c849a4cd01cf4af5297e6c51852a8e18.png" alt="O((n+e)(c+1))" style="vertical-align: -4px"/> for <img class="math" src="../../_images/math/b1f5ca5a538abe6036ed478902bb5a03ef05f0c2.png" alt="n" style="vertical-align: 0px"/> nodes, <img class="math" src="../../_images/math/ca907ab79fe0188f51d0a5db04642f8042f779d5.png" alt="e" style="vertical-align: 0px"/> edges and <img class="math" src="../../_images/math/e76342811b06d3703a2794f9744a8df6906f358f.png" alt="c" style="vertical-align: 0px"/>
+elementary circuits.</p>
 <p>To filter the cycles so that they don&#8217;t include certain nodes or edges,
-copy your graph and eliminate those nodes or edges before calling</p>
+copy your graph and eliminate those nodes or edges before calling.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">copyG</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">copyG</span><span class="o">.</span><span class="n">remove_nodes_from</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">copyG</span><span class="o">.</span><span class="n">remove_edges_from</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">simple_cycles</span><span class="p">(</span><span class="n">copyG</span><span class="p">)))</span>
-<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">copyG</span><span class="o">.</span><span class="n">remove_edges_from</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">simple_cycles</span><span class="p">(</span><span class="n">copyG</span><span class="p">))</span>
+<span class="go">[[2], [2, 0], [0]]</span>
 </pre></div>
+</div>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> Finding all the elementary circuits of a directed graph.
+D. B. Johnson, SIAM Journal on Computing 4, no. 1, 77-84, 1975.
+<a class="reference external" href="http://dx.doi.org/10.1137/0204007">http://dx.doi.org/10.1137/0204007</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Enumerating the cycles of a digraph: a new preprocessing strategy.
+G. Loizou and P. Thanish, Information Sciences, v. 27, 163-182, 1982.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>A search strategy for the elementary cycles of a directed graph.
+J.L. Szwarcfiter and P.E. Lauer, BIT NUMERICAL MATHEMATICS,
+v. 16, no. 2, 192-204, 1976.</td></tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.cycles.cycle_basis.html#networkx.algorithms.cycles.cycle_basis" title="networkx.algorithms.cycles.cycle_basis"><code class="xref py py-func docutils literal"><span class="pre">cycle_basis()</span></code></a></p>
 </div>
 </dd></dl>
 
@@ -273,8 +267,6 @@ copy your graph and eliminate those nodes or edges before calling</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="networkx.algorithms.cycles.find_cycle.html" class="btn btn-neutral float-right" title="find_cycle"/>Next <span class="fa fa-arrow-circle-right"></span></a>
-      
       
         <a href="networkx.algorithms.cycles.cycle_basis.html" class="btn btn-neutral" title="cycle_basis"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
@@ -285,8 +277,8 @@ copy your graph and eliminate those nodes or edges before calling</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -306,7 +298,7 @@ copy your graph and eliminate those nodes or edges before calling</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

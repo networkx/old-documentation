@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>edge_dfs &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>edge_dfs &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Traversal" href="../algorithms.traversal.html"/>
         <link rel="next" title="Tree" href="../algorithms.tree.html"/>
         <link rel="prev" title="bfs_successors" href="networkx.algorithms.traversal.breadth_first_search.bfs_successors.html"/> 
@@ -195,41 +195,36 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
-<blockquote>
-<div><p>A directed/undirected graph/multigraph.</p>
-</div></blockquote>
-<p><strong>source</strong> : node, list of nodes</p>
-<blockquote>
-<div><p>The node from which the traversal begins. If <code class="docutils literal"><span class="pre">None</span></code>, then a source
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>graph</em>) &#8211; A directed/undirected graph/multigraph.</li>
+<li><strong>source</strong> (<em>node, list of nodes</em>) &#8211; The node from which the traversal begins. If <code class="docutils literal"><span class="pre">None</span></code>, then a source
 is chosen arbitrarily and repeatedly until all edges from each node in
-the graph are searched.</p>
-</div></blockquote>
-<p><strong>orientation</strong> : &#8216;original&#8217; | &#8216;reverse&#8217; | &#8216;ignore&#8217;</p>
-<blockquote class="last">
-<div><p>For directed graphs and directed multigraphs, edge traversals need not
+the graph are searched.</li>
+<li><strong>orientation</strong> (<em>&#8216;original&#8217; | &#8216;reverse&#8217; | &#8216;ignore&#8217;</em>) &#8211; For directed graphs and directed multigraphs, edge traversals need not
 respect the original orientation of the edges. When set to &#8216;reverse&#8217;,
 then every edge will be traversed in the reverse direction. When set to
 &#8216;ignore&#8217;, then each directed edge is treated as a single undirected
 edge that can be traversed in either direction. For undirected graphs
 and undirected multigraphs, this parameter is meaningless and is not
-consulted by the algorithm.</p>
-</div></blockquote>
+consulted by the algorithm.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Yields:</th><td class="field-body"><p class="first last"><strong>edge</strong> (<em>directed edge</em>) &#8211;
+A directed edge indicating the path taken by the depth-first traversal.
+For graphs, <code class="docutils literal"><span class="pre">edge</span></code> is of the form <code class="docutils literal"><span class="pre">(u,</span> <span class="pre">v)</span></code> where <code class="docutils literal"><span class="pre">u</span></code> and <code class="docutils literal"><span class="pre">v</span></code>
+are the tail and head of the edge as determined by the traversal. For
+multigraphs, <code class="docutils literal"><span class="pre">edge</span></code> is of the form <code class="docutils literal"><span class="pre">(u,</span> <span class="pre">v,</span> <span class="pre">key)</span></code>, where <img class="math" src="../../_images/math/29641b33f18546492a465620885a0558991916b2.png" alt="key" style="vertical-align: -4px"/> is
+the key of the edge. When the graph is directed, then <code class="docutils literal"><span class="pre">u</span></code> and <code class="docutils literal"><span class="pre">v</span></code>
+are always in the order of the actual directed edge. If orientation is
+&#8216;reverse&#8217; or &#8216;ignore&#8217;, then <code class="docutils literal"><span class="pre">edge</span></code> takes the form
+<code class="docutils literal"><span class="pre">(u,</span> <span class="pre">v,</span> <span class="pre">key,</span> <span class="pre">direction)</span></code> where direction is a string, &#8216;forward&#8217; or
+&#8216;reverse&#8217;, that indicates if the edge was traversed in the forward
+(tail to head) or reverse (head to tail) direction, respectively.</p>
 </td>
 </tr>
 </tbody>
 </table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">dfs_edges</span></code></p>
-</div>
-<p class="rubric">Notes</p>
-<p>The goal of this function is to visit edges. It differs from the more
-familiar depth-first traversal of nodes, as provided by
-<a class="reference internal" href="networkx.algorithms.traversal.depth_first_search.dfs_edges.html#networkx.algorithms.traversal.depth_first_search.dfs_edges" title="networkx.algorithms.traversal.depth_first_search.dfs_edges"><code class="xref py py-func docutils literal"><span class="pre">networkx.algorithms.traversal.depth_first_search.dfs_edges()</span></code></a>, in
-that it does not stop once every node has been visited. In a directed graph
-with edges [(0, 1), (1, 2), (2, 1)], the edge (2, 1) would not be visited
-if not for the functionality provided by this function.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
@@ -260,6 +255,17 @@ if not for the functionality provided by this function.</p>
 <span class="go">[(0, 1, 0, &#39;forward&#39;), (1, 0, 0, &#39;forward&#39;), (1, 0, 1, &#39;reverse&#39;), (2, 1, 0, &#39;reverse&#39;), (3, 1, 0, &#39;reverse&#39;)]</span>
 </pre></div>
 </div>
+<p class="rubric">Notes</p>
+<p>The goal of this function is to visit edges. It differs from the more
+familiar depth-first traversal of nodes, as provided by
+<a class="reference internal" href="networkx.algorithms.traversal.depth_first_search.dfs_edges.html#networkx.algorithms.traversal.depth_first_search.dfs_edges" title="networkx.algorithms.traversal.depth_first_search.dfs_edges"><code class="xref py py-func docutils literal"><span class="pre">networkx.algorithms.traversal.depth_first_search.dfs_edges()</span></code></a>, in
+that it does not stop once every node has been visited. In a directed graph
+with edges [(0, 1), (1, 2), (2, 1)], the edge (2, 1) would not be visited
+if not for the functionality provided by this function.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-func docutils literal"><span class="pre">dfs_edges()</span></code></p>
+</div>
 </dd></dl>
 
 </div>
@@ -282,8 +288,8 @@ if not for the functionality provided by this function.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -303,7 +309,7 @@ if not for the functionality provided by this function.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

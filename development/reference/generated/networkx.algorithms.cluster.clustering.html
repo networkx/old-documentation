@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>clustering &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>clustering &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Clustering" href="../algorithms.clustering.html"/>
         <link rel="next" title="average_clustering" href="networkx.algorithms.cluster.average_clustering.html"/>
         <link rel="prev" title="transitivity" href="networkx.algorithms.cluster.transitivity.html"/> 
@@ -191,54 +191,38 @@
 <dt id="networkx.algorithms.cluster.clustering">
 <code class="descname">clustering</code><span class="sig-paren">(</span><em>G</em>, <em>nodes=None</em>, <em>weight=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/cluster.html#clustering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.cluster.clustering" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the clustering coefficient for nodes.</p>
-<p>For unweighted graphs, the clustering of a node <span class="math">\(u\)</span>
+<p>For unweighted graphs, the clustering of a node <img class="math" src="../../_images/math/8a766bbd11b0a08916009a3c0008470d402e9d2f.png" alt="u" style="vertical-align: 0px"/>
 is the fraction of possible triangles through that node that exist,</p>
 <div class="math">
-\[c_u = \frac{2 T(u)}{deg(u)(deg(u)-1)},\]</div>
-<p>where <span class="math">\(T(u)\)</span> is the number of triangles through node <span class="math">\(u\)</span> and
-<span class="math">\(deg(u)\)</span> is the degree of <span class="math">\(u\)</span>.</p>
+<p><img src="../../_images/math/e02119031edbc373d28811944663c191c9e53d1c.png" alt="c_u = \frac{2 T(u)}{deg(u)(deg(u)-1)},"/></p>
+</div><p>where <img class="math" src="../../_images/math/45b045e7794ef9ed82adcd51f6bda0d44dc97af1.png" alt="T(u)" style="vertical-align: -4px"/> is the number of triangles through node <img class="math" src="../../_images/math/8a766bbd11b0a08916009a3c0008470d402e9d2f.png" alt="u" style="vertical-align: 0px"/> and
+<img class="math" src="../../_images/math/2937762373955f5b673c279ae1865524eace98a6.png" alt="deg(u)" style="vertical-align: -4px"/> is the degree of <img class="math" src="../../_images/math/8a766bbd11b0a08916009a3c0008470d402e9d2f.png" alt="u" style="vertical-align: 0px"/>.</p>
 <p>For weighted graphs, the clustering is defined
-as the geometric average of the subgraph edge weights <a class="reference internal" href="#r264" id="id1">[R264]</a>,</p>
+as the geometric average of the subgraph edge weights <a class="footnote-reference" href="#id2" id="id1">[1]</a>,</p>
 <div class="math">
-\[c_u = \frac{1}{deg(u)(deg(u)-1))}
-     \sum_{uv} (\hat{w}_{uv} \hat{w}_{uw} \hat{w}_{vw})^{1/3}.\]</div>
-<p>The edge weights <span class="math">\(\hat{w}_{uv}\)</span> are normalized by the maximum weight in the
-network <span class="math">\(\hat{w}_{uv} = w_{uv}/\max(w)\)</span>.</p>
-<p>The value of <span class="math">\(c_u\)</span> is assigned to 0 if <span class="math">\(deg(u) &lt; 2\)</span>.</p>
+<p><img src="../../_images/math/ea71c34aaf758ad8c19f0129bc003db96c8ca69b.png" alt="c_u = \frac{1}{deg(u)(deg(u)-1))}
+     \sum_{uv} (\hat{w}_{uv} \hat{w}_{uw} \hat{w}_{vw})^{1/3}."/></p>
+</div><p>The edge weights <img class="math" src="../../_images/math/677c981dec667edf90bd9d7a0cad0f25cec7d278.png" alt="\hat{w}_{uv}" style="vertical-align: -3px"/> are normalized by the maximum weight in the
+network <img class="math" src="../../_images/math/fd424b86ab2590d0323aae53278c3fa4ca6cabf7.png" alt="\hat{w}_{uv} = w_{uv}/\max(w)" style="vertical-align: -5px"/>.</p>
+<p>The value of <img class="math" src="../../_images/math/e33d837aa4dcb4818b2d63b88405325b03a8f21c.png" alt="c_u" style="vertical-align: -3px"/> is assigned to 0 if <img class="math" src="../../_images/math/907edafe29436b21aa5b29c8e7fe2a82ad8d7b6f.png" alt="deg(u) &lt; 2" style="vertical-align: -4px"/>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
-<p><strong>nodes</strong> : container of nodes, optional (default=all nodes in G)</p>
-<blockquote>
-<div><p>Compute clustering for nodes in this container.</p>
-</div></blockquote>
-<p><strong>weight</strong> : string or None, optional (default=None)</p>
-<blockquote>
-<div><p>The edge attribute that holds the numerical value used as a weight.
-If None, then each edge has weight 1.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>nodes</strong> (<em>container of nodes, optional (default=all nodes in G)</em>) &#8211; Compute clustering for nodes in this container.</li>
+<li><strong>weight</strong> (<em>string or None, optional (default=None)</em>) &#8211; The edge attribute that holds the numerical value used as a weight.
+If None, then each edge has weight 1.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : float, or dictionary</p>
-<blockquote class="last">
-<div><p>Clustering coefficient at specified nodes</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> &#8211;
+Clustering coefficient at specified nodes</p>
 </td>
 </tr>
-</tbody>
-</table>
-<p class="rubric">Notes</p>
-<p>Self loops are ignored.</p>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r264" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R264]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Generalizations of the clustering coefficient to weighted 
-complex networks by J. Saramäki, M. Kivelä, J.-P. Onnela, 
-K. Kaski, and J. Kertész, Physical Review E, 75 027105 (2007).  
-<a class="reference external" href="http://jponnela.com/web_documents/a9.pdf">http://jponnela.com/web_documents/a9.pdf</a></td></tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float, or dictionary</p>
+</td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -249,6 +233,18 @@ K. Kaski, and J. Kertész, Physical Review E, 75 027105 (2007).
 <span class="go">{0: 1.0, 1: 1.0, 2: 1.0, 3: 1.0, 4: 1.0}</span>
 </pre></div>
 </div>
+<p class="rubric">Notes</p>
+<p>Self loops are ignored.</p>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Generalizations of the clustering coefficient to weighted
+complex networks by J. Saramäki, M. Kivelä, J.-P. Onnela,
+K. Kaski, and J. Kertész, Physical Review E, 75 027105 (2007).
+<a class="reference external" href="http://jponnela.com/web_documents/a9.pdf">http://jponnela.com/web_documents/a9.pdf</a></td></tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -271,8 +267,8 @@ K. Kaski, and J. Kertész, Physical Review E, 75 027105 (2007).
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -292,7 +288,7 @@ K. Kaski, and J. Kertész, Physical Review E, 75 027105 (2007).
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

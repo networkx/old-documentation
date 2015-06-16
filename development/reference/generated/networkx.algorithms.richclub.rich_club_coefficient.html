@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>rich_club_coefficient &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>rich_club_coefficient &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Rich Club" href="../algorithms.rich_club.html"/>
         <link rel="next" title="Shortest Paths" href="../algorithms.shortest_paths.html"/>
         <link rel="prev" title="rich_club_coefficient" href=""/> 
@@ -192,58 +192,32 @@
 <code class="descname">rich_club_coefficient</code><span class="sig-paren">(</span><em>G</em>, <em>normalized=True</em>, <em>Q=100</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/richclub.html#rich_club_coefficient"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.richclub.rich_club_coefficient" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the rich-club coefficient of the graph G.</p>
 <p>The rich-club coefficient is the ratio, for every degree k, of the
-number of actual to the number of potential edges for nodes 
+number of actual to the number of potential edges for nodes
 with degree greater than k:</p>
 <div class="math">
-\[\phi(k) = \frac{2 Ek}{Nk(Nk-1)}\]</div>
-<p>where Nk is the number of nodes with degree larger than k, and Ek
+<p><img src="../../_images/math/6f656e1e152a0313cca0987e23c513bcfe1054b1.png" alt="\phi(k) = \frac{2 Ek}{Nk(Nk-1)}"/></p>
+</div><p>where Nk is the number of nodes with degree larger than k, and Ek
 be the number of edges among those nodes.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
-<p><strong>normalized</strong> : bool (optional)</p>
-<blockquote>
-<div><p>Normalize using randomized network (see <a class="reference internal" href="#r351" id="id1">[R351]</a>)</p>
-</div></blockquote>
-<p><strong>Q</strong> : float (optional, default=100)</p>
-<blockquote>
-<div><p>If normalized=True build a random network by performing 
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>NetworkX graph</em>) &#8211; </li>
+<li><strong>normalized</strong> (<em>bool (optional)</em>) &#8211; Normalize using randomized network (see <a class="footnote-reference" href="#id4" id="id1">[1]</a>)</li>
+<li><strong>Q</strong> (<em>float (optional, default=100)</em>) &#8211; If normalized=True build a random network by performing
 Q*M double-edge swaps, where M is the number of edges in G,
-to use as a null-model for normalization.</p>
-</div></blockquote>
+to use as a null-model for normalization.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>rc</strong> : dictionary</p>
-<blockquote class="last">
-<div><p>A dictionary, keyed by degree, with rich club coefficient values.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>rc</strong> &#8211;
+A dictionary, keyed by degree, with rich club coefficient values.</p>
 </td>
 </tr>
-</tbody>
-</table>
-<p class="rubric">Notes</p>
-<p>The rich club definition and algorithm are found in <a class="reference internal" href="#r351" id="id2">[R351]</a>.  This
-algorithm ignores any edge weights and is not defined for directed
-graphs or graphs with parallel edges or self loops.</p>
-<p>Estimates for appropriate values of Q are found in <a class="reference internal" href="#r352" id="id3">[R352]</a>.</p>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r351" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R351]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id4">3</a>)</em> Julian J. McAuley, Luciano da Fontoura Costa, and Tibério S. Caetano,
-&#8220;The rich-club phenomenon across complex network hierarchies&#8221;,
-Applied Physics Letters Vol 91 Issue 8, August 2007.
-<a class="reference external" href="http://arxiv.org/abs/physics/0701290">http://arxiv.org/abs/physics/0701290</a></td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="r352" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R352]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> R. Milo, N. Kashtan, S. Itzkovitz, M. E. J. Newman, U. Alon,
-&#8220;Uniform generation of random graphs with arbitrary degree 
-sequences&#8221;, 2006. <a class="reference external" href="http://arxiv.org/abs/cond-mat/0312028">http://arxiv.org/abs/cond-mat/0312028</a></td></tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
+</td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -253,6 +227,28 @@ sequences&#8221;, 2006. <a class="reference external" href="http://arxiv.org/abs
 <span class="go">0.4</span>
 </pre></div>
 </div>
+<p>The rich club definition and algorithm are found in <a class="footnote-reference" href="#id4" id="id2">[1]</a>.  This
+algorithm ignores any edge weights and is not defined for directed
+graphs or graphs with parallel edges or self loops.</p>
+<p>Estimates for appropriate values of Q are found in <a class="footnote-reference" href="#id5" id="id3">[2]</a>.</p>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Julian J. McAuley, Luciano da Fontoura Costa, and Tibério S. Caetano,
+&#8220;The rich-club phenomenon across complex network hierarchies&#8221;,
+Applied Physics Letters Vol 91 Issue 8, August 2007.
+<a class="reference external" href="http://arxiv.org/abs/physics/0701290">http://arxiv.org/abs/physics/0701290</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>R. Milo, N. Kashtan, S. Itzkovitz, M. E. J. Newman, U. Alon,
+&#8220;Uniform generation of random graphs with arbitrary degree
+sequences&#8221;, 2006. <a class="reference external" href="http://arxiv.org/abs/cond-mat/0312028">http://arxiv.org/abs/cond-mat/0312028</a></td></tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -275,8 +271,8 @@ sequences&#8221;, 2006. <a class="reference external" href="http://arxiv.org/abs
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -296,7 +292,7 @@ sequences&#8221;, 2006. <a class="reference external" href="http://arxiv.org/abs
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

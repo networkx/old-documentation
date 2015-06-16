@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>average_node_connectivity &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>average_node_connectivity &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,10 +30,9 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Connectivity" href="../algorithms.connectivity.html"/>
-        <link rel="next" title="all_pairs_node_connectivity" href="networkx.algorithms.connectivity.connectivity.all_pairs_node_connectivity.html"/>
-        <link rel="prev" title="all_node_cuts" href="networkx.algorithms.connectivity.kcutsets.all_node_cuts.html"/> 
+        <link rel="next" title="all_pairs_node_connectivity" href="networkx.algorithms.connectivity.connectivity.all_pairs_node_connectivity.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -191,35 +190,32 @@
 <dt id="networkx.algorithms.connectivity.connectivity.average_node_connectivity">
 <code class="descname">average_node_connectivity</code><span class="sig-paren">(</span><em>G</em>, <em>flow_func=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/connectivity/connectivity.html#average_node_connectivity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.connectivity.connectivity.average_node_connectivity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the average connectivity of a graph G.</p>
-<p>The average connectivity <span class="math">\(\bar{\kappa}\)</span> of a graph G is the average
-of local node connectivity over all pairs of nodes of G <a class="reference internal" href="#r278" id="id1">[R278]</a> .</p>
+<p>The average connectivity <img class="math" src="../../_images/math/60c26af16e5ca53023f5bea5d94d04af55c41a04.png" alt="\bar{\kappa}" style="vertical-align: 0px"/> of a graph G is the average
+of local node connectivity over all pairs of nodes of G <a class="footnote-reference" href="#id2" id="id1">[1]</a> .</p>
 <div class="math">
-\[\bar{\kappa}(G) = \frac{\sum_{u,v} \kappa_{G}(u,v)}{{n \choose 2}}\]</div>
-<table class="docutils field-list" frame="void" rules="none">
+<p><img src="../../_images/math/97a7bf13833038dac249d8658e00a88dd21231e4.png" alt="\bar{\kappa}(G) = \frac{\sum_{u,v} \kappa_{G}(u,v)}{{n \choose 2}}"/></p>
+</div><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
-<blockquote>
-<div><p>Undirected graph</p>
-</div></blockquote>
-<p><strong>flow_func</strong> : function</p>
-<blockquote>
-<div><p>A function for computing the maximum flow among a pair of nodes.
-The function has to accept at least three parameters: a Digraph, 
-a source node, and a target node. And return a residual network 
-that follows NetworkX conventions (see <code class="xref py py-meth docutils literal"><span class="pre">maximum_flow()</span></code> for 
-details). If flow_func is None, the default maximum flow function 
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>NetworkX graph</em>) &#8211; Undirected graph</li>
+<li><strong>flow_func</strong> (<em>function</em>) &#8211; A function for computing the maximum flow among a pair of nodes.
+The function has to accept at least three parameters: a Digraph,
+a source node, and a target node. And return a residual network
+that follows NetworkX conventions (see <code class="xref py py-meth docutils literal"><span class="pre">maximum_flow()</span></code> for
+details). If flow_func is None, the default maximum flow function
 (<code class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></code>) is used. See <a class="reference internal" href="networkx.algorithms.connectivity.connectivity.local_node_connectivity.html#networkx.algorithms.connectivity.connectivity.local_node_connectivity" title="networkx.algorithms.connectivity.connectivity.local_node_connectivity"><code class="xref py py-meth docutils literal"><span class="pre">local_node_connectivity()</span></code></a>
-for details. The choice of the default function may change from 
-version to version and should not be relied on. Default value: None.</p>
-</div></blockquote>
+for details. The choice of the default function may change from
+version to version and should not be relied on. Default value: None.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>K</strong> : float</p>
-<blockquote class="last">
-<div><p>Average node connectivity</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>K</strong> &#8211;
+Average node connectivity</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
 </td>
 </tr>
 </tbody>
@@ -229,10 +225,10 @@ version to version and should not be relied on. Default value: None.</p>
 <p class="last"><a class="reference internal" href="networkx.algorithms.connectivity.connectivity.local_node_connectivity.html#networkx.algorithms.connectivity.connectivity.local_node_connectivity" title="networkx.algorithms.connectivity.connectivity.local_node_connectivity"><code class="xref py py-meth docutils literal"><span class="pre">local_node_connectivity()</span></code></a>, <a class="reference internal" href="networkx.algorithms.connectivity.connectivity.node_connectivity.html#networkx.algorithms.connectivity.connectivity.node_connectivity" title="networkx.algorithms.connectivity.connectivity.node_connectivity"><code class="xref py py-meth docutils literal"><span class="pre">node_connectivity()</span></code></a>, <a class="reference internal" href="networkx.algorithms.connectivity.connectivity.edge_connectivity.html#networkx.algorithms.connectivity.connectivity.edge_connectivity" title="networkx.algorithms.connectivity.connectivity.edge_connectivity"><code class="xref py py-meth docutils literal"><span class="pre">edge_connectivity()</span></code></a>, <code class="xref py py-meth docutils literal"><span class="pre">maximum_flow()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">preflow_push()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">shortest_augmenting_path()</span></code></p>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r278" rules="none">
+<table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R278]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Beineke, L., O. Oellermann, and R. Pippert (2002). The average
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Beineke, L., O. Oellermann, and R. Pippert (2002). The average
 connectivity of a graph. Discrete mathematics 252(1-3), 31-45.
 <a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0012365X01001807">http://www.sciencedirect.com/science/article/pii/S0012365X01001807</a></td></tr>
 </tbody>
@@ -250,8 +246,6 @@ connectivity of a graph. Discrete mathematics 252(1-3), 31-45.
         <a href="networkx.algorithms.connectivity.connectivity.all_pairs_node_connectivity.html" class="btn btn-neutral float-right" title="all_pairs_node_connectivity"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="networkx.algorithms.connectivity.kcutsets.all_node_cuts.html" class="btn btn-neutral" title="all_node_cuts"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
     </div>
   
 
@@ -259,8 +253,8 @@ connectivity of a graph. Discrete mathematics 252(1-3), 31-45.
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -280,7 +274,7 @@ connectivity of a graph. Discrete mathematics 252(1-3), 31-45.
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>all_pairs_shortest_path_length &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>all_pairs_shortest_path_length &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Shortest Paths" href="../algorithms.shortest_paths.html"/>
         <link rel="next" title="predecessor" href="networkx.algorithms.shortest_paths.unweighted.predecessor.html"/>
         <link rel="prev" title="all_pairs_shortest_path" href="networkx.algorithms.shortest_paths.unweighted.all_pairs_shortest_path.html"/> 
@@ -190,32 +190,25 @@
 <dl class="function">
 <dt id="networkx.algorithms.shortest_paths.unweighted.all_pairs_shortest_path_length">
 <code class="descname">all_pairs_shortest_path_length</code><span class="sig-paren">(</span><em>G</em>, <em>cutoff=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/shortest_paths/unweighted.html#all_pairs_shortest_path_length"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.shortest_paths.unweighted.all_pairs_shortest_path_length" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the shortest path lengths between all nodes in <code class="docutils literal"><span class="pre">G</span></code>.</p>
+<dd><p>Compute the shortest path lengths between all nodes in G.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
-<p><strong>cutoff</strong> : integer, optional</p>
-<blockquote>
-<div><p>Depth at which to stop the search. Only paths of length at most
-<code class="docutils literal"><span class="pre">cutoff</span></code> are returned.</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cutoff</strong> (<em>integer, optional</em>) &#8211; depth to stop the search. Only paths of length &lt;= cutoff are returned.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>lengths</strong> : dictionary</p>
-<blockquote class="last">
-<div><p>Dictionary of shortest path lengths keyed by source and target.</p>
-</div></blockquote>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>lengths</strong> &#8211;
+Dictionary of shortest path lengths keyed by source and target.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dictionary</td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
 <p>The dictionary returned only has keys for reachable node pairs.</p>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">length</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">all_pairs_shortest_path_length</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">length</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">all_pairs_shortest_path_length</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">length</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">4</span><span class="p">])</span>
 <span class="go">3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">length</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -244,8 +237,8 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -265,7 +258,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

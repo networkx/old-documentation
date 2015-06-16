@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>nbunch_iter &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>nbunch_iter &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Graph – Undirected graphs with self loops" href="../classes.graph.html"/>
         <link rel="next" title="has_node" href="networkx.Graph.has_node.html"/>
         <link rel="prev" title="adjacency_iter" href="networkx.Graph.adjacency_iter.html"/> 
@@ -198,32 +198,24 @@ and if not are silently ignored.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>nbunch</strong> : iterable container, optional (default=all nodes)</p>
-<blockquote>
-<div><p>A container of nodes.  The container will be iterated
-through once.</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nbunch</strong> (<em>iterable container, optional (default=all nodes)</em>) &#8211; A container of nodes.  The container will be iterated
+through once.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>niter</strong> : iterator</p>
-<blockquote>
-<div><p>An iterator over nodes in nbunch that are also in the graph.
-If nbunch is None, iterate over all nodes in the graph.</p>
-</div></blockquote>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>niter</strong> &#8211;
+An iterator over nodes in nbunch that are also in the graph.
+If nbunch is None, iterate over all nodes in the graph.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
-<blockquote class="last">
-<div><p>If nbunch is not a node or or sequence of nodes.
-If a node in nbunch is not hashable.</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">iterator</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="../exceptions.html#networkx.NetworkXError" title="networkx.NetworkXError"><code class="xref py py-exc docutils literal"><span class="pre">NetworkXError</span></code></a> &#8211;
+If nbunch is not a node or or sequence of nodes.
+If a node in nbunch is not hashable.</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.Graph.__iter__.html#networkx.Graph.__iter__" title="networkx.Graph.__iter__"><code class="xref py py-obj docutils literal"><span class="pre">Graph.__iter__</span></code></a></p>
+<p class="last"><a class="reference internal" href="networkx.Graph.__iter__.html#networkx.Graph.__iter__" title="networkx.Graph.__iter__"><code class="xref py py-meth docutils literal"><span class="pre">Graph.__iter__()</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
 <p>When nbunch is an iterator, the returned iterator yields values
@@ -255,8 +247,8 @@ nbunch is not hashable, a NetworkXError is raised.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -276,7 +268,7 @@ nbunch is not hashable, a NetworkXError is raised.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

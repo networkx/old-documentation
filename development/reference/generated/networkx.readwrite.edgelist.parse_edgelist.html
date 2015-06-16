@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>parse_edgelist &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>parse_edgelist &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Edge List" href="../readwrite.edgelist.html"/>
         <link rel="next" title="GEXF" href="../readwrite.gexf.html"/>
         <link rel="prev" title="generate_edgelist" href="networkx.readwrite.edgelist.generate_edgelist.html"/> 
@@ -195,46 +195,27 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>lines</strong> : list or iterator of strings</p>
-<blockquote>
-<div><p>Input data in edgelist format</p>
-</div></blockquote>
-<p><strong>comments</strong> : string, optional</p>
-<blockquote>
-<div><p>Marker for comment lines</p>
-</div></blockquote>
-<p><strong>delimiter</strong> : string, optional</p>
-<blockquote>
-<div><p>Separator for node labels</p>
-</div></blockquote>
-<p><strong>create_using: NetworkX graph container, optional</strong></p>
-<blockquote>
-<div><p>Use given NetworkX graph for holding nodes or edges.</p>
-</div></blockquote>
-<p><strong>nodetype</strong> : Python type, optional</p>
-<blockquote>
-<div><p>Convert nodes to this type.</p>
-</div></blockquote>
-<p><strong>data</strong> : bool or list of (label,type) tuples</p>
-<blockquote>
-<div><p>If False generate no edge data or if True use a dictionary
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>lines</strong> (<em>list or iterator of strings</em>) &#8211; Input data in edgelist format</li>
+<li><strong>comments</strong> (<em>string, optional</em>) &#8211; Marker for comment lines</li>
+<li><strong>delimiter</strong> (<em>string, optional</em>) &#8211; Separator for node labels</li>
+<li><strong>create_using</strong> (<em>NetworkX graph container, optional</em>) &#8211; Use given NetworkX graph for holding nodes or edges.</li>
+<li><strong>nodetype</strong> (<em>Python type, optional</em>) &#8211; Convert nodes to this type.</li>
+<li><strong>data</strong> (<em>bool or list of (label,type) tuples</em>) &#8211; If False generate no edge data or if True use a dictionary
 representation of edge data or a list tuples specifying dictionary
-key names and types for edge data.</p>
-</div></blockquote>
+key names and types for edge data.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">G: NetworkX Graph</p>
-<blockquote class="last">
-<div><p>The graph corresponding to lines</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>G</strong> &#8211;
+The graph corresponding to lines</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">NetworkX Graph</p>
 </td>
 </tr>
 </tbody>
 </table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.readwrite.edgelist.read_weighted_edgelist.html#networkx.readwrite.edgelist.read_weighted_edgelist" title="networkx.readwrite.edgelist.read_weighted_edgelist"><code class="xref py py-obj docutils literal"><span class="pre">read_weighted_edgelist</span></code></a></p>
-</div>
 <p class="rubric">Examples</p>
 <p>Edgelist with no data:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;1 2&quot;</span><span class="p">,</span>
@@ -269,6 +250,10 @@ key names and types for edge data.</p>
 <span class="go">[(1, 2, {&#39;weight&#39;: 3.0}), (2, 3, {&#39;weight&#39;: 27.0}), (3, 4, {&#39;weight&#39;: 3.0})]</span>
 </pre></div>
 </div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="networkx.readwrite.edgelist.read_weighted_edgelist.html#networkx.readwrite.edgelist.read_weighted_edgelist" title="networkx.readwrite.edgelist.read_weighted_edgelist"><code class="xref py py-func docutils literal"><span class="pre">read_weighted_edgelist()</span></code></a></p>
+</div>
 </dd></dl>
 
 </div>
@@ -291,8 +276,8 @@ key names and types for edge data.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -312,7 +297,7 @@ key names and types for edge data.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

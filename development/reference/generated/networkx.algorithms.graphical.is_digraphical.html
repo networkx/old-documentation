@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>is_digraphical &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>is_digraphical &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Graphical degree sequence" href="../algorithms.graphical.html"/>
         <link rel="next" title="is_multigraphical" href="networkx.algorithms.graphical.is_multigraphical.html"/>
         <link rel="prev" title="is_graphical" href="networkx.algorithms.graphical.is_graphical.html"/> 
@@ -190,39 +190,36 @@
 <dl class="function">
 <dt id="networkx.algorithms.graphical.is_digraphical">
 <code class="descname">is_digraphical</code><span class="sig-paren">(</span><em>in_sequence</em>, <em>out_sequence</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/graphical.html#is_digraphical"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.graphical.is_digraphical" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns True if some directed graph can realize the in- and out-degree 
+<dd><p>Returns True if some directed graph can realize the in- and out-degree
 sequences.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>in_sequence</strong> : list or iterable container</p>
-<blockquote>
-<div><p>A sequence of integer node in-degrees</p>
-</div></blockquote>
-<p><strong>out_sequence</strong> : list or iterable container</p>
-<blockquote>
-<div><p>A sequence of integer node out-degrees</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>in_sequence</strong> (<em>list or iterable container</em>) &#8211; A sequence of integer node in-degrees</li>
+<li><strong>out_sequence</strong> (<em>list or iterable container</em>) &#8211; A sequence of integer node out-degrees</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>valid</strong> : bool</p>
-<blockquote class="last">
-<div><p>True if in and out-sequences are digraphic False if not.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>valid</strong> &#8211;
+True if in and out-sequences are digraphic False if not.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>This algorithm is from Kleitman and Wang <a class="reference internal" href="#r320" id="id1">[R320]</a>.
+<p>This algorithm is from Kleitman and Wang <a class="footnote-reference" href="#id2" id="id1">[1]</a>.
 The worst case runtime is O(s * log n) where s and n are the sum and length
 of the sequences respectively.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r320" rules="none">
+<table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R320]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> D.J. Kleitman and D.L. Wang
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>D.J. Kleitman and D.L. Wang
 Algorithms for Constructing Graphs and Digraphs with Given Valences
 and Factors, Discrete Mathematics, 6(1), pp. 79-88 (1973)</td></tr>
 </tbody>
@@ -249,8 +246,8 @@ and Factors, Discrete Mathematics, 6(1), pp. 79-88 (1973)</td></tr>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -270,7 +267,7 @@ and Factors, Discrete Mathematics, 6(1), pp. 79-88 (1973)</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

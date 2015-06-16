@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>max_clique &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>max_clique &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,10 +30,9 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Approximation" href="../algorithms.approximation.html"/>
-        <link rel="next" title="clique_removal" href="networkx.algorithms.approximation.clique.clique_removal.html"/>
-        <link rel="prev" title="k_components" href="networkx.algorithms.approximation.kcomponents.k_components.html"/> 
+        <link rel="next" title="clique_removal" href="networkx.algorithms.approximation.clique.clique_removal.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -191,42 +190,39 @@
 <dt id="networkx.algorithms.approximation.clique.max_clique">
 <code class="descname">max_clique</code><span class="sig-paren">(</span><em>G</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/approximation/clique.html#max_clique"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.approximation.clique.max_clique" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the Maximum Clique</p>
-<p>Finds the <span class="math">\(O(|V|/(log|V|)^2)\)</span> apx of maximum clique/independent set
+<p>Finds the <img class="math" src="../../_images/math/b1537ee01bad2b87fa1392335cf00dd230fe49e2.png" alt="O(|V|/(log|V|)^2)" style="vertical-align: -5px"/> apx of maximum clique/independent set
 in the worst case.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
-<blockquote>
-<div><p>Undirected graph</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>G</strong> (<em>NetworkX graph</em>) &#8211; Undirected graph</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>clique</strong> : set</p>
-<blockquote class="last">
-<div><p>The apx-maximum clique of the graph</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li><strong>clique</strong> (<em>set</em>) &#8211;
+The apx-maximum clique of the graph</li>
+<li><em>Notes</em></li>
+<li><em>&#8212;&#8212;</em></li>
+<li><em>A clique in an undirected graph G = (V, E) is a subset of the vertex set</em></li>
+<li><img class="math" src="../../_images/math/06dc2aec824c913059f594abac64c12e6105e351.png" alt="C \subseteq V" style="vertical-align: -3px"/>, such that for every two vertices in C, there exists an edge</li>
+<li><em>connecting the two. This is equivalent to saying that the subgraph</em></li>
+<li><em>induced by C is complete (in some cases, the term clique may also refer</em></li>
+<li><em>to the subgraph).</em></li>
+<li><em>A maximum clique is a clique of the largest possible size in a given graph.</em></li>
+<li>The clique number <img class="math" src="../../_images/math/58789771b7328cd1323dc74ce049347375b9c90e.png" alt="\omega(G)" style="vertical-align: -4px"/> of a graph G is the number of</li>
+<li><em>vertices in a maximum clique in G. The intersection number of</em></li>
+<li><em>G is the smallest number of cliques that together cover all edges of G.</em></li>
+<li><strong>http</strong> (<em>//en.wikipedia.org/wiki/Maximum_clique</em>)</li>
+</ul>
 </td>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Notes</p>
-<p>A clique in an undirected graph G = (V, E) is a subset of the vertex set
-<span class="math">\(C \subseteq V\)</span>, such that for every two vertices in C, there exists an edge
-connecting the two. This is equivalent to saying that the subgraph
-induced by C is complete (in some cases, the term clique may also refer
-to the subgraph).</p>
-<p>A maximum clique is a clique of the largest possible size in a given graph.
-The clique number <span class="math">\(\omega(G)\)</span> of a graph G is the number of
-vertices in a maximum clique in G. The intersection number of
-G is the smallest number of cliques that together cover all edges of G.</p>
-<p><a class="reference external" href="http://en.wikipedia.org/wiki/Maximum_clique">http://en.wikipedia.org/wiki/Maximum_clique</a></p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r182" rules="none">
+<table class="docutils footnote" frame="void" id="id1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R182]</a></td><td>Boppana, R., &amp; Halldórsson, M. M. (1992).
+<tr><td class="label">[1]</td><td>Boppana, R., &amp; Halldórsson, M. M. (1992).
 Approximating maximum independent sets by excluding subgraphs.
 BIT Numerical Mathematics, 32(2), 180–196. Springer.
 doi:10.1007/BF01994876</td></tr>
@@ -245,8 +241,6 @@ doi:10.1007/BF01994876</td></tr>
         <a href="networkx.algorithms.approximation.clique.clique_removal.html" class="btn btn-neutral float-right" title="clique_removal"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="networkx.algorithms.approximation.kcomponents.k_components.html" class="btn btn-neutral" title="k_components"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
     </div>
   
 
@@ -254,8 +248,8 @@ doi:10.1007/BF01994876</td></tr>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -275,7 +269,7 @@ doi:10.1007/BF01994876</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

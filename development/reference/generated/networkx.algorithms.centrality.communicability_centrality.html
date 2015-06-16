@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>communicability_centrality &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>communicability_centrality &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Centrality" href="../algorithms.centrality.html"/>
         <link rel="next" title="communicability_centrality_exp" href="networkx.algorithms.centrality.communicability_centrality_exp.html"/>
         <link rel="prev" title="communicability_exp" href="networkx.algorithms.centrality.communicability_exp.html"/> 
@@ -191,71 +191,64 @@
 <dt id="networkx.algorithms.centrality.communicability_centrality">
 <code class="descname">communicability_centrality</code><span class="sig-paren">(</span><em>G</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/centrality/communicability_alg.html#communicability_centrality"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.centrality.communicability_centrality" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return communicability centrality for each node in G.</p>
-<p>Communicability centrality, also called subgraph centrality, of a node <span class="math">\(n\)</span>
-is the sum of closed walks of all lengths starting and ending at node <span class="math">\(n\)</span>.</p>
+<p>Communicability centrality, also called subgraph centrality, of a node <img class="math" src="../../_images/math/b1f5ca5a538abe6036ed478902bb5a03ef05f0c2.png" alt="n" style="vertical-align: 0px"/>
+is the sum of closed walks of all lengths starting and ending at node <img class="math" src="../../_images/math/b1f5ca5a538abe6036ed478902bb5a03ef05f0c2.png" alt="n" style="vertical-align: 0px"/>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G: graph</strong></p>
-</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>nodes</strong> &#8211;
+Dictionary of nodes with communicability centrality as the value.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">nodes: dictionary</p>
-<blockquote>
-<div><p>Dictionary of nodes with communicability centrality as the value.</p>
-</div></blockquote>
-</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dictionary</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
-<blockquote class="last">
-<div><p>If the graph is not undirected and simple.</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">NetworkXError</span></code> &#8211;
+If the graph is not undirected and simple.</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="networkx.algorithms.centrality.communicability.html#networkx.algorithms.centrality.communicability" title="networkx.algorithms.centrality.communicability"><code class="xref py py-obj docutils literal"><span class="pre">communicability</span></code></a></dt>
+<dt><a class="reference internal" href="networkx.algorithms.centrality.communicability.html#networkx.algorithms.centrality.communicability" title="networkx.algorithms.centrality.communicability"><code class="xref py py-func docutils literal"><span class="pre">communicability()</span></code></a></dt>
 <dd>Communicability between all pairs of nodes in G.</dd>
-<dt><a class="reference internal" href="#networkx.algorithms.centrality.communicability_centrality" title="networkx.algorithms.centrality.communicability_centrality"><code class="xref py py-obj docutils literal"><span class="pre">communicability_centrality</span></code></a></dt>
+<dt><a class="reference internal" href="#networkx.algorithms.centrality.communicability_centrality" title="networkx.algorithms.centrality.communicability_centrality"><code class="xref py py-func docutils literal"><span class="pre">communicability_centrality()</span></code></a></dt>
 <dd>Communicability centrality for each node of G.</dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
 <p>This version of the algorithm computes eigenvalues and eigenvectors
 of the adjacency matrix.</p>
-<p>Communicability centrality of a node <span class="math">\(u\)</span> in G can be found using
-a spectral decomposition of the adjacency matrix <a class="reference internal" href="#r230" id="id1">[R230]</a> <a class="reference internal" href="#r231" id="id2">[R231]</a>,</p>
+<p>Communicability centrality of a node <img class="math" src="../../_images/math/8a766bbd11b0a08916009a3c0008470d402e9d2f.png" alt="u" style="vertical-align: 0px"/> in G can be found using
+a spectral decomposition of the adjacency matrix <a class="footnote-reference" href="#id3" id="id1">[1]</a> <a class="footnote-reference" href="#id4" id="id2">[2]</a>,</p>
 <div class="math">
-\[SC(u)=\sum_{j=1}^{N}(v_{j}^{u})^2 e^{\lambda_{j}},\]</div>
-<p>where <span class="math">\(v_j\)</span> is an eigenvector of the adjacency matrix <span class="math">\(A\)</span> of G
-corresponding corresponding to the eigenvalue <span class="math">\(\lambda_j\)</span>.</p>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r230" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R230]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> Ernesto Estrada, Juan A. Rodriguez-Velazquez,
-&#8220;Subgraph centrality in complex networks&#8221;,
-Physical Review E 71, 056103 (2005).
-<a class="reference external" href="http://arxiv.org/abs/cond-mat/0504730">http://arxiv.org/abs/cond-mat/0504730</a></td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="r231" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R231]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> Ernesto Estrada, Naomichi Hatano,
-&#8220;Communicability in complex networks&#8221;,
-Phys. Rev. E 77, 036111 (2008).
-<a class="reference external" href="http://arxiv.org/abs/0707.0756">http://arxiv.org/abs/0707.0756</a></td></tr>
-</tbody>
-</table>
+<p><img src="../../_images/math/b6a3e52a2ed9068ce30a0f008265f6a06a50a086.png" alt="SC(u)=\sum_{j=1}^{N}(v_{j}^{u})^2 e^{\lambda_{j}},"/></p>
+</div><p>where <img class="math" src="../../_images/math/77521869b74cae7a9a055ded80ba8f4cc085246c.png" alt="v_j" style="vertical-align: -6px"/> is an eigenvector of the adjacency matrix <img class="math" src="../../_images/math/937abf0036e3f773123ec44111199b356cf0ab10.png" alt="A" style="vertical-align: 0px"/> of G
+corresponding corresponding to the eigenvalue <img class="math" src="../../_images/math/e42758999f4e661bd26a7f49d8aa3895158271f4.png" alt="\lambda_j" style="vertical-align: -6px"/>.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">)])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sc</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">communicability_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 </pre></div>
 </div>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Ernesto Estrada, Juan A. Rodriguez-Velazquez,
+&#8220;Subgraph centrality in complex networks&#8221;,
+Physical Review E 71, 056103 (2005).
+<a class="reference external" href="http://arxiv.org/abs/cond-mat/0504730">http://arxiv.org/abs/cond-mat/0504730</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Ernesto Estrada, Naomichi Hatano,
+&#8220;Communicability in complex networks&#8221;,
+Phys. Rev. E 77, 036111 (2008).
+<a class="reference external" href="http://arxiv.org/abs/0707.0756">http://arxiv.org/abs/0707.0756</a></td></tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -278,8 +271,8 @@ Phys. Rev. E 77, 036111 (2008).
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -299,7 +292,7 @@ Phys. Rev. E 77, 036111 (2008).
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

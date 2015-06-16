@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>DiGraph - Directed graphs with self loops &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>DiGraph - Directed graphs with self loops &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../index.html"/>
         <link rel="up" title="Graph types" href="classes.html"/>
         <link rel="next" title="__init__" href="generated/networkx.DiGraph.__init__.html"/>
         <link rel="prev" title="subgraph" href="generated/networkx.Graph.subgraph.html"/> 
@@ -202,71 +202,126 @@ key/value attributes.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : input graph</p>
-<blockquote>
-<div><p>Data to initialize graph.  If data=None (default) an empty
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data</strong> (<em>input graph</em>) &#8211; Data to initialize graph.  If data=None (default) an empty
 graph is created.  The data can be an edge list, or any
 NetworkX graph object.  If the corresponding optional Python
 packages are installed the data can also be a NumPy matrix
-or 2d ndarray, a SciPy sparse matrix, or a PyGraphviz graph.</p>
-</div></blockquote>
-<p><strong>attr</strong> : keyword arguments, optional (default= no attributes)</p>
-<blockquote class="last">
-<div><p>Attributes to add to graph as key=value pairs.</p>
-</div></blockquote>
+or 2d ndarray, a SciPy sparse matrix, or a PyGraphviz graph.</li>
+<li><strong>attr</strong> (<em>keyword arguments, optional (default= no attributes)</em>) &#8211; Attributes to add to graph as key=value pairs.</li>
+</ul>
 </td>
 </tr>
 </tbody>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="classes.graph.html#networkx.Graph" title="networkx.Graph"><code class="xref py py-obj docutils literal"><span class="pre">Graph</span></code></a>, <a class="reference internal" href="classes.multigraph.html#networkx.MultiGraph" title="networkx.MultiGraph"><code class="xref py py-obj docutils literal"><span class="pre">MultiGraph</span></code></a>, <a class="reference internal" href="classes.multidigraph.html#networkx.MultiDiGraph" title="networkx.MultiDiGraph"><code class="xref py py-obj docutils literal"><span class="pre">MultiDiGraph</span></code></a></p>
+<p class="last"><a class="reference internal" href="classes.graph.html#networkx.Graph" title="networkx.Graph"><code class="xref py py-func docutils literal"><span class="pre">Graph()</span></code></a>, <a class="reference internal" href="classes.multigraph.html#networkx.MultiGraph" title="networkx.MultiGraph"><code class="xref py py-func docutils literal"><span class="pre">MultiGraph()</span></code></a>, <a class="reference internal" href="classes.multidigraph.html#networkx.MultiDiGraph" title="networkx.MultiDiGraph"><code class="xref py py-func docutils literal"><span class="pre">MultiDiGraph()</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
-<p>Create a graph object that tracks the order nodes are added.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">OrderedNodeGraph</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="n">node_dict_factory</span><span class="o">=</span><span class="n">OrderedDict</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">OrderedNodeGraph</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span>
-<span class="go">[2, 1]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span> <span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span>
-<span class="go">[(2, 1), (2, 2), (1, 1)]</span>
+<p>Create an empty graph structure (a &#8220;null graph&#8221;) with no nodes and
+no edges.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Create a graph object that tracks the order nodes are added
-and for each node track the order that neighbors are added.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">OrderedGraph</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
-<span class="gp">... </span>   <span class="n">node_dict_factory</span> <span class="o">=</span> <span class="n">OrderedDict</span>
-<span class="gp">... </span>   <span class="n">adjlist_dict_factory</span> <span class="o">=</span> <span class="n">OrderedDict</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">OrderedGraph</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span>
-<span class="go">[2, 1]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span> <span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span>
-<span class="go">[(2, 2), (2, 1), (1, 1)]</span>
+<p>G can be grown in several ways.</p>
+<p><strong>Nodes:</strong></p>
+<p>Add one node at a time:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Create a low memory graph class that effectively disallows edge
-attributes by using a single attribute dict for all edges.
-This reduces the memory used, but you lose edge attributes.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">ThinGraph</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="n">all_edge_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
-<span class="gp">... </span>    <span class="k">def</span> <span class="nf">single_edge_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_edge_dict</span>
-<span class="gp">... </span>    <span class="n">edge_attr_dict_factory</span> <span class="o">=</span> <span class="n">single_edge_dict</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">ThinGraph</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
-<span class="go">[(1, 2, {&#39;weight&#39;: 1})]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="n">G</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+<p>Add the nodes from any container (a list, dict, set or
+even the lines from a file or the nodes from another graph).</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">110</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">H</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">H</span><span class="o">.</span><span class="n">add_path</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In addition to strings and integers any hashable Python object
+(except None) can represent a node, e.g. a customized node object,
+or even another Graph.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Edges:</strong></p>
+<p>G can also be grown by adding edges.</p>
+<p>Add one edge,</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>a list of edges,</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)])</span>
+</pre></div>
+</div>
+<p>or a collection of edges,</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">H</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>If some edges connect nodes not yet in the graph, the nodes
+are added automatically.  There are no errors when adding
+nodes or edges that already exist.</p>
+<p><strong>Attributes:</strong></p>
+<p>Each graph, node, and edge can hold key/value attribute pairs
+in an associated attribute dictionary (the keys must be hashable).
+By default these are empty, but can be added or changed using
+add_edge, add_node or direct manipulation of the attribute
+dictionaries named graph, node and edge respectively.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">(</span><span class="n">day</span><span class="o">=</span><span class="s">&quot;Friday&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">graph</span>
+<span class="go">{&#39;day&#39;: &#39;Friday&#39;}</span>
+</pre></div>
+</div>
+<p>Add node attributes using add_node(), add_nodes_from() or G.node</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="s">&#39;5pm&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">([</span><span class="mi">3</span><span class="p">],</span> <span class="n">time</span><span class="o">=</span><span class="s">&#39;2pm&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">{&#39;time&#39;: &#39;5pm&#39;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">&#39;room&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">714</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">G</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">&#39;room&#39;</span><span class="p">]</span> <span class="c"># remove attribute</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="go">[(1, {&#39;time&#39;: &#39;5pm&#39;}), (3, {&#39;time&#39;: &#39;2pm&#39;})]</span>
+</pre></div>
+</div>
+<p>Warning: adding a node to G.node does not add it to the graph.</p>
+<p>Add edge attributes using add_edge(), add_edges_from(), subscript
+notation, or G.edge.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mf">4.7</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)],</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,{</span><span class="s">&#39;color&#39;</span><span class="p">:</span><span class="s">&#39;blue&#39;</span><span class="p">}),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,{</span><span class="s">&#39;weight&#39;</span><span class="p">:</span><span class="mi">8</span><span class="p">})])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="s">&#39;weight&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">4.7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="s">&#39;weight&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<p><strong>Shortcuts:</strong></p>
+<p>Many common graph features allow python syntax to speed reporting.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="ow">in</span> <span class="n">G</span>     <span class="c"># check if node in graph</span>
 <span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span> <span class="k">if</span> <span class="n">n</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">]</span>   <span class="c"># iterate through nodes</span>
+<span class="go">[1, 2]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>  <span class="c"># number of nodes in graph</span>
+<span class="go">5</span>
 </pre></div>
 </div>
+<p>The fastest way to traverse all edges of a graph is via
+adjacency_iter(), but the edges() method is often more convenient.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">nbrsdict</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">adjacency_iter</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">nbr</span><span class="p">,</span><span class="n">eattr</span> <span class="ow">in</span> <span class="n">nbrsdict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="gp">... </span>       <span class="k">if</span> <span class="s">&#39;weight&#39;</span> <span class="ow">in</span> <span class="n">eattr</span><span class="p">:</span>
+<span class="gp">... </span>           <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">nbr</span><span class="p">,</span><span class="n">eattr</span><span class="p">[</span><span class="s">&#39;weight&#39;</span><span class="p">])</span>
+<span class="go">(1, 2, 4)</span>
+<span class="go">(2, 3, 8)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">edata</span><span class="p">[</span><span class="s">&#39;weight&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">edata</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">if</span> <span class="s">&#39;weight&#39;</span> <span class="ow">in</span> <span class="n">edata</span> <span class="p">]</span>
+<span class="go">[(1, 2, 4), (2, 3, 8)]</span>
+</pre></div>
+</div>
+<p><strong>Reporting:</strong></p>
+<p>Simple graph information is obtained using methods.
+Iterator versions of many reporting methods exist for efficiency.
+Methods exist for reporting nodes(), edges(), neighbors() and degree()
+as well as the number of nodes and edges.</p>
+<p>For details on these and other miscellaneous methods, see below.</p>
 </dd></dl>
 
 </div>
@@ -340,16 +395,16 @@ This reduces the memory used, but you lose edge attributes.</p>
 <tr class="row-odd"><td><a class="reference internal" href="generated/networkx.DiGraph.__iter__.html#networkx.DiGraph.__iter__" title="networkx.DiGraph.__iter__"><code class="xref py py-obj docutils literal"><span class="pre">DiGraph.__iter__</span></code></a>()</td>
 <td>Iterate over the nodes.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.DiGraph.edges.html#networkx.DiGraph.edges" title="networkx.DiGraph.edges"><code class="xref py py-obj docutils literal"><span class="pre">DiGraph.edges</span></code></a>([nbunch,&nbsp;data,&nbsp;default])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.DiGraph.edges.html#networkx.DiGraph.edges" title="networkx.DiGraph.edges"><code class="xref py py-obj docutils literal"><span class="pre">DiGraph.edges</span></code></a>([nbunch,&nbsp;data])</td>
 <td>Return a list of edges.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.DiGraph.edges_iter.html#networkx.DiGraph.edges_iter" title="networkx.DiGraph.edges_iter"><code class="xref py py-obj docutils literal"><span class="pre">DiGraph.edges_iter</span></code></a>([nbunch,&nbsp;data,&nbsp;default])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.DiGraph.edges_iter.html#networkx.DiGraph.edges_iter" title="networkx.DiGraph.edges_iter"><code class="xref py py-obj docutils literal"><span class="pre">DiGraph.edges_iter</span></code></a>([nbunch,&nbsp;data])</td>
 <td>Return an iterator over the edges.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.DiGraph.out_edges.html#networkx.DiGraph.out_edges" title="networkx.DiGraph.out_edges"><code class="xref py py-obj docutils literal"><span class="pre">DiGraph.out_edges</span></code></a>([nbunch,&nbsp;data,&nbsp;default])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.DiGraph.out_edges.html#networkx.DiGraph.out_edges" title="networkx.DiGraph.out_edges"><code class="xref py py-obj docutils literal"><span class="pre">DiGraph.out_edges</span></code></a>([nbunch,&nbsp;data])</td>
 <td>Return a list of edges.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.DiGraph.out_edges_iter.html#networkx.DiGraph.out_edges_iter" title="networkx.DiGraph.out_edges_iter"><code class="xref py py-obj docutils literal"><span class="pre">DiGraph.out_edges_iter</span></code></a>([nbunch,&nbsp;data,&nbsp;default])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.DiGraph.out_edges_iter.html#networkx.DiGraph.out_edges_iter" title="networkx.DiGraph.out_edges_iter"><code class="xref py py-obj docutils literal"><span class="pre">DiGraph.out_edges_iter</span></code></a>([nbunch,&nbsp;data])</td>
 <td>Return an iterator over the edges.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/networkx.DiGraph.in_edges.html#networkx.DiGraph.in_edges" title="networkx.DiGraph.in_edges"><code class="xref py py-obj docutils literal"><span class="pre">DiGraph.in_edges</span></code></a>([nbunch,&nbsp;data])</td>
@@ -447,7 +502,7 @@ This reduces the memory used, but you lose edge attributes.</p>
 <tr class="row-odd"><td><a class="reference internal" href="generated/networkx.DiGraph.nodes_with_selfloops.html#networkx.DiGraph.nodes_with_selfloops" title="networkx.DiGraph.nodes_with_selfloops"><code class="xref py py-obj docutils literal"><span class="pre">DiGraph.nodes_with_selfloops</span></code></a>()</td>
 <td>Return a list of nodes with self loops.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.DiGraph.selfloop_edges.html#networkx.DiGraph.selfloop_edges" title="networkx.DiGraph.selfloop_edges"><code class="xref py py-obj docutils literal"><span class="pre">DiGraph.selfloop_edges</span></code></a>([data,&nbsp;default])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.DiGraph.selfloop_edges.html#networkx.DiGraph.selfloop_edges" title="networkx.DiGraph.selfloop_edges"><code class="xref py py-obj docutils literal"><span class="pre">DiGraph.selfloop_edges</span></code></a>([data])</td>
 <td>Return a list of selfloop edges.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/networkx.DiGraph.number_of_selfloops.html#networkx.DiGraph.number_of_selfloops" title="networkx.DiGraph.number_of_selfloops"><code class="xref py py-obj docutils literal"><span class="pre">DiGraph.number_of_selfloops</span></code></a>()</td>
@@ -502,8 +557,8 @@ This reduces the memory used, but you lose edge attributes.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -523,7 +578,7 @@ This reduces the memory used, but you lose edge attributes.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

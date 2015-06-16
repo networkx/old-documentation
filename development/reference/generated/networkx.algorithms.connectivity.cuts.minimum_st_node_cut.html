@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>minimum_st_node_cut &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>minimum_st_node_cut &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Connectivity" href="../algorithms.connectivity.html"/>
         <link rel="next" title="stoer_wagner" href="networkx.algorithms.connectivity.stoerwagner.stoer_wagner.html"/>
         <link rel="prev" title="minimum_st_edge_cut" href="networkx.algorithms.connectivity.cuts.minimum_st_edge_cut.html"/> 
@@ -198,66 +198,34 @@ if removed, would destroy all paths among source and target in G.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
-<p><strong>s</strong> : node</p>
-<blockquote>
-<div><p>Source node.</p>
-</div></blockquote>
-<p><strong>t</strong> : node</p>
-<blockquote>
-<div><p>Target node.</p>
-</div></blockquote>
-<p><strong>flow_func</strong> : function</p>
-<blockquote>
-<div><p>A function for computing the maximum flow among a pair of nodes.
-The function has to accept at least three parameters: a Digraph, 
-a source node, and a target node. And return a residual network 
-that follows NetworkX conventions (see <code class="xref py py-meth docutils literal"><span class="pre">maximum_flow()</span></code> for 
-details). If flow_func is None, the default maximum flow function 
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>s</strong> (<em>node</em>) &#8211; Source node.</li>
+<li><strong>t</strong> (<em>node</em>) &#8211; Target node.</li>
+<li><strong>flow_func</strong> (<em>function</em>) &#8211; A function for computing the maximum flow among a pair of nodes.
+The function has to accept at least three parameters: a Digraph,
+a source node, and a target node. And return a residual network
+that follows NetworkX conventions (see <code class="xref py py-meth docutils literal"><span class="pre">maximum_flow()</span></code> for
+details). If flow_func is None, the default maximum flow function
 (<code class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></code>) is used. See below for details. The choice
-of the default function may change from version to version and 
-should not be relied on. Default value: None.</p>
-</div></blockquote>
-<p><strong>auxiliary</strong> : NetworkX DiGraph</p>
-<blockquote>
-<div><p>Auxiliary digraph to compute flow based node connectivity. It has
+of the default function may change from version to version and
+should not be relied on. Default value: None.</li>
+<li><strong>auxiliary</strong> (<em>NetworkX DiGraph</em>) &#8211; Auxiliary digraph to compute flow based node connectivity. It has
 to have a graph attribute called mapping with a dictionary mapping
 node names in G and in the auxiliary digraph. If provided
-it will be reused instead of recreated. Default value: None.</p>
-</div></blockquote>
-<p><strong>residual</strong> : NetworkX DiGraph</p>
-<blockquote>
-<div><p>Residual network to compute maximum flow. If provided it will be
-reused instead of recreated. Default value: None.</p>
-</div></blockquote>
+it will be reused instead of recreated. Default value: None.</li>
+<li><strong>residual</strong> (<em>NetworkX DiGraph</em>) &#8211; Residual network to compute maximum flow. If provided it will be
+reused instead of recreated. Default value: None.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>cutset</strong> : set</p>
-<blockquote class="last">
-<div><p>Set of nodes that, if removed, would destroy all paths between
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>cutset</strong> &#8211;
+Set of nodes that, if removed, would destroy all paths between
 source and target in G.</p>
-</div></blockquote>
 </td>
 </tr>
-</tbody>
-</table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.connectivity.cuts.minimum_node_cut.html#networkx.algorithms.connectivity.cuts.minimum_node_cut" title="networkx.algorithms.connectivity.cuts.minimum_node_cut"><code class="xref py py-meth docutils literal"><span class="pre">minimum_node_cut()</span></code></a>, <a class="reference internal" href="networkx.algorithms.connectivity.cuts.minimum_edge_cut.html#networkx.algorithms.connectivity.cuts.minimum_edge_cut" title="networkx.algorithms.connectivity.cuts.minimum_edge_cut"><code class="xref py py-meth docutils literal"><span class="pre">minimum_edge_cut()</span></code></a>, <code class="xref py py-meth docutils literal"><span class="pre">stoer_wagner()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">node_connectivity()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">edge_connectivity()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">maximum_flow()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">preflow_push()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">shortest_augmenting_path()</span></code></p>
-</div>
-<p class="rubric">Notes</p>
-<p>This is a flow based implementation of minimum node cut. The algorithm
-is based in solving a number of maximum flow computations to determine
-the capacity of the minimum cut on an auxiliary directed network that
-corresponds to the minimum node cut of G. It handles both directed
-and undirected graphs. This implementation is based on algorithm 11 
-in <a class="reference internal" href="#r287" id="id1">[R287]</a>.</p>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r287" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R287]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Abdol-Hossein Esfahanian. Connectivity Algorithms.
-<a class="reference external" href="http://www.cse.msu.edu/~cse835/Papers/Graph_connectivity_revised.pdf">http://www.cse.msu.edu/~cse835/Papers/Graph_connectivity_revised.pdf</a></td></tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">set</p>
+</td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -280,7 +248,7 @@ auxiliary digraph for node connectivity and node cuts, and the
 residual network for the underlying maximum flow computation.</p>
 <p>Example of how to compute local st node cuts reusing the data
 structures:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># You also have to explicitly import the function for </span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># You also have to explicitly import the function for</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># building the auxiliary digraph from the connectivity package</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.algorithms.connectivity</span> <span class="kn">import</span> <span class="p">(</span>
 <span class="gp">... </span>    <span class="n">build_auxiliary_node_connectivity</span><span class="p">)</span>
@@ -307,6 +275,25 @@ functions have to be explicitly imported from the flow package.</p>
 <span class="go">5</span>
 </pre></div>
 </div>
+<p class="rubric">Notes</p>
+<p>This is a flow based implementation of minimum node cut. The algorithm
+is based in solving a number of maximum flow computations to determine
+the capacity of the minimum cut on an auxiliary directed network that
+corresponds to the minimum node cut of G. It handles both directed
+and undirected graphs. This implementation is based on algorithm 11
+in <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.connectivity.cuts.minimum_node_cut.html#networkx.algorithms.connectivity.cuts.minimum_node_cut" title="networkx.algorithms.connectivity.cuts.minimum_node_cut"><code class="xref py py-meth docutils literal"><span class="pre">minimum_node_cut()</span></code></a>, <a class="reference internal" href="networkx.algorithms.connectivity.cuts.minimum_edge_cut.html#networkx.algorithms.connectivity.cuts.minimum_edge_cut" title="networkx.algorithms.connectivity.cuts.minimum_edge_cut"><code class="xref py py-meth docutils literal"><span class="pre">minimum_edge_cut()</span></code></a>, <code class="xref py py-meth docutils literal"><span class="pre">stoer_wagner()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">node_connectivity()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">edge_connectivity()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">maximum_flow()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">preflow_push()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">shortest_augmenting_path()</span></code></p>
+</div>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Abdol-Hossein Esfahanian. Connectivity Algorithms.
+<a class="reference external" href="http://www.cse.msu.edu/~cse835/Papers/Graph_connectivity_revised.pdf">http://www.cse.msu.edu/~cse835/Papers/Graph_connectivity_revised.pdf</a></td></tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -329,8 +316,8 @@ functions have to be explicitly imported from the flow package.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -350,7 +337,7 @@ functions have to be explicitly imported from the flow package.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

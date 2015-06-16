@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>greedy_color &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>greedy_color &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Coloring" href="../algorithms.coloring.html"/>
         <link rel="next" title="Communities" href="../algorithms.community.html"/>
         <link rel="prev" title="greedy_color" href=""/> 
@@ -189,23 +189,21 @@
 <h1>greedy_color<a class="headerlink" href="#greedy-color" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.algorithms.coloring.greedy_color">
-<code class="descname">greedy_color</code><span class="sig-paren">(</span><em>G</em>, <em>strategy=&lt;function strategy_largest_first at 0x2573c08&gt;</em>, <em>interchange=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/coloring/greedy_coloring.html#greedy_color"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.coloring.greedy_color" title="Permalink to this definition">¶</a></dt>
+<code class="descname">greedy_color</code><span class="sig-paren">(</span><em>G</em>, <em>strategy=&lt;function strategy_largest_first at 0x1a6a6e0&gt;</em>, <em>interchange=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/coloring/greedy_coloring.html#greedy_color"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.coloring.greedy_color" title="Permalink to this definition">¶</a></dt>
 <dd><p>Color a graph using various strategies of greedy graph coloring.
-The strategies are described in <a class="reference internal" href="#r266" id="id1">[R266]</a>.</p>
+The strategies are described in <a class="footnote-reference" href="#id3" id="id1">[1]</a>.</p>
 <p>Attempts to color a graph using as few colors as possible, where no
 neighbours of a node can have same color as the node itself.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
-<p><strong>strategy</strong> : function(G, colors)</p>
-<blockquote>
-<div><p>A function that provides the coloring strategy, by returning nodes
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>strategy</strong> (<em>function(G, colors)</em>) &#8211; <p>A function that provides the coloring strategy, by returning nodes
 in the ordering they should be colored. G is the graph, and colors
 is a dict of the currently assigned colors, keyed by nodes.</p>
 <p>You can pass your own ordering function, or use one of the built in:</p>
-<ul class="simple">
+<ul>
 <li>strategy_largest_first</li>
 <li>strategy_random_sequential</li>
 <li>strategy_smallest_last</li>
@@ -216,39 +214,24 @@ is a dict of the currently assigned colors, keyed by nodes.</p>
 (alias of strategy_connected_sequential_bfs)</li>
 <li>strategy_saturation_largest_first (also known as DSATUR)</li>
 </ul>
-</div></blockquote>
-<p><strong>interchange: bool</strong></p>
-<blockquote>
-<div><p>Will use the color interchange algorithm described by <a class="reference internal" href="#r267" id="id2">[R267]</a> if set
+</li>
+<li><strong>interchange</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; <p>Will use the color interchange algorithm described by <a class="footnote-reference" href="#id4" id="id2">[2]</a> if set
 to true.</p>
 <p>Note that saturation largest first and independent set do not
 work with interchange. Furthermore, if you use interchange with
 your own strategy function, you cannot rely on the values in the
 colors argument.</p>
-</div></blockquote>
+</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A dictionary with keys representing nodes and values representing</p>
-<p class="last">corresponding coloring.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><em>A dictionary with keys representing nodes and values representing</em></li>
+<li><em>corresponding coloring.</em></li>
+</ul>
+</p>
 </td>
 </tr>
-</tbody>
-</table>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r266" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R266]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> Adrian Kosowski, and Krzysztof Manuszewski,
-Classical Coloring of Graphs, Graph Colorings, 2-19, 2004.
-ISBN 0-8218-3458-4.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="r267" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R267]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> Maciej M. Syslo, Marsingh Deo, Janusz S. Kowalik,
-Discrete Optimization Algorithms with Pascal Programs, 415-424, 1983.
-ISBN 0-486-45353-7.</td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -258,6 +241,23 @@ ISBN 0-486-45353-7.</td></tr>
 <span class="go">True</span>
 </pre></div>
 </div>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Adrian Kosowski, and Krzysztof Manuszewski,
+Classical Coloring of Graphs, Graph Colorings, 2-19, 2004.
+ISBN 0-8218-3458-4.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Maciej M. Syslo, Marsingh Deo, Janusz S. Kowalik,
+Discrete Optimization Algorithms with Pascal Programs, 415-424, 1983.
+ISBN 0-486-45353-7.</td></tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -280,8 +280,8 @@ ISBN 0-486-45353-7.</td></tr>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -301,7 +301,7 @@ ISBN 0-486-45353-7.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>line_graph &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>line_graph &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
         <link rel="next" title="ego_graph" href="networkx.generators.ego.ego_graph.html"/>
         <link rel="prev" title="navigable_small_world_graph" href="networkx.generators.geometric.navigable_small_world_graph.html"/> 
@@ -188,87 +188,37 @@
 <dl class="function">
 <dt id="networkx.generators.line.line_graph">
 <code class="descname">line_graph</code><span class="sig-paren">(</span><em>G</em>, <em>create_using=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/generators/line.html#line_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.line.line_graph" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the line graph of the graph or digraph <code class="docutils literal"><span class="pre">G</span></code>.</p>
-<p>The line graph of a graph <code class="docutils literal"><span class="pre">G</span></code> has a node for each edge in <code class="docutils literal"><span class="pre">G</span></code> and an
-edge joining those nodes if the two edges in <code class="docutils literal"><span class="pre">G</span></code> share a common node. For
-directed graphs, nodes are adjacent exactly when the edges they represent
-form a directed path of length two.</p>
-<p>The nodes of the line graph are 2-tuples of nodes in the original graph (or
-3-tuples for multigraphs, with the key of the edge as the third element).</p>
-<p>For information about self-loops and more discussion, see the <strong>Notes</strong>
-section below.</p>
+<dd><p>Return the line graph of the graph or digraph G.</p>
+<p>The line graph of a graph G has a node for each edge in G and an edge
+between those nodes if the two edges in G share a common node. For directed
+graphs, nodes are connected only if they form a directed path of length 2.</p>
+<p>The nodes of the line graph are 2-tuples of nodes in the original graph
+(or 3-tuples for multigraphs, with the key of the edge as the 3rd element).</p>
+<p>For more discussion, see the docstring in <a class="reference internal" href="../generators.html#module-networkx.generators.line" title="networkx.generators.line"><code class="xref py py-mod docutils literal"><span class="pre">networkx.generators.line</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
-<blockquote>
-<div><p>A NetworkX Graph, DiGraph, MultiGraph, or MultiDigraph.</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>G</strong> (<em>graph</em>) &#8211; A NetworkX Graph, DiGraph, MultiGraph, or MultiDigraph.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>L</strong> : graph</p>
-<blockquote class="last">
-<div><p>The line graph of G.</p>
-</div></blockquote>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>L</strong> &#8211;
+The line graph of G.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">graph</td>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Notes</p>
-<p>Graph, node, and edge data are not propagated to the new graph. For
-undirected graphs, the nodes in G must be sortable, otherwise the
-constructed line graph may not be correct.</p>
-<p><em>Self-loops in undirected graphs</em></p>
-<p>For an undirected graph <span class="math">\(G\)</span> without multiple edges, each edge can be
-written as a set <span class="math">\(\{u, v\}\)</span>.  Its line graph <span class="math">\(L\)</span> has the edges of <span class="math">\(G\)</span> as
-its nodes. If <span class="math">\(x\)</span> and <span class="math">\(y\)</span> are two nodes in <span class="math">\(L\)</span>, then <span class="math">\(\{x, y\}\)</span> is an edge
-in <span class="math">\(L\)</span> if and only if the intersection of <span class="math">\(x\)</span> and <span class="math">\(y\)</span> is nonempty. Thus,
-the set of all edges is determined by the set of all pairwise intersections
-of edges in <span class="math">\(G\)</span>.</p>
-<p>Trivially, every edge in G would have a nonzero intersection with itself,
-and so every node in <span class="math">\(L\)</span> should have a self-loop. This is not so
-interesting, and the original context of line graphs was with simple
-graphs, which had no self-loops or multiple edges. The line graph was also
-meant to be a simple graph and thus, self-loops in <span class="math">\(L\)</span> are not part of the
-standard definition of a line graph. In a pairwise intersection matrix,
-this is analogous to excluding the diagonal entries from the line graph
-definition.</p>
-<p>Self-loops and multiple edges in <span class="math">\(G\)</span> add nodes to <span class="math">\(L\)</span> in a natural way, and
-do not require any fundamental changes to the definition. It might be
-argued that the self-loops we excluded before should now be included.
-However, the self-loops are still &#8220;trivial&#8221; in some sense and thus, are
-usually excluded.</p>
-<p><em>Self-loops in directed graphs</em></p>
-<p>For a directed graph <span class="math">\(G\)</span> without multiple edges, each edge can be written
-as a tuple <span class="math">\((u, v)\)</span>. Its line graph <span class="math">\(L\)</span> has the edges of <span class="math">\(G\)</span> as its
-nodes. If <span class="math">\(x\)</span> and <span class="math">\(y\)</span> are two nodes in <span class="math">\(L\)</span>, then <span class="math">\((x, y)\)</span> is an edge in <span class="math">\(L\)</span>
-if and only if the tail of <span class="math">\(x\)</span> matches the head of <span class="math">\(y\)</span>, for example, if <span class="math">\(x
-= (a, b)\)</span> and <span class="math">\(y = (b, c)\)</span> for some vertices <span class="math">\(a\)</span>, <span class="math">\(b\)</span>, and <span class="math">\(c\)</span> in <span class="math">\(G\)</span>.</p>
-<p>Due to the directed nature of the edges, it is no longer the case that
-every edge in <span class="math">\(G\)</span> should have a self-loop in <span class="math">\(L\)</span>. Now, the only time
-self-loops arise is if a node in <span class="math">\(G\)</span> itself has a self-loop.  So such
-self-loops are no longer &#8220;trivial&#8221; but instead, represent essential
-features of the topology of <span class="math">\(G\)</span>. For this reason, the historical
-development of line digraphs is such that self-loops are included. When the
-graph <span class="math">\(G\)</span> has multiple edges, once again only superficial changes are
-required to the definition.</p>
-<p class="rubric">References</p>
-<ul class="simple">
-<li>Harary, Frank, and Norman, Robert Z., &#8220;Some properties of line digraphs&#8221;,
-Rend. Circ. Mat. Palermo, II. Ser. 9 (1960), 161&#8211;168.</li>
-<li>Hemminger, R. L.; Beineke, L. W. (1978), &#8220;Line graphs and line digraphs&#8221;,
-in Beineke, L. W.; Wilson, R. J., Selected Topics in Graph Theory,
-Academic Press Inc., pp. 271&#8211;305.</li>
-</ul>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">star_graph</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">star_graph</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">L</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">line_graph</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">sorted</span><span class="p">,</span> <span class="n">L</span><span class="o">.</span><span class="n">edges</span><span class="p">())))</span>  <span class="c"># makes a 3-clique, K3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">sorted</span><span class="p">,</span> <span class="n">L</span><span class="o">.</span><span class="n">edges</span><span class="p">())))</span> <span class="c"># makes a clique, K3</span>
 <span class="go">[[(0, 1), (0, 2)], [(0, 1), (0, 3)], [(0, 2), (0, 3)]]</span>
 </pre></div>
 </div>
+<p class="rubric">Notes</p>
+<p>Graph, node, and edge data are not propagated to the new graph. For
+undirected graphs, the nodes in G must be sortable&#8212;otherwise, the
+constructed line graph may not be correct.</p>
 </dd></dl>
 
 </div>
@@ -291,8 +241,8 @@ Academic Press Inc., pp. 271&#8211;305.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -312,7 +262,7 @@ Academic Press Inc., pp. 271&#8211;305.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

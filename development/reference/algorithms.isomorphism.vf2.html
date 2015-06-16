@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>VF2 Algorithm &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>VF2 Algorithm &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../index.html"/>
         <link rel="up" title="Isomorphism" href="algorithms.isomorphism.html"/>
         <link rel="next" title="__init__" href="generated/networkx.algorithms.isomorphism.GraphMatcher.__init__.html"/>
         <link rel="prev" title="faster_could_be_isomorphic" href="generated/networkx.algorithms.isomorphism.faster_could_be_isomorphic.html"/> 
@@ -187,10 +187,12 @@
             
   <div class="section" id="module-networkx.algorithms.isomorphism.isomorphvf2">
 <span id="vf2-algorithm"></span><span id="vf2"></span><h1>VF2 Algorithm<a class="headerlink" href="#module-networkx.algorithms.isomorphism.isomorphvf2" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>VF2 Algorithm<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>An implementation of VF2 algorithm for graph ismorphism testing.</p>
 <p>The simplest interface to use this module is to call networkx.is_isomorphic().</p>
 <div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
 <p>The GraphMatcher and DiGraphMatcher are responsible for matching
 graphs or directed graphs in a predetermined manner.  This
 usually means a check for an isomorphism, though other checks
@@ -204,9 +206,7 @@ subclassed, and the semantic_feasibility() function should be
 redefined.  By default, the semantic feasibility function always
 returns True.  The effect of this is that semantics are not
 considered in the matching of G1 and G2.</p>
-</div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Examples</p>
 <p>Suppose G1 and G2 are isomorphic graphs. Verification is as follows:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.algorithms</span> <span class="kn">import</span> <span class="n">isomorphism</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G1</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
@@ -237,7 +237,7 @@ graphs. Verification is as follows:</p>
 </div>
 </div>
 <div class="section" id="subgraph-isomorphism">
-<h2>Subgraph Isomorphism<a class="headerlink" href="#subgraph-isomorphism" title="Permalink to this headline">¶</a></h2>
+<h3>Subgraph Isomorphism<a class="headerlink" href="#subgraph-isomorphism" title="Permalink to this headline">¶</a></h3>
 <p>Graph theory literature can be ambiguious about the meaning of the
 above statement, and we seek to clarify it now.</p>
 <p>In the VF2 literature, a mapping M is said to be a graph-subgraph
@@ -267,9 +267,7 @@ E&#8217; is the subset of edges in E relating nodes in N&#8217;</dd>
 <dd>N&#8217; is the subset of nodes in N related by edges in E&#8217;
 E&#8217; is a subset of E</dd>
 </dl>
-</div>
-<div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">References</p>
 <dl class="docutils">
 <dt>[1]   Luigi P. Cordella, Pasquale Foggia, Carlo Sansone, Mario Vento,</dt>
 <dd>&#8220;A (Sub)Graph Isomorphism Algorithm for Matching Large Graphs&#8221;,
@@ -282,16 +280,15 @@ on Graph-based Representations in Pattern Recognition, Cuen,
 pp. 149-159, 2001.
 <a class="reference external" href="http://amalfi.dis.unina.it/graph/db/papers/vf-algorithm.pdf">http://amalfi.dis.unina.it/graph/db/papers/vf-algorithm.pdf</a></dd>
 </dl>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-mod docutils literal"><span class="pre">syntactic_feasibliity</span></code>, <code class="xref py py-mod docutils literal"><span class="pre">semantic_feasibility</span></code></p>
 </div>
-<div class="section" id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
-<p>syntactic_feasibliity(), semantic_feasibility()</p>
-</div>
-<div class="section" id="notes">
-<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Notes</p>
 <p>Modified to handle undirected graphs.
 Modified to handle multiple edges.</p>
 <p>In general, this problem is NP-Complete.</p>
+</div>
 </div>
 <div class="section" id="graph-matcher">
 <h2>Graph Matcher<a class="headerlink" href="#graph-matcher" title="Permalink to this headline">¶</a></h2>
@@ -433,8 +430,8 @@ Modified to handle multiple edges.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -454,7 +451,7 @@ Modified to handle multiple edges.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

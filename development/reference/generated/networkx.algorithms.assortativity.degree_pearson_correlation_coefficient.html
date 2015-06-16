@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>degree_pearson_correlation_coefficient &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>degree_pearson_correlation_coefficient &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Assortativity" href="../algorithms.assortativity.html"/>
         <link rel="next" title="average_neighbor_degree" href="networkx.algorithms.assortativity.average_neighbor_degree.html"/>
         <link rel="prev" title="numeric_assortativity_coefficient" href="networkx.algorithms.assortativity.numeric_assortativity_coefficient.html"/> 
@@ -193,66 +193,56 @@
 <dd><p>Compute degree assortativity of graph.</p>
 <p>Assortativity measures the similarity of connections
 in the graph with respect to the node degree.</p>
-<p>This is the same as degree_assortativity_coefficient but uses the 
+<p>This is the same as degree_assortativity_coefficient but uses the
 potentially faster scipy.stats.pearsonr function.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
-<p><strong>x: string (&#8216;in&#8217;,&#8217;out&#8217;)</strong></p>
-<blockquote>
-<div><p>The degree type for source node (directed graphs only).</p>
-</div></blockquote>
-<p><strong>y: string (&#8216;in&#8217;,&#8217;out&#8217;)</strong></p>
-<blockquote>
-<div><p>The degree type for target node (directed graphs only).</p>
-</div></blockquote>
-<p><strong>weight: string or None, optional (default=None)</strong></p>
-<blockquote>
-<div><p>The edge attribute that holds the numerical value used 
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> (<em>string (&#8216;in&#8217;,&#8217;out&#8217;)</em>) &#8211; The degree type for source node (directed graphs only).</li>
+<li><strong>y</strong> (<em>string (&#8216;in&#8217;,&#8217;out&#8217;)</em>) &#8211; The degree type for target node (directed graphs only).</li>
+<li><strong>weight</strong> (<em>string or None, optional (default=None)</em>) &#8211; The edge attribute that holds the numerical value used
 as a weight.  If None, then each edge has weight 1.
-The degree is the sum of the edge weights adjacent to the node.</p>
-</div></blockquote>
-<p><strong>nodes: list or iterable (optional)</strong></p>
-<blockquote>
-<div><p>Compute pearson correlation of degrees only for specified nodes.
-The default is all nodes.</p>
-</div></blockquote>
+The degree is the sum of the edge weights adjacent to the node.</li>
+<li><strong>nodes</strong> (<em>list or iterable (optional)</em>) &#8211; Compute pearson correlation of degrees only for specified nodes.
+The default is all nodes.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>r</strong> : float</p>
-<blockquote class="last">
-<div><p>Assortativity of graph by degree.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>r</strong> &#8211;
+Assortativity of graph by degree.</p>
 </td>
 </tr>
-</tbody>
-</table>
-<p class="rubric">Notes</p>
-<p>This calls scipy.stats.pearsonr.</p>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r199" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R199]</a></td><td>M. E. J. Newman, Mixing patterns in networks
-Physical Review E, 67 026126, 2003</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="r200" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R200]</a></td><td>Foster, J.G., Foster, D.V., Grassberger, P. &amp; Paczuski, M. 
-Edge direction and the structure of networks, PNAS 107, 10815-20 (2010).</td></tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">degree_pearson_correlation_coefficient</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">degree_pearson_correlation_coefficient</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%3.1f</span><span class="s">&quot;</span><span class="o">%</span><span class="n">r</span><span class="p">)</span>
 <span class="go">-0.5</span>
 </pre></div>
 </div>
+<p class="rubric">Notes</p>
+<p>This calls scipy.stats.pearsonr.</p>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td>M. E. J. Newman, Mixing patterns in networks
+Physical Review E, 67 026126, 2003</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td>Foster, J.G., Foster, D.V., Grassberger, P. &amp; Paczuski, M.
+Edge direction and the structure of networks, PNAS 107, 10815-20 (2010).</td></tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -275,8 +265,8 @@ Edge direction and the structure of networks, PNAS 107, 10815-20 (2010).</td></t
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -296,7 +286,7 @@ Edge direction and the structure of networks, PNAS 107, 10815-20 (2010).</td></t
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

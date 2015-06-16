@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>edges &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>edges &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="MultiGraph - Undirected graphs with self loops and parallel edges" href="../classes.multigraph.html"/>
         <link rel="next" title="edges_iter" href="networkx.MultiGraph.edges_iter.html"/>
         <link rel="prev" title="__iter__" href="networkx.MultiGraph.__iter__.html"/> 
@@ -189,7 +189,7 @@
 <h1>edges<a class="headerlink" href="#edges" title="Permalink to this headline">¶</a></h1>
 <dl class="method">
 <dt id="networkx.MultiGraph.edges">
-<code class="descclassname">MultiGraph.</code><code class="descname">edges</code><span class="sig-paren">(</span><em>nbunch=None</em>, <em>data=False</em>, <em>keys=False</em>, <em>default=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/classes/multigraph.html#MultiGraph.edges"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.MultiGraph.edges" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">MultiGraph.</code><code class="descname">edges</code><span class="sig-paren">(</span><em>nbunch=None</em>, <em>data=False</em>, <em>keys=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/classes/multigraph.html#MultiGraph.edges"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.MultiGraph.edges" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of edges.</p>
 <p>Edges are returned as tuples with optional data and keys
 in the order (node, neighbor, key, data).</p>
@@ -197,26 +197,16 @@ in the order (node, neighbor, key, data).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>nbunch</strong> : iterable container, optional (default= all nodes)</p>
-<blockquote>
-<div><p>A container of nodes.  The container will be iterated
-through once.</p>
-</div></blockquote>
-<p><strong>data</strong> : bool, optional (default=False)</p>
-<blockquote>
-<div><p>Return two tuples (u,v) (False) or three-tuples (u,v,data) (True).</p>
-</div></blockquote>
-<p><strong>keys</strong> : bool, optional (default=False)</p>
-<blockquote>
-<div><p>Return two tuples (u,v) (False) or three-tuples (u,v,key) (True).</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">edge_list: list of edge tuples</p>
-<blockquote class="last">
-<div><p>Edges that are adjacent to any node in nbunch, or a list
-of all edges if nbunch is not specified.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>nbunch</strong> (<em>iterable container, optional (default= all nodes)</em>) &#8211; A container of nodes.  The container will be iterated
+through once.</li>
+<li><strong>data</strong> (<em>bool, optional (default=False)</em>) &#8211; Return two tuples (u,v) (False) or three-tuples (u,v,data) (True).</li>
+<li><strong>keys</strong> (<em>bool, optional (default=False)</em>) &#8211; Return two tuples (u,v) (False) or three-tuples (u,v,key) (True).</li>
+<li><strong>Returns</strong> &#8211; </li>
+<li><strong>--------</strong> &#8211; </li>
+<li><strong>edge_list</strong> (<em>list of edge tuples</em>) &#8211; Edges that are adjacent to any node in nbunch, or a list
+of all edges if nbunch is not specified.</li>
+</ul>
 </td>
 </tr>
 </tbody>
@@ -224,7 +214,7 @@ of all edges if nbunch is not specified.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="networkx.MultiGraph.edges_iter.html#networkx.MultiGraph.edges_iter" title="networkx.MultiGraph.edges_iter"><code class="xref py py-obj docutils literal"><span class="pre">edges_iter</span></code></a></dt>
+<dt><a class="reference internal" href="networkx.MultiGraph.edges_iter.html#networkx.MultiGraph.edges_iter" title="networkx.MultiGraph.edges_iter"><code class="xref py py-meth docutils literal"><span class="pre">edges_iter()</span></code></a></dt>
 <dd>return an iterator over the edges</dd>
 </dl>
 </div>
@@ -233,20 +223,15 @@ of all edges if nbunch is not specified.</p>
 For directed graphs this returns the out-edges.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiGraph</span><span class="p">()</span>  <span class="c"># or MultiDiGraph</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_path</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_path</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span>
 <span class="go">[(0, 1), (1, 2), (2, 3)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="c"># default edge data is {} (empty dictionary)</span>
-<span class="go">[(0, 1, {}), (1, 2, {}), (2, 3, {&#39;weight&#39;: 5})]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges_iter</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-<span class="go">[(0, 1, 1), (1, 2, 1), (2, 3, 5)]</span>
+<span class="go">[(0, 1, {}), (1, 2, {}), (2, 3, {})]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="c"># default keys are integers</span>
 <span class="go">[(0, 1, 0), (1, 2, 0), (2, 3, 0)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">keys</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="c"># default keys are integers</span>
-<span class="go">[(0, 1, 0, {}), (1, 2, 0, {}), (2, 3, 0, {&#39;weight&#39;: 5})]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">keys</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
-<span class="go">[(0, 1, 0, 1), (1, 2, 0, 1), (2, 3, 0, 5)]</span>
+<span class="go">[(0, 1, 0, {}), (1, 2, 0, {}), (2, 3, 0, {})]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="go">[(0, 1), (3, 2)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -275,8 +260,8 @@ For directed graphs this returns the out-edges.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -296,7 +281,7 @@ For directed graphs this returns the out-edges.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

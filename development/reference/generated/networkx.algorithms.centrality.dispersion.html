@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>dispersion &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>dispersion &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Centrality" href="../algorithms.centrality.html"/>
         <link rel="next" title="Chordal" href="../algorithms.chordal.html"/>
         <link rel="prev" title="edge_load" href="networkx.algorithms.centrality.edge_load.html"/> 
@@ -190,52 +190,43 @@
 <dl class="function">
 <dt id="networkx.algorithms.centrality.dispersion">
 <code class="descname">dispersion</code><span class="sig-paren">(</span><em>G</em>, <em>u=None</em>, <em>v=None</em>, <em>normalized=True</em>, <em>alpha=1.0</em>, <em>b=0.0</em>, <em>c=0.0</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/centrality/dispersion.html#dispersion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.centrality.dispersion" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate dispersion between <span class="math">\(u\)</span> and <span class="math">\(v\)</span> in <span class="math">\(G\)</span>.</p>
-<p>A link between two actors (<span class="math">\(u\)</span> and <span class="math">\(v\)</span>) has a high dispersion when their
-mutual ties (<span class="math">\(s\)</span> and <span class="math">\(t\)</span>) are not well connected with each other.</p>
+<dd><p>Calculate dispersion between <img class="math" src="../../_images/math/8a766bbd11b0a08916009a3c0008470d402e9d2f.png" alt="u" style="vertical-align: 0px"/> and <img class="math" src="../../_images/math/53c4a26799ff6cdae6f13d6b1fcf961660d83169.png" alt="v" style="vertical-align: 0px"/> in <img class="math" src="../../_images/math/a3b876a880363bc604f5b4e0f360b95ffc7f4738.png" alt="G" style="vertical-align: 0px"/>.</p>
+<p>A link between two actors (<img class="math" src="../../_images/math/8a766bbd11b0a08916009a3c0008470d402e9d2f.png" alt="u" style="vertical-align: 0px"/> and <img class="math" src="../../_images/math/53c4a26799ff6cdae6f13d6b1fcf961660d83169.png" alt="v" style="vertical-align: 0px"/>) has a high dispersion when their
+mutual ties (<img class="math" src="../../_images/math/60fce0046242b8181cfabc4a0a674e375bc98193.png" alt="s" style="vertical-align: 0px"/> and <img class="math" src="../../_images/math/a294c4699c9ab9e8b4f7ecbd44cb02db043110a4.png" alt="t" style="vertical-align: 0px"/>) are not well connected with each other.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
-<blockquote>
-<div><p>A NetworkX graph.</p>
-</div></blockquote>
-<p><strong>u</strong> : node, optional</p>
-<blockquote>
-<div><p>The source for the dispersion score (e.g. ego node of the network).</p>
-</div></blockquote>
-<p><strong>v</strong> : node, optional</p>
-<blockquote>
-<div><p>The target of the dispersion score if specified.</p>
-</div></blockquote>
-<p><strong>normalized</strong> : bool</p>
-<blockquote>
-<div><p>If True (default) normalize by the embededness of the nodes (u and v).</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>graph</em>) &#8211; A NetworkX graph.</li>
+<li><strong>u</strong> (<em>node, optional</em>) &#8211; The source for the dispersion score (e.g. ego node of the network).</li>
+<li><strong>v</strong> (<em>node, optional</em>) &#8211; The target of the dispersion score if specified.</li>
+<li><strong>normalized</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; If True (default) normalize by the embededness of the nodes (u and v).</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>nodes</strong> : dictionary</p>
-<blockquote class="last">
-<div><p>If u (v) is specified, returns a dictionary of nodes with dispersion
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>nodes</strong> &#8211;
+If u (v) is specified, returns a dictionary of nodes with dispersion
 score for all &#8220;target&#8221; (&#8220;source&#8221;) nodes. If neither u nor v is
 specified, returns a dictionary of dictionaries for all nodes &#8216;u&#8217; in the
 graph with a dispersion score for each node &#8216;v&#8217;.</p>
-</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>This implementation follows Lars Backstrom and Jon Kleinberg <a class="reference internal" href="#r239" id="id1">[R239]</a>. Typical
-usage would be to run dispersion on the ego network <span class="math">\(G_u\)</span> if <span class="math">\(u\)</span> were
-specified.  Running <a class="reference internal" href="#networkx.algorithms.centrality.dispersion" title="networkx.algorithms.centrality.dispersion"><code class="xref py py-func docutils literal"><span class="pre">dispersion()</span></code></a> with neither <span class="math">\(u\)</span> nor <span class="math">\(v\)</span> specified
+<p>This implementation follows Lars Backstrom and Jon Kleinberg <a class="footnote-reference" href="#id2" id="id1">[1]</a>. Typical
+usage would be to run dispersion on the ego network <img class="math" src="../../_images/math/67dffa4f287f59690066274e23a7f087dbeae1da.png" alt="G_u" style="vertical-align: -3px"/> if <img class="math" src="../../_images/math/8a766bbd11b0a08916009a3c0008470d402e9d2f.png" alt="u" style="vertical-align: 0px"/> were
+specified.  Running <a class="reference internal" href="#networkx.algorithms.centrality.dispersion" title="networkx.algorithms.centrality.dispersion"><code class="xref py py-func docutils literal"><span class="pre">dispersion()</span></code></a> with neither <img class="math" src="../../_images/math/8a766bbd11b0a08916009a3c0008470d402e9d2f.png" alt="u" style="vertical-align: 0px"/> nor <img class="math" src="../../_images/math/53c4a26799ff6cdae6f13d6b1fcf961660d83169.png" alt="v" style="vertical-align: 0px"/> specified
 can take some time to complete.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r239" rules="none">
+<table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R239]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Romantic Partnerships and the Dispersion of Social Ties:
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Romantic Partnerships and the Dispersion of Social Ties:
 A Network Analysis of Relationship Status on Facebook.
 Lars Backstrom, Jon Kleinberg.
 <a class="reference external" href="http://arxiv.org/pdf/1310.6753v1.pdf">http://arxiv.org/pdf/1310.6753v1.pdf</a></td></tr>
@@ -263,8 +254,8 @@ Lars Backstrom, Jon Kleinberg.
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -284,7 +275,7 @@ Lars Backstrom, Jon Kleinberg.
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

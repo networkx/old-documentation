@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>biconnected_component_subgraphs &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>biconnected_component_subgraphs &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Components" href="../algorithms.component.html"/>
         <link rel="next" title="articulation_points" href="networkx.algorithms.components.biconnected.articulation_points.html"/>
         <link rel="prev" title="biconnected_component_edges" href="networkx.algorithms.components.biconnected.biconnected_component_edges.html"/> 
@@ -203,79 +203,50 @@ components of the graph.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX Graph</p>
-<blockquote>
-<div><p>An undirected graph.</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>G</strong> (<em>NetworkX Graph</em>) &#8211; An undirected graph.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>graphs</strong> : generator</p>
-<blockquote>
-<div><p>Generator of graphs, one graph for each biconnected component.</p>
-</div></blockquote>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>graphs</strong> &#8211;
+Generator of graphs, one graph for each biconnected component.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXNotImplemented :</strong></p>
-<blockquote class="last">
-<div><p>If the input graph is not undirected.</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">generator</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">NetworkXNotImplemented</span></code> &#8211;
+If the input graph is not undirected.</td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">barbell_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">is_biconnected</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">subgraphs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">biconnected_component_subgraphs</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
+</pre></div>
+</div>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.components.biconnected.is_biconnected.html#networkx.algorithms.components.biconnected.is_biconnected" title="networkx.algorithms.components.biconnected.is_biconnected"><code class="xref py py-obj docutils literal"><span class="pre">is_biconnected</span></code></a>, <a class="reference internal" href="networkx.algorithms.components.biconnected.articulation_points.html#networkx.algorithms.components.biconnected.articulation_points" title="networkx.algorithms.components.biconnected.articulation_points"><code class="xref py py-obj docutils literal"><span class="pre">articulation_points</span></code></a>, <a class="reference internal" href="networkx.algorithms.components.biconnected.biconnected_component_edges.html#networkx.algorithms.components.biconnected.biconnected_component_edges" title="networkx.algorithms.components.biconnected.biconnected_component_edges"><code class="xref py py-obj docutils literal"><span class="pre">biconnected_component_edges</span></code></a>, <a class="reference internal" href="networkx.algorithms.components.biconnected.biconnected_components.html#networkx.algorithms.components.biconnected.biconnected_components" title="networkx.algorithms.components.biconnected.biconnected_components"><code class="xref py py-obj docutils literal"><span class="pre">biconnected_components</span></code></a></p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.components.biconnected.is_biconnected.html#networkx.algorithms.components.biconnected.is_biconnected" title="networkx.algorithms.components.biconnected.is_biconnected"><code class="xref py py-func docutils literal"><span class="pre">is_biconnected()</span></code></a>, <a class="reference internal" href="networkx.algorithms.components.biconnected.articulation_points.html#networkx.algorithms.components.biconnected.articulation_points" title="networkx.algorithms.components.biconnected.articulation_points"><code class="xref py py-func docutils literal"><span class="pre">articulation_points()</span></code></a>, <a class="reference internal" href="networkx.algorithms.components.biconnected.biconnected_component_edges.html#networkx.algorithms.components.biconnected.biconnected_component_edges" title="networkx.algorithms.components.biconnected.biconnected_component_edges"><code class="xref py py-func docutils literal"><span class="pre">biconnected_component_edges()</span></code></a>, <a class="reference internal" href="networkx.algorithms.components.biconnected.biconnected_components.html#networkx.algorithms.components.biconnected.biconnected_components" title="networkx.algorithms.components.biconnected.biconnected_components"><code class="xref py py-func docutils literal"><span class="pre">biconnected_components()</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
 <p>The algorithm to find articulation points and biconnected
 components is implemented using a non-recursive depth-first-search
 (DFS) that keeps track of the highest level that back edges reach
-in the DFS tree. A node <span class="math">\(n\)</span> is an articulation point if, and only
-if, there exists a subtree rooted at <span class="math">\(n\)</span> such that there is no
-back edge from any successor of <span class="math">\(n\)</span> that links to a predecessor of
-<span class="math">\(n\)</span> in the DFS tree. By keeping track of all the edges traversed
+in the DFS tree. A node <img class="math" src="../../_images/math/b1f5ca5a538abe6036ed478902bb5a03ef05f0c2.png" alt="n" style="vertical-align: 0px"/> is an articulation point if, and only
+if, there exists a subtree rooted at <img class="math" src="../../_images/math/b1f5ca5a538abe6036ed478902bb5a03ef05f0c2.png" alt="n" style="vertical-align: 0px"/> such that there is no
+back edge from any successor of <img class="math" src="../../_images/math/b1f5ca5a538abe6036ed478902bb5a03ef05f0c2.png" alt="n" style="vertical-align: 0px"/> that links to a predecessor of
+<img class="math" src="../../_images/math/b1f5ca5a538abe6036ed478902bb5a03ef05f0c2.png" alt="n" style="vertical-align: 0px"/> in the DFS tree. By keeping track of all the edges traversed
 by the DFS we can obtain the biconnected components because all
 edges of a bicomponent will be traversed consecutively between
 articulation points.</p>
 <p>Graph, node, and edge attributes are copied to the subgraphs.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r271" rules="none">
+<table class="docutils footnote" frame="void" id="id1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R271]</a></td><td>Hopcroft, J.; Tarjan, R. (1973).
+<tr><td class="label">[1]</td><td>Hopcroft, J.; Tarjan, R. (1973).
 &#8220;Efficient algorithms for graph manipulation&#8221;.
 Communications of the ACM 16: 372–378. doi:10.1145/362248.362272</td></tr>
 </tbody>
 </table>
-<p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">lollipop_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">is_biconnected</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
-<span class="go">False</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bicomponents</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">biconnected_component_subgraphs</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">bicomponents</span><span class="p">)</span>
-<span class="go">2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">is_biconnected</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
-<span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bicomponents</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">biconnected_component_subgraphs</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">bicomponents</span><span class="p">)</span>
-<span class="go">1</span>
-</pre></div>
-</div>
-<p>You can generate a sorted list of biconnected components, largest
-first, using sort.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">biconnected_component_subgraphs</span><span class="p">(</span><span class="n">G</span><span class="p">),</span>
-<span class="gp">... </span>                        <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)]</span>
-<span class="go">[5, 2]</span>
-</pre></div>
-</div>
-<p>If you only want the largest connected component, it&#8217;s more
-efficient to use max instead of sort.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Gc</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">biconnected_component_subgraphs</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span>
-</pre></div>
-</div>
 </dd></dl>
 
 </div>
@@ -298,8 +269,8 @@ efficient to use max instead of sort.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -319,7 +290,7 @@ efficient to use max instead of sort.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

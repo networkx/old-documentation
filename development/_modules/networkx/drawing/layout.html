@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.drawing.layout &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>networkx.drawing.layout &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -185,7 +185,7 @@
 
 <span class="sd">Node positioning algorithms for graph drawing.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="c">#    Copyright (C) 2004-2015 by</span>
+<span class="c">#    Copyright (C) 2004-2012 by</span>
 <span class="c">#    Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
 <span class="c">#    Dan Schult &lt;dschult@colgate.edu&gt;</span>
 <span class="c">#    Pieter Swart &lt;swart@lanl.gov&gt;</span>
@@ -201,28 +201,7 @@
            <span class="s">&#39;spectral_layout&#39;</span><span class="p">,</span>
            <span class="s">&#39;fruchterman_reingold_layout&#39;</span><span class="p">]</span>
 
-<span class="k">def</span> <span class="nf">process_params</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
-    <span class="c"># Some boilerplate code.</span>
-    <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
-        <span class="n">empty_graph</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
-        <span class="n">empty_graph</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-        <span class="n">G</span> <span class="o">=</span> <span class="n">empty_graph</span>
-
-    <span class="k">if</span> <span class="n">center</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">center</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">center</span><span class="p">)</span> <span class="o">!=</span> <span class="n">dim</span><span class="p">:</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="s">&quot;length of center coordinates must match dimension of layout&quot;</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">G</span><span class="p">,</span> <span class="n">center</span>
-
-
-<div class="viewcode-block" id="random_layout"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.layout.random_layout.html#networkx.drawing.layout.random_layout">[docs]</a><span class="k">def</span> <span class="nf">random_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="random_layout"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.layout.random_layout.html#networkx.drawing.layout.random_layout">[docs]</a><span class="k">def</span> <span class="nf">random_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Position nodes uniformly at random in the unit square.</span>
 
 <span class="sd">    For every node, a position is generated by choosing each of dim</span>
@@ -232,18 +211,15 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    G : NetworkX graph or list of nodes</span>
+<span class="sd">    G : NetworkX graph</span>
 <span class="sd">       A position will be assigned to every node in G.</span>
 
 <span class="sd">    dim : int</span>
 <span class="sd">       Dimension of layout.</span>
 
-<span class="sd">    center : array-like or None</span>
-<span class="sd">       Coordinate pair around which to center the layout.</span>
-
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    pos : dict</span>
+<span class="sd">    dict :</span>
 <span class="sd">       A dictionary of positions keyed by node</span>
 
 <span class="sd">    Examples</span>
@@ -252,33 +228,28 @@
 <span class="sd">    &gt;&gt;&gt; pos = nx.random_layout(G)</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-
-    <span class="n">G</span><span class="p">,</span> <span class="n">center</span> <span class="o">=</span> <span class="n">process_params</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
-    <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="n">dim</span><span class="p">)</span>
-    <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="n">center</span>
-    <span class="n">pos</span> <span class="o">=</span> <span class="n">pos</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-    <span class="n">pos</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">))</span>
-
-    <span class="k">return</span> <span class="n">pos</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s">&quot;random_layout() requires numpy: http://scipy.org/ &quot;</span><span class="p">)</span>
+    <span class="n">n</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="n">pos</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="n">dim</span><span class="p">)),</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">pos</span><span class="p">))</span>
 
 </div>
-<div class="viewcode-block" id="circular_layout"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.layout.circular_layout.html#networkx.drawing.layout.circular_layout">[docs]</a><span class="k">def</span> <span class="nf">circular_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="circular_layout"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.layout.circular_layout.html#networkx.drawing.layout.circular_layout">[docs]</a><span class="k">def</span> <span class="nf">circular_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="c"># dim=2 only</span>
     <span class="sd">&quot;&quot;&quot;Position nodes on a circle.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    G : NetworkX graph or list of nodes</span>
+<span class="sd">    G : NetworkX graph</span>
 
 <span class="sd">    dim : int</span>
 <span class="sd">       Dimension of layout, currently only dim=2 is supported</span>
 
 <span class="sd">    scale : float</span>
 <span class="sd">        Scale factor for positions</span>
-
-<span class="sd">    center : array-like or None</span>
-<span class="sd">       Coordinate pair around which to center the layout.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -296,30 +267,25 @@
 <span class="sd">    try to minimize edge crossings.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-
-    <span class="n">G</span><span class="p">,</span> <span class="n">center</span> <span class="o">=</span> <span class="n">process_params</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">pos</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">pos</span> <span class="o">=</span> <span class="p">{</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">center</span><span class="p">}</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="c"># Discard the extra angle since it matches 0 radians.</span>
-        <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
-        <span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-        <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)])</span>
-        <span class="n">pos</span> <span class="o">=</span> <span class="n">_rescale_layout</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span> <span class="o">+</span> <span class="n">center</span>
-        <span class="n">pos</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">))</span>
-
-    <span class="k">return</span> <span class="n">pos</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s">&quot;circular_layout() requires numpy: http://scipy.org/ &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()[</span><span class="mi">0</span><span class="p">]:(</span><span class="mi">1</span><span class="p">,)</span><span class="o">*</span><span class="n">dim</span><span class="p">}</span>
+    <span class="n">t</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">2.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mf">2.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">pos</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)]))</span>
+    <span class="n">pos</span><span class="o">=</span><span class="n">_rescale_layout</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">pos</span><span class="p">))</span>
 </div>
-<div class="viewcode-block" id="shell_layout"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.layout.shell_layout.html#networkx.drawing.layout.shell_layout">[docs]</a><span class="k">def</span> <span class="nf">shell_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nlist</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="shell_layout"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.layout.shell_layout.html#networkx.drawing.layout.shell_layout">[docs]</a><span class="k">def</span> <span class="nf">shell_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">nlist</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Position nodes in concentric circles.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    G : NetworkX graph or list of nodes</span>
+<span class="sd">    G : NetworkX graph</span>
 
 <span class="sd">    nlist : list of lists</span>
 <span class="sd">       List of node lists for each shell.</span>
@@ -330,9 +296,6 @@
 <span class="sd">    scale : float</span>
 <span class="sd">        Scale factor for positions</span>
 
-<span class="sd">    center : array-like or None</span>
-<span class="sd">       Coordinate pair around which to center the layout.</span>
-
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    dict :</span>
@@ -340,9 +303,9 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; G = nx.path_graph(4)</span>
-<span class="sd">    &gt;&gt;&gt; shells = [[0], [1,2,3]]</span>
-<span class="sd">    &gt;&gt;&gt; pos = nx.shell_layout(G, shells)</span>
+<span class="sd">    &gt;&gt;&gt; G=nx.path_graph(4)</span>
+<span class="sd">    &gt;&gt;&gt; shells=[[0],[1,2,3]]</span>
+<span class="sd">    &gt;&gt;&gt; pos=nx.shell_layout(G,shells)</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    ------</span>
@@ -350,37 +313,30 @@
 <span class="sd">    try to minimize edge crossings.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-
-    <span class="n">G</span><span class="p">,</span> <span class="n">center</span> <span class="o">=</span> <span class="n">process_params</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s">&quot;shell_layout() requires numpy: http://scipy.org/ &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">{}</span>
-    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">{</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">center</span><span class="p">}</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()[</span><span class="mi">0</span><span class="p">]:(</span><span class="mi">1</span><span class="p">,)</span><span class="o">*</span><span class="n">dim</span><span class="p">}</span>
+    <span class="k">if</span> <span class="n">nlist</span><span class="o">==</span><span class="bp">None</span><span class="p">:</span>
+        <span class="n">nlist</span><span class="o">=</span><span class="p">[</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()]</span> <span class="c"># draw the whole graph in one shell</span>
 
-
-    <span class="k">if</span> <span class="n">nlist</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="c"># draw the whole graph in one shell</span>
-        <span class="n">nlist</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">())]</span>
-
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nlist</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="c"># single node at center</span>
-        <span class="n">radius</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nlist</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">radius</span><span class="o">=</span><span class="mf">0.0</span> <span class="c"># single node at center</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="c"># else start at r=1</span>
-        <span class="n">radius</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="n">radius</span><span class="o">=</span><span class="mf">1.0</span> <span class="c"># else start at r=1</span>
 
     <span class="n">npos</span><span class="o">=</span><span class="p">{}</span>
     <span class="k">for</span> <span class="n">nodes</span> <span class="ow">in</span> <span class="n">nlist</span><span class="p">:</span>
-        <span class="c"># Discard the extra angle since it matches 0 radians.</span>
-        <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
-        <span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-        <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)])</span>
-        <span class="n">pos</span> <span class="o">=</span> <span class="n">_rescale_layout</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">nlist</span><span class="p">))</span> <span class="o">+</span> <span class="n">center</span>
-        <span class="n">npos</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">pos</span><span class="p">))</span>
-        <span class="n">radius</span> <span class="o">+=</span> <span class="mf">1.0</span>
+        <span class="n">t</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">2.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mf">2.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">pos</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">radius</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">radius</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)]))</span>
+        <span class="n">npos</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span><span class="n">pos</span><span class="p">))</span>
+        <span class="n">radius</span><span class="o">+=</span><span class="mf">1.0</span>
 
+    <span class="c"># FIXME: rescale</span>
     <span class="k">return</span> <span class="n">npos</span>
 
 </div>
@@ -389,13 +345,12 @@
                                 <span class="n">fixed</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                                 <span class="n">iterations</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
                                 <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">,</span>
-                                <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-                                <span class="n">center</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Position nodes using Fruchterman-Reingold force-directed algorithm.</span>
+                                <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Position nodes using Fruchterman-Reingold force-directed algorithm. </span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    G : NetworkX graph or list of nodes</span>
+<span class="sd">    G : NetworkX graph</span>
 
 <span class="sd">    dim : int</span>
 <span class="sd">       Dimension of layout</span>
@@ -408,7 +363,7 @@
 
 <span class="sd">    pos : dict or None  optional (default=None)</span>
 <span class="sd">       Initial positions for nodes as a dictionary with node as keys</span>
-<span class="sd">       and values as a list or tuple.  If None, then use random initial</span>
+<span class="sd">       and values as a list or tuple.  If None, then nuse random initial</span>
 <span class="sd">       positions.</span>
 
 <span class="sd">    fixed : list or None  optional (default=None)</span>
@@ -422,11 +377,8 @@
 <span class="sd">        the edge weight.  If None, then all edge weights are 1.</span>
 
 <span class="sd">    scale : float (default=1.0)</span>
-<span class="sd">        Scale factor for positions. The nodes are positioned</span>
-<span class="sd">        in a box of size [0,scale] x [0,scale].</span>
-
-<span class="sd">    center : array-like or None</span>
-<span class="sd">       Coordinate pair around which to center the layout.</span>
+<span class="sd">        Scale factor for positions. The nodes are positioned </span>
+<span class="sd">        in a box of size [0,scale] x [0,scale].  </span>
 
 
 <span class="sd">    Returns</span>
@@ -442,55 +394,53 @@
 <span class="sd">    # The same using longer function name</span>
 <span class="sd">    &gt;&gt;&gt; pos=nx.fruchterman_reingold_layout(G)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-
-    <span class="n">G</span><span class="p">,</span> <span class="n">center</span> <span class="o">=</span> <span class="n">process_params</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
-
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s">&quot;fruchterman_reingold_layout() requires numpy: http://scipy.org/ &quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">fixed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">nfixed</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">))))</span>
-        <span class="n">fixed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">nfixed</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">fixed</span><span class="p">])</span>
+        <span class="n">nfixed</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">))))</span>
+        <span class="n">fixed</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">nfixed</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">fixed</span><span class="p">])</span>
 
     <span class="k">if</span> <span class="n">pos</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
         <span class="c"># Determine size of existing domain to adjust initial positions</span>
         <span class="n">dom_size</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">flatten</span><span class="p">(</span><span class="n">pos</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
-        <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="n">dim</span><span class="p">)</span>
-        <span class="n">pos_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span> <span class="o">*</span> <span class="n">dom_size</span> <span class="o">+</span> <span class="n">center</span>
+        <span class="n">pos_arr</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">),</span><span class="n">dim</span><span class="p">)))</span><span class="o">*</span><span class="n">dom_size</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">n</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">pos</span><span class="p">:</span>
-                <span class="n">pos_arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+                <span class="n">pos_arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">pos_arr</span><span class="o">=</span><span class="bp">None</span>
 
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">{}</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">{</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">center</span><span class="p">}</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()[</span><span class="mi">0</span><span class="p">]:(</span><span class="mi">1</span><span class="p">,)</span><span class="o">*</span><span class="n">dim</span><span class="p">}</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="c"># Sparse matrix</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">500</span><span class="p">:</span>  <span class="c"># sparse solver for large graphs</span>
             <span class="k">raise</span> <span class="ne">ValueError</span>
-        <span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="s">&#39;f&#39;</span><span class="p">)</span>
+        <span class="n">A</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="s">&#39;f&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">fixed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
            <span class="c"># We must adjust k by domain size for layouts that are not near 1x1</span>
            <span class="n">nnodes</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span>
-           <span class="n">k</span> <span class="o">=</span> <span class="n">dom_size</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">nnodes</span><span class="p">)</span>
-        <span class="n">pos</span> <span class="o">=</span> <span class="n">_sparse_fruchterman_reingold</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">pos_arr</span><span class="p">,</span> <span class="n">fixed</span><span class="p">,</span> <span class="n">iterations</span><span class="p">)</span>
+           <span class="n">k</span><span class="o">=</span><span class="n">dom_size</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">nnodes</span><span class="p">)</span>
+        <span class="n">pos</span><span class="o">=</span><span class="n">_sparse_fruchterman_reingold</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">dim</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">pos_arr</span><span class="p">,</span><span class="n">fixed</span><span class="p">,</span><span class="n">iterations</span><span class="p">)</span>
     <span class="k">except</span><span class="p">:</span>
-        <span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
+        <span class="n">A</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">fixed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
            <span class="c"># We must adjust k by domain size for layouts that are not near 1x1</span>
            <span class="n">nnodes</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span>
-           <span class="n">k</span> <span class="o">=</span> <span class="n">dom_size</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">nnodes</span><span class="p">)</span>
-        <span class="n">pos</span> <span class="o">=</span> <span class="n">_fruchterman_reingold</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">pos_arr</span><span class="p">,</span> <span class="n">fixed</span><span class="p">,</span> <span class="n">iterations</span><span class="p">)</span>
+           <span class="n">k</span><span class="o">=</span><span class="n">dom_size</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">nnodes</span><span class="p">)</span>
+        <span class="n">pos</span><span class="o">=</span><span class="n">_fruchterman_reingold</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">dim</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">pos_arr</span><span class="p">,</span><span class="n">fixed</span><span class="p">,</span><span class="n">iterations</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">fixed</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">pos</span> <span class="o">=</span> <span class="n">_rescale_layout</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span> <span class="o">+</span> <span class="n">center</span>
-    <span class="n">pos</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">pos</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">pos</span>
+        <span class="n">pos</span><span class="o">=</span><span class="n">_rescale_layout</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">pos</span><span class="p">))</span>
 
 <span class="n">spring_layout</span><span class="o">=</span><span class="n">fruchterman_reingold_layout</span>
 
-<span class="k">def</span> <span class="nf">_fruchterman_reingold</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+<span class="k">def</span> <span class="nf">_fruchterman_reingold</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> 
                           <span class="n">iterations</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
     <span class="c"># Position nodes in adjacency matrix A using Fruchterman-Reingold</span>
     <span class="c"># Entry point for NetworkX graph is fruchterman_reingold_layout()</span>
@@ -554,9 +504,9 @@
     <span class="k">return</span> <span class="n">pos</span>
 
 
-<span class="k">def</span> <span class="nf">_sparse_fruchterman_reingold</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+<span class="k">def</span> <span class="nf">_sparse_fruchterman_reingold</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fixed</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> 
                                  <span class="n">iterations</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
-    <span class="c"># Position nodes in adjacency matrix A using Fruchterman-Reingold</span>
+    <span class="c"># Position nodes in adjacency matrix A using Fruchterman-Reingold  </span>
     <span class="c"># Entry point for NetworkX graph is fruchterman_reingold_layout()</span>
     <span class="c"># Sparse version</span>
     <span class="k">try</span><span class="p">:</span>
@@ -626,12 +576,12 @@
     <span class="k">return</span> <span class="n">pos</span>
 
 
-<div class="viewcode-block" id="spectral_layout"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.layout.spectral_layout.html#networkx.drawing.layout.spectral_layout">[docs]</a><span class="k">def</span> <span class="nf">spectral_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Position nodes using the eigenvectors of the graph Laplacian.</span>
+<div class="viewcode-block" id="spectral_layout"><a class="viewcode-back" href="../../../reference/generated/networkx.drawing.layout.spectral_layout.html#networkx.drawing.layout.spectral_layout">[docs]</a><span class="k">def</span> <span class="nf">spectral_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s">&#39;weight&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Position nodes using the eigenvectors of the graph Laplacian. </span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    G : NetworkX graph or list of nodes</span>
+<span class="sd">    G : NetworkX graph</span>
 
 <span class="sd">    dim : int</span>
 <span class="sd">       Dimension of layout</span>
@@ -642,9 +592,6 @@
 
 <span class="sd">    scale : float</span>
 <span class="sd">        Scale factor for positions</span>
-
-<span class="sd">    center : array-like or None</span>
-<span class="sd">       Coordinate pair around which to center the layout.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -658,45 +605,44 @@
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    Directed graphs will be considered as undirected graphs when</span>
+<span class="sd">    Directed graphs will be considered as unidrected graphs when</span>
 <span class="sd">    positioning the nodes.</span>
 
 <span class="sd">    For larger graphs (&gt;500 nodes) this will use the SciPy sparse</span>
 <span class="sd">    eigenvalue solver (ARPACK).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c"># handle some special cases that break the eigensolvers</span>
-    <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-
-    <span class="n">G</span><span class="p">,</span> <span class="n">center</span> <span class="o">=</span> <span class="n">process_params</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
-        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">center</span><span class="p">])</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s">&quot;spectral_layout() requires numpy: http://scipy.org/ &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">&lt;=</span><span class="mi">2</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">pos</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">pos</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">dim</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">center</span><span class="p">)</span><span class="o">*</span><span class="mf">2.0</span><span class="p">])</span>
+            <span class="n">pos</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">]])</span>
         <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">pos</span><span class="p">))</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c"># Sparse matrix</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">&lt;</span> <span class="mi">500</span><span class="p">:</span>  <span class="c"># dense solver is faster for small graphs</span>
             <span class="k">raise</span> <span class="ne">ValueError</span>
-        <span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s">&#39;d&#39;</span><span class="p">)</span>
+        <span class="n">A</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="s">&#39;d&#39;</span><span class="p">)</span>
         <span class="c"># Symmetrize directed graphs</span>
         <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
-            <span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-        <span class="n">pos</span> <span class="o">=</span> <span class="n">_sparse_spectral</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">dim</span><span class="p">)</span>
-    <span class="k">except</span> <span class="p">(</span><span class="ne">ImportError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+            <span class="n">A</span><span class="o">=</span><span class="n">A</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+        <span class="n">pos</span><span class="o">=</span><span class="n">_sparse_spectral</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">dim</span><span class="p">)</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">ImportError</span><span class="p">,</span><span class="ne">ValueError</span><span class="p">):</span>
         <span class="c"># Dense matrix</span>
-        <span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
+        <span class="n">A</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
         <span class="c"># Symmetrize directed graphs</span>
         <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
-            <span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-        <span class="n">pos</span> <span class="o">=</span> <span class="n">_spectral</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+            <span class="n">A</span><span class="o">=</span><span class="n">A</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+        <span class="n">pos</span><span class="o">=</span><span class="n">_spectral</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">dim</span><span class="p">)</span>
 
-    <span class="n">pos</span> <span class="o">=</span> <span class="n">_rescale_layout</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">scale</span><span class="p">)</span> <span class="o">+</span> <span class="n">center</span>
-    <span class="n">pos</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">pos</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">pos</span>
+    <span class="n">pos</span><span class="o">=</span><span class="n">_rescale_layout</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="n">scale</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">pos</span><span class="p">))</span>
 
 </div>
 <span class="k">def</span> <span class="nf">_spectral</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
@@ -736,7 +682,7 @@
     <span class="k">try</span><span class="p">:</span>
         <span class="kn">from</span> <span class="nn">scipy.sparse.linalg.eigen</span> <span class="kn">import</span> <span class="n">eigsh</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="c"># scipy &lt;0.9.0 names eigsh differently</span>
+        <span class="c"># scipy &lt;0.9.0 names eigsh differently </span>
         <span class="kn">from</span> <span class="nn">scipy.sparse.linalg</span> <span class="kn">import</span> <span class="n">eigen_symmetric</span> <span class="k">as</span> <span class="n">eigsh</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">nnodes</span><span class="p">,</span><span class="n">_</span><span class="o">=</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span>
@@ -759,14 +705,14 @@
 
 
 <span class="k">def</span> <span class="nf">_rescale_layout</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-    <span class="c"># rescale to (-scale,scale) in all axes</span>
+    <span class="c"># rescale to (0,pscale) in all axes</span>
 
     <span class="c"># shift origin to (0,0)</span>
     <span class="n">lim</span><span class="o">=</span><span class="mi">0</span> <span class="c"># max coordinate for all axes</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">pos</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
-        <span class="n">pos</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span><span class="o">-=</span><span class="n">pos</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="n">pos</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span><span class="o">-=</span><span class="n">pos</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
         <span class="n">lim</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">pos</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="n">lim</span><span class="p">)</span>
-    <span class="c"># rescale to (-scale,scale) in all directions, preserves aspect</span>
+    <span class="c"># rescale to (0,scale) in all directions, preserves aspect</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">pos</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
         <span class="n">pos</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span><span class="o">*=</span><span class="n">scale</span><span class="o">/</span><span class="n">lim</span>
     <span class="k">return</span> <span class="n">pos</span>
@@ -806,8 +752,8 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -827,7 +773,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

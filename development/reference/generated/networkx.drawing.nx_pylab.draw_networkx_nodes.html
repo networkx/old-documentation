@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>draw_networkx_nodes &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>draw_networkx_nodes &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Drawing" href="../drawing.html"/>
         <link rel="next" title="draw_networkx_edges" href="networkx.drawing.nx_pylab.draw_networkx_edges.html"/>
         <link rel="prev" title="draw_networkx" href="networkx.drawing.nx_pylab.draw_networkx.html"/> 
@@ -194,82 +194,48 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
-<blockquote>
-<div><p>A networkx graph</p>
-</div></blockquote>
-<p><strong>pos</strong> : dictionary</p>
-<blockquote>
-<div><p>A dictionary with nodes as keys and positions as values.
-Positions should be sequences of length 2.</p>
-</div></blockquote>
-<p><strong>ax</strong> : Matplotlib Axes object, optional</p>
-<blockquote>
-<div><p>Draw the graph in the specified Matplotlib axes.</p>
-</div></blockquote>
-<p><strong>nodelist</strong> : list, optional</p>
-<blockquote>
-<div><p>Draw only specified nodes (default G.nodes())</p>
-</div></blockquote>
-<p><strong>node_size</strong> : scalar or array</p>
-<blockquote>
-<div><p>Size of nodes (default=300).  If an array is specified it must be the
-same length as nodelist.</p>
-</div></blockquote>
-<p><strong>node_color</strong> : color string, or array of floats</p>
-<blockquote>
-<div><p>Node color. Can be a single color format string (default=&#8217;r&#8217;),
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>graph</em>) &#8211; A networkx graph</li>
+<li><strong>pos</strong> (<em>dictionary</em>) &#8211; A dictionary with nodes as keys and positions as values.
+Positions should be sequences of length 2.</li>
+<li><strong>ax</strong> (<em>Matplotlib Axes object, optional</em>) &#8211; Draw the graph in the specified Matplotlib axes.</li>
+<li><strong>nodelist</strong> (<em>list, optional</em>) &#8211; Draw only specified nodes (default G.nodes())</li>
+<li><strong>node_size</strong> (<em>scalar or array</em>) &#8211; Size of nodes (default=300).  If an array is specified it must be the
+same length as nodelist.</li>
+<li><strong>node_color</strong> (<em>color string, or array of floats</em>) &#8211; Node color. Can be a single color format string (default=&#8217;r&#8217;),
 or a  sequence of colors with the same length as nodelist.
 If numeric values are specified they will be mapped to
 colors using the cmap and vmin,vmax parameters.  See
-matplotlib.scatter for more details.</p>
-</div></blockquote>
-<p><strong>node_shape</strong> :  string</p>
-<blockquote>
-<div><p>The shape of the node.  Specification is as matplotlib.scatter
-marker, one of &#8216;so^&gt;v&lt;dph8&#8217; (default=&#8217;o&#8217;).</p>
-</div></blockquote>
-<p><strong>alpha</strong> : float</p>
-<blockquote>
-<div><p>The node transparency (default=1.0)</p>
-</div></blockquote>
-<p><strong>cmap</strong> : Matplotlib colormap</p>
-<blockquote>
-<div><p>Colormap for mapping intensities of nodes (default=None)</p>
-</div></blockquote>
-<p><strong>vmin,vmax</strong> : floats</p>
-<blockquote>
-<div><p>Minimum and maximum for node colormap scaling (default=None)</p>
-</div></blockquote>
-<p><strong>linewidths</strong> : [None | scalar | sequence]</p>
-<blockquote>
-<div><p>Line width of symbol border (default =1.0)</p>
-</div></blockquote>
-<p><strong>label</strong> : [None| string]</p>
-<blockquote>
-<div><p>Label for legend</p>
-</div></blockquote>
+matplotlib.scatter for more details.</li>
+<li><strong>node_shape</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The shape of the node.  Specification is as matplotlib.scatter
+marker, one of &#8216;so^&gt;v&lt;dph8&#8217; (default=&#8217;o&#8217;).</li>
+<li><strong>alpha</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; The node transparency (default=1.0)</li>
+<li><strong>cmap</strong> (<em>Matplotlib colormap</em>) &#8211; Colormap for mapping intensities of nodes (default=None)</li>
+<li><strong>vmin,vmax</strong> (<em>floats</em>) &#8211; Minimum and maximum for node colormap scaling (default=None)</li>
+<li><strong>linewidths</strong> (<em>[None | scalar | sequence]</em>) &#8211; Line width of symbol border (default =1.0)</li>
+<li><strong>label</strong> (<em>[None| string]</em>) &#8211; Label for legend</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">matplotlib.collections.PathCollection</p>
-<blockquote class="last">
-<div><p><span class="math">\(PathCollection\)</span> of the nodes.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><img class="math" src="../../_images/math/8012f6eb3c5a8d1108d313122316b62fff357684.png" alt="PathCollection" style="vertical-align: 0px"/> of the nodes.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">matplotlib.collections.PathCollection</p>
 </td>
 </tr>
 </tbody>
 </table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.drawing.nx_pylab.draw.html#networkx.drawing.nx_pylab.draw" title="networkx.drawing.nx_pylab.draw"><code class="xref py py-obj docutils literal"><span class="pre">draw</span></code></a>, <a class="reference internal" href="networkx.drawing.nx_pylab.draw_networkx.html#networkx.drawing.nx_pylab.draw_networkx" title="networkx.drawing.nx_pylab.draw_networkx"><code class="xref py py-obj docutils literal"><span class="pre">draw_networkx</span></code></a>, <a class="reference internal" href="networkx.drawing.nx_pylab.draw_networkx_edges.html#networkx.drawing.nx_pylab.draw_networkx_edges" title="networkx.drawing.nx_pylab.draw_networkx_edges"><code class="xref py py-obj docutils literal"><span class="pre">draw_networkx_edges</span></code></a>, <a class="reference internal" href="networkx.drawing.nx_pylab.draw_networkx_labels.html#networkx.drawing.nx_pylab.draw_networkx_labels" title="networkx.drawing.nx_pylab.draw_networkx_labels"><code class="xref py py-obj docutils literal"><span class="pre">draw_networkx_labels</span></code></a>, <a class="reference internal" href="networkx.drawing.nx_pylab.draw_networkx_edge_labels.html#networkx.drawing.nx_pylab.draw_networkx_edge_labels" title="networkx.drawing.nx_pylab.draw_networkx_edge_labels"><code class="xref py py-obj docutils literal"><span class="pre">draw_networkx_edge_labels</span></code></a></p>
-</div>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">dodecahedral_graph</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nodes</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">pos</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Also see the NetworkX drawing examples at
-<a class="reference external" href="http://networkx.github.io/documentation/latest/gallery.html">http://networkx.github.io/documentation/latest/gallery.html</a></p>
+<a class="reference external" href="http://networkx.lanl.gov/gallery.html">http://networkx.lanl.gov/gallery.html</a></p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="networkx.drawing.nx_pylab.draw.html#networkx.drawing.nx_pylab.draw" title="networkx.drawing.nx_pylab.draw"><code class="xref py py-func docutils literal"><span class="pre">draw()</span></code></a>, <a class="reference internal" href="networkx.drawing.nx_pylab.draw_networkx.html#networkx.drawing.nx_pylab.draw_networkx" title="networkx.drawing.nx_pylab.draw_networkx"><code class="xref py py-func docutils literal"><span class="pre">draw_networkx()</span></code></a>, <a class="reference internal" href="networkx.drawing.nx_pylab.draw_networkx_edges.html#networkx.drawing.nx_pylab.draw_networkx_edges" title="networkx.drawing.nx_pylab.draw_networkx_edges"><code class="xref py py-func docutils literal"><span class="pre">draw_networkx_edges()</span></code></a>, <a class="reference internal" href="networkx.drawing.nx_pylab.draw_networkx_labels.html#networkx.drawing.nx_pylab.draw_networkx_labels" title="networkx.drawing.nx_pylab.draw_networkx_labels"><code class="xref py py-func docutils literal"><span class="pre">draw_networkx_labels()</span></code></a>, <a class="reference internal" href="networkx.drawing.nx_pylab.draw_networkx_edge_labels.html#networkx.drawing.nx_pylab.draw_networkx_edge_labels" title="networkx.drawing.nx_pylab.draw_networkx_edge_labels"><code class="xref py py-func docutils literal"><span class="pre">draw_networkx_edge_labels()</span></code></a></p>
+</div>
 </dd></dl>
 
 </div>
@@ -292,8 +258,8 @@ marker, one of &#8216;so^&gt;v&lt;dph8&#8217; (default=&#8217;o&#8217;).</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -313,7 +279,7 @@ marker, one of &#8216;so^&gt;v&lt;dph8&#8217; (default=&#8217;o&#8217;).</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

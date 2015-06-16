@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>astar_path &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>astar_path &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Shortest Paths" href="../algorithms.shortest_paths.html"/>
         <link rel="next" title="astar_path_length" href="networkx.algorithms.shortest_paths.astar.astar_path_length.html"/>
         <link rel="prev" title="floyd_warshall_numpy" href="networkx.algorithms.shortest_paths.dense.floyd_warshall_numpy.html"/> 
@@ -197,39 +197,22 @@ using the A* (&#8220;A-star&#8221;) algorithm.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
-<p><strong>source</strong> : node</p>
-<blockquote>
-<div><p>Starting node for path</p>
-</div></blockquote>
-<p><strong>target</strong> : node</p>
-<blockquote>
-<div><p>Ending node for path</p>
-</div></blockquote>
-<p><strong>heuristic</strong> : function</p>
-<blockquote>
-<div><p>A function to evaluate the estimate of the distance
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>source</strong> (<em>node</em>) &#8211; Starting node for path</li>
+<li><strong>target</strong> (<em>node</em>) &#8211; Ending node for path</li>
+<li><strong>heuristic</strong> (<em>function</em>) &#8211; A function to evaluate the estimate of the distance
 from the a node to the target.  The function takes
-two nodes arguments and must return a number.</p>
-</div></blockquote>
-<p><strong>weight: string, optional (default=&#8217;weight&#8217;)</strong></p>
-<blockquote>
-<div><p>Edge data key corresponding to the edge weight.</p>
-</div></blockquote>
+two nodes arguments and must return a number.</li>
+<li><strong>weight</strong> (<em>string, optional (default=&#8217;weight&#8217;)</em>) &#8211; Edge data key corresponding to the edge weight.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXNoPath</strong></p>
-<blockquote class="last">
-<div><p>If no path exists between source and target.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">NetworkXNoPath</span></code> &#8211;
+If no path exists between source and target.</p>
 </td>
 </tr>
 </tbody>
 </table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">shortest_path</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">dijkstra_path</span></code></p>
-</div>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">astar_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
@@ -242,6 +225,10 @@ two nodes arguments and must return a number.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">astar_path</span><span class="p">(</span><span class="n">G</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">dist</span><span class="p">))</span>
 <span class="go">[(0, 0), (0, 1), (1, 1), (1, 2), (2, 2)]</span>
 </pre></div>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-func docutils literal"><span class="pre">shortest_path()</span></code>, <code class="xref py py-func docutils literal"><span class="pre">dijkstra_path()</span></code></p>
 </div>
 </dd></dl>
 
@@ -265,8 +252,8 @@ two nodes arguments and must return a number.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -286,7 +273,7 @@ two nodes arguments and must return a number.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

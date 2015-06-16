@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.classes.multidigraph &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>networkx.classes.multidigraph &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -179,7 +179,7 @@
             
   <h1>Source code for networkx.classes.multidigraph</h1><div class="highlight"><pre>
 <span class="sd">&quot;&quot;&quot;Base class for MultiDiGraph.&quot;&quot;&quot;</span>
-<span class="c">#    Copyright (C) 2004-2015 by</span>
+<span class="c">#    Copyright (C) 2004-2011 by</span>
 <span class="c">#    Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
 <span class="c">#    Dan Schult &lt;dschult@colgate.edu&gt;</span>
 <span class="c">#    Pieter Swart &lt;swart@lanl.gov&gt;</span>
@@ -194,7 +194,6 @@
 <span class="n">__author__</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span><span class="se">\n</span><span class="s">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">&#39;Aric Hagberg (hagberg@lanl.gov)&#39;</span><span class="p">,</span>
                             <span class="s">&#39;Pieter Swart (swart@lanl.gov)&#39;</span><span class="p">,</span>
                             <span class="s">&#39;Dan Schult(dschult@colgate.edu)&#39;</span><span class="p">])</span>
-
 
 <div class="viewcode-block" id="MultiDiGraph"><a class="viewcode-back" href="../../../reference/classes.multidigraph.html#networkx.MultiDiGraph">[docs]</a><span class="k">class</span> <span class="nc">MultiDiGraph</span><span class="p">(</span><span class="n">MultiGraph</span><span class="p">,</span><span class="n">DiGraph</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A directed graph class that can store multiedges.</span>
@@ -340,8 +339,8 @@
 <span class="sd">    ...                (n,nbr,eattr[&#39;weight&#39;])</span>
 <span class="sd">    (1, 2, 4)</span>
 <span class="sd">    (2, 3, 8)</span>
-<span class="sd">    &gt;&gt;&gt; G.edges(data=&#39;weight&#39;)</span>
-<span class="sd">    [(1, 2, 4), (1, 2, None), (2, 3, 8), (3, 4, None), (4, 5, None)]</span>
+<span class="sd">    &gt;&gt;&gt; [ (u,v,edata[&#39;weight&#39;]) for u,v,edata in G.edges(data=True) if &#39;weight&#39; in edata ]</span>
+<span class="sd">    [(1, 2, 4), (2, 3, 8)]</span>
 
 <span class="sd">    **Reporting:**</span>
 
@@ -351,86 +350,7 @@
 <span class="sd">    as well as the number of nodes and edges.</span>
 
 <span class="sd">    For details on these and other miscellaneous methods, see below.</span>
-
-<span class="sd">    **Subclasses (Advanced):**</span>
-
-<span class="sd">    The MultiDiGraph class uses a dict-of-dict-of-dict-of-dict structure.</span>
-<span class="sd">    The outer dict (node_dict) holds adjacency lists keyed by node.</span>
-<span class="sd">    The next dict (adjlist) represents the adjacency list and holds</span>
-<span class="sd">    edge_key dicts keyed by neighbor. The edge_key dict holds each edge_attr</span>
-<span class="sd">    dict keyed by edge key. The inner dict (edge_attr) represents</span>
-<span class="sd">    the edge data and holds edge attribute values keyed by attribute names.</span>
-
-<span class="sd">    Each of these four dicts in the dict-of-dict-of-dict-of-dict</span>
-<span class="sd">    structure can be replaced by a user defined dict-like object.</span>
-<span class="sd">    In general, the dict-like features should be maintained but</span>
-<span class="sd">    extra features can be added. To replace one of the dicts create</span>
-<span class="sd">    a new graph class by changing the class(!) variable holding the</span>
-<span class="sd">    factory for that dict-like structure. The variable names</span>
-<span class="sd">    are node_dict_factory, adjlist_dict_factory, edge_key_dict_factory</span>
-<span class="sd">    and edge_attr_dict_factory.</span>
-
-<span class="sd">    node_dict_factory : function, (default: dict)</span>
-<span class="sd">        Factory function to be used to create the outer-most dict</span>
-<span class="sd">        in the data structure that holds adjacency lists keyed by node.</span>
-<span class="sd">        It should require no arguments and return a dict-like object.</span>
-
-<span class="sd">    adjlist_dict_factory : function, (default: dict)</span>
-<span class="sd">        Factory function to be used to create the adjacency list</span>
-<span class="sd">        dict which holds multiedge key dicts keyed by neighbor.</span>
-<span class="sd">        It should require no arguments and return a dict-like object.</span>
-
-<span class="sd">    edge_key_dict_factory : function, (default: dict)</span>
-<span class="sd">        Factory function to be used to create the edge key dict</span>
-<span class="sd">        which holds edge data keyed by edge key.</span>
-<span class="sd">        It should require no arguments and return a dict-like object.</span>
-
-<span class="sd">    edge_attr_dict_factory : function, (default: dict)</span>
-<span class="sd">        Factory function to be used to create the edge attribute</span>
-<span class="sd">        dict which holds attrbute values keyed by attribute name.</span>
-<span class="sd">        It should require no arguments and return a dict-like object.</span>
-
-<span class="sd">    Examples</span>
-<span class="sd">    --------</span>
-<span class="sd">    Create a multigraph object that tracks the order nodes are added.</span>
-
-<span class="sd">    &gt;&gt;&gt; from collections import OrderedDict</span>
-<span class="sd">    &gt;&gt;&gt; class OrderedGraph(nx.MultiDiGraph):</span>
-<span class="sd">    ...    node_dict_factory = OrderedDict</span>
-<span class="sd">    &gt;&gt;&gt; G = OrderedGraph()</span>
-<span class="sd">    &gt;&gt;&gt; G.add_nodes_from( (2,1) )</span>
-<span class="sd">    &gt;&gt;&gt; G.nodes()</span>
-<span class="sd">    [2, 1]</span>
-<span class="sd">    &gt;&gt;&gt; G.add_edges_from( ((2,2), (2,1), (2,1), (1,1)) )</span>
-<span class="sd">    &gt;&gt;&gt; G.edges()</span>
-<span class="sd">    [(2, 1), (2, 1), (2, 2), (1, 1)]</span>
-
-<span class="sd">    Create a multdigraph object that tracks the order nodes are added</span>
-<span class="sd">    and for each node track the order that neighbors are added and for</span>
-<span class="sd">    each neighbor tracks the order that multiedges are added.</span>
-
-<span class="sd">    &gt;&gt;&gt; class OrderedGraph(nx.MultiDiGraph):</span>
-<span class="sd">    ...    node_dict_factory = OrderedDict</span>
-<span class="sd">    ...    adjlist_dict_factory = OrderedDict</span>
-<span class="sd">    ...    edge_key_dict_factory = OrderedDict</span>
-<span class="sd">    &gt;&gt;&gt; G = OrderedGraph()</span>
-<span class="sd">    &gt;&gt;&gt; G.add_nodes_from( (2,1) )</span>
-<span class="sd">    &gt;&gt;&gt; G.nodes()</span>
-<span class="sd">    [2, 1]</span>
-<span class="sd">    &gt;&gt;&gt; G.add_edges_from( ((2,2), (2,1,2,{&#39;weight&#39;:0.1}), (2,1,1,{&#39;weight&#39;:0.2}), (1,1)) )</span>
-<span class="sd">    &gt;&gt;&gt; G.edges(keys=True)</span>
-<span class="sd">    [(2, 2, 0), (2, 1, 2), (2, 1, 1), (1, 1, 0)]</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c"># node_dict_factory=dict    # already assigned in Graph</span>
-    <span class="c"># adjlist_dict_factory=dict</span>
-    <span class="n">edge_key_dict_factory</span> <span class="o">=</span> <span class="nb">dict</span>
-    <span class="c"># edge_attr_dict_factory=dict</span>
-
-<div class="viewcode-block" id="MultiDiGraph.__init__"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiDiGraph.__init__.html#networkx.MultiDiGraph.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">edge_key_dict_factory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge_key_dict_factory</span>
-        <span class="n">DiGraph</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">)</span>
-</div>
 <div class="viewcode-block" id="MultiDiGraph.add_edge"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiDiGraph.add_edge.html#networkx.MultiDiGraph.add_edge">[docs]</a>    <span class="k">def</span> <span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">attr_dict</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add an edge between u and v.</span>
 
@@ -486,41 +406,40 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c"># set up attribute dict</span>
         <span class="k">if</span> <span class="n">attr_dict</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">attr_dict</span> <span class="o">=</span> <span class="n">attr</span>
+            <span class="n">attr_dict</span><span class="o">=</span><span class="n">attr</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">attr_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span>
+                <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span>\
                     <span class="s">&quot;The attr_dict argument must be a dictionary.&quot;</span><span class="p">)</span>
         <span class="c"># add nodes</span>
         <span class="k">if</span> <span class="n">u</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">if</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">u</span><span class="p">]:</span>
-            <span class="n">keydict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span>
+            <span class="n">keydict</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
                 <span class="c"># find a unique integer key</span>
                 <span class="c"># other methods might be better here?</span>
-                <span class="n">key</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">keydict</span><span class="p">)</span>
+                <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">keydict</span><span class="p">)</span>
                 <span class="k">while</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keydict</span><span class="p">:</span>
-                    <span class="n">key</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="n">datadict</span> <span class="o">=</span> <span class="n">keydict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge_key_dict_factory</span><span class="p">())</span>
+                    <span class="n">key</span><span class="o">+=</span><span class="mi">1</span>
+            <span class="n">datadict</span><span class="o">=</span><span class="n">keydict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,{})</span>
             <span class="n">datadict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">attr_dict</span><span class="p">)</span>
-            <span class="n">keydict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">datadict</span>
+            <span class="n">keydict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">datadict</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c"># selfloops work this way without special treatment</span>
             <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-                <span class="n">key</span> <span class="o">=</span> <span class="mi">0</span>
-            <span class="n">datadict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge_attr_dict_factory</span><span class="p">()</span>
+                <span class="n">key</span><span class="o">=</span><span class="mi">0</span>
+            <span class="n">datadict</span><span class="o">=</span><span class="p">{}</span>
             <span class="n">datadict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">attr_dict</span><span class="p">)</span>
-            <span class="n">keydict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge_key_dict_factory</span><span class="p">()</span>
-            <span class="n">keydict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">datadict</span>
+            <span class="n">keydict</span><span class="o">=</span><span class="p">{</span><span class="n">key</span><span class="p">:</span><span class="n">datadict</span><span class="p">}</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">keydict</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">keydict</span>
 </div>
@@ -568,10 +487,10 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span>
+            <span class="n">d</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span>
         <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">):</span>
             <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span>
-                <span class="s">&quot;The edge </span><span class="si">%s</span><span class="s">-</span><span class="si">%s</span><span class="s"> is not in the graph.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+                <span class="s">&quot;The edge </span><span class="si">%s</span><span class="s">-</span><span class="si">%s</span><span class="s"> is not in the graph.&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">))</span>
         <span class="c"># remove the edge with specified data</span>
         <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">d</span><span class="o">.</span><span class="n">popitem</span><span class="p">()</span>
@@ -580,13 +499,14 @@
                 <span class="k">del</span> <span class="n">d</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
             <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span>
-                <span class="s">&quot;The edge </span><span class="si">%s</span><span class="s">-</span><span class="si">%s</span><span class="s"> with key </span><span class="si">%s</span><span class="s"> is not in the graph.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="s">&quot;The edge </span><span class="si">%s</span><span class="s">-</span><span class="si">%s</span><span class="s"> with key </span><span class="si">%s</span><span class="s"> is not in the graph.&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">key</span><span class="p">))</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
             <span class="c"># remove the key entries if last edge</span>
             <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span>
             <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">u</span><span class="p">]</span>
+
 </div>
-<div class="viewcode-block" id="MultiDiGraph.edges_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiDiGraph.edges_iter.html#networkx.MultiDiGraph.edges_iter">[docs]</a>    <span class="k">def</span> <span class="nf">edges_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="MultiDiGraph.edges_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiDiGraph.edges_iter.html#networkx.MultiDiGraph.edges_iter">[docs]</a>    <span class="k">def</span> <span class="nf">edges_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator over the edges.</span>
 
 <span class="sd">        Edges are returned as tuples with optional data and keys</span>
@@ -597,15 +517,10 @@
 <span class="sd">        nbunch : iterable container, optional (default= all nodes)</span>
 <span class="sd">            A container of nodes.  The container will be iterated</span>
 <span class="sd">            through once.</span>
-<span class="sd">        data : string or bool, optional (default=False)</span>
-<span class="sd">            The edge attribute returned in 3-tuple (u,v,ddict[data]).</span>
-<span class="sd">            If True, return edge attribute dict in 3-tuple (u,v,ddict).</span>
-<span class="sd">            If False, return 2-tuple (u,v).</span>
+<span class="sd">        data : bool, optional (default=False)</span>
+<span class="sd">            If True, return edge attribute dict with each edge.</span>
 <span class="sd">        keys : bool, optional (default=False)</span>
 <span class="sd">            If True, return edge keys with each edge.</span>
-<span class="sd">        default : value, optional (default=None)</span>
-<span class="sd">            Value used for edges that dont have the requested attribute.</span>
-<span class="sd">            Only relevant if data is not True or False.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -624,20 +539,11 @@
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
 <span class="sd">        &gt;&gt;&gt; G = nx.MultiDiGraph()</span>
-<span class="sd">        &gt;&gt;&gt; G.add_path([0,1,2])</span>
-<span class="sd">        &gt;&gt;&gt; G.add_edge(2,3,weight=5)</span>
+<span class="sd">        &gt;&gt;&gt; G.add_path([0,1,2,3])</span>
 <span class="sd">        &gt;&gt;&gt; [e for e in G.edges_iter()]</span>
 <span class="sd">        [(0, 1), (1, 2), (2, 3)]</span>
 <span class="sd">        &gt;&gt;&gt; list(G.edges_iter(data=True)) # default data is {} (empty dict)</span>
-<span class="sd">        [(0, 1, {}), (1, 2, {}), (2, 3, {&#39;weight&#39;: 5})]</span>
-<span class="sd">        &gt;&gt;&gt; list(G.edges_iter(data=&#39;weight&#39;, default=1))</span>
-<span class="sd">        [(0, 1, 1), (1, 2, 1), (2, 3, 5)]</span>
-<span class="sd">        &gt;&gt;&gt; list(G.edges(keys=True)) # default keys are integers</span>
-<span class="sd">        [(0, 1, 0), (1, 2, 0), (2, 3, 0)]</span>
-<span class="sd">        &gt;&gt;&gt; list(G.edges(data=True,keys=True)) # default keys are integers</span>
-<span class="sd">        [(0, 1, 0, {}), (1, 2, 0, {}), (2, 3, 0, {&#39;weight&#39;: 5})]</span>
-<span class="sd">        &gt;&gt;&gt; list(G.edges(data=&#39;weight&#39;,default=1,keys=True))</span>
-<span class="sd">        [(0, 1, 0, 1), (1, 2, 0, 1), (2, 3, 0, 5)]</span>
+<span class="sd">        [(0, 1, {}), (1, 2, {}), (2, 3, {})]</span>
 <span class="sd">        &gt;&gt;&gt; list(G.edges_iter([0,2]))</span>
 <span class="sd">        [(0, 1), (2, 3)]</span>
 <span class="sd">        &gt;&gt;&gt; list(G.edges_iter(0))</span>
@@ -647,26 +553,26 @@
         <span class="k">if</span> <span class="n">nbunch</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">nodes_nbrs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">nodes_nbrs</span> <span class="o">=</span> <span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nbunch_iter</span><span class="p">(</span><span class="n">nbunch</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">nbr</span><span class="p">,</span> <span class="n">keydict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">ddict</span> <span class="ow">in</span> <span class="n">keydict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                        <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">nbr</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">ddict</span><span class="p">)</span> <span class="k">if</span> <span class="n">keys</span> <span class="k">else</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">nbr</span><span class="p">,</span> <span class="n">ddict</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">False</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">nbr</span><span class="p">,</span> <span class="n">keydict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">ddict</span> <span class="ow">in</span> <span class="n">keydict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                        <span class="n">d</span> <span class="o">=</span> <span class="n">ddict</span><span class="p">[</span><span class="n">data</span><span class="p">]</span> <span class="k">if</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">ddict</span> <span class="k">else</span> <span class="n">default</span>
-                        <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">nbr</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="k">if</span> <span class="n">keys</span> <span class="k">else</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">nbr</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+            <span class="n">nodes_nbrs</span><span class="o">=</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nbunch_iter</span><span class="p">(</span><span class="n">nbunch</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">nbr</span><span class="p">,</span><span class="n">keydict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">data</span> <span class="ow">in</span> <span class="n">keydict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                        <span class="k">if</span> <span class="n">keys</span><span class="p">:</span>
+                            <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">nbr</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">data</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">nbr</span><span class="p">,</span><span class="n">data</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">nbr</span><span class="p">,</span> <span class="n">keydict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keydict</span><span class="p">:</span>
-                        <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">nbr</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span> <span class="k">if</span> <span class="n">keys</span> <span class="k">else</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">nbr</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">nbr</span><span class="p">,</span><span class="n">keydict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">data</span> <span class="ow">in</span> <span class="n">keydict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                        <span class="k">if</span> <span class="n">keys</span><span class="p">:</span>
+                            <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">nbr</span><span class="p">,</span><span class="n">key</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">nbr</span><span class="p">)</span>
 
     <span class="c"># alias out_edges to edges</span></div>
-    <span class="n">out_edges_iter</span> <span class="o">=</span> <span class="n">edges_iter</span>
+    <span class="n">out_edges_iter</span><span class="o">=</span><span class="n">edges_iter</span>
 
 <div class="viewcode-block" id="MultiDiGraph.out_edges"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiDiGraph.out_edges.html#networkx.MultiDiGraph.out_edges">[docs]</a>    <span class="k">def</span> <span class="nf">out_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a list of the outgoing edges.</span>
@@ -699,6 +605,7 @@
 <span class="sd">        in_edges: return a list of incoming edges</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out_edges_iter</span><span class="p">(</span><span class="n">nbunch</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="n">keys</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">))</span>
+
 </div>
 <div class="viewcode-block" id="MultiDiGraph.in_edges_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiDiGraph.in_edges_iter.html#networkx.MultiDiGraph.in_edges_iter">[docs]</a>    <span class="k">def</span> <span class="nf">in_edges_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator over the incoming edges.</span>
@@ -723,25 +630,25 @@
 <span class="sd">        edges_iter : return an iterator of edges</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">nbunch</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">nodes_nbrs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="n">nodes_nbrs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">nodes_nbrs</span> <span class="o">=</span> <span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nbunch_iter</span><span class="p">(</span><span class="n">nbunch</span><span class="p">))</span>
+            <span class="n">nodes_nbrs</span><span class="o">=</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nbunch_iter</span><span class="p">(</span><span class="n">nbunch</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">nbr</span><span class="p">,</span> <span class="n">keydict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">keydict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">nbr</span><span class="p">,</span><span class="n">keydict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">data</span> <span class="ow">in</span> <span class="n">keydict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                         <span class="k">if</span> <span class="n">keys</span><span class="p">:</span>
-                            <span class="k">yield</span> <span class="p">(</span><span class="n">nbr</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+                            <span class="k">yield</span> <span class="p">(</span><span class="n">nbr</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">data</span><span class="p">)</span>
                         <span class="k">else</span><span class="p">:</span>
-                            <span class="k">yield</span> <span class="p">(</span><span class="n">nbr</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+                            <span class="k">yield</span> <span class="p">(</span><span class="n">nbr</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">data</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">nbr</span><span class="p">,</span> <span class="n">keydict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">keydict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">nbr</span><span class="p">,</span><span class="n">keydict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">data</span> <span class="ow">in</span> <span class="n">keydict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                         <span class="k">if</span> <span class="n">keys</span><span class="p">:</span>
-                            <span class="k">yield</span> <span class="p">(</span><span class="n">nbr</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+                            <span class="k">yield</span> <span class="p">(</span><span class="n">nbr</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">key</span><span class="p">)</span>
                         <span class="k">else</span><span class="p">:</span>
-                            <span class="k">yield</span> <span class="p">(</span><span class="n">nbr</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+                            <span class="k">yield</span> <span class="p">(</span><span class="n">nbr</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="MultiDiGraph.in_edges"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiDiGraph.in_edges.html#networkx.MultiDiGraph.in_edges">[docs]</a>    <span class="k">def</span> <span class="nf">in_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a list of the incoming edges.</span>
@@ -766,6 +673,7 @@
 <span class="sd">        out_edges: return a list of outgoing edges</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">in_edges_iter</span><span class="p">(</span><span class="n">nbunch</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="n">keys</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">))</span>
+
 </div>
 <div class="viewcode-block" id="MultiDiGraph.degree_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiDiGraph.degree_iter.html#networkx.MultiDiGraph.degree_iter">[docs]</a>    <span class="k">def</span> <span class="nf">degree_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator for (node, degree).</span>
@@ -779,7 +687,7 @@
 <span class="sd">            through once.</span>
 
 <span class="sd">        weight : string or None, optional (default=None)</span>
-<span class="sd">           The edge attribute that holds the numerical value used</span>
+<span class="sd">           The edge attribute that holds the numerical value used </span>
 <span class="sd">           as a weight.  If None, then each edge has weight 1.</span>
 <span class="sd">           The degree is the sum of the edge weights.</span>
 
@@ -803,27 +711,28 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">nbunch</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">nodes_nbrs</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+            <span class="n">nodes_nbrs</span><span class="o">=</span><span class="nb">zip</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span><span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">nodes_nbrs</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span>
-                <span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nbunch_iter</span><span class="p">(</span><span class="n">nbunch</span><span class="p">)),</span>
-                <span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nbunch_iter</span><span class="p">(</span><span class="n">nbunch</span><span class="p">)))</span>
+            <span class="n">nodes_nbrs</span><span class="o">=</span><span class="nb">zip</span><span class="p">(</span>
+                <span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nbunch_iter</span><span class="p">(</span><span class="n">nbunch</span><span class="p">)),</span>
+                <span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nbunch_iter</span><span class="p">(</span><span class="n">nbunch</span><span class="p">)))</span>
 
         <span class="k">if</span> <span class="n">weight</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">for</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">succ</span><span class="p">),</span> <span class="p">(</span><span class="n">n2</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">succ</span><span class="p">),(</span><span class="n">n2</span><span class="p">,</span><span class="n">pred</span><span class="p">)</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
                 <span class="n">indeg</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">pred</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
                 <span class="n">outdeg</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">succ</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
                 <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">indeg</span> <span class="o">+</span> <span class="n">outdeg</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="c"># edge weighted graph - degree is sum of nbr edge weights</span>
-            <span class="k">for</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">succ</span><span class="p">),</span> <span class="p">(</span><span class="n">n2</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
-                <span class="n">deg</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="c"># edge weighted graph - degree is sum of nbr edge weights</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">succ</span><span class="p">),(</span><span class="n">n2</span><span class="p">,</span><span class="n">pred</span><span class="p">)</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
+                <span class="n">deg</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
                            <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">pred</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
                            <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
-                <span class="n">deg</span> <span class="o">+=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">deg</span> <span class="o">+=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
                            <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">succ</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
                            <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
                 <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">deg</span><span class="p">)</span>
+
 </div>
 <div class="viewcode-block" id="MultiDiGraph.in_degree_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiDiGraph.in_degree_iter.html#networkx.MultiDiGraph.in_degree_iter">[docs]</a>    <span class="k">def</span> <span class="nf">in_degree_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator for (node, in-degree).</span>
@@ -837,7 +746,7 @@
 <span class="sd">            through once.</span>
 
 <span class="sd">        weight : string or None, optional (default=None)</span>
-<span class="sd">           The edge attribute that holds the numerical value used</span>
+<span class="sd">           The edge attribute that holds the numerical value used </span>
 <span class="sd">           as a weight.  If None, then each edge has weight 1.</span>
 <span class="sd">           The degree is the sum of the edge weights adjacent to the node.</span>
 
@@ -861,20 +770,21 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">nbunch</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">nodes_nbrs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="n">nodes_nbrs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">nodes_nbrs</span> <span class="o">=</span> <span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nbunch_iter</span><span class="p">(</span><span class="n">nbunch</span><span class="p">))</span>
+            <span class="n">nodes_nbrs</span><span class="o">=</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nbunch_iter</span><span class="p">(</span><span class="n">nbunch</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="n">weight</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
-                <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">values</span><span class="p">()]))</span>
+            <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span> <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c"># edge weighted graph - degree is sum of nbr edge weights</span>
-            <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">pred</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
-                <span class="n">deg</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">pred</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
+                <span class="n">deg</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
                            <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">pred</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
                            <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
                 <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">deg</span><span class="p">)</span>
+
 </div>
 <div class="viewcode-block" id="MultiDiGraph.out_degree_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiDiGraph.out_degree_iter.html#networkx.MultiDiGraph.out_degree_iter">[docs]</a>    <span class="k">def</span> <span class="nf">out_degree_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator for (node, out-degree).</span>
@@ -888,7 +798,7 @@
 <span class="sd">            through once.</span>
 
 <span class="sd">        weight : string or None, optional (default=None)</span>
-<span class="sd">           The edge attribute that holds the numerical value used</span>
+<span class="sd">           The edge attribute that holds the numerical value used </span>
 <span class="sd">           as a weight.  If None, then each edge has weight 1.</span>
 <span class="sd">           The degree is the sum of the edge weights.</span>
 
@@ -912,16 +822,16 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">nbunch</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">nodes_nbrs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="n">nodes_nbrs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">nodes_nbrs</span> <span class="o">=</span> <span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nbunch_iter</span><span class="p">(</span><span class="n">nbunch</span><span class="p">))</span>
+            <span class="n">nodes_nbrs</span><span class="o">=</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nbunch_iter</span><span class="p">(</span><span class="n">nbunch</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="n">weight</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
-                <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">values</span><span class="p">()]))</span>
+            <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span> <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">succ</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
-                <span class="n">deg</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">succ</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
+                <span class="n">deg</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
                            <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">succ</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
                            <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
                 <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">deg</span><span class="p">)</span>
@@ -984,8 +894,8 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        reciprocal : bool (optional)</span>
-<span class="sd">          If True only keep edges that appear in both directions</span>
-<span class="sd">          in the original digraph.</span>
+<span class="sd">          If True only keep edges that appear in both directions </span>
+<span class="sd">          in the original digraph. </span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1008,28 +918,23 @@
 
 <span class="sd">        See the Python copy module for more information on shallow</span>
 <span class="sd">        and deep copies, http://docs.python.org/library/copy.html.</span>
-
-<span class="sd">        Warning: If you have subclassed MultiGraph to use dict-like objects </span>
-<span class="sd">        in the data structure, those changes do not transfer to the MultiDiGraph</span>
-<span class="sd">        created by this method.</span>
-
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">H</span> <span class="o">=</span> <span class="n">MultiGraph</span><span class="p">()</span>
-        <span class="n">H</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">H</span><span class="o">=</span><span class="n">MultiGraph</span><span class="p">()</span>
+        <span class="n">H</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span>
         <span class="n">H</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">reciprocal</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
-            <span class="n">H</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
-                            <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjacency_iter</span><span class="p">()</span>
-                            <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">keydict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-                            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">keydict</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-                            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_edge</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
+            <span class="n">H</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+                              <span class="k">for</span> <span class="n">u</span><span class="p">,</span><span class="n">nbrs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjacency_iter</span><span class="p">()</span>
+                              <span class="k">for</span> <span class="n">v</span><span class="p">,</span><span class="n">keydict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                              <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">data</span> <span class="ow">in</span> <span class="n">keydict</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                              <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_edge</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">key</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">H</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
-                            <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjacency_iter</span><span class="p">()</span>
-                            <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">keydict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-                            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">keydict</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-        <span class="n">H</span><span class="o">.</span><span class="n">graph</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
-        <span class="n">H</span><span class="o">.</span><span class="n">node</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">)</span>
+            <span class="n">H</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+                              <span class="k">for</span> <span class="n">u</span><span class="p">,</span><span class="n">nbrs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjacency_iter</span><span class="p">()</span>
+                              <span class="k">for</span> <span class="n">v</span><span class="p">,</span><span class="n">keydict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                              <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">data</span> <span class="ow">in</span> <span class="n">keydict</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="n">H</span><span class="o">.</span><span class="n">graph</span><span class="o">=</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
+        <span class="n">H</span><span class="o">.</span><span class="n">node</span><span class="o">=</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">H</span>
 </div>
 <div class="viewcode-block" id="MultiDiGraph.subgraph"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiDiGraph.subgraph.html#networkx.MultiDiGraph.subgraph">[docs]</a>    <span class="k">def</span> <span class="nf">subgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="p">):</span>
@@ -1076,27 +981,27 @@
         <span class="n">H</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="p">()</span>
         <span class="c"># copy node and attribute dictionaries</span>
         <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">bunch</span><span class="p">:</span>
-            <span class="n">H</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+            <span class="n">H</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
         <span class="c"># namespace shortcuts for speed</span>
-        <span class="n">H_succ</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">succ</span>
-        <span class="n">H_pred</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">pred</span>
-        <span class="n">self_succ</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">succ</span>
-        <span class="n">self_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pred</span>
+        <span class="n">H_succ</span><span class="o">=</span><span class="n">H</span><span class="o">.</span><span class="n">succ</span>
+        <span class="n">H_pred</span><span class="o">=</span><span class="n">H</span><span class="o">.</span><span class="n">pred</span>
+        <span class="n">self_succ</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">succ</span>
+        <span class="n">self_pred</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pred</span>
         <span class="c"># add nodes</span>
         <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">H</span><span class="p">:</span>
-            <span class="n">H_succ</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
-            <span class="n">H_pred</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
+            <span class="n">H_succ</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="p">{}</span>
+            <span class="n">H_pred</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="p">{}</span>
         <span class="c"># add edges</span>
         <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">H_succ</span><span class="p">:</span>
-            <span class="n">Hnbrs</span> <span class="o">=</span> <span class="n">H_succ</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>
-            <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">edgedict</span> <span class="ow">in</span> <span class="n">self_succ</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">Hnbrs</span><span class="o">=</span><span class="n">H_succ</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">v</span><span class="p">,</span><span class="n">edgedict</span> <span class="ow">in</span> <span class="n">self_succ</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                 <span class="k">if</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">H_succ</span><span class="p">:</span>
                     <span class="c"># add both representations of edge: u-v and v-u</span>
                     <span class="c"># they share the same edgedict</span>
-                    <span class="n">ed</span> <span class="o">=</span> <span class="n">edgedict</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-                    <span class="n">Hnbrs</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">ed</span>
-                    <span class="n">H_pred</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">ed</span>
-        <span class="n">H</span><span class="o">.</span><span class="n">graph</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span>
+                    <span class="n">ed</span><span class="o">=</span><span class="n">edgedict</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                    <span class="n">Hnbrs</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">=</span><span class="n">ed</span>
+                    <span class="n">H_pred</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">u</span><span class="p">]</span><span class="o">=</span><span class="n">ed</span>
+        <span class="n">H</span><span class="o">.</span><span class="n">graph</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span>
         <span class="k">return</span> <span class="n">H</span>
 </div>
 <div class="viewcode-block" id="MultiDiGraph.reverse"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiDiGraph.reverse.html#networkx.MultiDiGraph.reverse">[docs]</a>    <span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
@@ -1115,14 +1020,14 @@
         <span class="k">if</span> <span class="n">copy</span><span class="p">:</span>
             <span class="n">H</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;Reverse of (</span><span class="si">%s</span><span class="s">)&quot;</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
             <span class="n">H</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-            <span class="n">H</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">d</span>
-                              <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
-            <span class="n">H</span><span class="o">.</span><span class="n">graph</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
-            <span class="n">H</span><span class="o">.</span><span class="n">node</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">)</span>
+            <span class="n">H</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span> <span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">d</span> 
+                              <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="p">)</span>
+            <span class="n">H</span><span class="o">.</span><span class="n">graph</span><span class="o">=</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
+            <span class="n">H</span><span class="o">.</span><span class="n">node</span><span class="o">=</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">succ</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pred</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">adj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">succ</span>
-            <span class="n">H</span> <span class="o">=</span> <span class="bp">self</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">pred</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">succ</span>
+            <span class="n">H</span><span class="o">=</span><span class="bp">self</span>
         <span class="k">return</span> <span class="n">H</span></div></div>
 </pre></div>
 
@@ -1134,8 +1039,8 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -1155,7 +1060,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

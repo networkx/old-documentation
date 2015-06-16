@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.generators.line &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>networkx.generators.line &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -178,7 +178,54 @@
           <div role="main">
             
   <h1>Source code for networkx.generators.line</h1><div class="highlight"><pre>
-<span class="sd">&quot;&quot;&quot;Functions for generating line graphs.</span>
+<span class="c"># -*- coding: ascii -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Line graph algorithms.</span>
+
+<span class="sd">Undirected Graphs</span>
+<span class="sd">-----------------</span>
+<span class="sd">For an undirected graph G without multiple edges, each edge can be written as</span>
+<span class="sd">a set {u,v}.  Its line graph L has the edges of G as its nodes. If x and y</span>
+<span class="sd">are two nodes in L, then {x,y} is an edge in L if and only if the intersection</span>
+<span class="sd">of x and y is nonempty.  Thus, the set of all edges is determined by the</span>
+<span class="sd">set of all pair-wise intersections of edges in G.</span>
+
+<span class="sd">Trivially, every edge x={u,v} in G would have a nonzero intersection with</span>
+<span class="sd">itself, and so every node in L should have a self-loop. This is not so</span>
+<span class="sd">interesting, and the original context of line graphs was with simple graphs,</span>
+<span class="sd">which had no self-loops or multiple edges. The line graph was also meant</span>
+<span class="sd">to be simple graph and thus, self-loops in L are not part of the standard</span>
+<span class="sd">definition of a line graph. In a pair-wise intersection matrix, this is</span>
+<span class="sd">analogous to not including the diagonal as part of the line graph definition.</span>
+
+<span class="sd">Self-loops and multiple edges in G add nodes to L in a natural way, and do not</span>
+<span class="sd">require any fundamental changes to the definition.  It might be argued that</span>
+<span class="sd">the self-loops we excluded before should now be included.  However, the</span>
+<span class="sd">self-loops are still &quot;trivial&quot; in some sense and thus, are usually excluded.</span>
+
+<span class="sd">Directed Graphs</span>
+<span class="sd">---------------</span>
+<span class="sd">For a directed graph G without multiple edges, each edge can be written as a</span>
+<span class="sd">tuple (u,v).  Its line graph L has the edges of G as its nodes. If x=(a,b) and</span>
+<span class="sd">y=(c,d) are two nodes in L, then (x,y) is an edge in L if and only if the</span>
+<span class="sd">tail of x matches the head of y---e.g., b=c.</span>
+
+<span class="sd">Due to the directed nature of the edges, it is no longer the case that</span>
+<span class="sd">every edge x=(u,v) should be connected to itself with a self-loop in L. Now,</span>
+<span class="sd">the only time self-loops arise is if G itself has a self-loop.  So such</span>
+<span class="sd">self-loops are no longer &quot;trivial&quot; but instead, represent essential features</span>
+<span class="sd">of the topology of G. For this reason, the historical development of line</span>
+<span class="sd">digraphs is such that self-loops are included. When the graph G has multiple</span>
+<span class="sd">edges, once again only superficial changes are required to the definition.</span>
+
+<span class="sd">References</span>
+<span class="sd">----------</span>
+<span class="sd">Harary, Frank, and Norman, Robert Z., &quot;Some properties of line digraphs&quot;,</span>
+<span class="sd">    Rend. Circ. Mat. Palermo, II. Ser. 9 (1960), 161--168.</span>
+
+<span class="sd">Hemminger, R. L.; Beineke, L. W. (1978), &quot;Line graphs and line digraphs&quot;,</span>
+<span class="sd">    in Beineke, L. W.; Wilson, R. J., Selected Topics in Graph Theory, Academic</span>
+<span class="sd">    Press Inc., pp. 271--305.</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="c">#    Copyright (C) 2013 by</span>
@@ -194,20 +241,19 @@
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;line_graph&#39;</span><span class="p">]</span>
 
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
 
 <div class="viewcode-block" id="line_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.line.line_graph.html#networkx.generators.line.line_graph">[docs]</a><span class="k">def</span> <span class="nf">line_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the line graph of the graph or digraph ``G``.</span>
+    <span class="sd">&quot;&quot;&quot;Return the line graph of the graph or digraph G.</span>
 
-<span class="sd">    The line graph of a graph ``G`` has a node for each edge in ``G`` and an</span>
-<span class="sd">    edge joining those nodes if the two edges in ``G`` share a common node. For</span>
-<span class="sd">    directed graphs, nodes are adjacent exactly when the edges they represent</span>
-<span class="sd">    form a directed path of length two.</span>
+<span class="sd">    The line graph of a graph G has a node for each edge in G and an edge</span>
+<span class="sd">    between those nodes if the two edges in G share a common node. For directed</span>
+<span class="sd">    graphs, nodes are connected only if they form a directed path of length 2.</span>
 
-<span class="sd">    The nodes of the line graph are 2-tuples of nodes in the original graph (or</span>
-<span class="sd">    3-tuples for multigraphs, with the key of the edge as the third element).</span>
+<span class="sd">    The nodes of the line graph are 2-tuples of nodes in the original graph</span>
+<span class="sd">    (or 3-tuples for multigraphs, with the key of the edge as the 3rd element).</span>
 
-<span class="sd">    For information about self-loops and more discussion, see the **Notes**</span>
-<span class="sd">    section below.</span>
+<span class="sd">    For more discussion, see the docstring in :mod:`networkx.generators.line`.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -221,66 +267,16 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; import networkx as nx</span>
 <span class="sd">    &gt;&gt;&gt; G = nx.star_graph(3)</span>
 <span class="sd">    &gt;&gt;&gt; L = nx.line_graph(G)</span>
-<span class="sd">    &gt;&gt;&gt; print(sorted(map(sorted, L.edges())))  # makes a 3-clique, K3</span>
+<span class="sd">    &gt;&gt;&gt; print(sorted(map(sorted, L.edges()))) # makes a clique, K3</span>
 <span class="sd">    [[(0, 1), (0, 2)], [(0, 1), (0, 3)], [(0, 2), (0, 3)]]</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    Graph, node, and edge data are not propagated to the new graph. For</span>
-<span class="sd">    undirected graphs, the nodes in G must be sortable, otherwise the</span>
+<span class="sd">    undirected graphs, the nodes in G must be sortable---otherwise, the</span>
 <span class="sd">    constructed line graph may not be correct.</span>
-
-<span class="sd">    *Self-loops in undirected graphs*</span>
-
-<span class="sd">    For an undirected graph `G` without multiple edges, each edge can be</span>
-<span class="sd">    written as a set `\{u, v\}`.  Its line graph `L` has the edges of `G` as</span>
-<span class="sd">    its nodes. If `x` and `y` are two nodes in `L`, then `\{x, y\}` is an edge</span>
-<span class="sd">    in `L` if and only if the intersection of `x` and `y` is nonempty. Thus,</span>
-<span class="sd">    the set of all edges is determined by the set of all pairwise intersections</span>
-<span class="sd">    of edges in `G`.</span>
-
-<span class="sd">    Trivially, every edge in G would have a nonzero intersection with itself,</span>
-<span class="sd">    and so every node in `L` should have a self-loop. This is not so</span>
-<span class="sd">    interesting, and the original context of line graphs was with simple</span>
-<span class="sd">    graphs, which had no self-loops or multiple edges. The line graph was also</span>
-<span class="sd">    meant to be a simple graph and thus, self-loops in `L` are not part of the</span>
-<span class="sd">    standard definition of a line graph. In a pairwise intersection matrix,</span>
-<span class="sd">    this is analogous to excluding the diagonal entries from the line graph</span>
-<span class="sd">    definition.</span>
-
-<span class="sd">    Self-loops and multiple edges in `G` add nodes to `L` in a natural way, and</span>
-<span class="sd">    do not require any fundamental changes to the definition. It might be</span>
-<span class="sd">    argued that the self-loops we excluded before should now be included.</span>
-<span class="sd">    However, the self-loops are still &quot;trivial&quot; in some sense and thus, are</span>
-<span class="sd">    usually excluded.</span>
-
-<span class="sd">    *Self-loops in directed graphs*</span>
-
-<span class="sd">    For a directed graph `G` without multiple edges, each edge can be written</span>
-<span class="sd">    as a tuple `(u, v)`. Its line graph `L` has the edges of `G` as its</span>
-<span class="sd">    nodes. If `x` and `y` are two nodes in `L`, then `(x, y)` is an edge in `L`</span>
-<span class="sd">    if and only if the tail of `x` matches the head of `y`, for example, if `x</span>
-<span class="sd">    = (a, b)` and `y = (b, c)` for some vertices `a`, `b`, and `c` in `G`.</span>
-
-<span class="sd">    Due to the directed nature of the edges, it is no longer the case that</span>
-<span class="sd">    every edge in `G` should have a self-loop in `L`. Now, the only time</span>
-<span class="sd">    self-loops arise is if a node in `G` itself has a self-loop.  So such</span>
-<span class="sd">    self-loops are no longer &quot;trivial&quot; but instead, represent essential</span>
-<span class="sd">    features of the topology of `G`. For this reason, the historical</span>
-<span class="sd">    development of line digraphs is such that self-loops are included. When the</span>
-<span class="sd">    graph `G` has multiple edges, once again only superficial changes are</span>
-<span class="sd">    required to the definition.</span>
-
-<span class="sd">    References</span>
-<span class="sd">    ----------</span>
-<span class="sd">    * Harary, Frank, and Norman, Robert Z., &quot;Some properties of line digraphs&quot;,</span>
-<span class="sd">      Rend. Circ. Mat. Palermo, II. Ser. 9 (1960), 161--168.</span>
-<span class="sd">    * Hemminger, R. L.; Beineke, L. W. (1978), &quot;Line graphs and line digraphs&quot;,</span>
-<span class="sd">      in Beineke, L. W.; Wilson, R. J., Selected Topics in Graph Theory,</span>
-<span class="sd">      Academic Press Inc., pp. 271--305.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
@@ -423,8 +419,8 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -444,7 +440,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

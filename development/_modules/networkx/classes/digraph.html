@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.classes.digraph &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>networkx.classes.digraph &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -179,7 +179,7 @@
             
   <h1>Source code for networkx.classes.digraph</h1><div class="highlight"><pre>
 <span class="sd">&quot;&quot;&quot;Base class for directed graphs.&quot;&quot;&quot;</span>
-<span class="c">#    Copyright (C) 2004-2015 by</span>
+<span class="c">#    Copyright (C) 2004-2011 by</span>
 <span class="c">#    Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
 <span class="c">#    Dan Schult &lt;dschult@colgate.edu&gt;</span>
 <span class="c">#    Pieter Swart &lt;swart@lanl.gov&gt;</span>
@@ -330,8 +330,8 @@
 <span class="sd">    ...            (n,nbr,eattr[&#39;weight&#39;])</span>
 <span class="sd">    (1, 2, 4)</span>
 <span class="sd">    (2, 3, 8)</span>
-<span class="sd">    &gt;&gt;&gt; G.edges(data=&#39;weight&#39;)</span>
-<span class="sd">    [(1, 2, 4), (2, 3, 8), (3, 4, None), (4, 5, None)]</span>
+<span class="sd">    &gt;&gt;&gt; [ (u,v,edata[&#39;weight&#39;]) for u,v,edata in G.edges(data=True) if &#39;weight&#39; in edata ]</span>
+<span class="sd">    [(1, 2, 4), (2, 3, 8)]</span>
 
 <span class="sd">    **Reporting:**</span>
 
@@ -341,83 +341,6 @@
 <span class="sd">    as well as the number of nodes and edges.</span>
 
 <span class="sd">    For details on these and other miscellaneous methods, see below.</span>
-
-<span class="sd">    **Subclasses (Advanced):**</span>
-
-<span class="sd">    The Graph class uses a dict-of-dict-of-dict data structure.</span>
-<span class="sd">    The outer dict (node_dict) holds adjacency lists keyed by node.</span>
-<span class="sd">    The next dict (adjlist) represents the adjacency list and holds</span>
-<span class="sd">    edge data keyed by neighbor.  The inner dict (edge_attr) represents</span>
-<span class="sd">    the edge data and holds edge attribute values keyed by attribute names.</span>
-
-<span class="sd">    Each of these three dicts can be replaced by a user defined </span>
-<span class="sd">    dict-like object. In general, the dict-like features should be</span>
-<span class="sd">    maintained but extra features can be added. To replace one of the</span>
-<span class="sd">    dicts create a new graph class by changing the class(!) variable</span>
-<span class="sd">    holding the factory for that dict-like structure. The variable names</span>
-<span class="sd">    are node_dict_factory, adjlist_dict_factory and edge_attr_dict_factory.</span>
-
-<span class="sd">    node_dict_factory : function, optional (default: dict)</span>
-<span class="sd">        Factory function to be used to create the outer-most dict</span>
-<span class="sd">        in the data structure that holds adjacency lists keyed by node.</span>
-<span class="sd">        It should require no arguments and return a dict-like object.</span>
-
-<span class="sd">    adjlist_dict_factory : function, optional (default: dict)</span>
-<span class="sd">        Factory function to be used to create the adjacency list</span>
-<span class="sd">        dict which holds edge data keyed by neighbor.</span>
-<span class="sd">        It should require no arguments and return a dict-like object</span>
-
-<span class="sd">    edge_attr_dict_factory : function, optional (default: dict)</span>
-<span class="sd">        Factory function to be used to create the edge attribute</span>
-<span class="sd">        dict which holds attrbute values keyed by attribute name.</span>
-<span class="sd">        It should require no arguments and return a dict-like object.</span>
-
-<span class="sd">    Examples</span>
-<span class="sd">    --------</span>
-<span class="sd">    Create a graph object that tracks the order nodes are added.</span>
-
-<span class="sd">    &gt;&gt;&gt; from collections import OrderedDict</span>
-<span class="sd">    &gt;&gt;&gt; class OrderedNodeGraph(nx.Graph):</span>
-<span class="sd">    ...     node_dict_factory=OrderedDict</span>
-<span class="sd">    &gt;&gt;&gt; G=OrderedNodeGraph()</span>
-<span class="sd">    &gt;&gt;&gt; G.add_nodes_from( (2,1) )</span>
-<span class="sd">    &gt;&gt;&gt; G.nodes()</span>
-<span class="sd">    [2, 1]</span>
-<span class="sd">    &gt;&gt;&gt; G.add_edges_from( ((2,2), (2,1), (1,1)) )</span>
-<span class="sd">    &gt;&gt;&gt; G.edges()</span>
-<span class="sd">    [(2, 1), (2, 2), (1, 1)]</span>
-
-<span class="sd">    Create a graph object that tracks the order nodes are added</span>
-<span class="sd">    and for each node track the order that neighbors are added.</span>
-
-<span class="sd">    &gt;&gt;&gt; class OrderedGraph(nx.Graph):</span>
-<span class="sd">    ...    node_dict_factory = OrderedDict</span>
-<span class="sd">    ...    adjlist_dict_factory = OrderedDict</span>
-<span class="sd">    &gt;&gt;&gt; G = OrderedGraph()</span>
-<span class="sd">    &gt;&gt;&gt; G.add_nodes_from( (2,1) )</span>
-<span class="sd">    &gt;&gt;&gt; G.nodes()</span>
-<span class="sd">    [2, 1]</span>
-<span class="sd">    &gt;&gt;&gt; G.add_edges_from( ((2,2), (2,1), (1,1)) )</span>
-<span class="sd">    &gt;&gt;&gt; G.edges()</span>
-<span class="sd">    [(2, 2), (2, 1), (1, 1)]</span>
-
-<span class="sd">    Create a low memory graph class that effectively disallows edge</span>
-<span class="sd">    attributes by using a single attribute dict for all edges.</span>
-<span class="sd">    This reduces the memory used, but you lose edge attributes.</span>
-
-<span class="sd">    &gt;&gt;&gt; class ThinGraph(nx.Graph):</span>
-<span class="sd">    ...     all_edge_dict = {&#39;weight&#39;: 1}</span>
-<span class="sd">    ...     def single_edge_dict(self):</span>
-<span class="sd">    ...         return self.all_edge_dict</span>
-<span class="sd">    ...     edge_attr_dict_factory = single_edge_dict</span>
-<span class="sd">    &gt;&gt;&gt; G = ThinGraph()</span>
-<span class="sd">    &gt;&gt;&gt; G.add_edge(2,1)</span>
-<span class="sd">    &gt;&gt;&gt; G.edges(data= True)</span>
-<span class="sd">    [(1, 2, {&#39;weight&#39;: 1})]</span>
-<span class="sd">    &gt;&gt;&gt; G.add_edge(2,2)</span>
-<span class="sd">    &gt;&gt;&gt; G[2][1] is G[2][2]</span>
-<span class="sd">    True</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="DiGraph.__init__"><a class="viewcode-back" href="../../../reference/generated/networkx.DiGraph.__init__.html#networkx.DiGraph.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialize a graph with edges, name, graph attributes.</span>
@@ -453,17 +376,13 @@
 <span class="sd">        {&#39;day&#39;: &#39;Friday&#39;}</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">node_dict_factory</span> <span class="o">=</span> <span class="n">ndf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node_dict_factory</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">edge_attr_dict_factory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge_attr_dict_factory</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">graph</span> <span class="o">=</span> <span class="p">{}</span> <span class="c"># dictionary for graph attributes</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">node</span> <span class="o">=</span> <span class="n">ndf</span><span class="p">()</span> <span class="c"># dictionary for node attributes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">node</span> <span class="o">=</span> <span class="p">{}</span> <span class="c"># dictionary for node attributes</span>
         <span class="c"># We store two adjacency lists:</span>
         <span class="c"># the  predecessors of node n are stored in the dict self.pred</span>
         <span class="c"># the successors of node n are stored in the dict self.succ=self.adj</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">adj</span> <span class="o">=</span> <span class="n">ndf</span><span class="p">()</span>  <span class="c"># empty adjacency dictionary</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pred</span> <span class="o">=</span> <span class="n">ndf</span><span class="p">()</span>  <span class="c"># predecessor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adj</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c"># empty adjacency dictionary</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pred</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c"># predecessor</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">succ</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adj</span>  <span class="c"># successor</span>
 
         <span class="c"># attempt to load graph with data</span>
@@ -526,8 +445,8 @@
                 <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span>\
                     <span class="s">&quot;The attr_dict argument must be a dictionary.&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">attr_dict</span>
         <span class="k">else</span><span class="p">:</span> <span class="c"># update attr even if node already exists</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">attr_dict</span><span class="p">)</span>
@@ -579,21 +498,18 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
-            <span class="c"># keep all this inside try/except because</span>
-            <span class="c"># CPython throws TypeError on n not in self.succ,</span>
-            <span class="c"># while pre-2.7.5 ironpython throws on self.succ[n] </span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
                 <span class="n">nn</span><span class="p">,</span><span class="n">ndict</span> <span class="o">=</span> <span class="n">n</span>
                 <span class="k">if</span> <span class="n">nn</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">nn</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">nn</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">nn</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">nn</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
                     <span class="n">newdict</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
                     <span class="n">newdict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">ndict</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">nn</span><span class="p">]</span> <span class="o">=</span> <span class="n">newdict</span>
@@ -745,15 +661,15 @@
                     <span class="s">&quot;The attr_dict argument must be a dictionary.&quot;</span><span class="p">)</span>
         <span class="c"># add nodes</span>
         <span class="k">if</span> <span class="n">u</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">=</span><span class="p">{}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">=</span><span class="p">{}</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">=</span><span class="p">{}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">=</span><span class="p">{}</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="c"># add the edge</span>
-        <span class="n">datadict</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">edge_attr_dict_factory</span><span class="p">())</span>
+        <span class="n">datadict</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">v</span><span class="p">,{})</span>
         <span class="n">datadict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">attr_dict</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span><span class="o">=</span><span class="n">datadict</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">u</span><span class="p">]</span><span class="o">=</span><span class="n">datadict</span>
@@ -786,7 +702,7 @@
 <span class="sd">        Adding the same edge twice has no effect but any edge data</span>
 <span class="sd">        will be updated when each duplicate edge is added.</span>
 
-<span class="sd">        Edge attributes specified in edges take precedence</span>
+<span class="sd">        Edge attributes specified in edges as a tuple take precedence</span>
 <span class="sd">        over attributes specified generally.</span>
 
 <span class="sd">        Examples</span>
@@ -823,14 +739,14 @@
                 <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span>\
                     <span class="s">&quot;Edge tuple </span><span class="si">%s</span><span class="s"> must be a 2-tuple or 3-tuple.&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">e</span><span class="p">,))</span>
             <span class="k">if</span> <span class="n">u</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
             <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-            <span class="n">datadict</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">edge_attr_dict_factory</span><span class="p">())</span>
+            <span class="n">datadict</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">v</span><span class="p">,{})</span>
             <span class="n">datadict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">attr_dict</span><span class="p">)</span>
             <span class="n">datadict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">dd</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">datadict</span>
@@ -952,7 +868,7 @@
     <span class="n">neighbors</span> <span class="o">=</span> <span class="n">successors</span>
     <span class="n">neighbors_iter</span> <span class="o">=</span> <span class="n">successors_iter</span>
 
-<div class="viewcode-block" id="DiGraph.edges_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.DiGraph.edges_iter.html#networkx.DiGraph.edges_iter">[docs]</a>    <span class="k">def</span> <span class="nf">edges_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="DiGraph.edges_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.DiGraph.edges_iter.html#networkx.DiGraph.edges_iter">[docs]</a>    <span class="k">def</span> <span class="nf">edges_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator over the edges.</span>
 
 <span class="sd">        Edges are returned as tuples with optional data</span>
@@ -963,13 +879,8 @@
 <span class="sd">        nbunch : iterable container, optional (default= all nodes)</span>
 <span class="sd">            A container of nodes.  The container will be iterated</span>
 <span class="sd">            through once.</span>
-<span class="sd">        data : string or bool, optional (default=False)</span>
-<span class="sd">            The edge attribute returned in 3-tuple (u,v,ddict[data]).</span>
-<span class="sd">            If True, return edge attribute dict in 3-tuple (u,v,ddict).</span>
-<span class="sd">            If False, return 2-tuple (u,v). </span>
-<span class="sd">        default : value, optional (default=None)</span>
-<span class="sd">            Value used for edges that dont have the requested attribute.</span>
-<span class="sd">            Only relevant if data is not True or False.</span>
+<span class="sd">        data : bool, optional (default=False)</span>
+<span class="sd">            If True, return edge attribute dict in 3-tuple (u,v,data).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -988,14 +899,11 @@
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
 <span class="sd">        &gt;&gt;&gt; G = nx.DiGraph()   # or MultiDiGraph, etc</span>
-<span class="sd">        &gt;&gt;&gt; G.add_path([0,1,2])</span>
-<span class="sd">        &gt;&gt;&gt; G.add_edge(2,3,weight=5)</span>
+<span class="sd">        &gt;&gt;&gt; G.add_path([0,1,2,3])</span>
 <span class="sd">        &gt;&gt;&gt; [e for e in G.edges_iter()]</span>
 <span class="sd">        [(0, 1), (1, 2), (2, 3)]</span>
 <span class="sd">        &gt;&gt;&gt; list(G.edges_iter(data=True)) # default data is {} (empty dict)</span>
-<span class="sd">        [(0, 1, {}), (1, 2, {}), (2, 3, {&#39;weight&#39;: 5})]</span>
-<span class="sd">        &gt;&gt;&gt; list(G.edges_iter(data=&#39;weight&#39;, default=1)) </span>
-<span class="sd">        [(0, 1, 1), (1, 2, 1), (2, 3, 5)]</span>
+<span class="sd">        [(0, 1, {}), (1, 2, {}), (2, 3, {})]</span>
 <span class="sd">        &gt;&gt;&gt; list(G.edges_iter([0,2]))</span>
 <span class="sd">        [(0, 1), (2, 3)]</span>
 <span class="sd">        &gt;&gt;&gt; list(G.edges_iter(0))</span>
@@ -1006,15 +914,10 @@
             <span class="n">nodes_nbrs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">nodes_nbrs</span><span class="o">=</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nbunch_iter</span><span class="p">(</span><span class="n">nbunch</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">nbr</span><span class="p">,</span><span class="n">ddict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                    <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">nbr</span><span class="p">,</span><span class="n">ddict</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">False</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">nbr</span><span class="p">,</span><span class="n">ddict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                    <span class="n">d</span><span class="o">=</span><span class="n">ddict</span><span class="p">[</span><span class="n">data</span><span class="p">]</span> <span class="k">if</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">ddict</span> <span class="k">else</span> <span class="n">default</span>
-                    <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">nbr</span><span class="p">,</span><span class="n">d</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">nbr</span><span class="p">,</span><span class="n">data</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">nbr</span><span class="p">,</span><span class="n">data</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">nbr</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="p">:</span>
@@ -1404,10 +1307,6 @@
 
 <span class="sd">        See the Python copy module for more information on shallow</span>
 <span class="sd">        and deep copies, http://docs.python.org/library/copy.html.</span>
-
-<span class="sd">        Warning: If you have subclassed DiGraph to use dict-like objects </span>
-<span class="sd">        in the data structure, those changes do not transfer to the Graph</span>
-<span class="sd">        created by this method.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">H</span><span class="o">=</span><span class="n">Graph</span><span class="p">()</span>
         <span class="n">H</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span>
@@ -1504,8 +1403,8 @@
         <span class="n">self_succ</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">succ</span>
         <span class="c"># add nodes</span>
         <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">H</span><span class="p">:</span>
-            <span class="n">H_succ</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="n">H</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
-            <span class="n">H_pred</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="n">H</span><span class="o">.</span><span class="n">adjlist_dict_factory</span><span class="p">()</span>
+            <span class="n">H_succ</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="p">{}</span>
+            <span class="n">H_pred</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="p">{}</span>
         <span class="c"># add edges</span>
         <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">H_succ</span><span class="p">:</span>
             <span class="n">Hnbrs</span><span class="o">=</span><span class="n">H_succ</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>
@@ -1526,8 +1425,8 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -1547,7 +1446,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

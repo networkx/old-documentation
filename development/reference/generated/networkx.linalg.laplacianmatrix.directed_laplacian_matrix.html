@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>directed_laplacian_matrix &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>directed_laplacian_matrix &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Linear algebra" href="../linalg.html"/>
         <link rel="next" title="laplacian_spectrum" href="networkx.linalg.spectrum.laplacian_spectrum.html"/>
         <link rel="prev" title="normalized_laplacian_matrix" href="networkx.linalg.laplacianmatrix.normalized_laplacian_matrix.html"/> 
@@ -191,71 +191,57 @@
 <dd><p>Return the directed Laplacian matrix of G.</p>
 <p>The graph directed Laplacian is the matrix</p>
 <div class="math">
-\[L = I - (\Phi^{1/2} P \Phi^{-1/2} + \Phi^{-1/2} P^T \Phi^{1/2} ) / 2\]</div>
-<p>where <span class="math">\(I\)</span> is the identity matrix, <span class="math">\(P\)</span> is the transition matrix of the
-graph, and <span class="math">\(\Phi\)</span> a matrix with the Perron vector of <span class="math">\(P\)</span> in the diagonal and
+<p><img src="../../_images/math/d8fd29b5a3d4b1bea5fd250c59e6a02580cf50c7.png" alt="L = I - (\Phi^{1/2} P \Phi^{-1/2} + \Phi^{-1/2} P^T \Phi^{1/2} ) / 2"/></p>
+</div><p>where <img class="math" src="../../_images/math/49c4156bfe77f9fb21eb7fa54bb0e2d39adc237e.png" alt="I" style="vertical-align: 0px"/> is the identity matrix, <img class="math" src="../../_images/math/8627aeea6ce03c1bef5f01757428c95e94e945a6.png" alt="P" style="vertical-align: 0px"/> is the transition matrix of the
+graph, and <img class="math" src="../../_images/math/7b5887391cc610275c7e7f4f64e4d77f9011c205.png" alt="\Phi" style="vertical-align: -1px"/> a matrix with the Perron vector of <img class="math" src="../../_images/math/8627aeea6ce03c1bef5f01757428c95e94e945a6.png" alt="P" style="vertical-align: 0px"/> in the diagonal and
 zeros elsewhere.</p>
-<p>Depending on the value of walk_type, <span class="math">\(P\)</span> can be the transition matrix
+<p>Depending on the value of walk_type, <img class="math" src="../../_images/math/8627aeea6ce03c1bef5f01757428c95e94e945a6.png" alt="P" style="vertical-align: 0px"/> can be the transition matrix
 induced by a random walk, a lazy random walk, or a random walk with
 teleportation (PageRank).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : DiGraph</p>
-<blockquote>
-<div><p>A NetworkX graph</p>
-</div></blockquote>
-<p><strong>nodelist</strong> : list, optional</p>
-<blockquote>
-<div><p>The rows and columns are ordered according to the nodes in nodelist.
-If nodelist is None, then the ordering is produced by G.nodes().</p>
-</div></blockquote>
-<p><strong>weight</strong> : string or None, optional (default=&#8217;weight&#8217;)</p>
-<blockquote>
-<div><p>The edge data key used to compute each value in the matrix.
-If None, then each edge has weight 1.</p>
-</div></blockquote>
-<p><strong>walk_type</strong> : string or None, optional (default=None)</p>
-<blockquote>
-<div><p>If None, <span class="math">\(P\)</span> is selected depending on the properties of the
-graph. Otherwise is one of &#8216;random&#8217;, &#8216;lazy&#8217;, or &#8216;pagerank&#8217;</p>
-</div></blockquote>
-<p><strong>alpha</strong> : real</p>
-<blockquote>
-<div><p>(1 - alpha) is the teleportation probability used with pagerank</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>DiGraph</em>) &#8211; A NetworkX graph</li>
+<li><strong>nodelist</strong> (<em>list, optional</em>) &#8211; The rows and columns are ordered according to the nodes in nodelist.
+If nodelist is None, then the ordering is produced by G.nodes().</li>
+<li><strong>weight</strong> (<em>string or None, optional (default=&#8217;weight&#8217;)</em>) &#8211; The edge data key used to compute each value in the matrix.
+If None, then each edge has weight 1.</li>
+<li><strong>walk_type</strong> (<em>string or None, optional (default=None)</em>) &#8211; If None, <img class="math" src="../../_images/math/8627aeea6ce03c1bef5f01757428c95e94e945a6.png" alt="P" style="vertical-align: 0px"/> is selected depending on the properties of the
+graph. Otherwise is one of &#8216;random&#8217;, &#8216;lazy&#8217;, or &#8216;pagerank&#8217;</li>
+<li><strong>alpha</strong> (<em>real</em>) &#8211; (1 - alpha) is the teleportation probability used with pagerank</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>L</strong> : NumPy array</p>
-<blockquote>
-<div><p>Normalized Laplacian of G.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>L</strong> &#8211;
+Normalized Laplacian of G.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
-<blockquote>
-<div><p>If NumPy cannot be imported</p>
-</div></blockquote>
-<p><strong>NetworkXNotImplemnted</strong></p>
-<blockquote class="last">
-<div><p>If G is not a DiGraph</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">NumPy array</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">NetworkXError</span></code> &#8211;
+If NumPy cannot be imported</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">NetworkXNotImplemnted</span></code> &#8211;
+If G is not a DiGraph</li>
+</ul>
 </td>
 </tr>
 </tbody>
 </table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.linalg.laplacianmatrix.laplacian_matrix.html#networkx.linalg.laplacianmatrix.laplacian_matrix" title="networkx.linalg.laplacianmatrix.laplacian_matrix"><code class="xref py py-obj docutils literal"><span class="pre">laplacian_matrix</span></code></a></p>
-</div>
 <p class="rubric">Notes</p>
 <p>Only implemented for DiGraphs</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="networkx.linalg.laplacianmatrix.laplacian_matrix.html#networkx.linalg.laplacianmatrix.laplacian_matrix" title="networkx.linalg.laplacianmatrix.laplacian_matrix"><code class="xref py py-func docutils literal"><span class="pre">laplacian_matrix()</span></code></a></p>
+</div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r411" rules="none">
+<table class="docutils footnote" frame="void" id="id1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R411]</a></td><td>Fan Chung (2005).
+<tr><td class="label">[1]</td><td>Fan Chung (2005).
 Laplacians and the Cheeger inequality for directed graphs.
 Annals of Combinatorics, 9(1), 2005</td></tr>
 </tbody>
@@ -282,8 +268,8 @@ Annals of Combinatorics, 9(1), 2005</td></tr>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -303,7 +289,7 @@ Annals of Combinatorics, 9(1), 2005</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

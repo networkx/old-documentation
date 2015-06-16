@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>adamic_adar_index &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>adamic_adar_index &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Link Prediction" href="../algorithms.link_prediction.html"/>
         <link rel="next" title="preferential_attachment" href="networkx.algorithms.link_prediction.preferential_attachment.html"/>
         <link rel="prev" title="jaccard_coefficient" href="networkx.algorithms.link_prediction.jaccard_coefficient.html"/> 
@@ -191,44 +191,32 @@
 <dt id="networkx.algorithms.link_prediction.adamic_adar_index">
 <code class="descname">adamic_adar_index</code><span class="sig-paren">(</span><em>G</em>, <em>ebunch=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/link_prediction.html#adamic_adar_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.link_prediction.adamic_adar_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the Adamic-Adar index of all node pairs in ebunch.</p>
-<p>Adamic-Adar index of <span class="math">\(u\)</span> and <span class="math">\(v\)</span> is defined as</p>
+<p>Adamic-Adar index of <img class="math" src="../../_images/math/8a766bbd11b0a08916009a3c0008470d402e9d2f.png" alt="u" style="vertical-align: 0px"/> and <img class="math" src="../../_images/math/53c4a26799ff6cdae6f13d6b1fcf961660d83169.png" alt="v" style="vertical-align: 0px"/> is defined as</p>
 <div class="math">
-\[\sum_{w \in \Gamma(u) \cap \Gamma(v)} \frac{1}{\log |\Gamma(w)|}\]</div>
-<p>where <span class="math">\(\Gamma(u)\)</span> denotes the set of neighbors of <span class="math">\(u\)</span>.</p>
+<p><img src="../../_images/math/3bce9517360daffe0cc3d7075ad8da28fcc34fb9.png" alt="\sum_{w \in \Gamma(u) \cap \Gamma(v)} \frac{1}{\log |\Gamma(w)|}"/></p>
+</div><p>where <img class="math" src="../../_images/math/c6653e280d48b6bd130667435da89c745d6fb8e1.png" alt="\Gamma(u)" style="vertical-align: -4px"/> denotes the set of neighbors of <img class="math" src="../../_images/math/8a766bbd11b0a08916009a3c0008470d402e9d2f.png" alt="u" style="vertical-align: 0px"/>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
-<blockquote>
-<div><p>NetworkX undirected graph.</p>
-</div></blockquote>
-<p><strong>ebunch</strong> : iterable of node pairs, optional (default = None)</p>
-<blockquote>
-<div><p>Adamic-Adar index will be computed for each pair of nodes given
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>graph</em>) &#8211; NetworkX undirected graph.</li>
+<li><strong>ebunch</strong> (<em>iterable of node pairs, optional (default = None)</em>) &#8211; Adamic-Adar index will be computed for each pair of nodes given
 in the iterable. The pairs must be given as 2-tuples (u, v)
 where u and v are nodes in the graph. If ebunch is None then all
 non-existent edges in the graph will be used.
-Default value: None.</p>
-</div></blockquote>
+Default value: None.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>piter</strong> : iterator</p>
-<blockquote class="last">
-<div><p>An iterator of 3-tuples in the form (u, v, p) where (u, v) is a
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>piter</strong> &#8211;
+An iterator of 3-tuples in the form (u, v, p) where (u, v) is a
 pair of nodes and p is their Adamic-Adar index.</p>
-</div></blockquote>
 </td>
 </tr>
-</tbody>
-</table>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r342" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R342]</a></td><td>D. Liben-Nowell, J. Kleinberg.
-The Link Prediction Problem for Social Networks (2004).
-<a class="reference external" href="http://www.cs.cornell.edu/home/kleinber/link-pred.pdf">http://www.cs.cornell.edu/home/kleinber/link-pred.pdf</a></td></tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">iterator</p>
+</td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -242,6 +230,15 @@ The Link Prediction Problem for Social Networks (2004).
 <span class="go">&#39;(2, 3) -&gt; 2.16404256&#39;</span>
 </pre></div>
 </div>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td>D. Liben-Nowell, J. Kleinberg.
+The Link Prediction Problem for Social Networks (2004).
+<a class="reference external" href="http://www.cs.cornell.edu/home/kleinber/link-pred.pdf">http://www.cs.cornell.edu/home/kleinber/link-pred.pdf</a></td></tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -264,8 +261,8 @@ The Link Prediction Problem for Social Networks (2004).
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -285,7 +282,7 @@ The Link Prediction Problem for Social Networks (2004).
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>blockmodel &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>blockmodel &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Blockmodeling" href="../algorithms.block.html"/>
         <link rel="next" title="Boundary" href="../algorithms.boundary.html"/>
         <link rel="prev" title="blockmodel" href=""/> 
@@ -206,34 +206,22 @@ with the edge data from the original graph.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
-<blockquote>
-<div><p>A networkx Graph or DiGraph</p>
-</div></blockquote>
-<p><strong>partitions</strong> : list of lists, or list of sets</p>
-<blockquote>
-<div><p>The partition of the nodes.  Must be non-overlapping.</p>
-</div></blockquote>
-<p><strong>multigraph</strong> : bool, optional</p>
-<blockquote>
-<div><p>If True return a MultiGraph with the edge data of the original
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>graph</em>) &#8211; A networkx Graph or DiGraph</li>
+<li><strong>partitions</strong> (<em>list of lists, or list of sets</em>) &#8211; The partition of the nodes.  Must be non-overlapping.</li>
+<li><strong>multigraph</strong> (<em>bool, optional</em>) &#8211; If True return a MultiGraph with the edge data of the original
 graph applied to each corresponding edge in the new graph.
 If False return a Graph with the sum of the edge weights, or a
-count of the edges if the original graph is unweighted.</p>
-</div></blockquote>
+count of the edges if the original graph is unweighted.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>blockmodel</strong> : a Networkx graph object</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>blockmodel</strong></p>
 </td>
 </tr>
-</tbody>
-</table>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r220" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R220]</a></td><td>Patrick Doreian, Vladimir Batagelj, and Anuska Ferligoj
-&#8220;Generalized Blockmodeling&#8221;,Cambridge University Press, 2004.</td></tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">a Networkx graph object</p>
+</td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -242,6 +230,14 @@ count of the edges if the original graph is unweighted.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">M</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">blockmodel</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">partition</span><span class="p">)</span>
 </pre></div>
 </div>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td>Patrick Doreian, Vladimir Batagelj, and Anuska Ferligoj
+&#8220;Generalized Blockmodeling&#8221;,Cambridge University Press, 2004.</td></tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -264,8 +260,8 @@ count of the edges if the original graph is unweighted.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -285,7 +281,7 @@ count of the edges if the original graph is unweighted.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

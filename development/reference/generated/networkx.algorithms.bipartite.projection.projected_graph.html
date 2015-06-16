@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>projected_graph &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>projected_graph &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,10 +30,9 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Bipartite" href="../algorithms.bipartite.html"/>
-        <link rel="next" title="weighted_projected_graph" href="networkx.algorithms.bipartite.projection.weighted_projected_graph.html"/>
-        <link rel="prev" title="from_biadjacency_matrix" href="networkx.algorithms.bipartite.matrix.from_biadjacency_matrix.html"/> 
+        <link rel="next" title="weighted_projected_graph" href="networkx.algorithms.bipartite.projection.weighted_projected_graph.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -191,42 +190,51 @@
 <dt id="networkx.algorithms.bipartite.projection.projected_graph">
 <code class="descname">projected_graph</code><span class="sig-paren">(</span><em>B</em>, <em>nodes</em>, <em>multigraph=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/bipartite/projection.html#projected_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.bipartite.projection.projected_graph" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the projection of B onto one of its node sets.</p>
-<p>Returns the graph G that is the projection of the bipartite graph B 
+<p>Returns the graph G that is the projection of the bipartite graph B
 onto the specified nodes. They retain their attributes and are connected
 in G if they have a common neighbor in B.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>B</strong> : NetworkX graph</p>
-<blockquote>
-<div><p>The input graph should be bipartite.</p>
-</div></blockquote>
-<p><strong>nodes</strong> : list or iterable</p>
-<blockquote>
-<div><p>Nodes to project onto (the &#8220;bottom&#8221; nodes).</p>
-</div></blockquote>
-<p><strong>multigraph: bool (default=False)</strong></p>
-<blockquote>
-<div><p>If True return a multigraph where the multiple edges represent multiple
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>B</strong> (<em>NetworkX graph</em>) &#8211; The input graph should be bipartite.</li>
+<li><strong>nodes</strong> (<em>list or iterable</em>) &#8211; Nodes to project onto (the &#8220;bottom&#8221; nodes).</li>
+<li><strong>multigraph</strong> (<em>bool (default=False)</em>) &#8211; If True return a multigraph where the multiple edges represent multiple
 shared neighbors.  They edge key in the multigraph is assigned to the
-label of the neighbor.</p>
-</div></blockquote>
+label of the neighbor.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>Graph</strong> : NetworkX graph or multigraph</p>
-<blockquote class="last">
-<div><p>A graph that is the projection onto the given nodes.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>Graph</strong> &#8211;
+A graph that is the projection onto the given nodes.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">NetworkX graph or multigraph</p>
 </td>
 </tr>
 </tbody>
 </table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">is_bipartite</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">is_bipartite_node_set</span></code>, <a class="reference external" href="http://docs.python.org/library/sets.html#module-sets" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">sets</span></code></a>, <a class="reference internal" href="networkx.algorithms.bipartite.projection.weighted_projected_graph.html#networkx.algorithms.bipartite.projection.weighted_projected_graph" title="networkx.algorithms.bipartite.projection.weighted_projected_graph"><code class="xref py py-obj docutils literal"><span class="pre">weighted_projected_graph</span></code></a>, <a class="reference internal" href="networkx.algorithms.bipartite.projection.collaboration_weighted_projected_graph.html#networkx.algorithms.bipartite.projection.collaboration_weighted_projected_graph" title="networkx.algorithms.bipartite.projection.collaboration_weighted_projected_graph"><code class="xref py py-obj docutils literal"><span class="pre">collaboration_weighted_projected_graph</span></code></a>, <a class="reference internal" href="networkx.algorithms.bipartite.projection.overlap_weighted_projected_graph.html#networkx.algorithms.bipartite.projection.overlap_weighted_projected_graph" title="networkx.algorithms.bipartite.projection.overlap_weighted_projected_graph"><code class="xref py py-obj docutils literal"><span class="pre">overlap_weighted_projected_graph</span></code></a>, <a class="reference internal" href="networkx.algorithms.bipartite.projection.generic_weighted_projected_graph.html#networkx.algorithms.bipartite.projection.generic_weighted_projected_graph" title="networkx.algorithms.bipartite.projection.generic_weighted_projected_graph"><code class="xref py py-obj docutils literal"><span class="pre">generic_weighted_projected_graph</span></code></a></p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.algorithms</span> <span class="kn">import</span> <span class="n">bipartite</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">bipartite</span><span class="o">.</span><span class="n">projected_graph</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+<span class="go">[1, 3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span>
+<span class="go">[(1, 3)]</span>
+</pre></div>
 </div>
-<p class="rubric">Notes</p>
+<p>If nodes <img class="math" src="../../_images/math/d54327e6a802a38385738bc7c146cadefa43d3f3.png" alt="a" style="vertical-align: 0px"/>, and <img class="math" src="../../_images/math/a617135e3ef187f34890ed0d4eeb13720c6617a2.png" alt="b" style="vertical-align: 0px"/> are connected through both nodes 1 and 2 then
+building a multigraph results in two edges in the projection onto
+[<img class="math" src="../../_images/math/d54327e6a802a38385738bc7c146cadefa43d3f3.png" alt="a" style="vertical-align: 0px"/>,`b`]:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">bipartite</span><span class="o">.</span><span class="n">projected_graph</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">],</span> <span class="n">multigraph</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">([</span><span class="nb">sorted</span><span class="p">((</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">()])</span>
+<span class="go">[[&#39;a&#39;, &#39;b&#39;], [&#39;a&#39;, &#39;b&#39;]]</span>
+</pre></div>
+</div>
 <p>No attempt is made to verify that the input graph B is bipartite.
 Returns a simple graph that is the projection of the bipartite graph B
 onto the set of nodes given in list nodes.  If multigraph=True then
@@ -235,25 +243,9 @@ a multigraph is returned with an edge for every shared neighbor.</p>
 be a directed graph with edges if there is a directed path between
 the nodes.</p>
 <p>The graph and node properties are (shallow) copied to the projected graph.</p>
-<p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.algorithms</span> <span class="kn">import</span> <span class="n">bipartite</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">bipartite</span><span class="o">.</span><span class="n">projected_graph</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span> 
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
-<span class="go">[1, 3]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span>
-<span class="go">[(1, 3)]</span>
-</pre></div>
-</div>
-<p>If nodes <span class="math">\(a\)</span>, and <span class="math">\(b\)</span> are connected through both nodes 1 and 2 then
-building a multigraph results in two edges in the projection onto 
-[<span class="math">\(a\)</span>,`b`]:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">bipartite</span><span class="o">.</span><span class="n">projected_graph</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">],</span> <span class="n">multigraph</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">([</span><span class="nb">sorted</span><span class="p">((</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">()])</span>
-<span class="go">[[&#39;a&#39;, &#39;b&#39;], [&#39;a&#39;, &#39;b&#39;]]</span>
-</pre></div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-func docutils literal"><span class="pre">is_bipartite()</span></code>, <code class="xref py py-func docutils literal"><span class="pre">is_bipartite_node_set()</span></code>, <code class="xref py py-func docutils literal"><span class="pre">sets()</span></code>, <a class="reference internal" href="networkx.algorithms.bipartite.projection.weighted_projected_graph.html#networkx.algorithms.bipartite.projection.weighted_projected_graph" title="networkx.algorithms.bipartite.projection.weighted_projected_graph"><code class="xref py py-func docutils literal"><span class="pre">weighted_projected_graph()</span></code></a>, <a class="reference internal" href="networkx.algorithms.bipartite.projection.collaboration_weighted_projected_graph.html#networkx.algorithms.bipartite.projection.collaboration_weighted_projected_graph" title="networkx.algorithms.bipartite.projection.collaboration_weighted_projected_graph"><code class="xref py py-func docutils literal"><span class="pre">collaboration_weighted_projected_graph()</span></code></a>, <a class="reference internal" href="networkx.algorithms.bipartite.projection.overlap_weighted_projected_graph.html#networkx.algorithms.bipartite.projection.overlap_weighted_projected_graph" title="networkx.algorithms.bipartite.projection.overlap_weighted_projected_graph"><code class="xref py py-func docutils literal"><span class="pre">overlap_weighted_projected_graph()</span></code></a>, <a class="reference internal" href="networkx.algorithms.bipartite.projection.generic_weighted_projected_graph.html#networkx.algorithms.bipartite.projection.generic_weighted_projected_graph" title="networkx.algorithms.bipartite.projection.generic_weighted_projected_graph"><code class="xref py py-func docutils literal"><span class="pre">generic_weighted_projected_graph()</span></code></a></p>
 </div>
 </dd></dl>
 
@@ -268,8 +260,6 @@ building a multigraph results in two edges in the projection onto
         <a href="networkx.algorithms.bipartite.projection.weighted_projected_graph.html" class="btn btn-neutral float-right" title="weighted_projected_graph"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="networkx.algorithms.bipartite.matrix.from_biadjacency_matrix.html" class="btn btn-neutral" title="from_biadjacency_matrix"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
     </div>
   
 
@@ -277,8 +267,8 @@ building a multigraph results in two edges in the projection onto
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -298,7 +288,7 @@ building a multigraph results in two edges in the projection onto
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

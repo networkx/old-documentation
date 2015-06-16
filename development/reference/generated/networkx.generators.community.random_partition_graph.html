@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>random_partition_graph &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>random_partition_graph &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
         <link rel="next" title="planted_partition_graph" href="networkx.generators.community.planted_partition_graph.html"/>
         <link rel="prev" title="relaxed_caveman_graph" href="networkx.generators.community.relaxed_caveman_graph.html"/> 
@@ -193,57 +193,30 @@
 s in sizes. Nodes in the same group are connected with probability
 p_in and nodes of different groups are connected with probability
 p_out.</p>
+<dl class="docutils">
+<dt>sizes <span class="classifier-delimiter">:</span> <span class="classifier">list of ints</span></dt>
+<dd>Sizes of groups</dd>
+<dt>p_in <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>probability of edges with in groups</dd>
+<dt>p_out <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>probability of edges between groups</dd>
+<dt>directed <span class="classifier-delimiter">:</span> <span class="classifier">boolean optional, default=False</span></dt>
+<dd>Whether to create a directed graph</dd>
+<dt>seed <span class="classifier-delimiter">:</span> <span class="classifier">int optional, default None</span></dt>
+<dd>A seed for the random number generator</dd>
+</dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>sizes</strong> : list of ints</p>
-<blockquote>
-<div><p>Sizes of groups</p>
-</div></blockquote>
-<p><strong>p_in</strong> : float</p>
-<blockquote>
-<div><p>probability of edges with in groups</p>
-</div></blockquote>
-<p><strong>p_out</strong> : float</p>
-<blockquote>
-<div><p>probability of edges between groups</p>
-</div></blockquote>
-<p><strong>directed</strong> : boolean optional, default=False</p>
-<blockquote>
-<div><p>Whether to create a directed graph</p>
-</div></blockquote>
-<p><strong>seed</strong> : int optional, default None</p>
-<blockquote>
-<div><p>A seed for the random number generator</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>G</strong> &#8211;
+random partition graph of size sum(gs)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX Graph or DiGraph</p>
-<blockquote>
-<div><p>random partition graph of size sum(gs)</p>
-</div></blockquote>
-</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">NetworkX Graph or DiGraph</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
-<blockquote class="last">
-<div><p>If p_in or p_out is not in [0,1]</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">NetworkXError</span></code> &#8211;
+If p_in or p_out is not in [0,1]</td>
 </tr>
-</tbody>
-</table>
-<p class="rubric">Notes</p>
-<p>This is a generalization of the planted-l-partition described in
-<a class="reference internal" href="#r364" id="id1">[R364]</a>.  It allows for the creation of groups of any size.</p>
-<p>The partition is store as a graph attribute &#8216;partition&#8217;.</p>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r364" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R364]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Santo Fortunato &#8216;Community Detection in Graphs&#8217; Physical Reports
-Volume 486, Issue 3-5 p. 75-174. <a class="reference external" href="http://arxiv.org/abs/0906.0612">http://arxiv.org/abs/0906.0612</a>
-<a class="reference external" href="http://arxiv.org/abs/0906.0612">http://arxiv.org/abs/0906.0612</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -255,6 +228,19 @@ Volume 486, Issue 3-5 p. 75-174. <a class="reference external" href="http://arxi
 <span class="go">3</span>
 </pre></div>
 </div>
+<p class="rubric">Notes</p>
+<p>This is a generalization of the planted-l-partition described in
+<a class="footnote-reference" href="#id2" id="id1">[1]</a>.  It allows for the creation of groups of any size.</p>
+<p>The partition is store as a graph attribute &#8216;partition&#8217;.</p>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Santo Fortunato &#8216;Community Detection in Graphs&#8217; Physical Reports
+Volume 486, Issue 3-5 p. 75-174. <a class="reference external" href="http://arxiv.org/abs/0906.0612">http://arxiv.org/abs/0906.0612</a>
+<a class="reference external" href="http://arxiv.org/abs/0906.0612">http://arxiv.org/abs/0906.0612</a></td></tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -277,8 +263,8 @@ Volume 486, Issue 3-5 p. 75-174. <a class="reference external" href="http://arxi
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -298,7 +284,7 @@ Volume 486, Issue 3-5 p. 75-174. <a class="reference external" href="http://arxi
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

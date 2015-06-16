@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>clique_removal &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>clique_removal &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Approximation" href="../algorithms.approximation.html"/>
         <link rel="next" title="average_clustering" href="networkx.algorithms.approximation.clustering_coefficient.average_clustering.html"/>
         <link rel="prev" title="max_clique" href="networkx.algorithms.approximation.clique.max_clique.html"/> 
@@ -191,32 +191,27 @@
 <dt id="networkx.algorithms.approximation.clique.clique_removal">
 <code class="descname">clique_removal</code><span class="sig-paren">(</span><em>G</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/approximation/clique.html#clique_removal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.approximation.clique.clique_removal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Repeatedly remove cliques from the graph.</p>
-<p>Results in a <span class="math">\(O(|V|/(\log |V|)^2)\)</span> approximation of maximum clique
+<p>Results in a <img class="math" src="../../_images/math/0a1412fae601e7ba9caf13c33316653ce9a6090f.png" alt="O(|V|/(\log |V|)^2)" style="vertical-align: -5px"/> approximation of maximum clique
 &amp; independent set. Returns the largest independent set found, along
 with found maximal cliques.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
-<blockquote>
-<div><p>Undirected graph</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>G</strong> (<em>NetworkX graph</em>) &#8211; Undirected graph</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>max_ind_cliques</strong> : (set, list) tuple</p>
-<blockquote class="last">
-<div><p>Maximal independent set and list of maximal cliques (sets) in the graph.</p>
-</div></blockquote>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>max_ind_cliques</strong> &#8211;
+Maximal independent set and list of maximal cliques (sets) in the graph.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">(set, list) tuple</td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r181" rules="none">
+<table class="docutils footnote" frame="void" id="id1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R181]</a></td><td>Boppana, R., &amp; Halldórsson, M. M. (1992).
+<tr><td class="label">[1]</td><td>Boppana, R., &amp; Halldórsson, M. M. (1992).
 Approximating maximum independent sets by excluding subgraphs.
 BIT Numerical Mathematics, 32(2), 180–196. Springer.</td></tr>
 </tbody>
@@ -243,8 +238,8 @@ BIT Numerical Mathematics, 32(2), 180–196. Springer.</td></tr>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -264,7 +259,7 @@ BIT Numerical Mathematics, 32(2), 180–196. Springer.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

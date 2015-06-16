@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GML &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>GML &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../index.html"/>
         <link rel="up" title="Reading and writing graphs" href="readwrite.html"/>
         <link rel="next" title="read_gml" href="generated/networkx.readwrite.gml.read_gml.html"/>
         <link rel="prev" title="relabel_gexf_graph" href="generated/networkx.readwrite.gexf.relabel_gexf_graph.html"/> 
@@ -195,6 +195,7 @@ GD&#8216;95; this proposal is the outcome of many discussions. GML is the
 standard file format in the Graphlet graph editor system. It has been
 overtaken and adapted by several other systems for drawing graphs.&#8221;</p>
 <p>See <a class="reference external" href="http://www.infosun.fim.uni-passau.de/Graphlet/GML/gml-tr.html">http://www.infosun.fim.uni-passau.de/Graphlet/GML/gml-tr.html</a></p>
+<p>Requires pyparsing: <a class="reference external" href="http://pyparsing.wikispaces.com/">http://pyparsing.wikispaces.com/</a></p>
 <div class="section" id="format">
 <h2>Format<a class="headerlink" href="#format" title="Permalink to this headline">¶</a></h2>
 <p>See <a class="reference external" href="http://www.infosun.fim.uni-passau.de/Graphlet/GML/gml-tr.html">http://www.infosun.fim.uni-passau.de/Graphlet/GML/gml-tr.html</a>
@@ -208,23 +209,23 @@ for format specification.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.readwrite.gml.read_gml.html#networkx.readwrite.gml.read_gml" title="networkx.readwrite.gml.read_gml"><code class="xref py py-obj docutils literal"><span class="pre">read_gml</span></code></a>(path[,&nbsp;label,&nbsp;destringizer])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.readwrite.gml.read_gml.html#networkx.readwrite.gml.read_gml" title="networkx.readwrite.gml.read_gml"><code class="xref py py-obj docutils literal"><span class="pre">read_gml</span></code></a>(path[,&nbsp;relabel])</td>
 <td>Read graph in GML format from path.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.readwrite.gml.write_gml.html#networkx.readwrite.gml.write_gml" title="networkx.readwrite.gml.write_gml"><code class="xref py py-obj docutils literal"><span class="pre">write_gml</span></code></a>(G,&nbsp;path[,&nbsp;stringizer])</td>
-<td>Write a graph <code class="docutils literal"><span class="pre">G</span></code> in GML format to the file or file handle <code class="docutils literal"><span class="pre">path</span></code>.</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.readwrite.gml.write_gml.html#networkx.readwrite.gml.write_gml" title="networkx.readwrite.gml.write_gml"><code class="xref py py-obj docutils literal"><span class="pre">write_gml</span></code></a>(G,&nbsp;path)</td>
+<td>Write the graph G in GML format to the file or file handle path.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.readwrite.gml.parse_gml.html#networkx.readwrite.gml.parse_gml" title="networkx.readwrite.gml.parse_gml"><code class="xref py py-obj docutils literal"><span class="pre">parse_gml</span></code></a>(lines[,&nbsp;label,&nbsp;destringizer])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.readwrite.gml.parse_gml.html#networkx.readwrite.gml.parse_gml" title="networkx.readwrite.gml.parse_gml"><code class="xref py py-obj docutils literal"><span class="pre">parse_gml</span></code></a>(lines[,&nbsp;relabel])</td>
 <td>Parse GML graph from a string or iterable.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.readwrite.gml.generate_gml.html#networkx.readwrite.gml.generate_gml" title="networkx.readwrite.gml.generate_gml"><code class="xref py py-obj docutils literal"><span class="pre">generate_gml</span></code></a>(G[,&nbsp;stringizer])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.readwrite.gml.generate_gml.html#networkx.readwrite.gml.generate_gml" title="networkx.readwrite.gml.generate_gml"><code class="xref py py-obj docutils literal"><span class="pre">generate_gml</span></code></a>(G)</td>
 <td>Generate a single entry of the graph G in GML format.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.readwrite.gml.literal_destringizer.html#networkx.readwrite.gml.literal_destringizer" title="networkx.readwrite.gml.literal_destringizer"><code class="xref py py-obj docutils literal"><span class="pre">literal_destringizer</span></code></a>(rep)</td>
-<td>Convert a Python literal to the value it represents.</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">literal_destringizer</span></code></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.readwrite.gml.literal_stringizer.html#networkx.readwrite.gml.literal_stringizer" title="networkx.readwrite.gml.literal_stringizer"><code class="xref py py-obj docutils literal"><span class="pre">literal_stringizer</span></code></a>(value)</td>
-<td>Convert a value to a Python literal in GML representation.</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">literal_stringizer</span></code></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -248,8 +249,8 @@ for format specification.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -269,7 +270,7 @@ for format specification.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

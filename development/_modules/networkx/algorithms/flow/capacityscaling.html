@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.flow.capacityscaling &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>networkx.algorithms.flow.capacityscaling &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../../../index.html"/>
         <link rel="up" title="Module code" href="../../../index.html"/> 
 
   
@@ -220,7 +220,7 @@
     <span class="k">if</span> <span class="n">nx</span><span class="o">.</span><span class="n">negative_edge_cycle</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
         <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXUnbounded</span><span class="p">(</span>
             <span class="s">&#39;Negative cost cycle of infinite capacity found. &#39;</span>
-            <span class="s">&#39;Min cost flow may be unbounded below.&#39;</span><span class="p">)</span>
+            <span class="s">&#39;Min cost flow unbounded below.&#39;</span><span class="p">)</span>
 
 
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;undirected&#39;</span><span class="p">)</span>
@@ -240,7 +240,7 @@
         <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">capacity</span><span class="p">,</span> <span class="n">inf</span><span class="p">)</span> <span class="o">==</span> <span class="n">inf</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXUnbounded</span><span class="p">(</span>
                 <span class="s">&#39;Negative cost cycle of infinite capacity found. &#39;</span>
-                <span class="s">&#39;Min cost flow may be unbounded below.&#39;</span><span class="p">)</span>
+                <span class="s">&#39;Min cost flow bounded below.&#39;</span><span class="p">)</span>
 
     <span class="c"># Extract edges with positive capacities. Self loops excluded.</span>
     <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
@@ -373,7 +373,7 @@
 <span class="sd">    ------</span>
 <span class="sd">    NetworkXError</span>
 <span class="sd">        This exception is raised if the input graph is not directed,</span>
-<span class="sd">        not connected.</span>
+<span class="sd">        not connected or is a multigraph.</span>
 
 <span class="sd">    NetworkXUnfeasible</span>
 <span class="sd">        This exception is raised in the following situations:</span>
@@ -524,31 +524,27 @@
                     <span class="n">d_v</span> <span class="o">=</span> <span class="n">d_u</span> <span class="o">+</span> <span class="n">wmin</span> <span class="o">-</span> <span class="n">p_u</span> <span class="o">+</span> <span class="n">R_node</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="s">&#39;potential&#39;</span><span class="p">]</span>
                     <span class="k">if</span> <span class="n">h_insert</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">d_v</span><span class="p">):</span>
                         <span class="n">pred</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">kmin</span><span class="p">,</span> <span class="n">emin</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">t</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-                <span class="c"># Augment Δ units of flow from s to t.</span>
-                <span class="k">while</span> <span class="n">u</span> <span class="o">!=</span> <span class="n">s</span><span class="p">:</span>
-                    <span class="n">v</span> <span class="o">=</span> <span class="n">u</span>
-                    <span class="n">u</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="n">pred</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
-                    <span class="n">e</span><span class="p">[</span><span class="s">&#39;flow&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">delta</span>
-                    <span class="n">R_succ</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">u</span><span class="p">][(</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="ow">not</span> <span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">])][</span><span class="s">&#39;flow&#39;</span><span class="p">]</span> <span class="o">-=</span> <span class="n">delta</span>
-                <span class="c"># Account node excess and deficit.</span>
-                <span class="n">R_node</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s">&#39;excess&#39;</span><span class="p">]</span> <span class="o">-=</span> <span class="n">delta</span>
-                <span class="n">R_node</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="s">&#39;excess&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">delta</span>
-                <span class="k">if</span> <span class="n">R_node</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s">&#39;excess&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">delta</span><span class="p">:</span>
-                    <span class="n">S_remove</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">R_node</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="s">&#39;excess&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="o">-</span><span class="n">delta</span><span class="p">:</span>
-                    <span class="n">T_remove</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-                <span class="c"># Update node potentials.</span>
-                <span class="n">d_t</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
-                <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">d_u</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                    <span class="n">R_node</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="s">&#39;potential&#39;</span><span class="p">]</span> <span class="o">-=</span> <span class="n">d_u</span> <span class="o">-</span> <span class="n">d_t</span>
-            <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">t</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
                 <span class="c"># Path not found.</span>
+                <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXUnfeasible</span><span class="p">(</span><span class="s">&#39;No flow satisfying all demands.&#39;</span><span class="p">)</span>
+            <span class="c"># Augment Δ units of flow from s to t.</span>
+            <span class="k">while</span> <span class="n">u</span> <span class="o">!=</span> <span class="n">s</span><span class="p">:</span>
+                <span class="n">v</span> <span class="o">=</span> <span class="n">u</span>
+                <span class="n">u</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="n">pred</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
+                <span class="n">e</span><span class="p">[</span><span class="s">&#39;flow&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">delta</span>
+                <span class="n">R_succ</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">u</span><span class="p">][(</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="ow">not</span> <span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">])][</span><span class="s">&#39;flow&#39;</span><span class="p">]</span> <span class="o">-=</span> <span class="n">delta</span>
+            <span class="c"># Account node excess and deficit.</span>
+            <span class="n">R_node</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s">&#39;excess&#39;</span><span class="p">]</span> <span class="o">-=</span> <span class="n">delta</span>
+            <span class="n">R_node</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="s">&#39;excess&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">delta</span>
+            <span class="k">if</span> <span class="n">R_node</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="s">&#39;excess&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">delta</span><span class="p">:</span>
                 <span class="n">S_remove</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">R_node</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="s">&#39;excess&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="o">-</span><span class="n">delta</span><span class="p">:</span>
+                <span class="n">T_remove</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+            <span class="c"># Update node potentials.</span>
+            <span class="n">d_t</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">d_u</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">R_node</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="s">&#39;potential&#39;</span><span class="p">]</span> <span class="o">-=</span> <span class="n">d_u</span> <span class="o">-</span> <span class="n">d_t</span>
         <span class="n">delta</span> <span class="o">//=</span> <span class="mi">2</span>
-
-    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="s">&#39;excess&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">R</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXUnfeasible</span><span class="p">(</span><span class="s">&#39;No flow satisfying all demands.&#39;</span><span class="p">)</span>
 
     <span class="c"># Calculate the flow cost.</span>
     <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">R</span><span class="p">:</span>
@@ -569,8 +565,8 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -590,7 +586,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

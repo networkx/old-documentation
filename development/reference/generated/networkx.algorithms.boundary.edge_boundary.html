@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>edge_boundary &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>edge_boundary &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Boundary" href="../algorithms.boundary.html"/>
         <link rel="next" title="node_boundary" href="networkx.algorithms.boundary.node_boundary.html"/>
         <link rel="prev" title="node_boundary" href="networkx.algorithms.boundary.node_boundary.html"/> 
@@ -193,38 +193,33 @@
 <dd><p>Return the edge boundary.</p>
 <p>Edge boundaries are edges that have only one end
 in the given set of nodes.</p>
+<dl class="docutils">
+<dt>G <span class="classifier-delimiter">:</span> <span class="classifier">graph</span></dt>
+<dd>A networkx graph</dd>
+<dt>nbunch1 <span class="classifier-delimiter">:</span> <span class="classifier">list, container</span></dt>
+<dd>Interior node set</dd>
+<dt>nbunch2 <span class="classifier-delimiter">:</span> <span class="classifier">list, container</span></dt>
+<dd>Exterior node set.  If None then it is set to all of the
+nodes in G not in nbunch1.</dd>
+</dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
-<blockquote>
-<div><p>A networkx graph</p>
-</div></blockquote>
-<p><strong>nbunch1</strong> : list, container</p>
-<blockquote>
-<div><p>Interior node set</p>
-</div></blockquote>
-<p><strong>nbunch2</strong> : list, container</p>
-<blockquote>
-<div><p>Exterior node set.  If None then it is set to all of the
-nodes in G not in nbunch1.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>elist</strong> : list</p>
-<blockquote class="last">
-<div><p>List of edges</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li><strong>elist</strong> (<em>list</em>) &#8211;
+List of edges</li>
+<li><em>Notes</em></li>
+<li><em>&#8212;&#8212;</em></li>
+<li><em>Nodes in nbunch1 and nbunch2 that are not in G are ignored.</em></li>
+<li><em>nbunch1 and nbunch2 are usually meant to be disjoint,</em></li>
+<li><em>but in the interest of speed and generality, that is</em></li>
+<li><em>not required here.</em></li>
+</ul>
 </td>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Notes</p>
-<p>Nodes in nbunch1 and nbunch2 that are not in G are ignored.</p>
-<p>nbunch1 and nbunch2 are usually meant to be disjoint, 
-but in the interest of speed and generality, that is 
-not required here.</p>
 </dd></dl>
 
 </div>
@@ -247,8 +242,8 @@ not required here.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -268,7 +263,7 @@ not required here.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

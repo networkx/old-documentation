@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>eulerian_circuit &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>eulerian_circuit &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Eulerian" href="../algorithms.euler.html"/>
         <link rel="next" title="Flows" href="../algorithms.flow.html"/>
         <link rel="prev" title="is_eulerian" href="networkx.algorithms.euler.is_eulerian.html"/> 
@@ -197,50 +197,45 @@ and finishes at the starting node.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX Graph or DiGraph</p>
-<blockquote>
-<div><p>A directed or undirected graph</p>
-</div></blockquote>
-<p><strong>source</strong> : node, optional</p>
-<blockquote>
-<div><p>Starting node for circuit.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>NetworkX Graph or DiGraph</em>) &#8211; A directed or undirected graph</li>
+<li><strong>source</strong> (<em>node, optional</em>) &#8211; Starting node for circuit.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>edges</strong> : generator</p>
-<blockquote>
-<div><p>A generator that produces edges in the Eulerian circuit.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>edges</strong> &#8211;
+A generator that produces edges in the Eulerian circuit.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
-<blockquote class="last">
-<div><p>If the graph is not Eulerian.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">generator</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">NetworkXError</span></code> &#8211;
+If the graph is not Eulerian.</p>
 </td>
 </tr>
 </tbody>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.euler.is_eulerian.html#networkx.algorithms.euler.is_eulerian" title="networkx.algorithms.euler.is_eulerian"><code class="xref py py-obj docutils literal"><span class="pre">is_eulerian</span></code></a></p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.euler.is_eulerian.html#networkx.algorithms.euler.is_eulerian" title="networkx.algorithms.euler.is_eulerian"><code class="xref py py-func docutils literal"><span class="pre">is_eulerian()</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>Linear time algorithm, adapted from <a class="reference internal" href="#r316" id="id1">[R316]</a>.
-General information about Euler tours <a class="reference internal" href="#r317" id="id2">[R317]</a>.</p>
+<p>Linear time algorithm, adapted from <a class="footnote-reference" href="#id3" id="id1">[1]</a>.
+General information about Euler tours <a class="footnote-reference" href="#id4" id="id2">[2]</a>.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r316" rules="none">
+<table class="docutils footnote" frame="void" id="id3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R316]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> J. Edmonds, E. L. Johnson.
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>J. Edmonds, E. L. Johnson.
 Matching, Euler tours and the Chinese postman.
 Mathematical programming, Volume 5, Issue 1 (1973), 111-114.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r317" rules="none">
+<table class="docutils footnote" frame="void" id="id4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R317]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/Eulerian_path">http://en.wikipedia.org/wiki/Eulerian_path</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Eulerian_path">http://en.wikipedia.org/wiki/Eulerian_path</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -275,8 +270,8 @@ Mathematical programming, Volume 5, Issue 1 (1973), 111-114.</td></tr>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -296,7 +291,7 @@ Mathematical programming, Volume 5, Issue 1 (1973), 111-114.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

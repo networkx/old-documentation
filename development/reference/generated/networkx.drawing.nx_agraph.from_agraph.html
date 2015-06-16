@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>from_agraph &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>from_agraph &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Drawing" href="../drawing.html"/>
         <link rel="next" title="to_agraph" href="networkx.drawing.nx_agraph.to_agraph.html"/>
         <link rel="prev" title="draw_graphviz" href="networkx.drawing.nx_pylab.draw_graphviz.html"/> 
@@ -193,18 +193,21 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>A</strong> : PyGraphviz AGraph</p>
-<blockquote>
-<div><p>A graph created with PyGraphviz</p>
-</div></blockquote>
-<p><strong>create_using</strong> : NetworkX graph class instance</p>
-<blockquote class="last">
-<div><p>The output is created using the given graph class instance</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>A</strong> (<em>PyGraphviz AGraph</em>) &#8211; A graph created with PyGraphviz</li>
+<li><strong>create_using</strong> (<em>NetworkX graph class instance</em>) &#8211; The output is created using the given graph class instance</li>
+</ul>
 </td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">K5</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">complete_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">to_agraph</span><span class="p">(</span><span class="n">K5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">from_agraph</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">from_agraph</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
 <p class="rubric">Notes</p>
 <p>The Graph G will have a dictionary G.graph_attr containing
 the default graphviz attributes for graphs, nodes and edges.</p>
@@ -213,13 +216,6 @@ which is keyed by node.</p>
 <p>Edge attributes will be returned as edge data in G.  With
 edge_attr=False the edge data will be the Graphviz edge weight
 attribute or the value 1 if no edge weight attribute is found.</p>
-<p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">K5</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">complete_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">to_agraph</span><span class="p">(</span><span class="n">K5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">from_agraph</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">from_agraph</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-</pre></div>
-</div>
 </dd></dl>
 
 </div>
@@ -242,8 +238,8 @@ attribute or the value 1 if no edge weight attribute is found.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -263,7 +259,7 @@ attribute or the value 1 if no edge weight attribute is found.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

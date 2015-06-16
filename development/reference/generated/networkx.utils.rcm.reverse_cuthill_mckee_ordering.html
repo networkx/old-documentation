@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>reverse_cuthill_mckee_ordering &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>reverse_cuthill_mckee_ordering &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Utilities" href="../utils.html"/>
         <link rel="next" title="reversed" href="networkx.utils.contextmanagers.reversed.html"/>
         <link rel="prev" title="cuthill_mckee_ordering" href="networkx.utils.rcm.cuthill_mckee_ordering.html"/> 
@@ -191,52 +191,26 @@
 <dd><p>Generate an ordering (permutation) of the graph nodes to make
 a sparse matrix.</p>
 <p>Uses the reverse Cuthill-McKee heuristic (based on breadth-first search)
-<a class="reference internal" href="#r426" id="id1">[R426]</a>.</p>
+<a class="footnote-reference" href="#id3" id="id1">[1]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
-<blockquote>
-<div><p>A NetworkX graph</p>
-</div></blockquote>
-<p><strong>heuristic</strong> : function, optional</p>
-<blockquote>
-<div><p>Function to choose starting node for RCM algorithm.  If None
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>graph</em>) &#8211; A NetworkX graph</li>
+<li><strong>heuristic</strong> (<em>function, optional</em>) &#8211; Function to choose starting node for RCM algorithm.  If None
 a node from a psuedo-peripheral pair is used.  A user-defined function
-can be supplied that takes a graph object and returns a single node.</p>
-</div></blockquote>
+can be supplied that takes a graph object and returns a single node.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>nodes</strong> : generator</p>
-<blockquote class="last">
-<div><p>Generator of nodes in reverse Cuthill-McKee ordering.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>nodes</strong> &#8211;
+Generator of nodes in reverse Cuthill-McKee ordering.</p>
 </td>
 </tr>
-</tbody>
-</table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.utils.rcm.cuthill_mckee_ordering.html#networkx.utils.rcm.cuthill_mckee_ordering" title="networkx.utils.rcm.cuthill_mckee_ordering"><code class="xref py py-obj docutils literal"><span class="pre">cuthill_mckee_ordering</span></code></a></p>
-</div>
-<p class="rubric">Notes</p>
-<p>The optimal solution the the bandwidth reduction is NP-complete <a class="reference internal" href="#r427" id="id2">[R427]</a>.</p>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r426" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R426]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> E. Cuthill and J. McKee.
-Reducing the bandwidth of sparse symmetric matrices,
-In Proc. 24th Nat. Conf. ACM, pages 157-72, 1969.
-<a class="reference external" href="http://doi.acm.org/10.1145/800195.805928">http://doi.acm.org/10.1145/800195.805928</a></td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="r427" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R427]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> Steven S. Skiena. 1997. The Algorithm Design Manual.
-Springer-Verlag New York, Inc., New York, NY, USA.</td></tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">generator</p>
+</td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -248,10 +222,34 @@ Springer-Verlag New York, Inc., New York, NY, USA.</td></tr>
 </div>
 <p>Smallest degree node as heuristic function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">smallest_degree</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">node</span><span class="p">,</span> <span class="n">deg</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">node</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rcm</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">reverse_cuthill_mckee_ordering</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">heuristic</span><span class="o">=</span><span class="n">smallest_degree</span><span class="p">))</span>
 </pre></div>
 </div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="networkx.utils.rcm.cuthill_mckee_ordering.html#networkx.utils.rcm.cuthill_mckee_ordering" title="networkx.utils.rcm.cuthill_mckee_ordering"><code class="xref py py-func docutils literal"><span class="pre">cuthill_mckee_ordering()</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>The optimal solution the the bandwidth reduction is NP-complete <a class="footnote-reference" href="#id4" id="id2">[2]</a>.</p>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>E. Cuthill and J. McKee.
+Reducing the bandwidth of sparse symmetric matrices,
+In Proc. 24th Nat. Conf. ACM, pages 157-72, 1969.
+<a class="reference external" href="http://doi.acm.org/10.1145/800195.805928">http://doi.acm.org/10.1145/800195.805928</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Steven S. Skiena. 1997. The Algorithm Design Manual.
+Springer-Verlag New York, Inc., New York, NY, USA.</td></tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -274,8 +272,8 @@ Springer-Verlag New York, Inc., New York, NY, USA.</td></tr>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -295,7 +293,7 @@ Springer-Verlag New York, Inc., New York, NY, USA.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

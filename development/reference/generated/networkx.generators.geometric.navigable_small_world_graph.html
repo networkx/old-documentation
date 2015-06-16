@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>navigable_small_world_graph &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>navigable_small_world_graph &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
         <link rel="next" title="line_graph" href="networkx.generators.line.line_graph.html"/>
         <link rel="prev" title="waxman_graph" href="networkx.generators.geometric.waxman_graph.html"/> 
@@ -189,61 +189,40 @@
 <dt id="networkx.generators.geometric.navigable_small_world_graph">
 <code class="descname">navigable_small_world_graph</code><span class="sig-paren">(</span><em>n</em>, <em>p=1</em>, <em>q=1</em>, <em>r=2</em>, <em>dim=2</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/generators/geometric.html#navigable_small_world_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.geometric.navigable_small_world_graph" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a navigable small-world graph.</p>
-<p>A navigable small-world graph is a directed grid with additional long-range
-connections that are chosen randomly.</p>
-<blockquote>
-<div><p>[...] we begin with a set of nodes [...] that are identified with the set
-of lattice points in an <span class="math">\(n        imes n\)</span> square, <span class="math">\(\{(i, j): i \in \{1, 2,
-\ldots, n\}, j \in \{1, 2, \ldots, n\}\}\)</span>, and we define the <em>lattice
-distance</em> between two nodes <span class="math">\((i, j)\)</span> and <span class="math">\((k, l)\)</span> to be the number of
-&#8220;lattice steps&#8221; separating them: <span class="math">\(d((i, j), (k, l)) = |k - i| + |l - j|\)</span>.
-For a universal constant <span class="math">\(p \geq 1\)</span>, the node <span class="math">\(u\)</span> has a directed edge to
-every other node within lattice distance <span class="math">\(p\)</span> &#8212; these are its <em>local
-contacts</em>. For universal constants <span class="math">\(q \ge 0\)</span> and <span class="math">\(r \ge 0\)</span> we also
-construct directed edges from <span class="math">\(u\)</span> to <span class="math">\(q\)</span> other nodes (the <em>long-range
-contacts</em>) using independent random trials; the <span class="math">\(i`th directed edge from
-`u\)</span> has endpoint <span class="math">\(v\)</span> with probability proportional to <span class="math">\([d(u,v)]^{-r}\)</span>.</p>
-<p class="attribution">&mdash;<a class="reference internal" href="#r381" id="id1">[R381]</a></p>
-</div></blockquote>
+<p>A navigable small-world graph is a directed grid with additional
+long-range connections that are chosen randomly.  From <a class="footnote-reference" href="#id2" id="id1">[1]</a>:</p>
+<p>Begin with a set of nodes that are identified with the set of lattice
+points in an <img class="math" src="../../_images/math/64991e6d12f23171c98d32317e0b38d26277b52b.png" alt="n \times n" style="vertical-align: 0px"/> square, <img class="math" src="../../_images/math/482be569a7bd4a4f63112fbe3f0368ffc7cdc084.png" alt="{(i,j): i\in {1,2,\ldots,n}, j\in {1,2,\ldots,n}}" style="vertical-align: -4px"/>
+and define the lattice distance between two nodes <img class="math" src="../../_images/math/447c01ab2932a84eca360d51f9a0469c8da3aba0.png" alt="(i,j)" style="vertical-align: -4px"/> and <img class="math" src="../../_images/math/2280c8275cf2baffafe6ae9d3965fb59c4af97a9.png" alt="(k,l)" style="vertical-align: -4px"/>
+to be the number of &#8220;lattice steps&#8221; separating them: <img class="math" src="../../_images/math/95396e518d948af598b333895ea6b19f536f0424.png" alt="d((i,j),(k,l)) = |k-i|+|l-j|" style="vertical-align: -5px"/>.</p>
+<p>For a universal constant <img class="math" src="../../_images/math/c5b47cd114d1cd218d587260b667ed59b7ace4a0.png" alt="p" style="vertical-align: -4px"/>, the node <img class="math" src="../../_images/math/8a766bbd11b0a08916009a3c0008470d402e9d2f.png" alt="u" style="vertical-align: 0px"/> has a directed edge to every other
+node within lattice distance <img class="math" src="../../_images/math/c5b47cd114d1cd218d587260b667ed59b7ace4a0.png" alt="p" style="vertical-align: -4px"/> (local contacts) .</p>
+<p>For universal constants <img class="math" src="../../_images/math/057de28301239e06c6665a3ae8b2fccbccdf5357.png" alt="q\ge 0" style="vertical-align: -4px"/> and <img class="math" src="../../_images/math/4715a7f2ff3951e0db8cd90ed88837a31167e2dd.png" alt="r\ge 0" style="vertical-align: -3px"/> construct directed edges from <img class="math" src="../../_images/math/8a766bbd11b0a08916009a3c0008470d402e9d2f.png" alt="u" style="vertical-align: 0px"/> to <img class="math" src="../../_images/math/5938daf417e7f73374014dc0cbcda32f65e86917.png" alt="q" style="vertical-align: -4px"/>
+other nodes (long-range contacts) using independent random trials;  the i&#8217;th
+directed edge from <img class="math" src="../../_images/math/8a766bbd11b0a08916009a3c0008470d402e9d2f.png" alt="u" style="vertical-align: 0px"/> has endpoint <img class="math" src="../../_images/math/53c4a26799ff6cdae6f13d6b1fcf961660d83169.png" alt="v" style="vertical-align: 0px"/> with probability proportional to <img class="math" src="../../_images/math/4ba19429d0d8fa84532296fe4840773afbfde0d0.png" alt="d(u,v)^{-r}" style="vertical-align: -4px"/>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>n</strong> : int</p>
-<blockquote>
-<div><p>The number of nodes.</p>
-</div></blockquote>
-<p><strong>p</strong> : int</p>
-<blockquote>
-<div><p>The diameter of short range connections. Each node is joined with every
-other node within this lattice distance.</p>
-</div></blockquote>
-<p><strong>q</strong> : int</p>
-<blockquote>
-<div><p>The number of long-range connections for each node.</p>
-</div></blockquote>
-<p><strong>r</strong> : float</p>
-<blockquote>
-<div><p>Exponent for decaying probability of connections.  The probability of
-connecting to a node at lattice distance <span class="math">\(d\)</span> is <span class="math">\(1/d^r\)</span>.</p>
-</div></blockquote>
-<p><strong>dim</strong> : int</p>
-<blockquote>
-<div><p>Dimension of grid</p>
-</div></blockquote>
-<p><strong>seed</strong> : int, optional</p>
-<blockquote class="last">
-<div><p>Seed for random number generator (default=None).</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>n</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The number of nodes.</li>
+<li><strong>p</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The diameter of short range connections. Each node is connected
+to every other node within lattice distance p.</li>
+<li><strong>q</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; The number of long-range connections for each node.</li>
+<li><strong>r</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Exponent for decaying probability of connections.  The probability of
+connecting to a node at lattice distance d is 1/d^r.</li>
+<li><strong>dim</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Dimension of grid</li>
+<li><strong>seed</strong> (<em>int, optional</em>) &#8211; Seed for random number generator (default=None).</li>
+</ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r381" rules="none">
+<table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R381]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> J. Kleinberg. The small-world phenomenon: An algorithmic
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>J. Kleinberg. The small-world phenomenon: An algorithmic
 perspective. Proc. 32nd ACM Symposium on Theory of Computing, 2000.</td></tr>
 </tbody>
 </table>
@@ -269,8 +248,8 @@ perspective. Proc. 32nd ACM Symposium on Theory of Computing, 2000.</td></tr>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -290,7 +269,7 @@ perspective. Proc. 32nd ACM Symposium on Theory of Computing, 2000.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

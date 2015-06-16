@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>spectral_ordering &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>spectral_ordering &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Linear algebra" href="../linalg.html"/>
         <link rel="next" title="attr_matrix" href="networkx.linalg.attrmatrix.attr_matrix.html"/>
         <link rel="prev" title="fiedler_vector" href="networkx.linalg.algebraicconnectivity.fiedler_vector.html"/> 
@@ -196,27 +196,14 @@ their corresponding elements in the Fiedler vector of the component.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
-<blockquote>
-<div><p>A graph.</p>
-</div></blockquote>
-<p><strong>weight</strong> : object, optional</p>
-<blockquote>
-<div><p>The data key used to determine the weight of each edge. If None, then
-each edge has unit weight. Default value: None.</p>
-</div></blockquote>
-<p><strong>normalized</strong> : bool, optional</p>
-<blockquote>
-<div><p>Whether the normalized Laplacian matrix is used. Default value: False.</p>
-</div></blockquote>
-<p><strong>tol</strong> : float, optional</p>
-<blockquote>
-<div><p>Tolerance of relative residual in eigenvalue computation. Default
-value: 1e-8.</p>
-</div></blockquote>
-<p><strong>method</strong> : string, optional</p>
-<blockquote>
-<div><p>Method of eigenvalue computation. It should be one of &#8216;tracemin&#8217;
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>NetworkX graph</em>) &#8211; A graph.</li>
+<li><strong>weight</strong> (<em>object, optional</em>) &#8211; The data key used to determine the weight of each edge. If None, then
+each edge has unit weight. Default value: None.</li>
+<li><strong>normalized</strong> (<em>bool, optional</em>) &#8211; Whether the normalized Laplacian matrix is used. Default value: False.</li>
+<li><strong>tol</strong> (<em>float, optional</em>) &#8211; Tolerance of relative residual in eigenvalue computation. Default
+value: 1e-8.</li>
+<li><strong>method</strong> (<em>string, optional</em>) &#8211; <p>Method of eigenvalue computation. It should be one of &#8216;tracemin&#8217;
 (TraceMIN), &#8216;lanczos&#8217; (Lanczos iteration) and &#8216;lobpcg&#8217; (LOBPCG).
 Default value: &#8216;tracemin&#8217;.</p>
 <p>The TraceMIN algorithm uses a linear system solver. The following
@@ -243,32 +230,32 @@ values allow specifying the solver to be used.</p>
 </tr>
 </tbody>
 </table>
-</div></blockquote>
+</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>spectral_ordering</strong> : NumPy array of floats.</p>
-<blockquote>
-<div><p>Spectral ordering of nodes.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>spectral_ordering</strong> &#8211;
+Spectral ordering of nodes.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
-<blockquote class="last">
-<div><p>If G is empty.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">NumPy array of floats.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">NetworkXError</span></code> &#8211;
+If G is empty.</p>
 </td>
 </tr>
 </tbody>
 </table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">laplacian_matrix</span></code></p>
-</div>
 <p class="rubric">Notes</p>
 <p>Edge weights are interpreted by their absolute values. For MultiGraph&#8217;s,
 weights of parallel edges are summed. Zero-weighted edges are ignored.</p>
 <p>To use Cholesky factorization in the TraceMIN algorithm, the
 <code class="samp docutils literal"><span class="pre">scikits.sparse</span></code> package must be installed.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-func docutils literal"><span class="pre">laplacian_matrix()</span></code></p>
+</div>
 </dd></dl>
 
 </div>
@@ -291,8 +278,8 @@ weights of parallel edges are summed. Zero-weighted edges are ignored.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -312,7 +299,7 @@ weights of parallel edges are summed. Zero-weighted edges are ignored.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

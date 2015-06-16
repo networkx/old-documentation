@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>out_degree_centrality &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>out_degree_centrality &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Centrality" href="../algorithms.centrality.html"/>
         <link rel="next" title="closeness_centrality" href="networkx.algorithms.centrality.closeness_centrality.html"/>
         <link rel="prev" title="in_degree_centrality" href="networkx.algorithms.centrality.in_degree_centrality.html"/> 
@@ -191,38 +191,27 @@
 <dt id="networkx.algorithms.centrality.out_degree_centrality">
 <code class="descname">out_degree_centrality</code><span class="sig-paren">(</span><em>G</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/centrality/degree_alg.html#out_degree_centrality"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.centrality.out_degree_centrality" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the out-degree centrality for nodes.</p>
-<p>The out-degree centrality for a node v is the fraction of nodes its 
+<p>The out-degree centrality for a node v is the fraction of nodes its
 outgoing edges are connected to.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
-<blockquote>
-<div><p>A NetworkX graph</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>G</strong> (<em>graph</em>) &#8211; A NetworkX graph</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>nodes</strong> : dictionary</p>
-<blockquote>
-<div><p>Dictionary of nodes with out-degree centrality as values.</p>
-</div></blockquote>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>nodes</strong> &#8211;
+Dictionary of nodes with out-degree centrality as values.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
-<blockquote class="last">
-<div><p>If the graph is undirected.</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dictionary</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.centrality.degree_centrality.html#networkx.algorithms.centrality.degree_centrality" title="networkx.algorithms.centrality.degree_centrality"><code class="xref py py-obj docutils literal"><span class="pre">degree_centrality</span></code></a>, <a class="reference internal" href="networkx.algorithms.centrality.in_degree_centrality.html#networkx.algorithms.centrality.in_degree_centrality" title="networkx.algorithms.centrality.in_degree_centrality"><code class="xref py py-obj docutils literal"><span class="pre">in_degree_centrality</span></code></a></p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.centrality.degree_centrality.html#networkx.algorithms.centrality.degree_centrality" title="networkx.algorithms.centrality.degree_centrality"><code class="xref py py-func docutils literal"><span class="pre">degree_centrality()</span></code></a>, <a class="reference internal" href="networkx.algorithms.centrality.in_degree_centrality.html#networkx.algorithms.centrality.in_degree_centrality" title="networkx.algorithms.centrality.in_degree_centrality"><code class="xref py py-func docutils literal"><span class="pre">in_degree_centrality()</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>The degree centrality values are normalized by dividing by the maximum 
+<p>The degree centrality values are normalized by dividing by the maximum
 possible degree in a simple graph n-1 where n is the number of nodes in G.</p>
 <p>For multigraphs or graphs with self loops the maximum degree might
 be higher than n-1 and values of degree centrality greater than 1
@@ -249,8 +238,8 @@ are possible.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -270,7 +259,7 @@ are possible.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

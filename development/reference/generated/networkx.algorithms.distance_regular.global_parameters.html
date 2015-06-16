@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>global_parameters &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>global_parameters &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Distance-Regular Graphs" href="../algorithms.distance_regular.html"/>
         <link rel="next" title="Dominance" href="../algorithms.dominance.html"/>
         <link rel="prev" title="intersection_array" href="networkx.algorithms.distance_regular.intersection_array.html"/> 
@@ -203,23 +203,10 @@ where a_i+b_i+c_i=k , k= degree of every vertex.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>b,c: tuple of lists</strong></td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>p</strong></td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>p</strong> : list of three-tuples</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list of three-tuples</td>
 </tr>
-</tbody>
-</table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.distance_regular.intersection_array.html#networkx.algorithms.distance_regular.intersection_array" title="networkx.algorithms.distance_regular.intersection_array"><code class="xref py py-obj docutils literal"><span class="pre">intersection_array</span></code></a></p>
-</div>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r307" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R307]</a></td><td>Weisstein, Eric W. &#8220;Global Parameters.&#8221; 
-From MathWorld&#8211;A Wolfram Web Resource. 
-<a class="reference external" href="http://mathworld.wolfram.com/GlobalParameters.html">http://mathworld.wolfram.com/GlobalParameters.html</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -228,6 +215,19 @@ From MathWorld&#8211;A Wolfram Web Resource.
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">global_parameters</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">))</span>
 <span class="go">[(0, 0, 3), (1, 0, 2), (1, 1, 1), (1, 1, 1), (2, 0, 1), (3, 0, 0)]</span>
 </pre></div>
+</div>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td>Weisstein, Eric W. &#8220;Global Parameters.&#8221;
+From MathWorld&#8211;A Wolfram Web Resource.
+<a class="reference external" href="http://mathworld.wolfram.com/GlobalParameters.html">http://mathworld.wolfram.com/GlobalParameters.html</a></td></tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.distance_regular.intersection_array.html#networkx.algorithms.distance_regular.intersection_array" title="networkx.algorithms.distance_regular.intersection_array"><code class="xref py py-func docutils literal"><span class="pre">intersection_array()</span></code></a></p>
 </div>
 </dd></dl>
 
@@ -251,8 +251,8 @@ From MathWorld&#8211;A Wolfram Web Resource.
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -272,7 +272,7 @@ From MathWorld&#8211;A Wolfram Web Resource.
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

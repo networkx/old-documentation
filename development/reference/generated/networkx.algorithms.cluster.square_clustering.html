@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>square_clustering &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>square_clustering &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Clustering" href="../algorithms.clustering.html"/>
         <link rel="next" title="Coloring" href="../algorithms.coloring.html"/>
         <link rel="prev" title="average_clustering" href="networkx.algorithms.cluster.average_clustering.html"/> 
@@ -192,47 +192,26 @@
 <code class="descname">square_clustering</code><span class="sig-paren">(</span><em>G</em>, <em>nodes=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/cluster.html#square_clustering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.cluster.square_clustering" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the squares clustering coefficient for nodes.</p>
 <p>For each node return the fraction of possible squares that exist at
-the node <a class="reference internal" href="#r265" id="id1">[R265]</a></p>
+the node <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
 <div class="math">
-\[C_4(v) = \frac{ \sum_{u=1}^{k_v} 
-\sum_{w=u+1}^{k_v} q_v(u,w) }{ \sum_{u=1}^{k_v} 
-\sum_{w=u+1}^{k_v} [a_v(u,w) + q_v(u,w)]},\]</div>
-<p>where <span class="math">\(q_v(u,w)\)</span> are the number of common neighbors of <span class="math">\(u\)</span> and <span class="math">\(w\)</span> 
-other than <span class="math">\(v\)</span> (ie squares), and 
-<span class="math">\(a_v(u,w) = (k_u - (1+q_v(u,w)+\theta_{uv}))(k_w - (1+q_v(u,w)+\theta_{uw}))\)</span>,
-where <span class="math">\(\theta_{uw} = 1\)</span> if <span class="math">\(u\)</span> and <span class="math">\(w\)</span> are connected and 0 otherwise.</p>
+<p><img src="../../_images/math/fee4aeec99b083dbf1161103aa01f06c5df52f75.png" alt="C_4(v) = \frac{ \sum_{u=1}^{k_v}
+\sum_{w=u+1}^{k_v} q_v(u,w) }{ \sum_{u=1}^{k_v}
+\sum_{w=u+1}^{k_v} [a_v(u,w) + q_v(u,w)]},"/></p>
+</div><p>where <img class="math" src="../../_images/math/ff124fda5de448d7bf888502934648b2d312a002.png" alt="q_v(u,w)" style="vertical-align: -4px"/> are the number of common neighbors of <img class="math" src="../../_images/math/8a766bbd11b0a08916009a3c0008470d402e9d2f.png" alt="u" style="vertical-align: 0px"/> and <img class="math" src="../../_images/math/201d9e9b55c3ed4bbafe9ec14bddc274e9ea33f6.png" alt="w" style="vertical-align: 0px"/>
+other than <img class="math" src="../../_images/math/53c4a26799ff6cdae6f13d6b1fcf961660d83169.png" alt="v" style="vertical-align: 0px"/> (ie squares), and
+<img class="math" src="../../_images/math/f613e14d6d130467feab33c3a823637d7c3d51df.png" alt="a_v(u,w) = (k_u - (1+q_v(u,w)+\theta_{uv}))(k_w - (1+q_v(u,w)+\theta_{uw}))" style="vertical-align: -4px"/>,
+where <img class="math" src="../../_images/math/2b8d627198efd8be2f0c606ec994e1711d478b5f.png" alt="\theta_{uw} = 1" style="vertical-align: -3px"/> if <img class="math" src="../../_images/math/8a766bbd11b0a08916009a3c0008470d402e9d2f.png" alt="u" style="vertical-align: 0px"/> and <img class="math" src="../../_images/math/201d9e9b55c3ed4bbafe9ec14bddc274e9ea33f6.png" alt="w" style="vertical-align: 0px"/> are connected and 0 otherwise.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
-<p><strong>nodes</strong> : container of nodes, optional (default=all nodes in G)</p>
-<blockquote>
-<div><p>Compute clustering for nodes in this container.</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nodes</strong> (<em>container of nodes, optional (default=all nodes in G)</em>) &#8211; Compute clustering for nodes in this container.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>c4</strong> : dictionary</p>
-<blockquote class="last">
-<div><p>A dictionary keyed by node with the square clustering coefficient value.</p>
-</div></blockquote>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>c4</strong> &#8211;
+A dictionary keyed by node with the square clustering coefficient value.</td>
 </tr>
-</tbody>
-</table>
-<p class="rubric">Notes</p>
-<p>While <span class="math">\(C_3(v)\)</span> (triangle clustering) gives the probability that
-two neighbors of node v are connected with each other, <span class="math">\(C_4(v)\)</span> is
-the probability that two neighbors of node v share a common
-neighbor different from v. This algorithm can be applied to both
-bipartite and unipartite networks.</p>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r265" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R265]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Pedro G. Lind, Marta C. González, and Hans J. Herrmann. 2005
-Cycles and clustering in bipartite networks.
-Physical Review E (72) 056127.</td></tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dictionary</td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -243,6 +222,21 @@ Physical Review E (72) 056127.</td></tr>
 <span class="go">{0: 1.0, 1: 1.0, 2: 1.0, 3: 1.0, 4: 1.0}</span>
 </pre></div>
 </div>
+<p class="rubric">Notes</p>
+<p>While <img class="math" src="../../_images/math/827841dfb1ebddf82660bd275b62525c2a58cf6c.png" alt="C_3(v)" style="vertical-align: -4px"/> (triangle clustering) gives the probability that
+two neighbors of node v are connected with each other, <img class="math" src="../../_images/math/c4d925303ecdae9b486f8b649b658e59583b43bc.png" alt="C_4(v)" style="vertical-align: -4px"/> is
+the probability that two neighbors of node v share a common
+neighbor different from v. This algorithm can be applied to both
+bipartite and unipartite networks.</p>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Pedro G. Lind, Marta C. González, and Hans J. Herrmann. 2005
+Cycles and clustering in bipartite networks.
+Physical Review E (72) 056127.</td></tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -265,8 +259,8 @@ Physical Review E (72) 056127.</td></tr>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -286,7 +280,7 @@ Physical Review E (72) 056127.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

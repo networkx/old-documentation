@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>write_edgelist &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>write_edgelist &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Edge List" href="../readwrite.edgelist.html"/>
         <link rel="next" title="read_weighted_edgelist" href="networkx.readwrite.edgelist.read_weighted_edgelist.html"/>
         <link rel="prev" title="read_edgelist" href="networkx.readwrite.edgelist.read_edgelist.html"/> 
@@ -195,42 +195,22 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
-<blockquote>
-<div><p>A NetworkX graph</p>
-</div></blockquote>
-<p><strong>path</strong> : file or string</p>
-<blockquote>
-<div><p>File or filename to write. If a file is provided, it must be
-opened in &#8216;wb&#8217; mode. Filenames ending in .gz or .bz2 will be compressed.</p>
-</div></blockquote>
-<p><strong>comments</strong> : string, optional</p>
-<blockquote>
-<div><p>The character used to indicate the start of a comment</p>
-</div></blockquote>
-<p><strong>delimiter</strong> : string, optional</p>
-<blockquote>
-<div><p>The string used to separate values.  The default is whitespace.</p>
-</div></blockquote>
-<p><strong>data</strong> : bool or list, optional</p>
-<blockquote>
-<div><p>If False write no edge data.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>G</strong> (<em>graph</em>) &#8211; A NetworkX graph</li>
+<li><strong>path</strong> (<em>file or string</em>) &#8211; File or filename to write. If a file is provided, it must be
+opened in &#8216;wb&#8217; mode. Filenames ending in .gz or .bz2 will be compressed.</li>
+<li><strong>comments</strong> (<em>string, optional</em>) &#8211; The character used to indicate the start of a comment</li>
+<li><strong>delimiter</strong> (<em>string, optional</em>) &#8211; The string used to separate values.  The default is whitespace.</li>
+<li><strong>data</strong> (<em>bool or list, optional</em>) &#8211; If False write no edge data.
 If True write a string representation of the edge data dictionary..
 If a list (or other iterable) is provided, write the  keys specified
-in the list.</p>
-</div></blockquote>
-<p><strong>encoding: string, optional</strong></p>
-<blockquote class="last">
-<div><p>Specify which encoding to use when writing file.</p>
-</div></blockquote>
+in the list.</li>
+<li><strong>encoding</strong> (<em>string, optional</em>) &#8211; Specify which encoding to use when writing file.</li>
+</ul>
 </td>
 </tr>
 </tbody>
 </table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="#networkx.readwrite.edgelist.write_edgelist" title="networkx.readwrite.edgelist.write_edgelist"><code class="xref py py-obj docutils literal"><span class="pre">write_edgelist</span></code></a>, <a class="reference internal" href="networkx.readwrite.edgelist.write_weighted_edgelist.html#networkx.readwrite.edgelist.write_weighted_edgelist" title="networkx.readwrite.edgelist.write_weighted_edgelist"><code class="xref py py-obj docutils literal"><span class="pre">write_weighted_edgelist</span></code></a></p>
-</div>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">write_edgelist</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s">&quot;test.edgelist&quot;</span><span class="p">)</span>
@@ -247,6 +227,10 @@ in the list.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">write_edgelist</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="s">&#39;test.edgelist&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;color&#39;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">write_edgelist</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="s">&#39;test.edgelist&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;weight&#39;</span><span class="p">])</span>
 </pre></div>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#networkx.readwrite.edgelist.write_edgelist" title="networkx.readwrite.edgelist.write_edgelist"><code class="xref py py-func docutils literal"><span class="pre">write_edgelist()</span></code></a>, <a class="reference internal" href="networkx.readwrite.edgelist.write_weighted_edgelist.html#networkx.readwrite.edgelist.write_weighted_edgelist" title="networkx.readwrite.edgelist.write_weighted_edgelist"><code class="xref py py-func docutils literal"><span class="pre">write_weighted_edgelist()</span></code></a></p>
 </div>
 </dd></dl>
 
@@ -270,8 +254,8 @@ in the list.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -291,7 +275,7 @@ in the list.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

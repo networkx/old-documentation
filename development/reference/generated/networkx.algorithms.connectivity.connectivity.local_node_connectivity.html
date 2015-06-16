@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>local_node_connectivity &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>local_node_connectivity &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Connectivity" href="../algorithms.connectivity.html"/>
         <link rel="next" title="node_connectivity" href="networkx.algorithms.connectivity.connectivity.node_connectivity.html"/>
         <link rel="prev" title="local_edge_connectivity" href="networkx.algorithms.connectivity.connectivity.local_edge_connectivity.html"/> 
@@ -201,90 +201,39 @@ graph (see below for details).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX graph</p>
-<blockquote>
-<div><p>Undirected graph</p>
-</div></blockquote>
-<p><strong>s</strong> : node</p>
-<blockquote>
-<div><p>Source node</p>
-</div></blockquote>
-<p><strong>t</strong> : node</p>
-<blockquote>
-<div><p>Target node</p>
-</div></blockquote>
-<p><strong>flow_func</strong> : function</p>
-<blockquote>
-<div><p>A function for computing the maximum flow among a pair of nodes.
-The function has to accept at least three parameters: a Digraph, 
-a source node, and a target node. And return a residual network 
-that follows NetworkX conventions (see <code class="xref py py-meth docutils literal"><span class="pre">maximum_flow()</span></code> for 
-details). If flow_func is None, the default maximum flow function 
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>NetworkX graph</em>) &#8211; Undirected graph</li>
+<li><strong>s</strong> (<em>node</em>) &#8211; Source node</li>
+<li><strong>t</strong> (<em>node</em>) &#8211; Target node</li>
+<li><strong>flow_func</strong> (<em>function</em>) &#8211; A function for computing the maximum flow among a pair of nodes.
+The function has to accept at least three parameters: a Digraph,
+a source node, and a target node. And return a residual network
+that follows NetworkX conventions (see <code class="xref py py-meth docutils literal"><span class="pre">maximum_flow()</span></code> for
+details). If flow_func is None, the default maximum flow function
 (<code class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></code>) is used. See below for details. The choice
-of the default function may change from version to version and 
-should not be relied on. Default value: None.</p>
-</div></blockquote>
-<p><strong>auxiliary</strong> : NetworkX DiGraph</p>
-<blockquote>
-<div><p>Auxiliary digraph to compute flow based node connectivity. It has
+of the default function may change from version to version and
+should not be relied on. Default value: None.</li>
+<li><strong>auxiliary</strong> (<em>NetworkX DiGraph</em>) &#8211; Auxiliary digraph to compute flow based node connectivity. It has
 to have a graph attribute called mapping with a dictionary mapping
 node names in G and in the auxiliary digraph. If provided
-it will be reused instead of recreated. Default value: None.</p>
-</div></blockquote>
-<p><strong>residual</strong> : NetworkX DiGraph</p>
-<blockquote>
-<div><p>Residual network to compute maximum flow. If provided it will be
-reused instead of recreated. Default value: None.</p>
-</div></blockquote>
-<p><strong>cutoff</strong> : integer, float</p>
-<blockquote>
-<div><p>If specified, the maximum flow algorithm will terminate when the 
+it will be reused instead of recreated. Default value: None.</li>
+<li><strong>residual</strong> (<em>NetworkX DiGraph</em>) &#8211; Residual network to compute maximum flow. If provided it will be
+reused instead of recreated. Default value: None.</li>
+<li><strong>cutoff</strong> (<em>integer, float</em>) &#8211; If specified, the maximum flow algorithm will terminate when the
 flow value reaches or exceeds the cutoff. This is only for the
-algorithms that support the cutoff parameter: <code class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></code> 
+algorithms that support the cutoff parameter: <code class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></code>
 and <code class="xref py py-meth docutils literal"><span class="pre">shortest_augmenting_path()</span></code>. Other algorithms will ignore
-this parameter. Default value: None.</p>
-</div></blockquote>
+this parameter. Default value: None.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>K</strong> : integer</p>
-<blockquote class="last">
-<div><p>local node connectivity for nodes s and t</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>K</strong> &#8211;
+local node connectivity for nodes s and t</p>
 </td>
 </tr>
-</tbody>
-</table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.connectivity.connectivity.local_edge_connectivity.html#networkx.algorithms.connectivity.connectivity.local_edge_connectivity" title="networkx.algorithms.connectivity.connectivity.local_edge_connectivity"><code class="xref py py-meth docutils literal"><span class="pre">local_edge_connectivity()</span></code></a>, <a class="reference internal" href="networkx.algorithms.connectivity.connectivity.node_connectivity.html#networkx.algorithms.connectivity.connectivity.node_connectivity" title="networkx.algorithms.connectivity.connectivity.node_connectivity"><code class="xref py py-meth docutils literal"><span class="pre">node_connectivity()</span></code></a>, <code class="xref py py-meth docutils literal"><span class="pre">minimum_node_cut()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">maximum_flow()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">preflow_push()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">shortest_augmenting_path()</span></code></p>
-</div>
-<p class="rubric">Notes</p>
-<p>This is a flow based implementation of node connectivity. We compute the
-maximum flow using, by default, the <code class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></code> algorithm (see:
-<code class="xref py py-meth docutils literal"><span class="pre">maximum_flow()</span></code>) on an auxiliary digraph build from the original 
-input graph:</p>
-<p>For an undirected graph G having <span class="math">\(n\)</span> nodes and <span class="math">\(m\)</span> edges we derive a
-directed graph H with <span class="math">\(2n\)</span> nodes and <span class="math">\(2m+n\)</span> arcs by replacing each
-original node <span class="math">\(v\)</span> with two nodes <span class="math">\(v_A\)</span>, <span class="math">\(v_B\)</span> linked by an (internal)
-arc in H. Then for each edge (<span class="math">\(u\)</span>, <span class="math">\(v\)</span>) in G we add two arcs
-(<span class="math">\(u_B\)</span>, <span class="math">\(v_A\)</span>) and (<span class="math">\(v_B\)</span>, <span class="math">\(u_A\)</span>) in H. Finally we set the attribute
-capacity = 1 for each arc in H <a class="reference internal" href="#r282" id="id1">[R282]</a> .</p>
-<p>For a directed graph G having <span class="math">\(n\)</span> nodes and <span class="math">\(m\)</span> arcs we derive a
-directed graph H with <span class="math">\(2n\)</span> nodes and <span class="math">\(m+n\)</span> arcs by replacing each
-original node <span class="math">\(v\)</span> with two nodes <span class="math">\(v_A\)</span>, <span class="math">\(v_B\)</span> linked by an (internal)
-arc (<span class="math">\(v_A\)</span>, <span class="math">\(v_B\)</span>) in H. Then for each arc (<span class="math">\(u\)</span>, <span class="math">\(v\)</span>) in G we add one arc
-(<span class="math">\(u_B\)</span>, <span class="math">\(v_A\)</span>) in H. Finally we set the attribute capacity = 1 for
-each arc in H.</p>
-<p>This is equal to the local node connectivity because the value of
-a maximum s-t-flow is equal to the capacity of a minimum s-t-cut.</p>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r282" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R282]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Kammer, Frank and Hanjo Taubig. Graph Connectivity. in Brandes and
-Erlebach, &#8216;Network Analysis: Methodological Foundations&#8217;, Lecture
-Notes in Computer Science, Volume 3418, Springer-Verlag, 2005.
-<a class="reference external" href="http://www.informatik.uni-augsburg.de/thi/personen/kammer/Graph_Connectivity.pdf">http://www.informatik.uni-augsburg.de/thi/personen/kammer/Graph_Connectivity.pdf</a></td></tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">integer</p>
+</td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -302,14 +251,14 @@ connectivity 5.</p>
 </div>
 <p>If you need to compute local connectivity on several pairs of
 nodes in the same graph, it is recommended that you reuse the
-data structures that NetworkX uses in the computation: the 
+data structures that NetworkX uses in the computation: the
 auxiliary digraph for node connectivity, and the residual
 network for the underlying maximum flow computation.</p>
 <p>Example of how to compute local node connectivity among
 all pairs of nodes of the platonic icosahedral graph reusing
 the data structures.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">itertools</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c"># You also have to explicitly import the function for </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># You also have to explicitly import the function for</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># building the auxiliary digraph from the connectivity package</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.algorithms.connectivity</span> <span class="kn">import</span> <span class="p">(</span>
 <span class="gp">... </span>    <span class="n">build_auxiliary_node_connectivity</span><span class="p">)</span>
@@ -329,10 +278,10 @@ the data structures.</p>
 <span class="go">True</span>
 </pre></div>
 </div>
-<p>You can also use alternative flow algorithms for computing node 
+<p>You can also use alternative flow algorithms for computing node
 connectivity. For instance, in dense networks the algorithm
 <code class="xref py py-meth docutils literal"><span class="pre">shortest_augmenting_path()</span></code> will usually perform better than
-the default <code class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></code> which is faster for sparse 
+the default <code class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></code> which is faster for sparse
 networks with highly skewed degree distributions. Alternative flow
 functions have to be explicitly imported from the flow package.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.algorithms.flow</span> <span class="kn">import</span> <span class="n">shortest_augmenting_path</span>
@@ -340,6 +289,39 @@ functions have to be explicitly imported from the flow package.</p>
 <span class="go">5</span>
 </pre></div>
 </div>
+<p class="rubric">Notes</p>
+<p>This is a flow based implementation of node connectivity. We compute the
+maximum flow using, by default, the <code class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></code> algorithm (see:
+<code class="xref py py-meth docutils literal"><span class="pre">maximum_flow()</span></code>) on an auxiliary digraph build from the original
+input graph:</p>
+<p>For an undirected graph G having <img class="math" src="../../_images/math/b1f5ca5a538abe6036ed478902bb5a03ef05f0c2.png" alt="n" style="vertical-align: 0px"/> nodes and <img class="math" src="../../_images/math/2a6f9b0b4119433a3eae475d163e0694af1ca408.png" alt="m" style="vertical-align: 0px"/> edges we derive a
+directed graph H with <img class="math" src="../../_images/math/8e750c0cb5dd78db5f4e464961b287fc6373a668.png" alt="2n" style="vertical-align: 0px"/> nodes and <img class="math" src="../../_images/math/49c62407d77422c9d884fa2c9bcb33a016fef72c.png" alt="2m+n" style="vertical-align: -1px"/> arcs by replacing each
+original node <img class="math" src="../../_images/math/53c4a26799ff6cdae6f13d6b1fcf961660d83169.png" alt="v" style="vertical-align: 0px"/> with two nodes <img class="math" src="../../_images/math/c05045f973e4e3f079ba0bf3a20b8203a2a67eab.png" alt="v_A" style="vertical-align: -3px"/>, <img class="math" src="../../_images/math/0d6e588f2ad0f03411ae2a2d7fa35b8b46ee7b1c.png" alt="v_B" style="vertical-align: -3px"/> linked by an (internal)
+arc in H. Then for each edge (<img class="math" src="../../_images/math/8a766bbd11b0a08916009a3c0008470d402e9d2f.png" alt="u" style="vertical-align: 0px"/>, <img class="math" src="../../_images/math/53c4a26799ff6cdae6f13d6b1fcf961660d83169.png" alt="v" style="vertical-align: 0px"/>) in G we add two arcs
+(<img class="math" src="../../_images/math/9395d4d445e621748eb16528ef6598c8b63592aa.png" alt="u_B" style="vertical-align: -3px"/>, <img class="math" src="../../_images/math/c05045f973e4e3f079ba0bf3a20b8203a2a67eab.png" alt="v_A" style="vertical-align: -3px"/>) and (<img class="math" src="../../_images/math/0d6e588f2ad0f03411ae2a2d7fa35b8b46ee7b1c.png" alt="v_B" style="vertical-align: -3px"/>, <img class="math" src="../../_images/math/8fdfe27cf6c76203025de057a6db26fea3ac4586.png" alt="u_A" style="vertical-align: -3px"/>) in H. Finally we set the attribute
+capacity = 1 for each arc in H <a class="footnote-reference" href="#id2" id="id1">[1]</a> .</p>
+<p>For a directed graph G having <img class="math" src="../../_images/math/b1f5ca5a538abe6036ed478902bb5a03ef05f0c2.png" alt="n" style="vertical-align: 0px"/> nodes and <img class="math" src="../../_images/math/2a6f9b0b4119433a3eae475d163e0694af1ca408.png" alt="m" style="vertical-align: 0px"/> arcs we derive a
+directed graph H with <img class="math" src="../../_images/math/8e750c0cb5dd78db5f4e464961b287fc6373a668.png" alt="2n" style="vertical-align: 0px"/> nodes and <img class="math" src="../../_images/math/34792e8db957f9dd107aa69957d9134cc031b7e0.png" alt="m+n" style="vertical-align: -1px"/> arcs by replacing each
+original node <img class="math" src="../../_images/math/53c4a26799ff6cdae6f13d6b1fcf961660d83169.png" alt="v" style="vertical-align: 0px"/> with two nodes <img class="math" src="../../_images/math/c05045f973e4e3f079ba0bf3a20b8203a2a67eab.png" alt="v_A" style="vertical-align: -3px"/>, <img class="math" src="../../_images/math/0d6e588f2ad0f03411ae2a2d7fa35b8b46ee7b1c.png" alt="v_B" style="vertical-align: -3px"/> linked by an (internal)
+arc (<img class="math" src="../../_images/math/c05045f973e4e3f079ba0bf3a20b8203a2a67eab.png" alt="v_A" style="vertical-align: -3px"/>, <img class="math" src="../../_images/math/0d6e588f2ad0f03411ae2a2d7fa35b8b46ee7b1c.png" alt="v_B" style="vertical-align: -3px"/>) in H. Then for each arc (<img class="math" src="../../_images/math/8a766bbd11b0a08916009a3c0008470d402e9d2f.png" alt="u" style="vertical-align: 0px"/>, <img class="math" src="../../_images/math/53c4a26799ff6cdae6f13d6b1fcf961660d83169.png" alt="v" style="vertical-align: 0px"/>) in G we add one arc
+(<img class="math" src="../../_images/math/9395d4d445e621748eb16528ef6598c8b63592aa.png" alt="u_B" style="vertical-align: -3px"/>, <img class="math" src="../../_images/math/c05045f973e4e3f079ba0bf3a20b8203a2a67eab.png" alt="v_A" style="vertical-align: -3px"/>) in H. Finally we set the attribute capacity = 1 for
+each arc in H.</p>
+<p>This is equal to the local node connectivity because the value of
+a maximum s-t-flow is equal to the capacity of a minimum s-t-cut.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.connectivity.connectivity.local_edge_connectivity.html#networkx.algorithms.connectivity.connectivity.local_edge_connectivity" title="networkx.algorithms.connectivity.connectivity.local_edge_connectivity"><code class="xref py py-meth docutils literal"><span class="pre">local_edge_connectivity()</span></code></a>, <a class="reference internal" href="networkx.algorithms.connectivity.connectivity.node_connectivity.html#networkx.algorithms.connectivity.connectivity.node_connectivity" title="networkx.algorithms.connectivity.connectivity.node_connectivity"><code class="xref py py-meth docutils literal"><span class="pre">node_connectivity()</span></code></a>, <code class="xref py py-meth docutils literal"><span class="pre">minimum_node_cut()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">maximum_flow()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">edmonds_karp()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">preflow_push()</span></code>, <code class="xref py py-meth docutils literal"><span class="pre">shortest_augmenting_path()</span></code></p>
+</div>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Kammer, Frank and Hanjo Taubig. Graph Connectivity. in Brandes and
+Erlebach, &#8216;Network Analysis: Methodological Foundations&#8217;, Lecture
+Notes in Computer Science, Volume 3418, Springer-Verlag, 2005.
+<a class="reference external" href="http://www.informatik.uni-augsburg.de/thi/personen/kammer/Graph_Connectivity.pdf">http://www.informatik.uni-augsburg.de/thi/personen/kammer/Graph_Connectivity.pdf</a></td></tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -362,8 +344,8 @@ functions have to be explicitly imported from the flow package.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -383,7 +365,7 @@ functions have to be explicitly imported from the flow package.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

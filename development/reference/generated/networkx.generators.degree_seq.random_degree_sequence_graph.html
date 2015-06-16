@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>random_degree_sequence_graph &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>random_degree_sequence_graph &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Graph generators" href="../generators.html"/>
         <link rel="next" title="random_clustered_graph" href="networkx.generators.random_clustered.random_clustered_graph.html"/>
         <link rel="prev" title="degree_sequence_tree" href="networkx.generators.degree_seq.degree_sequence_tree.html"/> 
@@ -189,58 +189,50 @@
 <dt id="networkx.generators.degree_seq.random_degree_sequence_graph">
 <code class="descname">random_degree_sequence_graph</code><span class="sig-paren">(</span><em>sequence</em>, <em>seed=None</em>, <em>tries=10</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/generators/degree_seq.html#random_degree_sequence_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.generators.degree_seq.random_degree_sequence_graph" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a simple random graph with the given degree sequence.</p>
-<p>If the maximum degree <span class="math">\(d_m\)</span> in the sequence is <span class="math">\(O(m^{1/4})\)</span> then the
-algorithm produces almost uniform random graphs in <span class="math">\(O(m d_m)\)</span> time
-where <span class="math">\(m\)</span> is the number of edges.</p>
+<p>If the maximum degree <img class="math" src="../../_images/math/58b1dc64c1b0608207c30fa6d00b1e7736e04846.png" alt="d_m" style="vertical-align: -3px"/> in the sequence is <img class="math" src="../../_images/math/4cb90d791070714264fb19687c23cc8ee16408ff.png" alt="O(m^{1/4})" style="vertical-align: -4px"/> then the
+algorithm produces almost uniform random graphs in <img class="math" src="../../_images/math/fe0079519d32e298a7efc59942a941f2d2a8e100.png" alt="O(m d_m)" style="vertical-align: -4px"/> time
+where <img class="math" src="../../_images/math/2a6f9b0b4119433a3eae475d163e0694af1ca408.png" alt="m" style="vertical-align: 0px"/> is the number of edges.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>sequence</strong> :  list of integers</p>
-<blockquote>
-<div><p>Sequence of degrees</p>
-</div></blockquote>
-<p><strong>seed</strong> : hashable object, optional</p>
-<blockquote>
-<div><p>Seed for random number generator</p>
-</div></blockquote>
-<p><strong>tries</strong> : int, optional</p>
-<blockquote>
-<div><p>Maximum number of tries to create a graph</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sequence</strong> (<em>list of integers</em>) &#8211; Sequence of degrees</li>
+<li><strong>seed</strong> (<em>hashable object, optional</em>) &#8211; Seed for random number generator</li>
+<li><strong>tries</strong> (<em>int, optional</em>) &#8211; Maximum number of tries to create a graph</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>G</strong> : Graph</p>
-<blockquote>
-<div><p>A graph with the specified degree sequence.
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>G</strong> &#8211;
+A graph with the specified degree sequence.
 Nodes are labeled starting at 0 with an index
 corresponding to the position in the sequence.</p>
-</div></blockquote>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXUnfeasible</strong></p>
-<blockquote>
-<div><p>If the degree sequence is not graphical.</p>
-</div></blockquote>
-<p><strong>NetworkXError</strong></p>
-<blockquote class="last">
-<div><p>If a graph is not produced in specified number of tries</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">Graph</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">NetworkXUnfeasible</span></code> &#8211;
+If the degree sequence is not graphical.</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">NetworkXError</span></code> &#8211;
+If a graph is not produced in specified number of tries</li>
+</ul>
 </td>
 </tr>
 </tbody>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">is_valid_degree_sequence</span></code>, <a class="reference internal" href="networkx.generators.degree_seq.configuration_model.html#networkx.generators.degree_seq.configuration_model" title="networkx.generators.degree_seq.configuration_model"><code class="xref py py-obj docutils literal"><span class="pre">configuration_model</span></code></a></p>
+<p class="last"><code class="xref py py-func docutils literal"><span class="pre">is_valid_degree_sequence()</span></code>, <a class="reference internal" href="networkx.generators.degree_seq.configuration_model.html#networkx.generators.degree_seq.configuration_model" title="networkx.generators.degree_seq.configuration_model"><code class="xref py py-func docutils literal"><span class="pre">configuration_model()</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>The generator algorithm <a class="reference internal" href="#r373" id="id1">[R373]</a> is not guaranteed to produce a graph.</p>
+<p>The generator algorithm <a class="footnote-reference" href="#id2" id="id1">[1]</a> is not guaranteed to produce a graph.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r373" rules="none">
+<table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R373]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Moshen Bayati, Jeong Han Kim, and Amin Saberi,
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Moshen Bayati, Jeong Han Kim, and Amin Saberi,
 A sequential algorithm for generating random graphs.
 Algorithmica, Volume 58, Number 4, 860-910,
 DOI: 10.1007/s00453-009-9340-1</td></tr>
@@ -275,8 +267,8 @@ DOI: 10.1007/s00453-009-9340-1</td></tr>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -296,7 +288,7 @@ DOI: 10.1007/s00453-009-9340-1</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

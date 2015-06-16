@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Approximation &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>Approximation &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -30,9 +30,8 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../index.html"/>
         <link rel="up" title="Algorithms" href="algorithms.html"/>
-        <link rel="next" title="all_pairs_node_connectivity" href="generated/networkx.algorithms.approximation.connectivity.all_pairs_node_connectivity.html"/>
         <link rel="prev" title="Algorithms" href="algorithms.html"/> 
 
   
@@ -185,38 +184,36 @@
             
   <div class="section" id="module-networkx.algorithms.approximation">
 <span id="approximation"></span><h1>Approximation<a class="headerlink" href="#module-networkx.algorithms.approximation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-networkx.algorithms.approximation.connectivity">
-<span id="connectivity"></span><h2>Connectivity<a class="headerlink" href="#module-networkx.algorithms.approximation.connectivity" title="Permalink to this headline">¶</a></h2>
-<p>Fast approximation for node connectivity</p>
+<div class="section" id="connectivity">
+<h2>Connectivity<a class="headerlink" href="#connectivity" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.approximation.connectivity.all_pairs_node_connectivity.html#networkx.algorithms.approximation.connectivity.all_pairs_node_connectivity" title="networkx.algorithms.approximation.connectivity.all_pairs_node_connectivity"><code class="xref py py-obj docutils literal"><span class="pre">all_pairs_node_connectivity</span></code></a>(G[,&nbsp;nbunch,&nbsp;cutoff])</td>
-<td>Compute node connectivity between all pairs of nodes.</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">all_pairs_node_connectivity</span></code></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.approximation.connectivity.local_node_connectivity.html#networkx.algorithms.approximation.connectivity.local_node_connectivity" title="networkx.algorithms.approximation.connectivity.local_node_connectivity"><code class="xref py py-obj docutils literal"><span class="pre">local_node_connectivity</span></code></a>(G,&nbsp;source,&nbsp;target[,&nbsp;...])</td>
-<td>Compute node connectivity between source and target.</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">local_node_connectivity</span></code></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.approximation.connectivity.node_connectivity.html#networkx.algorithms.approximation.connectivity.node_connectivity" title="networkx.algorithms.approximation.connectivity.node_connectivity"><code class="xref py py-obj docutils literal"><span class="pre">node_connectivity</span></code></a>(G[,&nbsp;s,&nbsp;t])</td>
-<td>Returns an approximation for node connectivity for a graph or digraph G.</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">node_connectivity</span></code></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="module-networkx.algorithms.approximation.kcomponents">
-<span id="k-components"></span><h2>K-components<a class="headerlink" href="#module-networkx.algorithms.approximation.kcomponents" title="Permalink to this headline">¶</a></h2>
-<p>Fast approximation for k-component structure</p>
+<div class="section" id="k-components">
+<h2>K-components<a class="headerlink" href="#k-components" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.approximation.kcomponents.k_components.html#networkx.algorithms.approximation.kcomponents.k_components" title="networkx.algorithms.approximation.kcomponents.k_components"><code class="xref py py-obj docutils literal"><span class="pre">k_components</span></code></a>(G[,&nbsp;min_density])</td>
-<td>Returns the approximate k-component structure of a graph G.</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">k_components</span></code></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -255,24 +252,17 @@
 </div>
 <div class="section" id="module-networkx.algorithms.approximation.dominating_set">
 <span id="dominating-set"></span><h2>Dominating Set<a class="headerlink" href="#module-networkx.algorithms.approximation.dominating_set" title="Permalink to this headline">¶</a></h2>
-<p>Functions for finding node and edge dominating sets.</p>
-<p>A <em>`dominating set`_[1] for an undirected graph *G</em> with vertex set <em>V</em>
-and edge set <em>E</em> is a subset <em>D</em> of <em>V</em> such that every vertex not in
-<em>D</em> is adjacent to at least one member of <em>D</em>. An <em>`edge dominating
-set`_[2] is a subset *F</em> of <em>E</em> such that every edge not in <em>F</em> is
-incident to an endpoint of at least one edge in <em>F</em>.</p>
-<table class="docutils citation" frame="void" id="r10" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R10]</td><td>dominating set: <a class="reference external" href="https://en.wikipedia.org/wiki/Dominating_set">https://en.wikipedia.org/wiki/Dominating_set</a></td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="r11" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R11]</td><td>edge dominating set: <a class="reference external" href="https://en.wikipedia.org/wiki/Edge_dominating_set">https://en.wikipedia.org/wiki/Edge_dominating_set</a></td></tr>
-</tbody>
-</table>
+<div class="section" id="minimum-vertex-and-edge-dominating-set">
+<h3>Minimum Vertex and Edge Dominating Set<a class="headerlink" href="#minimum-vertex-and-edge-dominating-set" title="Permalink to this headline">¶</a></h3>
+<p>A dominating set for a graph G = (V, E) is a subset D of V such that every
+vertex not in D is joined to at least one member of D by some edge. The
+domination number gamma(G) is the number of vertices in a smallest dominating
+set for G. Given a graph G = (V, E) find a minimum weight dominating set V&#8217;.</p>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Dominating_set">http://en.wikipedia.org/wiki/Dominating_set</a></p>
+<p>An edge dominating set for a graph G = (V, E) is a subset D of E such that
+every edge not in D is adjacent to at least one edge in D.</p>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Edge_dominating_set">http://en.wikipedia.org/wiki/Edge_dominating_set</a></p>
+</div>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -280,7 +270,7 @@ incident to an endpoint of at least one edge in <em>F</em>.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.approximation.dominating_set.min_weighted_dominating_set.html#networkx.algorithms.approximation.dominating_set.min_weighted_dominating_set" title="networkx.algorithms.approximation.dominating_set.min_weighted_dominating_set"><code class="xref py py-obj docutils literal"><span class="pre">min_weighted_dominating_set</span></code></a>(G[,&nbsp;weight])</td>
-<td>Returns a dominating set that approximates the minimum weight node dominating set.</td>
+<td>Return minimum weight vertex dominating set.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.approximation.dominating_set.min_edge_dominating_set.html#networkx.algorithms.approximation.dominating_set.min_edge_dominating_set" title="networkx.algorithms.approximation.dominating_set.min_edge_dominating_set"><code class="xref py py-obj docutils literal"><span class="pre">min_edge_dominating_set</span></code></a>(G)</td>
 <td>Return minimum cardinality edge dominating set.</td>
@@ -303,7 +293,7 @@ As such, it is unlikely that there exists an efficient algorithm for finding
 a maximum independent set of a graph.</p>
 <p><a class="reference external" href="http://en.wikipedia.org/wiki/Independent_set_(graph_theory">http://en.wikipedia.org/wiki/Independent_set_(graph_theory</a>)</p>
 <p>Independent set algorithm is based on the following paper:</p>
-<p><span class="math">\(O(|V|/(log|V|)^2)\)</span> apx of maximum clique/independent set.</p>
+<p><img class="math" src="../_images/math/b1537ee01bad2b87fa1392335cf00dd230fe49e2.png" alt="O(|V|/(log|V|)^2)" style="vertical-align: -5px"/> apx of maximum clique/independent set.</p>
 <p>Boppana, R., &amp; Halldórsson, M. M. (1992).
 Approximating maximum independent sets by excluding subgraphs.
 BIT Numerical Mathematics, 32(2), 180–196. Springer.
@@ -322,9 +312,12 @@ doi:10.1007/BF01994876</p>
 </div>
 <div class="section" id="module-networkx.algorithms.approximation.matching">
 <span id="matching"></span><h2>Matching<a class="headerlink" href="#module-networkx.algorithms.approximation.matching" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="graph-matching">
+<h3>Graph Matching<a class="headerlink" href="#graph-matching" title="Permalink to this headline">¶</a></h3>
 <p>Given a graph G = (V,E), a matching M in G is a set of pairwise non-adjacent
 edges; that is, no two edges share a common vertex.</p>
 <p><a class="reference external" href="http://en.wikipedia.org/wiki/Matching_(graph_theory">http://en.wikipedia.org/wiki/Matching_(graph_theory</a>)</p>
+</div>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -347,17 +340,20 @@ edges; that is, no two edges share a common vertex.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.approximation.ramsey.ramsey_R2.html#networkx.algorithms.approximation.ramsey.ramsey_R2" title="networkx.algorithms.approximation.ramsey.ramsey_R2"><code class="xref py py-obj docutils literal"><span class="pre">ramsey_R2</span></code></a>(G)</td>
-<td>Approximately computes the Ramsey number <span class="math">\(R(2;s,t)\)</span> for graph.</td>
+<td>Approximately computes the Ramsey number <img class="math" src="../_images/math/141b777af490611b6adb47415ae652cec69b1204.png" alt="R(2;s,t)" style="vertical-align: -4px"/> for graph.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="module-networkx.algorithms.approximation.vertex_cover">
 <span id="vertex-cover"></span><h2>Vertex Cover<a class="headerlink" href="#module-networkx.algorithms.approximation.vertex_cover" title="Permalink to this headline">¶</a></h2>
-<p>Given an undirected graph <span class="math">\(G = (V, E)\)</span> and a function w assigning nonnegative
+<div class="section" id="id1">
+<h3>Vertex Cover<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Given an undirected graph <img class="math" src="../_images/math/dc642f1b3f820a7fdae16fd6aef283fa608a3d12.png" alt="G = (V, E)" style="vertical-align: -4px"/> and a function w assigning nonnegative
 weights to its vertices, find a minimum weight subset of V such that each edge
 in E is incident to at least one vertex in the subset.</p>
 <p><a class="reference external" href="http://en.wikipedia.org/wiki/Vertex_cover">http://en.wikipedia.org/wiki/Vertex_cover</a></p>
+</div>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -378,8 +374,6 @@ in E is incident to at least one vertex in the subset.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="generated/networkx.algorithms.approximation.connectivity.all_pairs_node_connectivity.html" class="btn btn-neutral float-right" title="all_pairs_node_connectivity"/>Next <span class="fa fa-arrow-circle-right"></span></a>
-      
       
         <a href="algorithms.html" class="btn btn-neutral" title="Algorithms"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
@@ -390,8 +384,8 @@ in E is incident to at least one vertex in the subset.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -411,7 +405,7 @@ in E is incident to at least one vertex in the subset.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

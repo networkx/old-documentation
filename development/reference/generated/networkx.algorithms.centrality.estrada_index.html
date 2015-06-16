@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>estrada_index &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>estrada_index &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Centrality" href="../algorithms.centrality.html"/>
         <link rel="next" title="load_centrality" href="networkx.algorithms.centrality.load_centrality.html"/>
         <link rel="prev" title="communicability_betweenness_centrality" href="networkx.algorithms.centrality.communicability_betweenness_centrality.html"/> 
@@ -195,36 +195,31 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G: graph</strong></p>
-</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>estrada index</strong></td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">estrada index: float</p>
-</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>NetworkXError</strong></p>
-<blockquote class="last">
-<div><p>If the graph is not undirected and simple.</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">NetworkXError</span></code> &#8211;
+If the graph is not undirected and simple.</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">estrada_index_exp</span></code></p>
+<p class="last"><code class="xref py py-func docutils literal"><span class="pre">estrada_index_exp()</span></code></p>
 </div>
 <p class="rubric">Notes</p>
-<p>Let <span class="math">\(G=(V,E)\)</span> be a simple undirected graph with <span class="math">\(n\)</span> nodes  and let
-<span class="math">\(\lambda_{1}\leq\lambda_{2}\leq\cdots\lambda_{n}\)</span>
+<p>Let <img class="math" src="../../_images/math/5e638b168da94370f83deafed20b9e2e4126b93d.png" alt="G=(V,E)" style="vertical-align: -4px"/> be a simple undirected graph with <img class="math" src="../../_images/math/b1f5ca5a538abe6036ed478902bb5a03ef05f0c2.png" alt="n" style="vertical-align: 0px"/> nodes  and let
+<img class="math" src="../../_images/math/ae1f569b1c4b5fde5944145b695301afdc2dfb52.png" alt="\lambda_{1}\leq\lambda_{2}\leq\cdots\lambda_{n}" style="vertical-align: -4px"/>
 be a non-increasing ordering of the eigenvalues of its adjacency
-matrix <span class="math">\(A\)</span>.  The Estrada index is</p>
+matrix <img class="math" src="../../_images/math/937abf0036e3f773123ec44111199b356cf0ab10.png" alt="A" style="vertical-align: 0px"/>.  The Estrada index is</p>
 <div class="math">
-\[EE(G)=\sum_{j=1}^n e^{\lambda _j}.\]</div>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r248" rules="none">
+<p><img src="../../_images/math/55a4f64c7a0e3ff894cabddaa727f7a767228249.png" alt="EE(G)=\sum_{j=1}^n e^{\lambda _j}."/></p>
+</div><p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R248]</a></td><td>E. Estrada,  Characterization of 3D molecular structure,
+<tr><td class="label">[1]</td><td>E. Estrada,  Characterization of 3D molecular structure,
 Chem. Phys. Lett. 319, 713 (2000).</td></tr>
 </tbody>
 </table>
@@ -255,8 +250,8 @@ Chem. Phys. Lett. 319, 713 (2000).</td></tr>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -276,7 +271,7 @@ Chem. Phys. Lett. 319, 713 (2000).</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

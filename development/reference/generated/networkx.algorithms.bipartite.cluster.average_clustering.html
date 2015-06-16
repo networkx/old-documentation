@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>average_clustering &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>average_clustering &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Bipartite" href="../algorithms.bipartite.html"/>
         <link rel="next" title="latapy_clustering" href="networkx.algorithms.bipartite.cluster.latapy_clustering.html"/>
         <link rel="prev" title="clustering" href="networkx.algorithms.bipartite.cluster.clustering.html"/> 
@@ -193,71 +193,65 @@
 <dd><p>Compute the average bipartite clustering coefficient.</p>
 <p>A clustering coefficient for the whole graph is the average,</p>
 <div class="math">
-\[C = \frac{1}{n}\sum_{v \in G} c_v,\]</div>
-<p>where <span class="math">\(n\)</span> is the number of nodes in <span class="math">\(G\)</span>.</p>
-<p>Similar measures for the two bipartite sets can be defined <a class="reference internal" href="#r206" id="id1">[R206]</a></p>
+<p><img src="../../_images/math/70e9b7898d39aa4caf7c7ead0c410e6cbe13bf37.png" alt="C = \frac{1}{n}\sum_{v \in G} c_v,"/></p>
+</div><p>where <img class="math" src="../../_images/math/b1f5ca5a538abe6036ed478902bb5a03ef05f0c2.png" alt="n" style="vertical-align: 0px"/> is the number of nodes in <img class="math" src="../../_images/math/a3b876a880363bc604f5b4e0f360b95ffc7f4738.png" alt="G" style="vertical-align: 0px"/>.</p>
+<p>Similar measures for the two bipartite sets can be defined <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
 <div class="math">
-\[C_X = \frac{1}{|X|}\sum_{v \in X} c_v,\]</div>
-<p>where <span class="math">\(X\)</span> is a bipartite set of <span class="math">\(G\)</span>.</p>
+<p><img src="../../_images/math/6b933616f7a02966a38041f4ccfb50c88487ea5f.png" alt="C_X = \frac{1}{|X|}\sum_{v \in X} c_v,"/></p>
+</div><p>where <img class="math" src="../../_images/math/0ba6ae58a72b4954369f8aa53eeeece57df6da5a.png" alt="X" style="vertical-align: 0px"/> is a bipartite set of <img class="math" src="../../_images/math/a3b876a880363bc604f5b4e0f360b95ffc7f4738.png" alt="G" style="vertical-align: 0px"/>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
-<blockquote>
-<div><p>a bipartite graph</p>
-</div></blockquote>
-<p><strong>nodes</strong> : list or iterable, optional</p>
-<blockquote>
-<div><p>A container of nodes to use in computing the average.  
-The nodes should be either the entire graph (the default) or one of the 
-bipartite sets.</p>
-</div></blockquote>
-<p><strong>mode</strong> : string</p>
-<blockquote>
-<div><p>The pariwise bipartite clustering method. 
-It must be &#8220;dot&#8221;, &#8220;max&#8221;, or &#8220;min&#8221;</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>graph</em>) &#8211; a bipartite graph</li>
+<li><strong>nodes</strong> (<em>list or iterable, optional</em>) &#8211; A container of nodes to use in computing the average.
+The nodes should be either the entire graph (the default) or one of the
+bipartite sets.</li>
+<li><strong>mode</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The pariwise bipartite clustering method.
+It must be &#8220;dot&#8221;, &#8220;max&#8221;, or &#8220;min&#8221;</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>clustering</strong> : float</p>
-<blockquote class="last">
-<div><p>The average bipartite clustering for the given set of nodes or the 
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>clustering</strong> &#8211;
+The average bipartite clustering for the given set of nodes or the
 entire graph if no nodes are specified.</p>
-</div></blockquote>
 </td>
 </tr>
-</tbody>
-</table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.bipartite.cluster.clustering.html#networkx.algorithms.bipartite.cluster.clustering" title="networkx.algorithms.bipartite.cluster.clustering"><code class="xref py py-obj docutils literal"><span class="pre">clustering</span></code></a></p>
-</div>
-<p class="rubric">Notes</p>
-<p>The container of nodes passed to this function must contain all of the nodes
-in one of the bipartite sets (&#8220;top&#8221; or &#8220;bottom&#8221;) in order to compute 
-the correct average bipartite clustering coefficients.</p>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r206" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R206]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Latapy, Matthieu, Clémence Magnien, and Nathalie Del Vecchio (2008).
-Basic notions for the analysis of large two-mode networks. 
-Social Networks 30(1), 31&#8211;48.</td></tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.algorithms</span> <span class="kn">import</span> <span class="n">bipartite</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">star_graph</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c"># star graphs are bipartite</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bipartite</span><span class="o">.</span><span class="n">average_clustering</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bipartite</span><span class="o">.</span><span class="n">average_clustering</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 <span class="go">0.75</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="o">=</span><span class="n">bipartite</span><span class="o">.</span><span class="n">sets</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bipartite</span><span class="o">.</span><span class="n">average_clustering</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">X</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bipartite</span><span class="o">.</span><span class="n">average_clustering</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">X</span><span class="p">)</span>
 <span class="go">0.0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">bipartite</span><span class="o">.</span><span class="n">average_clustering</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bipartite</span><span class="o">.</span><span class="n">average_clustering</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
 <span class="go">1.0</span>
 </pre></div>
 </div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.bipartite.cluster.clustering.html#networkx.algorithms.bipartite.cluster.clustering" title="networkx.algorithms.bipartite.cluster.clustering"><code class="xref py py-func docutils literal"><span class="pre">clustering()</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>The container of nodes passed to this function must contain all of the nodes
+in one of the bipartite sets (&#8220;top&#8221; or &#8220;bottom&#8221;) in order to compute
+the correct average bipartite clustering coefficients.</p>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Latapy, Matthieu, Clémence Magnien, and Nathalie Del Vecchio (2008).
+Basic notions for the analysis of large two-mode networks.
+Social Networks 30(1), 31&#8211;48.</td></tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -280,8 +274,8 @@ Social Networks 30(1), 31&#8211;48.</td></tr>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -301,7 +295,7 @@ Social Networks 30(1), 31&#8211;48.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

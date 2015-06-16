@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>read_graphml &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>read_graphml &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="GraphML" href="../readwrite.graphml.html"/>
         <link rel="next" title="write_graphml" href="networkx.readwrite.graphml.write_graphml.html"/>
         <link rel="prev" title="write_graphml" href="networkx.readwrite.graphml.write_graphml.html"/> 
@@ -195,22 +195,19 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>path</strong> : file or string</p>
-<blockquote>
-<div><p>File or filename to write.
-Filenames ending in .gz or .bz2 will be compressed.</p>
-</div></blockquote>
-<p><strong>node_type: Python type (default: str)</strong></p>
-<blockquote>
-<div><p>Convert node ids to this type</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> (<em>file or string</em>) &#8211; File or filename to write.
+Filenames ending in .gz or .bz2 will be compressed.</li>
+<li><strong>node_type</strong> (<em>Python type (default: str)</em>) &#8211; Convert node ids to this type</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">graph: NetworkX graph</p>
-<blockquote class="last">
-<div><p>If no parallel edges are found a Graph or DiGraph is returned.
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>graph</strong> &#8211;
+If no parallel edges are found a Graph or DiGraph is returned.
 Otherwise a MultiGraph or MultiDiGraph is returned.</p>
-</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">NetworkX graph</p>
 </td>
 </tr>
 </tbody>
@@ -248,8 +245,8 @@ the file to &#8220;file.graphml.gz&#8221;.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -269,7 +266,7 @@ the file to &#8220;file.graphml.gz&#8221;.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

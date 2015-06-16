@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>cycle_basis &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>cycle_basis &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,10 +30,9 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Cycles" href="../algorithms.cycles.html"/>
-        <link rel="next" title="simple_cycles" href="networkx.algorithms.cycles.simple_cycles.html"/>
-        <link rel="prev" title="find_cycle" href="networkx.algorithms.cycles.find_cycle.html"/> 
+        <link rel="next" title="simple_cycles" href="networkx.algorithms.cycles.simple_cycles.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -201,31 +200,19 @@ using Kirchhoff&#8217;s Laws.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : NetworkX Graph</p>
-<p><strong>root</strong> : node, optional</p>
-<blockquote>
-<div><p>Specify starting node for basis.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>NetworkX Graph</em>) &#8211; </li>
+<li><strong>root</strong> (<em>node, optional</em>) &#8211; Specify starting node for basis.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of cycle lists.  Each cycle list is a list of nodes</p>
-<p class="last">which forms a cycle (loop) in G.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><em>A list of cycle lists.  Each cycle list is a list of nodes</em></li>
+<li><em>which forms a cycle (loop) in G.</em></li>
+</ul>
+</p>
 </td>
 </tr>
-</tbody>
-</table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.cycles.simple_cycles.html#networkx.algorithms.cycles.simple_cycles" title="networkx.algorithms.cycles.simple_cycles"><code class="xref py py-obj docutils literal"><span class="pre">simple_cycles</span></code></a></p>
-</div>
-<p class="rubric">Notes</p>
-<p>This is adapted from algorithm CACM 491 <a class="reference internal" href="#r299" id="id1">[R299]</a>.</p>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r299" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R299]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Paton, K. An algorithm for finding a fundamental set of
-cycles of a graph. Comm. ACM 12, 9 (Sept 1969), 514-518.</td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -235,6 +222,20 @@ cycles of a graph. Comm. ACM 12, 9 (Sept 1969), 514-518.</td></tr>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">cycle_basis</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
 <span class="go">[[3, 4, 5, 0], [1, 2, 3, 0]]</span>
 </pre></div>
+</div>
+<p class="rubric">Notes</p>
+<p>This is adapted from algorithm CACM 491 <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Paton, K. An algorithm for finding a fundamental set of
+cycles of a graph. Comm. ACM 12, 9 (Sept 1969), 514-518.</td></tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.cycles.simple_cycles.html#networkx.algorithms.cycles.simple_cycles" title="networkx.algorithms.cycles.simple_cycles"><code class="xref py py-func docutils literal"><span class="pre">simple_cycles()</span></code></a></p>
 </div>
 </dd></dl>
 
@@ -249,8 +250,6 @@ cycles of a graph. Comm. ACM 12, 9 (Sept 1969), 514-518.</td></tr>
         <a href="networkx.algorithms.cycles.simple_cycles.html" class="btn btn-neutral float-right" title="simple_cycles"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="networkx.algorithms.cycles.find_cycle.html" class="btn btn-neutral" title="find_cycle"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
     </div>
   
 
@@ -258,8 +257,8 @@ cycles of a graph. Comm. ACM 12, 9 (Sept 1969), 514-518.</td></tr>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -279,7 +278,7 @@ cycles of a graph. Comm. ACM 12, 9 (Sept 1969), 514-518.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

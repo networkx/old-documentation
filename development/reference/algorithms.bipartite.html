@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Bipartite &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>Bipartite &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../index.html"/>
         <link rel="up" title="Algorithms" href="algorithms.html"/>
         <link rel="next" title="is_bipartite" href="generated/networkx.algorithms.bipartite.basic.is_bipartite.html"/>
         <link rel="prev" title="attribute_mixing_dict" href="generated/networkx.algorithms.assortativity.attribute_mixing_dict.html"/> 
@@ -186,8 +186,8 @@
   <div class="section" id="module-networkx.algorithms.bipartite">
 <span id="bipartite"></span><h1>Bipartite<a class="headerlink" href="#module-networkx.algorithms.bipartite" title="Permalink to this headline">¶</a></h1>
 <p>This module provides functions and operations for bipartite
-graphs.  Bipartite graphs <span class="math">\(B = (U, V, E)\)</span> have two node sets <span class="math">\(U,V\)</span> and edges in
-<span class="math">\(E\)</span> that only connect nodes from opposite sets. It is common in the literature
+graphs.  Bipartite graphs <img class="math" src="../_images/math/bb979b423cf29dc922d3311747162e4d642aca65.png" alt="B = (U, V, E)" style="vertical-align: -4px"/> have two node sets <img class="math" src="../_images/math/34aa7bd74ed1bda493046e7054103b77b4fdde42.png" alt="U,V" style="vertical-align: -4px"/> and edges in
+<img class="math" src="../_images/math/3f111edfcfd6e08d8a1ef2af1472fc04b52965ae.png" alt="E" style="vertical-align: 0px"/> that only connect nodes from opposite sets. It is common in the literature
 to use an spatial analogy referring to the two node sets as top and bottom nodes.</p>
 <p>The bipartite algorithms are not imported into the networkx namespace
 at the top level so the easiest way to use them is with:</p>
@@ -210,7 +210,7 @@ identify the sets each node belongs to.</p>
 </div>
 <p>Many algorithms of the bipartite module of NetworkX require, as an argument, a
 container with all the nodes that belong to one set, in addition to the bipartite
-graph <span class="math">\(B\)</span>. If <span class="math">\(B\)</span> is connected, you can find the node sets using a two-coloring 
+graph <img class="math" src="../_images/math/11e1462c077a60151f52020d2cabcc2fc19d3cb0.png" alt="B" style="vertical-align: 0px"/>. If <img class="math" src="../_images/math/11e1462c077a60151f52020d2cabcc2fc19d3cb0.png" alt="B" style="vertical-align: 0px"/> is connected, you can find the node sets using a two-coloring
 algorithm:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">is_connected</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
 <span class="go">True</span>
@@ -251,9 +251,9 @@ container with all nodes that belong to one node set:</p>
 <span class="go">[(1, 2), (1, 4)]</span>
 </pre></div>
 </div>
-<p>All bipartite graph generators in NetworkX build bipartite graphs with the 
+<p>All bipartite graph generators in NetworkX build bipartite graphs with the
 &#8220;bipartite&#8221; node attribute. Thus, you can use the same approach:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">RB</span> <span class="o">=</span> <span class="n">bipartite</span><span class="o">.</span><span class="n">random_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">RB</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">bipartite_random_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">RB_top</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">d</span> <span class="ow">in</span> <span class="n">RB</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="s">&#39;bipartite&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">RB_bottom</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">RB</span><span class="p">)</span> <span class="o">-</span> <span class="n">RB_top</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">RB_top</span><span class="p">)</span>
@@ -266,6 +266,9 @@ container with all nodes that belong to one node set:</p>
 <a class="reference internal" href="generators.html"><em>Graph generators</em></a>.</p>
 <div class="section" id="module-networkx.algorithms.bipartite.basic">
 <span id="basic-functions"></span><h2>Basic functions<a class="headerlink" href="#module-networkx.algorithms.bipartite.basic" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="bipartite-graph-algorithms">
+<h3>Bipartite Graph Algorithms<a class="headerlink" href="#bipartite-graph-algorithms" title="Permalink to this headline">¶</a></h3>
+</div>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -293,59 +296,39 @@ container with all nodes that belong to one node set:</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="module-networkx.algorithms.bipartite.matching">
-<span id="matching"></span><h2>Matching<a class="headerlink" href="#module-networkx.algorithms.bipartite.matching" title="Permalink to this headline">¶</a></h2>
-<p>Provides functions for computing a maximum cardinality matching in a
-bipartite graph.</p>
-<p>If you don&#8217;t care about the particular implementation of the maximum matching
-algorithm, simply use the <code class="xref py py-func docutils literal"><span class="pre">maximum_matching()</span></code>. If you do care, you can
-import one of the named maximum matching algorithms directly.</p>
-<p>For example, to find a maximum matching in the complete bipartite graph with
-two vertices on the left and three vertices on the right:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">complete_bipartite_graph</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">bipartite</span><span class="o">.</span><span class="n">sets</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>
-<span class="go">[0, 1]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
-<span class="go">[2, 3, 4]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">bipartite</span><span class="o">.</span><span class="n">maximum_matching</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-<span class="go">{0: 2, 1: 3, 2: 0, 3: 1}</span>
-</pre></div>
-</div>
-<p>The dictionary returned by <code class="xref py py-func docutils literal"><span class="pre">maximum_matching()</span></code> includes a mapping for
-vertices in both the left and right vertex sets.</p>
+<div class="section" id="matching">
+<h2>Matching<a class="headerlink" href="#matching" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.matching.eppstein_matching.html#networkx.algorithms.bipartite.matching.eppstein_matching" title="networkx.algorithms.bipartite.matching.eppstein_matching"><code class="xref py py-obj docutils literal"><span class="pre">eppstein_matching</span></code></a>(G)</td>
-<td>Returns the maximum cardinality matching of the bipartite graph <span class="math">\(G\)</span>.</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">eppstein_matching</span></code></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.matching.hopcroft_karp_matching.html#networkx.algorithms.bipartite.matching.hopcroft_karp_matching" title="networkx.algorithms.bipartite.matching.hopcroft_karp_matching"><code class="xref py py-obj docutils literal"><span class="pre">hopcroft_karp_matching</span></code></a>(G)</td>
-<td>Returns the maximum cardinality matching of the bipartite graph <span class="math">\(G\)</span>.</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">hopcroft_karp_matching</span></code></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.matching.to_vertex_cover.html#networkx.algorithms.bipartite.matching.to_vertex_cover" title="networkx.algorithms.bipartite.matching.to_vertex_cover"><code class="xref py py-obj docutils literal"><span class="pre">to_vertex_cover</span></code></a>(G,&nbsp;matching)</td>
-<td>Returns the minimum vertex cover corresponding to the given maximum matching of the bipartite graph <span class="math">\(G\)</span>.</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">to_vertex_cover</span></code></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="module-networkx.algorithms.bipartite.matrix">
-<span id="matrix"></span><h2>Matrix<a class="headerlink" href="#module-networkx.algorithms.bipartite.matrix" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="matrix">
+<h2>Matrix<a class="headerlink" href="#matrix" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.matrix.biadjacency_matrix.html#networkx.algorithms.bipartite.matrix.biadjacency_matrix" title="networkx.algorithms.bipartite.matrix.biadjacency_matrix"><code class="xref py py-obj docutils literal"><span class="pre">biadjacency_matrix</span></code></a>(G,&nbsp;row_order[,&nbsp;...])</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">biadjacency_matrix</span></code>(G,&nbsp;row_order[,&nbsp;...])</td>
 <td>Return the biadjacency matrix of the bipartite graph G.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.matrix.from_biadjacency_matrix.html#networkx.algorithms.bipartite.matrix.from_biadjacency_matrix" title="networkx.algorithms.bipartite.matrix.from_biadjacency_matrix"><code class="xref py py-obj docutils literal"><span class="pre">from_biadjacency_matrix</span></code></a>(A[,&nbsp;create_using,&nbsp;...])</td>
-<td>Creates a new bipartite graph from a biadjacency matrix given as a  SciPy sparse matrix.</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">from_biadjacency_matrix</span></code></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -425,7 +408,7 @@ vertices in both the left and right vertex sets.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.redundancy.node_redundancy.html#networkx.algorithms.bipartite.redundancy.node_redundancy" title="networkx.algorithms.bipartite.redundancy.node_redundancy"><code class="xref py py-obj docutils literal"><span class="pre">node_redundancy</span></code></a>(G[,&nbsp;nodes])</td>
-<td>Computes the node redundancy coefficients for the nodes in the bipartite graph <code class="docutils literal"><span class="pre">G</span></code>.</td>
+<td>Compute bipartite node redundancy coefficient.</td>
 </tr>
 </tbody>
 </table>
@@ -450,38 +433,37 @@ vertices in both the left and right vertex sets.</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="module-networkx.algorithms.bipartite.generators">
-<span id="generators"></span><h2>Generators<a class="headerlink" href="#module-networkx.algorithms.bipartite.generators" title="Permalink to this headline">¶</a></h2>
-<p>Generators and functions for bipartite graphs.</p>
+<div class="section" id="generators">
+<h2>Generators<a class="headerlink" href="#generators" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.generators.complete_bipartite_graph.html#networkx.algorithms.bipartite.generators.complete_bipartite_graph" title="networkx.algorithms.bipartite.generators.complete_bipartite_graph"><code class="xref py py-obj docutils literal"><span class="pre">complete_bipartite_graph</span></code></a>(n1,&nbsp;n2[,&nbsp;create_using])</td>
-<td>Return the complete bipartite graph <span class="math">\(K_{n_1,n_2}\)</span>.</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">complete_bipartite_graph</span></code></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.generators.configuration_model.html#networkx.algorithms.bipartite.generators.configuration_model" title="networkx.algorithms.bipartite.generators.configuration_model"><code class="xref py py-obj docutils literal"><span class="pre">configuration_model</span></code></a>(aseq,&nbsp;bseq[,&nbsp;...])</td>
-<td>Return a random bipartite graph from two given degree sequences.</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">configuration_model</span></code></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.generators.havel_hakimi_graph.html#networkx.algorithms.bipartite.generators.havel_hakimi_graph" title="networkx.algorithms.bipartite.generators.havel_hakimi_graph"><code class="xref py py-obj docutils literal"><span class="pre">havel_hakimi_graph</span></code></a>(aseq,&nbsp;bseq[,&nbsp;create_using])</td>
-<td>Return a bipartite graph from two given degree sequences using a  Havel-Hakimi style construction.</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">havel_hakimi_graph</span></code></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.generators.reverse_havel_hakimi_graph.html#networkx.algorithms.bipartite.generators.reverse_havel_hakimi_graph" title="networkx.algorithms.bipartite.generators.reverse_havel_hakimi_graph"><code class="xref py py-obj docutils literal"><span class="pre">reverse_havel_hakimi_graph</span></code></a>(aseq,&nbsp;bseq[,&nbsp;...])</td>
-<td>Return a bipartite graph from two given degree sequences using a Havel-Hakimi style construction.</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">reverse_havel_hakimi_graph</span></code></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.generators.alternating_havel_hakimi_graph.html#networkx.algorithms.bipartite.generators.alternating_havel_hakimi_graph" title="networkx.algorithms.bipartite.generators.alternating_havel_hakimi_graph"><code class="xref py py-obj docutils literal"><span class="pre">alternating_havel_hakimi_graph</span></code></a>(aseq,&nbsp;bseq[,&nbsp;...])</td>
-<td>Return a bipartite graph from two given degree sequences using  an alternating Havel-Hakimi style construction.</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">alternating_havel_hakimi_graph</span></code></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.generators.preferential_attachment_graph.html#networkx.algorithms.bipartite.generators.preferential_attachment_graph" title="networkx.algorithms.bipartite.generators.preferential_attachment_graph"><code class="xref py py-obj docutils literal"><span class="pre">preferential_attachment_graph</span></code></a>(aseq,&nbsp;p[,&nbsp;...])</td>
-<td>Create a bipartite graph with a preferential attachment model from  a given single degree sequence.</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">preferential_attachment_graph</span></code></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.generators.random_graph.html#networkx.algorithms.bipartite.generators.random_graph" title="networkx.algorithms.bipartite.generators.random_graph"><code class="xref py py-obj docutils literal"><span class="pre">random_graph</span></code></a>(n,&nbsp;m,&nbsp;p[,&nbsp;seed,&nbsp;directed])</td>
-<td>Return a bipartite random graph.</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">random_graph</span></code></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.algorithms.bipartite.generators.gnmk_random_graph.html#networkx.algorithms.bipartite.generators.gnmk_random_graph" title="networkx.algorithms.bipartite.generators.gnmk_random_graph"><code class="xref py py-obj docutils literal"><span class="pre">gnmk_random_graph</span></code></a>(n,&nbsp;m,&nbsp;k[,&nbsp;seed,&nbsp;directed])</td>
-<td>Return a random bipartite graph G_{n,m,k}.</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">gnmk_random_graph</span></code></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -506,8 +488,8 @@ vertices in both the left and right vertex sets.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -527,7 +509,7 @@ vertices in both the left and right vertex sets.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

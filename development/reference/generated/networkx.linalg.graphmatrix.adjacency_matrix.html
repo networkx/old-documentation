@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>adjacency_matrix &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>adjacency_matrix &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Linear algebra" href="../linalg.html"/>
         <link rel="next" title="incidence_matrix" href="networkx.linalg.graphmatrix.incidence_matrix.html"/>
         <link rel="prev" title="attr_sparse_matrix" href="networkx.linalg.attrmatrix.attr_sparse_matrix.html"/> 
@@ -193,36 +193,25 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
-<blockquote>
-<div><p>A NetworkX graph</p>
-</div></blockquote>
-<p><strong>nodelist</strong> : list, optional</p>
-<blockquote>
-<div><p>The rows and columns are ordered according to the nodes in nodelist.
-If nodelist is None, then the ordering is produced by G.nodes().</p>
-</div></blockquote>
-<p><strong>weight</strong> : string or None, optional (default=&#8217;weight&#8217;)</p>
-<blockquote>
-<div><p>The edge data key used to provide each value in the matrix.
-If None, then each edge has weight 1.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>graph</em>) &#8211; A NetworkX graph</li>
+<li><strong>nodelist</strong> (<em>list, optional</em>) &#8211; The rows and columns are ordered according to the nodes in nodelist.
+If nodelist is None, then the ordering is produced by G.nodes().</li>
+<li><strong>weight</strong> (<em>string or None, optional (default=&#8217;weight&#8217;)</em>) &#8211; The edge data key used to provide each value in the matrix.
+If None, then each edge has weight 1.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>A</strong> : SciPy sparse matrix</p>
-<blockquote class="last">
-<div><p>Adjacency matrix representation of G.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>A</strong> &#8211;
+Adjacency matrix representation of G.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">SciPy sparse matrix</p>
 </td>
 </tr>
 </tbody>
 </table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">to_numpy_matrix</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">to_scipy_sparse_matrix</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">to_dict_of_dicts</span></code></p>
-</div>
 <p class="rubric">Notes</p>
-<p>For directed graphs, entry i,j corresponds to an edge from i to j.</p>
 <p>If you want a pure Python adjacency matrix representation try
 networkx.convert.to_dict_of_dicts which will return a
 dictionary-of-dictionaries format that can be addressed as a
@@ -243,6 +232,10 @@ resulting Scipy sparse matrix can be modified as follows:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span>
 <span class="go">[[2]]</span>
 </pre></div>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-func docutils literal"><span class="pre">to_numpy_matrix()</span></code>, <code class="xref py py-func docutils literal"><span class="pre">to_scipy_sparse_matrix()</span></code>, <code class="xref py py-func docutils literal"><span class="pre">to_dict_of_dicts()</span></code></p>
 </div>
 </dd></dl>
 
@@ -266,8 +259,8 @@ resulting Scipy sparse matrix can be modified as follows:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -287,7 +280,7 @@ resulting Scipy sparse matrix can be modified as follows:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

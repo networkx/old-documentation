@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>attr_sparse_matrix &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>attr_sparse_matrix &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Linear algebra" href="../linalg.html"/>
         <link rel="next" title="Converting to and from other data formats" href="../convert.html"/>
         <link rel="prev" title="attr_matrix" href="networkx.linalg.attrmatrix.attr_matrix.html"/> 
@@ -189,70 +189,54 @@
 <dt id="networkx.linalg.attrmatrix.attr_sparse_matrix">
 <code class="descname">attr_sparse_matrix</code><span class="sig-paren">(</span><em>G</em>, <em>edge_attr=None</em>, <em>node_attr=None</em>, <em>normalized=False</em>, <em>rc_order=None</em>, <em>dtype=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/linalg/attrmatrix.html#attr_sparse_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.linalg.attrmatrix.attr_sparse_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a SciPy sparse matrix using attributes from G.</p>
-<p>If only <span class="math">\(G\)</span> is passed in, then the adjacency matrix is constructed.</p>
-<p>Let A be a discrete set of values for the node attribute <span class="math">\(node_attr\)</span>. Then
+<p>If only <img class="math" src="../../_images/math/a3b876a880363bc604f5b4e0f360b95ffc7f4738.png" alt="G" style="vertical-align: 0px"/> is passed in, then the adjacency matrix is constructed.</p>
+<p>Let A be a discrete set of values for the node attribute <img class="math" src="../../_images/math/c04b0081aad6885a91bb2eaee2172e6351d7cd6d.png" alt="node_attr" style="vertical-align: -3px"/>. Then
 the elements of A represent the rows and columns of the constructed matrix.
-Now, iterate through every edge e=(u,v) in <span class="math">\(G\)</span> and consider the value
-of the edge attribute <span class="math">\(edge_attr\)</span>.  If ua and va are the values of the 
-node attribute <span class="math">\(node_attr\)</span> for u and v, respectively, then the value of
+Now, iterate through every edge e=(u,v) in <img class="math" src="../../_images/math/a3b876a880363bc604f5b4e0f360b95ffc7f4738.png" alt="G" style="vertical-align: 0px"/> and consider the value
+of the edge attribute <img class="math" src="../../_images/math/356d332e56b6d7f8f46f6bf9e49d0f5ae0be8f97.png" alt="edge_attr" style="vertical-align: -4px"/>.  If ua and va are the values of the
+node attribute <img class="math" src="../../_images/math/c04b0081aad6885a91bb2eaee2172e6351d7cd6d.png" alt="node_attr" style="vertical-align: -3px"/> for u and v, respectively, then the value of
 the edge attribute is added to the matrix element at (ua, va).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
-<blockquote>
-<div><p>The NetworkX graph used to construct the NumPy matrix.</p>
-</div></blockquote>
-<p><strong>edge_attr</strong> : str, optional</p>
-<blockquote>
-<div><p>Each element of the matrix represents a running total of the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>graph</em>) &#8211; The NetworkX graph used to construct the NumPy matrix.</li>
+<li><strong>edge_attr</strong> (<em>str, optional</em>) &#8211; Each element of the matrix represents a running total of the
 specified edge attribute for edges whose node attributes correspond
-to the rows/cols of the matirx. The attribute must be present for 
+to the rows/cols of the matirx. The attribute must be present for
 all edges in the graph. If no attribute is specified, then we
 just count the number of edges whose node attributes correspond
-to the matrix element.</p>
-</div></blockquote>
-<p><strong>node_attr</strong> : str, optional</p>
-<blockquote>
-<div><p>Each row and column in the matrix represents a particular value
+to the matrix element.</li>
+<li><strong>node_attr</strong> (<em>str, optional</em>) &#8211; Each row and column in the matrix represents a particular value
 of the node attribute.  The attribute must be present for all nodes
 in the graph. Note, the values of this attribute should be reliably
-hashable. So, float values are not recommended. If no attribute is 
-specified, then the rows and columns will be the nodes of the graph.</p>
-</div></blockquote>
-<p><strong>normalized</strong> : bool, optional</p>
-<blockquote>
-<div><p>If True, then each row is normalized by the summation of its values.</p>
-</div></blockquote>
-<p><strong>rc_order</strong> : list, optional</p>
-<blockquote>
-<div><p>A list of the node attribute values. This list specifies the ordering 
+hashable. So, float values are not recommended. If no attribute is
+specified, then the rows and columns will be the nodes of the graph.</li>
+<li><strong>normalized</strong> (<em>bool, optional</em>) &#8211; If True, then each row is normalized by the summation of its values.</li>
+<li><strong>rc_order</strong> (<em>list, optional</em>) &#8211; A list of the node attribute values. This list specifies the ordering
 of rows and columns of the array. If no ordering is provided, then
-the ordering will be random (and also, a return value).</p>
-</div></blockquote>
+the ordering will be random (and also, a return value).</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>M</strong> : SciPy sparse matrix</p>
-<blockquote>
-<div><p>The attribute matrix.</p>
-</div></blockquote>
-<p><strong>ordering</strong> : list</p>
-<blockquote>
-<div><p>If <span class="math">\(rc_order\)</span> was specified, then only the matrix is returned.
-However, if <span class="math">\(rc_order\)</span> was None, then the ordering used to construct 
-the matrix is returned as well.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><strong>dtype</strong> : NumPy data-type, optional</p>
-<blockquote class="last">
-<div><p>A valid NumPy dtype used to initialize the array. Keep in mind certain
+<tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><strong>dtype</strong> (<em>NumPy data-type, optional</em>) &#8211;
+A valid NumPy dtype used to initialize the array. Keep in mind certain
 dtypes can yield unexpected results if the array is to be normalized.
 The parameter is passed to numpy.zeros(). If unspecified, the NumPy
 default is used.</p>
-</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><strong>M</strong> (<em>SciPy sparse matrix</em>) &#8211;
+The attribute matrix.</li>
+<li><strong>ordering</strong> (<em>list</em>) &#8211;
+If <img class="math" src="../../_images/math/6e61bafbeb6f2fb01f60dc32158fb6a617a4a7da.png" alt="rc_order" style="vertical-align: -3px"/> was specified, then only the matrix is returned.
+However, if <img class="math" src="../../_images/math/6e61bafbeb6f2fb01f60dc32158fb6a617a4a7da.png" alt="rc_order" style="vertical-align: -3px"/> was None, then the ordering used to construct
+the matrix is returned as well.</li>
+</ul>
+</p>
 </td>
 </tr>
 </tbody>
@@ -334,8 +318,8 @@ Pr( v is blue | u is blue) = 0</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -355,7 +339,7 @@ Pr( v is blue | u is blue) = 0</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

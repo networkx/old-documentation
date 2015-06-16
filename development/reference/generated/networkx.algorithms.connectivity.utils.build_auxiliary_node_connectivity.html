@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>build_auxiliary_node_connectivity &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>build_auxiliary_node_connectivity &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Connectivity" href="../algorithms.connectivity.html"/>
         <link rel="next" title="Cores" href="../algorithms.core.html"/>
         <link rel="prev" title="build_auxiliary_edge_connectivity" href="networkx.algorithms.connectivity.utils.build_auxiliary_edge_connectivity.html"/> 
@@ -192,25 +192,25 @@
 <code class="descname">build_auxiliary_node_connectivity</code><span class="sig-paren">(</span><em>G</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/connectivity/utils.html#build_auxiliary_node_connectivity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.connectivity.utils.build_auxiliary_node_connectivity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a directed graph D from an undirected graph G to compute flow
 based node connectivity.</p>
-<p>For an undirected graph G having <span class="math">\(n\)</span> nodes and <span class="math">\(m\)</span> edges we derive a
-directed graph D with <span class="math">\(2n\)</span> nodes and <span class="math">\(2m+n\)</span> arcs by replacing each
-original node <span class="math">\(v\)</span> with two nodes <span class="math">\(vA\)</span>, <span class="math">\(vB\)</span> linked by an (internal)
-arc in D. Then for each edge (<span class="math">\(u\)</span>, <span class="math">\(v\)</span>) in G we add two arcs (<span class="math">\(uB\)</span>, <span class="math">\(vA\)</span>)
-and (<span class="math">\(vB\)</span>, <span class="math">\(uA\)</span>) in D. Finally we set the attribute capacity = 1 for each
-arc in D <a class="reference internal" href="#r294" id="id1">[R294]</a>.</p>
-<p>For a directed graph having <span class="math">\(n\)</span> nodes and <span class="math">\(m\)</span> arcs we derive a
-directed graph D with <span class="math">\(2n\)</span> nodes and <span class="math">\(m+n\)</span> arcs by replacing each
-original node <span class="math">\(v\)</span> with two nodes <span class="math">\(vA\)</span>, <span class="math">\(vB\)</span> linked by an (internal)
-arc (<span class="math">\(vA\)</span>, <span class="math">\(vB\)</span>) in D. Then for each arc (<span class="math">\(u\)</span>, <span class="math">\(v\)</span>) in G we add one 
-arc (<span class="math">\(uB\)</span>, <span class="math">\(vA\)</span>) in D. Finally we set the attribute capacity = 1 for
+<p>For an undirected graph G having <img class="math" src="../../_images/math/b1f5ca5a538abe6036ed478902bb5a03ef05f0c2.png" alt="n" style="vertical-align: 0px"/> nodes and <img class="math" src="../../_images/math/2a6f9b0b4119433a3eae475d163e0694af1ca408.png" alt="m" style="vertical-align: 0px"/> edges we derive a
+directed graph D with <img class="math" src="../../_images/math/8e750c0cb5dd78db5f4e464961b287fc6373a668.png" alt="2n" style="vertical-align: 0px"/> nodes and <img class="math" src="../../_images/math/49c62407d77422c9d884fa2c9bcb33a016fef72c.png" alt="2m+n" style="vertical-align: -1px"/> arcs by replacing each
+original node <img class="math" src="../../_images/math/53c4a26799ff6cdae6f13d6b1fcf961660d83169.png" alt="v" style="vertical-align: 0px"/> with two nodes <img class="math" src="../../_images/math/b78e8eb6b0f896ded832369c8d927b77196481ff.png" alt="vA" style="vertical-align: 0px"/>, <img class="math" src="../../_images/math/92665a0f19f74fc5554ac67d1ab913d25eda4471.png" alt="vB" style="vertical-align: 0px"/> linked by an (internal)
+arc in D. Then for each edge (<img class="math" src="../../_images/math/8a766bbd11b0a08916009a3c0008470d402e9d2f.png" alt="u" style="vertical-align: 0px"/>, <img class="math" src="../../_images/math/53c4a26799ff6cdae6f13d6b1fcf961660d83169.png" alt="v" style="vertical-align: 0px"/>) in G we add two arcs (<img class="math" src="../../_images/math/56e46b62b736f63175e26526053e3107e67ea033.png" alt="uB" style="vertical-align: 0px"/>, <img class="math" src="../../_images/math/b78e8eb6b0f896ded832369c8d927b77196481ff.png" alt="vA" style="vertical-align: 0px"/>)
+and (<img class="math" src="../../_images/math/92665a0f19f74fc5554ac67d1ab913d25eda4471.png" alt="vB" style="vertical-align: 0px"/>, <img class="math" src="../../_images/math/1803999257ca67db237fe508553269a94be57112.png" alt="uA" style="vertical-align: 0px"/>) in D. Finally we set the attribute capacity = 1 for each
+arc in D <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
+<p>For a directed graph having <img class="math" src="../../_images/math/b1f5ca5a538abe6036ed478902bb5a03ef05f0c2.png" alt="n" style="vertical-align: 0px"/> nodes and <img class="math" src="../../_images/math/2a6f9b0b4119433a3eae475d163e0694af1ca408.png" alt="m" style="vertical-align: 0px"/> arcs we derive a
+directed graph D with <img class="math" src="../../_images/math/8e750c0cb5dd78db5f4e464961b287fc6373a668.png" alt="2n" style="vertical-align: 0px"/> nodes and <img class="math" src="../../_images/math/34792e8db957f9dd107aa69957d9134cc031b7e0.png" alt="m+n" style="vertical-align: -1px"/> arcs by replacing each
+original node <img class="math" src="../../_images/math/53c4a26799ff6cdae6f13d6b1fcf961660d83169.png" alt="v" style="vertical-align: 0px"/> with two nodes <img class="math" src="../../_images/math/b78e8eb6b0f896ded832369c8d927b77196481ff.png" alt="vA" style="vertical-align: 0px"/>, <img class="math" src="../../_images/math/92665a0f19f74fc5554ac67d1ab913d25eda4471.png" alt="vB" style="vertical-align: 0px"/> linked by an (internal)
+arc (<img class="math" src="../../_images/math/b78e8eb6b0f896ded832369c8d927b77196481ff.png" alt="vA" style="vertical-align: 0px"/>, <img class="math" src="../../_images/math/92665a0f19f74fc5554ac67d1ab913d25eda4471.png" alt="vB" style="vertical-align: 0px"/>) in D. Then for each arc (<img class="math" src="../../_images/math/8a766bbd11b0a08916009a3c0008470d402e9d2f.png" alt="u" style="vertical-align: 0px"/>, <img class="math" src="../../_images/math/53c4a26799ff6cdae6f13d6b1fcf961660d83169.png" alt="v" style="vertical-align: 0px"/>) in G we add one
+arc (<img class="math" src="../../_images/math/56e46b62b736f63175e26526053e3107e67ea033.png" alt="uB" style="vertical-align: 0px"/>, <img class="math" src="../../_images/math/b78e8eb6b0f896ded832369c8d927b77196481ff.png" alt="vA" style="vertical-align: 0px"/>) in D. Finally we set the attribute capacity = 1 for
 each arc in D.</p>
 <p>A dictionary with a mapping between nodes in the original graph and the
 auxiliary digraph is stored as a graph attribute: H.graph[&#8216;mapping&#8217;].</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r294" rules="none">
+<table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R294]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Kammer, Frank and Hanjo Taubig. Graph Connectivity. in Brandes and
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Kammer, Frank and Hanjo Taubig. Graph Connectivity. in Brandes and
 Erlebach, &#8216;Network Analysis: Methodological Foundations&#8217;, Lecture
 Notes in Computer Science, Volume 3418, Springer-Verlag, 2005.
 <a class="reference external" href="http://www.informatik.uni-augsburg.de/thi/personen/kammer/Graph_Connectivity.pdf">http://www.informatik.uni-augsburg.de/thi/personen/kammer/Graph_Connectivity.pdf</a></td></tr>
@@ -238,8 +238,8 @@ Notes in Computer Science, Volume 3418, Springer-Verlag, 2005.
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -259,7 +259,7 @@ Notes in Computer Science, Volume 3418, Springer-Verlag, 2005.
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>approximate_current_flow_betweenness_centrality &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>approximate_current_flow_betweenness_centrality &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="Centrality" href="../algorithms.centrality.html"/>
         <link rel="next" title="eigenvector_centrality" href="networkx.algorithms.centrality.eigenvector_centrality.html"/>
         <link rel="prev" title="edge_current_flow_betweenness_centrality" href="networkx.algorithms.centrality.edge_current_flow_betweenness_centrality.html"/> 
@@ -192,69 +192,51 @@
 <code class="descname">approximate_current_flow_betweenness_centrality</code><span class="sig-paren">(</span><em>G</em>, <em>normalized=True</em>, <em>weight='weight'</em>, <em>dtype=&lt;type 'float'&gt;</em>, <em>solver='full'</em>, <em>epsilon=0.5</em>, <em>kmax=10000</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/centrality/current_flow_betweenness.html#approximate_current_flow_betweenness_centrality"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.centrality.approximate_current_flow_betweenness_centrality" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the approximate current-flow betweenness centrality for nodes.</p>
 <p>Approximates the current-flow betweenness centrality within absolute
-error of epsilon with high probability <a class="reference internal" href="#r221" id="id1">[R221]</a>.</p>
+error of epsilon with high probability <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : graph</p>
-<blockquote>
-<div><p>A NetworkX graph</p>
-</div></blockquote>
-<p><strong>normalized</strong> : bool, optional (default=True)</p>
-<blockquote>
-<div><p>If True the betweenness values are normalized by 2/[(n-1)(n-2)] where
-n is the number of nodes in G.</p>
-</div></blockquote>
-<p><strong>weight</strong> : string or None, optional (default=&#8217;weight&#8217;)</p>
-<blockquote>
-<div><p>Key for edge data used as the edge weight.
-If None, then use 1 as each edge weight.</p>
-</div></blockquote>
-<p><strong>dtype: data type (float)</strong></p>
-<blockquote>
-<div><p>Default data type for internal matrices.
-Set to np.float32 for lower memory consumption.</p>
-</div></blockquote>
-<p><strong>solver: string (default=&#8217;lu&#8217;)</strong></p>
-<blockquote>
-<div><p>Type of linear solver to use for computing the flow matrix.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>graph</em>) &#8211; A NetworkX graph</li>
+<li><strong>normalized</strong> (<em>bool, optional (default=True)</em>) &#8211; If True the betweenness values are normalized by 2/[(n-1)(n-2)] where
+n is the number of nodes in G.</li>
+<li><strong>weight</strong> (<em>string or None, optional (default=&#8217;weight&#8217;)</em>) &#8211; Key for edge data used as the edge weight.
+If None, then use 1 as each edge weight.</li>
+<li><strong>dtype</strong> (<em>data type (float)</em>) &#8211; Default data type for internal matrices.
+Set to np.float32 for lower memory consumption.</li>
+<li><strong>solver</strong> (<em>string (default=&#8217;lu&#8217;)</em>) &#8211; Type of linear solver to use for computing the flow matrix.
 Options are &#8220;full&#8221; (uses most memory), &#8220;lu&#8221; (recommended), and
-&#8220;cg&#8221; (uses least memory).</p>
-</div></blockquote>
-<p><strong>epsilon: float</strong></p>
-<blockquote>
-<div><p>Absolute error tolerance.</p>
-</div></blockquote>
-<p><strong>kmax: int</strong></p>
-<blockquote>
-<div><p>Maximum number of sample node pairs to use for approximation.</p>
-</div></blockquote>
+&#8220;cg&#8221; (uses least memory).</li>
+<li><strong>epsilon</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Absolute error tolerance.</li>
+<li><strong>kmax</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Maximum number of sample node pairs to use for approximation.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>nodes</strong> : dictionary</p>
-<blockquote class="last">
-<div><p>Dictionary of nodes with betweenness centrality as the value.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>nodes</strong> &#8211;
+Dictionary of nodes with betweenness centrality as the value.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dictionary</p>
 </td>
 </tr>
 </tbody>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.algorithms.centrality.current_flow_betweenness_centrality.html#networkx.algorithms.centrality.current_flow_betweenness_centrality" title="networkx.algorithms.centrality.current_flow_betweenness_centrality"><code class="xref py py-obj docutils literal"><span class="pre">current_flow_betweenness_centrality</span></code></a></p>
+<p class="last"><a class="reference internal" href="networkx.algorithms.centrality.current_flow_betweenness_centrality.html#networkx.algorithms.centrality.current_flow_betweenness_centrality" title="networkx.algorithms.centrality.current_flow_betweenness_centrality"><code class="xref py py-func docutils literal"><span class="pre">current_flow_betweenness_centrality()</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>The running time is <span class="math">\(O((1/\epsilon^2)m{\sqrt k} \log n)\)</span>
-and the space required is <span class="math">\(O(m)\)</span> for n nodes and m edges.</p>
+<p>The running time is <img class="math" src="../../_images/math/c22fe301fc890ad6c76d9a2d2c44da6d665daa1a.png" alt="O((1/\epsilon^2)m{\sqrt k} \log n)" style="vertical-align: -5px"/>
+and the space required is <img class="math" src="../../_images/math/9eb105a470de46594ba32c35f8ea43fbf78a3d35.png" alt="O(m)" style="vertical-align: -4px"/> for n nodes and m edges.</p>
 <p>If the edges have a &#8216;weight&#8217; attribute they will be used as
 weights in this algorithm.  Unspecified weights are set to 1.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r221" rules="none">
+<table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R221]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Ulrik Brandes and Daniel Fleischer:
-Centrality Measures Based on Current Flow.
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Centrality Measures Based on Current Flow.
+Ulrik Brandes and Daniel Fleischer,
 Proc. 22nd Symp. Theoretical Aspects of Computer Science (STACS &#8216;05).
 LNCS 3404, pp. 533-544. Springer-Verlag, 2005.
 <a class="reference external" href="http://www.inf.uni-konstanz.de/algo/publications/bf-cmbcf-05.pdf">http://www.inf.uni-konstanz.de/algo/publications/bf-cmbcf-05.pdf</a></td></tr>
@@ -282,8 +264,8 @@ LNCS 3404, pp. 533-544. Springer-Verlag, 2005.
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -303,7 +285,7 @@ LNCS 3404, pp. 533-544. Springer-Verlag, 2005.
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

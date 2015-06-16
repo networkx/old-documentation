@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Drawing &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>Drawing &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../index.html"/>
         <link rel="up" title="Reference" href="pdf_reference.html"/>
         <link rel="next" title="draw" href="generated/networkx.drawing.nx_pylab.draw.html"/>
         <link rel="prev" title="write_shp" href="generated/networkx.readwrite.nx_shp.write_shp.html"/> 
@@ -197,15 +197,22 @@ dedicated and fully-featured graph visualization tools are
 <a class="reference external" href="http://sourceforge.net/projects/pgf/">PGF/TikZ</a>.
 To use these and other such tools, you should export your NetworkX graph into
 a format that can be read by those tools. For example, Cytoscape can read the
-GraphML format, and so, <span class="math">\(networkx.write_graphml(G)\)</span> might be an appropriate
+GraphML format, and so, <img class="math" src="../_images/math/080021d0291dd395d6b8e65df20827f37c6d019e.png" alt="networkx.write_graphml(G)" style="vertical-align: -6px"/> might be an appropriate
 choice.</p>
 <div class="section" id="module-networkx.drawing.nx_pylab">
 <span id="matplotlib"></span><h2>Matplotlib<a class="headerlink" href="#module-networkx.drawing.nx_pylab" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>Matplotlib<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>Draw networks with matplotlib.</p>
-<div class="section" id="see-also">
-<h3>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
-<p>matplotlib:     <a class="reference external" href="http://matplotlib.org/">http://matplotlib.org/</a></p>
-<p>pygraphviz:     <a class="reference external" href="http://pygraphviz.github.io/">http://pygraphviz.github.io/</a></p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><code class="xref py py-mod docutils literal"><span class="pre">matplotlib</span></code></dt>
+<dd><a class="reference external" href="http://matplotlib.sourceforge.net/">http://matplotlib.sourceforge.net/</a></dd>
+<dt><code class="xref py py-mod docutils literal"><span class="pre">pygraphviz</span></code></dt>
+<dd><a class="reference external" href="http://networkx.lanl.gov/pygraphviz/">http://networkx.lanl.gov/pygraphviz/</a></dd>
+</dl>
+</div>
 </div>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -216,7 +223,7 @@ choice.</p>
 <tr class="row-odd"><td><a class="reference internal" href="generated/networkx.drawing.nx_pylab.draw.html#networkx.drawing.nx_pylab.draw" title="networkx.drawing.nx_pylab.draw"><code class="xref py py-obj docutils literal"><span class="pre">draw</span></code></a>(G[,&nbsp;pos,&nbsp;ax,&nbsp;hold])</td>
 <td>Draw the graph G with Matplotlib.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.drawing.nx_pylab.draw_networkx.html#networkx.drawing.nx_pylab.draw_networkx" title="networkx.drawing.nx_pylab.draw_networkx"><code class="xref py py-obj docutils literal"><span class="pre">draw_networkx</span></code></a>(G[,&nbsp;pos,&nbsp;arrows,&nbsp;with_labels])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.drawing.nx_pylab.draw_networkx.html#networkx.drawing.nx_pylab.draw_networkx" title="networkx.drawing.nx_pylab.draw_networkx"><code class="xref py py-obj docutils literal"><span class="pre">draw_networkx</span></code></a>(G[,&nbsp;pos,&nbsp;with_labels])</td>
 <td>Draw the graph G using Matplotlib.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/networkx.drawing.nx_pylab.draw_networkx_nodes.html#networkx.drawing.nx_pylab.draw_networkx_nodes" title="networkx.drawing.nx_pylab.draw_networkx_nodes"><code class="xref py py-obj docutils literal"><span class="pre">draw_networkx_nodes</span></code></a>(G,&nbsp;pos[,&nbsp;nodelist,&nbsp;...])</td>
@@ -254,18 +261,22 @@ choice.</p>
 </div>
 <div class="section" id="module-networkx.drawing.nx_agraph">
 <span id="graphviz-agraph-dot"></span><h2>Graphviz AGraph (dot)<a class="headerlink" href="#module-networkx.drawing.nx_agraph" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="graphviz-agraph">
+<h3>Graphviz AGraph<a class="headerlink" href="#graphviz-agraph" title="Permalink to this headline">¶</a></h3>
 <p>Interface to pygraphviz AGraph class.</p>
-<div class="section" id="examples">
-<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">complete_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">to_agraph</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">H</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">from_agraph</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><code class="xref py py-mod docutils literal"><span class="pre">Pygraphviz</span></code></dt>
+<dd><a class="reference external" href="http://networkx.lanl.gov/pygraphviz">http://networkx.lanl.gov/pygraphviz</a></dd>
+</dl>
 </div>
-<div class="section" id="id2">
-<h3>See Also<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>Pygraphviz: <a class="reference external" href="http://pygraphviz.github.io/">http://pygraphviz.github.io/</a></p>
 </div>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -296,13 +307,20 @@ choice.</p>
 </div>
 <div class="section" id="module-networkx.drawing.nx_pydot">
 <span id="graphviz-with-pydot"></span><h2>Graphviz with pydot<a class="headerlink" href="#module-networkx.drawing.nx_pydot" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pydot">
+<h3>Pydot<a class="headerlink" href="#pydot" title="Permalink to this headline">¶</a></h3>
 <p>Import and export NetworkX graphs in Graphviz dot format using pydot.</p>
 <p>Either this module or nx_pygraphviz can be used to interface with graphviz.</p>
-<div class="section" id="id3">
-<h3>See Also<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p>Pydot: <a class="reference external" href="http://code.google.com/p/pydot/">http://code.google.com/p/pydot/</a>
-Graphviz:          <a class="reference external" href="http://www.research.att.com/sw/tools/graphviz/">http://www.research.att.com/sw/tools/graphviz/</a>
-DOT Language:  <a class="reference external" href="http://www.graphviz.org/doc/info/lang.html">http://www.graphviz.org/doc/info/lang.html</a></p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="docutils">
+<dt><code class="xref py py-mod docutils literal"><span class="pre">Pydot</span></code></dt>
+<dd><a class="reference external" href="http://code.google.com/p/pydot/">http://code.google.com/p/pydot/</a></dd>
+<dt><code class="xref py py-mod docutils literal"><span class="pre">Graphviz</span></code></dt>
+<dd><a class="reference external" href="http://www.research.att.com/sw/tools/graphviz/">http://www.research.att.com/sw/tools/graphviz/</a></dd>
+</dl>
+<p class="last"><code class="xref py py-mod docutils literal"><span class="pre">DOT</span></code></p>
+</div>
 </div>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -333,26 +351,29 @@ DOT Language:  <a class="reference external" href="http://www.graphviz.org/doc/i
 </div>
 <div class="section" id="module-networkx.drawing.layout">
 <span id="graph-layout"></span><h2>Graph Layout<a class="headerlink" href="#module-networkx.drawing.layout" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="layout">
+<h3>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h3>
 <p>Node positioning algorithms for graph drawing.</p>
+</div>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.drawing.layout.circular_layout.html#networkx.drawing.layout.circular_layout" title="networkx.drawing.layout.circular_layout"><code class="xref py py-obj docutils literal"><span class="pre">circular_layout</span></code></a>(G[,&nbsp;dim,&nbsp;scale,&nbsp;center])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.drawing.layout.circular_layout.html#networkx.drawing.layout.circular_layout" title="networkx.drawing.layout.circular_layout"><code class="xref py py-obj docutils literal"><span class="pre">circular_layout</span></code></a>(G[,&nbsp;dim,&nbsp;scale])</td>
 <td>Position nodes on a circle.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.drawing.layout.random_layout.html#networkx.drawing.layout.random_layout" title="networkx.drawing.layout.random_layout"><code class="xref py py-obj docutils literal"><span class="pre">random_layout</span></code></a>(G[,&nbsp;dim,&nbsp;center])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.drawing.layout.random_layout.html#networkx.drawing.layout.random_layout" title="networkx.drawing.layout.random_layout"><code class="xref py py-obj docutils literal"><span class="pre">random_layout</span></code></a>(G[,&nbsp;dim])</td>
 <td>Position nodes uniformly at random in the unit square.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.drawing.layout.shell_layout.html#networkx.drawing.layout.shell_layout" title="networkx.drawing.layout.shell_layout"><code class="xref py py-obj docutils literal"><span class="pre">shell_layout</span></code></a>(G[,&nbsp;nlist,&nbsp;dim,&nbsp;scale,&nbsp;center])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.drawing.layout.shell_layout.html#networkx.drawing.layout.shell_layout" title="networkx.drawing.layout.shell_layout"><code class="xref py py-obj docutils literal"><span class="pre">shell_layout</span></code></a>(G[,&nbsp;nlist,&nbsp;dim,&nbsp;scale])</td>
 <td>Position nodes in concentric circles.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/networkx.drawing.layout.spring_layout.html#networkx.drawing.layout.spring_layout" title="networkx.drawing.layout.spring_layout"><code class="xref py py-obj docutils literal"><span class="pre">spring_layout</span></code></a>(G[,&nbsp;dim,&nbsp;k,&nbsp;pos,&nbsp;fixed,&nbsp;...])</td>
 <td>Position nodes using Fruchterman-Reingold force-directed algorithm.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.drawing.layout.spectral_layout.html#networkx.drawing.layout.spectral_layout" title="networkx.drawing.layout.spectral_layout"><code class="xref py py-obj docutils literal"><span class="pre">spectral_layout</span></code></a>(G[,&nbsp;dim,&nbsp;weight,&nbsp;scale,&nbsp;center])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.drawing.layout.spectral_layout.html#networkx.drawing.layout.spectral_layout" title="networkx.drawing.layout.spectral_layout"><code class="xref py py-obj docutils literal"><span class="pre">spectral_layout</span></code></a>(G[,&nbsp;dim,&nbsp;weight,&nbsp;scale])</td>
 <td>Position nodes using the eigenvectors of the graph Laplacian.</td>
 </tr>
 </tbody>
@@ -378,8 +399,8 @@ DOT Language:  <a class="reference external" href="http://www.graphviz.org/doc/i
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -399,7 +420,7 @@ DOT Language:  <a class="reference external" href="http://www.graphviz.org/doc/i
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false

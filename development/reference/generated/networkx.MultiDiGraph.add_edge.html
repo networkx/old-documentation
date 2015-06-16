@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>add_edge &mdash; NetworkX 2.0.dev20150615000011 documentation</title>
+  <title>add_edge &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -19,7 +19,7 @@
   
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20150615000011 documentation" href="../../_static/opensearch.xml"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../../_static/opensearch.xml"/>
     
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20150615000011 documentation" href="../../index.html"/>
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
         <link rel="up" title="MultiDiGraph - Directed graphs with self loops and parallel edges" href="../classes.multidigraph.html"/>
         <link rel="next" title="add_edges_from" href="networkx.MultiDiGraph.add_edges_from.html"/>
         <link rel="prev" title="remove_nodes_from" href="networkx.MultiDiGraph.remove_nodes_from.html"/> 
@@ -199,25 +199,15 @@ a dictionary with key/value pairs.  See examples below.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>u,v</strong> : nodes</p>
-<blockquote>
-<div><p>Nodes can be, for example, strings or numbers.
-Nodes must be hashable (and not None) Python objects.</p>
-</div></blockquote>
-<p><strong>key</strong> : hashable identifier, optional (default=lowest unused integer)</p>
-<blockquote>
-<div><p>Used to distinguish multiedges between a pair of nodes.</p>
-</div></blockquote>
-<p><strong>attr_dict</strong> : dictionary, optional (default= no attributes)</p>
-<blockquote>
-<div><p>Dictionary of edge attributes.  Key/value pairs will
-update existing data associated with the edge.</p>
-</div></blockquote>
-<p><strong>attr</strong> : keyword arguments, optional</p>
-<blockquote class="last">
-<div><p>Edge data (or labels or objects) can be assigned using
-keyword arguments.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>u,v</strong> (<em>nodes</em>) &#8211; Nodes can be, for example, strings or numbers.
+Nodes must be hashable (and not None) Python objects.</li>
+<li><strong>key</strong> (<em>hashable identifier, optional (default=lowest unused integer)</em>) &#8211; Used to distinguish multiedges between a pair of nodes.</li>
+<li><strong>attr_dict</strong> (<em>dictionary, optional (default= no attributes)</em>) &#8211; Dictionary of edge attributes.  Key/value pairs will
+update existing data associated with the edge.</li>
+<li><strong>attr</strong> (<em>keyword arguments, optional</em>) &#8211; Edge data (or labels or objects) can be assigned using
+keyword arguments.</li>
+</ul>
 </td>
 </tr>
 </tbody>
@@ -225,7 +215,7 @@ keyword arguments.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="networkx.MultiDiGraph.add_edges_from.html#networkx.MultiDiGraph.add_edges_from" title="networkx.MultiDiGraph.add_edges_from"><code class="xref py py-obj docutils literal"><span class="pre">add_edges_from</span></code></a></dt>
+<dt><a class="reference internal" href="networkx.MultiDiGraph.add_edges_from.html#networkx.MultiDiGraph.add_edges_from" title="networkx.MultiDiGraph.add_edges_from"><code class="xref py py-meth docutils literal"><span class="pre">add_edges_from()</span></code></a></dt>
 <dd>add a collection of edges</dd>
 </dl>
 </div>
@@ -273,8 +263,8 @@ multiedge weights.  Convert to Graph using edge attribute
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, NetworkX Developers.
-      Last updated on Jun 15, 2015.
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Jun 16, 2015.
     </p>
   </div>
 
@@ -294,7 +284,7 @@ multiedge weights.  Convert to Graph using edge attribute
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.0.dev20150615000011',
+            VERSION:'2.0.dev20140922121148',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  false
