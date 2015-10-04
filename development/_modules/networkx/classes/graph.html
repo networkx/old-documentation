@@ -73,7 +73,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../install.html#quick-install">Quick install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../install.html#installing-with-pip">Installing with pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../install.html#installing-with-conda">Installing with conda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../install.html#installing-from-source">Installing from source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../install.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../install.html#optional-packages">Optional packages</a></li>
@@ -700,7 +701,7 @@
                 <span class="k">pass</span>
 
 </div>
-<div class="viewcode-block" id="Graph.nodes_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.Graph.nodes_iter.html#networkx.Graph.nodes_iter">[docs]</a>    <span class="k">def</span> <span class="nf">nodes_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">nodes_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator over the nodes.</span>
 
 <span class="sd">        Parameters</span>
@@ -734,7 +735,7 @@
         <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
         <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="p">)</span>
-</div>
+
 <div class="viewcode-block" id="Graph.nodes"><a class="viewcode-back" href="../../../reference/generated/networkx.Graph.nodes.html#networkx.Graph.nodes">[docs]</a>    <span class="k">def</span> <span class="nf">nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a list of the nodes in the graph.</span>
 
@@ -1159,7 +1160,7 @@
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s">&quot;The node </span><span class="si">%s</span><span class="s"> is not in the graph.&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">n</span><span class="p">,))</span>
 </div>
-<div class="viewcode-block" id="Graph.neighbors_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.Graph.neighbors_iter.html#networkx.Graph.neighbors_iter">[docs]</a>    <span class="k">def</span> <span class="nf">neighbors_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">neighbors_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator over all neighbors of node n.</span>
 
 <span class="sd">        Examples</span>
@@ -1181,7 +1182,7 @@
             <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s">&quot;The node </span><span class="si">%s</span><span class="s"> is not in the graph.&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">n</span><span class="p">,))</span>
-</div>
+
 <div class="viewcode-block" id="Graph.edges"><a class="viewcode-back" href="../../../reference/generated/networkx.Graph.edges.html#networkx.Graph.edges">[docs]</a>    <span class="k">def</span> <span class="nf">edges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a list of edges.</span>
 
@@ -1227,7 +1228,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edges_iter</span><span class="p">(</span><span class="n">nbunch</span><span class="p">,</span> <span class="n">data</span><span class="p">))</span>
 </div>
-<div class="viewcode-block" id="Graph.edges_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.Graph.edges_iter.html#networkx.Graph.edges_iter">[docs]</a>    <span class="k">def</span> <span class="nf">edges_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">edges_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator over the edges.</span>
 
 <span class="sd">        Edges are returned as tuples with optional data</span>
@@ -1288,7 +1289,7 @@
                 <span class="n">seen</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="k">del</span> <span class="n">seen</span>
 
-</div>
+
 <div class="viewcode-block" id="Graph.get_edge_data"><a class="viewcode-back" href="../../../reference/generated/networkx.Graph.get_edge_data.html#networkx.Graph.get_edge_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_edge_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the attribute dictionary associated with edge (u,v).</span>
 
@@ -1338,7 +1339,7 @@
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">default</span>
 </div>
-<div class="viewcode-block" id="Graph.adjacency_list"><a class="viewcode-back" href="../../../reference/generated/networkx.Graph.adjacency_list.html#networkx.Graph.adjacency_list">[docs]</a>    <span class="k">def</span> <span class="nf">adjacency_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">adjacency_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an adjacency list representation of the graph.</span>
 
 <span class="sd">        The output adjacency list is in the order of G.nodes().</span>
@@ -1362,8 +1363,8 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span><span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="o">.</span><span class="n">values</span><span class="p">())))</span>
-</div>
-<div class="viewcode-block" id="Graph.adjacency_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.Graph.adjacency_iter.html#networkx.Graph.adjacency_iter">[docs]</a>    <span class="k">def</span> <span class="nf">adjacency_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">adjacency_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator of (node, adjacency dict) tuples for all nodes.</span>
 
 <span class="sd">        This is the fastest way to look at every edge.</span>
@@ -1388,7 +1389,7 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-</div>
+
 <div class="viewcode-block" id="Graph.degree"><a class="viewcode-back" href="../../../reference/generated/networkx.Graph.degree.html#networkx.Graph.degree">[docs]</a>    <span class="k">def</span> <span class="nf">degree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the degree of a node or nodes.</span>
 
@@ -1428,7 +1429,7 @@
         <span class="k">else</span><span class="p">:</span>           <span class="c"># return a dict</span>
             <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">degree_iter</span><span class="p">(</span><span class="n">nbunch</span><span class="p">,</span><span class="n">weight</span><span class="p">))</span>
 </div>
-<div class="viewcode-block" id="Graph.degree_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.Graph.degree_iter.html#networkx.Graph.degree_iter">[docs]</a>    <span class="k">def</span> <span class="nf">degree_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">degree_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator for (node, degree).</span>
 
 <span class="sd">        The node degree is the number of edges adjacent to the node.</span>
@@ -1477,7 +1478,7 @@
                 <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">sum</span><span class="p">((</span><span class="n">nbrs</span><span class="p">[</span><span class="n">nbr</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">nbr</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="p">))</span> <span class="o">+</span>
                               <span class="p">(</span><span class="n">n</span> <span class="ow">in</span> <span class="n">nbrs</span> <span class="ow">and</span> <span class="n">nbrs</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span><span class="mi">1</span><span class="p">)))</span>
 
-</div>
+
 <div class="viewcode-block" id="Graph.clear"><a class="viewcode-back" href="../../../reference/generated/networkx.Graph.clear.html#networkx.Graph.clear">[docs]</a>    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Remove all nodes and edges from the graph.</span>
 
@@ -2006,7 +2007,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, NetworkX Developers.
-      Last updated on Aug 07, 2015.
+      Last updated on Oct 04, 2015.
     </p>
   </div>
 

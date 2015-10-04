@@ -75,7 +75,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../install.html#quick-install">Quick install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#installing-with-pip">Installing with pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#installing-with-conda">Installing with conda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#installing-from-source">Installing from source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#optional-packages">Optional packages</a></li>
@@ -238,7 +239,7 @@
     <span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">read_edgelist</span><span class="p">(</span><span class="s">&quot;hartford_drug.edgelist&quot;</span><span class="p">)</span>
 
     <span class="c"># Extract largest connected component into graph H</span>
-    <span class="n">H</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_component_subgraphs</span><span class="p">(</span><span class="n">G</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_component_subgraphs</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
     <span class="c"># Makes life easier to have consecutively labeled integer nodes</span>
     <span class="n">H</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">convert_node_labels_to_integers</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
     <span class="c"># Create parititions with hierarchical clustering</span>
@@ -292,7 +293,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, NetworkX Developers.
-      Last updated on Aug 07, 2015.
+      Last updated on Oct 04, 2015.
     </p>
   </div>
 

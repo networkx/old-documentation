@@ -73,7 +73,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../install.html#quick-install">Quick install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../install.html#installing-with-pip">Installing with pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../install.html#installing-with-conda">Installing with conda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../install.html#installing-from-source">Installing from source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../install.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../install.html#optional-packages">Optional packages</a></li>
@@ -744,7 +745,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">edges_iter</span><span class="p">(</span><span class="n">nbunch</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span><span class="n">keys</span><span class="o">=</span><span class="n">keys</span><span class="p">))</span>
 </div>
-<div class="viewcode-block" id="MultiGraph.edges_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiGraph.edges_iter.html#networkx.MultiGraph.edges_iter">[docs]</a>    <span class="k">def</span> <span class="nf">edges_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">edges_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator over the edges.</span>
 
 <span class="sd">        Edges are returned as tuples with optional data and keys</span>
@@ -820,7 +821,7 @@
                 <span class="n">seen</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="k">del</span> <span class="n">seen</span>
 
-</div>
+
 <div class="viewcode-block" id="MultiGraph.get_edge_data"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiGraph.get_edge_data.html#networkx.MultiGraph.get_edge_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_edge_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the attribute dictionary associated with edge (u,v).</span>
 
@@ -875,7 +876,7 @@
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">default</span>
 </div>
-<div class="viewcode-block" id="MultiGraph.degree_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiGraph.degree_iter.html#networkx.MultiGraph.degree_iter">[docs]</a>    <span class="k">def</span> <span class="nf">degree_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">degree_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator for (node, degree).</span>
 
 <span class="sd">        The node degree is the number of edges adjacent to the node.</span>
@@ -930,7 +931,7 @@
                            <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">d</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
                 <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">deg</span><span class="p">)</span>
 
-</div>
+
     <span class="k">def</span> <span class="nf">is_multigraph</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return True if graph is a multigraph, False otherwise.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">True</span>
@@ -1158,7 +1159,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, NetworkX Developers.
-      Last updated on Aug 07, 2015.
+      Last updated on Oct 04, 2015.
     </p>
   </div>
 

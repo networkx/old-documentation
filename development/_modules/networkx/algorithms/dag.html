@@ -73,7 +73,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../install.html#quick-install">Quick install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../install.html#installing-with-pip">Installing with pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../install.html#installing-with-conda">Installing with conda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../install.html#installing-from-source">Installing from source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../install.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../install.html#optional-packages">Optional packages</a></li>
@@ -338,7 +339,7 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">order</span><span class="p">))</span>
 </div>
-<div class="viewcode-block" id="topological_sort_recursive"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.dag.topological_sort_recursive.html#networkx.algorithms.dag.topological_sort_recursive">[docs]</a><span class="k">def</span> <span class="nf">topological_sort_recursive</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">topological_sort_recursive</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a list of nodes in topological sort order.</span>
 
 <span class="sd">    A topological sort is a nonunique permutation of the nodes such</span>
@@ -409,7 +410,7 @@
         <span class="k">return</span> <span class="n">order</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">order</span><span class="p">))</span>
-</div>
+
 <div class="viewcode-block" id="is_aperiodic"><a class="viewcode-back" href="../../../reference/generated/networkx.algorithms.dag.is_aperiodic.html#networkx.algorithms.dag.is_aperiodic">[docs]</a><span class="k">def</span> <span class="nf">is_aperiodic</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return True if G is aperiodic.</span>
 
@@ -478,7 +479,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, NetworkX Developers.
-      Last updated on Aug 07, 2015.
+      Last updated on Oct 04, 2015.
     </p>
   </div>
 

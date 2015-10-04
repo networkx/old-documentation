@@ -75,7 +75,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../install.html#quick-install">Quick install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#installing-with-pip">Installing with pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#installing-with-conda">Installing with conda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#installing-from-source">Installing from source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#optional-packages">Optional packages</a></li>
@@ -203,7 +204,7 @@
         <span class="n">dmin</span><span class="o">=</span><span class="n">d</span>
 
 <span class="c"># color by path length from node near center</span>
-<span class="n">p</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">single_source_shortest_path_length</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">ncenter</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">single_source_shortest_path_length</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">ncenter</span><span class="p">))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">pos</span><span class="p">,</span><span class="n">nodelist</span><span class="o">=</span><span class="p">[</span><span class="n">ncenter</span><span class="p">],</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
@@ -240,7 +241,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, NetworkX Developers.
-      Last updated on Aug 07, 2015.
+      Last updated on Oct 04, 2015.
     </p>
   </div>
 

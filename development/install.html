@@ -74,7 +74,8 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Installing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#quick-install">Quick install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-with-pip">Installing with pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-with-conda">Installing with conda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installing-from-source">Installing from source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#optional-packages">Optional packages</a></li>
@@ -178,23 +179,34 @@
             
   <div class="section" id="installing">
 <h1>Installing<a class="headerlink" href="#installing" title="Permalink to this headline">¶</a></h1>
-<p>Before installing NetworkX, you need to have
-<a class="reference external" href="https://pypi.python.org/pypi/setuptools">setuptools</a> installed.</p>
-<div class="section" id="quick-install">
-<h2>Quick install<a class="headerlink" href="#quick-install" title="Permalink to this headline">¶</a></h2>
-<p>Get NetworkX from the Python Package Index at
-<a class="reference external" href="http://pypi.python.org/pypi/networkx">http://pypi.python.org/pypi/networkx</a></p>
-<p>or install it with</p>
+<div class="section" id="installing-with-pip">
+<h2>Installing with pip<a class="headerlink" href="#installing-with-pip" title="Permalink to this headline">¶</a></h2>
+<p>Try to install it with</p>
 <div class="highlight-python"><div class="highlight"><pre>pip install networkx
 </pre></div>
 </div>
 <p>and an attempt will be made to find and install an appropriate version
 that matches your operating system and Python version.</p>
+<p>You can also get NetworkX from the Python Package Index manually
+at <a class="reference external" href="http://pypi.python.org/pypi/networkx">http://pypi.python.org/pypi/networkx</a>
+To use pip, you need to have <a class="reference external" href="https://pypi.python.org/pypi/setuptools">setuptools</a> installed.</p>
 <p>You can install the development version (at github.com) with</p>
 <div class="highlight-python"><div class="highlight"><pre>pip install git://github.com/networkx/networkx.git#egg=networkx
 </pre></div>
 </div>
 <p>More download file options are at <a class="reference external" href="http://networkx.github.io/download.html">http://networkx.github.io/download.html</a>.</p>
+</div>
+<div class="section" id="installing-with-conda">
+<h2>Installing with conda<a class="headerlink" href="#installing-with-conda" title="Permalink to this headline">¶</a></h2>
+<p>If you are using Ananconda/Miniconda distribution of Python then you can
+update/install NetworkX to the latest version with</p>
+<div class="highlight-python"><div class="highlight"><pre>conda install networkx
+</pre></div>
+</div>
+<p>or to update an existing installation</p>
+<div class="highlight-python"><div class="highlight"><pre>conda update networkx
+</pre></div>
+</div>
 </div>
 <div class="section" id="installing-from-source">
 <h2>Installing from source<a class="headerlink" href="#installing-from-source" title="Permalink to this headline">¶</a></h2>
@@ -262,7 +274,7 @@ See <a class="reference external" href="http://docs.python.org/2/install/index.h
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="python">
 <h3>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
-<p>To use NetworkX you need Python 2.7, 3.2 or later.</p>
+<p>To use NetworkX you need Python 2.7, 3.3 or later.</p>
 <p>The easiest way to get Python and most optional packages is to install
 the Enthought Python distribution &#8220;<a class="reference external" href="https://www.enthought.com/products/canopy/">Canopy</a>&#8221;.</p>
 <p>There are several other distributions that contain the key packages you need for scientific computing.  See <a class="reference external" href="http://scipy.org/install.html">http://scipy.org/install.html</a> for a list.</p>
@@ -354,7 +366,7 @@ provide additional functions.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, NetworkX Developers.
-      Last updated on Aug 07, 2015.
+      Last updated on Oct 04, 2015.
     </p>
   </div>
 

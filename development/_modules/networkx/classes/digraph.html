@@ -73,7 +73,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../install.html#quick-install">Quick install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../install.html#installing-with-pip">Installing with pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../install.html#installing-with-conda">Installing with conda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../install.html#installing-from-source">Installing from source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../install.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../install.html#optional-packages">Optional packages</a></li>
@@ -835,7 +836,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">u</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pred</span> <span class="ow">and</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">u</span><span class="p">])</span>
 
-<div class="viewcode-block" id="DiGraph.successors_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.DiGraph.successors_iter.html#networkx.DiGraph.successors_iter">[docs]</a>    <span class="k">def</span> <span class="nf">successors_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">successors_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator over successor nodes of n.</span>
 
 <span class="sd">        neighbors_iter() and successors_iter() are the same.</span>
@@ -844,14 +845,14 @@
             <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s">&quot;The node </span><span class="si">%s</span><span class="s"> is not in the digraph.&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">n</span><span class="p">,))</span>
-</div>
-<div class="viewcode-block" id="DiGraph.predecessors_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.DiGraph.predecessors_iter.html#networkx.DiGraph.predecessors_iter">[docs]</a>    <span class="k">def</span> <span class="nf">predecessors_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">predecessors_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator over predecessor nodes of n.&quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s">&quot;The node </span><span class="si">%s</span><span class="s"> is not in the digraph.&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">n</span><span class="p">,))</span>
-</div>
+
 <div class="viewcode-block" id="DiGraph.successors"><a class="viewcode-back" href="../../../reference/generated/networkx.DiGraph.successors.html#networkx.DiGraph.successors">[docs]</a>    <span class="k">def</span> <span class="nf">successors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a list of successor nodes of n.</span>
 
@@ -868,7 +869,7 @@
     <span class="n">neighbors</span> <span class="o">=</span> <span class="n">successors</span>
     <span class="n">neighbors_iter</span> <span class="o">=</span> <span class="n">successors_iter</span>
 
-<div class="viewcode-block" id="DiGraph.edges_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.DiGraph.edges_iter.html#networkx.DiGraph.edges_iter">[docs]</a>    <span class="k">def</span> <span class="nf">edges_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">edges_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator over the edges.</span>
 
 <span class="sd">        Edges are returned as tuples with optional data</span>
@@ -923,11 +924,11 @@
                 <span class="k">for</span> <span class="n">nbr</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="p">:</span>
                     <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">nbr</span><span class="p">)</span>
 
-    <span class="c"># alias out_edges to edges</span></div>
+    <span class="c"># alias out_edges to edges</span>
     <span class="n">out_edges_iter</span><span class="o">=</span><span class="n">edges_iter</span>
     <span class="n">out_edges</span><span class="o">=</span><span class="n">Graph</span><span class="o">.</span><span class="n">edges</span>
 
-<div class="viewcode-block" id="DiGraph.in_edges_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.DiGraph.in_edges_iter.html#networkx.DiGraph.in_edges_iter">[docs]</a>    <span class="k">def</span> <span class="nf">in_edges_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">in_edges_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator over the incoming edges.</span>
 
 <span class="sd">        Parameters</span>
@@ -959,7 +960,7 @@
             <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">nbr</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="p">:</span>
                     <span class="k">yield</span> <span class="p">(</span><span class="n">nbr</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
-</div>
+
 <div class="viewcode-block" id="DiGraph.in_edges"><a class="viewcode-back" href="../../../reference/generated/networkx.DiGraph.in_edges.html#networkx.DiGraph.in_edges">[docs]</a>    <span class="k">def</span> <span class="nf">in_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a list of the incoming edges.</span>
 
@@ -969,7 +970,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">in_edges_iter</span><span class="p">(</span><span class="n">nbunch</span><span class="p">,</span> <span class="n">data</span><span class="p">))</span>
 </div>
-<div class="viewcode-block" id="DiGraph.degree_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.DiGraph.degree_iter.html#networkx.DiGraph.degree_iter">[docs]</a>    <span class="k">def</span> <span class="nf">degree_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">degree_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator for (node, degree).</span>
 
 <span class="sd">        The node degree is the number of edges adjacent to the node.</span>
@@ -1021,8 +1022,8 @@
                       <span class="nb">sum</span><span class="p">((</span><span class="n">succ</span><span class="p">[</span><span class="n">nbr</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">nbr</span> <span class="ow">in</span> <span class="n">succ</span><span class="p">))</span><span class="o">+</span>
                       <span class="nb">sum</span><span class="p">((</span><span class="n">pred</span><span class="p">[</span><span class="n">nbr</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">nbr</span> <span class="ow">in</span> <span class="n">pred</span><span class="p">)))</span>
 
-</div>
-<div class="viewcode-block" id="DiGraph.in_degree_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.DiGraph.in_degree_iter.html#networkx.DiGraph.in_degree_iter">[docs]</a>    <span class="k">def</span> <span class="nf">in_degree_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">in_degree_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator for (node, in-degree).</span>
 
 <span class="sd">        The node in-degree is the number of edges pointing in to the node.</span>
@@ -1070,8 +1071,8 @@
             <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
                 <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
 
-</div>
-<div class="viewcode-block" id="DiGraph.out_degree_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.DiGraph.out_degree_iter.html#networkx.DiGraph.out_degree_iter">[docs]</a>    <span class="k">def</span> <span class="nf">out_degree_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">out_degree_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator for (node, out-degree).</span>
 
 <span class="sd">        The node out-degree is the number of edges pointing out of the node.</span>
@@ -1119,7 +1120,7 @@
             <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">nbrs</span> <span class="ow">in</span> <span class="n">nodes_nbrs</span><span class="p">:</span>
                 <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
 
-</div>
+
 <div class="viewcode-block" id="DiGraph.in_degree"><a class="viewcode-back" href="../../../reference/generated/networkx.DiGraph.in_degree.html#networkx.DiGraph.in_degree">[docs]</a>    <span class="k">def</span> <span class="nf">in_degree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the in-degree of a node or nodes.</span>
 
@@ -1426,7 +1427,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, NetworkX Developers.
-      Last updated on Aug 07, 2015.
+      Last updated on Oct 04, 2015.
     </p>
   </div>
 

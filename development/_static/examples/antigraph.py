@@ -60,31 +60,6 @@ class AntiGraph(nx.Graph):
 
 
     def neighbors(self, n):
-        """Return a list of the nodes connected to the node n in 
-           the dense graph.
-
-        Parameters
-        ----------
-        n : node
-           A node in the graph
-
-        Returns
-        -------
-        nlist : list
-            A list of nodes that are adjacent to n.
-
-        Raises
-        ------
-        NetworkXError
-            If the node n is not in the graph.
-
-        """
-        try:
-            return list(set(self.adj) - set(self.adj[n]) - set([n]))
-        except KeyError:
-            raise NetworkXError("The node %s is not in the graph."%(n,))
-
-    def neighbors_iter(self, n):
         """Return an iterator over all neighbors of node n in the 
            dense graph.
 
@@ -95,14 +70,6 @@ class AntiGraph(nx.Graph):
             raise NetworkXError("The node %s is not in the graph."%(n,))
 
     def degree(self, nbunch=None, weight=None):
-        """Return the degree of a node or nodes in the dense graph.
-        """
-        if nbunch in self:      # return a single node
-            return next(self.degree_iter(nbunch,weight))[1]
-        else:           # return a dict
-            return dict(self.degree_iter(nbunch,weight))
-
-    def degree_iter(self, nbunch=None, weight=None):
         """Return an iterator for (node, degree) in the dense graph.
 
         The node degree is the number of edges adjacent to the node.
@@ -120,7 +87,7 @@ class AntiGraph(nx.Graph):
 
         Returns
         -------
-        nd_iter : an iterator
+        nd_iter : iterator
             The iterator returns two-tuples of (node, degree).
 
         See Also
@@ -131,16 +98,16 @@ class AntiGraph(nx.Graph):
         --------
         >>> G = nx.Graph()   # or DiGraph, MultiGraph, MultiDiGraph, etc
         >>> G.add_path([0,1,2,3])
-        >>> list(G.degree_iter(0)) # node 0 with degree 1
+        >>> list(G.degree(0)) # node 0 with degree 1
         [(0, 1)]
-        >>> list(G.degree_iter([0,1]))
+        >>> list(G.degree([0,1]))
         [(0, 1), (1, 2)]
 
         """
         if nbunch is None:
             nodes_nbrs = ((n, {v: self.all_edge_dict for v in
                             set(self.adj) - set(self.adj[n]) - set([n])})
-                            for n in self.nodes_iter())
+                            for n in self.nodes())
         else:
             nodes_nbrs= ((n, {v: self.all_edge_dict for v in
                             set(self.nodes()) - set(self.adj[n]) - set([n])})
@@ -201,7 +168,7 @@ if __name__ == '__main__':
         node = list(G.nodes())[0]
         nodes = list(G.nodes())[1:4]
         assert G.degree(node) == A.degree(node)
-        assert sum(G.degree().values()) == sum(A.degree().values())
+        assert sum(d for n,d in G.degree()) == sum(d for n,d in A.degree())
         # AntiGraph is a ThinGraph, so all the weights are 1
-        assert sum(A.degree().values()) == sum(A.degree(weight='weight').values())
-        assert sum(G.degree(nodes).values()) == sum(A.degree(nodes).values())
+        assert sum(d for n,d in A.degree()) == sum(d for n,d in A.degree(weight='weight'))
+        assert sum(d for n,d in G.degree(nodes)) == sum(d for n,d in A.degree(nodes))

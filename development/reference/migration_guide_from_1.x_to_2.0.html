@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Migration guide from 1.X to 2.0 &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.0.dev20140922121148 documentation" href="../_static/opensearch.xml"/>
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/networkx.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> NetworkX</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#goals">Goals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#the-python-programming-language">The Python programming language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#free-software">Free software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#history">History</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../download.html">Download</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../download.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../download.html#documentation">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#installing-with-pip">Installing with pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#installing-with-conda">Installing with conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#installing-from-source">Installing from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#optional-packages">Optional packages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/tutorial.html">Creating a graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/tutorial.html#nodes">Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/tutorial.html#edges">Edges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/tutorial.html#what-to-use-as-nodes-and-edges">What to use as nodes and edges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/tutorial.html#accessing-edges">Accessing edges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/tutorial.html#adding-attributes-to-graphs-nodes-and-edges">Adding attributes to graphs, nodes, and edges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/tutorial.html#directed-graphs">Directed graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/tutorial.html#multigraphs">Multigraphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/tutorial.html#graph-generators-and-graph-operations">Graph generators and graph operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/tutorial.html#analyzing-graphs">Analyzing graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html">Graph types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generators.html">Graph generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linalg.html">Linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="convert.html">Converting to and from other data formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relabel.html">Relabeling nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="readwrite.html">Reading and writing graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drawing.html">Drawing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legal.html">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="citing.html">Citing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credits.html">Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pdf_reference.html">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../test.html">Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../test.html#requirements-for-testing">Requirements for testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../test.html#testing-a-source-distribution">Testing a source distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../test.html#testing-an-installed-package">Testing an installed package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../test.html#testing-for-developers">Testing for developers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../developer/gitwash/index.html">Working with <em>networkx</em> source code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api_changes.html">API changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="news.html">Release Log</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">NetworkX Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/3d_drawing/index.html">3D_Drawing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/advanced/index.html">Advanced</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/algorithms/index.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/basic/index.html">Basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/drawing/index.html">Drawing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/graph/index.html">Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/javascript/index.html">Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/multigraph/index.html">Multigraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/pygraphviz/index.html">Pygraphviz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/subclass/index.html">Subclass</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">NetworkX</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>Migration guide from 1.X to 2.0</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="migration-guide-from-1-x-to-2-0">
+<h1>Migration guide from 1.X to 2.0<a class="headerlink" href="#migration-guide-from-1-x-to-2-0" title="Permalink to this headline">¶</a></h1>
+<p>This is a guide for people moving from NetworkX 1.X to NetworkX 2.0</p>
+<p>Any issues with these can be discussed on the [mailing list](<a class="reference external" href="https://groups.google.com/forum/#!forum/networkx-discuss">https://groups.google.com/forum/#!forum/networkx-discuss</a>)</p>
+<p>As you know we have made some major changes to the methods in the Multi/Di/Graph classes.
+Methods that used to return containers now return iterators and methods that returned iterators have been removed.
+For example, <code class="docutils literal"><span class="pre">G.nodes()</span></code> now returns an iterator and <code class="docutils literal"><span class="pre">G.nodes_iter()</span></code> has been removed.</p>
+<p>The methods changed are explained with examples below.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">complete_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span>
+<span class="go">&lt;dictionary-keyiterator at 0x102ae8730&gt;</span>
+</pre></div>
+</div>
+<p>People suprised by this output and expecting something like this</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span>
+<span class="go">[0, 1, 2, 3, 4]</span>
+</pre></div>
+</div>
+<p>don&#8217;t panic. Nothing is wrong.</p>
+<p>Now <code class="docutils literal"><span class="pre">G.nodes()</span></code> returns an iterator. If you want a list of nodes send the iterator to the Python list function</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+<span class="go">[0, 1, 2, 3, 4]</span>
+</pre></div>
+</div>
+<p>In the same way for <code class="docutils literal"><span class="pre">G.edges()</span></code></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span>
+<span class="go">&lt;generator object edges at 0x102ae9fa0&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span>
+<span class="go">[(0, 1),</span>
+<span class="go"> (0, 2),</span>
+<span class="go"> (0, 3),</span>
+<span class="go"> (0, 4),</span>
+<span class="go"> (1, 2),</span>
+<span class="go"> (1, 3),</span>
+<span class="go"> (1, 4),</span>
+<span class="go"> (2, 3),</span>
+<span class="go"> (2, 4),</span>
+<span class="go"> (3, 4)]</span>
+</pre></div>
+</div>
+<p>and <code class="docutils literal"><span class="pre">G.neighbors(n)</span></code> where n is a node.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">&lt;dictionary-keyiterator at 0x102ae8aa0&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">[0, 1, 3, 4]</span>
+</pre></div>
+</div>
+<p>So, basically you can switch back to the old behavior by adding <img class="math" src="../_images/math/518e292d16e4fa8b110d27ca5df2534a2b4f7e58.png" alt="list()" style="vertical-align: -4px"/> to the method.</p>
+<p>For methods that used to return a dict, like <code class="docutils literal"><span class="pre">G.degree()</span></code>, the new iterator version
+returns a (key,value) 2-tuple so that passing it to Python&#8217;s dict function recovers
+the original behavior if desired.
+Note that passing a single node to the degree method still returns the degree of that node as it always has.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="go">&lt;generator object d_iter at 0x102ba8780&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]))</span>
+<span class="go">[(1, 4), (2, 4), (3, 4)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]))</span>
+<span class="go">{1: 4, 2: 4, 3: 4}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>
+<span class="go">&lt;generator object d_iter at 0x102ba8af0&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">())</span>
+<span class="go">[(0, 4), (1, 4), (2, 4), (3, 4), (4, 4)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">())</span>
+<span class="go">{0: 4, 1: 4, 2: 4, 3: 4, 4: 4}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">G.degree()</span></code> used to return a dictionary. We can typecast the generator to return a list or dict as shown in the
+above example.</p>
+<p>Now lets move to DiGraphs. Everything is similar to Graphs. But we have a few more methods for DiGraphs.
+Let&#8217;s have a look on them.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">D</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span>
+<span class="go">&lt;dictionary-keyiterator at 0x102bd68e8&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">D</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+<span class="go">[1, 2, 3, 4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span>
+<span class="go">&lt;generator object edges at 0x102ba88c0&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">D</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span>
+<span class="go">[(1, 2), (1, 3), (2, 3), (2, 4)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">.</span><span class="n">in_degree</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">.</span><span class="n">out_degree</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">.</span><span class="n">in_edges</span><span class="p">()</span>
+<span class="go">&lt;generator object in_edges at 0x102ba8cd0&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">D</span><span class="o">.</span><span class="n">in_edges</span><span class="p">())</span>
+<span class="go">[(1, 2), (1, 3), (2, 3), (2, 4)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">.</span><span class="n">out_edges</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">&lt;generator object edges at 0x102ba8c80&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">D</span><span class="o">.</span><span class="n">out_edges</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">(2, 3), (2, 4)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">.</span><span class="n">in_degree</span><span class="p">()</span>
+<span class="go">&lt;generator object d_iter at 0x102ba8a00&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">D</span><span class="o">.</span><span class="n">in_degree</span><span class="p">())</span>
+<span class="go">[(1, 0), (2, 1), (3, 2), (4, 1)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">.</span><span class="n">successors</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">&lt;dictionary-keyiterator at 0x102bdb418&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">D</span><span class="o">.</span><span class="n">successors</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">[3, 4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="o">.</span><span class="n">predecessors</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">&lt;dictionary-keyiterator at 0x102bdb730&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">D</span><span class="o">.</span><span class="n">predecessors</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">[1]</span>
+</pre></div>
+</div>
+<p>The same changes apply to MultiGraphs and MultiDiGraphs.</p>
+</div>
+
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, NetworkX Developers.
+      Last updated on Oct 04, 2015.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.0.dev20140922121148',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

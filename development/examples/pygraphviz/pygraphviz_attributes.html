@@ -75,7 +75,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../install.html#quick-install">Quick install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#installing-with-pip">Installing with pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#installing-with-conda">Installing with conda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#installing-from-source">Installing from source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#optional-packages">Optional packages</a></li>
@@ -222,7 +223,7 @@
 <span class="c"># default attributes as dictionary data</span>
 <span class="n">X</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">from_agraph</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;edges&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">True</span><span class="p">)))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;default graph attributes&quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">&quot;node node attributes&quot;</span><span class="p">)</span>
@@ -250,7 +251,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, NetworkX Developers.
-      Last updated on Aug 07, 2015.
+      Last updated on Oct 04, 2015.
     </p>
   </div>
 

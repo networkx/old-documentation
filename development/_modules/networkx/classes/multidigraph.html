@@ -73,7 +73,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../install.html#quick-install">Quick install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../install.html#installing-with-pip">Installing with pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../install.html#installing-with-conda">Installing with conda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../install.html#installing-from-source">Installing from source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../install.html#requirements">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../install.html#optional-packages">Optional packages</a></li>
@@ -506,7 +507,7 @@
             <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">u</span><span class="p">]</span>
 
 </div>
-<div class="viewcode-block" id="MultiDiGraph.edges_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiDiGraph.edges_iter.html#networkx.MultiDiGraph.edges_iter">[docs]</a>    <span class="k">def</span> <span class="nf">edges_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">edges_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator over the edges.</span>
 
 <span class="sd">        Edges are returned as tuples with optional data and keys</span>
@@ -571,7 +572,7 @@
                         <span class="k">else</span><span class="p">:</span>
                             <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">nbr</span><span class="p">)</span>
 
-    <span class="c"># alias out_edges to edges</span></div>
+    <span class="c"># alias out_edges to edges</span>
     <span class="n">out_edges_iter</span><span class="o">=</span><span class="n">edges_iter</span>
 
 <div class="viewcode-block" id="MultiDiGraph.out_edges"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiDiGraph.out_edges.html#networkx.MultiDiGraph.out_edges">[docs]</a>    <span class="k">def</span> <span class="nf">out_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
@@ -607,7 +608,7 @@
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out_edges_iter</span><span class="p">(</span><span class="n">nbunch</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="n">keys</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">))</span>
 
 </div>
-<div class="viewcode-block" id="MultiDiGraph.in_edges_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiDiGraph.in_edges_iter.html#networkx.MultiDiGraph.in_edges_iter">[docs]</a>    <span class="k">def</span> <span class="nf">in_edges_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">in_edges_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator over the incoming edges.</span>
 
 <span class="sd">        Parameters</span>
@@ -649,7 +650,7 @@
                             <span class="k">yield</span> <span class="p">(</span><span class="n">nbr</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">key</span><span class="p">)</span>
                         <span class="k">else</span><span class="p">:</span>
                             <span class="k">yield</span> <span class="p">(</span><span class="n">nbr</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
-</div>
+
 <div class="viewcode-block" id="MultiDiGraph.in_edges"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiDiGraph.in_edges.html#networkx.MultiDiGraph.in_edges">[docs]</a>    <span class="k">def</span> <span class="nf">in_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a list of the incoming edges.</span>
 
@@ -675,7 +676,7 @@
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">in_edges_iter</span><span class="p">(</span><span class="n">nbunch</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="n">keys</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">))</span>
 
 </div>
-<div class="viewcode-block" id="MultiDiGraph.degree_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiDiGraph.degree_iter.html#networkx.MultiDiGraph.degree_iter">[docs]</a>    <span class="k">def</span> <span class="nf">degree_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">degree_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator for (node, degree).</span>
 
 <span class="sd">        The node degree is the number of edges adjacent to the node.</span>
@@ -733,8 +734,8 @@
                            <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
                 <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">deg</span><span class="p">)</span>
 
-</div>
-<div class="viewcode-block" id="MultiDiGraph.in_degree_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiDiGraph.in_degree_iter.html#networkx.MultiDiGraph.in_degree_iter">[docs]</a>    <span class="k">def</span> <span class="nf">in_degree_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">in_degree_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator for (node, in-degree).</span>
 
 <span class="sd">        The node in-degree is the number of edges pointing in to the node.</span>
@@ -785,8 +786,8 @@
                            <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
                 <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">deg</span><span class="p">)</span>
 
-</div>
-<div class="viewcode-block" id="MultiDiGraph.out_degree_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.MultiDiGraph.out_degree_iter.html#networkx.MultiDiGraph.out_degree_iter">[docs]</a>    <span class="k">def</span> <span class="nf">out_degree_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">out_degree_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator for (node, out-degree).</span>
 
 <span class="sd">        The node out-degree is the number of edges pointing out of the node.</span>
@@ -835,7 +836,7 @@
                            <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">succ</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
                            <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
                 <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">deg</span><span class="p">)</span>
-</div>
+
     <span class="k">def</span> <span class="nf">is_multigraph</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return True if graph is a multigraph, False otherwise.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">True</span>
@@ -1040,7 +1041,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, NetworkX Developers.
-      Last updated on Aug 07, 2015.
+      Last updated on Oct 04, 2015.
     </p>
   </div>
 
