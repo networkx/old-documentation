@@ -141,6 +141,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../examples/drawing/index.html">Drawing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/graph/index.html">Graph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/javascript/index.html">Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/jit/index.html">Jit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/multigraph/index.html">Multigraph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/pygraphviz/index.html">Pygraphviz</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/subclass/index.html">Subclass</a></li>
@@ -422,16 +423,19 @@ in this module return a Graph class (i.e. a simple, undirected graph).</p>
 <tr class="row-odd"><td><a class="reference internal" href="generated/networkx.generators.random_graphs.duplication_divergence_graph.html#networkx.generators.random_graphs.duplication_divergence_graph" title="networkx.generators.random_graphs.duplication_divergence_graph"><code class="xref py py-obj docutils literal"><span class="pre">duplication_divergence_graph</span></code></a>(n,&nbsp;p[,&nbsp;seed])</td>
 <td>Return a undirected graph using the Duplication-Divergence model</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.generators.random_graphs.random_lobster.html#networkx.generators.random_graphs.random_lobster" title="networkx.generators.random_graphs.random_lobster"><code class="xref py py-obj docutils literal"><span class="pre">random_lobster</span></code></a>(n,&nbsp;p1,&nbsp;p2[,&nbsp;seed])</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">random_kernel_graph</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.generators.random_graphs.random_lobster.html#networkx.generators.random_graphs.random_lobster" title="networkx.generators.random_graphs.random_lobster"><code class="xref py py-obj docutils literal"><span class="pre">random_lobster</span></code></a>(n,&nbsp;p1,&nbsp;p2[,&nbsp;seed])</td>
 <td>Return a random lobster.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.generators.random_graphs.random_shell_graph.html#networkx.generators.random_graphs.random_shell_graph" title="networkx.generators.random_graphs.random_shell_graph"><code class="xref py py-obj docutils literal"><span class="pre">random_shell_graph</span></code></a>(constructor[,&nbsp;seed])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.generators.random_graphs.random_shell_graph.html#networkx.generators.random_graphs.random_shell_graph" title="networkx.generators.random_graphs.random_shell_graph"><code class="xref py py-obj docutils literal"><span class="pre">random_shell_graph</span></code></a>(constructor[,&nbsp;seed])</td>
 <td>Return a random shell graph for the constructor given.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.generators.random_graphs.random_powerlaw_tree.html#networkx.generators.random_graphs.random_powerlaw_tree" title="networkx.generators.random_graphs.random_powerlaw_tree"><code class="xref py py-obj docutils literal"><span class="pre">random_powerlaw_tree</span></code></a>(n[,&nbsp;gamma,&nbsp;seed,&nbsp;tries])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.generators.random_graphs.random_powerlaw_tree.html#networkx.generators.random_graphs.random_powerlaw_tree" title="networkx.generators.random_graphs.random_powerlaw_tree"><code class="xref py py-obj docutils literal"><span class="pre">random_powerlaw_tree</span></code></a>(n[,&nbsp;gamma,&nbsp;seed,&nbsp;tries])</td>
 <td>Return a tree with a powerlaw degree distribution.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.generators.random_graphs.random_powerlaw_tree_sequence.html#networkx.generators.random_graphs.random_powerlaw_tree_sequence" title="networkx.generators.random_graphs.random_powerlaw_tree_sequence"><code class="xref py py-obj docutils literal"><span class="pre">random_powerlaw_tree_sequence</span></code></a>(n[,&nbsp;gamma,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/networkx.generators.random_graphs.random_powerlaw_tree_sequence.html#networkx.generators.random_graphs.random_powerlaw_tree_sequence" title="networkx.generators.random_graphs.random_powerlaw_tree_sequence"><code class="xref py py-obj docutils literal"><span class="pre">random_powerlaw_tree_sequence</span></code></a>(n[,&nbsp;gamma,&nbsp;...])</td>
 <td>Return a degree sequence for a tree with a powerlaw distribution.</td>
 </tr>
 </tbody>
@@ -507,7 +511,10 @@ scale_free_graph: scale free directed graph</p>
 <tr class="row-odd"><td><a class="reference internal" href="generated/networkx.generators.directed.gnc_graph.html#networkx.generators.directed.gnc_graph" title="networkx.generators.directed.gnc_graph"><code class="xref py py-obj docutils literal"><span class="pre">gnc_graph</span></code></a>(n[,&nbsp;create_using,&nbsp;seed])</td>
 <td>Return the GNC digraph with n nodes.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.generators.directed.scale_free_graph.html#networkx.generators.directed.scale_free_graph" title="networkx.generators.directed.scale_free_graph"><code class="xref py py-obj docutils literal"><span class="pre">scale_free_graph</span></code></a>(n[,&nbsp;alpha,&nbsp;beta,&nbsp;gamma,&nbsp;...])</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">random_k_out_graph</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.generators.directed.scale_free_graph.html#networkx.generators.directed.scale_free_graph" title="networkx.generators.directed.scale_free_graph"><code class="xref py py-obj docutils literal"><span class="pre">scale_free_graph</span></code></a>(n[,&nbsp;alpha,&nbsp;beta,&nbsp;gamma,&nbsp;...])</td>
 <td>Return a scale free directed graph.</td>
 </tr>
 </tbody>
@@ -714,6 +721,20 @@ Press Inc., pp. 271&#8211;305.</dd>
 </tbody>
 </table>
 </div>
+<div class="section" id="triads">
+<h2>Triads<a class="headerlink" href="#triads" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">triad_graph</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 
@@ -735,7 +756,7 @@ Press Inc., pp. 271&#8211;305.</dd>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, NetworkX Developers.
-      Last updated on Dec 02, 2015.
+      Last updated on Feb 29, 2016.
     </p>
   </div>
 

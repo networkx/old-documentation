@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>communicability &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
+  <title>chordal_graph_cliques &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -31,9 +31,9 @@
 
   
     <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
-        <link rel="up" title="Centrality" href="../algorithms.centrality.html"/>
-        <link rel="next" title="communicability_exp" href="networkx.algorithms.centrality.communicability_exp.html"/>
-        <link rel="prev" title="katz_centrality_numpy" href="networkx.algorithms.centrality.katz_centrality_numpy.html"/> 
+        <link rel="up" title="Chordal" href="../algorithms.chordal.html"/>
+        <link rel="next" title="chordal_graph_treewidth" href="networkx.algorithms.chordal.chordal_graph_treewidth.html"/>
+        <link rel="prev" title="is_chordal" href="networkx.algorithms.chordal.is_chordal.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -141,6 +141,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../examples/drawing/index.html">Drawing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/graph/index.html">Graph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/javascript/index.html">Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/jit/index.html">Jit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/multigraph/index.html">Multigraph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/pygraphviz/index.html">Pygraphviz</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/subclass/index.html">Subclass</a></li>
@@ -175,9 +176,9 @@
       
           <li><a href="../algorithms.html">Algorithms</a> &raquo;</li>
       
-          <li><a href="../algorithms.centrality.html">Centrality</a> &raquo;</li>
+          <li><a href="../algorithms.chordal.html">Chordal</a> &raquo;</li>
       
-    <li>communicability</li>
+    <li>chordal_graph_cliques</li>
       <li class="wy-breadcrumbs-aside">
         
       </li>
@@ -186,64 +187,39 @@
 </div>
           <div role="main">
             
-  <div class="section" id="communicability">
-<h1>communicability<a class="headerlink" href="#communicability" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="chordal-graph-cliques">
+<h1>chordal_graph_cliques<a class="headerlink" href="#chordal-graph-cliques" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
-<dt id="networkx.algorithms.centrality.communicability">
-<code class="descname">communicability</code><span class="sig-paren">(</span><em>G</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/centrality/communicability_alg.html#communicability"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.centrality.communicability" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return communicability between all pairs of nodes in G.</p>
-<p>The communicability between pairs of nodes in G is the sum of
-closed walks of different lengths starting at node u and ending at node v.</p>
+<dt id="networkx.algorithms.chordal.chordal_graph_cliques">
+<code class="descname">chordal_graph_cliques</code><span class="sig-paren">(</span><em>G</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/chordal/chordal_alg.html#chordal_graph_cliques"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.chordal.chordal_graph_cliques" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the set of maximal cliques of a chordal graph.</p>
+<p>The algorithm breaks the graph in connected components and performs a
+maximum cardinality search in each component to get the cliques.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>comm</strong> &#8211;
-Dictionary of dictionaries keyed by nodes with communicability
-as the value.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>G</strong> (<em>graph</em>) &#8211; A NetworkX graph</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dictionary of dictionaries</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>cliques</strong></td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">NetworkXError</span></code> &#8211;
-If the graph is not undirected and simple.</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">A set containing the maximal cliques in G.</td>
 </tr>
-</tbody>
-</table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<dl class="last docutils">
-<dt><a class="reference internal" href="networkx.algorithms.centrality.communicability_centrality_exp.html#networkx.algorithms.centrality.communicability_centrality_exp" title="networkx.algorithms.centrality.communicability_centrality_exp"><code class="xref py py-func docutils literal"><span class="pre">communicability_centrality_exp()</span></code></a></dt>
-<dd>Communicability centrality for each node of G using matrix exponential.</dd>
-<dt><a class="reference internal" href="networkx.algorithms.centrality.communicability_centrality.html#networkx.algorithms.centrality.communicability_centrality" title="networkx.algorithms.centrality.communicability_centrality"><code class="xref py py-func docutils literal"><span class="pre">communicability_centrality()</span></code></a></dt>
-<dd>Communicability centrality for each node in G using spectral decomposition.</dd>
-<dt><a class="reference internal" href="#networkx.algorithms.centrality.communicability" title="networkx.algorithms.centrality.communicability"><code class="xref py py-func docutils literal"><span class="pre">communicability()</span></code></a></dt>
-<dd>Communicability between pairs of nodes in G.</dd>
-</dl>
-</div>
-<p class="rubric">Notes</p>
-<p>This algorithm uses a spectral decomposition of the adjacency matrix.
-Let G=(V,E) be a simple undirected graph.  Using the connection between
-the powers  of the adjacency matrix and the number of walks in the graph,
-the communicability  between nodes <img class="math" src="../../_images/math/8a766bbd11b0a08916009a3c0008470d402e9d2f.png" alt="u" style="vertical-align: 0px"/> and <img class="math" src="../../_images/math/53c4a26799ff6cdae6f13d6b1fcf961660d83169.png" alt="v" style="vertical-align: 0px"/> based on the graph spectrum
-is <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
-<div class="math">
-<p><img src="../../_images/math/44492763fee86b32ff1c41569a298ef4c7dffea1.png" alt="C(u,v)=\sum_{j=1}^{n}\phi_{j}(u)\phi_{j}(v)e^{\lambda_{j}},"/></p>
-</div><p>where <img class="math" src="../../_images/math/8764c7bc146c32a35484368f7b7ffc7b3a0c1925.png" alt="\phi_{j}(u)" style="vertical-align: -6px"/> is the <img class="math" src="../../_images/math/00bf037672a9b8fc5fe2b5f3c5c6b40df656b175.png" alt="u\rm{th}" style="vertical-align: -1px"/> element of the <img class="math" src="../../_images/math/ee2d6616f9f06b9d6de49a60d8a2735a544561b6.png" alt="j\rm{th}" style="vertical-align: -4px"/> orthonormal
-eigenvector of the adjacency matrix associated with the eigenvalue
-<img class="math" src="../../_images/math/9f57b4760b96542f9879e3e01fb4a5ffe619cbf7.png" alt="\lambda_{j}" style="vertical-align: -6px"/>.</p>
-<p class="rubric">References</p>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Ernesto Estrada, Naomichi Hatano,
-&#8220;Communicability in complex networks&#8221;,
-Phys. Rev. E 77, 036111 (2008).
-<a class="reference external" href="http://arxiv.org/abs/0707.0756">http://arxiv.org/abs/0707.0756</a></td></tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">NetworkXError</span></code> &#8211;
+The algorithm does not support DiGraph, MultiGraph and MultiDiGraph.
+If the input graph is an instance of one of these classes, a
+NetworkXError is raised.
+The algorithm can only be applied to chordal graphs. If the
+input graph is found to be non-chordal, a NetworkXError is raised.</td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">)])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">communicability</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">),(</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">),(</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">setlist</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">chordal_graph_cliques</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -256,10 +232,10 @@ Phys. Rev. E 77, 036111 (2008).
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="networkx.algorithms.centrality.communicability_exp.html" class="btn btn-neutral float-right" title="communicability_exp"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="networkx.algorithms.chordal.chordal_graph_treewidth.html" class="btn btn-neutral float-right" title="chordal_graph_treewidth"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="networkx.algorithms.centrality.katz_centrality_numpy.html" class="btn btn-neutral" title="katz_centrality_numpy"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="networkx.algorithms.chordal.is_chordal.html" class="btn btn-neutral" title="is_chordal"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -269,7 +245,7 @@ Phys. Rev. E 77, 036111 (2008).
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, NetworkX Developers.
-      Last updated on Dec 02, 2015.
+      Last updated on Feb 29, 2016.
     </p>
   </div>
 

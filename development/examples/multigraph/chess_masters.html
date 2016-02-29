@@ -141,6 +141,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../drawing/index.html">Drawing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../graph/index.html">Graph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../javascript/index.html">Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../jit/index.html">Jit</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Multigraph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pygraphviz/index.html">Pygraphviz</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../subclass/index.html">Subclass</a></li>
@@ -210,7 +211,7 @@
 <span class="sd">where game_info is a dict describing each game.</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="c">#    Copyright (C) 2006-2010 by</span>
+<span class="c">#    Copyright (C) 2006-2016 by</span>
 <span class="c">#    Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
 <span class="c">#    Dan Schult &lt;dschult@colgate.edu&gt;</span>
 <span class="c">#    Pieter Swart &lt;swart@lanl.gov&gt;</span>
@@ -257,9 +258,6 @@
 
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
-
-
     <span class="n">G</span><span class="o">=</span><span class="n">chess_pgn_graph</span><span class="p">()</span>
 
     <span class="n">ngames</span><span class="o">=</span><span class="n">G</span><span class="o">.</span><span class="n">number_of_edges</span><span class="p">()</span>
@@ -317,7 +315,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">wins</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">+=</span><span class="mf">1.0</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">pos</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">graphviz_layout</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+        <span class="n">pos</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">nx_agraph</span><span class="o">.</span><span class="n">graphviz_layout</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="n">pos</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">iterations</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 
@@ -374,7 +372,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, NetworkX Developers.
-      Last updated on Dec 02, 2015.
+      Last updated on Feb 29, 2016.
     </p>
   </div>
 

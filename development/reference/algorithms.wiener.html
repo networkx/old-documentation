@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Blockmodeling &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
+  <title>Wiener index &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -30,9 +30,7 @@
   
 
   
-    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../index.html"/>
-        <link rel="up" title="Algorithms" href="algorithms.html"/>
-        <link rel="next" title="blockmodel" href="generated/networkx.algorithms.block.blockmodel.html"/> 
+    <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../index.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -59,7 +57,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
         
-            <ul class="current">
+            <ul>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#who-uses-networkx">Who uses NetworkX?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#goals">Goals</a></li>
@@ -95,10 +93,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../tutorial/tutorial.html#drawing-graphs">Drawing graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classes.html">Graph types</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="functions.html">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generators.html">Graph generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linalg.html">Linear algebra</a></li>
@@ -112,7 +110,7 @@
 <li class="toctree-l2"><a class="reference internal" href="citing.html">Citing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="credits.html">Credits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="glossary.html">Glossary</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="pdf_reference.html">Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pdf_reference.html">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../test.html">Testing</a><ul>
@@ -140,6 +138,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../examples/drawing/index.html">Drawing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/graph/index.html">Graph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/javascript/index.html">Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/jit/index.html">Jit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/multigraph/index.html">Multigraph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/pygraphviz/index.html">Pygraphviz</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../examples/subclass/index.html">Subclass</a></li>
@@ -168,13 +167,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-          <li><a href="index.html">Reference</a> &raquo;</li>
-      
-          <li><a href="pdf_reference.html">Reference</a> &raquo;</li>
-      
-          <li><a href="algorithms.html">Algorithms</a> &raquo;</li>
-      
-    <li>Blockmodeling</li>
+    <li>Wiener index</li>
       <li class="wy-breadcrumbs-aside">
         
       </li>
@@ -183,19 +176,16 @@
 </div>
           <div role="main">
             
-  <div class="section" id="module-networkx.algorithms.block">
-<span id="blockmodeling"></span><h1>Blockmodeling<a class="headerlink" href="#module-networkx.algorithms.block" title="Permalink to this headline">¶</a></h1>
-<p>Functions for creating network blockmodels from node partitions.</p>
-<p>Created by Drew Conway &lt;<a class="reference external" href="mailto:drew&#46;conway&#37;&#52;&#48;nyu&#46;edu">drew<span>&#46;</span>conway<span>&#64;</span>nyu<span>&#46;</span>edu</a>&gt;
-Copyright (c) 2010. All rights reserved.</p>
+  <div class="section" id="wiener-index">
+<h1>Wiener index<a class="headerlink" href="#wiener-index" title="Permalink to this headline">¶</a></h1>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.algorithms.block.blockmodel.html#networkx.algorithms.block.blockmodel" title="networkx.algorithms.block.blockmodel"><code class="xref py py-obj docutils literal"><span class="pre">blockmodel</span></code></a>(G,&nbsp;partitions[,&nbsp;multigraph])</td>
-<td>Returns a reduced graph constructed using the generalized block modeling technique.</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">wiener_index</span></code></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -205,20 +195,13 @@ Copyright (c) 2010. All rights reserved.</p>
           </div>
           <footer>
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="generated/networkx.algorithms.block.blockmodel.html" class="btn btn-neutral float-right" title="blockmodel"/>Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-    </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, NetworkX Developers.
-      Last updated on Dec 02, 2015.
+      Last updated on Feb 29, 2016.
     </p>
   </div>
 

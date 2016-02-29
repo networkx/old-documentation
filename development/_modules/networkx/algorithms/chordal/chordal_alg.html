@@ -139,6 +139,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../examples/drawing/index.html">Drawing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../examples/graph/index.html">Graph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../examples/javascript/index.html">Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../examples/jit/index.html">Jit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../examples/multigraph/index.html">Multigraph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../examples/pygraphviz/index.html">Pygraphviz</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../examples/subclass/index.html">Subclass</a></li>
@@ -208,7 +209,7 @@
 <span class="sd">    been exceeded&quot;&quot;&quot;</span>
     
 
-<div class="viewcode-block" id="is_chordal"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.chordal.chordal_alg.is_chordal.html#networkx.algorithms.chordal.chordal_alg.is_chordal">[docs]</a><span class="k">def</span> <span class="nf">is_chordal</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+<div class="viewcode-block" id="is_chordal"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.chordal.is_chordal.html#networkx.algorithms.chordal.is_chordal">[docs]</a><span class="k">def</span> <span class="nf">is_chordal</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Checks whether G is a chordal graph.</span>
 
 <span class="sd">    A graph is chordal if every cycle of length at least 4 has a chord</span>
@@ -261,7 +262,7 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">False</span>
 </div>
-<div class="viewcode-block" id="find_induced_nodes"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.chordal.chordal_alg.find_induced_nodes.html#networkx.algorithms.chordal.chordal_alg.find_induced_nodes">[docs]</a><span class="k">def</span> <span class="nf">find_induced_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">treewidth_bound</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span><span class="p">):</span>
+<div class="viewcode-block" id="find_induced_nodes"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.chordal.find_induced_nodes.html#networkx.algorithms.chordal.find_induced_nodes">[docs]</a><span class="k">def</span> <span class="nf">find_induced_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">treewidth_bound</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the set of induced nodes in the path from s to t. </span>
 
 <span class="sd">    Parameters</span>
@@ -338,7 +339,7 @@
                 <span class="k">break</span>
     <span class="k">return</span> <span class="n">I</span>
 </div>
-<div class="viewcode-block" id="chordal_graph_cliques"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.chordal.chordal_alg.chordal_graph_cliques.html#networkx.algorithms.chordal.chordal_alg.chordal_graph_cliques">[docs]</a><span class="k">def</span> <span class="nf">chordal_graph_cliques</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+<div class="viewcode-block" id="chordal_graph_cliques"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.chordal.chordal_graph_cliques.html#networkx.algorithms.chordal.chordal_graph_cliques">[docs]</a><span class="k">def</span> <span class="nf">chordal_graph_cliques</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the set of maximal cliques of a chordal graph.</span>
 <span class="sd">    </span>
 <span class="sd">    The algorithm breaks the graph in connected components and performs a </span>
@@ -380,7 +381,7 @@
     <span class="k">return</span> <span class="n">cliques</span>
 
 </div>
-<div class="viewcode-block" id="chordal_graph_treewidth"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.chordal.chordal_alg.chordal_graph_treewidth.html#networkx.algorithms.chordal.chordal_alg.chordal_graph_treewidth">[docs]</a><span class="k">def</span> <span class="nf">chordal_graph_treewidth</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+<div class="viewcode-block" id="chordal_graph_treewidth"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.chordal.chordal_graph_treewidth.html#networkx.algorithms.chordal.chordal_graph_treewidth">[docs]</a><span class="k">def</span> <span class="nf">chordal_graph_treewidth</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the treewidth of the chordal graph G.</span>
 <span class="sd"> </span>
 <span class="sd">    Parameters</span>
@@ -533,7 +534,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, NetworkX Developers.
-      Last updated on Dec 02, 2015.
+      Last updated on Feb 29, 2016.
     </p>
   </div>
 

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>communicability_centrality &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
+  <title>find_induced_nodes &mdash; NetworkX 2.0.dev20140922121148 documentation</title>
   
 
   
@@ -31,9 +31,9 @@
 
   
     <link rel="top" title="NetworkX 2.0.dev20140922121148 documentation" href="../../index.html"/>
-        <link rel="up" title="Centrality" href="../algorithms.centrality.html"/>
-        <link rel="next" title="communicability_centrality_exp" href="networkx.algorithms.centrality.communicability_centrality_exp.html"/>
-        <link rel="prev" title="communicability_exp" href="networkx.algorithms.centrality.communicability_exp.html"/> 
+        <link rel="up" title="Chordal" href="../algorithms.chordal.html"/>
+        <link rel="next" title="Clique" href="../algorithms.clique.html"/>
+        <link rel="prev" title="chordal_graph_treewidth" href="networkx.algorithms.chordal.chordal_graph_treewidth.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -141,6 +141,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../examples/drawing/index.html">Drawing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/graph/index.html">Graph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/javascript/index.html">Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/jit/index.html">Jit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/multigraph/index.html">Multigraph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/pygraphviz/index.html">Pygraphviz</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/subclass/index.html">Subclass</a></li>
@@ -175,9 +176,9 @@
       
           <li><a href="../algorithms.html">Algorithms</a> &raquo;</li>
       
-          <li><a href="../algorithms.centrality.html">Centrality</a> &raquo;</li>
+          <li><a href="../algorithms.chordal.html">Chordal</a> &raquo;</li>
       
-    <li>communicability_centrality</li>
+    <li>find_induced_nodes</li>
       <li class="wy-breadcrumbs-aside">
         
       </li>
@@ -186,68 +187,64 @@
 </div>
           <div role="main">
             
-  <div class="section" id="communicability-centrality">
-<h1>communicability_centrality<a class="headerlink" href="#communicability-centrality" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="find-induced-nodes">
+<h1>find_induced_nodes<a class="headerlink" href="#find-induced-nodes" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
-<dt id="networkx.algorithms.centrality.communicability_centrality">
-<code class="descname">communicability_centrality</code><span class="sig-paren">(</span><em>G</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/centrality/communicability_alg.html#communicability_centrality"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.centrality.communicability_centrality" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return communicability centrality for each node in G.</p>
-<p>Communicability centrality, also called subgraph centrality, of a node <img class="math" src="../../_images/math/b1f5ca5a538abe6036ed478902bb5a03ef05f0c2.png" alt="n" style="vertical-align: 0px"/>
-is the sum of closed walks of all lengths starting and ending at node <img class="math" src="../../_images/math/b1f5ca5a538abe6036ed478902bb5a03ef05f0c2.png" alt="n" style="vertical-align: 0px"/>.</p>
+<dt id="networkx.algorithms.chordal.find_induced_nodes">
+<code class="descname">find_induced_nodes</code><span class="sig-paren">(</span><em>G</em>, <em>s</em>, <em>t</em>, <em>treewidth_bound=9223372036854775807</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/algorithms/chordal/chordal_alg.html#find_induced_nodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.chordal.find_induced_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the set of induced nodes in the path from s to t.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>nodes</strong> &#8211;
-Dictionary of nodes with communicability centrality as the value.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> (<em>graph</em>) &#8211; A chordal NetworkX graph</li>
+<li><strong>s</strong> (<em>node</em>) &#8211; Source node to look for induced nodes</li>
+<li><strong>t</strong> (<em>node</em>) &#8211; Destination node to look for induced nodes</li>
+<li><strong>treewith_bound</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Maximum treewidth acceptable for the graph H. The search
+for induced nodes will end as soon as the treewidth_bound is exceeded.</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dictionary</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>I</strong> &#8211;
+The set of induced nodes in the path from s to t in G</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">NetworkXError</span></code> &#8211;
-If the graph is not undirected and simple.</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">Set of nodes</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">NetworkXError</span></code> &#8211;
+The algorithm does not support DiGraph, MultiGraph and MultiDiGraph.
+If the input graph is an instance of one of these classes, a
+NetworkXError is raised.
+The algorithm can only be applied to chordal graphs. If
+the input graph is found to be non-chordal, a NetworkXError is raised.</p>
+</td>
 </tr>
 </tbody>
 </table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<dl class="last docutils">
-<dt><a class="reference internal" href="networkx.algorithms.centrality.communicability.html#networkx.algorithms.centrality.communicability" title="networkx.algorithms.centrality.communicability"><code class="xref py py-func docutils literal"><span class="pre">communicability()</span></code></a></dt>
-<dd>Communicability between all pairs of nodes in G.</dd>
-<dt><a class="reference internal" href="#networkx.algorithms.centrality.communicability_centrality" title="networkx.algorithms.centrality.communicability_centrality"><code class="xref py py-func docutils literal"><span class="pre">communicability_centrality()</span></code></a></dt>
-<dd>Communicability centrality for each node of G.</dd>
-</dl>
-</div>
-<p class="rubric">Notes</p>
-<p>This version of the algorithm computes eigenvalues and eigenvectors
-of the adjacency matrix.</p>
-<p>Communicability centrality of a node <img class="math" src="../../_images/math/8a766bbd11b0a08916009a3c0008470d402e9d2f.png" alt="u" style="vertical-align: 0px"/> in G can be found using
-a spectral decomposition of the adjacency matrix <a class="footnote-reference" href="#id3" id="id1">[1]</a> <a class="footnote-reference" href="#id4" id="id2">[2]</a>,</p>
-<div class="math">
-<p><img src="../../_images/math/b6a3e52a2ed9068ce30a0f008265f6a06a50a086.png" alt="SC(u)=\sum_{j=1}^{N}(v_{j}^{u})^2 e^{\lambda_{j}},"/></p>
-</div><p>where <img class="math" src="../../_images/math/77521869b74cae7a9a055ded80ba8f4cc085246c.png" alt="v_j" style="vertical-align: -6px"/> is an eigenvector of the adjacency matrix <img class="math" src="../../_images/math/937abf0036e3f773123ec44111199b356cf0ab10.png" alt="A" style="vertical-align: 0px"/> of G
-corresponding corresponding to the eigenvalue <img class="math" src="../../_images/math/e42758999f4e661bd26a7f49d8aa3895158271f4.png" alt="\lambda_j" style="vertical-align: -6px"/>.</p>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">)])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sc</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">communicability_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">classic</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">I</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">find_induced_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+<span class="go">[1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
 </pre></div>
 </div>
+<p class="rubric">Notes</p>
+<p>G must be a chordal graph and (s,t) an edge that is not in G.</p>
+<p>If a treewidth_bound is provided, the search for induced nodes will end
+as soon as the treewidth_bound is exceeded.</p>
+<p>The algorithm is inspired by Algorithm 4 in <a class="footnote-reference" href="#id2" id="id1">[1]</a>.
+A formal definition of induced node can also be found on that reference.</p>
 <p class="rubric">References</p>
-<table class="docutils footnote" frame="void" id="id3" rules="none">
+<table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Ernesto Estrada, Juan A. Rodriguez-Velazquez,
-&#8220;Subgraph centrality in complex networks&#8221;,
-Physical Review E 71, 056103 (2005).
-<a class="reference external" href="http://arxiv.org/abs/cond-mat/0504730">http://arxiv.org/abs/cond-mat/0504730</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Ernesto Estrada, Naomichi Hatano,
-&#8220;Communicability in complex networks&#8221;,
-Phys. Rev. E 77, 036111 (2008).
-<a class="reference external" href="http://arxiv.org/abs/0707.0756">http://arxiv.org/abs/0707.0756</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Learning Bounded Treewidth Bayesian Networks.
+Gal Elidan, Stephen Gould; JMLR, 9(Dec):2699&#8211;2731, 2008.
+<a class="reference external" href="http://jmlr.csail.mit.edu/papers/volume9/elidan08a/elidan08a.pdf">http://jmlr.csail.mit.edu/papers/volume9/elidan08a/elidan08a.pdf</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -260,10 +257,10 @@ Phys. Rev. E 77, 036111 (2008).
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="networkx.algorithms.centrality.communicability_centrality_exp.html" class="btn btn-neutral float-right" title="communicability_centrality_exp"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../algorithms.clique.html" class="btn btn-neutral float-right" title="Clique"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="networkx.algorithms.centrality.communicability_exp.html" class="btn btn-neutral" title="communicability_exp"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="networkx.algorithms.chordal.chordal_graph_treewidth.html" class="btn btn-neutral" title="chordal_graph_treewidth"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -273,7 +270,7 @@ Phys. Rev. E 77, 036111 (2008).
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, NetworkX Developers.
-      Last updated on Dec 02, 2015.
+      Last updated on Feb 29, 2016.
     </p>
   </div>
 

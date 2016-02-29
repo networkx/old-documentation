@@ -139,6 +139,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../examples/drawing/index.html">Drawing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../examples/graph/index.html">Graph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../examples/javascript/index.html">Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../examples/jit/index.html">Jit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../examples/multigraph/index.html">Multigraph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../examples/pygraphviz/index.html">Pygraphviz</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../examples/subclass/index.html">Subclass</a></li>
@@ -202,7 +203,7 @@
 
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;multigraph&#39;</span><span class="p">)</span>
-<div class="viewcode-block" id="communicability_centrality_exp"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.centrality.communicability_centrality_exp.html#networkx.algorithms.centrality.communicability_centrality_exp">[docs]</a><span class="k">def</span> <span class="nf">communicability_centrality_exp</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">communicability_centrality_exp</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
     <span class="sd">r&quot;&quot;&quot;Return the communicability centrality for each node of G</span>
 
 <span class="sd">    Communicability centrality, also called subgraph centrality, of a node `n`</span>
@@ -266,10 +267,10 @@
     <span class="c"># convert diagonal to dictionary keyed by node</span>
     <span class="n">sc</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">nodelist</span><span class="p">,</span><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span><span class="n">expA</span><span class="o">.</span><span class="n">diagonal</span><span class="p">())))</span>
     <span class="k">return</span> <span class="n">sc</span>
-</div>
+
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;multigraph&#39;</span><span class="p">)</span>
-<div class="viewcode-block" id="communicability_centrality"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.centrality.communicability_centrality.html#networkx.algorithms.centrality.communicability_centrality">[docs]</a><span class="k">def</span> <span class="nf">communicability_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">communicability_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
     <span class="sd">r&quot;&quot;&quot;Return communicability centrality for each node in G.</span>
 
 <span class="sd">    Communicability centrality, also called subgraph centrality, of a node `n`</span>
@@ -340,7 +341,7 @@
     <span class="c"># convert vector dictionary keyed by node</span>
     <span class="n">sc</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">nodelist</span><span class="p">,</span><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span><span class="n">xg</span><span class="p">)))</span>
     <span class="k">return</span> <span class="n">sc</span>
-</div>
+
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;multigraph&#39;</span><span class="p">)</span>
 <div class="viewcode-block" id="communicability_betweenness_centrality"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.centrality.communicability_betweenness_centrality.html#networkx.algorithms.centrality.communicability_betweenness_centrality">[docs]</a><span class="k">def</span> <span class="nf">communicability_betweenness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">normalized</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
@@ -461,7 +462,7 @@
 
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;multigraph&#39;</span><span class="p">)</span>
-<div class="viewcode-block" id="communicability"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.centrality.communicability.html#networkx.algorithms.centrality.communicability">[docs]</a><span class="k">def</span> <span class="nf">communicability</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">communicability</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
     <span class="sd">r&quot;&quot;&quot;Return communicability between all pairs of nodes in G.</span>
 
 <span class="sd">    The communicability between pairs of nodes in G is the sum of</span>
@@ -540,10 +541,10 @@
                 <span class="n">s</span> <span class="o">+=</span> <span class="n">vec</span><span class="p">[:,</span><span class="n">j</span><span class="p">][</span><span class="n">p</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">vec</span><span class="p">[:,</span><span class="n">j</span><span class="p">][</span><span class="n">q</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">expw</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
             <span class="n">sc</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">sc</span>
-</div>
+
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;directed&#39;</span><span class="p">)</span>
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s">&#39;multigraph&#39;</span><span class="p">)</span>
-<div class="viewcode-block" id="communicability_exp"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.centrality.communicability_exp.html#networkx.algorithms.centrality.communicability_exp">[docs]</a><span class="k">def</span> <span class="nf">communicability_exp</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">communicability_exp</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
     <span class="sd">r&quot;&quot;&quot;Return communicability between all pairs of nodes in G.</span>
 
 <span class="sd">    Communicability between pair of node (u,v) of node in G is the sum of</span>
@@ -614,7 +615,7 @@
         <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
             <span class="n">sc</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">expA</span><span class="p">[</span><span class="n">mapping</span><span class="p">[</span><span class="n">u</span><span class="p">],</span><span class="n">mapping</span><span class="p">[</span><span class="n">v</span><span class="p">]])</span>
     <span class="k">return</span> <span class="n">sc</span>
-</div>
+
 <div class="viewcode-block" id="estrada_index"><a class="viewcode-back" href="../../../../reference/generated/networkx.algorithms.centrality.estrada_index.html#networkx.algorithms.centrality.estrada_index">[docs]</a><span class="k">def</span> <span class="nf">estrada_index</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
     <span class="sd">r&quot;&quot;&quot;Return the Estrada index of a the graph G.</span>
 
@@ -679,7 +680,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, NetworkX Developers.
-      Last updated on Dec 02, 2015.
+      Last updated on Feb 29, 2016.
     </p>
   </div>
 

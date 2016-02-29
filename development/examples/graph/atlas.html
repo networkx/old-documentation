@@ -141,6 +141,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../drawing/index.html">Drawing</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Graph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../javascript/index.html">Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../jit/index.html">Jit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../multigraph/index.html">Multigraph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pygraphviz/index.html">Pygraphviz</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../subclass/index.html">Subclass</a></li>
@@ -191,8 +192,9 @@
 <span class="sd">Atlas of all graphs of 6 nodes or less.</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="n">__author__</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;Aric Hagberg (hagberg@lanl.gov)&quot;&quot;&quot;</span>
-<span class="c">#    Copyright (C) 2004 by</span>
+<span class="c"># Author: Aric Hagberg (hagberg@lanl.gov)</span>
+
+<span class="c">#    Copyright (C) 2004-2016 by</span>
 <span class="c">#    Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
 <span class="c">#    Dan Schult &lt;dschult@colgate.edu&gt;</span>
 <span class="c">#    Pieter Swart &lt;swart@lanl.gov&gt;</span>
@@ -209,60 +211,62 @@
 <span class="sd">        Attempt to check for isomorphisms and remove.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">Atlas</span><span class="o">=</span><span class="n">graph_atlas_g</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">208</span><span class="p">]</span> <span class="c"># 208</span>
+    <span class="n">Atlas</span> <span class="o">=</span> <span class="n">graph_atlas_g</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">208</span><span class="p">]</span> <span class="c"># 208</span>
     <span class="c"># remove isolated nodes, only connected graphs are left</span>
-    <span class="n">U</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span> <span class="c"># graph for union of all graphs in atlas</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span> <span class="c"># graph for union of all graphs in atlas</span>
     <span class="k">for</span> <span class="n">G</span> <span class="ow">in</span> <span class="n">Atlas</span><span class="p">:</span>
-        <span class="n">zerodegree</span><span class="o">=</span><span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span> <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">zerodegree</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span> <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">zerodegree</span><span class="p">:</span>
             <span class="n">G</span><span class="o">.</span><span class="n">remove_node</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-        <span class="n">U</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">disjoint_union</span><span class="p">(</span><span class="n">U</span><span class="p">,</span><span class="n">G</span><span class="p">)</span>
+        <span class="n">U</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">disjoint_union</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">G</span><span class="p">)</span>
 
     <span class="c"># list of graphs of all connected components</span>
-    <span class="n">C</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_component_subgraphs</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">connected_component_subgraphs</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
 
-    <span class="n">UU</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+    <span class="n">UU</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
     <span class="c"># do quick isomorphic-like check, not a true isomorphism checker</span>
-    <span class="n">nlist</span><span class="o">=</span><span class="p">[]</span> <span class="c"># list of nonisomorphic graphs</span>
+    <span class="n">nlist</span> <span class="o">=</span> <span class="p">[]</span> <span class="c"># list of nonisomorphic graphs</span>
     <span class="k">for</span> <span class="n">G</span> <span class="ow">in</span> <span class="n">C</span><span class="p">:</span>
         <span class="c"># check against all nonisomorphic graphs so far</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">iso</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">nlist</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">iso</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nlist</span><span class="p">):</span>
             <span class="n">nlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-            <span class="n">UU</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">disjoint_union</span><span class="p">(</span><span class="n">UU</span><span class="p">,</span><span class="n">G</span><span class="p">)</span> <span class="c"># union the nonisomorphic graphs</span>
+            <span class="n">UU</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">disjoint_union</span><span class="p">(</span><span class="n">UU</span><span class="p">,</span> <span class="n">G</span><span class="p">)</span> <span class="c"># union the nonisomorphic graphs</span>
     <span class="k">return</span> <span class="n">UU</span>
 
 <span class="k">def</span> <span class="nf">iso</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span> <span class="n">glist</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Quick and dirty nonisomorphism checker used to check isomorphisms.&quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">G2</span> <span class="ow">in</span> <span class="n">glist</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">isomorphic</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span><span class="n">G2</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">isomorphic</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span> <span class="n">G2</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">True</span>
     <span class="k">return</span> <span class="bp">False</span>
 
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-
-    <span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
-
     <span class="n">G</span><span class="o">=</span><span class="n">atlas6</span><span class="p">()</span>
 
     <span class="k">print</span><span class="p">(</span><span class="s">&quot;graph has </span><span class="si">%d</span><span class="s"> nodes with </span><span class="si">%d</span><span class="s"> edges&quot;</span>\
-          <span class="o">%</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">),</span><span class="n">nx</span><span class="o">.</span><span class="n">number_of_edges</span><span class="p">(</span><span class="n">G</span><span class="p">)))</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">number_connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">),</span><span class="s">&quot;connected components&quot;</span><span class="p">)</span>
-
+          <span class="o">%</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="n">nx</span><span class="o">.</span><span class="n">number_of_edges</span><span class="p">(</span><span class="n">G</span><span class="p">)))</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">number_connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="s">&quot;connected components&quot;</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">networkx</span> <span class="kn">import</span> <span class="n">graphviz_layout</span>
+        <span class="kn">import</span> <span class="nn">pygraphviz</span>
+        <span class="kn">from</span> <span class="nn">networkx.drawing.nx_agraph</span> <span class="kn">import</span> <span class="n">graphviz_layout</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s">&quot;This example needs Graphviz and either PyGraphviz or Pydot&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">pydotplus</span>
+            <span class="kn">from</span> <span class="nn">networkx.drawing.nx_pydot</span> <span class="kn">import</span> <span class="n">graphviz_layout</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s">&quot;This example needs Graphviz and either &quot;</span>
+                              <span class="s">&quot;PyGraphviz or PyDotPlus&quot;</span><span class="p">)</span>
 
     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
     <span class="c"># layout graphs with positions using graphviz neato</span>
-    <span class="n">pos</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">graphviz_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">prog</span><span class="o">=</span><span class="s">&quot;neato&quot;</span><span class="p">)</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">graphviz_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">prog</span><span class="o">=</span><span class="s">&quot;neato&quot;</span><span class="p">)</span>
     <span class="c"># color nodes the same in each connected subgraph</span>
-    <span class="n">C</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_component_subgraphs</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">connected_component_subgraphs</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">C</span><span class="p">:</span>
-        <span class="n">c</span><span class="o">=</span><span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()]</span><span class="o">*</span><span class="n">nx</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="c"># random color...</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()]</span> <span class="o">*</span> <span class="n">nx</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="c"># random color...</span>
         <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">g</span><span class="p">,</span>
              <span class="n">pos</span><span class="p">,</span>
              <span class="n">node_size</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
@@ -271,7 +275,7 @@
              <span class="n">vmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
              <span class="n">with_labels</span><span class="o">=</span><span class="bp">False</span>
              <span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&quot;atlas.png&quot;</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">75</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&quot;atlas.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">75</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -295,7 +299,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, NetworkX Developers.
-      Last updated on Dec 02, 2015.
+      Last updated on Feb 29, 2016.
     </p>
   </div>
 

@@ -141,6 +141,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Drawing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../graph/index.html">Graph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../javascript/index.html">Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../jit/index.html">Jit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../multigraph/index.html">Multigraph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pygraphviz/index.html">Pygraphviz</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../subclass/index.html">Subclass</a></li>
@@ -192,7 +193,7 @@
 
 <span class="sd">You must have matplotlib for this to work.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="n">__author__</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;Aric Hagberg (hagberg@lanl.gov)&quot;&quot;&quot;</span>
+<span class="c"># Author: Aric Hagberg (hagberg@lanl.gov)</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="kn">as</span> <span class="nn">nx</span>
@@ -205,12 +206,12 @@
                        <span class="n">nodelist</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
                        <span class="n">node_color</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span>
                        <span class="n">node_size</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
-                   <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+               <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">pos</span><span class="p">,</span>
                        <span class="n">nodelist</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span>
                        <span class="n">node_color</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">,</span>
                        <span class="n">node_size</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
-                   <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+               <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
 
 <span class="c"># edges</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">pos</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
@@ -260,7 +261,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, NetworkX Developers.
-      Last updated on Dec 02, 2015.
+      Last updated on Feb 29, 2016.
     </p>
   </div>
 
