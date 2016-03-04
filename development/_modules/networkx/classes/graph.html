@@ -1848,7 +1848,7 @@
             <span class="k">return</span> <span class="mi">0</span>
 
 </div>
-<div class="viewcode-block" id="Graph.add_star"><a class="viewcode-back" href="../../../reference/generated/networkx.Graph.add_star.html#networkx.Graph.add_star">[docs]</a>    <span class="k">def</span> <span class="nf">add_star</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">add_star</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add a star.</span>
 
 <span class="sd">        The first node in nodes is the middle of the star.  It is connected</span>
@@ -1876,8 +1876,8 @@
         <span class="n">v</span><span class="o">=</span><span class="n">nlist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">edges</span><span class="o">=</span><span class="p">((</span><span class="n">v</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nlist</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">edges</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">)</span>
-</div>
-<div class="viewcode-block" id="Graph.add_path"><a class="viewcode-back" href="../../../reference/generated/networkx.Graph.add_path.html#networkx.Graph.add_path">[docs]</a>    <span class="k">def</span> <span class="nf">add_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">add_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add a path.</span>
 
 <span class="sd">        Parameters</span>
@@ -1902,8 +1902,8 @@
         <span class="n">nlist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
         <span class="n">edges</span><span class="o">=</span><span class="nb">zip</span><span class="p">(</span><span class="n">nlist</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">nlist</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">edges</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">)</span>
-</div>
-<div class="viewcode-block" id="Graph.add_cycle"><a class="viewcode-back" href="../../../reference/generated/networkx.Graph.add_cycle.html#networkx.Graph.add_cycle">[docs]</a>    <span class="k">def</span> <span class="nf">add_cycle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">add_cycle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add a cycle.</span>
 
 <span class="sd">        Parameters</span>
@@ -1929,7 +1929,7 @@
         <span class="n">edges</span><span class="o">=</span><span class="nb">zip</span><span class="p">(</span><span class="n">nlist</span><span class="p">,</span><span class="n">nlist</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">+</span><span class="p">[</span><span class="n">nlist</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">edges</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">)</span>
 
-</div>
+
 <div class="viewcode-block" id="Graph.nbunch_iter"><a class="viewcode-back" href="../../../reference/generated/networkx.Graph.nbunch_iter.html#networkx.Graph.nbunch_iter">[docs]</a>    <span class="k">def</span> <span class="nf">nbunch_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator of nodes contained in nbunch that are</span>
 <span class="sd">        also in the graph.</span>
@@ -2008,7 +2008,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, NetworkX Developers.
-      Last updated on Mar 03, 2016.
+      Last updated on Mar 04, 2016.
     </p>
   </div>
 
