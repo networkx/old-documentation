@@ -1,0 +1,4 @@
+gems:
+  - jekyll-redirect-from
+
+include: [_downloads, _images,  _modules, _static]
