@@ -1,3 +1,3 @@
 ---
-redirect_to: "http://networkx.readthedocs.org/en/latest/"
+redirect_to: "https://networkx.github.io/dev-docs/"
 ---
